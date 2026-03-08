@@ -1,0 +1,65 @@
+{
+  "experiment": "Path B: Standard ANN (ReLU) → INT8 PTQ → Neural-ART NPU",
+  "date": "2026-03-08",
+  "dataset": "NSL-KDD",
+  "model": {
+    "architecture": "IDS_MLP",
+    "layers": "Linear(41,256) → BN → ReLU → Linear(256,256) → BN → ReLU → Linear(256,128) → BN → ReLU → Linear(128,5)",
+    "parameters": 111365,
+    "activation": "ReLU",
+    "bn_fused_at_export": true
+  },
+  "training": {
+    "epochs": 80,
+    "batch_size": 512,
+    "optimizer": "Adam",
+    "lr": 1e-3,
+    "weight_decay": 1e-5,
+    "scheduler": "CosineAnnealingLR",
+    "class_weights": "inverse_frequency",
+    "seed": 42
+  },
+  "accuracy": {
+    "overall": 76.45,
+    "macro": 56.32,
+    "per_class": {
+      "DoS": 74.77,
+      "Probe": 62.41,
+      "R2L": 29.70,
+      "U2R": 19.00,
+      "normal": 95.70
+    }
+  },
+  "quantization": {
+    "method": "Post-Training Quantization (PTQ)",
+    "format": "INT8 (QInt8)",
+    "calibration_method": "MinMax",
+    "calibration_samples": 1000,
+    "fp32_accuracy": 76.45,
+    "int8_accuracy": 76.38,
+    "accuracy_drop": 0.08
+  },
+  "onnx_export": {
+    "operators": ["Gemm", "Relu"],
+    "opset_version": 17,
+    "fp32_model_size_kb": 1.8,
+    "int8_model_size_kb": 114.4
+  },
+  "npu_benchmark": {
+    "target_board": "STM32N6570-DK",
+    "cpu": "Arm Cortex-M55 @ 800MHz",
+    "npu": "Neural-ART 600 GOPS INT8",
+    "inference_time_ms": 0.4563,
+    "throughput_inferences_per_sec": 2192,
+    "epochs_total": 8,
+    "epochs_hw": 5,
+    "epochs_hybrid": 1,
+    "epochs_sw": 2,
+    "sw_operators": ["DequantizeLinear", "Conv(float)", "Cast"],
+    "npu_compute_ratio_percent": ">99",
+    "weights_flash_kb": 137.70,
+    "activations_ram_kb": 1.25,
+    "total_ram_bytes": 3093,
+    "total_flash_bytes": 171634
+  }
+}

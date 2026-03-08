@@ -1,0 +1,76 @@
+{
+  "experiment": "Path A: PASCAL QCFS Activation → ONNX → Neural-ART NPU Compatibility Check",
+  "date": "2026-03-08",
+  "dataset": "NSL-KDD",
+  "model": {
+    "architecture": "IDS_MLP_QCFS",
+    "layers": "Linear(41,256) → BN → QCFS → Linear(256,256) → BN → QCFS → Linear(256,128) → BN → QCFS → Linear(128,5)",
+    "parameters": 111368,
+    "activation": "QCFS(x) = floor(clip(x/step, 0, L)) * step",
+    "bn_fused_at_export": true,
+    "qcfs_ste_gradient": true
+  },
+  "training": {
+    "epochs": 80,
+    "batch_size": 512,
+    "optimizer": "Adam",
+    "lr": 1e-3,
+    "weight_decay": 1e-5,
+    "scheduler": "CosineAnnealingLR",
+    "class_weights": "inverse_frequency",
+    "seed": 42
+  },
+  "results_by_L": {
+    "L4": {
+      "equivalent_snn_timesteps": 4,
+      "overall_accuracy": 79.75,
+      "macro_accuracy": 61.31,
+      "per_class": {
+        "DoS": 78.47,
+        "Probe": 76.37,
+        "R2L": 33.26,
+        "U2R": 22.50,
+        "normal": 95.93
+      },
+      "learned_thresholds": [0.9857, 0.9414, 1.1245]
+    },
+    "L8": {
+      "equivalent_snn_timesteps": 8,
+      "overall_accuracy": 78.79,
+      "macro_accuracy": 59.33,
+      "per_class": {
+        "DoS": 78.02,
+        "Probe": 72.37,
+        "R2L": 29.67,
+        "U2R": 20.50,
+        "normal": 96.12
+      },
+      "learned_thresholds": [0.9953, 0.9682, 1.1235]
+    },
+    "L16": {
+      "equivalent_snn_timesteps": 16,
+      "overall_accuracy": 79.39,
+      "macro_accuracy": 60.26,
+      "per_class": {
+        "DoS": 79.69,
+        "Probe": 72.24,
+        "R2L": 32.39,
+        "U2R": 21.50,
+        "normal": 95.46
+      },
+      "learned_thresholds": [0.9927, 0.9642, 1.1215]
+    }
+  },
+  "onnx_export": {
+    "operators": ["Clip", "Floor", "Gemm", "Mul"],
+    "npu_confirmed": ["Clip", "Gemm", "Mul"],
+    "npu_uncertain": ["Floor"],
+    "model_size_kb": 3.1
+  },
+  "comparison_vs_relu": {
+    "best_qcfs_L": 4,
+    "overall_improvement_pp": 3.30,
+    "macro_improvement_pp": 4.99,
+    "note": "QCFS quantization constraint acts as implicit regularization, improving generalization"
+  }
+}

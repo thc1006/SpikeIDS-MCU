@@ -1,0 +1,46 @@
+# SNN-IDS Experiment Configuration
+# Reproducing all results from the paper
+
+dataset:
+  name: NSL-KDD
+  train: data/KDDTrain+.txt
+  test: data/KDDTest+.txt
+  num_classes: 5
+  classes: [DoS, Probe, R2L, U2R, normal]
+  download_url: https://www.unb.ca/cic/datasets/nsl.html
+
+model:
+  input_dim: 41
+  hidden: 256
+  num_classes: 5
+  activation: ReLU  # or QCFS
+
+training:
+  epochs: 80
+  batch_size: 512
+  lr: 0.001
+  weight_decay: 0.00001
+  scheduler: CosineAnnealingLR
+  class_weights: inverse_frequency
+  seed: 42
+
+quantization:
+  method: PTQ
+  weight_type: QInt8
+  activation_type: QInt8
+  calibration_method: MinMax
+  calibration_samples: 1000
+
+qcfs_experiment:
+  L_values: [4, 8, 16]
+  init_threshold: 1.0
+
+target:
+  board: STM32N6570-DK
+  cpu: Cortex-M55
+  cpu_freq_mhz: 800
+  npu: Neural-ART
+  npu_gops: 600
+  npu_precision: INT8
+  internal_ram_kb: 4200
+  external_flash_mb: 128
