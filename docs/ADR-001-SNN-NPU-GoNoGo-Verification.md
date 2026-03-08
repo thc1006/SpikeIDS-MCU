@@ -1,443 +1,362 @@
-# ADR-001: SNN → Neural-ART NPU Go/No-Go 驗證策略
+# ADR-001: SNN → Neural-ART NPU Go/No-Go Verification Strategy
 
-> **狀態**: COMPLETED — All checkpoints PASSED (GO)
-> **日期**: 2026-03-08
-> **驗證完成**: 2026-03-08
-> **決策者**: thc1006
-> **技術背景**: SNN-IDS (基於脈衝神經網路的 IoT 邊緣入侵偵測系統) for TRON Programming Contest 2026
-
----
-
-## 1. 背景與問題
-
-我們要在 STM32N6570-DK 的 Neural-ART NPU (600 GOPS, INT8 only) 上部署 SNN 模型做網路入侵偵測。
-
-**核心問題**：SNN 的 QCFS 激活函數包含 `Clip` + `Floor` + `Shift` 操作，這些算子在 Neural-ART NPU 上的相容性未知。如果不相容，整個方案失敗。
-
-**必須在投入完整開發前回答**：PASCAL/QCFS 轉換出的 INT8 ONNX 模型能否被 `stedgeai` 成功編譯為 Neural-ART 格式？
+> **Status**: COMPLETED — All checkpoints PASSED (GO)
+> **Date**: 2026-03-08
+> **Verification Completed**: 2026-03-08
+> **Decision Maker**: thc1006
+> **Technical Context**: SNN-IDS (Spiking Neural Network-based IoT Edge Intrusion Detection System) for TRON Programming Contest 2026
 
 ---
 
-## 2. 調研發現（2026-03-08）
+## 1. Background and Problem
 
-### 2.1 QCFS 激活函數的數學本質
+We need to deploy an SNN model on the STM32N6570-DK's Neural-ART NPU (600 GOPS, INT8 only) for network intrusion detection.
+
+**Core Question**: The SNN's QCFS activation function contains `Clip` + `Floor` + `Shift` operations, and the compatibility of these operators on the Neural-ART NPU is unknown. If incompatible, the entire approach fails.
+
+**Must be answered before committing to full development**: Can the INT8 ONNX model converted via PASCAL/QCFS be successfully compiled by `stedgeai` to the Neural-ART format?
+
+---
+
+## 2. Research Findings (2026-03-08)
+
+### 2.1 Mathematical Nature of the QCFS Activation Function
 
 ```
 QCFS(x) = floor( clip(x / step, 0, L) ) * step
 
-展開為 ONNX 算子圖：
+Expanded as ONNX operator graph:
   x → Div(step) → Clip(min=0, max=L) → Floor → Mul(step) → output
 
-涉及的 ONNX 算子：Div, Clip, Floor, Mul
+ONNX operators involved: Div, Clip, Floor, Mul
 ```
 
-### 2.2 Neural-ART 算子支援狀態
+### 2.2 Neural-ART Operator Support Status
 
-| ONNX 算子 | Neural-ART NPU 硬體支援 | 不支援時的行為 | 來源 |
-|-----------|:---:|---------|------|
-| **Clip** | **支援**（作為 fused activation） | — | [stedgeai ONNX support](https://stedgeai-dc.st.com/assets/embedded-docs/supported_ops_onnx.html) |
-| **Floor** | **不確定** — 文件未明確列出 | CPU fallback (Cortex-M55 MVE) | [NPU operator support](https://stm32ai-cs.st.com/assets/embedded-docs/stneuralart_operator_support.html) |
-| **Div** | **不確定** — 通常融合進量化 | CPU fallback 或被 stedgeai 優化掉 | 同上 |
-| **Mul** | **支援**（標準乘法） | — | 同上 |
-| **MatMul/Gemm** | **支援** (INT8) | — | 已驗證（RescueBot 使用） |
-| **Conv2d** | **支援** (INT8) | — | 已驗證（所有 Model Zoo 模型） |
-| **ReLU** | **支援** (fused activation) | — | 已驗證 |
-| **Add** | **支援** | — | 已驗證（ResNet skip connection） |
-| **QuantizeLinear** | **支援** | — | [quantization doc](https://stedgeai-dc.st.com/assets/embedded-docs/quantization.html) |
-| **DequantizeLinear** | **支援** | — | 同上 |
+| ONNX Operator | Neural-ART NPU HW Support | Behavior When Unsupported | Source |
+|---------------|:---:|---------|------|
+| **Clip** | **Supported** (as fused activation) | — | [stedgeai ONNX support](https://stedgeai-dc.st.com/assets/embedded-docs/supported_ops_onnx.html) |
+| **Floor** | **Not supported** — not explicitly listed | CPU fallback (Cortex-M55 MVE) | [NPU operator support](https://stm32ai-cs.st.com/assets/embedded-docs/stneuralart_operator_support.html) |
+| **Div** | **Uncertain** — typically fused into quantization | CPU fallback or optimized away by stedgeai | Same as above |
+| **Mul** | **Supported** (standard multiply) | — | Same as above |
+| **MatMul/Gemm** | **Supported** (INT8) | — | Verified (used by RescueBot) |
+| **Conv2d** | **Supported** (INT8) | — | Verified (all Model Zoo models) |
+| **ReLU** | **Supported** (fused activation) | — | Verified |
+| **Add** | **Supported** | — | Verified (ResNet skip connection) |
+| **QuantizeLinear** | **Supported** | — | [quantization doc](https://stedgeai-dc.st.com/assets/embedded-docs/quantization.html) |
+| **DequantizeLinear** | **Supported** | — | Same as above |
 
-### 2.3 Neural-ART 的 CPU Fallback 機制
-
-```
-關鍵發現：Neural-ART 不支援的算子不會導致編譯失敗。
-
-stedgeai 的行為：
-1. 模型匯入 → 優化 pass → 算子映射
-2. 可映射到 NPU 的算子 → 硬體加速
-3. 不可映射的算子 → 自動 fallback 到 HOST (Cortex-M55 + MVE)
-4. NPU ↔ CPU 之間自動插入 cache maintenance 操作
-
-影響：
-- 模型一定能編譯通過（不會因為 Floor 不支援就整個失敗）
-- 但如果太多算子跑在 CPU → 性能下降
-- 對小型 MLP 模型，即使 Floor 跑在 CPU，overhead 極小（微秒級）
-```
-
-> 來源："If an operator is not mapped on HW, fallback implementations (int8 or float32 version) is emitted and the HOST (Cortex-M55) sub-system will be used." — [ST Neural-ART Programming Model](https://stedgeai-dc.st.com/assets/embedded-docs/stneuralart_programming_model.html)
-
-### 2.4 關鍵突破：T=1 SNN = 標準 PTQ ANN（不需要 QCFS）
+### 2.3 Neural-ART CPU Fallback Mechanism
 
 ```
-"One Timestep is Enough" (arXiv:2510.23383) 的核心洞見：
+Key finding: Unsupported operators do NOT cause compilation failure.
 
-當 T=1 時，SNN 的 LIF 神經元簡化為：
+stedgeai behavior:
+1. Model import → optimization pass → operator mapping
+2. Operators mappable to NPU → hardware-accelerated
+3. Non-mappable operators → automatic fallback to HOST (Cortex-M55 + MVE)
+4. NPU ↔ CPU transitions include automatic cache maintenance operations
+
+Implications:
+- The model will always compile successfully (Floor being unsupported won't cause total failure)
+- However, too many operators on CPU → performance degradation
+- For small MLP models, even if Floor runs on CPU, the overhead is minimal (microsecond-level)
+```
+
+> Source: "If an operator is not mapped on HW, fallback implementations (int8 or float32 version) is emitted and the HOST (Cortex-M55) sub-system will be used." — [ST Neural-ART Programming Model](https://stedgeai-dc.st.com/assets/embedded-docs/stneuralart_programming_model.html)
+
+### 2.4 Key Breakthrough: T=1 SNN = Standard PTQ ANN (QCFS Not Required)
+
+```
+Core insight from "One Timestep is Enough" (arXiv:2510.23383):
+
+When T=1, the SNN's LIF neuron simplifies to:
   output = Θ(W·x - threshold)
 
-這等價於：
-  output = ReLU(W·x) 經過 INT8 量化後的結果
+This is equivalent to:
+  output = ReLU(W·x) after INT8 quantization
 
-換言之：
+In other words:
   T=1 SNN ≡ INT8 Post-Training Quantized ANN with ReLU
 
-數學證明：量化過程中的 round + clip 操作
-  = QCFS 的 floor + clip 操作
-  = 都是將連續激活離散化為有限脈衝等級
+Mathematical proof: the round + clip operations during quantization
+  = floor + clip operations of QCFS
+  = both discretize continuous activations into finite spike levels
 
-結論：你根本不需要 QCFS 激活函數。
-      直接訓練標準 ReLU ANN → PTQ INT8 量化 → 部署到 NPU
-      這在數學上等價於 T=1 SNN 推論。
+Conclusion: You don't actually need the QCFS activation function.
+    Simply train a standard ReLU ANN → PTQ INT8 quantization → deploy to NPU.
+    This is mathematically equivalent to T=1 SNN inference.
 ```
 
-### 2.5 三條技術路徑比較
+### 2.5 Comparison of Three Technical Paths
 
-| | Path A: PASCAL + QCFS | Path B: 標準 ANN + PTQ | Path C: snnTorch 轉換 |
+| | Path A: PASCAL + QCFS | Path B: Standard ANN + PTQ | Path C: snnTorch Conversion |
 |---|:---:|:---:|:---:|
-| **訓練** | PyTorch + QCFS 自訂激活 | PyTorch + 標準 ReLU | snnTorch surrogate gradient |
-| **轉換** | PASCAL 框架 | torch.onnx.export + onnxruntime PTQ | snnTorch export（有限支援） |
-| **ONNX 算子** | Clip, Floor, Div, Mul（有風險） | Conv, MatMul, ReLU, Add（100% 支援） | 非標準算子（高風險） |
-| **Neural-ART 相容** | 高機率可行（CPU fallback 保底） | **100% 確定可行** | 未驗證，風險極高 |
-| **SNN 等價性** | 嚴格數學等價 | T=1 近似等價（< 0.5% 精度差） | 嚴格等價但部署困難 |
-| **額外工作量** | 移植 QCFS 到自訂模型（1-2 週） | **零**（標準 PyTorch 工作流） | 需寫自訂 exporter（3+ 週） |
-| **NPU 利用率** | ~46%（Floor 確認 CPU fallback） | **>99%**（全部標準算子） | 未知 |
-| **適合自訂模型** | 需改造 PASCAL（僅支援 VGG/ResNet） | **任意架構** | 有限 |
+| **Training** | PyTorch + custom QCFS activation | PyTorch + standard ReLU | snnTorch surrogate gradient |
+| **Conversion** | PASCAL framework | torch.onnx.export + onnxruntime PTQ | snnTorch export (limited support) |
+| **ONNX Operators** | Clip, Floor, Div, Mul (risky) | Conv, MatMul, ReLU, Add (100% supported) | Non-standard operators (high risk) |
+| **Neural-ART Compat.** | High probability (CPU fallback as safety net) | **100% confirmed** | Unverified, very high risk |
+| **SNN Equivalence** | Strict mathematical equivalence | T=1 approximate equivalence (< 0.5% accuracy gap) | Strict equivalence but deployment is difficult |
+| **Additional Effort** | Port QCFS to custom model (1-2 weeks) | **Zero** (standard PyTorch workflow) | Need custom exporter (3+ weeks) |
+| **NPU Utilization** | ~46% (Floor confirmed CPU fallback) | **>99%** (all standard operators) | Unknown |
+| **Custom Model Support** | Requires adapting PASCAL (only supports VGG/ResNet) | **Any architecture** | Limited |
 
 ---
 
-## 3. 決策
+## 3. Decision
 
-### 採用 Path B 作為主路徑，Path A 作為增強選項
+### Adopt Path B as primary path, Path A as enhancement option
 
-**理由**：
+**Rationale**:
 
-1. **Path B 零風險**：標準 ReLU ANN + INT8 PTQ 是 Neural-ART 的原生最佳路徑。所有算子 100% NPU 硬體加速。零相容性風險。
+1. **Path B is zero-risk**: Standard ReLU ANN + INT8 PTQ is the native optimal path for Neural-ART. All operators are 100% NPU hardware-accelerated. Zero compatibility risk.
 
-2. **數學上仍然是 SNN**：根據 "One Timestep is Enough" (2025 CVPR)，T=1 SNN 和 INT8 量化 ANN 的推論結果在數學上近似等價。你可以在論文/計畫書中論述這一點。
+2. **Still mathematically an SNN**: Per "One Timestep is Enough" (arXiv:2510.23383), T=1 SNN and INT8 quantized ANN inference are mathematically approximately equivalent. This can be argued in the paper/proposal.
 
-3. **大幅降低工程量**：不需要移植 PASCAL 框架，不需要自訂 QCFS 激活函數，不需要擔心算子相容性。省下 2-3 週。
+3. **Dramatically reduces engineering effort**: No need to port the PASCAL framework, no custom QCFS activation, no operator compatibility concerns. Saves 2-3 weeks.
 
-4. **Path A 作為加分項**：如果 Path B 提前完成，可以額外嘗試 PASCAL QCFS 路徑做對比實驗。在論文中展示「T=1 PTQ vs QCFS vs multi-step SNN」的精度/能耗對比 → 學術價值翻倍。
+4. **Path A as bonus**: If Path B completes ahead of schedule, additionally attempt the PASCAL QCFS path as a comparison experiment. Showing "T=1 PTQ vs QCFS vs multi-step SNN" accuracy/energy trade-offs in the paper doubles the academic value.
 
-### SNN 敘事策略
+### SNN Narrative Strategy
 
 ```
-計畫書論述邏輯：
+Paper/proposal argument structure:
 
-1. "SNN 的事件驅動特性天然適合網路封包處理"（動機）
-2. "T=1 SNN 等價於 INT8 量化 ANN"（理論基礎，引用 2025 CVPR）
-3. "我們利用此等價性，將 SNN 概念部署到 Neural-ART NPU"（技術路徑）
-4. "µT-Kernel 任務架構實現事件驅動封包處理"（RTOS 整合）
-5. "多步 SNN (T>1) 作為深度分類的可選擴展"（展示 SNN 理解深度）
+1. "SNN's event-driven nature is inherently suited for network packet processing" (motivation)
+2. "T=1 SNN is equivalent to an INT8 quantized ANN" (theoretical basis, citing arXiv:2510.23383)
+3. "We leverage this equivalence to deploy SNN concepts on the Neural-ART NPU" (technical path)
+4. "µT-Kernel task architecture enables event-driven packet processing" (RTOS integration)
+5. "Multi-step SNN (T>1) as optional extension for deep classification" (demonstrates SNN depth)
 
-這樣你既有 SNN 的學術敘事，又有 100% 可行的工程實現。
+This provides both an academic SNN narrative and a 100% feasible engineering implementation.
 ```
 
 ---
 
-## 4. 驗證計畫（Go/No-Go）
+## 4. Verification Plan (Go/No-Go)
 
-### 階段 0：環境準備（Day 1）
+### Phase 0: Environment Setup (Day 1)
 
 ```bash
-# DGX Spark ARM64 環境
+# DGX Spark ARM64 environment
 python3 -m venv ~/snn-ids
 source ~/snn-ids/bin/activate
 pip install torch torchvision onnx onnxruntime
 
-# 驗證 PyTorch
+# Verify PyTorch
 python3 -c "import torch; print(torch.__version__); print(torch.randn(2,3))"
 ```
 
-**Go/No-Go**: PyTorch 在 ARM64 上正常運作 → 繼續
+**Go/No-Go**: PyTorch runs correctly on ARM64 → proceed
 
-### 階段 1：訓練標準 ANN 入侵偵測模型（Day 1-3）
+### Phase 1: Train Standard ANN Intrusion Detection Model (Day 1-3)
 
 ```bash
-# 下載 NSL-KDD 資料集
+# Download NSL-KDD dataset
 mkdir -p ~/snn-ids/data
 cd ~/snn-ids/data
 # NSL-KDD: https://www.unb.ca/cic/datasets/nsl.html
-# 或使用 CICIDS2017 子集
 
-# 訓練腳本
-cat > ~/snn-ids/train.py << 'EOF'
-import torch
-import torch.nn as nn
-
-class IDS_MLP(nn.Module):
-    """輕量 MLP for 網路入侵偵測 — 目標部署到 Neural-ART NPU"""
-    def __init__(self, input_dim=41, hidden=128, num_classes=5):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_dim, hidden),
-            nn.ReLU(),                    # ← 標準 ReLU，Neural-ART 100% 支援
-            nn.Linear(hidden, hidden),
-            nn.ReLU(),
-            nn.Linear(hidden, hidden // 2),
-            nn.ReLU(),
-            nn.Linear(hidden // 2, num_classes),
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-
-# ... 訓練邏輯（標準 PyTorch 訓練循環）
-EOF
-
+# Training script
 python3 train.py
 ```
 
-**Go/No-Go**: 模型在 NSL-KDD 上達到 > 95% 準確率 → 繼續
+**Go/No-Go**: Model achieves > 95% accuracy on NSL-KDD → proceed
 
-### 階段 2：ONNX 匯出 + INT8 量化（Day 3-4）
+### Phase 2: ONNX Export + INT8 Quantization (Day 3-4)
 
 ```bash
-cat > ~/snn-ids/export_onnx.py << 'EOF'
-import torch
-from train import IDS_MLP
-
-model = IDS_MLP()
-model.load_state_dict(torch.load("ids_model.pth"))
-model.eval()
-
-dummy = torch.randn(1, 41)  # NSL-KDD: 41 features
-torch.onnx.export(
-    model, dummy, "ids_model_fp32.onnx",
-    opset_version=17,
-    input_names=["input"],
-    output_names=["output"],
-    dynamic_axes={"input": {0: "batch"}, "output": {0: "batch"}}
-)
-print("FP32 ONNX exported.")
-EOF
-
 python3 export_onnx.py
-
-# INT8 靜態量化（使用 onnxruntime）
-cat > ~/snn-ids/quantize.py << 'EOF'
-from onnxruntime.quantization import quantize_static, CalibrationDataReader
-import numpy as np
-
-class IDSCalibrationReader(CalibrationDataReader):
-    def __init__(self, calibration_data):
-        self.data = iter(calibration_data)
-
-    def get_next(self):
-        try:
-            return {"input": next(self.data)}
-        except StopIteration:
-            return None
-
-# 使用訓練集子集做校準
-calib_data = [np.random.randn(1, 41).astype(np.float32) for _ in range(100)]
-# 實際使用時替換為真實校準資料
-
-quantize_static(
-    "ids_model_fp32.onnx",
-    "ids_model_int8.onnx",
-    calibration_data_reader=IDSCalibrationReader(calib_data),
-    quant_format=3,  # QDQ format (QuantizeLinear/DequantizeLinear)
-)
-print("INT8 ONNX exported.")
-EOF
-
 python3 quantize.py
 ```
 
-**Go/No-Go**: INT8 ONNX 產生且 onnxruntime 可執行推論 → 繼續
+**Go/No-Go**: INT8 ONNX generated and onnxruntime can execute inference → proceed
 
-### 階段 3：Neural-ART 編譯驗證（Day 4-5）— 最關鍵步驟
+### Phase 3: Neural-ART Compilation Verification (Day 4-5) — Most Critical Step
 
-**方案 A — ST Edge AI Developer Cloud（推薦，零安裝）**
+**Option A — ST Edge AI Developer Cloud (Recommended, zero installation)**
 
 ```
-1. 開瀏覽器 → https://stedgeai-dc.st.com
-2. 登入 MyST 帳號（免費註冊）
-3. 上傳 ids_model_int8.onnx
-4. Target 選 STM32N6
-5. 點擊 "Analyze" → 查看算子映射報告
-6. 點擊 "Generate" → 編譯 Neural-ART 格式
+1. Open browser → https://stedgeai-dc.st.com
+2. Log in with MyST account (free registration)
+3. Upload ids_model_int8.onnx
+4. Select target: STM32N6
+5. Click "Analyze" → review operator mapping report
+6. Click "Generate" → compile to Neural-ART format
 
-觀察重點：
-- "NPU mapped operators" 列表（理想：100%）
-- "HOST fallback operators" 列表（理想：0 個）
-- 任何 ERROR 或 WARNING
-- 估算 inference time（目標 < 1ms）
+Key observations:
+- "NPU mapped operators" list (ideal: 100%)
+- "HOST fallback operators" list (ideal: 0)
+- Any ERROR or WARNING
+- Estimated inference time (target < 1ms)
 ```
 
-**方案 B — 本機 CLI（需安裝 qemu）**
+**Option B — Local CLI (requires qemu)**
 
 ```bash
-# 安裝 x86_64 模擬（一次性）
+# Install x86_64 emulation (one-time)
 sudo apt install -y qemu-user-static
 sudo systemctl restart docker
 
-# 下載 stedgeai Docker image（假設 ST 提供或自建）
-# 替代：直接下載 stedgeai Linux x86_64 binary
-mkdir -p ~/stedgeai && cd ~/stedgeai
-# 從 st.com 下載 stedgeai-linux-onlineinstaller
-# 透過 qemu-x86_64-static 執行
-
-# 分析模型
+# Analyze model
 stedgeai analyze --model ids_model_int8.onnx --target stm32n6
 
-# 編譯為 Neural-ART
+# Compile to Neural-ART
 stedgeai generate --model ids_model_int8.onnx --target stm32n6 --st-neural-art
-
-# 查看輸出
-ls output/  # 應有 .c, .h, weights 檔案
 ```
 
-**Go/No-Go 判定**：
+**Go/No-Go Criteria**:
 
-| 結果 | 判定 | 下一步 |
-|------|:---:|--------|
-| 100% 算子 NPU mapped, < 1ms 推論 | **GO** | 全速推進 SNN-IDS 開發 |
-| > 80% NPU mapped, 少量 CPU fallback, < 5ms | **GO（with notes）** | 可接受，記錄 fallback 算子，評估是否需要模型調整 |
-| < 80% NPU mapped 或 > 10ms | **CONDITIONAL** | 嘗試簡化模型或替換算子，重測一次 |
-| 編譯失敗 / 嚴重錯誤 | **NO-GO** | 切換到跌倒偵測方案 |
+| Result | Decision | Next Step |
+|--------|:---:|--------|
+| 100% operators NPU-mapped, < 1ms inference | **GO** | Full speed ahead on SNN-IDS development |
+| > 80% NPU-mapped, minor CPU fallback, < 5ms | **GO (with notes)** | Acceptable; document fallback operators, evaluate if model adjustment needed |
+| < 80% NPU-mapped or > 10ms | **CONDITIONAL** | Try simplifying model or replacing operators, retest once |
+| Compilation failure / critical errors | **NO-GO** | Switch to fall detection plan |
 
-### 階段 4（可選）：PASCAL QCFS 對比實驗（Day 5-7）
+### Phase 4 (Optional): PASCAL QCFS Comparison Experiment (Day 5-7)
 
 ```bash
-# 僅在 Path B 確認 GO 後執行
+# Execute only after Path B is confirmed GO
 git clone https://github.com/BrainSeek-Lab/PASCAL.git
 git clone https://github.com/putshua/ANN_SNN_QCFS.git
 
-# 提取 QCFS 激活函數模組
-# 套用到自訂 IDS_MLP 模型
-# 訓練 → 匯出 ONNX → 上傳 ST Cloud → 比較
+# Extract QCFS activation module
+# Apply to custom IDS_MLP model
+# Train → export ONNX → upload to ST Cloud → compare
 
-# 目的：
-# 1. 驗證 QCFS 模型是否也能編譯
-# 2. 比較 QCFS vs PTQ 的精度差異
-# 3. 如果 QCFS 更好 → 在最終作品中使用
-# 4. 無論結果如何 → 對比數據本身就是學術貢獻
+# Purpose:
+# 1. Verify whether QCFS model also compiles for Neural-ART
+# 2. Compare QCFS vs PTQ accuracy
+# 3. If QCFS is better → use in final submission
+# 4. Regardless of result → comparison data itself is an academic contribution
 ```
 
 ---
 
-## 5. 時程
+## 5. Timeline
 
 ```
-Day 1 (03/09):  環境準備 + NSL-KDD 資料集下載 + 開始訓練
-Day 2-3 (03/10-11): 模型訓練完成 + 精度驗證
-Day 4 (03/12):  ONNX 匯出 + INT8 量化
-Day 5 (03/13):  上傳 ST Cloud → Go/No-Go 判定
-Day 6-7 (03/14-15): [可選] PASCAL QCFS 對比實驗
-Day 8 (03/16):  根據結果撰寫計畫書草稿
+Day 1 (03/09):  Environment setup + NSL-KDD dataset download + begin training
+Day 2-3 (03/10-11): Model training complete + accuracy verification
+Day 4 (03/12):  ONNX export + INT8 quantization
+Day 5 (03/13):  Upload to ST Cloud → Go/No-Go decision
+Day 6-7 (03/14-15): [Optional] PASCAL QCFS comparison experiment
+Day 8 (03/16):  Draft proposal based on results
 ---
-03/31: 計畫書提交截止
+03/31: Proposal submission deadline
 ```
 
 ---
 
-## 6. 風險登記
+## 6. Risk Register
 
-| ID | 風險 | 機率 | 影響 | 緩解 |
+| ID | Risk | Probability | Impact | Mitigation |
 |----|------|:---:|:---:|------|
-| R1 | PyTorch ARM64 安裝失敗 | 低 | 高 | pip install torch 已支援 aarch64；備案用 conda-forge |
-| R2 | NSL-KDD 資料集取得困難 | 低 | 中 | 備案：CICIDS2017 或 UNSW-NB15 |
-| R3 | INT8 量化後精度大幅下降 | 中 | 中 | 增加校準資料量；嘗試 QAT (Quantization-Aware Training) |
-| R4 | stedgeai Cloud 不支援上傳自訂 ONNX | 低 | 高 | 確認已支援；備案：qemu + 本機 CLI |
-| R5 | Neural-ART 編譯失敗 | 中 | **致命** | 這就是 Go/No-Go 的目的；失敗 → 切換跌倒偵測 |
-| R6 | 推論延遲 > 5ms | 低 | 中 | MLP 非常輕量；可進一步壓縮模型 |
-| R7 | PASCAL QCFS 的 Floor 算子 NPU 不支援 | 中 | 低 | Path B 已確保主路徑可行；QCFS 僅為加分項 |
+| R1 | PyTorch ARM64 installation failure | Low | High | pip install torch already supports aarch64; fallback: conda-forge |
+| R2 | NSL-KDD dataset acquisition difficulty | Low | Medium | Fallback: CICIDS2017 or UNSW-NB15 |
+| R3 | Significant accuracy drop after INT8 quantization | Medium | Medium | Increase calibration data; try QAT (Quantization-Aware Training) |
+| R4 | stedgeai Cloud doesn't support custom ONNX upload | Low | High | Confirmed supported; fallback: qemu + local CLI |
+| R5 | Neural-ART compilation failure | Medium | **Fatal** | This is the purpose of Go/No-Go; failure → switch to fall detection |
+| R6 | Inference latency > 5ms | Low | Medium | MLP is very lightweight; can further compress model |
+| R7 | PASCAL QCFS Floor operator not NPU-supported | Medium | Low | Path B already ensures primary path viability; QCFS is bonus only |
 
 ---
 
-## 7. 備案
+## 7. Contingency Plan
 
-如果 Go/No-Go 判定為 NO-GO：
+If Go/No-Go decision is NO-GO:
 
 ```
-立即切換到 TRON_Contest_2026_Strategy.md 中的
-「Edge AI 即時跌倒偵測 — 高齡者居家守護系統」方案
+Immediately switch to the "Edge AI Real-Time Fall Detection — Elderly Home Guardian System"
+plan from TRON_Contest_2026_Strategy.md.
 
-該方案：
-- 所有技術環節已驗證（RescueBot 先例）
-- Model Zoo 現成 YOLOv8n_pose 模型
-- 零算子相容性風險
-- 計畫書架構已完整規劃
+That plan:
+- All technical aspects already verified (RescueBot precedent)
+- Model Zoo has ready-to-use YOLOv8n_pose model
+- Zero operator compatibility risk
+- Proposal structure already fully planned
 
-切換成本：< 1 天（計畫書重寫）
+Switching cost: < 1 day (proposal rewrite)
 ```
 
 ---
 
-## 8. 開放問題
+## 8. Open Questions
 
-| # | 問題 | 優先級 | 預計解決 |
-|---|------|:---:|---------|
-| Q1 | stedgeai Cloud 是否支援 STM32N6 作為 target？ | P0 | Day 5 實測 |
-| Q2 | INT8 QDQ format vs INT8 per-channel：哪個 Neural-ART 更偏好？ | P1 | Day 5 stedgeai analyze 報告 |
-| Q3 | PASCAL QCFS 激活的 ONNX 匯出是否需要自己寫 custom export？ | P2 | Day 6 嘗試 |
-| Q4 | µT-Kernel + lwIP 的封包處理率上限？ | P1 | 拿到板卡後測試 |
-| Q5 | ll_aton_reloc_install() 的模型切換延遲？ | P1 | 拿到板卡後測試 |
+| # | Question | Priority | Expected Resolution |
+|---|----------|:---:|---------|
+| Q1 | Does stedgeai Cloud support STM32N6 as a target? | P0 | Day 5 hands-on test |
+| Q2 | INT8 QDQ format vs INT8 per-channel: which does Neural-ART prefer? | P1 | Day 5 stedgeai analyze report |
+| Q3 | Does PASCAL QCFS activation ONNX export require custom export logic? | P2 | Day 6 attempt |
+| Q4 | µT-Kernel + lwIP packet processing rate ceiling? | P1 | Test after receiving the board |
+| Q5 | ll_aton_reloc_install() model switching latency? | P1 | Test after receiving the board |
 
 ---
 
-## 9. 參考
+## 9. References
 
-### 核心論文
-- [One Timestep is Enough (arXiv 2510.23383)](https://arxiv.org/abs/2510.23383) — T=1 SNN = INT8 ANN 等價性
-- [PASCAL: Precise ANN-SNN Conversion (arXiv 2505.01730)](https://arxiv.org/abs/2505.01730) — QCFS 數學框架
-- [ANN_SNN_QCFS (GitHub)](https://github.com/putshua/ANN_SNN_QCFS) — QCFS 原始實現
+### Core Papers
+- [One Timestep is Enough (arXiv 2510.23383)](https://arxiv.org/abs/2510.23383) — T=1 SNN = INT8 ANN equivalence
+- [PASCAL: Precise ANN-SNN Conversion (arXiv 2505.01730, TMLR 2025)](https://arxiv.org/abs/2505.01730) — PASCAL framework
+- [Optimal ANN-SNN Conversion (T. Bu et al., ICLR 2022)](https://arxiv.org/abs/2303.04347) — QCFS activation function original paper
+- [ANN_SNN_QCFS (GitHub)](https://github.com/putshua/ANN_SNN_QCFS) — QCFS reference implementation
 
-### ST 工具鏈
-- [ST Edge AI Developer Cloud](https://stedgeai-dc.st.com/) — 線上編譯（免安裝）
-- [stedgeai CLI 文件](https://stm32ai-cs.st.com/assets/embedded-docs/command_line_interface.html)
-- [Neural-ART 算子支援](https://stm32ai-cs.st.com/assets/embedded-docs/stneuralart_operator_support.html)
-- [Neural-ART 程式設計模型](https://stedgeai-dc.st.com/assets/embedded-docs/stneuralart_programming_model.html)
-- [ONNX 算子支援列表](https://stedgeai-dc.st.com/assets/embedded-docs/supported_ops_onnx.html)
-- [量化模型支援](https://stedgeai-dc.st.com/assets/embedded-docs/quantization.html)
+### ST Toolchain
+- [ST Edge AI Developer Cloud](https://stedgeai-dc.st.com/) — Online compilation (no installation)
+- [stedgeai CLI Documentation](https://stm32ai-cs.st.com/assets/embedded-docs/command_line_interface.html)
+- [Neural-ART Operator Support](https://stm32ai-cs.st.com/assets/embedded-docs/stneuralart_operator_support.html)
+- [Neural-ART Programming Model](https://stedgeai-dc.st.com/assets/embedded-docs/stneuralart_programming_model.html)
+- [ONNX Operator Support List](https://stedgeai-dc.st.com/assets/embedded-docs/supported_ops_onnx.html)
+- [Quantized Model Support](https://stedgeai-dc.st.com/assets/embedded-docs/quantization.html)
 - [Runtime Loadable Models](https://stedgeai-dc.st.com/assets/embedded-docs/stneuralart_reloc_mode.html)
 
-### SNN 框架
+### SNN Frameworks
 - [PASCAL GitHub](https://github.com/BrainSeek-Lab/PASCAL)
 - [snnTorch](https://github.com/jeshraghian/snntorch)
 - [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
 
-### 資料集
+### Datasets
 - [NSL-KDD](https://www.unb.ca/cic/datasets/nsl.html)
 - [CICIDS2017](https://www.unb.ca/cic/datasets/ids-2017.html)
 - [UNSW-NB15](https://research.unsw.edu.au/projects/unsw-nb15-dataset)
 
-### SNN + IDS 研究
+### SNN + IDS Research
 - [Event-Driven IDS using SNN (IEEE 2025)](https://ieeexplore.ieee.org/document/11171294/)
 - [Hybrid RNN-SNN for IoT Anomaly (PMC 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12546366/)
 - [Protocol-Aware Transformer-Spiking Hybrid (Nature 2026)](https://www.nature.com/articles/s41598-026-37367-4)
 
 ---
 
-## 10. 驗證結果（2026-03-08 完成）
+## 10. Verification Results (Completed 2026-03-08)
 
-所有 Go/No-Go checkpoint 均已通過，以下為實際測量結果。
+All Go/No-Go checkpoints passed. Below are the actual measured results.
 
-### 階段 0 結果：環境準備 → **GO**
-- PyTorch 2.10.0 on ARM64 (DGX Spark) 正常運作
-- onnxruntime 1.24.3, onnx 1.20.1 安裝成功
+### Phase 0 Result: Environment Setup → **GO**
+- PyTorch 2.10.0 on ARM64 (DGX Spark) running correctly
+- onnxruntime 1.24.3, onnx 1.20.1 installed successfully
 
-### 階段 1 結果：模型訓練 → **GO**
+### Phase 1 Result: Model Training → **GO**
 - IDS_MLP: Linear(41,256) → BN → ReLU ×3 → Linear(128,5)
 - 111,365 parameters, 80 epochs, CosineAnnealingLR
 - Overall accuracy: 76.45%, Macro accuracy: 56.32%
 
-### 階段 2 結果：ONNX + INT8 量化 → **GO**
+### Phase 2 Result: ONNX + INT8 Quantization → **GO**
 - FP32 ONNX operators: Gemm, Relu (BN fused)
 - INT8 PTQ accuracy: 76.38% (drop: 0.08%)
 
-### 階段 3 結果：Neural-ART NPU 驗證 → **GO**
-| 指標 | ReLU INT8 | QCFS INT8 | QCFS FP32 |
-|------|-----------|-----------|-----------|
-| 推理時間 | **0.4561 ms** | 0.5364 ms | 1.4156 ms |
-| CPU cycles | 364,913 | 429,080 | 1,132,485 |
-| HW epochs | 5 | 13 | 0 |
-| SW epochs | 2 | 14 | 20 |
+### Phase 3 Result: Neural-ART NPU Verification → **GO**
+| Metric | ReLU INT8 | QCFS INT8 | QCFS FP32 |
+|--------|-----------|-----------|-----------|
+| Inference Time | **0.4561 ms** | 0.5364 ms | 1.4156 ms |
+| CPU Cycles | 364,913 | 429,080 | 1,132,485 |
+| HW Epochs | 5 | 13 | 0 |
+| SW Epochs | 2 | 14 | 20 |
 | Flash | 137.7 KB | 138.0 KB | 430.1 KB |
 | RAM | 1.25 KB | 2.00 KB | 3.17 KB |
 
-### 階段 4 結果：QCFS 對比實驗 → 完成
+### Phase 4 Result: QCFS Comparison Experiment → Complete
 - QCFS L=4 best: 79.75% overall, 61.31% macro (+3.3pp / +5.0pp vs ReLU)
-- Floor 算子確認 **不被 Neural-ART NPU 支援**，以 Floor(float) 在 CPU 上執行
-- 每個 QCFS 層需要 DequantizeLinear → Floor(float) → QuantizeLinear CPU 往返
-- 結論：**T=1 SNN ≡ INT8 ANN (ReLU) 是通用 MCU NPU 的最優部署路徑**
+- Floor operator confirmed **NOT supported by Neural-ART NPU**, executes as Floor(float) on CPU
+- Each QCFS layer requires a DequantizeLinear → Floor(float) → QuantizeLinear CPU round-trip
+- Conclusion: **T=1 SNN ≡ INT8 ANN (ReLU) is the optimal deployment path for general-purpose MCU NPUs**

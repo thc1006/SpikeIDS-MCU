@@ -39,7 +39,7 @@ IDS_MLP: Linear(41→256) → BN → ReLU → Linear(256→256) → BN → ReLU 
 ```
 
 - BatchNorm fused into Linear at export → ONNX graph: `Gemm` + `Relu` only
-- 111,365 parameters, all 100% Neural-ART NPU compatible
+- 111,365 parameters, Gemm + Relu operators fully NPU-accelerated
 - Inverse-frequency class weighting for extreme imbalance (U2R: 52/125,973 samples)
 
 ## QCFS Comparison Experiment
@@ -135,10 +135,10 @@ make quantize-qcfs  # INT8 PTQ for QCFS L=4
 ## References
 
 - **T=1 SNN Equivalence**: Q. Chen et al., "One-Timestep is Enough: Achieving High-performance ANN-to-SNN Conversion via Scale-and-Fire Neurons," arXiv:2510.23383, 2025.
-- **PASCAL/QCFS**: Y. Li et al., "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks," ICML 2023.
+- **QCFS Activation**: T. Bu et al., "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks," ICLR 2022.
 - **NSL-KDD Dataset**: M. Tavallaee et al., "A Detailed Analysis of the KDD CUP 99 Data Set," IEEE CISDA, 2009.
 - **Neural-ART NPU**: STMicroelectronics, STM32N6 Application Note UM3225.
-- **Closest Prior Work**: CSIAC/Sandia National Lab, "Low-Power Cybersecurity Attack Detection Using Deep Learning on Neuromorphic Technologies" (BrainChip Akida AKD1000, 98.4% accuracy, ~1W).
+- **Closest Prior Work**: CSIAC (Zahm, Nishibuchi et al.), "Low-Power Cybersecurity Attack Detection Using Deep Learning on Neuromorphic Technologies" (BrainChip Akida AKD1000, 98.4% accuracy, ~1W).
 
 ## License
 
