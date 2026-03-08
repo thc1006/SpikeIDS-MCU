@@ -5,6 +5,13 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+# LaTeX auxiliary files
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/figures/
 
 # Virtual environment
 snn-ids-env/
