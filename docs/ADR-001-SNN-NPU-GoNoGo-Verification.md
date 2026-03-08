@@ -1,7 +1,8 @@
 # ADR-001: SNN → Neural-ART NPU Go/No-Go 驗證策略
 
-> **狀態**: PROPOSED
+> **狀態**: COMPLETED — All checkpoints PASSED (GO)
 > **日期**: 2026-03-08
+> **驗證完成**: 2026-03-08
 > **決策者**: thc1006
 > **技術背景**: SNN-IDS (基於脈衝神經網路的 IoT 邊緣入侵偵測系統) for TRON Programming Contest 2026
 
@@ -97,7 +98,7 @@ stedgeai 的行為：
 | **Neural-ART 相容** | 高機率可行（CPU fallback 保底） | **100% 確定可行** | 未驗證，風險極高 |
 | **SNN 等價性** | 嚴格數學等價 | T=1 近似等價（< 0.5% 精度差） | 嚴格等價但部署困難 |
 | **額外工作量** | 移植 QCFS 到自訂模型（1-2 週） | **零**（標準 PyTorch 工作流） | 需寫自訂 exporter（3+ 週） |
-| **NPU 利用率** | ~90%（Floor 可能 CPU fallback） | **100%**（全部標準算子） | 未知 |
+| **NPU 利用率** | ~46%（Floor 確認 CPU fallback） | **>99%**（全部標準算子） | 未知 |
 | **適合自訂模型** | 需改造 PASCAL（僅支援 VGG/ResNet） | **任意架構** | 有限 |
 
 ---
@@ -405,3 +406,38 @@ Day 8 (03/16):  根據結果撰寫計畫書草稿
 - [Event-Driven IDS using SNN (IEEE 2025)](https://ieeexplore.ieee.org/document/11171294/)
 - [Hybrid RNN-SNN for IoT Anomaly (PMC 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12546366/)
 - [Protocol-Aware Transformer-Spiking Hybrid (Nature 2026)](https://www.nature.com/articles/s41598-026-37367-4)
+
+---
+
+## 10. 驗證結果（2026-03-08 完成）
+
+所有 Go/No-Go checkpoint 均已通過，以下為實際測量結果。
+
+### 階段 0 結果：環境準備 → **GO**
+- PyTorch 2.10.0 on ARM64 (DGX Spark) 正常運作
+- onnxruntime 1.24.3, onnx 1.20.1 安裝成功
+
+### 階段 1 結果：模型訓練 → **GO**
+- IDS_MLP: Linear(41,256) → BN → ReLU ×3 → Linear(128,5)
+- 111,365 parameters, 80 epochs, CosineAnnealingLR
+- Overall accuracy: 76.45%, Macro accuracy: 56.32%
+
+### 階段 2 結果：ONNX + INT8 量化 → **GO**
+- FP32 ONNX operators: Gemm, Relu (BN fused)
+- INT8 PTQ accuracy: 76.38% (drop: 0.08%)
+
+### 階段 3 結果：Neural-ART NPU 驗證 → **GO**
+| 指標 | ReLU INT8 | QCFS INT8 | QCFS FP32 |
+|------|-----------|-----------|-----------|
+| 推理時間 | **0.4561 ms** | 0.5364 ms | 1.4156 ms |
+| CPU cycles | 364,913 | 429,080 | 1,132,485 |
+| HW epochs | 5 | 13 | 0 |
+| SW epochs | 2 | 14 | 20 |
+| Flash | 137.7 KB | 138.0 KB | 430.1 KB |
+| RAM | 1.25 KB | 2.00 KB | 3.17 KB |
+
+### 階段 4 結果：QCFS 對比實驗 → 完成
+- QCFS L=4 best: 79.75% overall, 61.31% macro (+3.3pp / +5.0pp vs ReLU)
+- Floor 算子確認 **不被 Neural-ART NPU 支援**，以 Floor(float) 在 CPU 上執行
+- 每個 QCFS 層需要 DequantizeLinear → Floor(float) → QuantizeLinear CPU 往返
+- 結論：**T=1 SNN ≡ INT8 ANN (ReLU) 是通用 MCU NPU 的最優部署路徑**

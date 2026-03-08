@@ -29,6 +29,10 @@ models/*.onnx.data
 .DS_Store
 Thumbs.db
 
+# ST Edge AI Developer Cloud artifacts
+*.onnx-STM32N6570-DK-code/
+*-benchmark-results.csv
+
 # Internal notes (not for public)
 CLAUDE.md
 TRON_Contest_2026_Strategy.md

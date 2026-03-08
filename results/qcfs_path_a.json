@@ -64,13 +64,102 @@
   "onnx_export": {
     "operators": ["Clip", "Floor", "Gemm", "Mul"],
     "npu_confirmed": ["Clip", "Gemm", "Mul"],
-    "npu_uncertain": ["Floor"],
-    "model_size_kb": 3.1
+    "npu_unsupported": ["Floor — confirmed CPU fallback as Floor(float)"],
+    "fp32_model_size_kb": 432.7,
+    "int8_model_size_kb": 120.3
+  },
+  "npu_benchmark_fp32": {
+    "target_board": "STM32N6570-DK",
+    "cpu": "Arm Cortex-M55 @ 800MHz",
+    "npu": "Neural-ART 600 GOPS INT8",
+    "model_format": "float (FP32, NOT quantized)",
+    "inference_time_ms": 1.4156,
+    "inference_cycles": 1132485,
+    "throughput_inferences_per_sec": 706,
+    "epochs_total": 20,
+    "epochs_hw": 0,
+    "epochs_hybrid": 0,
+    "epochs_sw": 20,
+    "npu_compute_ratio_percent": "0 (all CPU)",
+    "sw_operators": ["Conv(float)", "Add(float)", "Mul(float)", "Clip(float)", "Floor(float)"],
+    "weights_flash_kb": 430.113,
+    "activations_ram_kb": 3.172,
+    "total_ram_bytes": 3261,
+    "total_flash_bytes": 479324,
+    "note": "QCFS FP32 model runs entirely on CPU. NPU requires INT8 quantized operators. All 20 epochs are SW (software/CPU) because no operator is quantized."
+  },
+  "npu_benchmark_int8": {
+    "target_board": "STM32N6570-DK",
+    "cpu": "Arm Cortex-M55 @ 800MHz",
+    "npu": "Neural-ART 600 GOPS INT8",
+    "model_format": "INT8 (PTQ from FP32 QCFS)",
+    "inference_time_ms": 0.5364,
+    "inference_cycles": 429080,
+    "int8_accuracy": 78.05,
+    "accuracy_drop_from_fp32": 1.69,
+    "epochs_total": 28,
+    "epochs_hw": 13,
+    "epochs_hybrid": 1,
+    "epochs_sw": 14,
+    "floor_on_npu": false,
+    "floor_execution": "Floor(float) on CPU — requires DQ→Floor→Q round-trip per QCFS layer",
+    "sw_operators": ["DequantizeLinear", "Conv(float)", "Cast", "Floor(float)", "QuantizeLinear"],
+    "hw_operators": ["Gemm (INT8 on NPU via epoch controller)"],
+    "weights_flash_kb": 137.985,
+    "activations_ram_kb": 2.0,
+    "total_ram_bytes": 3861,
+    "total_flash_bytes": 201129,
+    "rt_overhead_flash_bytes": 59832,
+    "rt_overhead_note": "29.7% of total Flash is runtime — higher than ReLU INT8 (17.8%) due to Floor CPU fallback code"
+  },
+  "stm32f4_cpu_only_reference": {
+    "target": "STM32F4 (Cortex-M4, no NPU)",
+    "model_format": "ss/sa per tensor INT8",
+    "note": "On CPU-only target, Floor runs natively as INT8 op_s8_s8 without float conversion",
+    "weights_flash_kb": 109.42,
+    "activations_ram_kb": 1.0,
+    "total_flash_bytes": 128164,
+    "total_ram_bytes": 3448,
+    "floor_type": "Nonlinearity op_s8_s8 (native INT8)",
+    "mac_breakdown": {
+      "smul_s8_s8": "110,085 (98.3%)",
+      "op_s8_s8": "1,920 (1.7%)"
+    }
   },
   "comparison_vs_relu": {
     "best_qcfs_L": 4,
     "overall_improvement_pp": 3.30,
     "macro_improvement_pp": 4.99,
     "note": "QCFS quantization constraint acts as implicit regularization, improving generalization"
+  },
+  "comparison_vs_relu_npu": {
+    "relu_int8": {
+      "inference_ms": 0.4561,
+      "epochs_total": 8,
+      "epochs_hw": 5,
+      "epochs_sw": 2,
+      "flash_kb": 137.70,
+      "ram_kb": 1.25
+    },
+    "qcfs_fp32": {
+      "inference_ms": 1.4156,
+      "epochs_total": 20,
+      "epochs_hw": 0,
+      "epochs_sw": 20,
+      "flash_kb": 430.113,
+      "ram_kb": 3.172
+    },
+    "qcfs_int8": {
+      "inference_ms": 0.5364,
+      "epochs_total": 28,
+      "epochs_hw": 13,
+      "epochs_sw": 14,
+      "flash_kb": 137.985,
+      "ram_kb": 2.0
+    },
+    "floor_cpu_overhead_ms": 0.0803,
+    "qcfs_int8_vs_relu_int8_slowdown": "17.6%",
+    "qcfs_int8_vs_qcfs_fp32_speedup": "2.64x",
+    "conclusion": "Floor operator is NOT supported by Neural-ART NPU (CPU fallback as Floor(float)), adding only +0.08ms overhead because Gemm (98.3% of MACs) runs on NPU. ReLU INT8 (Path B, 0.4563ms) remains the optimal NPU deployment path — 17.6% faster than QCFS INT8 (0.5364ms) with simpler execution graph. T=1 SNN ≡ INT8 ANN with ReLU is the recommended approach for general-purpose MCU NPU deployment."
   }
 }
