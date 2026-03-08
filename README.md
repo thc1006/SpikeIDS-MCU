@@ -1,5 +1,12 @@
 # SNN-IDS: Spiking Neural Network Intrusion Detection on STM32N6 Neural-ART NPU
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18906060.svg)](https://doi.org/10.5281/zenodo.18906060)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Target](https://img.shields.io/badge/Target-STM32N6570--DK-03234B.svg)](https://www.st.com/en/evaluation-tools/stm32n6570-dk.html)
+[![NPU](https://img.shields.io/badge/NPU-Neural--ART_600_GOPS-green.svg)](#)
+[![Inference](https://img.shields.io/badge/Inference-0.4561ms_@_800MHz-brightgreen.svg)](#key-results)
+
 **First hardware-verified deployment of an INT8 quantized ANN (mathematically equivalent to T=1 SNN) for real-time network intrusion detection on a general-purpose MCU NPU.**
 
 ## Key Results
