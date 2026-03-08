@@ -73,10 +73,15 @@ def load_calibration_data(n_samples=1000):
     df["label"] = df["label"].map(ATTACK_MAP).fillna("unknown")
     df = df[df["label"] != "unknown"]
 
+    # Load test data too for combined LabelEncoder fit (must match training pipeline)
+    test_df = pd.read_csv(DATA_DIR / "KDDTest+.txt", header=None, names=COL_NAMES)
+    test_df.drop(columns=["difficulty"], inplace=True)
+
     cat_cols = ["protocol_type", "service", "flag"]
     for col in cat_cols:
         le = LabelEncoder()
-        le.fit(df[col])
+        combined = pd.concat([df[col], test_df[col]])
+        le.fit(combined)
         df[col] = le.transform(df[col])
 
     X = df.drop(columns=["label"]).values.astype(np.float32)

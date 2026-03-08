@@ -18,7 +18,7 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 MODEL_DIR = Path(__file__).parent.parent / "models"
 MODEL_DIR.mkdir(exist_ok=True)
 
-# NSL-KDD 欄位名稱（41 features + label + difficulty）
+# NSL-KDD column names (41 features + label + difficulty)
 COL_NAMES = [
     "duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
     "land", "wrong_fragment", "urgent", "hot", "num_failed_logins", "logged_in",
@@ -33,7 +33,7 @@ COL_NAMES = [
     "dst_host_srv_rerror_rate", "label", "difficulty"
 ]
 
-# 5-class 分類: normal, DoS, Probe, R2L, U2R
+# 5-class classification: normal, DoS, Probe, R2L, U2R
 ATTACK_MAP = {
     'normal': 'normal',
     'back': 'DoS', 'land': 'DoS', 'neptune': 'DoS', 'pod': 'DoS',
@@ -95,8 +95,8 @@ def preprocess(train_df, test_df):
 class IDS_MLP(nn.Module):
     """
     Lightweight MLP for Network Intrusion Detection.
-    All operators (Linear, BatchNorm1d, ReLU) are 100% Neural-ART NPU compatible.
-    BatchNorm is fused into Linear during INT8 quantization → zero extra NPU cost.
+    All core operators (Gemm, Relu) are Neural-ART NPU accelerated after BN fusion.
+    BatchNorm is fused into Linear at ONNX export → Gemm + Relu only.
     Post INT8 quantization, this is mathematically equivalent to T=1 SNN inference.
     """
     def __init__(self, input_dim=41, hidden=256, num_classes=5):

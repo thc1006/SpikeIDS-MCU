@@ -8,7 +8,7 @@ PY = $(VENV)/bin/python3
 
 .PHONY: all setup data train export quantize qcfs quantize-qcfs clean
 
-all: setup data train export quantize qcfs
+all: setup data train export quantize qcfs quantize-qcfs
 
 setup:
 	$(PYTHON) -m venv $(VENV)

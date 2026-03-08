@@ -160,6 +160,6 @@
     "floor_cpu_overhead_ms": 0.0803,
     "qcfs_int8_vs_relu_int8_slowdown": "17.6%",
     "qcfs_int8_vs_qcfs_fp32_speedup": "2.64x",
-    "conclusion": "Floor operator is NOT supported by Neural-ART NPU (CPU fallback as Floor(float)), adding only +0.08ms overhead because Gemm (98.3% of MACs) runs on NPU. ReLU INT8 (Path B, 0.4563ms) remains the optimal NPU deployment path — 17.6% faster than QCFS INT8 (0.5364ms) with simpler execution graph. T=1 SNN ≡ INT8 ANN with ReLU is the recommended approach for general-purpose MCU NPU deployment."
+    "conclusion": "Floor operator is NOT supported by Neural-ART NPU (CPU fallback as Floor(float)), adding only +0.08ms overhead because Gemm (98.3% of MACs) runs on NPU. ReLU INT8 (Path B, 0.4561ms) remains the optimal NPU deployment path — 17.6% faster than QCFS INT8 (0.5364ms) with simpler execution graph. T=1 SNN ≡ INT8 ANN with ReLU is the recommended approach for general-purpose MCU NPU deployment."
   }
 }

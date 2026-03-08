@@ -13,7 +13,7 @@ At T=1 (single timestep), QCFS becomes equivalent to uniform quantization.
 Uses STE (Straight-Through Estimator) for gradient through floor().
 
 Reference:
-  - "Optimal ANN-SNN Conversion" (arXiv:2205.13055, ICML 2023)
+  - T. Bu et al., "Optimal ANN-SNN Conversion" (arXiv:2303.04347, ICLR 2022)
   - "One Timestep is Enough" (arXiv:2510.23383, 2025)
 """
 
@@ -286,46 +286,6 @@ def train():
 
     print(f"\n  ONNX files exported to {MODEL_DIR}/")
     print(f"  Next: Upload QCFS ONNX to stedgeai-dc.st.com to check Floor/Div NPU support")
-
-
-def export_qcfs_onnx(model, input_dim, L):
-    """Export QCFS model to ONNX (WITHOUT BN fusion, to preserve QCFS operators)."""
-    model.eval()
-    dummy = torch.randn(1, input_dim)
-
-    onnx_path = MODEL_DIR / f"ids_qcfs_L{L}.onnx"
-    torch.onnx.export(
-        model,
-        dummy,
-        str(onnx_path),
-        input_names=["input"],
-        output_names=["output"],
-        dynamic_axes=None,
-        opset_version=17,
-    )
-    print(f"\n  ONNX exported: {onnx_path} ({onnx_path.stat().st_size / 1024:.1f} KB)")
-
-    # Check operators
-    import onnx
-    onnx_model = onnx.load(str(onnx_path))
-    onnx.checker.check_model(onnx_model)
-    ops = set()
-    for node in onnx_model.graph.node:
-        ops.add(node.op_type)
-    print(f"  ONNX operators: {sorted(ops)}")
-
-    npu_supported = {"Gemm", "MatMul", "Relu", "Add", "Clip", "Mul", "BatchNormalization",
-                     "QuantizeLinear", "DequantizeLinear"}
-    npu_uncertain = {"Floor", "Div"}
-    print(f"  Neural-ART compatibility:")
-    for op in sorted(ops):
-        if op in npu_supported:
-            status = "NPU (confirmed)"
-        elif op in npu_uncertain:
-            status = "UNCERTAIN (may CPU fallback)"
-        else:
-            status = "unknown"
-        print(f"    {op}: {status}")
 
 
 if __name__ == "__main__":

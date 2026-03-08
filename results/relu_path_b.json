@@ -42,7 +42,7 @@
   "onnx_export": {
     "operators": ["Gemm", "Relu"],
     "opset_version": 17,
-    "fp32_model_size_kb": 1.8,
+    "fp32_model_size_kb": 431.4,
     "int8_model_size_kb": 114.4
   },
   "npu_benchmark": {

@@ -216,7 +216,7 @@ def main():
         print(f"  Exported L values: {exported}")
         print(f"  Next: Upload ids_qcfs_L*.onnx to stedgeai-dc.st.com")
         print(f"  Goal: Check if Floor operator is NPU-mapped or CPU-fallback")
-        print(f"  Compare inference time vs ReLU model (0.4563 ms)")
+        print(f"  Compare inference time vs ReLU model (0.4561 ms)")
     else:
         print("\nNo QCFS models found. Run train_qcfs.py first.")
 
