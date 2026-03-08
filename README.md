@@ -7,10 +7,10 @@
 | Metric | Value |
 |--------|-------|
 | **Target Board** | STM32N6570-DK (Cortex-M55 @ 800MHz + Neural-ART NPU) |
-| **Inference Latency** | **0.4563 ms** (2,192 inferences/sec) |
+| **Inference Latency** | **0.4561 ms** (2,192 inferences/sec) |
 | **Model Size** | 137.7 KB Flash, 1.25 KB RAM |
 | **INT8 Accuracy** | 76.38% overall (0.08% drop from FP32) |
-| **NPU Compute Ratio** | >99% of MACs on Neural-ART NPU |
+| **NPU Execution** | 5 HW + 1 Hybrid + 2 SW epochs (Gemm on NPU) |
 | **Dataset** | NSL-KDD (5-class: normal, DoS, Probe, R2L, U2R) |
 
 ## What's New
@@ -20,7 +20,7 @@ To our knowledge, this is:
 1. **First non-CV AI model deployed on STM32N6 Neural-ART NPU** — all prior public deployments are computer vision (YOLOv8n, image classification)
 2. **First IDS deployed on a general-purpose MCU NPU** — prior work exists only on FPGA and neuromorphic chips (BrainChip Akida)
 3. **First hardware verification of T=1 SNN equivalence theory** — arXiv:2510.23383 established the math; we provide the first NPU deployment
-4. **First QCFS activation compiled for Neural-ART target** — demonstrating SNN-specific operators (Floor, Clip) on non-neuromorphic NPU
+4. **First QCFS activation compiled for Neural-ART target** — Floor operator confirmed CPU fallback; Gemm layers accelerated on NPU
 
 ## Theoretical Basis
 
@@ -55,6 +55,22 @@ We additionally train with PASCAL QCFS activation (`floor(clip(x/step, 0, L)) * 
 
 QCFS outperforms ReLU (+3.3pp overall, +5.0pp macro), likely due to quantization-induced regularization.
 
+## NPU Hardware Benchmark
+
+All models benchmarked on STM32N6570-DK (Cortex-M55 @ 800MHz + Neural-ART NPU) via ST Edge AI Developer Cloud v4.0.0:
+
+| Model | Inference | Cycles | HW Epochs | SW Epochs | Flash | RAM |
+|-------|-----------|--------|-----------|-----------|-------|-----|
+| **ReLU INT8** | **0.4561 ms** | 364,913 | 5 | 2 | 137.7 KB | 1.25 KB |
+| QCFS INT8 | 0.5364 ms | 429,080 | 13 | 14 | 138.0 KB | 2.00 KB |
+| QCFS FP32 | 1.4156 ms | 1,132,485 | 0 | 20 | 430.1 KB | 3.17 KB |
+
+Key findings:
+- **Floor operator is NOT supported by Neural-ART NPU** — falls back to CPU as `Floor(float)`, requiring DequantizeLinear → Floor → QuantizeLinear round-trips
+- **ReLU INT8 is the optimal NPU path** — all Gemm layers on NPU, no CPU fallback for activations
+- **QCFS INT8 Gemm layers run on NPU** but Floor CPU round-trips add +0.08ms overhead (~17.6% slower)
+- **QCFS FP32 runs entirely on CPU** (0% NPU) — 3.1x slower than ReLU INT8
+
 ## Reproduce
 
 ```bash
@@ -73,6 +89,7 @@ make train        # Train ReLU model
 make export       # Export to ONNX (with BN fusion)
 make quantize     # INT8 post-training quantization
 make qcfs         # Train + export QCFS models
+make quantize-qcfs  # INT8 PTQ for QCFS L=4
 
 # NPU validation (requires browser)
 # Upload models/ids_model_int8.onnx to https://stedgeai-dc.st.com
@@ -87,7 +104,8 @@ make qcfs         # Train + export QCFS models
 │   ├── train_qcfs.py         # QCFS model training (Path A)
 │   ├── export_onnx.py        # ONNX export with BN fusion
 │   ├── export_qcfs_onnx.py   # QCFS ONNX export (frozen thresholds)
-│   └── quantize.py           # INT8 post-training quantization
+│   ├── quantize.py           # INT8 post-training quantization (ReLU)
+│   └── quantize_qcfs.py      # INT8 post-training quantization (QCFS)
 ├── results/
 │   ├── relu_path_b.json      # Full experiment results (Path B)
 │   └── qcfs_path_a.json      # Full experiment results (Path A)

@@ -6,7 +6,7 @@ VENV = snn-ids-env
 PIP = $(VENV)/bin/pip
 PY = $(VENV)/bin/python3
 
-.PHONY: all setup data train export quantize qcfs clean
+.PHONY: all setup data train export quantize qcfs quantize-qcfs clean
 
 all: setup data train export quantize qcfs
 
@@ -32,6 +32,9 @@ quantize:
 qcfs:
 	PYTHONUNBUFFERED=1 $(PY) src/train_qcfs.py
 	PYTHONUNBUFFERED=1 $(PY) src/export_qcfs_onnx.py
+
+quantize-qcfs:
+	PYTHONUNBUFFERED=1 $(PY) src/quantize_qcfs.py 4
 
 clean:
 	rm -rf models/*.pth models/*.onnx models/*.onnx.data

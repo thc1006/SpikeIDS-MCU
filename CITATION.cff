@@ -20,7 +20,8 @@ abstract: >-
   First hardware-verified deployment of an INT8 quantized ANN
   (mathematically equivalent to T=1 SNN inference) for network
   intrusion detection on the STM32N6570-DK Neural-ART NPU,
-  achieving 0.4563ms inference latency at 800MHz.
-  Includes QCFS activation comparison experiment demonstrating
-  that PASCAL-style SNN activations can also be compiled for
-  Neural-ART NPU targets.
+  achieving 0.4561ms inference latency at 800MHz.
+  Includes QCFS activation comparison experiment revealing that
+  the Floor operator falls back to CPU on Neural-ART NPU,
+  confirming ReLU INT8 as the optimal deployment path for
+  SNN-equivalent inference on general-purpose MCU NPUs.
