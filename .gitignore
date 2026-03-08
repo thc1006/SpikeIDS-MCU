@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+snn-ids-env/
+venv/
+.venv/
+
+# Data (downloadable, too large for git)
+data/
+
+# Model artifacts (reproducible via training scripts)
+models/*.pth
+models/*.onnx
+models/*.onnx.data
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Internal notes (not for public)
+CLAUDE.md
+TRON_Contest_2026_Strategy.md

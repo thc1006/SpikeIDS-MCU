@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "SNN-IDS: Spiking Neural Network Intrusion Detection on STM32N6 Neural-ART NPU"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - name: "thc1006"
+date-released: 2026-03-08
+url: "https://github.com/thc1006/TRON_2026"
+license: Apache-2.0
+keywords:
+  - spiking-neural-network
+  - intrusion-detection-system
+  - neural-art-npu
+  - stm32n6
+  - int8-quantization
+  - edge-ai
+  - rtos
+  - nsl-kdd
+abstract: >-
+  First hardware-verified deployment of an INT8 quantized ANN
+  (mathematically equivalent to T=1 SNN inference) for network
+  intrusion detection on the STM32N6570-DK Neural-ART NPU,
+  achieving 0.4563ms inference latency at 800MHz.
+  Includes QCFS activation comparison experiment demonstrating
+  that PASCAL-style SNN activations can also be compiled for
+  Neural-ART NPU targets.
