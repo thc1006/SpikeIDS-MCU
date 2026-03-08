@@ -127,7 +127,9 @@ make quantize-qcfs  # INT8 PTQ for QCFS L=4
   title = {SNN-IDS: Spiking Neural Network Intrusion Detection on STM32N6 Neural-ART NPU},
   author = {thc1006},
   year = {2026},
-  url = {https://github.com/thc1006/TRON_2026},
+  url = {https://github.com/thc1006/SpikeIDS-MCU},
+  doi = {10.5281/zenodo.18906060},
+  version = {1.0.0},
   note = {First hardware-verified T=1 SNN-equivalent IDS on general-purpose MCU NPU}
 }
 ```

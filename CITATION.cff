@@ -4,8 +4,11 @@ message: "If you use this software, please cite it as below."
 type: software
 authors:
   - name: "thc1006"
+version: 1.0.0
+doi: 10.5281/zenodo.18906060
 date-released: 2026-03-08
-url: "https://github.com/thc1006/TRON_2026"
+url: "https://github.com/thc1006/SpikeIDS-MCU"
+repository-code: "https://github.com/thc1006/SpikeIDS-MCU"
 license: Apache-2.0
 keywords:
   - spiking-neural-network
