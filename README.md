@@ -7,7 +7,7 @@
 [![NPU](https://img.shields.io/badge/NPU-Neural--ART_600_GOPS-green.svg)](#)
 [![Inference](https://img.shields.io/badge/Inference-0.29--0.46ms_@_800MHz-brightgreen.svg)](#key-results)
 
-**First hardware-verified deployment of an INT8 quantized ANN (approximately equivalent to T=1 SNN) for real-time network intrusion detection on a general-purpose MCU NPU.**
+**To our knowledge, the first publicly documented deployment of an INT8 quantized ANN (approximately equivalent to T=1 SNN) for real-time network intrusion detection on a general-purpose MCU NPU.**
 
 ## Key Results
 
@@ -26,9 +26,9 @@
 
 To our knowledge, this is:
 
-1. **First IDS deployment on an ARM Cortex-M NPU (Neural-ART)** — prior MCU-class IDS work used the MAX78000 (Ngo et al., 2022), an AI-specialized MCU with a fixed CNN accelerator
-2. **First empirical validation of T=1 SNN–ANN equivalence on commercial NPU silicon** — 99% final prediction agreement between FP32 and INT8 models
-3. **First QCFS activation compiled for Neural-ART target** — Floor operator confirmed CPU fallback, adding 17.6% latency
+1. **First publicly documented IDS deployment on an ARM Cortex-M NPU (Neural-ART)** — prior MCU-class IDS work used the MAX78000 (Ngo et al., 2022), an AI-specialized MCU with a fixed CNN accelerator
+2. **First publicly documented empirical validation of T=1 SNN–ANN equivalence on commercial NPU silicon** — 99% final prediction agreement between FP32 and INT8 models
+3. **First QCFS activation compiled for Neural-ART target** — Floor operator confirmed CPU fallback, adding 17.4% latency
 
 ## Theoretical Basis
 
@@ -120,7 +120,7 @@ make paper           # Compile LaTeX paper
 ├── results/
 │   ├── multiseed_experiment.json   # NSL-KDD 10-seed results
 │   ├── unsw_multiseed_experiment.json # UNSW-NB15 10-seed results
-│   ├── tree_baselines.json         # RF + XGBoost results
+│   ├── tree_baseline.json         # RF + XGBoost results
 │   ├── layerwise_analysis.json     # FP32 vs INT8 analysis
 │   ├── quantize_ablation.json      # Quantization ablation
 │   └── related_work_table.json     # Related work comparison

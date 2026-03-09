@@ -72,7 +72,7 @@ Conclusion: T=1 SNN forward pass = standard ANN forward pass + binarized/quantiz
 
 #### 2025 Research Validation
 
-**Paper "One Timestep is Enough"** (arXiv:2510.23383, October 2025):
+**~~"One Timestep is Enough"~~ (arXiv:2510.23383, ICLR 2026 REJECTED)** — Results below are from this rejected paper; the T=1 equivalence claim is still supported by Bu et al. CVPR 2025 and Jiang et al. ICML 2023:
 
 | Dataset | T=1 SNN Accuracy | Equivalent ANN Accuracy | Gap |
 |---------|:---:|:---:|:---:|
@@ -332,7 +332,7 @@ T=4 Mode (deep classification):
 | **Social Significance** | 4/5 | IoT security is an infrastructure problem for billions of connected devices, aligns with Ken Sakamura's IoT vision |
 | **Completion Feasibility** | 3/5 | Must first verify PASCAL→INT8→Neural-ART go/no-go (critical first-week test) |
 | **Demo Impact** | 3.5/5 | Real-time LCD traffic dashboard + SNN spike activity animation; unique style but less immediately intuitive than camera-based demos |
-| **Technical Originality** | 5/5 | World's first SNN on Neural-ART NPU, publishable at top venues |
+| **Technical Originality** | 5/5 | First publicly documented SNN-equivalent deployment on Neural-ART NPU |
 | **Open-Source Value** | 5/5 | SNN→NPU abstraction layer + µT-Kernel network security framework; extremely high community value |
 
 ### 5.3 Risk Matrix
@@ -351,7 +351,7 @@ T=4 Mode (deep classification):
 
 | Dimension | SNN-IDS (Telecom Edge Security) | Fall Detection (Elderly Care) |
 |-----------|:---:|:---:|
-| Technical Originality | **5/5** (world's first SNN on Neural-ART) | 3/5 (Model Zoo ready-made) |
+| Technical Originality | **5/5** (first publicly documented SNN on Neural-ART) | 3/5 (Model Zoo ready-made) |
 | NPU Utilization | **5/5** (T=1 SNN = INT8 quantized, NPU at full speed) | 5/5 |
 | Completion Feasibility | 3/5 (requires go/no-go verification first) | **5/5** |
 | Social Significance | 4/5 (IoT security + Ken Sakamura's IoT vision) | **5/5** (aging society) |
@@ -423,7 +423,7 @@ Before committing full development resources, the following verifications must b
 ## References
 
 ### SNN Theory and Conversion Frameworks
-- [One Timestep is Enough (arXiv 2025)](https://arxiv.org/abs/2510.23383)
+- ~~[One Timestep is Enough (arXiv 2025)](https://arxiv.org/abs/2510.23383)~~ — **ICLR 2026 REJECTED**; see Bu et al. CVPR 2025, Jiang et al. ICML 2023
 - [PASCAL: Precise ANN-SNN Conversion (arXiv 2025)](https://arxiv.org/abs/2505.01730)
 - [PASCAL GitHub](https://github.com/BrainSeek-Lab/PASCAL)
 - [NeuroFlex: ANN-SNN Co-Execution on INT8 (arXiv 2025)](https://arxiv.org/pdf/2511.05215)

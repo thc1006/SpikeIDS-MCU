@@ -14,7 +14,7 @@ Uses STE (Straight-Through Estimator) for gradient through floor().
 
 Reference:
   - T. Bu et al., "Optimal ANN-SNN Conversion" (arXiv:2303.04347, ICLR 2022)
-  - "One Timestep is Enough" (arXiv:2510.23383, 2025)
+  - T. Bu et al., "Inference-Scale Complexity in ANN-SNN Conversion" (CVPR 2025)
 """
 
 import torch
