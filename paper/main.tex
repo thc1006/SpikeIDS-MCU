@@ -102,7 +102,7 @@ Bu et al.~\cite{bu2022optimal} introduced QCFS, showing that ANN activations
 can be mapped to discrete spike counts with minimal loss.
 Jiang et al.~\cite{jiang2023unified} provided the first $T{=}1$ ANN--SNN
 conversion framework via SlipReLU.
-More recently, Chen et al.~\cite{chen2025one} (preprint) and
+More recently,
 Bu et al.~\cite{bu2025inference} showed that when an SNN runs for exactly
 one timestep ($T{=}1$) with zero initial membrane potential, the
 threshold-and-fire operation reduces to a ReLU-like clamp, making the forward
@@ -215,10 +215,6 @@ framework and the first $T{=}1$ conversion method (SlipReLU).
 Bu et al.~\cite{bu2025inference} later analyzed the inference-scale
 complexity of SNNs, establishing channel-wise threshold optimization
 for $T{=}1$ conversion.
-Chen et al.~\cite{chen2025one} (preprint) demonstrated
-that the $T{=}1$ threshold-and-fire mechanism reduces to a
-clamp, making the forward pass approximately equivalent to an INT8
-quantized ANN under matched quantization grids.
 NEXUS~\cite{nexus2026} recently achieved bit-exact ANN-to-SNN equivalence
 via modular arithmetic, scaling to LLaMA-2 70B.
 PASCAL~\cite{pascal2025} refined multi-timestep conversion with spike
@@ -265,7 +261,7 @@ Eq.~\ref{eq:lif1} simplifies to $V[1] = \mathbf{W} \cdot \mathbf{x}$.
 
 Multiple works have established that INT8 post-training quantization
 produces a discretization that closely approximates the threshold-and-fire
-operation~\cite{bu2022optimal, jiang2023unified, chen2025one, bu2025inference}.
+operation~\cite{bu2022optimal, jiang2023unified, bu2025inference}.
 In practice, any NPU executing INT8 \texttt{Gemm} + \texttt{Relu}
 is performing SNN-equivalent computation, with accuracy gaps typically
 below 0.5\,pp on standard benchmarks.

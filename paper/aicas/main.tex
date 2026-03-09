@@ -52,11 +52,11 @@ of \textbf{44--69\,\textmu J/inference} and a Flash footprint of
 120--138\,KB.
 Compared with recent MCU-class IDS deployments on the STM32F7
 (31\,ms, 7.86\,mJ) and Raspberry Pi~3 (27\,ms), our NPU path
-achieves 60--100$\times$ lower latency and over 100$\times$
+achieves 60--107$\times$ lower latency and over 100$\times$
 lower energy per inference.
-To our knowledge, this is the first IDS deployment on an ARM
-Cortex-M NPU and the first non-vision workload on the Neural-ART
-accelerator.
+To our knowledge, this is the first publicly documented IDS
+deployment on an ARM Cortex-M NPU and the first publicly documented
+non-vision workload on the Neural-ART accelerator.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -96,7 +96,8 @@ capture, flow aggregation) is left to future work.
 
 Our contributions:
 \begin{itemize}
-  \item The first IDS classifier deployment on an ARM Cortex-M NPU,
+  \item To our knowledge, the first publicly documented IDS classifier
+    deployment on an ARM Cortex-M NPU,
     achieving 0.29--0.46\,ms inference at an estimated 44--69\,\textmu J.
   \item Empirical validation of $T{=}1$ SNN--ANN equivalence on
     commercial NPU silicon, with 99\% prediction agreement between
@@ -126,9 +127,9 @@ Our work targets a general-purpose MCU with an attached programmable NPU,
 achieving two orders of magnitude lower energy than CPU-only MCU
 deployments.
 
-Separately, several GPU-based SNN-IDS systems have been
-proposed~\cite{roy2019towards}: convolutional SNNs~\cite{nature2024csnn},
-event-driven SNN~\cite{ieee2025event}, and transformer-spiking
+Separately, several GPU-based SNN-IDS systems have been proposed:
+convolutional SNNs~\cite{nature2024csnn},
+event-driven SNNs~\cite{ieee2025event}, and transformer-spiking
 hybrids~\cite{nature2026transformer} report 94--99\% accuracy on
 NSL-KDD/UNSW-NB15 but use binary classification and have no path
 to edge deployment.
@@ -148,11 +149,12 @@ target a different design point.
 Ngo~\cite{ngo2022hhnids} & MAX78000 & bin. & 98.6\% & --- & 18\,mW$^*$ & CNN eng. \\
 Zahm~\cite{zahm2024csiac} & Akida & multi & 98.4\% & --- & ${\sim}$1\,W$^*$ & Neurom. \\
 Chehade~\cite{chehade2025stm32} & STM32F7 & multi & 96.6\% & 31\,ms & 7.86\,mJ & None \\
-Diab~\cite{diab2025rpi} & RPi~3B+ & multi & 95.3\% & 27\,ms & ${\sim}$6.8\,mJ & None \\
+Diab~\cite{diab2025rpi} & RPi~3B+ & multi & 95.3\% & 27\,ms & ${\sim}$6.75\,mJ & None \\
 \midrule
-\textbf{This work} & \textbf{STM32N6} & \textbf{5/10} & \textbf{78.9\%} & \textbf{0.29\,ms} & \textbf{44\,\textmu J} & \textbf{NPU} \\
+\textbf{This work} & \textbf{STM32N6} & \textbf{5/10} & \textbf{78.9/64.8\%}$^\dagger$ & \textbf{0.29\,ms} & \textbf{44\,\textmu J} & \textbf{NPU} \\
 \bottomrule
-\multicolumn{7}{l}{\scriptsize $^*$Power, not energy; latency not reported.}
+\multicolumn{7}{l}{\scriptsize $^*$Power, not energy; latency not reported.} \\
+\multicolumn{7}{l}{\scriptsize $^\dagger$NSL-KDD 5-class / UNSW-NB15 10-class.}
 \end{tabular}%
 }
 \end{table}
@@ -317,52 +319,54 @@ predictions.
 Fig.~\ref{fig:cm} shows the NSL-KDD confusion matrix.
 The dominant error pattern is R2L$\to$Normal (64.4\% of R2L)
 and U2R$\to$Probe (50.9\% of U2R), both caused by severe class imbalance
-(R2L: 2,199 train / 2,754 test; U2R: 52 train / 200 test).
+(R2L: 995 train / 2,754 test; U2R: 52 train / 200 test).
 Normal and DoS, which dominate the training set, achieve $>$99\% and
 $>$86\% recall respectively.
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[scale=0.58]
+% 10-seed mean confusion matrix, verified against multiseed_experiment.json
+% Class order: Norm, DoS, Probe, R2L, U2R
 % Row 0: Normal
-\foreach \x/\v [count=\i from 0] in {99.8/99.8, 0.0/0.0, 0.2/0.2, 0.0/0.0, 0.0/0.0} {
+\foreach \x/\v [count=\i from 0] in {96.5/96.5, 0.6/0.6, 2.1/2.1, 0.3/0.3, 0.5/0.5} {
   \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,0) rectangle (\i+1,-1);
   \pgfmathtruncatemacro{\w}{\x>50?1:0}
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-0.5) {\v\%};
   \else \node[font=\tiny] at (\i+0.5,-0.5) {\v\%}; \fi}
 % Row 1: DoS
-\foreach \x/\v [count=\i from 0] in {5.2/5.2, 86.7/86.7, 0.9/0.9, 7.2/7.2, 0.0/0.0} {
+\foreach \x/\v [count=\i from 0] in {17.2/17.2, 80.2/80.2, 2.3/2.3, 0.0/0.0, 0.3/0.3} {
   \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-1) rectangle (\i+1,-2);
   \pgfmathtruncatemacro{\w}{\x>50?1:0}
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-1.5) {\v\%};
   \else \node[font=\tiny] at (\i+0.5,-1.5) {\v\%}; \fi}
-% Row 2: R2L
-\foreach \x/\v [count=\i from 0] in {64.4/64.4, 0.7/0.7, 25.0/25.0, 9.5/9.5, 0.4/0.4} {
+% Row 2: Probe
+\foreach \x/\v [count=\i from 0] in {21.3/21.3, 8.3/8.3, 70.3/70.3, 0.0/0.0, 0.1/0.1} {
   \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-2) rectangle (\i+1,-3);
   \pgfmathtruncatemacro{\w}{\x>50?1:0}
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-2.5) {\v\%};
   \else \node[font=\tiny] at (\i+0.5,-2.5) {\v\%}; \fi}
-% Row 3: Probe
-\foreach \x/\v [count=\i from 0] in {3.5/3.5, 6.3/6.3, 1.0/1.0, 88.9/88.9, 0.3/0.3} {
+% Row 3: R2L
+\foreach \x/\v [count=\i from 0] in {64.4/64.4, 0.0/0.0, 0.8/0.8, 25.0/25.0, 9.8/9.8} {
   \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-3) rectangle (\i+1,-4);
   \pgfmathtruncatemacro{\w}{\x>50?1:0}
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-3.5) {\v\%};
   \else \node[font=\tiny] at (\i+0.5,-3.5) {\v\%}; \fi}
 % Row 4: U2R
-\foreach \x/\v [count=\i from 0] in {24.0/24.0, 1.5/1.5, 5.0/5.0, 50.9/50.9, 18.5/18.5} {
+\foreach \x/\v [count=\i from 0] in {24.0/24.0, 0.0/0.0, 50.9/50.9, 6.5/6.5, 18.6/18.6} {
   \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-4) rectangle (\i+1,-5);
   \pgfmathtruncatemacro{\w}{\x>50?1:0}
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-4.5) {\v\%};
   \else \node[font=\tiny] at (\i+0.5,-4.5) {\v\%}; \fi}
 % Labels
-\foreach \lab/\y in {Norm/0, DoS/1, R2L/2, Probe/3, U2R/4} {
+\foreach \lab/\y in {Norm/0, DoS/1, Probe/2, R2L/3, U2R/4} {
   \node[font=\tiny, rotate=45, anchor=east] at (\y+0.5, 0.15) {\lab};
   \node[font=\tiny, anchor=east] at (-0.1,-\y-0.5) {\lab};
 }
 \node[font=\scriptsize, rotate=90] at (-1.0,-2.5) {True};
 \node[font=\scriptsize] at (2.5, 0.8) {Predicted};
 \end{tikzpicture}
-\caption{NSL-KDD confusion matrix (\%, ReLU INT8, best seed).
+\caption{NSL-KDD confusion matrix (\%, 10-seed mean, ReLU INT8).
 R2L$\to$Normal (64.4\%) and U2R$\to$Probe (50.9\%) dominate errors.}
 \label{fig:cm}
 \end{figure}
@@ -372,23 +376,23 @@ R2L$\to$Normal (64.4\%) and U2R$\to$Probe (50.9\%) dominate errors.}
 \begin{table}[t]
 \centering
 \caption{NPU benchmark on STM32N6570-DK. Energy estimated from
-AN5946~\cite{st_an5946} (${\sim}$150\,mW at nominal frequency).
-FP32 = CPU-only baseline (0 HW epochs).}
+AN5946~\cite{st_an5946} (${\sim}$150\,mW at nominal frequency);
+FP32 CPU-only power differs and is not estimated (---).}
 \label{tab:npu}
 \small
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}llcccccc@{}}
+\begin{tabular}{@{}llccccccc@{}}
 \toprule
-\textbf{Model} & \textbf{Dataset} & \textbf{Time} & \textbf{Energy} & \textbf{HW} & \textbf{SW} & \textbf{Flash} & \textbf{RAM} \\
- & & \textbf{(ms)} & \textbf{(\textmu J)} & & & \textbf{(KB)} & \textbf{(KB)} \\
+\textbf{Model} & \textbf{Dataset} & \textbf{Time} & \textbf{Energy} & \textbf{HW} & \textbf{Hyb} & \textbf{SW} & \textbf{Flash} & \textbf{RAM} \\
+ & & \textbf{(ms)} & \textbf{(\textmu J)} & & & & \textbf{(KB)} & \textbf{(KB)} \\
 \midrule
-ReLU FP32 & NSL-KDD & 1.24 & 186 & 0 & 11 & 466.4 & 2.17 \\
-ReLU INT8 & NSL-KDD & 0.46 & 69 & 5 & 2 & 137.7 & 1.25 \\
+ReLU FP32 & NSL-KDD & 1.24 & --- & 0 & 0 & 11 & 466.4 & 2.17 \\
+ReLU INT8 & NSL-KDD & 0.46 & 69 & 5 & 1 & 2 & 137.7 & 1.25 \\
 \midrule
-ReLU FP32 & UNSW-NB15 & 1.23 & 185 & 0 & 11 & 461.9 & 2.14 \\
-ReLU INT8 & UNSW-NB15 & \textbf{0.29} & \textbf{44} & 4 & 0 & 120.6 & 0.50 \\
+ReLU FP32 & UNSW-NB15 & 1.23 & --- & 0 & 0 & 11 & 461.9 & 2.14 \\
+ReLU INT8 & UNSW-NB15 & \textbf{0.29} & \textbf{44} & 4 & 0 & 0 & 120.6 & 0.50 \\
 \midrule
-QCFS INT8 & NSL-KDD & 0.54 & 81 & 13 & 14 & 138.0 & 2.00 \\
+QCFS INT8 & NSL-KDD & 0.54 & 81 & 13 & 1 & 14 & 138.0 & 2.00 \\
 \bottomrule
 \end{tabular}%
 }
