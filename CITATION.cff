@@ -3,7 +3,10 @@ title: "SNN-IDS: Spiking Neural Network Intrusion Detection on STM32N6 Neural-AR
 message: "If you use this software, please cite it as below."
 type: software
 authors:
-  - name: "thc1006"
+  - given-names: "Hsiu-Chi"
+    family-names: "Tsai"
+    affiliation: "National Yang Ming Chiao Tung University"
+    email: "hctsai1006@cs.nctu.edu.tw"
 version: 1.0.0
 doi: 10.5281/zenodo.18906060
 date-released: 2026-03-08

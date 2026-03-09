@@ -1,0 +1,125 @@
+{
+  "title": "Related Work Comparison: SNN/Neural-Network-Based IDS on Edge Hardware",
+  "columns": [
+    "Paper", "Year", "Dataset", "Model", "Hardware", "HW Type",
+    "On-chip", "Timing", "Power", "MCU-class", "Accuracy"
+  ],
+  "entries": [
+    {
+      "paper": "Wang et al. (CSNN)",
+      "cite_key": "nature2024csnn",
+      "year": 2024,
+      "dataset": "NSL-KDD, UNSW-NB15",
+      "model": "Conv SNN (CSNN)",
+      "hardware": "GPU (simulation)",
+      "hw_type": "GPU",
+      "on_chip": false,
+      "timing_measured": false,
+      "power_measured": false,
+      "mcu_class": false,
+      "accuracy": "94.72% (NSL-KDD)",
+      "notes": "Simulation only, no hardware deployment"
+    },
+    {
+      "paper": "Zahm et al. (CSIAC)",
+      "cite_key": "zahm2024csiac",
+      "year": 2024,
+      "dataset": "UNSW-NB15",
+      "model": "SNN",
+      "hardware": "BrainChip Akida AKD1000",
+      "hw_type": "Neuromorphic ASIC",
+      "on_chip": true,
+      "timing_measured": true,
+      "power_measured": true,
+      "mcu_class": false,
+      "accuracy": "98.4%",
+      "notes": "Dedicated neuromorphic chip, ~1W, not general-purpose MCU"
+    },
+    {
+      "paper": "Prajwalasimha et al.",
+      "cite_key": "ieee2025event",
+      "year": 2025,
+      "dataset": "NSL-KDD",
+      "model": "Event-driven SNN",
+      "hardware": "GPU (simulation)",
+      "hw_type": "GPU",
+      "on_chip": false,
+      "timing_measured": false,
+      "power_measured": false,
+      "mcu_class": false,
+      "accuracy": "95.44%",
+      "notes": "PyTorch simulation, no edge deployment"
+    },
+    {
+      "paper": "Mustafa et al.",
+      "cite_key": "pmc2025hybrid",
+      "year": 2025,
+      "dataset": "UNSW-NB15, CICIDS2017",
+      "model": "Hybrid RNN-SNN",
+      "hardware": "GPU (simulation)",
+      "hw_type": "GPU",
+      "on_chip": false,
+      "timing_measured": false,
+      "power_measured": false,
+      "mcu_class": false,
+      "accuracy": "99.7% (UNSW-NB15)",
+      "notes": "Complex hybrid model, not suitable for MCU deployment"
+    },
+    {
+      "paper": "Karthik et al.",
+      "cite_key": "nature2026transformer",
+      "year": 2026,
+      "dataset": "NSL-KDD, CICIDS2017",
+      "model": "Transformer-SNN hybrid",
+      "hardware": "GPU (simulation)",
+      "hw_type": "GPU",
+      "on_chip": false,
+      "timing_measured": false,
+      "power_measured": false,
+      "mcu_class": false,
+      "accuracy": "99.2% (NSL-KDD)",
+      "notes": "Large model, GPU-only simulation"
+    },
+    {
+      "paper": "Ngo et al. (HH-NIDS)",
+      "cite_key": "ngo2022hhnids",
+      "year": 2022,
+      "dataset": "UNSW-NB15 (binary)",
+      "model": "MLP (1360 params)",
+      "hardware": "MAX78000 (Analog Devices)",
+      "hw_type": "AI-specialized MCU",
+      "on_chip": true,
+      "timing_measured": true,
+      "power_measured": true,
+      "mcu_class": true,
+      "accuracy": "98.57%",
+      "notes": "AI-specialized MCU with dedicated CNN accelerator, binary classification only, 11 flow features, 18mW"
+    },
+    {
+      "paper": "This work",
+      "cite_key": null,
+      "year": 2026,
+      "dataset": "NSL-KDD, UNSW-NB15",
+      "model": "ReLU MLP (111K params), T=1 SNN equivalent",
+      "hardware": "STM32N6570-DK (Cortex-M55 + Neural-ART NPU)",
+      "hw_type": "General-purpose MCU + NPU",
+      "on_chip": true,
+      "timing_measured": true,
+      "power_measured": false,
+      "mcu_class": true,
+      "accuracy": "78.86% (NSL-KDD, 5-class)",
+      "notes": "First IDS on ARM Cortex-M NPU, multi-class (5/10-class), 0.46ms inference, T=1 SNN equivalence verified"
+    }
+  ],
+  "key_differentiators": {
+    "vs_simulation_works": "Wang, Prajwalasimha, Mustafa, Karthik: GPU simulation only, no hardware deployment, no timing/power",
+    "vs_zahm_akida": "Akida AKD1000 is a dedicated neuromorphic ASIC (~$150+), not a general-purpose MCU ($30). Different market segment.",
+    "vs_ngo_hhnids": "MAX78000 is an AI-specialized MCU with dedicated CNN accelerator. STM32N6 is a general-purpose Cortex-M MCU with an attached NPU. HH-NIDS uses binary classification (normal vs attack) with 11 features; this work uses multi-class (5/10) with 41 features.",
+    "this_work_unique": [
+      "First IDS deployment on ARM Cortex-M NPU (Neural-ART)",
+      "First empirical verification of T=1 SNN equivalence on MCU hardware",
+      "Multi-class classification (5-class NSL-KDD, 10-class UNSW-NB15)",
+      "Quantization ablation demonstrating robustness"
+    ]
+  }
+}
