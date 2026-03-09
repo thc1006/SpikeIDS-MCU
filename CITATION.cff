@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "SNN-IDS: Spiking Neural Network Intrusion Detection on STM32N6 Neural-ART NPU"
+title: "SNN-IDS: Deploying SNN-Equivalent Intrusion Detection on a Commodity MCU NPU"
 message: "If you use this software, please cite it as below."
 type: software
 authors:
@@ -9,7 +9,7 @@ authors:
     email: "hctsai1006@cs.nctu.edu.tw"
 version: 1.0.0
 doi: 10.5281/zenodo.18906060
-date-released: 2026-03-08
+date-released: 2026-03-09
 url: "https://github.com/thc1006/SpikeIDS-MCU"
 repository-code: "https://github.com/thc1006/SpikeIDS-MCU"
 license: Apache-2.0
@@ -22,12 +22,10 @@ keywords:
   - edge-ai
   - rtos
   - nsl-kdd
+  - unsw-nb15
 abstract: >-
-  First hardware-verified deployment of an INT8 quantized ANN
-  (mathematically equivalent to T=1 SNN inference) for network
-  intrusion detection on the STM32N6570-DK Neural-ART NPU,
-  achieving 0.4561ms inference latency at 800MHz.
-  Includes QCFS activation comparison experiment revealing that
-  the Floor operator falls back to CPU on Neural-ART NPU,
-  confirming ReLU INT8 as the optimal deployment path for
-  SNN-equivalent inference on general-purpose MCU NPUs.
+  First publicly documented deployment of an SNN-equivalent IDS
+  on an ARM Cortex-M NPU. Evaluated on NSL-KDD (5-class) and
+  UNSW-NB15 (10-class) with 10 seeds, achieving 0.29-0.46ms
+  inference (2.7-4.2x faster than CPU) on the STM32N6570-DK
+  Neural-ART NPU, with 120-138 KB Flash and 0.5-1.25 KB RAM.

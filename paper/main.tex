@@ -69,15 +69,13 @@ and layer-wise analysis shows 99.0\% final prediction agreement between
 FP32 and INT8 models.
 On the NPU, the INT8 model infers in \textbf{0.46\,ms} on NSL-KDD
 and \textbf{0.29\,ms} on UNSW-NB15 (100\% NPU execution),
-occupying 120.6--137.7\,KB Flash and 0.5--1.25\,KB RAM.
-A comparison with QCFS activation reveals that the \texttt{Floor}
-operator falls back to CPU on this NPU, adding 17.6\% latency.
-Tree-based baselines (Random Forest, XGBoost) confirm that the MLP
-offers the best accuracy on NSL-KDD while being the only model eligible
-for NPU acceleration.
-To our knowledge, this is the first IDS deployment on an ARM Cortex-M
-NPU and the first empirical validation of $T{=}1$ SNN--ANN equivalence
-on commercial NPU silicon.
+2.7--4.2$\times$ faster than the same model on the Cortex-M55 CPU,
+while occupying 120.6--137.7\,KB Flash and 0.5--1.25\,KB RAM.
+Tree-based baselines (Random Forest, XGBoost) achieve higher overall
+accuracy on UNSW-NB15 but cannot be compiled for the NPU at all.
+To our knowledge, this is the first publicly documented IDS deployment
+on an ARM Cortex-M NPU and the first empirical validation of $T{=}1$
+SNN--ANN equivalence on commercial NPU silicon.
 \end{abstract}
 
 % ============================================================
@@ -117,7 +115,8 @@ We put this theory to the test. Using the STM32N6570-DK development board
 we train an MLP for intrusion detection on two standard benchmarks
 (NSL-KDD and UNSW-NB15), quantize it to INT8, and deploy it on the NPU
 through ST Edge AI Developer Cloud.
-The classifier infers in 0.29--0.46\,ms with a memory footprint under 140\,KB.
+The classifier infers in 0.29--0.46\,ms (2.7--4.2$\times$ faster than
+CPU-only execution) with a memory footprint under 140\,KB.
 We emphasize that this paper evaluates the \emph{classifier inference}
 stage on pre-extracted flow-level features; a complete end-to-end IDS
 pipeline (packet capture, flow aggregation, feature extraction) is left
@@ -125,12 +124,12 @@ to future work.
 
 Our contributions:
 \begin{itemize}
-  \item We present, to our knowledge, the first IDS classifier deployment
-    on an ARM Cortex-M NPU (Neural-ART). Prior MCU-class IDS work used
+  \item We present, to our knowledge, the first publicly documented IDS
+    classifier deployment on an ARM Cortex-M NPU (Neural-ART). Prior MCU-class IDS work used
     the MAX78000~\cite{ngo2022hhnids}, an AI-specialized MCU with a
     fixed CNN accelerator; our target is a general-purpose MCU with an
     attached programmable NPU.
-  \item We provide the first empirical validation of the $T{=}1$ SNN--ANN
+  \item We provide the first publicly documented empirical validation of the $T{=}1$ SNN--ANN
     equivalence on commercial NPU silicon, with 99\% final prediction
     agreement between FP32 and INT8 models.
   \item We conduct a quantization ablation (3 calibration methods
@@ -181,23 +180,26 @@ MCU with an attached NPU (\$89 dev kit), using multi-class classification
 \begin{table*}[t]
 \centering
 \caption{Comparison of SNN/neural-network-based IDS approaches. ``On-chip'' indicates
-deployment on physical hardware. ``Timing'' and ``Power'' indicate measured
-(not estimated) values.}
+deployment on physical hardware. ``Task'' shows the classification formulation
+(binary vs.\ multi-class). Accuracy figures are not directly comparable across
+different task formulations.}
 \label{tab:related}
 \small
-\begin{tabular}{@{}llllllllll@{}}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllllllllll@{}}
 \toprule
-\textbf{Paper} & \textbf{Year} & \textbf{Dataset} & \textbf{Model} & \textbf{Hardware} & \textbf{HW Type} & \textbf{On-chip} & \textbf{Timing} & \textbf{Power} & \textbf{Acc.} \\
+\textbf{Paper} & \textbf{Year} & \textbf{Dataset} & \textbf{Task} & \textbf{Model} & \textbf{Hardware} & \textbf{HW Type} & \textbf{On-chip} & \textbf{Timing} & \textbf{Power} & \textbf{Acc.} \\
 \midrule
-Wang~\cite{nature2024csnn} & 2024 & NSL-KDD & Conv SNN & GPU & GPU & No & No & No & 94.7\% \\
-Zahm~\cite{zahm2024csiac} & 2024 & UNSW-NB15 & SNN & Akida AKD1000 & Neurom.\ ASIC & Yes & Yes & Yes & 98.4\% \\
-Prajwal.~\cite{ieee2025event} & 2025 & NSL-KDD & Event SNN & GPU & GPU & No & No & No & 95.4\% \\
-Mustafa~\cite{pmc2025hybrid} & 2025 & UNSW-NB15 & RNN-SNN & GPU & GPU & No & No & No & 99.7\% \\
-Karthik~\cite{nature2026transformer} & 2026 & NSL-KDD & Transf.-SNN & GPU & GPU & No & No & No & 99.2\% \\
-Ngo~\cite{ngo2022hhnids} & 2022 & UNSW-NB15 & MLP & MAX78000 & AI-spec.\ MCU & Yes & Yes & Yes & 98.6\% \\
-\textbf{This work} & 2026 & NSL-KDD, UNSW & MLP (T=1 SNN eq.) & STM32N6 & MCU + NPU & Yes & Yes & No & 78.9\% \\
+Wang~\cite{nature2024csnn} & 2024 & NSL-KDD & multi & Conv SNN & GPU & GPU & No & No & No & 94.7\% \\
+Zahm~\cite{zahm2024csiac} & 2024 & UNSW-NB15 & multi & SNN & Akida AKD1000 & Neurom.\ ASIC & Yes & Yes & Yes & 98.4\% \\
+Prajwal.~\cite{ieee2025event} & 2025 & NSL-KDD & multi & Event SNN & GPU & GPU & No & No & No & 95.4\% \\
+Mustafa~\cite{pmc2025hybrid} & 2025 & UNSW-NB15 & binary & RNN-SNN & GPU & GPU & No & No & No & 99.7\% \\
+Karthik~\cite{nature2026transformer} & 2026 & NSL-KDD & multi & Transf.-SNN & GPU & GPU & No & No & No & 99.2\% \\
+Ngo~\cite{ngo2022hhnids} & 2022 & UNSW-NB15 & binary & MLP & MAX78000 & AI-spec.\ MCU & Yes & Yes & Yes & 98.6\% \\
+\textbf{This work} & 2026 & NSL-KDD, UNSW & 5/10-cls & MLP (T=1 SNN eq.) & STM32N6 & MCU + NPU & Yes & Yes & No & 78.9\% \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table*}
 
 \subsection{ANN-SNN Conversion}
@@ -223,8 +225,8 @@ NeuroFlex~\cite{neuroflex2025} showed that co-executing INT8 ANN and SNN
 layers on the same accelerator can cut the energy-delay product by
 57--67\%.
 
-To our knowledge, this paper provides the first empirical validation
-of the $T{=}1$ equivalence on commercial NPU silicon.
+To our knowledge, this paper provides the first publicly documented
+empirical validation of the $T{=}1$ equivalence on commercial NPU silicon.
 
 \subsection{Edge AI on MCU NPUs}
 
@@ -236,8 +238,8 @@ and \texttt{MaxPool} in INT8; operators outside this set fall back to the
 Cortex-M55 CPU~\cite{st_neural_art}.
 Millar et al.~\cite{millar2025munpu} benchmarked micro-NPUs including the
 Neural-ART; their latency numbers provide a useful reference point.
-To our knowledge, no prior work has deployed an IDS on any general-purpose
-MCU NPU. The closest prior art (HH-NIDS~\cite{ngo2022hhnids}) used
+To our knowledge, no prior publicly documented work has deployed an IDS
+on any general-purpose MCU NPU. The closest prior art (HH-NIDS~\cite{ngo2022hhnids}) used
 a specialized MCU with a fixed CNN engine.
 
 % ============================================================
@@ -343,7 +345,7 @@ only in the activation function.
 % NPU epoch result
 \node[reslbl, fill=green!8, rounded corners=2pt,
       above=0.35cm of npu]
-  {4--5 HW + 0--2 SW\\\textbf{0.29--0.46\,ms}};
+  {4--5 HW + 0--2 SW\\\textbf{0.29--0.46\,ms} (2.7--4.2$\times$)};
 \node[reslbl, fill=red!6, rounded corners=2pt,
       below=0.35cm of npu]
   {13 HW + 1 Hyb + 14 SW\\\textbf{0.54\,ms}};
@@ -497,6 +499,17 @@ predicts the class but misses most R2L samples.
 U2R has only 52 training samples (0.04\% of the training set);
 no amount of class weighting can fully compensate.
 
+On UNSW-NB15 (10-class), per-class performance varies widely:
+Generic (F1$=$97.9$\pm$0.2\%) and Reconnaissance (75.1$\pm$2.7\%)
+perform well, but extreme minority classes collapse ---
+Worms (44~test samples, F1$=$9.0\%), Analysis (F1$=$2.6\%),
+and Backdoor (F1$=$10.6\%).
+Normal achieves high precision (98.8\%) but only 57.6\% recall,
+indicating that the model under-predicts the majority class in favor
+of attack categories due to inverse-frequency weighting.
+Full per-class results and confusion matrices are available in the
+code repository.
+
 \subsection{Layer-Wise FP32 vs INT8 Equivalence}
 \label{sec:layerwise}
 
@@ -588,33 +601,36 @@ Neural-ART NPU). HW = NPU-only epochs, Hyb = mixed, SW = CPU-only.}
 \textbf{Model} & \textbf{Dataset} & \textbf{Time} & \textbf{HW} & \textbf{Hyb} & \textbf{SW} & \textbf{Flash} & \textbf{RAM} \\
  & & \textbf{(ms)} & & & & \textbf{(KB)} & \textbf{(KB)} \\
 \midrule
+ReLU FP32 & NSL-KDD & 1.24 & 0 & 0 & 11 & 466.4 & 2.17 \\
 ReLU INT8 & NSL-KDD & 0.46 & 5 & 1 & 2 & 137.7 & 1.25 \\
+\midrule
+ReLU FP32 & UNSW-NB15 & 1.23 & 0 & 0 & 11 & 461.9 & 2.14 \\
 ReLU INT8 & UNSW-NB15 & \textbf{0.29} & 4 & 0 & 0 & 120.6 & 0.50 \\
 \midrule
 QCFS INT8 & NSL-KDD & 0.54 & 13 & 1 & 14 & 138.0 & 2.00 \\
-QCFS FP32 & NSL-KDD & 1.42 & 0 & 0 & 20 & 430.1 & 3.17 \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
 Table~\ref{tab:npu} presents measurements from the STM32N6570-DK.
-On NSL-KDD (41 features, 5 classes), ReLU INT8 completes in 0.46\,ms
-with 5~HW, 1~hybrid, and 2~SW epochs.
-On UNSW-NB15 (34 features, 10 classes), the smaller input dimension
-yields 100\% NPU execution (4~HW epochs, zero SW fallback) at
-\textbf{0.29\,ms} (3,397~inferences/sec), 35\% faster than NSL-KDD.
+We first establish a CPU baseline: the same ReLU MLP compiled as FP32
+runs entirely on the Cortex-M55 CPU (0~HW epochs, 11~SW epochs) at
+1.24\,ms (NSL-KDD) and 1.23\,ms (UNSW-NB15).
 
-QCFS INT8 runs \texttt{Gemm} on the NPU but each \texttt{Floor} triggers
-a CPU fallback. The compiler inserts \mbox{\texttt{DequantizeLinear}}
-$\to$ \mbox{\texttt{Floor(float)}} $\to$ \mbox{\texttt{QuantizeLinear}}
-at every QCFS layer, adding 0.08\,ms (+17.6\%).
-QCFS FP32 runs entirely on CPU (0 HW epochs, 20 SW epochs), 3.1$\times$
-slower than ReLU INT8.
+INT8 quantization combined with NPU acceleration yields
+\textbf{2.7$\times$} speedup on NSL-KDD (1.24$\to$0.46\,ms) and
+\textbf{4.2$\times$} on UNSW-NB15 (1.23$\to$0.29\,ms).
+The larger speedup on UNSW-NB15 reflects 100\% NPU execution
+(4~HW epochs, zero SW fallback), while NSL-KDD retains 2~SW epochs.
+Flash memory shrinks 3.4--3.8$\times$ from FP32 to INT8.
 
+QCFS INT8 runs \texttt{Gemm} on the NPU but each \texttt{Floor}
+triggers a CPU fallback via \mbox{\texttt{DequantizeLinear}}
+$\to$ \mbox{\texttt{Floor(float)}} $\to$ \mbox{\texttt{QuantizeLinear}},
+adding 0.08\,ms (+17.6\%) over ReLU INT8.
 The \texttt{Floor} operator is absent from ST's published
-NPU operator list~\cite{st_neural_art}. Our measurements pin down the
-cost of the resulting SW\_FLOAT fallback at 0.08\,ms per inference.
+NPU operator list~\cite{st_neural_art}.
 
 \subsection{Tree-Based Baseline Comparison}
 
@@ -647,22 +663,38 @@ to execution.
 
 The layer-wise analysis (Section~\ref{sec:layerwise}) provides direct
 evidence that $T{=}1$ SNN--ANN equivalence survives INT8 quantization.
-Although individual neurons show moderate quantization noise
-(cosine similarity 0.65--0.68), the downstream effect on classification
-decisions is minimal: 99\% of test samples receive the same predicted
-class from FP32 and INT8 models.
+Individual hidden layers show cosine similarity of 0.65--0.68 between
+FP32 and INT8 activations. This is expected: INT8 maps each activation
+to one of 256 discrete levels, introducing bounded per-neuron noise.
+However, the noise does not flip classification decisions ---
+99\% of test samples receive the same predicted class from FP32
+and INT8 models.
 The quantization ablation (Section~\ref{sec:quant_ablation}) supports
 this conclusion: all 24 calibration configurations fall within 0.82\,pp
 of FP32, ruling out the possibility that the equivalence depends on a
 particular calibration choice.
 
-\subsection{QCFS: Better Theory, Worse Hardware Fit}
+\subsection{Why NPU When Trees Are More Accurate?}
+
+On UNSW-NB15, Random Forest achieves 69.46\% overall accuracy vs.\
+the MLP's 64.75\%. A natural question is whether the NPU adds value.
+Three factors favor NPU deployment:
+(1)~\texttt{TreeEnsembleClassifier} is not implemented in ST Edge AI
+Core, so tree models have no execution path on the STM32N6;
+(2)~NPU inference frees the Cortex-M55 CPU for concurrent RTOS tasks
+(packet capture, feature extraction), whereas CPU-only inference
+blocks the processor for 1.2\,ms per sample;
+(3)~INT8 NPU execution reduces Flash by 3.4--3.8$\times$ over FP32,
+which matters on memory-constrained MCUs.
+The MLP is not the most accurate classifier on every dataset, but it is
+the only architecture deployable on the NPU hardware.
+
+\subsection{QCFS and Floor Fallback}
 
 With multi-seed evaluation, ReLU outperforms QCFS on NSL-KDD
-($p{=}0.037$). The single-seed observation that QCFS was superior
-was a statistical artifact. Combined with the 17.6\% latency penalty
-from \texttt{Floor} CPU fallback, QCFS offers no advantage on this
-NPU target.
+($p{=}0.037$), overturning a single-seed artifact.
+Combined with 17.6\% latency overhead from \texttt{Floor} CPU fallback,
+QCFS offers no advantage on this NPU target.
 
 \subsection{Comparison with HH-NIDS}
 
@@ -687,9 +719,10 @@ Third, the evaluation covers classifier inference only, not the complete
 IDS pipeline (packet capture, flow aggregation, feature extraction).
 Fourth, the MLP architecture is shallow; deeper models might improve
 minority-class performance but require verifying NPU operator compatibility.
-Fifth, UNSW-NB15 accuracy (64.75\%) is below tree baselines;
-the MLP architecture likely needs hyperparameter tuning or feature
-selection for this dataset.
+Fifth, UNSW-NB15 accuracy (64.75\%) is below tree baselines (69.46\%);
+the 10-class problem with extreme imbalance (Worms: 44 samples)
+is inherently difficult, and the MLP may benefit from feature
+selection or architecture search on this dataset.
 
 \subsection{Future Directions}
 
@@ -718,11 +751,12 @@ We trained an MLP for intrusion detection on NSL-KDD (5-class) and
 UNSW-NB15 (10-class), quantized it to INT8, and deployed it on the
 STM32N6570-DK Neural-ART NPU.
 Multi-seed evaluation (10 seeds) shows $78.86{\pm}1.32$\% overall
-accuracy on NSL-KDD (0.46\,ms) and $64.75{\pm}0.61$\% on UNSW-NB15
-(0.29\,ms, 100\% NPU execution).
+accuracy on NSL-KDD and $64.75{\pm}0.61$\% on UNSW-NB15.
+NPU inference runs 2.7--4.2$\times$ faster than CPU-only execution
+(0.29--0.46\,ms vs.\ 1.2\,ms), with 3.4--3.8$\times$ Flash reduction.
 A 24-configuration quantization ablation shows INT8 accuracy varies
 by less than 1\,pp across calibration choices.
-Layer-wise analysis shows 99\% prediction agreement between
+Layer-wise analysis shows 99\% final prediction agreement between
 FP32 and INT8 models --- evidence that $T{=}1$ SNN--ANN equivalence
 holds on commercial NPU silicon.
 

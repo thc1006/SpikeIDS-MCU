@@ -61,12 +61,14 @@ All models benchmarked on STM32N6570-DK via ST Edge AI Developer Cloud v4.0.0:
 
 | Model | Dataset | Inference | HW | Hyb | SW | Flash | RAM |
 |-------|---------|-----------|---:|----:|---:|-------|-----|
-| **ReLU INT8** | **UNSW-NB15** | **0.29 ms** | 4 | 0 | 0 | 120.6 KB | 0.50 KB |
-| **ReLU INT8** | NSL-KDD | 0.46 ms | 5 | 1 | 2 | 137.7 KB | 1.25 KB |
+| ReLU FP32 (CPU) | NSL-KDD | 1.24 ms | 0 | 0 | 11 | 466.4 KB | 2.17 KB |
+| **ReLU INT8 (NPU)** | **NSL-KDD** | **0.46 ms (2.7×)** | 5 | 1 | 2 | 137.7 KB | 1.25 KB |
+| ReLU FP32 (CPU) | UNSW-NB15 | 1.23 ms | 0 | 0 | 11 | 461.9 KB | 2.14 KB |
+| **ReLU INT8 (NPU)** | **UNSW-NB15** | **0.29 ms (4.2×)** | 4 | 0 | 0 | 120.6 KB | 0.50 KB |
 | QCFS INT8 | NSL-KDD | 0.54 ms | 13 | 1 | 14 | 138.0 KB | 2.00 KB |
-| QCFS FP32 | NSL-KDD | 1.42 ms | 0 | 0 | 20 | 430.1 KB | 3.17 KB |
 
 Key findings:
+- **NPU gives 2.7–4.2× speedup** over CPU-only execution on the same model
 - **Floor operator is NOT supported by Neural-ART NPU** — falls back to CPU as `Floor(float)`
 - **ReLU INT8 is the optimal NPU path** — all Gemm+Relu on NPU, no CPU fallback for activations
 - **Tree-based models (RF, XGBoost) cannot run on STM32N6** — `TreeEnsembleClassifier` rejected by ST Edge AI Core ("NOT IMPLEMENTED")

@@ -6,6 +6,12 @@
 > **Hardware**: STM32N6570-DK (Cortex-M55 + Neural-ART NPU 600 GOPS)
 > **Core Question**: Can SNNs be deployed on conventional NPUs through abstraction techniques, and can they contribute to the telecom domain?
 
+### ⚠️ Update (2026-03-09)
+This document is a pre-development feasibility analysis written on Day 1. Some references have since been superseded:
+- **Chen et al. "One Timestep is Enough" (arXiv:2510.23383)** was **REJECTED by ICLR 2026**. The T=1 equivalence is now cited via Bu et al. CVPR 2025, Jiang et al. ICML 2023, and Bu et al. ICLR 2022.
+- All "world's first" claims have been scoped to **"first publicly documented"** in the paper.
+- See ADR-001 and the paper (paper/main.tex) for the current state of the project.
+
 ---
 
 ## I. Abstraction Breakthrough: Why DPDK / SR-IOV Philosophy Changes the Entire Technical Assessment
