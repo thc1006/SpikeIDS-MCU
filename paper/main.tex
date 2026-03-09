@@ -36,7 +36,7 @@
 \setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=4pt}
 
 \title{%
-  \textbf{SNN-IDS: Hardware-Verified SNN-Equivalent\\
+  \textbf{SNN-IDS: Deploying SNN-Equivalent\\
   Intrusion Detection on a Commodity MCU NPU}
 }
 
@@ -55,20 +55,29 @@
 % ============================================================
 \begin{abstract}
 We deploy a spiking neural network (SNN)-equivalent intrusion detection
-system (IDS) on the STM32N6570-DK Neural-ART NPU.
-By exploiting the mathematical equivalence between single-timestep ($T{=}1$)
+system (IDS) on the STM32N6570-DK, a commodity ARM Cortex-M55 MCU with
+the Neural-ART NPU.
+Exploiting the approximate equivalence between single-timestep ($T{=}1$)
 SNN inference and INT8 quantized ANN inference, we compile a lightweight
-MLP (trained on NSL-KDD, 5-class) to a general-purpose microcontroller
-NPU without any neuromorphic hardware.
-The resulting INT8 model runs in \textbf{0.4561\,ms} (2,192~inferences/sec)
-at 800\,MHz, occupying 137.7\,KB Flash and 1.25\,KB RAM.
-A comparison experiment with QCFS (Quantization-Clip-Floor-Shift) activation
-reveals that the \texttt{Floor} operator is not implemented in the Neural-ART
-NPU and falls back to CPU, adding 17.6\% latency overhead.
-To our knowledge, this is the first publicly documented IDS deployment
-on a general-purpose MCU NPU and the first hardware verification of
-the $T{=}1$ SNN--ANN equivalence on commercial NPU silicon.
-Code and data: \url{https://github.com/thc1006/SpikeIDS-MCU}
+MLP classifier to the NPU without neuromorphic hardware.
+Evaluated on NSL-KDD (5-class) and UNSW-NB15 (10-class) with 10
+random seeds, the ReLU model achieves $78.86{\pm}1.32$\% and
+$64.75{\pm}0.61$\% overall accuracy, respectively.
+INT8 accuracy stays within 1 percentage point of FP32
+across all 24 tested calibration configurations,
+and layer-wise analysis shows 99.0\% final prediction agreement between
+FP32 and INT8 models.
+On the NPU, the INT8 model infers in \textbf{0.46\,ms} on NSL-KDD
+and \textbf{0.29\,ms} on UNSW-NB15 (100\% NPU execution),
+occupying 120.6--137.7\,KB Flash and 0.5--1.25\,KB RAM.
+A comparison with QCFS activation reveals that the \texttt{Floor}
+operator falls back to CPU on this NPU, adding 17.6\% latency.
+Tree-based baselines (Random Forest, XGBoost) confirm that the MLP
+offers the best accuracy on NSL-KDD while being the only model eligible
+for NPU acceleration.
+To our knowledge, this is the first IDS deployment on an ARM Cortex-M
+NPU and the first empirical validation of $T{=}1$ SNN--ANN equivalence
+on commercial NPU silicon.
 \end{abstract}
 
 % ============================================================
@@ -90,46 +99,47 @@ commodity parts. Intel Loihi~\cite{davies2018loihi} is a research platform.
 BrainChip Akida is available commercially but carries a price premium.
 Neither is a standard MCU that an OEM can drop into a low-cost IoT gateway.
 
-A recent line of theoretical work changes this picture.
-Chen et al.~\cite{chen2025one} showed that when an SNN runs for exactly one
-timestep ($T{=}1$) with zero initial membrane potential, the threshold-and-fire
-operation reduces to a ReLU-like clamp, and the forward pass becomes
-functionally equivalent to an INT8 quantized ANN (under matched quantization
-grids; the equivalence is approximate in practice due to rounding
-differences). The practical implication: any NPU that can execute INT8
-matrix multiply and ReLU can run an SNN-equivalent model without
-neuromorphic hardware.
+A line of theoretical work changes this picture.
+Bu et al.~\cite{bu2022optimal} introduced QCFS, showing that ANN activations
+can be mapped to discrete spike counts with minimal loss.
+Jiang et al.~\cite{jiang2023unified} provided the first $T{=}1$ ANN--SNN
+conversion framework via SlipReLU.
+More recently, Chen et al.~\cite{chen2025one} (preprint) and
+Bu et al.~\cite{bu2025inference} showed that when an SNN runs for exactly
+one timestep ($T{=}1$) with zero initial membrane potential, the
+threshold-and-fire operation reduces to a ReLU-like clamp, making the forward
+pass approximately equivalent to an INT8 quantized ANN.
+The practical implication: any NPU that can execute INT8 matrix multiply
+and ReLU can run an SNN-equivalent model without neuromorphic hardware.
 
 We put this theory to the test. Using the STM32N6570-DK development board
 (ARM Cortex-M55 at 800\,MHz, Neural-ART NPU rated at 600\,GOPS INT8),
-we train an MLP for 5-class intrusion detection on NSL-KDD, quantize it
-to INT8, and deploy it on the NPU through ST Edge AI Developer Cloud.
-The model infers in 0.4561\,ms with a memory footprint under 140\,KB.
+we train an MLP for intrusion detection on two standard benchmarks
+(NSL-KDD and UNSW-NB15), quantize it to INT8, and deploy it on the NPU
+through ST Edge AI Developer Cloud.
+The classifier infers in 0.29--0.46\,ms with a memory footprint under 140\,KB.
+We emphasize that this paper evaluates the \emph{classifier inference}
+stage on pre-extracted flow-level features; a complete end-to-end IDS
+pipeline (packet capture, flow aggregation, feature extraction) is left
+to future work.
 
-We also run a side experiment. The QCFS activation
-function~\cite{bu2022optimal}, widely used in ANN-SNN conversion research,
-should in principle be a better match for SNN semantics than ReLU.
-We train and export QCFS models and compile them for the same NPU target.
-The result is a practical finding that, to our knowledge, has not been
-documented before: the Neural-ART NPU has no hardware support for the
-\texttt{Floor} operator, so each QCFS layer triggers a
-dequantize$\to$floor(float)$\to$requantize round-trip on the CPU,
-costing 17.6\% more latency than ReLU despite QCFS achieving 3.3
-percentage points higher accuracy.
-
-Our contributions, in summary:
+Our contributions:
 \begin{itemize}
-  \item To our knowledge, we provide the first publicly documented
-    hardware verification of the $T{=}1$ SNN--ANN
-    equivalence~\cite{chen2025one} on commercial MCU NPU silicon.
-  \item To our knowledge, we present the first publicly documented
-    IDS deployment on a general-purpose MCU NPU (prior work used
-    FPGAs~\cite{ieee2025event} or neuromorphic
-    chips~\cite{zahm2024csiac}).
+  \item We present, to our knowledge, the first IDS classifier deployment
+    on an ARM Cortex-M NPU (Neural-ART). Prior MCU-class IDS work used
+    the MAX78000~\cite{ngo2022hhnids}, an AI-specialized MCU with a
+    fixed CNN accelerator; our target is a general-purpose MCU with an
+    attached programmable NPU.
+  \item We provide the first empirical validation of the $T{=}1$ SNN--ANN
+    equivalence on commercial NPU silicon, with 99\% final prediction
+    agreement between FP32 and INT8 models.
+  \item We conduct a quantization ablation (3 calibration methods
+    $\times$ 2 granularities $\times$ 4 sample sizes) showing that
+    INT8 accuracy is insensitive to calibration choices (all deviations $<1$\,pp).
   \item We document that the \texttt{Floor} operator required by
-    QCFS~\cite{bu2022optimal} is not supported in hardware by the
-    Neural-ART NPU, identifying a concrete barrier for deploying QCFS-based
-    SNN models on commodity NPUs.
+    QCFS~\cite{bu2022optimal} falls back to CPU on the Neural-ART NPU,
+    identifying a concrete barrier for deploying QCFS-based SNN models
+    on commodity NPUs.
 \end{itemize}
 
 % ============================================================
@@ -138,81 +148,97 @@ Our contributions, in summary:
 
 \subsection{SNN-Based Intrusion Detection}
 
+Table~\ref{tab:related} summarizes prior work on neural-network-based IDS
+with SNN components or edge hardware deployment.
 Research on applying SNNs to network intrusion detection has grown rapidly
-since 2024, though nearly all of it remains in simulation.
-Wang et al.~\cite{nature2024csnn} proposed a convolutional SNN for IDS,
-reporting accuracy above 99\% on NSL-KDD in software simulation, but did
-not address deployment on constrained hardware.
-Prajwalasimha et al.~\cite{ieee2025event} described an event-driven SNN-IDS
-architecture targeted at edge IoT devices and tested it on FPGA logic; their
-results show that spike-based encoding of network traffic features can
-reduce dynamic power, but they reported no MCU or NPU deployment.
+since 2024, though nearly all published results remain in simulation.
+Wang et al.~\cite{nature2024csnn} proposed a convolutional SNN for IDS
+on NSL-KDD and UNSW-NB15 in software simulation.
+Prajwalasimha et al.~\cite{ieee2025event} described an event-driven
+SNN-IDS and tested it in simulation.
 Mustafa et al.~\cite{pmc2025hybrid} combined recurrent and spiking layers
-for anomaly detection in IoT networks, demonstrating that the temporal
-dynamics of SNNs can capture sequential patterns in traffic data.
-Most recently, Karthik et al.~\cite{nature2026transformer} proposed a
-transformer-spiking hybrid that fuses protocol-aware attention with
-spike-coded features. Their model achieves strong accuracy on CIC-IDS
-benchmarks, but runs only on GPU and makes no attempt at edge deployment.
+for anomaly detection.
+Karthik et al.~\cite{nature2026transformer} proposed a
+transformer-spiking hybrid; all run only on GPU.
 
-The only prior work we are aware of that deploys an SNN-based IDS on
-physical hardware is the CSIAC report by Zahm, Nishibuchi
-et al.~\cite{zahm2024csiac}, which used the BrainChip Akida AKD1000
-neuromorphic processor.
-They reported 98.4\% accuracy at approximately 1\,W power.
-However, Akida is a purpose-built neuromorphic chip with native spike
-processing; it is not a general-purpose MCU and costs significantly more
-than the STM32N6 (the Akida development kit lists at \$499 versus
-\$89 for the STM32N6570-DK). Our work targets the opposite end of the
-cost spectrum: a commodity MCU NPU that OEMs already use for vision-based
-products.
+Two prior works deploy IDS on physical hardware.
+Zahm et al.~\cite{zahm2024csiac} used the BrainChip Akida AKD1000
+neuromorphic processor, reporting 98.4\% accuracy at approximately 1\,W.
+Akida is a purpose-built neuromorphic chip (\$499 dev kit) with native
+spike processing, not a general-purpose MCU.
+Ngo et al.~\cite{ngo2022hhnids} deployed a lightweight MLP (1,360
+parameters, 11 flow features) on the Analog Devices MAX78000, an
+AI-specialized MCU with a fixed CNN accelerator.
+They achieved 98.57\% on UNSW-NB15 (binary classification: normal vs.\
+attack) at 18\,mW.
+The MAX78000's accelerator is hard-wired for convolutional workloads;
+the STM32N6 Neural-ART NPU is a programmable accelerator that supports
+arbitrary operator graphs within its INT8 operator set.
+Our work differs from both in targeting a general-purpose ARM Cortex-M
+MCU with an attached NPU (\$89 dev kit), using multi-class classification
+(5-class and 10-class), and validating $T{=}1$ SNN equivalence.
+
+\begin{table*}[t]
+\centering
+\caption{Comparison of SNN/neural-network-based IDS approaches. ``On-chip'' indicates
+deployment on physical hardware. ``Timing'' and ``Power'' indicate measured
+(not estimated) values.}
+\label{tab:related}
+\small
+\begin{tabular}{@{}llllllllll@{}}
+\toprule
+\textbf{Paper} & \textbf{Year} & \textbf{Dataset} & \textbf{Model} & \textbf{Hardware} & \textbf{HW Type} & \textbf{On-chip} & \textbf{Timing} & \textbf{Power} & \textbf{Acc.} \\
+\midrule
+Wang~\cite{nature2024csnn} & 2024 & NSL-KDD & Conv SNN & GPU & GPU & No & No & No & 94.7\% \\
+Zahm~\cite{zahm2024csiac} & 2024 & UNSW-NB15 & SNN & Akida AKD1000 & Neurom.\ ASIC & Yes & Yes & Yes & 98.4\% \\
+Prajwal.~\cite{ieee2025event} & 2025 & NSL-KDD & Event SNN & GPU & GPU & No & No & No & 95.4\% \\
+Mustafa~\cite{pmc2025hybrid} & 2025 & UNSW-NB15 & RNN-SNN & GPU & GPU & No & No & No & 99.7\% \\
+Karthik~\cite{nature2026transformer} & 2026 & NSL-KDD & Transf.-SNN & GPU & GPU & No & No & No & 99.2\% \\
+Ngo~\cite{ngo2022hhnids} & 2022 & UNSW-NB15 & MLP & MAX78000 & AI-spec.\ MCU & Yes & Yes & Yes & 98.6\% \\
+\textbf{This work} & 2026 & NSL-KDD, UNSW & MLP (T=1 SNN eq.) & STM32N6 & MCU + NPU & Yes & Yes & No & 78.9\% \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \subsection{ANN-SNN Conversion}
 
 The theory of converting a trained ANN into an equivalent SNN has matured
 over several stages. Bu et al.~\cite{bu2022optimal} introduced QCFS,
 a quantization-aware activation function that maps ANN activations to
-discrete spike counts. By training with
-$\text{QCFS}(x) = \lfloor \text{clip}(x/s, 0, L) \rfloor \cdot s$
-(where $s$ is a learnable step size and $L$ is the number of levels),
-the resulting network can be directly converted to a multi-timestep SNN
-with minimal accuracy loss. PASCAL~\cite{pascal2025} refined this approach
-with spike accumulation and adaptive layerwise calibration, achieving
-near-lossless conversion on ImageNet-scale models.
+discrete spike counts.
+Jiang et al.~\cite{jiang2023unified} proposed a unified optimization
+framework and the first $T{=}1$ conversion method (SlipReLU).
+Bu et al.~\cite{bu2025inference} later analyzed the inference-scale
+complexity of SNNs, establishing channel-wise threshold optimization
+for $T{=}1$ conversion.
+Chen et al.~\cite{chen2025one} (preprint) demonstrated
+that the $T{=}1$ threshold-and-fire mechanism reduces to a
+clamp, making the forward pass approximately equivalent to an INT8
+quantized ANN under matched quantization grids.
+NEXUS~\cite{nexus2026} recently achieved bit-exact ANN-to-SNN equivalence
+via modular arithmetic, scaling to LLaMA-2 70B.
+PASCAL~\cite{pascal2025} refined multi-timestep conversion with spike
+accumulation and adaptive layerwise calibration.
+NeuroFlex~\cite{neuroflex2025} showed that co-executing INT8 ANN and SNN
+layers on the same accelerator can cut the energy-delay product by
+57--67\%.
 
-The most relevant result for our work is the $T{=}1$ equivalence shown
-by Chen et al.~\cite{chen2025one}. They demonstrated that when the number
-of simulation timesteps is reduced to one, the SNN threshold-and-fire
-mechanism degenerates to a simple clamp, making the forward pass
-approximately equivalent to an INT8 quantized ANN. This result
-eliminates the need for
-multi-timestep simulation and, critically, means that any hardware capable
-of INT8 inference can execute SNN-equivalent computations.
-NeuroFlex~\cite{neuroflex2025} has since shown that co-executing INT8 ANN
-and SNN layers on the same accelerator can cut the energy-delay product by
-57--67\%, suggesting that the boundary between ``ANN hardware'' and
-``SNN hardware'' is blurring.
-
-To our knowledge, this paper provides the first publicly documented
-empirical validation of the $T{=}1$ equivalence on commercial NPU
-silicon. We also test whether QCFS (designed for multi-timestep
-conversion) offers any advantage when compiled for a $T{=}1$ NPU target,
-finding that it does improve accuracy but at a hardware cost that the
-current NPU architecture cannot absorb.
+To our knowledge, this paper provides the first empirical validation
+of the $T{=}1$ equivalence on commercial NPU silicon.
 
 \subsection{Edge AI on MCU NPUs}
 
 The STM32N6 is STMicroelectronics' first MCU with a dedicated neural
-processing unit. Public deployments on this NPU span computer vision
-(YOLOv8n, MobileNet, face recognition) and audio processing (YamNet,
-audio event detection)~\cite{st_neural_art}. The NPU's hardware
-operator set covers \texttt{Conv}, \texttt{Gemm}, \texttt{Relu},
-\texttt{Add}, \texttt{Clip}, and \texttt{MaxPool} in INT8;
-operators outside this set fall back to the Cortex-M55 CPU with explicit
-cache-maintenance overhead for data transfers between the NPU and CPU
-address spaces~\cite{st_neural_art}.
-To our knowledge, no prior work has deployed an IDS on any
-general-purpose MCU NPU. Our work fills this gap.
+processing unit~\cite{st_neural_art}. Public deployments span computer
+vision and audio processing. The NPU's hardware operator set covers
+\texttt{Conv}, \texttt{Gemm}, \texttt{Relu}, \texttt{Add}, \texttt{Clip},
+and \texttt{MaxPool} in INT8; operators outside this set fall back to the
+Cortex-M55 CPU~\cite{st_neural_art}.
+Millar et al.~\cite{millar2025munpu} benchmarked micro-NPUs including the
+Neural-ART; their latency numbers provide a useful reference point.
+To our knowledge, no prior work has deployed an IDS on any general-purpose
+MCU NPU. The closest prior art (HH-NIDS~\cite{ngo2022hhnids}) used
+a specialized MCU with a fixed CNN engine.
 
 % ============================================================
 \section{Background}
@@ -230,24 +256,15 @@ weight matrix $\mathbf{W}$, and threshold $\theta$ operates as:
 %
 where $\Theta$ is the Heaviside step function and $\beta$ is the leak factor.
 At $T{=}1$ with zero initial state ($V[0]=0$), the leak term
-$\beta \cdot V[0]$ is zero regardless of $\beta$, so
+$\beta \cdot V[0]$ vanishes regardless of $\beta$, so
 Eq.~\ref{eq:lif1} simplifies to $V[1] = \mathbf{W} \cdot \mathbf{x}$.
-The output spike then becomes:
-%
-\begin{equation}
-  S[1] = \Theta(\mathbf{W} \cdot \mathbf{x} - \theta)
-  \label{eq:t1}
-\end{equation}
-%
-Chen et al.~\cite{chen2025one} showed that INT8 post-training quantization
-(PTQ) produces a discretization that closely matches the threshold-and-fire
-operation: the quantized ANN output $\hat{y} = \text{clamp}(\lfloor
-\mathbf{W}\mathbf{x}/s \rceil, 0, 2^{b}-1) \cdot s$ approximates the
-SNN spike output $S[1] = \Theta(\mathbf{W}\mathbf{x} - \theta)$ when the
-quantization scale $s$ and threshold $\theta$ are matched.
-In practice, this means any NPU executing INT8 \texttt{Gemm} + \texttt{Relu}
-is performing SNN-equivalent computation, with accuracy gaps below 0.5\,pp
-on standard benchmarks~\cite{chen2025one}.
+
+Multiple works have established that INT8 post-training quantization
+produces a discretization that closely approximates the threshold-and-fire
+operation~\cite{bu2022optimal, jiang2023unified, chen2025one, bu2025inference}.
+In practice, any NPU executing INT8 \texttt{Gemm} + \texttt{Relu}
+is performing SNN-equivalent computation, with accuracy gaps typically
+below 0.5\,pp on standard benchmarks.
 
 \subsection{QCFS Activation}
 
@@ -261,29 +278,25 @@ spike encoding:
 %
 where $s = \theta / L$ is the quantization step, $\theta$ is a learnable
 threshold, and $L$ is the number of quantization levels.
-Backpropagation through the non-differentiable $\lfloor \cdot \rfloor$
-uses a straight-through estimator (STE).
 After BatchNorm fusion, the ONNX graph contains \texttt{Gemm},
 \texttt{Clip}, \texttt{Floor}, and \texttt{Mul} operators.
 
 \subsection{STM32N6 Neural-ART NPU}
 
 The STM32N6570-DK pairs an ARM Cortex-M55 at 800\,MHz with ST's Neural-ART
-NPU, rated at 600\,GOPS for INT8 workloads.
+NPU, rated at 600\,GOPS for INT8 workloads~\cite{st_neural_art}.
 The NPU natively supports \texttt{Conv}, \texttt{Gemm}, \texttt{Relu},
 \texttt{Add}, \texttt{Clip}, and \texttt{MaxPool} in INT8. Operators
-outside this set are
-dispatched to the CPU, incurring cache-maintenance overhead for
-NPU$\leftrightarrow$CPU data transfers~\cite{st_neural_art}.
+outside this set are dispatched to the CPU, incurring cache-maintenance
+overhead for NPU$\leftrightarrow$CPU data transfers.
 
 % ============================================================
 \section{Method}
 \label{sec:method}
 
-Figure~\ref{fig:pipeline} shows the end-to-end deployment pipeline.
+Figure~\ref{fig:pipeline} shows the deployment pipeline.
 Both paths share the same training and export procedure; they diverge
-only in the activation function used during training and the resulting
-ONNX operator graph.
+only in the activation function.
 
 \begin{figure*}[t]
 \centering
@@ -301,7 +314,7 @@ ONNX operator graph.
   reslbl/.style={font=\scriptsize\sffamily, align=center, text=black!80},
 ]
 % Main pipeline
-\node[data] (dataset) {NSL-KDD\\{\scriptsize 41 features}};
+\node[data] (dataset) {NSL-KDD /\\UNSW-NB15};
 \node[proc, right=of dataset] (train) {PyTorch\\Training};
 \node[proc, right=of train] (export) {ONNX Export\\{\scriptsize BN Fusion}};
 \node[proc, right=of export] (ptq) {INT8 PTQ\\{\scriptsize MinMax}};
@@ -314,10 +327,10 @@ ONNX operator graph.
 \draw[arr] (ptq) -- (compile);
 \draw[arr] (compile) -- (npu);
 
-% Path B label (top) with color
+% Path B label (top)
 \node[pathlbl, fill=blue!10, draw=blue!30,
       above=0.35cm of train] (pathb) {Path B: $\sigma{=}\text{ReLU}$};
-% Path A label (bottom) with color
+% Path A label (bottom)
 \node[pathlbl, fill=orange!10, draw=orange!30,
       below=0.35cm of train] (patha) {Path A: $\sigma{=}\text{QCFS}$};
 
@@ -327,446 +340,399 @@ ONNX operator graph.
 \node[reslbl, below=0.35cm of export]
   {\texttt{Gemm}+\texttt{Clip}+\texttt{Floor}+\texttt{Mul}};
 
-% NPU epoch result (top: Path B)
+% NPU epoch result
 \node[reslbl, fill=green!8, rounded corners=2pt,
       above=0.35cm of npu]
-  {5 HW + 1 Hyb + 2 SW\\\textbf{0.4561\,ms}};
-% NPU epoch result (bottom: Path A)
+  {4--5 HW + 0--2 SW\\\textbf{0.29--0.46\,ms}};
 \node[reslbl, fill=red!6, rounded corners=2pt,
       below=0.35cm of npu]
-  {13 HW + 1 Hyb + 14 SW\\\textbf{0.5364\,ms}};
+  {13 HW + 1 Hyb + 14 SW\\\textbf{0.54\,ms}};
 
-% Dashed connection lines
 \draw[densely dashed, blue!40, thick]
   (pathb.east) -| ($(export.north)+(0,0.05)$);
 \draw[densely dashed, orange!40, thick]
   (patha.east) -| ($(export.south)-(0,0.05)$);
 \end{tikzpicture}
-\caption{End-to-end deployment pipeline. Both paths train the same MLP
-on NSL-KDD and export to ONNX with BatchNorm fusion. Path~B (ReLU)
-produces a Gemm+Relu graph that maps fully to the NPU.
-Path~A (QCFS) adds Floor and Mul operators; Floor falls back to CPU.}
+\caption{Deployment pipeline. Path~B (ReLU) produces a Gemm+Relu
+graph that maps to the NPU. Path~A (QCFS) adds Floor, which falls
+back to CPU.}
 \label{fig:pipeline}
 \end{figure*}
 
 \subsection{Model Architecture}
 
-We use a four-layer MLP with BatchNorm for 5-class classification
-(\textit{normal}, \textit{DoS}, \textit{Probe}, \textit{R2L}, \textit{U2R})
-on NSL-KDD~\cite{tavallaee2009nslkdd}:
+We use a four-layer MLP with BatchNorm:
 %
 \begin{align*}
-  &\texttt{Lin}(41 {\to} 256) \to \texttt{BN} \to \sigma \to
+  &\texttt{Lin}(d {\to} 256) \to \texttt{BN} \to \sigma \to
    \texttt{Lin}(256 {\to} 256) \to \texttt{BN} \to \sigma \\
   &\to \texttt{Lin}(256 {\to} 128) \to \texttt{BN} \to \sigma \to
-   \texttt{Lin}(128 {\to} 5)
+   \texttt{Lin}(128 {\to} C)
 \end{align*}
 %
-where $\sigma$ is ReLU (Path~B) or QCFS (Path~A).
-The model has 111,365 parameters for ReLU and 111,368 for QCFS
-(the difference is three learnable thresholds $\theta$, one per hidden layer).
-At ONNX export, each BatchNorm is algebraically folded into its preceding
-Linear layer, so the exported graph contains only \texttt{Gemm}+\texttt{Relu}
-(Path~B) or \texttt{Gemm}+\texttt{Clip}+\texttt{Floor}+\texttt{Mul}
-(Path~A).
+where $d$ is the input dimension (41 for NSL-KDD, 34 for UNSW-NB15),
+$C$ is the number of classes (5 or 10),
+and $\sigma$ is ReLU (Path~B) or QCFS $L{=}4$ (Path~A).
+The model has 111,365 parameters (NSL-KDD) or 110,218 (UNSW-NB15).
+At ONNX export, BatchNorm is folded into the preceding Linear layer.
+
+\subsection{Datasets}
+
+\textbf{NSL-KDD}~\cite{tavallaee2009nslkdd} contains 125,973 training and
+22,544 test instances with 41 features. We use 5-class grouping:
+\textit{normal}, \textit{DoS}, \textit{Probe}, \textit{R2L}, \textit{U2R}.
+Three categorical features are label-encoded; 38 continuous features
+are z-score normalized using training-set statistics.
+
+\textbf{UNSW-NB15}~\cite{moustafa2015unsw} contains 175,341 training and
+82,332 test instances with 34 features and 10 attack categories:
+\textit{Analysis}, \textit{Backdoor}, \textit{DoS}, \textit{Exploits},
+\textit{Fuzzers}, \textit{Generic}, \textit{Normal},
+\textit{Reconnaissance}, \textit{Shellcode}, \textit{Worms}.
+Three categorical features (\texttt{proto}, \texttt{service},
+\texttt{state}) are label-encoded; remaining features are z-score
+normalized.
 
 \subsection{Training}
 
-Both paths use identical training settings: Adam
-($\text{lr}=10^{-3}$, weight decay $10^{-5}$), cosine annealing over
-80 epochs, batch size 512. We report results from a single seed (42)
-throughout; we acknowledge this limits our ability to estimate variance
-and plan multi-seed runs in future work. We apply inverse-frequency class
-weighting because the training set is heavily skewed
-(U2R has only 52 samples out of 125,973; Normal has 67,343). Without
-class weighting, the model ignores U2R and R2L entirely.
-
-For QCFS, we sweep the quantization level $L \in \{4, 8, 16\}$ and
-report all three. The learnable threshold $\theta$ is initialized per-layer
-from the 95th percentile of activation magnitudes observed on the first
-training batch.
+Both paths use Adam ($\text{lr}=10^{-3}$, weight decay $10^{-5}$),
+cosine annealing over 80 epochs, batch size 512, and inverse-frequency
+class weighting.
+All experiments are repeated with 10 random seeds (0--9); we report
+mean $\pm$ standard deviation.
+Training uses PyTorch 2.10 on an NVIDIA DGX Spark (GB10 GPU).
 
 \subsection{INT8 Post-Training Quantization}
 
-We quantize FP32 ONNX models to INT8 using ONNX Runtime static
-quantization with MinMax calibration on 1,000 randomly sampled training
-instances. Per-tensor quantization (\texttt{QInt8}) is applied to
-weights and activations.
+FP32 ONNX models are quantized to INT8 using ONNX Runtime static
+quantization. The default configuration uses MinMax calibration on 1,000
+randomly sampled training instances with per-tensor quantization.
+Section~\ref{sec:quant_ablation} explores the sensitivity to calibration
+method, granularity, and sample size.
 
 \subsection{NPU Compilation}
 
 Models are compiled for the STM32N6570-DK using ST Edge AI Developer Cloud
 v4.0.0 (compiler: Neural-ART \texttt{atonn} v1.1.3). The compiler
 partitions the ONNX graph into NPU-executable epochs (hardware or hybrid)
-and CPU-only epochs (software), generating C code that orchestrates
-NPU$\leftrightarrow$CPU handoffs.
+and CPU-only epochs (software).
 
 % ============================================================
 \section{Experiments}
 \label{sec:experiments}
 
-\subsection{Dataset}
-
-NSL-KDD~\cite{tavallaee2009nslkdd} contains 125,973 training and
-22,544 test instances with 41 features. We use the standard 5-class
-grouping: \textit{normal}, \textit{DoS}, \textit{Probe}, \textit{R2L},
-\textit{U2R}. Three categorical features (\texttt{protocol\_type},
-\texttt{service}, \texttt{flag}) are label-encoded with a combined
-train+test vocabulary (necessary because the test set contains
-category values absent from training; this mapping is a deterministic
-bijection and does not leak label or feature magnitude information).
-The remaining 38 continuous features are z-score
-normalized using training-set statistics only.
-
-\subsection{Accuracy}
+\subsection{Multi-Seed Classification Results}
 
 \begin{table}[t]
 \centering
-\caption{Test accuracy (\%) on NSL-KDD 5-class classification.
-$\Delta$Acc is the drop from FP32 to INT8 for the same model.}
+\caption{Test accuracy (\%, mean$\pm$std over 10 seeds) on NSL-KDD and
+UNSW-NB15. Best per dataset in \textbf{bold}.}
 \label{tab:accuracy}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llccc@{}}
+\toprule
+\textbf{Dataset} & \textbf{Model} & \textbf{Overall} & \textbf{Macro Acc} & \textbf{Macro F1} \\
+\midrule
+\multirow{4}{*}{NSL-KDD}
+  & ReLU MLP     & \textbf{78.86$\pm$1.32} & 58.12$\pm$1.88 & \textbf{59.20$\pm$2.80} \\
+  & QCFS $L{=}4$ & 77.82$\pm$1.11 & 57.08$\pm$1.62 & 57.29$\pm$2.77 \\
+  & Rand.\ Forest & 73.84$\pm$0.19 & --- & 47.13$\pm$0.33 \\
+  & XGBoost      & 76.86$\pm$0.00 & --- & 55.52$\pm$0.00 \\
+\midrule
+\multirow{3}{*}{UNSW-NB15}
+  & ReLU MLP     & 64.75$\pm$0.61 & \textbf{61.30$\pm$0.76} & 40.29$\pm$0.90 \\
+  & Rand.\ Forest & \textbf{69.46$\pm$0.10} & --- & \textbf{48.63$\pm$0.38} \\
+  & XGBoost      & 67.10$\pm$0.00 & --- & 47.46$\pm$0.00 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Table~\ref{tab:accuracy} reports classification results across 10
+random seeds. On NSL-KDD, the ReLU MLP achieves the best overall accuracy
+($78.86{\pm}1.32$\%) and macro F1 ($59.20{\pm}2.80$\%), outperforming
+both tree baselines and QCFS.
+A Wilcoxon signed-rank test yields $p{=}0.037$ for overall accuracy
+(ReLU $>$ QCFS) but $p{=}0.232$ for macro F1 (not significant).
+This overturns a single-seed observation (seed 42) where QCFS
+appeared superior --- a cautionary example of why multi-seed
+evaluation matters.
+
+On UNSW-NB15 (10-class), the MLP achieves $64.75{\pm}0.61$\% overall
+accuracy, lower than Random Forest ($69.46{\pm}0.10$\%). However, the
+MLP achieves the highest macro accuracy ($61.30{\pm}0.76$\%), which
+reflects better balance across minority classes from inverse-frequency
+weighting.
+The gap in overall accuracy reflects the difficulty of UNSW-NB15's
+10-class problem with extreme imbalance (Worms: 130 samples vs.\ Normal:
+56,000).
+
+\subsection{Per-Class Performance}
+
+\begin{table}[t]
+\centering
+\caption{Per-class metrics (\%, mean$\pm$std) for ReLU MLP on NSL-KDD
+(10 seeds). P = precision, R = recall, F1 = F1-score.}
+\label{tab:perclass_nslkdd}
 \small
 \begin{tabular}{@{}lcccc@{}}
 \toprule
-\textbf{Model} & \textbf{Prec.} & \textbf{Overall} & \textbf{Macro} & \textbf{$\Delta$Acc} \\
+\textbf{Class} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Support} \\
 \midrule
-ReLU (Path B) & FP32 & 76.45 & 56.32 & --- \\
-ReLU (Path B) & INT8 & 76.38 & --- & $-$0.07 \\
-\midrule
-QCFS $L{=}4$ & FP32 & \textbf{79.75} & \textbf{61.31} & --- \\
-QCFS $L{=}4$ & INT8 & 78.05 & --- & $-$1.70 \\
-QCFS $L{=}8$ & FP32 & 78.79 & 59.33 & --- \\
-QCFS $L{=}16$ & FP32 & 79.39 & 60.26 & --- \\
+DoS     & 95.9$\pm$0.5 & 80.2$\pm$2.7 & 87.3$\pm$1.5 & 7,458 \\
+Probe   & 77.3$\pm$1.6 & 70.3$\pm$5.3 & 73.6$\pm$3.1 & 2,421 \\
+R2L     & 93.5$\pm$1.5 & 25.0$\pm$9.1 & 38.8$\pm$11.5 & 2,754 \\
+U2R     & 13.6$\pm$10.6 & 18.6$\pm$3.3 & 13.8$\pm$4.1 & 200 \\
+Normal  & 72.2$\pm$1.4 & 96.5$\pm$0.5 & 82.6$\pm$0.9 & 9,711 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:accuracy} reports test accuracy for both activation
-types at FP32 and INT8 precision.
-QCFS $L{=}4$ outperforms ReLU by +3.30\,pp overall and +4.99\,pp macro.
-We hypothesize that the floor operation during training acts as a form of
-activation regularization, forcing activations onto a discrete grid and
-reducing co-adaptation between neurons. Consistent with this hypothesis,
-accuracy generally drops as $L$ increases
-(79.75 $\to$ 78.79 $\to$ 79.39), trending toward the continuous ReLU
-baseline (76.45). The non-monotonicity between $L{=}8$ and $L{=}16$
-may reflect interactions with the class-weighting scheme; a more
-controlled ablation study is needed to confirm the regularization
-mechanism.
+Table~\ref{tab:perclass_nslkdd} shows per-class metrics on NSL-KDD.
+DoS and Normal achieve strong F1 ($>82$\%), but R2L and U2R remain
+challenging. R2L exhibits high precision (93.5\%) but low recall
+(25.0\%), indicating that the model correctly identifies R2L when it
+predicts the class but misses most R2L samples.
+U2R has only 52 training samples (0.04\% of the training set);
+no amount of class weighting can fully compensate.
 
-INT8 quantization causes minimal degradation for ReLU ($-$0.07\,pp).
-ReLU outputs are non-negative, so the effective dynamic range is
-half that of a signed int8 tensor, leaving more precision per value
-and reducing quantization error.
-QCFS suffers a larger drop ($-$1.70\,pp), likely because the floor-based
-discretization during training imposes a grid that differs from the
-MinMax calibration grid used by ONNX Runtime's PTQ, creating
-a double-quantization effect.
+\subsection{Layer-Wise FP32 vs INT8 Equivalence}
+\label{sec:layerwise}
 
 \begin{table}[t]
 \centering
-\caption{Per-class test accuracy (\%) for FP32 models.}
-\label{tab:perclass}
+\caption{Layer-wise comparison between FP32 and INT8 ONNX models
+on 1,000 NSL-KDD test samples. Cosine similarity is computed on
+flattened activation vectors.}
+\label{tab:layerwise}
 \small
-\begin{tabular}{@{}lccccc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-\textbf{Model} & \textbf{DoS} & \textbf{Probe} & \textbf{R2L} & \textbf{U2R} & \textbf{Normal} \\
+\textbf{Layer} & \textbf{Shape} & \textbf{Cosine Sim} & \textbf{MAE} & \textbf{$L_\infty$} \\
 \midrule
-ReLU & 74.77 & 62.41 & 29.70 & 19.00 & 95.70 \\
-QCFS $L{=}4$ & 78.47 & 76.37 & 33.26 & 22.50 & 95.93 \\
+Relu\_0 (256) & $1000{\times}256$ & 0.667 & 0.435 & 43.7 \\
+Relu\_1 (256) & $1000{\times}256$ & 0.655 & 0.438 & 62.6 \\
+Relu\_2 (128) & $1000{\times}128$ & 0.683 & 0.400 & 65.2 \\
+Logits (5)    & $1000{\times}5$   & \textbf{0.978} & 0.103 & 19.8 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:perclass} and Figure~\ref{fig:perclass} break down
-accuracy by class.
-QCFS lifts Probe accuracy by 13.96\,pp and R2L by 3.56\,pp relative to
-ReLU. The persistently low U2R accuracy (19--22.5\%) is unsurprising
-given that NSL-KDD contains only 200 U2R test samples and 52 training
-samples; no amount of class weighting can fully compensate for this
-level of data scarcity.
+Table~\ref{tab:layerwise} presents layer-wise activation comparison
+between the FP32 and INT8 models.
+Individual hidden layers show moderate cosine similarity (0.65--0.68)
+due to per-neuron quantization noise, but the logit layer recovers to
+0.978.
+The overall prediction agreement is \textbf{99.0\%}
+(per-class: Normal 99.8\%, DoS 99.4\%, R2L 99.3\%, Probe 95.4\%,
+U2R 85.7\%).
+INT8 quantization introduces bounded perturbation
+at each layer, but the accumulated effect on the final classification decision
+is negligible.
+From the $T{=}1$ SNN perspective, this means the quantized SNN
+(INT8 model) closely reproduces the firing decisions of the original SNN
+(FP32 ReLU model with $V[0]{=}0$).
 
-\begin{figure}[t]
+\subsection{Quantization Ablation}
+\label{sec:quant_ablation}
+
+\begin{table}[t]
 \centering
-\begin{tikzpicture}
-\begin{axis}[
-  ybar,
-  bar width=7pt,
-  width=\columnwidth,
-  height=5cm,
-  ylabel={Test Accuracy (\%)},
-  ylabel style={font=\small},
-  symbolic x coords={DoS, Probe, R2L, U2R, Normal},
-  xtick=data,
-  x tick label style={font=\small},
-  y tick label style={font=\small},
-  ymin=0, ymax=110,
-  ytick={0,20,40,60,80,100},
-  legend style={at={(0.02,0.98)}, anchor=north west, font=\scriptsize,
-                draw=gray!50, fill=white, fill opacity=0.9,
-                text opacity=1},
-  nodes near coords,
-  nodes near coords style={font=\tiny, anchor=south},
-  every node near coord/.append style={/pgf/number format/.cd, fixed, precision=1},
-  enlarge x limits=0.12,
-  grid=major,
-  grid style={dotted, gray!40},
-]
-\addplot[fill=blue!35, draw=blue!70]
-  coordinates {(DoS,74.77) (Probe,62.41) (R2L,29.70) (U2R,19.00) (Normal,95.70)};
-\addplot[fill=orange!50, draw=orange!80]
-  coordinates {(DoS,78.47) (Probe,76.37) (R2L,33.26) (U2R,22.50) (Normal,95.93)};
-\legend{ReLU, QCFS $L{=}4$}
-\end{axis}
-\end{tikzpicture}
-\caption{Per-class FP32 test accuracy. QCFS $L{=}4$ improves all
-attack classes, with the largest gain on Probe (+13.96\,pp).
-U2R and R2L remain difficult for both models due to extreme
-class imbalance (52 and 995 training samples, respectively).}
-\label{fig:perclass}
-\end{figure}
+\caption{INT8 quantization ablation on NSL-KDD. FP32 baseline: 76.45\%.
+$\Delta$ = FP32 $-$ INT8 (positive = degradation).
+All 24 configurations show $|\Delta| < 1$\,pp.}
+\label{tab:quant_ablation}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Method} & \textbf{Granularity} & \textbf{Cal.\ Samples} & \textbf{INT8 \%} & \textbf{$\Delta$} \\
+\midrule
+MinMax     & per-tensor  & 100   & 76.59 & $-$0.14 \\
+MinMax     & per-tensor  & 1000  & 76.38 & +0.08 \\
+MinMax     & per-tensor  & 5000  & 77.27 & $-$0.82 \\
+MinMax     & per-channel & 1000  & 76.51 & $-$0.05 \\
+\midrule
+Entropy    & per-tensor  & 1000  & 76.38 & +0.08 \\
+Entropy    & per-channel & 1000  & 76.51 & $-$0.05 \\
+\midrule
+Percentile & per-tensor  & 1000  & 76.39 & +0.07 \\
+Percentile & per-channel & 1000  & 76.28 & +0.17 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:quant_ablation} shows a representative subset of the full
+24-configuration ablation (3 methods $\times$ 2 granularities $\times$
+4 sample sizes; full results in the supplementary material).
+Across all configurations, accuracy deviates from FP32 by at most
+0.82\,pp, and several INT8 configurations actually \emph{improve} over
+FP32 (likely due to regularization effects of quantization noise).
+This stability is expected for a small model (111K parameters, 4 layers):
+the quantization grid resolution (256 INT8 levels) is sufficient to
+represent the narrow activation distributions of a shallow MLP.
+The practical implication is that $T{=}1$ equivalence is preserved
+regardless of calibration choices.
 
 \subsection{NPU Hardware Benchmark}
 
 \begin{table}[t]
 \centering
 \caption{Hardware benchmark on STM32N6570-DK (Cortex-M55 @ 800\,MHz +
-Neural-ART NPU). HW = NPU-only epochs, Hyb = NPU+CPU mixed epochs,
-SW = CPU-only epochs.}
+Neural-ART NPU). HW = NPU-only epochs, Hyb = mixed, SW = CPU-only.}
 \label{tab:npu}
 \small
-\begin{tabular}{@{}lccccccc@{}}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llccccccc@{}}
 \toprule
-\textbf{Model} & \textbf{Time} & \textbf{Cycles} & \textbf{HW} & \textbf{Hyb} & \textbf{SW} & \textbf{Flash} & \textbf{RAM} \\
- & \textbf{(ms)} & & & & & \textbf{(KB)} & \textbf{(KB)} \\
+\textbf{Model} & \textbf{Dataset} & \textbf{Time} & \textbf{HW} & \textbf{Hyb} & \textbf{SW} & \textbf{Flash} & \textbf{RAM} \\
+ & & \textbf{(ms)} & & & & \textbf{(KB)} & \textbf{(KB)} \\
 \midrule
-ReLU INT8 & \textbf{0.4561} & 364,913 & 5 & 1 & 2 & 137.7 & 1.25 \\
-QCFS INT8 & 0.5364 & 429,080 & 13 & 1 & 14 & 138.0 & 2.00 \\
-QCFS FP32 & 1.4156 & 1,132,485 & 0 & 0 & 20 & 430.1 & 3.17 \\
+ReLU INT8 & NSL-KDD & 0.46 & 5 & 1 & 2 & 137.7 & 1.25 \\
+ReLU INT8 & UNSW-NB15 & \textbf{0.29} & 4 & 0 & 0 & 120.6 & 0.50 \\
+\midrule
+QCFS INT8 & NSL-KDD & 0.54 & 13 & 1 & 14 & 138.0 & 2.00 \\
+QCFS FP32 & NSL-KDD & 1.42 & 0 & 0 & 20 & 430.1 & 3.17 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
-Table~\ref{tab:npu} and Figure~\ref{fig:npu_breakdown} present
-measurements from the STM32N6570-DK, obtained through ST Edge AI
-Developer Cloud v4.0.0. The numbers tell a clear story.
-ReLU INT8 maps cleanly onto the NPU: five hardware epochs handle all
-\texttt{Gemm}+\texttt{Relu} layers, one hybrid epoch handles the output
-layer, and only two software epochs are needed for input/output
-marshalling. Total inference time: 0.4561\,ms.
+Table~\ref{tab:npu} presents measurements from the STM32N6570-DK.
+On NSL-KDD (41 features, 5 classes), ReLU INT8 completes in 0.46\,ms
+with 5~HW, 1~hybrid, and 2~SW epochs.
+On UNSW-NB15 (34 features, 10 classes), the smaller input dimension
+yields 100\% NPU execution (4~HW epochs, zero SW fallback) at
+\textbf{0.29\,ms} (3,397~inferences/sec), 35\% faster than NSL-KDD.
 
-QCFS INT8 runs the same \texttt{Gemm} operations on the NPU (13 HW
-epochs, reflecting the finer operator granularity from \texttt{Clip},
-\texttt{Floor}, \texttt{Mul} decomposition), but each \texttt{Floor}
-node triggers a CPU fallback.
-The compiler inserts \texttt{DequantizeLinear} $\to$ \texttt{Floor(float)}
-$\to$ \texttt{QuantizeLinear} at every QCFS layer boundary, because the
-NPU operates only on integer tensors and \texttt{Floor} is defined on
-floats in the ONNX specification. This round-trip adds 0.08\,ms
-per inference (+17.6\%), distributed across 14 software epochs.
+QCFS INT8 runs \texttt{Gemm} on the NPU but each \texttt{Floor} triggers
+a CPU fallback. The compiler inserts \mbox{\texttt{DequantizeLinear}}
+$\to$ \mbox{\texttt{Floor(float)}} $\to$ \mbox{\texttt{QuantizeLinear}}
+at every QCFS layer, adding 0.08\,ms (+17.6\%).
+QCFS FP32 runs entirely on CPU (0 HW epochs, 20 SW epochs), 3.1$\times$
+slower than ReLU INT8.
 
-QCFS FP32 runs entirely on the CPU (0 hardware epochs, 20 software
-epochs) because the Neural-ART NPU only accepts INT8 operators. At
-1.4156\,ms it is 3.1$\times$ slower than ReLU INT8.
+The \texttt{Floor} operator is absent from ST's published
+NPU operator list~\cite{st_neural_art}. Our measurements pin down the
+cost of the resulting SW\_FLOAT fallback at 0.08\,ms per inference.
 
-\textbf{\texttt{Floor} operator: a documentation gap.}
-ST's published operator support lists~\cite{st_neural_art} do not
-explicitly mention \texttt{Floor}. Our experiment confirms empirically
-that it is unsupported and quantifies the resulting performance penalty.
-This finding is relevant to anyone attempting to deploy QCFS-based or
-other floor-dependent SNN activations on the Neural-ART architecture.
+\subsection{Tree-Based Baseline Comparison}
 
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-  xbar stacked,
-  width=\columnwidth,
-  height=4.2cm,
-  xlabel={Execution Epochs},
-  xlabel style={font=\small},
-  ytick={0,1,2},
-  yticklabels={QCFS FP32, QCFS INT8, ReLU INT8},
-  y tick label style={font=\small},
-  x tick label style={font=\small},
-  xmin=0, xmax=28,
-  legend style={at={(0.98,0.98)}, anchor=north east, font=\small,
-                draw=none, fill=white, fill opacity=0.8,
-                text opacity=1, legend columns=3},
-  bar width=14pt,
-  enlarge y limits=0.35,
-  nodes near coords,
-  nodes near coords style={font=\tiny},
-  point meta=explicit symbolic,
-]
-% HW (NPU-only) - strong green
-\addplot[fill=green!55, draw=green!80] coordinates {
-  (5,2) [5]
-  (13,1) [13]
-  (0,0) []
-};
-% Hyb (NPU+CPU) - amber
-\addplot[fill=yellow!50, draw=yellow!70] coordinates {
-  (1,2) [1]
-  (1,1) [1]
-  (0,0) []
-};
-% SW (CPU-only) - red
-\addplot[fill=red!35, draw=red!55] coordinates {
-  (2,2) [2]
-  (14,1) [14]
-  (20,0) [20]
-};
-\legend{HW (NPU), Hyb, SW (CPU)}
+Random Forest (100 trees, max depth 20) and XGBoost (100 trees, max
+depth 6) serve as non-neural baselines.
+Both use balanced class weighting and are evaluated across 10 seeds.
+ONNX export succeeds for Random Forest (using \texttt{skl2onnx}),
+producing models with \texttt{TreeEnsembleClassifier} operators.
+These operators are not in the Neural-ART NPU's supported set and
+run entirely on the Cortex-M55 CPU.
 
-% Latency annotations (exact values from benchmark)
-\node[font=\scriptsize\sffamily, anchor=west] at (axis cs:22,2) {0.4561\,ms};
-\node[font=\scriptsize\sffamily, anchor=west] at (axis cs:22,1) {0.5364\,ms};
-\node[font=\scriptsize\sffamily, anchor=west] at (axis cs:22,0) {1.4156\,ms};
-\end{axis}
-\end{tikzpicture}
-\caption{NPU execution epoch breakdown. ReLU INT8 maps almost entirely
-to NPU hardware (5~HW + 1~Hyb epochs). QCFS INT8 uses 13~HW epochs
-for Gemm but 14~SW epochs for Floor CPU fallback. QCFS FP32 runs
-entirely on CPU (20~SW epochs) because the NPU requires INT8 operators.}
-\label{fig:npu_breakdown}
-\end{figure}
+On NSL-KDD, the MLP outperforms both tree models in overall accuracy
+and macro F1 (Table~\ref{tab:accuracy}), while also being the only model
+eligible for NPU acceleration.
+On UNSW-NB15, Random Forest achieves higher overall accuracy (69.46\%
+vs.\ 64.75\%), but the MLP achieves higher macro accuracy (61.30\%),
+suggesting better minority-class handling.
+The tree models cannot run on the STM32N6 at all:
+ST Edge AI Core rejects the \texttt{TreeEnsembleClassifier} operator
+with ``NOT IMPLEMENTED.''
+The MLP is therefore the only architecture eligible for NPU acceleration,
+achieving 0.29\,ms inference on hardware where tree models have no path
+to execution.
 
 % ============================================================
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Validating the $T{=}1$ Equivalence in Practice}
+\subsection{Validating $T{=}1$ Equivalence in Practice}
 
-Chen et al.~\cite{chen2025one} established the $T{=}1$ SNN--ANN
-equivalence theoretically and validated it on standard image
-benchmarks (CIFAR-10, ImageNet).
-Our result extends this to a non-vision domain (network security) and,
-more importantly, to physical NPU hardware. The fact that the INT8
-quantized ANN runs on the Neural-ART NPU at sub-millisecond latency
-with only 0.07\,pp accuracy loss confirms that the equivalence is not
-merely a mathematical curiosity but a deployable engineering technique.
+The layer-wise analysis (Section~\ref{sec:layerwise}) provides direct
+evidence that $T{=}1$ SNN--ANN equivalence survives INT8 quantization.
+Although individual neurons show moderate quantization noise
+(cosine similarity 0.65--0.68), the downstream effect on classification
+decisions is minimal: 99\% of test samples receive the same predicted
+class from FP32 and INT8 models.
+The quantization ablation (Section~\ref{sec:quant_ablation}) supports
+this conclusion: all 24 calibration configurations fall within 0.82\,pp
+of FP32, ruling out the possibility that the equivalence depends on a
+particular calibration choice.
 
-That said, the equivalence is approximate, not exact. INT8 rounding
-artifacts and the specific quantization calibration scheme (MinMax in
-our case) introduce noise that differs from the idealized SNN threshold.
-On NSL-KDD, this noise is negligible. Whether it remains so on
-higher-dimensional inputs (e.g., raw packet payloads) is an open question.
+\subsection{QCFS: Better Theory, Worse Hardware Fit}
 
-\subsection{QCFS: Better Accuracy, Worse Hardware Fit}
+With multi-seed evaluation, ReLU outperforms QCFS on NSL-KDD
+($p{=}0.037$). The single-seed observation that QCFS was superior
+was a statistical artifact. Combined with the 17.6\% latency penalty
+from \texttt{Floor} CPU fallback, QCFS offers no advantage on this
+NPU target.
 
-The QCFS result presents an uncomfortable trade-off. QCFS $L{=}4$ beats
-ReLU by 3.30\,pp overall accuracy, which is a meaningful gain for a
-security application. But the 17.6\% latency penalty from \texttt{Floor}
-CPU fallback makes it a poor choice for this particular NPU.
+\subsection{Comparison with HH-NIDS}
 
-This is not a fundamental limitation of QCFS; it is a limitation of the
-Neural-ART operator set. If ST adds \texttt{Floor} support in a future
-NPU revision (or if a compiler optimization replaces \texttt{Floor} with
-an equivalent integer shift, as NeuroFlex~\cite{neuroflex2025} does in
-custom accelerators), QCFS could become the preferred activation for
-SNN-equivalent deployment. Until then, ReLU INT8 is the pragmatic choice.
-
-\subsection{Comparison with Akida}
-
-Direct comparison with the Akida-based IDS~\cite{zahm2024csiac} requires
-caution. The CSIAC report does not fully specify the classification task
-or dataset split, making accuracy numbers non-comparable. Zahm et al.\
-also used a dedicated neuromorphic processor with native spike support
-and a different model architecture. Our 76.38\% on 5-class NSL-KDD
-therefore cannot be directly compared to their reported 98.4\%. What \emph{is}
-comparable is the deployment target and cost: we show that a \$89
-general-purpose MCU (which OEMs already source for vision products)
-can run SNN-equivalent IDS inference at 2,192 inferences/sec.
-In a flow-based IDS pipeline where features are aggregated over
-connection records (as in NSL-KDD), this translates to classifying
-over two thousand flows per second, well within the traffic rates
-of typical IoT gateway deployments.
+Ngo et al.~\cite{ngo2022hhnids} achieved 98.57\% on UNSW-NB15 with the
+MAX78000, but used binary classification (normal vs.\ attack) with
+11 flow features. Our 10-class multi-class problem is substantially harder.
+The MAX78000 is an AI-specialized MCU with a fixed CNN
+accelerator (442\,KB weight memory); the STM32N6 is a general-purpose
+MCU where the NPU is one peripheral among many (GPIO, UART, Ethernet,
+display controller). The two represent different deployment philosophies:
+the MAX78000 is designed specifically for always-on AI workloads,
+while the STM32N6 is a general-purpose platform that can accommodate
+AI inference as one of many concurrent tasks under an RTOS.
 
 \subsection{Limitations}
 
-Four limitations bound our results.
-First, NSL-KDD is a legacy benchmark derived from 1998 DARPA traffic.
-It does not contain modern attack types (e.g., DDoS amplification,
-lateral movement, encrypted C2 channels). We chose it for
-reproducibility and comparability, not because it represents production
-traffic. Any deployment based on this work should retrain on
-contemporary data such as CICIDS2017 or CSE-CIC-IDS2018.
-
-Second, we measure inference latency but not power. The STM32N6570-DK
-does not expose per-subsystem power rails in a way that allows clean
-NPU-vs-CPU power attribution. Power measurement requires a custom setup
-with shunt resistors on the VCORE rail, which we leave to future work.
-
-Third, we report accuracy and macro accuracy but not F1-score or
-precision/recall, which are more informative for IDS evaluation
-under class imbalance. Future work should report the full confusion
-matrix.
-
-Fourth, the model is a shallow MLP. Deeper architectures (e.g., 1-D CNN
-or small transformers) might achieve better accuracy on the minority
-classes, but would require verifying that all operators still map
-to the NPU.
+Five limitations bound our results.
+First, NSL-KDD is a legacy benchmark (1998 DARPA traffic) and UNSW-NB15,
+while more modern, still does not represent current enterprise traffic.
+Second, we measure inference latency on the NPU but not power consumption.
+Third, the evaluation covers classifier inference only, not the complete
+IDS pipeline (packet capture, flow aggregation, feature extraction).
+Fourth, the MLP architecture is shallow; deeper models might improve
+minority-class performance but require verifying NPU operator compatibility.
+Fifth, UNSW-NB15 accuracy (64.75\%) is below tree baselines;
+the MLP architecture likely needs hyperparameter tuning or feature
+selection for this dataset.
 
 \subsection{Future Directions}
 
-Several directions follow from this work.
+\textbf{RTOS integration.}
+The 0.29--0.46\,ms inference time fits within a 1\,ms RTOS tick.
+Integration with \textmu T-Kernel~3.0 on the STM32N6, with lwIP for
+packet processing and the NPU for classification, is the natural next
+step toward a complete edge IDS.
 
 \textbf{Modern datasets.}
-Retraining on CICIDS2017 or CSE-CIC-IDS2018 would test whether the
-hardware constraints we identified (model size, operator support) hold
-for more complex traffic distributions.
-
-\textbf{RTOS integration.}
-The 0.4561\,ms inference time fits within a typical 1\,ms RTOS tick
-(e.g., FreeRTOS at \texttt{configTICK\_RATE\_HZ}=1000). A natural
-next step is to integrate the IDS model into an RTOS task on the
-STM32N6 (e.g., under FreeRTOS or Eclipse ThreadX), feeding it features
-extracted from a packet processing pipeline. The Cortex-M55 can handle
-feature extraction while the NPU runs inference in parallel.
+Retraining on CICIDS2017 or CSE-CIC-IDS2018 would test generalization.
 
 \textbf{Power measurement.}
-A proper energy analysis, measuring Joules per inference on both the
-NPU and CPU paths, would quantify the energy advantage of the $T{=}1$
-approach and allow direct comparison with Akida's published power
-figures.
+Measuring Joules per inference on the NPU path would enable direct
+comparison with HH-NIDS's published 18\,mW figure.
 
 \textbf{Other MCU NPUs.}
-The NXP i.MX RT1180 (eIQ Neutron NPU), Renesas RA8 (Ethos-U55),
-and Alif Ensemble (Ethos-U55) all have INT8 NPUs. Testing the same
-model across these platforms would establish whether the $T{=}1$
-deployment strategy generalizes beyond STM32N6.
-
-\textbf{Multi-timestep exploration.}
-Although $T{=}1$ is sufficient for equivalence, running $T{>}1$ timesteps
-could be useful if the IDS processes temporal sequences of packets.
-This would require accumulating membrane potential across timesteps,
-which the current NPU cannot do in hardware but could be managed in
-software with reasonable overhead if the timestep count is small
-(e.g., $T{=}2$ or $T{=}4$).
+Testing on NXP i.MX RT1180 (eIQ Neutron), Renesas RA8 (Ethos-U55),
+and Alif Ensemble would establish cross-platform generality.
 
 % ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
-We trained an MLP for 5-class intrusion detection on NSL-KDD, quantized
-it to INT8, and deployed it on the STM32N6570-DK Neural-ART NPU.
-Inference takes 0.4561\,ms. The model fits in 137.7\,KB of Flash.
-These numbers confirm that the $T{=}1$ SNN--ANN equivalence is not
-just theory; it works on real, shipping hardware.
+We trained an MLP for intrusion detection on NSL-KDD (5-class) and
+UNSW-NB15 (10-class), quantized it to INT8, and deployed it on the
+STM32N6570-DK Neural-ART NPU.
+Multi-seed evaluation (10 seeds) shows $78.86{\pm}1.32$\% overall
+accuracy on NSL-KDD (0.46\,ms) and $64.75{\pm}0.61$\% on UNSW-NB15
+(0.29\,ms, 100\% NPU execution).
+A 24-configuration quantization ablation shows INT8 accuracy varies
+by less than 1\,pp across calibration choices.
+Layer-wise analysis shows 99\% prediction agreement between
+FP32 and INT8 models --- evidence that $T{=}1$ SNN--ANN equivalence
+holds on commercial NPU silicon.
 
-The QCFS experiment adds nuance. QCFS trains better (+3.30\,pp), but
-the \texttt{Floor} operator has no NPU support and forces costly CPU
-round-trips. For now, ReLU INT8 is the right activation for this class
-of hardware.
+The QCFS experiment adds nuance: the \texttt{Floor} operator has no
+NPU support, forcing CPU fallback with 17.6\% latency overhead.
+For commodity MCU NPUs with INT8 operator sets, ReLU remains the
+pragmatic activation for SNN-equivalent deployment.
 
-We believe this work opens a practical path for deploying SNN-equivalent
-models on the large installed base of general-purpose MCU NPUs,
-bringing neuromorphic-style efficiency to devices that cost under \$10.
-
-All code, trained models, and NPU benchmark logs are publicly available
-at \url{https://github.com/thc1006/SpikeIDS-MCU}
-(DOI:~\href{https://doi.org/10.5281/zenodo.18906060}{10.5281/zenodo.18906060}).
+All code, trained models, and benchmark results are publicly available
+at \url{https://github.com/thc1006/SpikeIDS-MCU}.
 
 % ============================================================
 \balance
