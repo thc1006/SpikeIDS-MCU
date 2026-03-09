@@ -43,9 +43,9 @@ Exploiting the approximate equivalence between single-timestep
 ($T{=}1$) spiking neural network (SNN) inference and INT8 quantized
 ANN inference, we compile a lightweight MLP to the NPU without
 neuromorphic hardware.
-Evaluated on NSL-KDD (5-class) and UNSW-NB15 (10-class) with 10
+On NSL-KDD (5-class) and UNSW-NB15 (10-class) with 10
 random seeds, the model achieves $78.86{\pm}1.32$\% and
-$64.75{\pm}0.61$\% overall accuracy.
+$64.75{\pm}0.61$\% overall accuracy, respectively.
 INT8 NPU inference completes in \textbf{0.29--0.46\,ms}
 (2.7--4.2$\times$ faster than CPU-only), with an estimated energy
 of \textbf{44--69\,\textmu J/inference} and a Flash footprint of
@@ -55,8 +55,8 @@ Compared with recent MCU-class IDS deployments on the STM32F7
 achieves 60--107$\times$ lower latency and over 100$\times$
 lower energy per inference.
 To our knowledge, this is the first publicly documented IDS
-deployment on an ARM Cortex-M NPU and the first publicly documented
-non-vision workload on the Neural-ART accelerator.
+deployment on an ARM Cortex-M NPU, and also the first non-vision
+workload reported on the Neural-ART accelerator.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -88,7 +88,7 @@ threshold-and-fire mechanism reduces to a ReLU-like clamp.
 Any NPU executing INT8 \texttt{Gemm}+\texttt{Relu} can therefore
 run an SNN-equivalent model.
 
-We put this theory to the test on the STM32N6570-DK (ARM Cortex-M55
+We validate this on the STM32N6570-DK (ARM Cortex-M55
 @ 800\,MHz, Neural-ART NPU, 600\,GOPS INT8, \$89 dev kit).
 We focus on classifier inference latency, energy, and memory footprint
 on pre-extracted flow-level features; the full IDS pipeline (packet
@@ -127,7 +127,7 @@ Our work targets a general-purpose MCU with an attached programmable NPU,
 achieving two orders of magnitude lower energy than CPU-only MCU
 deployments.
 
-Separately, several GPU-based SNN-IDS systems have been proposed:
+Several GPU-based SNN-IDS systems have also been proposed:
 convolutional SNNs~\cite{nature2024csnn},
 event-driven SNNs~\cite{ieee2025event}, and transformer-spiking
 hybrids~\cite{nature2026transformer} report 94--99\% accuracy on
@@ -261,9 +261,8 @@ For the ReLU INT8 path:
 NSL-KDD compiles to 5~HW + 1~Hyb + 2~SW epochs (0.46\,ms);
 UNSW-NB15 compiles to 4~HW + 0~Hyb + 0~SW epochs (0.29\,ms, 100\% NPU).
 The QCFS INT8 path compiles to 13~HW + 1~Hyb + 14~SW epochs (0.54\,ms)
-because each \texttt{Floor} triggers a
-\texttt{DequantizeLinear}$\to$\texttt{Floor(float)}$\to$\texttt{QuantizeLinear}
-CPU round-trip.
+because each \texttt{Floor} triggers a CPU round-trip via
+\mbox{\texttt{Dequant}}$\to$\mbox{\texttt{Floor}}$\to$\mbox{\texttt{Quant}}.
 
 % ============================================================
 \section{Experiments}
@@ -316,12 +315,10 @@ These patterns are characteristic of extreme class imbalance, not
 NPU-induced degradation --- FP32 and INT8 models agree on 99\% of
 predictions.
 
-Fig.~\ref{fig:cm} shows the NSL-KDD confusion matrix.
-The dominant error pattern is R2L$\to$Normal (64.4\% of R2L)
-and U2R$\to$Probe (50.9\% of U2R), both caused by severe class imbalance
-(R2L: 995 train / 2,754 test; U2R: 52 train / 200 test).
-Normal and DoS, which dominate the training set, achieve $>$99\% and
-$>$86\% recall respectively.
+Fig.~\ref{fig:cm} visualizes these patterns.
+The class imbalance is severe: R2L has only 995 training samples
+(0.8\% of the set) yet 2,754 test samples (12.2\%); U2R has 52
+training samples.
 
 \begin{figure}[t]
 \centering
@@ -398,7 +395,8 @@ QCFS INT8 & NSL-KDD & 0.54 & 81 & 13 & 1 & 14 & 138.0 & 2.00 \\
 }
 \end{table}
 
-Table~\ref{tab:npu} presents hardware measurements.
+Table~\ref{tab:npu} presents benchmark results from ST Edge AI
+Developer Cloud, which cycle-accurately simulates the STM32N6570-DK.
 INT8 NPU execution yields \textbf{2.7$\times$} speedup on NSL-KDD
 and \textbf{4.2$\times$} on UNSW-NB15 over the same model on
 the Cortex-M55 CPU.
@@ -421,10 +419,10 @@ STLINK-V3PWR probe is left to future work.
 \begin{tikzpicture}[scale=0.85]
 \begin{axis}[
     ybar,
-    bar width=14pt,
+    bar width=16pt,
     ylabel={Energy per inference},
     ylabel style={font=\small},
-    symbolic x coords={Chehade,Diab,CPU,NPU-NSL,NPU-UNSW},
+    symbolic x coords={Chehade,Diab,NPU-NSL,NPU-UNSW},
     xtick=data,
     x tick label style={rotate=30, anchor=east, font=\scriptsize},
     ymode=log,
@@ -444,15 +442,14 @@ STLINK-V3PWR probe is left to future work.
 \addplot[fill=red!40] coordinates {
     (Chehade,7860) [7.86\,mJ]
     (Diab,6750) [6.75\,mJ]
-    (CPU,186) [186\,\textmu J]
     (NPU-NSL,69) [69\,\textmu J]
     (NPU-UNSW,44) [44\,\textmu J]
 };
 \end{axis}
 \end{tikzpicture}
-\caption{Energy per inference comparison (log scale). NPU deployment
-achieves over 100$\times$ reduction versus CPU-only MCU baselines.
-CPU = ReLU FP32 on Cortex-M55; NPU = ReLU INT8 on Neural-ART.
+\caption{Energy per inference (log scale). Our NPU path achieves
+over 100$\times$ reduction versus prior MCU-class deployments.
+NPU = ReLU INT8 on Neural-ART (estimated from AN5946).
 Chehade~\cite{chehade2025stm32}: STM32F7;
 Diab~\cite{diab2025rpi}: RPi~3B+.}
 \label{fig:energy}
@@ -518,11 +515,11 @@ forcing CPU fallback with 17.6\% latency overhead.
 ReLU INT8 remains the optimal activation for commodity MCU NPUs.
 
 \textbf{RTOS implications.}
-The 0.29--0.46\,ms NPU inference time fits within a 1\,ms RTOS tick.
-Because the Cortex-M55 is idle during NPU execution, concurrent tasks
-(Ethernet DMA, feature extraction, display refresh) can proceed
-without deadline misses that would occur during the 1.2\,ms CPU-only
-path. Validating this with a \textmu T-Kernel~3.0 integration is
+At 0.29--0.46\,ms, NPU inference fits within a typical 1\,ms RTOS
+tick, and the Cortex-M55 remains free for concurrent tasks
+(Ethernet DMA, feature extraction) during NPU execution.
+The 1.2\,ms CPU-only path would block the processor across
+tick boundaries. Validating this with \textmu T-Kernel~3.0 is
 planned future work.
 
 \textbf{Limitations.}
@@ -539,7 +536,7 @@ commodity MCU NPU, achieving 2.7--4.2$\times$ CPU speedup and over
 100$\times$ energy reduction versus prior MCU-class deployments.
 Layer-wise analysis confirms 99\% FP32/INT8 prediction agreement,
 validating $T{=}1$ SNN--ANN equivalence on commercial NPU silicon.
-All code and trained models will be publicly released.
+Code and trained models will be released upon acceptance.
 
 % ============================================================
 \balance
