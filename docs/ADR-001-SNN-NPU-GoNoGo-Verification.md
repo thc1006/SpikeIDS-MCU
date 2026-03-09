@@ -3,8 +3,14 @@
 > **Status**: COMPLETED — All checkpoints PASSED (GO)
 > **Date**: 2026-03-08
 > **Verification Completed**: 2026-03-08
-> **Decision Maker**: thc1006
+> **Updated**: 2026-03-09
+> **Decision Maker**: Hsiu-Chi Tsai
 > **Technical Context**: SNN-IDS (Spiking Neural Network-based IoT Edge Intrusion Detection System) for TRON Programming Contest 2026
+
+### ⚠️ Post-Verification Updates (2026-03-09)
+1. **Chen et al. "One Timestep is Enough" (arXiv:2510.23383) was REJECTED by ICLR 2026.** The T=1 equivalence claim remains valid and is supported by accepted publications: Bu et al. CVPR 2025, Jiang et al. ICML 2023, Bu et al. ICLR 2022 (QCFS). All paper citations have been updated accordingly.
+2. **QCFS single-seed advantage overturned.** Phase 4 recorded QCFS L=4 at 79.75% (seed=42). The subsequent 10-seed experiment (results/multiseed_experiment.json) showed ReLU > QCFS with Wilcoxon p=0.037. The Path B (ReLU) decision was correct.
+3. **UNSW-NB15 cross-dataset validation completed.** 10-seed results: OA 64.75±0.61%, MF1 40.29±0.90%. See results/unsw_multiseed_experiment.json.
 
 ---
 
