@@ -1,7 +1,7 @@
 """
 SNN-IDS: INT8 Post-Training Quantization (PTQ)
 Uses ONNX Runtime quantization → ready for ST Edge AI Developer Cloud upload.
-Math basis: INT8 quantized ANN ≡ T=1 SNN (arXiv:2510.23383)
+Math basis: INT8 quantized ANN ≡ T=1 SNN (Bu CVPR'25, Jiang ICML'23)
 """
 
 import numpy as np

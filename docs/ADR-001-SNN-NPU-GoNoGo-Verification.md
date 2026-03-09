@@ -74,7 +74,7 @@ Implications:
 ### 2.4 Key Breakthrough: T=1 SNN = Standard PTQ ANN (QCFS Not Required)
 
 ```
-Core insight from "One Timestep is Enough" (arXiv:2510.23383):
+Core insight (Bu et al. CVPR'25, Jiang et al. ICML'23; originally from Chen et al. arXiv:2510.23383, ICLR 2026 REJECTED):
 
 When T=1, the SNN's LIF neuron simplifies to:
   output = Θ(W·x - threshold)
@@ -117,7 +117,7 @@ Conclusion: You don't actually need the QCFS activation function.
 
 1. **Path B is zero-risk**: Standard ReLU ANN + INT8 PTQ is the native optimal path for Neural-ART. All operators are 100% NPU hardware-accelerated. Zero compatibility risk.
 
-2. **Still mathematically an SNN**: Per "One Timestep is Enough" (arXiv:2510.23383), T=1 SNN and INT8 quantized ANN inference are mathematically approximately equivalent. This can be argued in the paper/proposal.
+2. **Still mathematically an SNN**: Per Bu et al. (CVPR 2025) and Jiang et al. (ICML 2023), T=1 SNN and INT8 quantized ANN inference are mathematically approximately equivalent. This can be argued in the paper/proposal.
 
 3. **Dramatically reduces engineering effort**: No need to port the PASCAL framework, no custom QCFS activation, no operator compatibility concerns. Saves 2-3 weeks.
 
@@ -129,7 +129,7 @@ Conclusion: You don't actually need the QCFS activation function.
 Paper/proposal argument structure:
 
 1. "SNN's event-driven nature is inherently suited for network packet processing" (motivation)
-2. "T=1 SNN is equivalent to an INT8 quantized ANN" (theoretical basis, citing arXiv:2510.23383)
+2. "T=1 SNN is equivalent to an INT8 quantized ANN" (theoretical basis, citing Bu CVPR'25, Jiang ICML'23)
 3. "We leverage this equivalence to deploy SNN concepts on the Neural-ART NPU" (technical path)
 4. "µT-Kernel task architecture enables event-driven packet processing" (RTOS integration)
 5. "Multi-step SNN (T>1) as optional extension for deep classification" (demonstrates SNN depth)
@@ -303,7 +303,7 @@ Switching cost: < 1 day (proposal rewrite)
 ## 9. References
 
 ### Core Papers
-- [One Timestep is Enough (arXiv 2510.23383)](https://arxiv.org/abs/2510.23383) — T=1 SNN = INT8 ANN equivalence
+- ~~[One Timestep is Enough (arXiv 2510.23383)](https://arxiv.org/abs/2510.23383)~~ — **ICLR 2026 REJECTED**; equivalence now cited via Bu et al. CVPR 2025, Jiang et al. ICML 2023
 - [PASCAL: Precise ANN-SNN Conversion (arXiv 2505.01730, TMLR 2025)](https://arxiv.org/abs/2505.01730) — PASCAL framework
 - [Optimal ANN-SNN Conversion (T. Bu et al., ICLR 2022)](https://arxiv.org/abs/2303.04347) — QCFS activation function original paper
 - [ANN_SNN_QCFS (GitHub)](https://github.com/putshua/ANN_SNN_QCFS) — QCFS reference implementation

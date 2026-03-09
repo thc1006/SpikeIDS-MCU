@@ -74,7 +74,7 @@ while occupying 120.6--137.7\,KB Flash and 0.5--1.25\,KB RAM.
 Tree-based baselines (Random Forest, XGBoost) achieve higher overall
 accuracy on UNSW-NB15 but cannot be compiled for the NPU at all.
 To our knowledge, this is the first publicly documented IDS deployment
-on an ARM Cortex-M NPU and the first empirical validation of $T{=}1$
+on an ARM Cortex-M NPU and the first publicly documented empirical validation of $T{=}1$
 SNN--ANN equivalence on commercial NPU silicon.
 \end{abstract}
 
@@ -176,7 +176,7 @@ The MAX78000's accelerator is hard-wired for convolutional workloads;
 the STM32N6 Neural-ART NPU is a programmable accelerator that supports
 arbitrary operator graphs within its INT8 operator set.
 Our work differs from both in targeting a general-purpose ARM Cortex-M
-MCU with an attached NPU (\$89 dev kit), using multi-class classification
+MCU with an attached NPU, using multi-class classification
 (5-class and 10-class), and validating $T{=}1$ SNN equivalence.
 
 \begin{table*}[t]
@@ -198,7 +198,7 @@ Prajwal.~\cite{ieee2025event} & 2025 & NSL-KDD & multi & Event SNN & GPU & GPU &
 Mustafa~\cite{pmc2025hybrid} & 2025 & UNSW-NB15 & binary & RNN-SNN & GPU & GPU & No & No & No & 99.7\% \\
 Karthik~\cite{nature2026transformer} & 2026 & NSL-KDD & multi & Transf.-SNN & GPU & GPU & No & No & No & 99.2\% \\
 Ngo~\cite{ngo2022hhnids} & 2022 & UNSW-NB15 & binary & MLP & MAX78000 & AI-spec.\ MCU & Yes & Yes & Yes & 98.6\% \\
-\textbf{This work} & 2026 & NSL-KDD, UNSW & 5/10-cls & MLP (T=1 SNN eq.) & STM32N6 & MCU + NPU & Yes & Yes & No & 78.9\% \\
+\textbf{This work} & 2026 & NSL-KDD, UNSW & 5/10-cls & MLP (T=1 SNN eq.) & STM32N6 & MCU + NPU & Yes & Yes & No & 78.9/64.8\% \\
 \bottomrule
 \end{tabular}%
 }
@@ -264,7 +264,7 @@ produces a discretization that closely approximates the threshold-and-fire
 operation~\cite{bu2022optimal, jiang2023unified, bu2025inference}.
 In practice, any NPU executing INT8 \texttt{Gemm} + \texttt{Relu}
 is performing SNN-equivalent computation, with accuracy gaps typically
-below 0.5\,pp on standard benchmarks.
+below 1\,pp on standard benchmarks.
 
 \subsection{QCFS Activation}
 
@@ -458,8 +458,8 @@ MLP achieves the highest macro accuracy ($61.30{\pm}0.76$\%), which
 reflects better balance across minority classes from inverse-frequency
 weighting.
 The gap in overall accuracy reflects the difficulty of UNSW-NB15's
-10-class problem with extreme imbalance (Worms: 130 samples vs.\ Normal:
-56,000).
+10-class problem with extreme imbalance (Worms: 130 training / 44 test
+samples vs.\ Normal: 56,000 training).
 
 \subsection{Per-Class Performance}
 
@@ -475,7 +475,7 @@ The gap in overall accuracy reflects the difficulty of UNSW-NB15's
 \midrule
 DoS     & 95.9$\pm$0.5 & 80.2$\pm$2.7 & 87.3$\pm$1.5 & 7,458 \\
 Probe   & 77.3$\pm$1.6 & 70.3$\pm$5.3 & 73.6$\pm$3.1 & 2,421 \\
-R2L     & 93.5$\pm$1.5 & 25.0$\pm$9.1 & 38.8$\pm$11.5 & 2,754 \\
+R2L     & 93.5$\pm$1.5 & 25.0$\pm$9.1 & 38.7$\pm$11.5 & 2,754 \\
 U2R     & 13.6$\pm$10.6 & 18.6$\pm$3.3 & 13.8$\pm$4.1 & 200 \\
 Normal  & 72.2$\pm$1.4 & 96.5$\pm$0.5 & 82.6$\pm$0.9 & 9,711 \\
 \bottomrule
@@ -545,16 +545,16 @@ categories at the expense of the majority class.
 \toprule
 \textbf{Class} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Support} \\
 \midrule
-Generic        & 99.8$\pm$0.1 & 96.1$\pm$0.3 & 97.9$\pm$0.2 & 18,871 \\
-Reconnaissance & 68.4$\pm$4.7 & 83.6$\pm$1.1 & 75.1$\pm$2.6 & 3,496 \\
+Generic        & 99.8$\pm$0.1 & 96.1$\pm$0.4 & 97.9$\pm$0.2 & 18,871 \\
+Reconnaissance & 68.4$\pm$4.9 & 83.6$\pm$1.1 & 75.1$\pm$2.7 & 3,496 \\
 Normal         & 98.8$\pm$0.3 & 57.6$\pm$0.6 & 72.7$\pm$0.4 & 37,000 \\
-Exploits       & 78.8$\pm$0.9 & 49.7$\pm$1.3 & 60.9$\pm$0.8 & 11,132 \\
-Fuzzers        & 27.2$\pm$0.5 & 65.4$\pm$1.5 & 38.4$\pm$0.5 & 6,062 \\
-DoS            & 29.4$\pm$3.3 & 15.9$\pm$8.3 & 19.5$\pm$6.3 & 4,089 \\
-Shellcode      &  8.9$\pm$1.0 & 86.0$\pm$3.4 & 16.1$\pm$1.6 & 378 \\
-Backdoor       &  5.8$\pm$0.5 & 66.2$\pm$15.1 & 10.5$\pm$0.9 & 583 \\
-Worms          &  4.8$\pm$0.8 & 83.6$\pm$4.9 &  9.0$\pm$1.4 & 44 \\
-Analysis       &  1.5$\pm$1.2 &  9.0$\pm$8.9 &  2.6$\pm$2.1 & 677 \\
+Exploits       & 78.8$\pm$0.9 & 49.7$\pm$1.4 & 60.9$\pm$0.9 & 11,132 \\
+Fuzzers        & 27.2$\pm$0.5 & 65.4$\pm$1.6 & 38.4$\pm$0.6 & 6,062 \\
+DoS            & 29.4$\pm$3.5 & 15.9$\pm$8.8 & 19.5$\pm$6.6 & 4,089 \\
+Shellcode      &  8.9$\pm$1.1 & 86.0$\pm$3.6 & 16.1$\pm$1.7 & 378 \\
+Backdoor       &  5.8$\pm$0.5 & 66.2$\pm$15.9 & 10.5$\pm$1.0 & 583 \\
+Worms          &  4.8$\pm$0.9 & 83.6$\pm$5.1 &  9.0$\pm$1.5 & 44 \\
+Analysis       &  1.5$\pm$1.3 &  9.0$\pm$9.4 &  2.6$\pm$2.2 & 677 \\
 \bottomrule
 \end{tabular}%
 }
@@ -602,7 +602,7 @@ From the $T{=}1$ SNN perspective, this means the quantized SNN
 
 \begin{table}[t]
 \centering
-\caption{INT8 quantization ablation on NSL-KDD. FP32 baseline: 76.45\%.
+\caption{INT8 quantization ablation on NSL-KDD. FP32 baseline: 76.45\% (seed 42, used for ONNX export).
 $\Delta$ = FP32 $-$ INT8 (positive = degradation).
 All 24 configurations show $|\Delta| < 1$\,pp.}
 \label{tab:quant_ablation}
@@ -687,7 +687,7 @@ on-board instrumentation.
 QCFS INT8 runs \texttt{Gemm} on the NPU but each \texttt{Floor}
 triggers a CPU fallback via \mbox{\texttt{DequantizeLinear}}
 $\to$ \mbox{\texttt{Floor(float)}} $\to$ \mbox{\texttt{QuantizeLinear}},
-adding 0.08\,ms (+17.6\%) over ReLU INT8.
+adding 0.08\,ms (+17.4\%) over ReLU INT8.
 The \texttt{Floor} operator is absent from ST's published
 NPU operator list~\cite{st_neural_art}.
 
@@ -749,7 +749,7 @@ The MLP is not the most accurate classifier on every dataset, but it is
 the only architecture deployable on the NPU hardware.
 More broadly, this work targets a different design point from
 GPU-based SNN-IDS research (Table~\ref{tab:related}):
-sub-millisecond inference on a \$89 MCU rather than state-of-the-art
+sub-millisecond inference on a commodity MCU rather than state-of-the-art
 accuracy on unconstrained hardware. The gap in absolute accuracy
 reflects multi-class evaluation (5/10-class vs.\ binary),
 multi-seed averaging (mean vs.\ best-of-one), and NPU operator
@@ -759,7 +759,7 @@ constraints (shallow MLP vs.\ deep architectures).
 
 With multi-seed evaluation, ReLU outperforms QCFS on NSL-KDD
 ($p{=}0.037$), overturning a single-seed artifact.
-Combined with 17.6\% latency overhead from \texttt{Floor} CPU fallback,
+Combined with 17.4\% latency overhead from \texttt{Floor} CPU fallback,
 QCFS offers no advantage on this NPU target.
 
 \subsection{Comparison with HH-NIDS}
@@ -786,7 +786,7 @@ IDS pipeline (packet capture, flow aggregation, feature extraction).
 Fourth, the MLP architecture is shallow; deeper models might improve
 minority-class performance but require verifying NPU operator compatibility.
 Fifth, UNSW-NB15 accuracy (64.75\%) is below tree baselines (69.46\%);
-the 10-class problem with extreme imbalance (Worms: 44 samples)
+the 10-class problem with extreme imbalance (Worms: 44 test samples)
 is inherently difficult, and the MLP may benefit from feature
 selection or architecture search on this dataset.
 
@@ -827,7 +827,7 @@ FP32 and INT8 models --- evidence that $T{=}1$ SNN--ANN equivalence
 holds on commercial NPU silicon.
 
 The QCFS experiment adds nuance: the \texttt{Floor} operator has no
-NPU support, forcing CPU fallback with 17.6\% latency overhead.
+NPU support, forcing CPU fallback with 17.4\% latency overhead.
 For commodity MCU NPUs with INT8 operator sets, ReLU remains the
 pragmatic activation for SNN-equivalent deployment.
 

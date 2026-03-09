@@ -2,7 +2,7 @@
 SNN-IDS: ANN Training for Network Intrusion Detection
 Target: STM32N6570-DK Neural-ART NPU (INT8)
 Dataset: NSL-KDD
-Math basis: T=1 SNN ≡ INT8 Quantized ANN (arXiv:2510.23383)
+Math basis: T=1 SNN ≡ INT8 Quantized ANN (Bu CVPR'25, Jiang ICML'23)
 """
 
 import torch

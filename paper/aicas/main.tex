@@ -50,10 +50,10 @@ INT8 NPU inference completes in \textbf{0.29--0.46\,ms}
 (2.7--4.2$\times$ faster than CPU-only), with an estimated energy
 of \textbf{44--69\,\textmu J/inference} and a Flash footprint of
 120--138\,KB.
-Compared with recent MCU-class IDS deployments on the STM32F7
-(31\,ms, 7.86\,mJ) and Raspberry Pi~3 (27\,ms), our NPU path
-achieves 60--107$\times$ lower latency and over 100$\times$
-lower energy per inference.
+Compared with recent MCU-class deployments on the STM32F7
+(31\,ms, 7.86\,mJ) and Raspberry Pi~3B+ (27\,ms), our NPU path
+achieves 59--107$\times$ lower latency and 114--179$\times$
+lower energy than the STM32F7.
 To our knowledge, this is the first publicly documented IDS
 deployment on an ARM Cortex-M NPU, and also the first non-vision
 workload reported on the Neural-ART accelerator.
@@ -89,7 +89,7 @@ Any NPU executing INT8 \texttt{Gemm}+\texttt{Relu} can therefore
 run an SNN-equivalent model.
 
 We validate this on the STM32N6570-DK (ARM Cortex-M55
-@ 800\,MHz, Neural-ART NPU, 600\,GOPS INT8, \$89 dev kit).
+@ 800\,MHz, Neural-ART NPU, 600\,GOPS INT8).
 We focus on classifier inference latency, energy, and memory footprint
 on pre-extracted flow-level features; the full IDS pipeline (packet
 capture, flow aggregation) is left to future work.
@@ -104,7 +104,7 @@ Our contributions:
     FP32 and INT8 models.
   \item An operator-level analysis showing that the \texttt{Floor}
     operator required by QCFS~\cite{bu2022optimal} falls back to CPU,
-    adding 17.6\% latency.
+    adding 17.4\% latency.
 \end{itemize}
 
 % ============================================================
@@ -149,12 +149,13 @@ target a different design point.
 Ngo~\cite{ngo2022hhnids} & MAX78000 & bin. & 98.6\% & --- & 18\,mW$^*$ & CNN eng. \\
 Zahm~\cite{zahm2024csiac} & Akida & multi & 98.4\% & --- & ${\sim}$1\,W$^*$ & Neurom. \\
 Chehade~\cite{chehade2025stm32} & STM32F7 & multi & 96.6\% & 31\,ms & 7.86\,mJ & None \\
-Diab~\cite{diab2025rpi} & RPi~3B+ & multi & 95.3\% & 27\,ms & ${\sim}$6.75\,mJ & None \\
+Diab~\cite{diab2025rpi} & RPi~3B+ & multi & 95.3\% & 27\,ms & ${\sim}$6.75\,mJ$^\ddagger$ & None \\
 \midrule
 \textbf{This work} & \textbf{STM32N6} & \textbf{5/10} & \textbf{78.9/64.8\%}$^\dagger$ & \textbf{0.29\,ms} & \textbf{44\,\textmu J} & \textbf{NPU} \\
 \bottomrule
 \multicolumn{7}{l}{\scriptsize $^*$Power, not energy; latency not reported.} \\
-\multicolumn{7}{l}{\scriptsize $^\dagger$NSL-KDD 5-class / UNSW-NB15 10-class.}
+\multicolumn{7}{l}{\scriptsize $^\dagger$NSL-KDD 5-class / UNSW-NB15 10-class.} \\
+\multicolumn{7}{l}{\scriptsize $^\ddagger$Estimated from reported power and latency.}
 \end{tabular}%
 }
 \end{table}
@@ -189,7 +190,7 @@ The NPU supports \texttt{Conv}, \texttt{Gemm}, \texttt{Relu},
 unsupported operators fall back to the Cortex-M55 CPU with
 automatic cache-maintenance overhead at each NPU$\leftrightarrow$CPU
 handoff.
-The dev kit costs \$89 and includes 4.2\,MB internal SRAM and
+The board includes 4.2\,MB internal SRAM and
 128\,MB external NOR Flash.
 
 \subsection{Model Architecture}
@@ -201,7 +202,7 @@ $\to \texttt{Lin}(256{\to}128) \to \texttt{BN} \to \texttt{ReLU}$
 $\to \texttt{Lin}(128{\to}C)$,
 where $d{=}41$ (NSL-KDD) or $34$ (UNSW-NB15) and $C{=}5$ or $10$.
 BatchNorm is folded into the preceding Linear at ONNX export, yielding
-a graph of \texttt{Gemm}+\texttt{Relu} operators only (110--111K parameters).
+a graph of \texttt{Gemm}+\texttt{Relu} operators only (${\sim}$110K parameters).
 The architecture is deliberately shallow: deeper models could improve
 minority-class recall but risk introducing operators outside the NPU's
 supported set.
@@ -350,7 +351,7 @@ training samples.
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-3.5) {\v\%};
   \else \node[font=\tiny] at (\i+0.5,-3.5) {\v\%}; \fi}
 % Row 4: U2R
-\foreach \x/\v [count=\i from 0] in {24.0/24.0, 0.0/0.0, 50.9/50.9, 6.5/6.5, 18.6/18.6} {
+\foreach \x/\v [count=\i from 0] in {24.0/24.0, 0.0/0.0, 50.9/50.9, 6.6/6.6, 18.6/18.6} {
   \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-4) rectangle (\i+1,-5);
   \pgfmathtruncatemacro{\w}{\x>50?1:0}
   \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-4.5) {\v\%};
@@ -363,7 +364,7 @@ training samples.
 \node[font=\scriptsize, rotate=90] at (-1.0,-2.5) {True};
 \node[font=\scriptsize] at (2.5, 0.8) {Predicted};
 \end{tikzpicture}
-\caption{NSL-KDD confusion matrix (\%, 10-seed mean, ReLU INT8).
+\caption{NSL-KDD confusion matrix (\%, 10-seed mean, ReLU MLP).
 R2L$\to$Normal (64.4\%) and U2R$\to$Probe (50.9\%) dominate errors.}
 \label{fig:cm}
 \end{figure}
@@ -402,7 +403,7 @@ and \textbf{4.2$\times$} on UNSW-NB15 over the same model on
 the Cortex-M55 CPU.
 At an estimated 150\,mW (ST AN5946~\cite{st_an5946}), this translates
 to 44--69\,\textmu J per inference ---
-\textbf{over 100$\times$} less than Chehade et~al.'s 7.86\,mJ on
+\textbf{114--179$\times$} less than Chehade et~al.'s 7.86\,mJ on
 the STM32F7~\cite{chehade2025stm32}.
 UNSW-NB15 achieves 100\% NPU execution (4~HW, 0~SW epochs);
 Flash shrinks 3.4--3.8$\times$ from FP32 to INT8.
@@ -448,7 +449,7 @@ STLINK-V3PWR probe is left to future work.
 \end{axis}
 \end{tikzpicture}
 \caption{Energy per inference (log scale). Our NPU path achieves
-over 100$\times$ reduction versus prior MCU-class deployments.
+over two orders of magnitude reduction versus CPU-only MCU baselines.
 NPU = ReLU INT8 on Neural-ART (estimated from AN5946).
 Chehade~\cite{chehade2025stm32}: STM32F7;
 Diab~\cite{diab2025rpi}: RPi~3B+.}
@@ -494,7 +495,7 @@ Logits (5)    & \textbf{0.978} & 0.103 & 19.8 \\
 
 \textbf{Design-space positioning.}
 This work targets a different point from GPU-based IDS: sub-millisecond,
-sub-millijoule inference on a \$89 MCU.
+sub-millijoule inference on a commodity MCU.
 The absolute accuracy (78.9\% NSL-KDD, 64.8\% UNSW-NB15) is below
 GPU-simulation results, reflecting multi-class evaluation
 (5/10-class vs.\ binary) and NPU operator constraints (shallow MLP).
@@ -511,7 +512,7 @@ not implemented in ST Edge AI Core).
 
 \textbf{QCFS barrier.}
 The \texttt{Floor} operator is absent from the Neural-ART operator set,
-forcing CPU fallback with 17.6\% latency overhead.
+forcing CPU fallback with 17.4\% latency overhead.
 ReLU INT8 remains the optimal activation for commodity MCU NPUs.
 
 \textbf{RTOS implications.}
@@ -532,15 +533,14 @@ imbalance that limits absolute accuracy.
 
 \textbf{Conclusion.}
 We demonstrated sub-millisecond, sub-millijoule IDS inference on a
-commodity MCU NPU, achieving 2.7--4.2$\times$ CPU speedup and over
-100$\times$ energy reduction versus prior MCU-class deployments.
+commodity MCU NPU, achieving 2.7--4.2$\times$ CPU speedup and over two orders of
+magnitude energy reduction versus CPU-only MCU deployments.
 Layer-wise analysis confirms 99\% FP32/INT8 prediction agreement,
 validating $T{=}1$ SNN--ANN equivalence on commercial NPU silicon.
 Code and trained models will be released upon acceptance.
 
 % ============================================================
 \balance
-\clearpage
 {\small
 \bibliographystyle{IEEEtran}
 \bibliography{references}
