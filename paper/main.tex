@@ -117,10 +117,12 @@ we train an MLP for intrusion detection on two standard benchmarks
 through ST Edge AI Developer Cloud.
 The classifier infers in 0.29--0.46\,ms (2.7--4.2$\times$ faster than
 CPU-only execution) with a memory footprint under 140\,KB.
-We emphasize that this paper evaluates the \emph{classifier inference}
-stage on pre-extracted flow-level features; a complete end-to-end IDS
-pipeline (packet capture, flow aggregation, feature extraction) is left
-to future work.
+We focus on inference latency and memory footprint of the classifier
+stage on pre-extracted flow-level features; power estimates derived from
+ST's published application note are noted in Section~\ref{sec:npu} but
+direct on-board measurement is deferred.
+A complete end-to-end IDS pipeline (packet capture, flow aggregation,
+feature extraction) is left to future work.
 
 Our contributions:
 \begin{itemize}
@@ -270,18 +272,11 @@ below 0.5\,pp on standard benchmarks.
 
 \subsection{QCFS Activation}
 
-The QCFS activation~\cite{bu2022optimal} bridges ANN training and SNN
-spike encoding:
-%
-\begin{equation}
-  \text{QCFS}(x) = \left\lfloor \text{clip}\!\left(\frac{x}{s},\, 0,\, L\right) \right\rfloor \cdot s
-  \label{eq:qcfs}
-\end{equation}
-%
-where $s = \theta / L$ is the quantization step, $\theta$ is a learnable
-threshold, and $L$ is the number of quantization levels.
-After BatchNorm fusion, the ONNX graph contains \texttt{Gemm},
-\texttt{Clip}, \texttt{Floor}, and \texttt{Mul} operators.
+QCFS~\cite{bu2022optimal} maps ANN activations to discrete spike counts:
+$\text{QCFS}(x) = \lfloor \text{clip}(x/s,\, 0,\, L) \rfloor \cdot s$,
+where $s{=}\theta/L$ is the quantization step and $L$ is the number of
+levels. Its ONNX graph requires \texttt{Floor}, which is absent from
+the Neural-ART operator set (Section~\ref{sec:npu}).
 
 \subsection{STM32N6 Neural-ART NPU}
 
@@ -498,17 +493,76 @@ challenging. R2L exhibits high precision (93.5\%) but low recall
 predicts the class but misses most R2L samples.
 U2R has only 52 training samples (0.04\% of the training set);
 no amount of class weighting can fully compensate.
+Figure~\ref{fig:cm_nslkdd} visualizes the confusion pattern:
+R2L samples overwhelmingly fall into the Normal bin (64.4\%),
+and U2R scatters across Probe (50.9\%) and Normal (24.0\%).
 
-On UNSW-NB15 (10-class), per-class performance varies widely:
-Generic (F1$=$97.9$\pm$0.2\%) and Reconnaissance (75.1$\pm$2.7\%)
-perform well, but extreme minority classes collapse ---
-Worms (44~test samples, F1$=$9.0\%), Analysis (F1$=$2.6\%),
-and Backdoor (F1$=$10.6\%).
-Normal achieves high precision (98.8\%) but only 57.6\% recall,
-indicating that the model under-predicts the majority class in favor
-of attack categories due to inverse-frequency weighting.
-Full per-class results and confusion matrices are available in the
-code repository.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=0.62, every node/.style={font=\scriptsize}]
+  % Color helper: value 0-100 maps to white(0)..blue(100)
+  \foreach \row/\rname [count=\ri from 0] in {
+    {80.2, 2.3, 0.0, 0.3,17.2}/DoS,
+    { 8.3,70.3, 0.0, 0.1,21.3}/Probe,
+    { 0.0, 0.8,25.0, 9.8,64.4}/R2L,
+    { 0.0,50.9, 6.6,18.6,24.0}/U2R,
+    { 0.6, 2.1, 0.3, 0.5,96.5}/Norm.} {
+    \foreach \val [count=\ci from 0] in \row {
+      \pgfmathsetmacro{\intensity}{\val}
+      \pgfmathsetmacro{\textcol}{ifthenelse(\intensity>55,"white","black")}
+      \fill[blue!\intensity!white] (\ci,-\ri) rectangle ++(1,-1);
+      \draw[gray!40] (\ci,-\ri) rectangle ++(1,-1);
+      \node[text=\textcol] at (\ci+0.5,-\ri-0.5) {\pgfmathprintnumber[fixed,precision=1]{\val}};
+    }
+    % Row label (true class)
+    \node[anchor=east] at (0,-\ri-0.5) {\rname};
+  }
+  % Column labels (predicted)
+  \foreach \cname [count=\ci from 0] in {DoS,Probe,R2L,U2R,Norm.} {
+    \node[anchor=south, rotate=45] at (\ci+0.5,0.1) {\cname};
+  }
+  % Axis labels
+  \node[rotate=90, anchor=south] at (-1.2,-2.5) {True class};
+  \node[anchor=north] at (2.5,-5.3) {Predicted class};
+\end{tikzpicture}
+\caption{Normalized confusion matrix (\%, 10-seed mean) for ReLU MLP
+on NSL-KDD. R2L$\to$Normal (64.4\%) and U2R$\to$Probe (50.9\%) are
+the dominant misclassification patterns.}
+\label{fig:cm_nslkdd}
+\end{figure}
+
+Table~\ref{tab:perclass_unsw} shows per-class results on UNSW-NB15.
+Generic dominates (F1$=$97.9\%), while extreme minority classes
+collapse: Worms (44 test samples, F1$=$9.0\%), Analysis (F1$=$2.6\%).
+Normal achieves 98.8\% precision but only 57.6\% recall ---
+inverse-frequency weighting shifts predictions toward attack
+categories at the expense of the majority class.
+
+\begin{table}[t]
+\centering
+\caption{Per-class metrics (\%, mean$\pm$std) for ReLU MLP on UNSW-NB15
+(10 seeds). Classes sorted by F1 descending.}
+\label{tab:perclass_unsw}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Class} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Support} \\
+\midrule
+Generic        & 99.8$\pm$0.1 & 96.1$\pm$0.3 & 97.9$\pm$0.2 & 18,871 \\
+Reconnaissance & 68.4$\pm$4.7 & 83.6$\pm$1.1 & 75.1$\pm$2.6 & 3,496 \\
+Normal         & 98.8$\pm$0.3 & 57.6$\pm$0.6 & 72.7$\pm$0.4 & 37,000 \\
+Exploits       & 78.8$\pm$0.9 & 49.7$\pm$1.3 & 60.9$\pm$0.8 & 11,132 \\
+Fuzzers        & 27.2$\pm$0.5 & 65.4$\pm$1.5 & 38.4$\pm$0.5 & 6,062 \\
+DoS            & 29.4$\pm$3.3 & 15.9$\pm$8.3 & 19.5$\pm$6.3 & 4,089 \\
+Shellcode      &  8.9$\pm$1.0 & 86.0$\pm$3.4 & 16.1$\pm$1.6 & 378 \\
+Backdoor       &  5.8$\pm$0.5 & 66.2$\pm$15.1 & 10.5$\pm$0.9 & 583 \\
+Worms          &  4.8$\pm$0.8 & 83.6$\pm$4.9 &  9.0$\pm$1.4 & 44 \\
+Analysis       &  1.5$\pm$1.2 &  9.0$\pm$8.9 &  2.6$\pm$2.1 & 677 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
 
 \subsection{Layer-Wise FP32 vs INT8 Equivalence}
 \label{sec:layerwise}
@@ -588,6 +642,7 @@ The practical implication is that $T{=}1$ equivalence is preserved
 regardless of calibration choices.
 
 \subsection{NPU Hardware Benchmark}
+\label{sec:npu}
 
 \begin{table}[t]
 \centering
@@ -624,6 +679,14 @@ INT8 quantization combined with NPU acceleration yields
 The larger speedup on UNSW-NB15 reflects 100\% NPU execution
 (4~HW epochs, zero SW fallback), while NSL-KDD retains 2~SW epochs.
 Flash memory shrinks 3.4--3.8$\times$ from FP32 to INT8.
+ST Application Note AN5946 reports ${\sim}150$\,mW average power during
+NPU inference at nominal frequency~\cite{st_an5946}.
+Combining this with our measured latency yields an estimated
+${\sim}69$\,\textmu J/inference (NSL-KDD) and
+${\sim}44$\,\textmu J/inference (UNSW-NB15).
+These figures are derived from the reference workload in AN5946, not
+direct measurement of our model, and should be validated with
+on-board instrumentation.
 
 QCFS INT8 runs \texttt{Gemm} on the NPU but each \texttt{Floor}
 triggers a CPU fallback via \mbox{\texttt{DequantizeLinear}}
@@ -688,6 +751,13 @@ blocks the processor for 1.2\,ms per sample;
 which matters on memory-constrained MCUs.
 The MLP is not the most accurate classifier on every dataset, but it is
 the only architecture deployable on the NPU hardware.
+More broadly, this work targets a different design point from
+GPU-based SNN-IDS research (Table~\ref{tab:related}):
+sub-millisecond inference on a \$89 MCU rather than state-of-the-art
+accuracy on unconstrained hardware. The gap in absolute accuracy
+reflects multi-class evaluation (5/10-class vs.\ binary),
+multi-seed averaging (mean vs.\ best-of-one), and NPU operator
+constraints (shallow MLP vs.\ deep architectures).
 
 \subsection{QCFS and Floor Fallback}
 
