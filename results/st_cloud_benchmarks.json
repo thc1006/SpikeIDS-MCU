@@ -1,0 +1,98 @@
+{
+  "description": "ST Edge AI Developer Cloud benchmark results (manually obtained via browser)",
+  "platform": "STM32N6570-DK",
+  "compiler": "atonn v1.1.3",
+  "date_obtained": "2026-03-08 to 2026-04-13",
+  "benchmarks": {
+    "nslkdd_relu_fp32": {
+      "model": "ids_model.onnx",
+      "dataset": "NSL-KDD",
+      "precision": "FP32",
+      "target": "CPU",
+      "latency_ms": 1.243,
+      "hw_epochs": 0,
+      "hybrid_epochs": 0,
+      "sw_epochs": 11,
+      "flash_kb": 466.4,
+      "ram_kb": 2.17
+    },
+    "nslkdd_relu_int8": {
+      "model": "ids_model_int8.onnx",
+      "dataset": "NSL-KDD",
+      "precision": "INT8",
+      "target": "NPU",
+      "latency_ms": 0.4561,
+      "hw_epochs": 5,
+      "hybrid_epochs": 1,
+      "sw_epochs": 2,
+      "flash_kb": 137.7,
+      "ram_kb": 1.25,
+      "speedup_vs_cpu": 2.73
+    },
+    "unsw_relu_fp32": {
+      "model": "unsw_model_embedded.onnx",
+      "dataset": "UNSW-NB15",
+      "precision": "FP32",
+      "target": "CPU",
+      "latency_ms": 1.227,
+      "hw_epochs": 0,
+      "hybrid_epochs": 0,
+      "sw_epochs": 11,
+      "flash_kb": 461.9,
+      "ram_kb": 2.14
+    },
+    "unsw_relu_int8": {
+      "model": "unsw_model_int8.onnx",
+      "dataset": "UNSW-NB15",
+      "precision": "INT8",
+      "target": "NPU",
+      "latency_ms": 0.295,
+      "hw_epochs": 4,
+      "hybrid_epochs": 0,
+      "sw_epochs": 0,
+      "flash_kb": 120.6,
+      "ram_kb": 0.50,
+      "speedup_vs_cpu": 4.16,
+      "note": "100% NPU execution (0 SW epochs)"
+    },
+    "nslkdd_qcfs_int8": {
+      "model": "ids_qcfs_L4_int8.onnx",
+      "dataset": "NSL-KDD",
+      "precision": "INT8",
+      "target": "NPU+CPU",
+      "latency_ms": 0.5364,
+      "hw_epochs": 13,
+      "hybrid_epochs": 1,
+      "sw_epochs": 14,
+      "flash_kb": 138.0,
+      "ram_kb": 2.00,
+      "note": "Floor operator forces CPU fallback"
+    },
+    "cicids_relu_int8": {
+      "model": "cicids_model_int8.onnx",
+      "dataset": "CICIDS2017",
+      "precision": "INT8",
+      "target": "NPU",
+      "latency_ms": 0.4211,
+      "hw_epochs": 4,
+      "hybrid_epochs": 0,
+      "sw_epochs": 0,
+      "flash_kb": 120.6,
+      "ram_kb": 0.50,
+      "note": "100% NPU execution (4 HW, 0 SW)"
+    },
+    "iot23_relu_int8": {
+      "model": "iot23_model_int8.onnx",
+      "dataset": "IoT-23",
+      "precision": "INT8",
+      "target": "NPU",
+      "latency_ms": 0.3804,
+      "hw_epochs": 4,
+      "hybrid_epochs": 0,
+      "sw_epochs": 0,
+      "flash_kb": 105.0,
+      "ram_kb": 0.50,
+      "note": "100% NPU execution (4 HW, 0 SW)"
+    }
+  }
+}
