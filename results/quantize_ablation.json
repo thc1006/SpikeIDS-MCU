@@ -10,7 +10,7 @@
         "int8_accuracy": 76.59244144783534,
         "accuracy_drop": -0.13750887154009206,
         "file_size_kb": 114.3515625,
-        "time_s": 0.20323824882507324
+        "time_s": 0.2006697654724121
       },
       {
         "calibration_method": "MinMax",
@@ -19,7 +19,7 @@
         "int8_accuracy": 76.37508871540099,
         "accuracy_drop": 0.07984386089425755,
         "file_size_kb": 114.3515625,
-        "time_s": 0.23032617568969727
+        "time_s": 0.2502777576446533
       },
       {
         "calibration_method": "MinMax",
@@ -28,7 +28,7 @@
         "int8_accuracy": 76.37508871540099,
         "accuracy_drop": 0.07984386089425755,
         "file_size_kb": 114.3515625,
-        "time_s": 0.26903581619262695
+        "time_s": 0.2659430503845215
       },
       {
         "calibration_method": "MinMax",
@@ -37,7 +37,7 @@
         "int8_accuracy": 77.27111426543648,
         "accuracy_drop": -0.8161816891412315,
         "file_size_kb": 114.3515625,
-        "time_s": 0.3673441410064697
+        "time_s": 0.3843061923980713
       },
       {
         "calibration_method": "MinMax",
@@ -46,7 +46,7 @@
         "int8_accuracy": 76.59687721788502,
         "accuracy_drop": -0.14194464158977382,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.28728628158569336
+        "time_s": 0.2409355640411377
       },
       {
         "calibration_method": "MinMax",
@@ -55,7 +55,7 @@
         "int8_accuracy": 76.5081618168914,
         "accuracy_drop": -0.05322924059615275,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.2875983715057373
+        "time_s": 0.2587928771972656
       },
       {
         "calibration_method": "MinMax",
@@ -64,7 +64,7 @@
         "int8_accuracy": 76.5081618168914,
         "accuracy_drop": -0.05322924059615275,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.2676668167114258
+        "time_s": 0.27184510231018066
       },
       {
         "calibration_method": "MinMax",
@@ -73,7 +73,7 @@
         "int8_accuracy": 77.27111426543648,
         "accuracy_drop": -0.8161816891412315,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.4761226177215576
+        "time_s": 0.4072287082672119
       },
       {
         "calibration_method": "Entropy",
@@ -82,7 +82,7 @@
         "int8_accuracy": 76.59244144783534,
         "accuracy_drop": -0.13750887154009206,
         "file_size_kb": 114.3515625,
-        "time_s": 0.20183801651000977
+        "time_s": 0.19917058944702148
       },
       {
         "calibration_method": "Entropy",
@@ -91,7 +91,7 @@
         "int8_accuracy": 76.37508871540099,
         "accuracy_drop": 0.07984386089425755,
         "file_size_kb": 114.3515625,
-        "time_s": 0.21869778633117676
+        "time_s": 0.21080636978149414
       },
       {
         "calibration_method": "Entropy",
@@ -100,7 +100,7 @@
         "int8_accuracy": 76.37508871540099,
         "accuracy_drop": 0.07984386089425755,
         "file_size_kb": 114.3515625,
-        "time_s": 0.27306365966796875
+        "time_s": 0.22208833694458008
       },
       {
         "calibration_method": "Entropy",
@@ -109,7 +109,7 @@
         "int8_accuracy": 77.27111426543648,
         "accuracy_drop": -0.8161816891412315,
         "file_size_kb": 114.3515625,
-        "time_s": 0.4138932228088379
+        "time_s": 0.3712036609649658
       },
       {
         "calibration_method": "Entropy",
@@ -118,7 +118,7 @@
         "int8_accuracy": 76.59687721788502,
         "accuracy_drop": -0.14194464158977382,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.26432132720947266
+        "time_s": 0.2412865161895752
       },
       {
         "calibration_method": "Entropy",
@@ -127,7 +127,7 @@
         "int8_accuracy": 76.5081618168914,
         "accuracy_drop": -0.05322924059615275,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.38533902168273926
+        "time_s": 0.252413272857666
       },
       {
         "calibration_method": "Entropy",
@@ -136,7 +136,7 @@
         "int8_accuracy": 76.5081618168914,
         "accuracy_drop": -0.05322924059615275,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.26192545890808105
+        "time_s": 0.2640359401702881
       },
       {
         "calibration_method": "Entropy",
@@ -145,7 +145,7 @@
         "int8_accuracy": 77.27111426543648,
         "accuracy_drop": -0.8161816891412315,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.46221184730529785
+        "time_s": 0.4504208564758301
       },
       {
         "calibration_method": "Percentile",
@@ -154,7 +154,7 @@
         "int8_accuracy": 76.58800567778566,
         "accuracy_drop": -0.1330731014904103,
         "file_size_kb": 114.3515625,
-        "time_s": 0.19978761672973633
+        "time_s": 0.19935321807861328
       },
       {
         "calibration_method": "Percentile",
@@ -163,7 +163,7 @@
         "int8_accuracy": 76.37065294535131,
         "accuracy_drop": 0.08427963094393931,
         "file_size_kb": 114.3515625,
-        "time_s": 0.2120530605316162
+        "time_s": 0.20759367942810059
       },
       {
         "calibration_method": "Percentile",
@@ -172,7 +172,7 @@
         "int8_accuracy": 76.38839602555004,
         "accuracy_drop": 0.06653655074521225,
         "file_size_kb": 114.3515625,
-        "time_s": 0.2180628776550293
+        "time_s": 0.2251741886138916
       },
       {
         "calibration_method": "Percentile",
@@ -181,7 +181,7 @@
         "int8_accuracy": 76.93399574166075,
         "accuracy_drop": -0.47906316536550264,
         "file_size_kb": 114.3515625,
-        "time_s": 0.3671278953552246
+        "time_s": 0.3697631359100342
       },
       {
         "calibration_method": "Percentile",
@@ -190,7 +190,7 @@
         "int8_accuracy": 76.6013129879347,
         "accuracy_drop": -0.1463804116394556,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.24248719215393066
+        "time_s": 0.2377474308013916
       },
       {
         "calibration_method": "Percentile",
@@ -199,7 +199,7 @@
         "int8_accuracy": 76.56582682753726,
         "accuracy_drop": -0.11089425124201568,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.250016450881958
+        "time_s": 0.2544717788696289
       },
       {
         "calibration_method": "Percentile",
@@ -208,7 +208,7 @@
         "int8_accuracy": 76.2819375443577,
         "accuracy_drop": 0.17299503193754617,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.26496243476867676
+        "time_s": 0.2626464366912842
       },
       {
         "calibration_method": "Percentile",
@@ -217,7 +217,229 @@
         "int8_accuracy": 76.95173882185948,
         "accuracy_drop": -0.4968062455642297,
         "file_size_kb": 122.6611328125,
-        "time_s": 0.4068906307220459
+        "time_s": 0.43535614013671875
+      }
+    ]
+  },
+  "unsw": {
+    "dataset": "unsw",
+    "fp32_accuracy": 65.42049263955691,
+    "ablations": [
+      {
+        "calibration_method": "MinMax",
+        "per_channel": false,
+        "n_calibration_samples": 100,
+        "int8_accuracy": 64.57270563086041,
+        "accuracy_drop": 0.8477870086964998,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6680598258972168
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": false,
+        "n_calibration_samples": 500,
+        "int8_accuracy": 56.57581499295535,
+        "accuracy_drop": 8.84467764660156,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6856734752655029
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": false,
+        "n_calibration_samples": 1000,
+        "int8_accuracy": 56.60860904630034,
+        "accuracy_drop": 8.811883593256574,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.8130886554718018
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": false,
+        "n_calibration_samples": 5000,
+        "int8_accuracy": 56.56974202011369,
+        "accuracy_drop": 8.850750619443225,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.8351271152496338
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": true,
+        "n_calibration_samples": 100,
+        "int8_accuracy": 64.57027644172375,
+        "accuracy_drop": 0.8502161978331628,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.7997066974639893
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": true,
+        "n_calibration_samples": 500,
+        "int8_accuracy": 57.65194578049847,
+        "accuracy_drop": 7.768546859058439,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8116669654846191
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": true,
+        "n_calibration_samples": 1000,
+        "int8_accuracy": 57.13695768352524,
+        "accuracy_drop": 8.283534956031673,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8326475620269775
+      },
+      {
+        "calibration_method": "MinMax",
+        "per_channel": true,
+        "n_calibration_samples": 5000,
+        "int8_accuracy": 57.18918524996356,
+        "accuracy_drop": 8.231307389593354,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.9716434478759766
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": false,
+        "n_calibration_samples": 100,
+        "int8_accuracy": 64.57270563086041,
+        "accuracy_drop": 0.8477870086964998,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.8050634860992432
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": false,
+        "n_calibration_samples": 500,
+        "int8_accuracy": 56.57581499295535,
+        "accuracy_drop": 8.84467764660156,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6819131374359131
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": false,
+        "n_calibration_samples": 1000,
+        "int8_accuracy": 56.60860904630034,
+        "accuracy_drop": 8.811883593256574,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6869978904724121
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": false,
+        "n_calibration_samples": 5000,
+        "int8_accuracy": 56.56974202011369,
+        "accuracy_drop": 8.850750619443225,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.8044180870056152
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": true,
+        "n_calibration_samples": 100,
+        "int8_accuracy": 64.57027644172375,
+        "accuracy_drop": 0.8502161978331628,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8014578819274902
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": true,
+        "n_calibration_samples": 500,
+        "int8_accuracy": 57.65194578049847,
+        "accuracy_drop": 7.768546859058439,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8018097877502441
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": true,
+        "n_calibration_samples": 1000,
+        "int8_accuracy": 57.13695768352524,
+        "accuracy_drop": 8.283534956031673,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8225224018096924
+      },
+      {
+        "calibration_method": "Entropy",
+        "per_channel": true,
+        "n_calibration_samples": 5000,
+        "int8_accuracy": 57.18918524996356,
+        "accuracy_drop": 8.231307389593354,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.9505128860473633
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": false,
+        "n_calibration_samples": 100,
+        "int8_accuracy": 64.51319049701209,
+        "accuracy_drop": 0.9073021425448218,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6615393161773682
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": false,
+        "n_calibration_samples": 500,
+        "int8_accuracy": 57.94101928776174,
+        "accuracy_drop": 7.479473351795171,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6791205406188965
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": false,
+        "n_calibration_samples": 1000,
+        "int8_accuracy": 56.937764174318616,
+        "accuracy_drop": 8.482728465238296,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.6908915042877197
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": false,
+        "n_calibration_samples": 5000,
+        "int8_accuracy": 61.06617111208279,
+        "accuracy_drop": 4.35432152747412,
+        "file_size_kb": 112.85546875,
+        "time_s": 0.8167834281921387
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": true,
+        "n_calibration_samples": 100,
+        "int8_accuracy": 64.54962833406209,
+        "accuracy_drop": 0.8708643054948197,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.7928965091705322
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": true,
+        "n_calibration_samples": 500,
+        "int8_accuracy": 53.59641451683428,
+        "accuracy_drop": 11.824078122722632,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8100032806396484
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": true,
+        "n_calibration_samples": 1000,
+        "int8_accuracy": 53.943788563377545,
+        "accuracy_drop": 11.476704076179367,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.8266394138336182
+      },
+      {
+        "calibration_method": "Percentile",
+        "per_channel": true,
+        "n_calibration_samples": 5000,
+        "int8_accuracy": 60.55482679881455,
+        "accuracy_drop": 4.865665840742359,
+        "file_size_kb": 121.228515625,
+        "time_s": 0.9421768188476562
       }
     ]
   }
