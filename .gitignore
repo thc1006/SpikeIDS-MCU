@@ -16,7 +16,29 @@ paper/**/*.bbl
 paper/**/*.blg
 paper/**/*.log
 paper/**/*.out
+paper/**/*.fdb_latexmk
+paper/**/*.fls
+paper/**/*.synctex.gz
 paper/figures/
+
+# LaTeX cruft outside paper/ (accidental compiles)
+/main.aux
+/main.bbl
+/main.blg
+/main.fdb_latexmk
+/main.fls
+/main.log
+/main.out
+/main.pdf
+/main.synctex.gz
+/texput.log
+docs/*.aux
+docs/*.bbl
+docs/*.blg
+docs/*.log
+docs/*.out
+docs/*.fdb_latexmk
+docs/*.fls
 
 # Virtual environment
 snn-ids-env/
@@ -52,5 +74,28 @@ TRON_Contest_2026_Strategy.md
 # Claude Code internal
 .claude/
 
-# Submission packages
-*_submission.zip
+# Submission packages and archives
+*.zip
+preprints*.pdf
+submissions/
+
+# Runtime logs
+logs/
+
+# Internal docs (audits, ADRs, strategy, contest planning, AI workflow)
+docs/AI_GENERATED_REPORT_ISSUES_*.md
+docs/PAPER_AI_RISK_AUDIT_*.md
+docs/GLOBECOM_GAP_AUDIT.md
+docs/GLOBECOM_SUBMISSION_TODO_*.md
+docs/ADR-002-NCA-Submission-Strategy.md
+docs/ADR-003-GLOBECOM-Rigor-Uplift.md
+docs/TRON_2026_ProgramPlan_*
+docs/TRON_Contest_2026_*.md
+TRON_2026_ProgramPlan_*
+paper/globecom/REVIEW_CHECKLIST.md
+paper/preprint_v3/Form_Fields.md
+paper/preprint_v3/v3_submission_notes.md
+reviewer_comment.md
+
+# Sub-projects (separate repos / sandboxes)
+metacentrum_cz_use/
