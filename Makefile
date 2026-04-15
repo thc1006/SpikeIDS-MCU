@@ -8,9 +8,16 @@ PY = $(VENV)/bin/python3
 
 .PHONY: all setup data train export quantize qcfs quantize-qcfs \
         multiseed unsw unsw-export tree-baseline layerwise quant-ablation \
-        paper clean
+        baselines baselines-export focal cicids cicids-export \
+        iot23 iot23-qcfs iot23-export \
+        all-experiments test paper clean
 
 all: setup data train export quantize qcfs quantize-qcfs
+
+# --- Full NCA experiment pipeline (requires data/ populated) ---
+all-experiments: multiseed unsw unsw-export tree-baseline layerwise quant-ablation \
+                 baselines baselines-export focal cicids cicids-export \
+                 iot23 iot23-qcfs iot23-export
 
 setup:
 	$(PYTHON) -m venv $(VENV)
@@ -59,10 +66,40 @@ layerwise:
 quant-ablation:
 	PYTHONUNBUFFERED=1 $(PY) src/quantize_ablation.py
 
+baselines:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_baselines.py
+
+baselines-export:
+	PYTHONUNBUFFERED=1 $(PY) src/export_baselines_onnx.py
+
+focal:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_focal.py
+
+# --- CICIDS2017 ---
+cicids:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_cicids2017.py
+
+cicids-export:
+	PYTHONUNBUFFERED=1 $(PY) src/export_cicids_onnx.py
+
+# --- IoT-23 ---
+iot23:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_iot23.py
+
+iot23-qcfs:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_iot23_qcfs.py
+
+iot23-export:
+	PYTHONUNBUFFERED=1 $(PY) src/export_iot23_onnx.py
+
+# --- Tests ---
+test:
+	$(PY) -m pytest tests/ -v
+
 # --- Paper ---
 paper:
 	cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 clean:
 	rm -rf models/*.pth models/*.onnx models/*.onnx.data
-	rm -rf __pycache__ src/__pycache__
+	rm -rf __pycache__ src/__pycache__ tests/__pycache__
