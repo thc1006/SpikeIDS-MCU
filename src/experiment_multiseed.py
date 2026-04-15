@@ -17,12 +17,14 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
-import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 from scipy.stats import wilcoxon
+from metrics import full_evaluate as compute_all_metrics
 from pathlib import Path
+from config import NSL_CLASS_NAMES
+from train_utils import set_seed, compute_class_weights
+from models import IDS_MLP, IDS_MLP_QCFS
+from data_loaders import load_nslkdd_raw, preprocess_nslkdd
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 RESULTS_DIR = Path(__file__).parent.parent / "results"
@@ -33,226 +35,32 @@ warnings.filterwarnings("ignore", message=".*NVIDIA GB10.*not compatible.*")
 warnings.filterwarnings("ignore", message=".*Found GPU0 NVIDIA GB10.*")
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-CLASS_NAMES = ["DoS", "Probe", "R2L", "U2R", "normal"]
-
-COL_NAMES = [
-    "duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-    "land", "wrong_fragment", "urgent", "hot", "num_failed_logins", "logged_in",
-    "num_compromised", "root_shell", "su_attempted", "num_root",
-    "num_file_creations", "num_shells", "num_access_files", "num_outbound_cmds",
-    "is_host_login", "is_guest_login", "count", "srv_count", "serror_rate",
-    "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate",
-    "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-    "dst_host_same_srv_rate", "dst_host_diff_srv_rate",
-    "dst_host_same_src_port_rate", "dst_host_srv_diff_host_rate",
-    "dst_host_serror_rate", "dst_host_srv_serror_rate", "dst_host_rerror_rate",
-    "dst_host_srv_rerror_rate", "label", "difficulty"
-]
-
-ATTACK_MAP = {
-    'normal': 'normal',
-    'back': 'DoS', 'land': 'DoS', 'neptune': 'DoS', 'pod': 'DoS',
-    'smurf': 'DoS', 'teardrop': 'DoS', 'mailbomb': 'DoS', 'apache2': 'DoS',
-    'processtable': 'DoS', 'udpstorm': 'DoS',
-    'ipsweep': 'Probe', 'nmap': 'Probe', 'portsweep': 'Probe',
-    'satan': 'Probe', 'mscan': 'Probe', 'saint': 'Probe',
-    'ftp_write': 'R2L', 'guess_passwd': 'R2L', 'imap': 'R2L',
-    'multihop': 'R2L', 'phf': 'R2L', 'spy': 'R2L', 'warezclient': 'R2L',
-    'warezmaster': 'R2L', 'sendmail': 'R2L', 'named': 'R2L',
-    'snmpgetattack': 'R2L', 'snmpguess': 'R2L', 'xlock': 'R2L',
-    'xsnoop': 'R2L', 'worm': 'R2L',
-    'buffer_overflow': 'U2R', 'loadmodule': 'U2R', 'perl': 'U2R',
-    'rootkit': 'U2R', 'httptunnel': 'U2R', 'ps': 'U2R',
-    'sqlattack': 'U2R', 'xterm': 'U2R',
-}
-
-
-# ── Data ──────────────────────────────────────────────────────────────
-
-def load_nslkdd(path):
-    df = pd.read_csv(path, header=None, names=COL_NAMES)
-    df.drop(columns=["difficulty"], inplace=True)
-    df["label"] = df["label"].map(ATTACK_MAP).fillna("unknown")
-    df = df[df["label"] != "unknown"]
-    return df
-
-
-def preprocess(train_df, test_df, seed):
-    """Preprocessing with explicit seed for StandardScaler reproducibility."""
-    cat_cols = ["protocol_type", "service", "flag"]
-    for col in cat_cols:
-        le = LabelEncoder()
-        combined = pd.concat([train_df[col], test_df[col]])
-        le.fit(combined)
-        train_df[col] = le.transform(train_df[col])
-        test_df[col] = le.transform(test_df[col])
-
-    label_enc = LabelEncoder()
-    label_enc.fit(CLASS_NAMES)
-    train_labels = label_enc.transform(train_df["label"])
-    test_labels = label_enc.transform(test_df["label"])
-
-    X_train = train_df.drop(columns=["label"]).values.astype(np.float32)
-    X_test = test_df.drop(columns=["label"]).values.astype(np.float32)
-
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
-
-    return (
-        torch.tensor(X_train, dtype=torch.float32),
-        torch.tensor(train_labels, dtype=torch.long),
-        torch.tensor(X_test, dtype=torch.float32),
-        torch.tensor(test_labels, dtype=torch.long),
-        scaler, label_enc,
-    )
-
-
-# ── Models ────────────────────────────────────────────────────────────
-
-class IDS_MLP(nn.Module):
-    def __init__(self, input_dim=41, hidden=256, num_classes=5):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_dim, hidden),
-            nn.BatchNorm1d(hidden),
-            nn.ReLU(),
-            nn.Linear(hidden, hidden),
-            nn.BatchNorm1d(hidden),
-            nn.ReLU(),
-            nn.Linear(hidden, hidden // 2),
-            nn.BatchNorm1d(hidden // 2),
-            nn.ReLU(),
-            nn.Linear(hidden // 2, num_classes),
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-
-
-class FloorSTE(torch.autograd.Function):
-    @staticmethod
-    def forward(ctx, x):
-        return torch.floor(x)
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        return grad_output
-
-
-class QCFS(nn.Module):
-    def __init__(self, L=4, init_threshold=1.0):
-        super().__init__()
-        self.register_buffer("L", torch.tensor(float(L)))
-        self.threshold = nn.Parameter(torch.tensor(float(init_threshold)))
-
-    def forward(self, x):
-        step = self.threshold / self.L
-        x_scaled = x / (step + 1e-8)
-        x_clipped = torch.clamp(x_scaled, 0.0, self.L.item())
-        x_floored = FloorSTE.apply(x_clipped)
-        return x_floored * step
-
-
-class IDS_MLP_QCFS(nn.Module):
-    def __init__(self, input_dim=41, hidden=256, num_classes=5, L=4):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_dim, hidden),
-            nn.BatchNorm1d(hidden),
-            QCFS(L=L),
-            nn.Linear(hidden, hidden),
-            nn.BatchNorm1d(hidden),
-            QCFS(L=L),
-            nn.Linear(hidden, hidden // 2),
-            nn.BatchNorm1d(hidden // 2),
-            QCFS(L=L),
-            nn.Linear(hidden // 2, num_classes),
-        )
-
-    def forward(self, x):
-        return self.layers(x)
+CLASS_NAMES = NSL_CLASS_NAMES
 
 
 # ── Metrics ───────────────────────────────────────────────────────────
 
-def compute_class_weights(labels, num_classes):
-    counts = np.bincount(labels.numpy(), minlength=num_classes).astype(np.float32)
-    counts = np.maximum(counts, 1.0)
-    weights = 1.0 / counts
-    weights = weights / weights.sum() * num_classes
-    return torch.tensor(weights, dtype=torch.float32)
-
-
 def full_evaluate(model, loader, num_classes):
-    """Return predictions and ground truth for full metric computation."""
+    """Collect predictions + probabilities, delegate to shared metrics."""
     model.eval()
     all_preds = []
     all_labels = []
+    all_probs = []
     with torch.no_grad():
         for X_batch, y_batch in loader:
-            preds = model(X_batch).argmax(dim=1)
+            logits = model(X_batch)
+            probs = torch.softmax(logits, dim=1)
+            preds = logits.argmax(dim=1)
             all_preds.append(preds.numpy())
             all_labels.append(y_batch.numpy())
+            all_probs.append(probs.numpy())
     y_true = np.concatenate(all_labels)
     y_pred = np.concatenate(all_preds)
-
-    # Confusion matrix
-    cm = confusion_matrix(y_true, y_pred, labels=list(range(num_classes)))
-
-    # Per-class precision, recall, F1
-    precision, recall, f1, support = precision_recall_fscore_support(
-        y_true, y_pred, labels=list(range(num_classes)), zero_division=0
-    )
-
-    # Accuracies
-    per_class_acc = cm.diagonal() / np.maximum(cm.sum(axis=1), 1)
-    overall_acc = cm.diagonal().sum() / cm.sum() * 100
-    macro_acc = per_class_acc.mean() * 100
-
-    # Macro-averaged P/R/F1
-    macro_precision = precision.mean() * 100
-    macro_recall = recall.mean() * 100
-    macro_f1 = f1.mean() * 100
-
-    # Weighted-averaged P/R/F1
-    w_precision, w_recall, w_f1, _ = precision_recall_fscore_support(
-        y_true, y_pred, average='weighted', zero_division=0
-    )
-
-    return {
-        "overall_acc": float(overall_acc),
-        "macro_acc": float(macro_acc),
-        "macro_precision": float(macro_precision),
-        "macro_recall": float(macro_recall),
-        "macro_f1": float(macro_f1),
-        "weighted_precision": float(w_precision * 100),
-        "weighted_recall": float(w_recall * 100),
-        "weighted_f1": float(w_f1 * 100),
-        "per_class": {
-            CLASS_NAMES[i]: {
-                "accuracy": float(per_class_acc[i] * 100),
-                "precision": float(precision[i] * 100),
-                "recall": float(recall[i] * 100),
-                "f1": float(f1[i] * 100),
-                "support": int(support[i]),
-            }
-            for i in range(num_classes)
-        },
-        "confusion_matrix": cm.tolist(),
-    }
+    y_prob = np.concatenate(all_probs)
+    return compute_all_metrics(y_true, y_pred, y_prob, num_classes, CLASS_NAMES)
 
 
 # ── Training ──────────────────────────────────────────────────────────
-
-def set_seed(seed):
-    torch.manual_seed(seed)
-    np.random.seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)
-        torch.backends.cudnn.deterministic = True
-        torch.backends.cudnn.benchmark = False
-
 
 def train_single(model_type, seed, X_train, y_train, X_test, y_test,
                  class_weights, num_classes, epochs=80):
@@ -328,9 +136,10 @@ def train_single(model_type, seed, X_train, y_train, X_test, y_test,
 def aggregate_results(seed_results, class_names):
     """Compute mean ± std across seeds for all metrics."""
     n = len(seed_results)
-    scalar_keys = ["overall_acc", "macro_acc", "macro_precision",
-                   "macro_recall", "macro_f1", "weighted_precision",
-                   "weighted_recall", "weighted_f1"]
+    scalar_keys = ["overall_acc", "macro_acc", "balanced_acc",
+                   "macro_precision", "macro_recall", "macro_f1",
+                   "weighted_precision", "weighted_recall", "weighted_f1",
+                   "mcc"]
 
     agg = {}
     for key in scalar_keys:
@@ -343,11 +152,23 @@ def aggregate_results(seed_results, class_names):
             "values": values,
         }
 
+    # ROC-AUC (may be None for some seeds, filter)
+    for auc_key in ["roc_auc_macro", "roc_auc_weighted"]:
+        values = [r[auc_key] for r in seed_results if r[auc_key] is not None]
+        if values:
+            agg[auc_key] = {
+                "mean": float(np.mean(values)),
+                "std": float(np.std(values, ddof=1)) if len(values) > 1 else 0.0,
+                "values": values,
+            }
+        else:
+            agg[auc_key] = {"mean": None, "std": None, "values": []}
+
     # Per-class aggregation
     agg["per_class"] = {}
     for cls in class_names:
         agg["per_class"][cls] = {}
-        for metric in ["accuracy", "precision", "recall", "f1"]:
+        for metric in ["accuracy", "precision", "recall", "f1", "fpr", "fnr"]:
             values = [r["per_class"][cls][metric] for r in seed_results]
             agg["per_class"][cls][metric] = {
                 "mean": float(np.mean(values)),
@@ -405,6 +226,8 @@ def main():
     parser.add_argument("--model", choices=["relu", "qcfs", "both"], default="both",
                         help="Which model(s) to train")
     parser.add_argument("--epochs", type=int, default=80)
+    parser.add_argument("--output", type=str, default="multiseed_experiment.json",
+                        help="Output filename (written under results/)")
     args = parser.parse_args()
 
     seeds = args.seeds
@@ -421,15 +244,18 @@ def main():
 
     # Load data once
     print("\n[1] Loading NSL-KDD dataset...")
-    train_df = load_nslkdd(DATA_DIR / "KDDTrain+.txt")
-    test_df = load_nslkdd(DATA_DIR / "KDDTest+.txt")
+    train_df, test_df = load_nslkdd_raw(DATA_DIR)
     print(f"    Train: {len(train_df)}, Test: {len(test_df)}")
 
     # Preprocess (deterministic — LabelEncoder and StandardScaler
     # produce the same output regardless of seed)
-    X_train, y_train, X_test, y_test, scaler, label_enc = preprocess(
-        train_df.copy(), test_df.copy(), seed=0
+    X_train, y_train, X_test, y_test, scaler, label_enc = preprocess_nslkdd(
+        train_df.copy(), test_df.copy()
     )
+    X_train = torch.tensor(X_train, dtype=torch.float32)
+    y_train = torch.tensor(y_train, dtype=torch.long)
+    X_test = torch.tensor(X_test, dtype=torch.float32)
+    y_test = torch.tensor(y_test, dtype=torch.long)
     num_classes = len(label_enc.classes_)
     class_weights = compute_class_weights(y_train, num_classes)
     print(f"    Classes: {list(label_enc.classes_)}")
@@ -530,7 +356,7 @@ def main():
             print(line)
 
     # Save
-    out_path = RESULTS_DIR / "multiseed_experiment.json"
+    out_path = RESULTS_DIR / args.output
     with open(out_path, "w") as f:
         json.dump(output, f, indent=2)
     print(f"\nResults saved to {out_path}")
