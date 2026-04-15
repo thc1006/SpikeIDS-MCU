@@ -1,0 +1,169 @@
+"""
+Export IoT-23 ReLU MLP to ONNX + INT8 PTQ.
+Uses the best model from seed 0 saved by experiment_iot23.py.
+
+Usage:
+    python src/export_iot23_onnx.py                # 5-class
+    python src/export_iot23_onnx.py --binary       # binary
+"""
+
+import argparse
+import torch
+import numpy as np
+import onnx
+from onnx.external_data_helper import convert_model_to_external_data
+from pathlib import Path
+from onnxruntime.quantization import quantize_static, QuantType, CalibrationMethod
+
+from models import IDS_MLP, IDS_MLP_Fused, fuse_bn
+from quantize_utils import CalibrationDataReader
+
+BASE_DIR = Path(__file__).parent.parent
+MODEL_DIR = BASE_DIR / "models"
+
+
+def load_iot23_train_data(binary=False):
+    """Load IoT-23 training data for calibration.
+
+    Replicates the exact preprocessing from experiment_iot23.py:
+    train_test_split(random_state=42) then scaler fit on train only.
+    """
+    from experiment_iot23 import load_iot23, preprocess_iot23
+    df, labels, feature_names = load_iot23(binary=binary)
+    X_train, _, _, _, scaler, label_enc = preprocess_iot23(df, labels)
+    return X_train.numpy(), len(feature_names)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--binary", action="store_true")
+    args = parser.parse_args()
+
+    suffix = "_binary" if args.binary else ""
+    label_mode = "binary" if args.binary else "5-class"
+
+    print("=" * 60)
+    print(f"IoT-23: ONNX Export + INT8 PTQ ({label_mode})")
+    print("=" * 60)
+
+    pth_path = MODEL_DIR / f"iot23_relu_best{suffix}.pth"
+    if not pth_path.exists():
+        pth_path = MODEL_DIR / "iot23_relu_best.pth"
+    if not pth_path.exists():
+        print(f"ERROR: {pth_path} not found. Run experiment_iot23.py first.")
+        return
+
+    state = torch.load(pth_path, weights_only=True)
+
+    input_dim = state['layers.0.weight'].shape[1]
+    num_classes = state['layers.9.weight'].shape[0]
+    print(f"  Input dim: {input_dim}, Classes: {num_classes}")
+
+    model = IDS_MLP(input_dim=input_dim, hidden=256, num_classes=num_classes)
+    model.load_state_dict(state)
+    model.eval()
+
+    # Fuse BN
+    print("\n[1] Fusing BatchNorm into Linear layers...")
+    fused = IDS_MLP_Fused(input_dim=input_dim, hidden=256, num_classes=num_classes)
+
+    layers_bn = model.layers
+    w1, b1 = fuse_bn(layers_bn[0], layers_bn[1])
+    w2, b2 = fuse_bn(layers_bn[3], layers_bn[4])
+    w3, b3 = fuse_bn(layers_bn[6], layers_bn[7])
+    w4, b4 = layers_bn[9].weight.data, layers_bn[9].bias.data
+
+    fused.fc1.weight.data, fused.fc1.bias.data = w1, b1
+    fused.fc2.weight.data, fused.fc2.bias.data = w2, b2
+    fused.fc3.weight.data, fused.fc3.bias.data = w3, b3
+    fused.fc4.weight.data, fused.fc4.bias.data = w4, b4
+    fused.eval()
+
+    dummy = torch.randn(1, input_dim)
+    with torch.no_grad():
+        out_orig = model(dummy)
+        out_fused = fused(dummy)
+    diff = (out_orig - out_fused).abs().max().item()
+    print(f"  Max fusion error: {diff:.2e}")
+
+    # Export ONNX
+    onnx_path = MODEL_DIR / f"iot23_model{suffix}.onnx"
+    onnx_data_path = Path(str(onnx_path) + ".data")
+    print(f"\n[2] Exporting ONNX to {onnx_path}...")
+    torch.onnx.export(
+        fused, dummy,
+        str(onnx_path),
+        input_names=["input"],
+        output_names=["output"],
+        opset_version=17,
+        dynamic_axes=None,
+    )
+
+    # Convert external data to inline single-file ONNX (required for ST Cloud)
+    m = onnx.load(str(onnx_path), load_external_data=True)
+    for tensor in m.graph.initializer:
+        tensor.ClearField("data_location")
+        tensor.ClearField("external_data")
+    onnx.save(m, str(onnx_path))
+    if onnx_data_path.exists():
+        onnx_data_path.unlink()
+    print(f"  Size: {onnx_path.stat().st_size / 1024:.1f} KB")
+
+    m = onnx.load(str(onnx_path))
+    onnx.checker.check_model(m)
+    ops = sorted(set(n.op_type for n in m.graph.node))
+    print(f"  Operators: {ops}")
+    print(f"  ONNX checker: OK")
+
+    # Verify with ORT
+    import onnxruntime as ort
+    sess = ort.InferenceSession(str(onnx_path))
+    ort_out = sess.run(None, {"input": dummy.numpy()})
+    ort_diff = np.abs(out_fused.detach().numpy() - ort_out[0]).max()
+    print(f"  PyTorch vs ORT max diff: {ort_diff:.2e}")
+
+    # Load calibration data
+    print("\n[3] Loading calibration data...")
+    X_train, _ = load_iot23_train_data(binary=args.binary)
+
+    rng = np.random.RandomState(42)
+    idx = rng.choice(len(X_train), size=min(1000, len(X_train)), replace=False)
+    cal_data = X_train[idx].astype(np.float32)
+    print(f"  Calibration samples: {len(cal_data)}")
+
+    # INT8 PTQ
+    int8_path = MODEL_DIR / f"iot23_model{suffix}_int8.onnx"
+    print(f"\n[4] INT8 quantization...")
+    reader = CalibrationDataReader(cal_data, input_name="input")
+    quantize_static(
+        model_input=str(onnx_path),
+        model_output=str(int8_path),
+        calibration_data_reader=reader,
+        quant_format=QuantType.QInt8,
+        calibrate_method=CalibrationMethod.MinMax,
+        per_channel=False,
+        weight_type=QuantType.QInt8,
+        activation_type=QuantType.QInt8,
+    )
+    print(f"  INT8 size: {int8_path.stat().st_size / 1024:.1f} KB")
+    print(f"  FP32 size: {onnx_path.stat().st_size / 1024:.1f} KB")
+    print(f"  Compression: {onnx_path.stat().st_size / int8_path.stat().st_size:.1f}×")
+
+    int8_m = onnx.load(str(int8_path))
+    int8_ops = sorted(set(n.op_type for n in int8_m.graph.node))
+    print(f"  INT8 operators: {int8_ops}")
+
+    # Verify INT8 with ORT
+    sess_int8 = ort.InferenceSession(str(int8_path))
+    int8_out = sess_int8.run(None, {"input": dummy.numpy()})
+    int8_pred = np.argmax(int8_out[0], axis=1)
+    fp32_pred = np.argmax(ort_out[0], axis=1)
+    print(f"  FP32 vs INT8 prediction match: {(int8_pred == fp32_pred).all()}")
+
+    print(f"\n  Upload {int8_path.name} to stedgeai-dc.st.com for NPU benchmark.")
+    print(f"  Also upload {onnx_path.name} for FP32 CPU comparison.")
+    print("  Done.")
+
+
+if __name__ == "__main__":
+    main()
