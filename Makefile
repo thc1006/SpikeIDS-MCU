@@ -9,15 +9,15 @@ PY = $(VENV)/bin/python3
 .PHONY: all setup data train export quantize qcfs quantize-qcfs \
         multiseed unsw unsw-export tree-baseline layerwise quant-ablation \
         baselines baselines-export focal cicids cicids-export \
-        iot23 iot23-qcfs iot23-export \
-        all-experiments test paper clean
+        iot23 iot23-qcfs iot23-export qcfs-lsweep cnn-baseline stats \
+        all-experiments test paper paper-v1 globecom clean
 
 all: setup data train export quantize qcfs quantize-qcfs
 
 # --- Full NCA experiment pipeline (requires data/ populated) ---
 all-experiments: multiseed unsw unsw-export tree-baseline layerwise quant-ablation \
                  baselines baselines-export focal cicids cicids-export \
-                 iot23 iot23-qcfs iot23-export
+                 iot23 iot23-qcfs iot23-export qcfs-lsweep cnn-baseline stats
 
 setup:
 	$(PYTHON) -m venv $(VENV)
@@ -92,13 +92,33 @@ iot23-qcfs:
 iot23-export:
 	PYTHONUNBUFFERED=1 $(PY) src/export_iot23_onnx.py
 
+# --- QCFS L-sweep & CNN baseline ---
+qcfs-lsweep:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_qcfs_lsweep.py
+
+cnn-baseline:
+	PYTHONUNBUFFERED=1 $(PY) src/experiment_cnn_baseline.py
+
+# --- Cross-dataset stats (Wilcoxon + Holm-Bonferroni) ---
+stats:
+	PYTHONUNBUFFERED=1 $(PY) scripts/run_globecom_stats.py
+
 # --- Tests ---
 test:
 	$(PY) -m pytest tests/ -v
 
-# --- Paper ---
+# --- Paper builds ---
+# Default: preprint v3 (preprints.org submission)
 paper:
-	cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
+	cd paper/preprint_v3 && latexmk -pdf main.tex
+
+# IEEEtran 6-page conference build (GLOBECOM 2026)
+globecom:
+	cd paper/globecom && latexmk -pdf main.tex
+
+# Original v1 preprint (kept for archival reproducibility)
+paper-v1:
+	cd paper && latexmk -pdf main.tex
 
 clean:
 	rm -rf models/*.pth models/*.onnx models/*.onnx.data

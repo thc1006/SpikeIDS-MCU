@@ -1,31 +1,45 @@
 cff-version: 1.2.0
-title: "SNN-IDS: Deploying SNN-Equivalent Intrusion Detection on a Commodity MCU NPU"
-message: "If you use this software, please cite it as below."
+title: "SNN-IDS: SNN-Equivalent Intrusion Detection on the STM32N6 Neural-ART NPU"
+message: "If you use this software, please cite both the software entry and the preprint listed under preferred-citation."
 type: software
 authors:
   - given-names: "Hsiu-Chi"
     family-names: "Tsai"
     affiliation: "National Yang Ming Chiao Tung University"
     email: "hctsai1006@cs.nctu.edu.tw"
-version: 1.0.0
+version: 3.0.0
 doi: 10.5281/zenodo.18906060
-date-released: 2026-03-09
+date-released: 2026-04-15
 url: "https://github.com/thc1006/SpikeIDS-MCU"
 repository-code: "https://github.com/thc1006/SpikeIDS-MCU"
 license: Apache-2.0
 keywords:
+  - intrusion-detection
   - spiking-neural-network
-  - intrusion-detection-system
-  - neural-art-npu
-  - stm32n6
+  - neural-processing-unit
   - int8-quantization
   - edge-ai
-  - rtos
-  - nsl-kdd
-  - unsw-nb15
+  - stm32n6
 abstract: >-
-  First publicly documented deployment of an SNN-equivalent IDS
-  on an ARM Cortex-M NPU. Evaluated on NSL-KDD (5-class) and
-  UNSW-NB15 (10-class) with 10 seeds, achieving 0.29-0.46ms
-  inference (2.7-4.2x faster than CPU) on the STM32N6570-DK
-  Neural-ART NPU, with 120-138 KB Flash and 0.5-1.25 KB RAM.
+  Deployment of an INT8 quantized ANN (approximately equivalent to a
+  T=1 SNN) for network intrusion detection on the STM32N6570-DK,
+  evaluated across four datasets (NSL-KDD, UNSW-NB15, CICIDS2017,
+  IoT-23) with multi-seed runs (5-20 seeds), paired Wilcoxon
+  signed-rank tests and Holm-Bonferroni correction. INT8 NPU
+  inference runs in 0.29-0.46 ms (2.7-4.2x faster than Cortex-M55
+  CPU) with estimated energy of 44-69 microjoules per inference and
+  Flash of 105-138 KB.
+preferred-citation:
+  type: article
+  title: "Sub-Millijoule Intrusion Detection on a Commodity MCU Neural Processing Unit: A Four-Dataset Deployment Study"
+  authors:
+    - given-names: "Hsiu-Chi"
+      family-names: "Tsai"
+      affiliation: "National Yang Ming Chiao Tung University"
+      email: "hctsai1006@cs.nctu.edu.tw"
+  year: 2026
+  month: 4
+  doi: 10.20944/preprints202603.0817.v3
+  url: "https://www.preprints.org/manuscript/202603.0817/v3"
+  publisher:
+    name: "Preprints.org (MDPI)"
