@@ -15,79 +15,14 @@ import onnxruntime as ort
 import onnx
 from onnx import helper, TensorProto
 from pathlib import Path
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-import pandas as pd
+from data_loaders import load_nslkdd, load_unsw
+from config import NSL_CLASS_NAMES
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
 MODEL_DIR = BASE_DIR / "models"
 RESULTS_DIR = BASE_DIR / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
-
-COL_NAMES = [
-    "duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-    "land", "wrong_fragment", "urgent", "hot", "num_failed_logins", "logged_in",
-    "num_compromised", "root_shell", "su_attempted", "num_root",
-    "num_file_creations", "num_shells", "num_access_files", "num_outbound_cmds",
-    "is_host_login", "is_guest_login", "count", "srv_count", "serror_rate",
-    "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate",
-    "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-    "dst_host_same_srv_rate", "dst_host_diff_srv_rate",
-    "dst_host_same_src_port_rate", "dst_host_srv_diff_host_rate",
-    "dst_host_serror_rate", "dst_host_srv_serror_rate", "dst_host_rerror_rate",
-    "dst_host_srv_rerror_rate", "label", "difficulty"
-]
-
-ATTACK_MAP = {
-    'normal': 'normal',
-    'back': 'DoS', 'land': 'DoS', 'neptune': 'DoS', 'pod': 'DoS',
-    'smurf': 'DoS', 'teardrop': 'DoS', 'mailbomb': 'DoS', 'apache2': 'DoS',
-    'processtable': 'DoS', 'udpstorm': 'DoS',
-    'ipsweep': 'Probe', 'nmap': 'Probe', 'portsweep': 'Probe',
-    'satan': 'Probe', 'mscan': 'Probe', 'saint': 'Probe',
-    'ftp_write': 'R2L', 'guess_passwd': 'R2L', 'imap': 'R2L',
-    'multihop': 'R2L', 'phf': 'R2L', 'spy': 'R2L', 'warezclient': 'R2L',
-    'warezmaster': 'R2L', 'sendmail': 'R2L', 'named': 'R2L',
-    'snmpgetattack': 'R2L', 'snmpguess': 'R2L', 'xlock': 'R2L',
-    'xsnoop': 'R2L', 'worm': 'R2L',
-    'buffer_overflow': 'U2R', 'loadmodule': 'U2R', 'perl': 'U2R',
-    'rootkit': 'U2R', 'httptunnel': 'U2R', 'ps': 'U2R',
-    'sqlattack': 'U2R', 'xterm': 'U2R',
-}
-
-
-def load_test_data(n_samples=1000):
-    """Load and preprocess NSL-KDD test data for analysis."""
-    train_df = pd.read_csv(DATA_DIR / "KDDTrain+.txt", header=None, names=COL_NAMES)
-    test_df = pd.read_csv(DATA_DIR / "KDDTest+.txt", header=None, names=COL_NAMES)
-    for df in [train_df, test_df]:
-        df.drop(columns=["difficulty"], inplace=True)
-        df["label"] = df["label"].map(ATTACK_MAP).fillna("unknown")
-        df.drop(df[df["label"] == "unknown"].index, inplace=True)
-
-    cat_cols = ["protocol_type", "service", "flag"]
-    for col in cat_cols:
-        le = LabelEncoder()
-        combined = pd.concat([train_df[col], test_df[col]])
-        le.fit(combined)
-        train_df[col] = le.transform(train_df[col])
-        test_df[col] = le.transform(test_df[col])
-
-    label_enc = LabelEncoder()
-    label_enc.fit(["DoS", "Probe", "R2L", "U2R", "normal"])
-    test_labels = label_enc.transform(test_df["label"])
-
-    X_train = train_df.drop(columns=["label"]).values.astype(np.float32)
-    X_test = test_df.drop(columns=["label"]).values.astype(np.float32)
-
-    scaler = StandardScaler()
-    scaler.fit(X_train)
-    X_test = scaler.transform(X_test)
-
-    # Subsample for analysis
-    np.random.seed(42)
-    idx = np.random.choice(len(X_test), min(n_samples, len(X_test)), replace=False)
-    return X_test[idx].astype(np.float32), test_labels[idx]
 
 
 def make_dynamic_batch(model):
@@ -252,22 +187,11 @@ def compute_layer_metrics(fp32_out, int8_out):
     }
 
 
-def main():
-    fp32_path = MODEL_DIR / "ids_model.onnx"
-    int8_path = MODEL_DIR / "ids_model_int8.onnx"
-
-    print("=" * 70)
-    print("Layer-wise FP32 vs INT8 Equivalence Analysis")
-    print("  Theory: FP32 ReLU ANN = T=1 SNN, so FP32 vs INT8 = SNN vs Q-SNN")
-    print("=" * 70)
-
-    # Check models exist
-    if not fp32_path.exists():
-        print(f"ERROR: FP32 model not found: {fp32_path}")
-        return
-    if not int8_path.exists():
-        print(f"ERROR: INT8 model not found: {int8_path}")
-        return
+def analyze_dataset(fp32_path, int8_path, X_test, y_test, class_names, dataset_name):
+    """Run layer-wise analysis for one dataset. Returns results dict."""
+    print(f"\n{'='*70}")
+    print(f"Dataset: {dataset_name}")
+    print(f"{'='*70}")
 
     # Inspect models
     for name, path in [("FP32", fp32_path), ("INT8", int8_path)]:
@@ -279,9 +203,7 @@ def main():
             print(f"      {node.op_type}: {node.input} -> {node.output}")
 
     # Load test data
-    print("\n[1] Loading test data (1000 samples)...")
-    X_test, y_test = load_test_data(n_samples=1000)
-    print(f"    Shape: {X_test.shape}")
+    print(f"\n[1] Test data: {X_test.shape}")
 
     # FP32 intermediate outputs
     print("\n[2] Running FP32 model...")
@@ -299,9 +221,8 @@ def main():
     print(f"{'Layer':<12} {'Shape':<18} {'MSE':<12} {'Cosine':<10} {'MAE':<12} {'L∞':<12} {'SNR(dB)':<10}")
     print("-" * 90)
 
-    results = {"n_samples": len(X_test), "layers": {}}
+    results = {"dataset": dataset_name, "n_samples": len(X_test), "layers": {}}
 
-    # Match layers between FP32 and INT8
     common_layers = [l for l in fp32_layers if l in int8_layers]
 
     for layer_name in common_layers:
@@ -331,16 +252,59 @@ def main():
     if fp32_logits is not None and int8_logits is not None:
         fp32_preds = np.argmax(fp32_logits, axis=1)
         int8_preds = np.argmax(int8_logits, axis=1)
-        class_names = ["DoS", "Probe", "R2L", "U2R", "normal"]
+        num_classes = len(class_names)
         print("\nPer-class prediction agreement:")
         per_class_agreement = {}
-        for c in range(5):
+        for c in range(num_classes):
             mask = y_test == c
             if mask.sum() > 0:
                 agree = np.mean(fp32_preds[mask] == int8_preds[mask]) * 100
                 per_class_agreement[class_names[c]] = float(agree)
-                print(f"  {class_names[c]:>8s}: {agree:.2f}% ({mask.sum()} samples)")
+                print(f"  {class_names[c]:>16s}: {agree:.2f}% ({mask.sum()} samples)")
         results["per_class_agreement"] = per_class_agreement
+
+    return results
+
+
+def main():
+    print("=" * 70)
+    print("Layer-wise FP32 vs INT8 Equivalence Analysis")
+    print("  Theory: FP32 ReLU ANN = T=1 SNN, so FP32 vs INT8 = SNN vs Q-SNN")
+    print("=" * 70)
+
+    all_results = {}
+
+    # NSL-KDD
+    fp32_path = MODEL_DIR / "ids_model.onnx"
+    int8_path = MODEL_DIR / "ids_model_int8.onnx"
+    if fp32_path.exists() and int8_path.exists():
+        X_train, _, X_test, y_test, _, label_enc = load_nslkdd(DATA_DIR)
+        np.random.seed(42)
+        idx = np.random.choice(len(X_test), min(1000, len(X_test)), replace=False)
+        X_test, y_test = X_test[idx], y_test[idx]
+        class_names = NSL_CLASS_NAMES
+        nslkdd_results = analyze_dataset(fp32_path, int8_path, X_test, y_test,
+                                          class_names, "NSL-KDD")
+        all_results["nslkdd"] = nslkdd_results
+    else:
+        print(f"\nWARNING: NSL-KDD models not found, skipping")
+
+    # UNSW-NB15
+    unsw_fp32_path = MODEL_DIR / "unsw_model.onnx"
+    unsw_int8_path = MODEL_DIR / "unsw_model_int8.onnx"
+    if unsw_fp32_path.exists() and unsw_int8_path.exists():
+        n_samples = 1000
+        _, _, X_test, y_test, _, label_enc, _ = load_unsw(DATA_DIR)
+        np.random.seed(42)
+        idx = np.random.choice(len(X_test), min(n_samples, len(X_test)), replace=False)
+        X_test = X_test[idx].astype(np.float32)
+        y_test = y_test[idx]
+        class_names = list(label_enc.classes_)
+        unsw_results = analyze_dataset(unsw_fp32_path, unsw_int8_path, X_test, y_test,
+                                        class_names, "UNSW-NB15")
+        all_results["unsw"] = unsw_results
+    else:
+        print(f"\nWARNING: UNSW-NB15 models not found, skipping")
 
     # SNN interpretation
     print("\n" + "=" * 70)
@@ -350,14 +314,14 @@ def main():
     print("  The INT8 quantization introduces bounded perturbation at each layer,")
     print("  which can be interpreted as synaptic weight quantization in the SNN.")
     print("  Hidden-layer cosine similarity (~0.65-0.68) reflects INT8 discretization")
-    print("  (256 levels), but logit-layer similarity (0.978) and 99% prediction")
-    print("  agreement confirm T=1 equivalence is preserved for classification.")
+    print("  (256 levels), but logit-layer similarity and high prediction agreement")
+    print("  confirm T=1 equivalence is preserved for classification.")
     print("=" * 70)
 
     # Save results
     out_path = RESULTS_DIR / "layerwise_analysis.json"
     with open(out_path, "w") as f:
-        json.dump(results, f, indent=2)
+        json.dump(all_results, f, indent=2)
     print(f"\nResults saved to {out_path}")
 
 

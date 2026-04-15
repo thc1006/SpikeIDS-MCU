@@ -15,100 +15,19 @@ import time
 import numpy as np
 import onnx
 import onnxruntime as ort
-import pandas as pd
 from pathlib import Path
-from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.metrics import accuracy_score
 from onnxruntime.quantization import (
     quantize_static, QuantType, CalibrationMethod
 )
+from data_loaders import load_nslkdd, load_unsw
+from quantize_utils import CalibrationDataReader
 
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
 MODEL_DIR = BASE_DIR / "models"
 RESULTS_DIR = BASE_DIR / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
-
-# NSL-KDD setup
-COL_NAMES = [
-    "duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-    "land", "wrong_fragment", "urgent", "hot", "num_failed_logins", "logged_in",
-    "num_compromised", "root_shell", "su_attempted", "num_root",
-    "num_file_creations", "num_shells", "num_access_files", "num_outbound_cmds",
-    "is_host_login", "is_guest_login", "count", "srv_count", "serror_rate",
-    "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate",
-    "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-    "dst_host_same_srv_rate", "dst_host_diff_srv_rate",
-    "dst_host_same_src_port_rate", "dst_host_srv_diff_host_rate",
-    "dst_host_serror_rate", "dst_host_srv_serror_rate", "dst_host_rerror_rate",
-    "dst_host_srv_rerror_rate", "label", "difficulty"
-]
-
-ATTACK_MAP = {
-    'normal': 'normal',
-    'back': 'DoS', 'land': 'DoS', 'neptune': 'DoS', 'pod': 'DoS',
-    'smurf': 'DoS', 'teardrop': 'DoS', 'mailbomb': 'DoS', 'apache2': 'DoS',
-    'processtable': 'DoS', 'udpstorm': 'DoS',
-    'ipsweep': 'Probe', 'nmap': 'Probe', 'portsweep': 'Probe',
-    'satan': 'Probe', 'mscan': 'Probe', 'saint': 'Probe',
-    'ftp_write': 'R2L', 'guess_passwd': 'R2L', 'imap': 'R2L',
-    'multihop': 'R2L', 'phf': 'R2L', 'spy': 'R2L', 'warezclient': 'R2L',
-    'warezmaster': 'R2L', 'sendmail': 'R2L', 'named': 'R2L',
-    'snmpgetattack': 'R2L', 'snmpguess': 'R2L', 'xlock': 'R2L',
-    'xsnoop': 'R2L', 'worm': 'R2L',
-    'buffer_overflow': 'U2R', 'loadmodule': 'U2R', 'perl': 'U2R',
-    'rootkit': 'U2R', 'httptunnel': 'U2R', 'ps': 'U2R',
-    'sqlattack': 'U2R', 'xterm': 'U2R',
-}
-
-
-class CalibrationDataReader:
-    def __init__(self, data, input_name="input"):
-        self.data = data
-        self.idx = 0
-        self.input_name = input_name
-
-    def get_next(self):
-        if self.idx >= len(self.data):
-            return None
-        sample = self.data[self.idx:self.idx + 1]
-        self.idx += 1
-        return {self.input_name: sample}
-
-    def rewind(self):
-        self.idx = 0
-
-
-def load_nslkdd_data():
-    """Load NSL-KDD train (calibration) and test data."""
-    train_df = pd.read_csv(DATA_DIR / "KDDTrain+.txt", header=None, names=COL_NAMES)
-    test_df = pd.read_csv(DATA_DIR / "KDDTest+.txt", header=None, names=COL_NAMES)
-
-    for df in [train_df, test_df]:
-        df.drop(columns=["difficulty"], inplace=True)
-        df["label"] = df["label"].map(ATTACK_MAP).fillna("unknown")
-        df.drop(df[df["label"] == "unknown"].index, inplace=True)
-
-    cat_cols = ["protocol_type", "service", "flag"]
-    for col in cat_cols:
-        le = LabelEncoder()
-        combined = pd.concat([train_df[col], test_df[col]])
-        le.fit(combined)
-        train_df[col] = le.transform(train_df[col])
-        test_df[col] = le.transform(test_df[col])
-
-    label_enc = LabelEncoder()
-    label_enc.fit(["DoS", "Probe", "R2L", "U2R", "normal"])
-    y_test = label_enc.transform(test_df["label"])
-
-    X_train = train_df.drop(columns=["label"]).values.astype(np.float32)
-    X_test = test_df.drop(columns=["label"]).values.astype(np.float32)
-
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
-
-    return X_train, X_test, y_test, label_enc
 
 
 def evaluate_onnx(model_path, X_test, y_test):
@@ -240,11 +159,23 @@ def main():
         print(f"\n{'='*70}")
         print("Dataset: NSL-KDD")
         print(f"{'='*70}")
-        X_train, X_test, y_test, le = load_nslkdd_data()
+        X_train, _, X_test, y_test, _, le = load_nslkdd(DATA_DIR)
         nslkdd_results = run_ablation(onnx_path, X_train, X_test, y_test, "nslkdd")
         all_results["nslkdd"] = nslkdd_results
     else:
         print(f"WARNING: {onnx_path} not found, skipping NSL-KDD")
+
+    # UNSW-NB15
+    unsw_onnx_path = MODEL_DIR / "unsw_model.onnx"
+    if unsw_onnx_path.exists():
+        print(f"\n{'='*70}")
+        print("Dataset: UNSW-NB15")
+        print(f"{'='*70}")
+        X_train, _, X_test, y_test, _, le, _ = load_unsw(DATA_DIR)
+        unsw_results = run_ablation(unsw_onnx_path, X_train, X_test, y_test, "unsw")
+        all_results["unsw"] = unsw_results
+    else:
+        print(f"WARNING: {unsw_onnx_path} not found, skipping UNSW-NB15")
 
     # Save results
     out_path = RESULTS_DIR / "quantize_ablation.json"
@@ -267,13 +198,15 @@ def main():
             print(f"  {a['calibration_method']:<14} {gran:<12} {a['n_calibration_samples']:<8} "
                   f"{a['int8_accuracy']:<12.2f} {a['accuracy_drop']:<8.2f}")
 
-    # Key finding
-    if all_results:
-        ds0 = list(all_results.values())[0]
-        drops = [a["accuracy_drop"] for a in ds0["ablations"] if "error" not in a]
+    # Key finding (per-dataset)
+    for ds_name, ds_results in all_results.items():
+        drops = [a["accuracy_drop"] for a in ds_results["ablations"] if "error" not in a]
         if drops:
-            print(f"\n  Key finding: accuracy drop range = [{min(drops):.2f}%, {max(drops):.2f}%]")
-            print(f"  All drops < 3% threshold → T=1 equivalence robust to quantization choices")
+            print(f"\n  {ds_name}: accuracy drop range = [{min(drops):.2f}%, {max(drops):.2f}%]")
+            if max(abs(d) for d in drops) < 3.0:
+                print(f"    All drops < 3% → robust to quantization choices")
+            else:
+                print(f"    WARNING: max drop {max(drops):.2f}% exceeds 3% threshold")
 
 
 if __name__ == "__main__":

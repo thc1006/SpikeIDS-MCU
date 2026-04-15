@@ -7,91 +7,9 @@ import torch
 import torch.nn as nn
 import numpy as np
 from pathlib import Path
+from models import QCFS, QCFSFrozen, IDS_MLP_QCFS, IDS_MLP_QCFS_Frozen, fuse_bn_to_linear
 
 MODEL_DIR = Path(__file__).parent.parent / "models"
-
-
-class FloorSTE(torch.autograd.Function):
-    @staticmethod
-    def forward(ctx, x):
-        return torch.floor(x)
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        return grad_output
-
-
-class QCFS(nn.Module):
-    def __init__(self, L=8, init_threshold=1.0):
-        super().__init__()
-        self.register_buffer("L", torch.tensor(float(L)))
-        self.threshold = nn.Parameter(torch.tensor(float(init_threshold)))
-
-    def forward(self, x):
-        step = self.threshold / self.L
-        x_scaled = x / (step + 1e-8)
-        x_clipped = torch.clamp(x_scaled, 0.0, self.L.item())
-        x_floored = FloorSTE.apply(x_clipped)
-        return x_floored * step
-
-
-class QCFSFrozen(nn.Module):
-    """QCFS with frozen (constant) threshold for clean ONNX export."""
-    def __init__(self, step: float, L: float):
-        super().__init__()
-        self.register_buffer("step_val", torch.tensor(step))
-        self.register_buffer("L_val", torch.tensor(L))
-        self.register_buffer("inv_step", torch.tensor(1.0 / (step + 1e-8)))
-
-    def forward(self, x):
-        x_scaled = x * self.inv_step
-        x_clipped = torch.clamp(x_scaled, 0.0, self.L_val)
-        x_floored = torch.floor(x_clipped)
-        return x_floored * self.step_val
-
-
-class IDS_MLP_QCFS(nn.Module):
-    def __init__(self, input_dim=41, hidden=256, num_classes=5, L=8):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(input_dim, hidden),
-            nn.BatchNorm1d(hidden),
-            QCFS(L=L),
-            nn.Linear(hidden, hidden),
-            nn.BatchNorm1d(hidden),
-            QCFS(L=L),
-            nn.Linear(hidden, hidden // 2),
-            nn.BatchNorm1d(hidden // 2),
-            QCFS(L=L),
-            nn.Linear(hidden // 2, num_classes),
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-
-
-class IDS_MLP_QCFS_Frozen(nn.Module):
-    """Export-only model with frozen QCFS and fused BatchNorm."""
-    def __init__(self, layers_list):
-        super().__init__()
-        self.layers = nn.Sequential(*layers_list)
-
-    def forward(self, x):
-        return self.layers(x)
-
-
-def fuse_bn_linear(linear, bn):
-    """Fuse BatchNorm into preceding Linear layer."""
-    scale = bn.weight.data / torch.sqrt(bn.running_var + bn.eps)
-    fused_weight = linear.weight.data * scale.unsqueeze(1)
-    if linear.bias is not None:
-        fused_bias = (linear.bias.data - bn.running_mean) * scale + bn.bias.data
-    else:
-        fused_bias = -bn.running_mean * scale + bn.bias.data
-    new_linear = nn.Linear(linear.in_features, linear.out_features)
-    new_linear.weight.data = fused_weight
-    new_linear.bias.data = fused_bias
-    return new_linear
 
 
 def freeze_model(model, L):
@@ -104,7 +22,7 @@ def freeze_model(model, L):
             and isinstance(layers[i], nn.Linear)
             and isinstance(layers[i + 1], nn.BatchNorm1d)):
             # Fuse BN into Linear
-            fused = fuse_bn_linear(layers[i], layers[i + 1])
+            fused = fuse_bn_to_linear(layers[i], layers[i + 1])
             frozen_layers.append(fused)
             i += 2
         elif isinstance(layers[i], QCFS):
