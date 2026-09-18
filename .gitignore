@@ -103,3 +103,6 @@ metacentrum_cz_use/
 # N6 bench: fetched third-party sources (scripts/n6_fetch_deps.sh) and build output
 firmware/n6/third_party/
 firmware/n6/build/
+
+# N6 Phase B2: stedgeai workspace (regenerate); keep the small model artifacts
+firmware/n6b/model/*.onnx
