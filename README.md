@@ -26,11 +26,20 @@ Multi-seed runs with paired Wilcoxon signed-rank tests and Holm-Bonferroni famil
 | Energy / inference (est.) | 69 µJ             | 44 µJ                | 63 µJ                 | 57 µJ            |
 | Flash / RAM               | 137.7 / 1.25 KB   | 120.6 / 0.50 KB      | 120.6 / 0.50 KB       | 105.0 / 0.50 KB  |
 
-QCFS and ReLU are statistically indistinguishable on all four datasets at α = 0.05 after Holm-Bonferroni correction, supporting the practical T = 1 SNN ≈ INT8 ANN approximation under commodity MCU deployment constraints.
+The non-significant Wilcoxon tests above do **not** by themselves establish equivalence (absence of evidence is not evidence of absence). The v4 re-analysis with paired TOST (two one-sided tests, ±1 pp margin, [`results/equivalence_v4.md`](results/equivalence_v4.md)) shows: UNSW-NB15 is equivalent within ±0.32 pp (accuracy) / ±0.72 pp (macro-F1); NSL-KDD supports equivalence only within ±1.1 pp / ±1.9 pp; IoT-23 is inconclusive at n = 5; and the CICIDS2017 pair is confounded (the QCFS arm was trained with 40 epochs / batch 1024 vs. 80 / 512 for ReLU) and is excluded until re-run. The T = 1 SNN ≈ INT8 ANN approximation is therefore supported on two datasets at the stated margin and undetermined on the other two — see *v4 (in progress)* below.
 
 Energy is estimated from STMicroelectronics application note AN5946 (~150 mW nominal) rather than direct on-board measurement; STLINK-V3PWR measurement is listed as future work.
 
 **Target Board:** STM32N6570-DK (ARM Cortex-M55 @ 800 MHz + Neural-ART NPU 600 GOPS INT8).
+
+## v4 (in progress, branch `v4`)
+
+Work following the GLOBECOM 2026 reviews. Done so far:
+
+1. **Equivalence testing done properly** — paired TOST (parametric primary, Wilcoxon signed-rank secondary with Hodges-Lehmann location) replaces "p > 0.05 ⇒ indistinguishable"; reports δ_min (the tightest margin the data support), Shapiro-Wilk on the differences, Holm-Bonferroni over the family of valid equivalence claims, and the seed count needed for 80 %/90 % power. `uv run scripts/run_v4_equivalence.py` → `results/equivalence_v4.{json,md}`; tests in `tests/test_tost.py`, `tests/test_v4_equivalence.py`.
+2. **Training-budget guard** — `run_v4_equivalence.py` refuses to pool a ReLU/QCFS pair trained under different epochs or batch sizes, which caught the CICIDS2017 mismatch inherited from v3.
+
+Planned: re-run CICIDS2017 QCFS at 80 epochs / batch 512 and extend the QCFS arms (IoT-23, CICIDS2017 → 10+ seeds, UNSW → 20) so every dataset reaches the power the table in `results/equivalence_v4.md` asks for; on-board energy measurement; end-to-end pipeline latency; stronger baselines.
 
 ## What's New in v3
 

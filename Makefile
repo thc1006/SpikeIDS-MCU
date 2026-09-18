@@ -10,7 +10,7 @@ PY = $(VENV)/bin/python3
         multiseed unsw unsw-export tree-baseline layerwise quant-ablation \
         baselines baselines-export focal cicids cicids-export \
         iot23 iot23-qcfs iot23-export qcfs-lsweep cnn-baseline stats \
-        all-experiments test paper paper-v1 globecom clean
+        equivalence all-experiments test paper paper-v1 globecom clean
 
 all: setup data train export quantize qcfs quantize-qcfs
 
@@ -102,6 +102,10 @@ cnn-baseline:
 # --- Cross-dataset stats (Wilcoxon + Holm-Bonferroni) ---
 stats:
 	PYTHONUNBUFFERED=1 $(PY) scripts/run_globecom_stats.py
+
+# --- v4: ReLU vs QCFS equivalence (paired TOST, delta = 1 pp) ---
+equivalence:
+	PYTHONUNBUFFERED=1 $(PY) scripts/run_v4_equivalence.py --delta 1.0
 
 # --- Tests ---
 test:
