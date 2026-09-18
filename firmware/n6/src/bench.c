@@ -230,6 +230,9 @@ int main(void)
      *    watchdogs are live, then service them; keep servicing throughout. */
     wdg_probe(boot);
     wdg_feed();
+    uint32_t winr_after = 0;
+    boot[BOOT_SETUP_FAULT] = (uint32_t)wdg_defang_iwdg(&winr_after);  /* reuse slot 6 as defang-ok */
+    wdg_feed();
     wdg_freeze_in_debug();
     wdg_feed();
 

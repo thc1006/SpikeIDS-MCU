@@ -12,14 +12,21 @@
 #include <setjmp.h>
 
 #define IWDG_S_KR     (*(volatile uint32_t *)0x56004800UL)
+#define IWDG_S_PR     (*(volatile uint32_t *)0x56004804UL)
+#define IWDG_S_RLR    (*(volatile uint32_t *)0x56004808UL)
 #define IWDG_S_SR     (*(volatile uint32_t *)0x5600480CUL)
+#define IWDG_S_WINR   (*(volatile uint32_t *)0x56004810UL)
+#define RCC_S_RSR     (*(volatile uint32_t *)0x56028034UL)
 #define WWDG_S_CR     (*(volatile uint32_t *)0x50002C00UL)   /* WDGA[7], T[6:0]            */
 #define WWDG_S_CFR    (*(volatile uint32_t *)0x50002C04UL)   /* W[6:0], WDGTB[13:11]       */
 #define RCC_S_APB1ENR1 (*(volatile uint32_t *)0x56028264UL)  /* bit11 = WWDGEN             */
 #define DBGMCU_S_APB1LFZ1 (*(volatile uint32_t *)0x54001010UL)
 #define DBGMCU_S_APB4FZ1  (*(volatile uint32_t *)0x5400101CUL)
 
-#define IWDG_KEY_RELOAD 0x0000AAAAu
+#define IWDG_KEY_RELOAD  0x0000AAAAu
+#define IWDG_KEY_ENABLE  0x0000CCCCu
+#define IWDG_KEY_UNLOCK  0x00005555u
+#define IWDG_RL_MAX      0x00000FFFu
 #define WWDG_WDGA       (1u << 7)
 #define RCC_WWDGEN      (1u << 11)
 #define DBG_WWDG1_STOP  (1u << 11)
@@ -64,13 +71,28 @@ static inline void wdg_probe(uint32_t boot_out[8])
         g_wdg.wwdg_window = (uint8_t)(wcfr & 0x7Fu);
         if (!(wcr & WWDG_WDGA)) g_wdg.wwdg_present = 0;   /* clock on but WWDG not activated */
     }
+    (void)wcr; (void)wcfr;
     boot_out[0] = wdg_try_read(&IWDG_S_SR, 0xFFFFFFFFu);
-    boot_out[1] = wcr;
-    boot_out[2] = apb1;
-    boot_out[3] = wcfr;
+    boot_out[1] = wdg_try_read(&IWDG_S_WINR, 0xFFFFFFFFu);   /* window: < RLR ⇒ windowed IWDG */
+    boot_out[2] = wdg_try_read(&RCC_S_RSR, 0xFFFFFFFFu);     /* last reset cause flags          */
+    boot_out[3] = wdg_try_read(&IWDG_S_RLR, 0xFFFFFFFFu);
     boot_out[4] = g_wdg.iwdg_ok;
-    boot_out[5] = g_wdg.wwdg_present;
-    /* boot_out[6]=setup fault code, [7]=phase — filled by main. */
+    boot_out[5] = wdg_try_read(&IWDG_S_PR, 0xFFFFFFFFu);
+    /* boot_out[6]=defang result, [7]=phase — filled by main. */
+}
+
+/* Defang a (possibly windowed) IWDG so free kicking can never trigger a reset:
+ * unlock, set the window to max (disables the window), set max reload. The counter keeps
+ * running but reset only occurs on underflow, which our per-loop refresh prevents.
+ * Returns 1 if the register writes did not fault. */
+static inline int wdg_defang_iwdg(uint32_t *winr_after)
+{
+    if (!wdg_try_write(&IWDG_S_KR, IWDG_KEY_UNLOCK)) return 0;
+    (void)wdg_try_write(&IWDG_S_WINR, IWDG_RL_MAX);          /* window = max ⇒ no window; also reloads */
+    (void)wdg_try_write(&IWDG_S_RLR, IWDG_RL_MAX);           /* longest period                          */
+    (void)wdg_try_write(&IWDG_S_KR, IWDG_KEY_RELOAD);        /* reload + re-lock                        */
+    *winr_after = wdg_try_read(&IWDG_S_WINR, 0xFFFFFFFFu);
+    return 1;
 }
 
 /* Service both watchdogs. No setjmp here (only touches confirmed-safe regs), so it is cheap

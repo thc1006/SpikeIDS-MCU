@@ -39,7 +39,7 @@ OFF = {"magic": 0, "version": 4, "boot": 8, "state": _b, "cmd": _b + 4, "seq": _
        "ack": _b + 12, "err": _b + 16, "n_results": _b + 20, "param": _b + 24,
        "info": _b + 24 + 16 * 4, "sink": _b + 24 + 16 * 4 + 64 * 4,
        "results": _b + 24 + 16 * 4 + 64 * 4 + 4}
-BOOT = ["IWDG_SR", "WWDG_CR", "RCC_APB1ENR1", "WWDG_CFR", "IWDG_OK", "WWDG_PRESENT", "SETUP_FAULT", "PHASE"]
+BOOT = ["IWDG_SR", "IWDG_WINR", "RCC_RSR", "IWDG_RLR", "IWDG_OK", "IWDG_PR", "DEFANG_OK", "PHASE"]
 STATE = {0: "IDLE", 1: "RUNNING", 2: "DONE", 3: "ERROR", 4: "FAULT"}
 CMD = {"NOP": 0, "READ_BW": 1, "MLP_FP32": 2, "MLP_S8": 3, "FILL": 4, "MEMCPY": 5, "PEEK": 6}
 CM_ICACHE, CM_DCACHE, CM_INVAL_EACH = 1, 2, 4
@@ -356,9 +356,13 @@ def main():
         tk = b.takeover(Path(a.elf))
         print(f"firmware up: loaded {tk['loaded_bytes']} B, entry {tk['entry']:#x}", flush=True)
         bt = tk["boot"]
-        print(f"watchdog snapshot: IWDG_SR={bt['IWDG_SR']:#x} IWDG_OK={bt['IWDG_OK']} "
-              f"WWDG_present={bt['WWDG_PRESENT']} WWDG_CR={bt['WWDG_CR']:#x} WWDG_CFR={bt['WWDG_CFR']:#x} "
-              f"RCC_APB1ENR1={bt['RCC_APB1ENR1']:#x} setup_fault={bt['SETUP_FAULT']:#x}", flush=True)
+        rsr = bt["RCC_RSR"]
+        causes = [n for n, b in (("PIN", 22), ("POR", 23), ("SFT", 24), ("IWDG", 26),
+                                 ("WWDG", 28), ("LPWR", 30), ("BOR", 21)) if rsr != 0xFFFFFFFF and (rsr >> b) & 1]
+        windowed = bt["IWDG_WINR"] != 0xFFFFFFFF and bt["IWDG_RLR"] != 0xFFFFFFFF and bt["IWDG_WINR"] < bt["IWDG_RLR"]
+        print(f"watchdog snapshot: IWDG_OK={bt['IWDG_OK']} IWDG_PR={bt['IWDG_PR']:#x} "
+              f"IWDG_RLR={bt['IWDG_RLR']:#x} IWDG_WINR={bt['IWDG_WINR']:#x} windowed={windowed} "
+              f"defang_ok={bt['DEFANG_OK']} last_reset={'+'.join(causes) or 'none'} RCC_RSR={rsr:#x}", flush=True)
         readable = b.probe()
         print("readable (debugger view, firmware running):", json.dumps(readable, indent=1))
         info_raw = b.info()
