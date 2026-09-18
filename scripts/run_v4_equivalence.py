@@ -70,8 +70,10 @@ def load_arms() -> dict[str, dict]:
                  _load(R / "unsw_qcfs_multiseed.json"), "qcfs"),
         "cicids2017": (_load(R / "cicids2017_multiseed_experiment.json"), "relu",
                        _load(R / "cicids_qcfs_multiseed.json"), "qcfs"),
-        "iot23": (_load(R / "iot23_multiseed.json"), None,
-                  _load(R / "iot23_qcfs_multiseed.json"), "qcfs"),
+        "iot23": ((_load(R / "iot23_multiseed_v4.json") if (R / "iot23_multiseed_v4.json").exists()
+                   else _load(R / "iot23_multiseed.json")), None,
+                  (_load(R / "iot23_qcfs_multiseed_v4.json") if (R / "iot23_qcfs_multiseed_v4.json").exists()
+                   else _load(R / "iot23_qcfs_multiseed.json")), "qcfs"),
     }
     arms = {}
     for ds, (rd, rk, qd, qk) in files.items():
