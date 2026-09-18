@@ -106,3 +106,7 @@ firmware/n6/build/
 
 # N6 Phase B2: stedgeai workspace (regenerate); keep the small model artifacts
 firmware/n6b/model/*.onnx
+
+# N6B build outputs (regenerate via smoke/build.sh)
+firmware/n6b/smoke/*.elf
+firmware/n6b/smoke/*.map
