@@ -110,3 +110,5 @@ firmware/n6b/model/*.onnx
 # N6B build outputs (regenerate via smoke/build.sh)
 firmware/n6b/smoke/*.elf
 firmware/n6b/smoke/*.map
+
+firmware/n6b/build/
