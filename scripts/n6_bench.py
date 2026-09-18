@@ -260,8 +260,15 @@ class Board:
         self.w32(MB_ADDR + OFF["seq"], self.seq)
         t0 = time.time()
         while True:
-            st = self.r32(MB_ADDR + OFF["state"])
-            if st in (2, 3, 4) and self.r32(MB_ADDR + OFF["ack"]) == self.seq:
+            try:
+                st = self.r32(MB_ADDR + OFF["state"])
+                ack = self.r32(MB_ADDR + OFF["ack"])
+            except (TransferFaultError, TransferError):
+                self._clear_sticky(); time.sleep(0.005)
+                if time.time() - t0 > timeout:
+                    raise TimeoutError(f"{cmd} timed out (link)")
+                continue
+            if st in (2, 3, 4) and ack == self.seq:
                 break
             if time.time() - t0 > timeout:
                 raise TimeoutError(f"{cmd} timed out (state={STATE.get(st)})")
@@ -307,22 +314,23 @@ def decode_info(info):
 
 
 def cpu_probe(b: Board):
-    """Readability as seen by the core itself (the debugger's AXI-AP view can differ:
-    RISAF/RIF filtering applies to debug accesses, and the core runs in the Secure state)."""
+    """Debugger-view readability of the memories used by the experiments. Uses debugger reads
+    with sticky-error clearing (never faults the core, which stalls the ST-LINK). Only the
+    weight-placement targets are checked; the external flash at XSPI2 is 'mappable' only if it
+    reads back here."""
     pts = {"xspi2_flash": XSPI2, "xspi2_flash_1mb": XSPI2 + 0x100000, "xspi1_psram": XSPI1,
-           "flexram": 0x34000000, "sram2": SRAM2, "sram4": SRAM4, "dtcm": 0x30000000, "itcm": 0x10000000}
+           "flexram": 0x34000000, "sram1": SRAM1, "sram2": SRAM2, "sram4": SRAM4}
     res = {}
     for k, a in pts.items():
-        r = b.run("PEEK", {1: a}, timeout=5)
-        res[k] = {"ok": r["status"] == "DONE", "value": (r.get("cycles") or [None])[0],
-                  "cfsr": r.get("cfsr"), "bfar": r.get("bfar")}
+        ok = b.readable(a)                    # readable() already clears sticky on fault
+        res[k] = {"ok": ok, "value": (b.r32(a) if ok else None)}
     return res
 
 
 def plan_all(b: Board, iters: int, readable: dict, cpu_view: dict):
     out = []
     flash_ok = cpu_view.get("xspi2_flash_1mb", {}).get("ok", False)
-    scratch = SRAM4 if readable.get("SRAM4_S 0x34270000") else SRAM1
+    scratch = SRAM4
     wsram = SRAM2
     # 0. timing overhead
     for cm, mode in CACHE_MODES.items():
