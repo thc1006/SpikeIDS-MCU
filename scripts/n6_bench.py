@@ -115,10 +115,25 @@ class Board:
     # -- raw helpers --
     def r32(self, a): return self.t.read32(a)
     def w32(self, a, v): self.t.write32(a, v)
+    def _clear_sticky(self):
+        for obj in (getattr(self.t, "dp", None), getattr(getattr(self.t, "session", None), "target", None)):
+            try:
+                if obj is not None and hasattr(obj, "dp"):
+                    obj.dp.clear_sticky_err(); return
+                if obj is not None and hasattr(obj, "clear_sticky_err"):
+                    obj.clear_sticky_err(); return
+            except Exception:
+                pass
+        try:
+            self.t.dp.clear_sticky_err()
+        except Exception:
+            pass
+
     def readable(self, a):
         try:
             self.t.read32(a); return True
         except (TransferFaultError, TransferError):
+            self._clear_sticky()      # an expected fault must not wedge the next transfer
             return False
 
     def probe(self):
@@ -199,12 +214,34 @@ class Board:
             try:
                 return self.t.read_memory_block32(addr, nwords)
             except (TransferFaultError, TransferError):
+                self._clear_sticky()
                 if k == retries - 1:
-                    return [self.t.read32(addr + 4 * i) for i in range(nwords)]  # word-by-word fallback
+                    out = []
+                    for i in range(nwords):
+                        try:
+                            out.append(self.t.read32(addr + 4 * i))
+                        except (TransferFaultError, TransferError):
+                            self._clear_sticky(); out.append(0xDEADDEAD)
+                    return out
                 time.sleep(0.02)
 
     def info(self):
         return dict(zip(INFO, self._read_block(MB_ADDR + OFF["info"], len(INFO))))
+
+    def liveness(self, seconds=3.0):
+        """Drive NOP commands and confirm the firmware keeps answering — distinguishes a real
+        board reset from a wedged debug link."""
+        t0 = time.time(); ok = 0; fail = 0
+        while time.time() - t0 < seconds:
+            try:
+                r = self.run("NOP", {0: 1, 3: 0}, timeout=2)
+                if r.get("status") == "DONE":
+                    ok += 1
+                else:
+                    fail += 1
+            except Exception:
+                self._clear_sticky(); fail += 1
+        return {"ok": ok, "fail": fail, "alive": fail == 0 and ok > 0}
 
     def measure_clock(self, seconds=2.0):
         c0, t0 = self.r32(DWT_CYCCNT), time.perf_counter()
@@ -363,8 +400,13 @@ def main():
         print(f"watchdog snapshot: IWDG_OK={bt['IWDG_OK']} IWDG_PR={bt['IWDG_PR']:#x} "
               f"IWDG_RLR={bt['IWDG_RLR']:#x} IWDG_WINR={bt['IWDG_WINR']:#x} windowed={windowed} "
               f"defang_ok={bt['DEFANG_OK']} last_reset={'+'.join(causes) or 'none'} RCC_RSR={rsr:#x}", flush=True)
-        readable = b.probe()
-        print("readable (debugger view, firmware running):", json.dumps(readable, indent=1))
+        live = b.liveness(3.0)
+        print(f"liveness: {live}", flush=True)
+        if not live["alive"]:
+            raise SystemExit(f"firmware not responding after takeover: {live} — board is resetting, not a link issue")
+        # Debugger-view readability is already known-stable (SRAM1-6 yes; XSPI/TCM no); skip the
+        # host probe of unmapped addresses that was wedging the AP. Use firmware PEEK instead.
+        readable = {"note": "host probe skipped; see readable_cpu (firmware PEEK)"}
         info_raw = b.info()
         info = decode_info(info_raw)
         clk = [b.measure_clock(2.0) for _ in range(3)]
