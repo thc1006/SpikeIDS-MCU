@@ -12,7 +12,8 @@ import onnxruntime as ort
 from onnxruntime.quantization import quantize_static, CalibrationDataReader, QuantType, QuantFormat
 
 sys.path.insert(0, "src")
-OUT = Path("results/onnx_neuralart_check")
+import tempfile
+OUT = Path(tempfile.mkdtemp(prefix="onnx_neuralart_check_"))  # scratch; artifacts are not committed
 OUT.mkdir(exist_ok=True)
 
 # Neural-ART HW-mapped ops (from stneuralart_operator_support.html, fetched earlier)

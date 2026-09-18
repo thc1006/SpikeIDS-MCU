@@ -12,6 +12,8 @@ POOL_NPU 0x34200000 — regions the pyOCD takeover harness controls).
 
 ## Artifacts produced (this dir, from `stedgeai generate ... --binary --memory-pool mypool_n6.json`)
 - `model/stai_ids.{c,h}`, `model/ids.{c,h}` — STAI + LL_ATON deployable model (H=64 INT8).
+  NOTE: built from a **random-weight** topology model — valid for latency/epoch bring-up (timing is
+  data-independent); a real trained model is swapped in for the accuracy run.
 - `model/ids_atonbuf.xSPI2.raw` — 7,761 B weights → flash at 0x70000000.
 - `model/ids_c_info.json` — validation descriptor (for `stedgeai validate --val-json`).
 - `mypool_n6.json` — memory pool (weights ext-flash, activations SRAM2/SRAM3).
@@ -39,5 +41,20 @@ rcc(+ex), cortex, pwr(+ex). Runtime lib: `NetworkRuntime1100_CM55_GCC.a` (in the
 1. Set the DK BOOT switch to the mode that lets the ST-LINK program external flash (one-time).
 2. Approve the CubeProgrammer external-flash write of `ids_atonbuf.xSPI2.raw` to 0x70000000.
 (As before, I arm the pyOCD watcher first; a takeover replug may also be needed.)
+
+## Known risks (max-rigor review, unverified until on-board)
+1. **Activation alias (secure vs non-secure).** The pool places activations at the SECURE aliases
+   0x34100000 / 0x34200000 to match the NPU being configured as a secure master (NPU_Config sets
+   CID=1, secure+priv). ST's example used the NON-secure aliases (0x24…). Same physical SRAM, but
+   this pairing is untested — if the NPU bus-faults on activations, switch the pool to 0x24… and/or
+   revisit RISAF/RIF. Decide by testing both on-board.
+2. **Path A is unproven.** Reusing ST's init inside the pyOCD harness assumes the ATON runtime does
+   not require a fuller HAL/BSP init than NPU_Config/RISAF_Config/npu_cache provide. If it does,
+   fall back to path B (NPU_Validation + `validate --mode target`), which is ST-maintained.
+3. **ATON runtime ABI.** `NetworkRuntime1100_CM55_GCC.a` is prebuilt (≈gcc 12.3). Linking with the
+   arm-gcc 13.2 here must use identical `-mcpu=cortex-m55 -mfloat-abi=hard -mfpu=auto`; a mismatch
+   fails at link. Verify with a link smoke-test before trusting path A.
+4. **Weights are external-flash-only** (ST constraint) — so a no-flash RAM-only NPU run is not
+   possible; the flash+BOOT board step is mandatory for B2.
 
 ## Status: artifacts ready; firmware integration (path A) + flashing (board) remain.
