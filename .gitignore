@@ -99,3 +99,7 @@ reviewer_comment.md
 
 # Sub-projects (separate repos / sandboxes)
 metacentrum_cz_use/
+
+# N6 bench: fetched third-party sources (scripts/n6_fetch_deps.sh) and build output
+firmware/n6/third_party/
+firmware/n6/build/
