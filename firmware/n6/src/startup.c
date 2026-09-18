@@ -5,6 +5,8 @@
 #include <string.h>
 #include "stm32n6xx.h"
 #include "mailbox.h"
+#include "watchdog.h"
+#include <setjmp.h>
 
 extern uint32_t _estack, _sbss, _ebss;
 extern int main(void);
@@ -36,6 +38,7 @@ const uint32_t g_vectors[16 + 8] = {
 
 void Reset_Handler(void)
 {
+    IWDG_S_KR = IWDG_KEY_RELOAD;                        /* feed the OOB watchdog immediately */
     __disable_irq();                                   /* PRIMASK = 1 for the whole session */
     SCB->VTOR = (uint32_t)g_vectors;
     __DSB(); __ISB();
@@ -57,6 +60,12 @@ static void Default_Handler(void)
 extern void bench_fault_trampoline(void);
 extern int  bench_fault_in_run(void);
 
+/* watchdog boot-probe guard (watchdog.h) */
+volatile uint32_t g_wdg_guard;
+volatile uint32_t g_wdg_fault;
+jmp_buf          g_wdg_jb;
+static void wdg_guard_trampoline(void) { longjmp(g_wdg_jb, 1); }
+
 /* Record the fault registers so the host can print them. If the fault happened inside an
  * experiment, clear the fault status, redirect the stacked PC to the trampoline and return:
  * the run ends with MB_ERROR and the session survives. Otherwise park. */
@@ -68,6 +77,14 @@ static void HardFault_Handler(void)
     MB->info[INFO_HFSR_LAST] = SCB->HFSR;
     MB->info[INFO_BFAR_LAST] = SCB->BFAR;
     MB->info[INFO_FAULT_PC]  = frame[6];
+    if (g_wdg_guard) {                          /* fault while probing a watchdog register */
+        SCB->CFSR = SCB->CFSR;
+        SCB->HFSR = SCB->HFSR;
+        frame[6] = (uint32_t)wdg_guard_trampoline & ~1u;
+        frame[7] |= (1u << 24);
+        __DSB();
+        return;
+    }
     if (bench_fault_in_run()) {
         SCB->CFSR = SCB->CFSR;                 /* write-1-to-clear */
         SCB->HFSR = SCB->HFSR;

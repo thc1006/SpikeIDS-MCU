@@ -10,6 +10,9 @@
 #include "stm32n6xx_hal.h"
 #include "mailbox.h"
 #include "kernels.h"
+#include "watchdog.h"
+
+wdg_state_t g_wdg;
 
 #ifndef BUILD_ID
 #define BUILD_ID 0
@@ -114,6 +117,7 @@ static void run_read_bw(void)
     apply_cache_mode(mode);
     uint32_t acc = 0;
     for (uint32_t it = 0; it < iters; it++) {
+        wdg_feed();
         cold_start(mode);
         uint32_t t0 = cyc();
         switch (width) {
@@ -220,6 +224,15 @@ static void run_peek(void)
 int main(void)
 {
     uint32_t ccr0 = SCB->CCR, mpu0 = MPU->CTRL;
+    uint32_t boot[MB_N_BOOT] = {0};
+
+    /* 1) Neutralise the OOB watchdog(s) BEFORE anything slow. Probe (fault-guarded) which
+     *    watchdogs are live, then service them; keep servicing throughout. */
+    wdg_probe(boot);
+    wdg_feed();
+    wdg_freeze_in_debug();
+    wdg_feed();
+
     caches_reset_at_entry();
     ARM_MPU_Disable();                                  /* architectural default memory map */
     SCB->CPACR |= (3u << 20) | (3u << 22);              /* CP10/CP11: FPU + MVE full access */
@@ -227,27 +240,34 @@ int main(void)
     __set_FPSCR(__get_FPSCR() | (1u << 24) | (1u << 25)); /* FZ + DN: data-independent FP timing */
     SysTick->CTRL = 0;
     dwt_init();
+    wdg_feed();
 
-    memset(MB, 0, sizeof(*MB));
+    memset((void *)MB->info, 0, sizeof(MB->info));
     capture_info(ccr0, mpu0);
-    MB->version = MB_VERSION;
-    MB->magic = MB_MAGIC;
+    boot[BOOT_PHASE] = 1;
+    for (int i = 0; i < MB_N_BOOT; i++) MB->boot[i] = boot[i];
     MB->state = MB_IDLE;
+    MB->cmd = MB->seq = MB->ack = MB->err = MB->n_results = 0;
+    MB->version = MB_VERSION;
+    __DSB();
+    MB->magic = MB_MAGIC;                               /* publish LAST: magic implies boot[] valid */
+    wdg_feed();
 
     uint32_t last_seq = 0;
     for (;;) {
-        if (setjmp(g_recover)) {                        /* landed here from a fault */
+        if (setjmp(g_recover)) {                        /* landed here from a fault in a run */
             g_in_run = 0;
             MB->err = SCB->CFSR ? SCB->CFSR : MB->info[INFO_CFSR_LAST];
             MB->state = MB_ERROR;
             apply_cache_mode(0);
         }
-        while (MB->seq == last_seq) { __NOP(); }
+        while (MB->seq == last_seq) { wdg_feed(); __NOP(); }
         last_seq = MB->seq;
         MB->ack = last_seq;
         MB->err = 0;
         MB->n_results = 0;
         MB->state = MB_RUNNING;
+        wdg_feed();
         g_in_run = 1;
         switch (MB->cmd) {
             case CMD_NOP:      run_nop();      break;

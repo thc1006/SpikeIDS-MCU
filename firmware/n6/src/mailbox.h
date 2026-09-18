@@ -10,6 +10,7 @@
 #define MB_MAX_RES   1024
 #define MB_N_PARAM   16
 #define MB_N_INFO    64
+#define MB_N_BOOT    8
 
 enum mb_state { MB_IDLE = 0, MB_RUNNING = 1, MB_DONE = 2, MB_ERROR = 3, MB_FAULT = 4 };
 
@@ -34,6 +35,7 @@ enum { RW_LDR32 = 0, RW_LDRD64 = 1, RW_MVE128 = 2, RW_LDM32x8 = 3 };
 typedef struct {
     volatile uint32_t magic;
     volatile uint32_t version;
+    volatile uint32_t boot[8];   /* fast diagnostic snapshot, valid once magic is set */
     volatile uint32_t state;
     volatile uint32_t cmd;
     volatile uint32_t seq;             /* host bumps to start; fw copies into ack */
@@ -48,6 +50,12 @@ typedef struct {
 
 #define MB ((mailbox_t *)MB_ADDR)
 
+/* boot[] fast-snapshot indices (readable the instant magic appears) */
+enum {
+    BOOT_IWDG_SR = 0, BOOT_WWDG_CR, BOOT_RCC_APB1ENR1, BOOT_WWDG_CFR,
+    BOOT_IWDG_OK, BOOT_WWDG_PRESENT, BOOT_SETUP_FAULT, BOOT_PHASE,
+};
+
 /* info[] indices */
 enum {
     INFO_CPUID = 0, INFO_CCR_AT_ENTRY, INFO_MPU_CTRL_AT_ENTRY, INFO_MPU_TYPE,
@@ -56,6 +64,6 @@ enum {
     INFO_RCC_AHB5ENR, INFO_RCC_APB5ENR, INFO_LTDC_WAS_ON,
     INFO_CLIDR, INFO_CCSIDR_I, INFO_CCSIDR_D, INFO_FPSCR,
     INFO_CFSR_LAST, INFO_HFSR_LAST, INFO_BFAR_LAST, INFO_FAULT_PC,
-    INFO_MB_VERSION, INFO_BUILD_ID,
+    INFO_MB_VERSION, INFO_BUILD_ID, INFO_IWDG_SR, INFO_WWDG_CR,
 };
 #endif
