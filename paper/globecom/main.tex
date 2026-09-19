@@ -596,6 +596,51 @@ The energy figure is derived from the reference workload in AN5946,
 not direct measurement of our model. On-board validation with an
 STLINK-V3PWR probe is left to future work.
 
+\subsection{On-board cross-platform latency and the NPU crossover}
+\label{sec:crossover}
+
+The Table~\ref{tab:npu} figures are ST Edge~AI cloud-benchmark estimates on the
+Ethernet models. To measure directly and answer \emph{what the NPU actually
+buys}, we deployed one MLP family ($11{\to}W{\to}W{\to}W/2{\to}5$, INT8)
+on-board across three MCU classes, sweeping the hidden width $W$
+(Table~\ref{tab:sweep}). Every clock was verified on-device and weights are
+SRAM-resident on all platforms, isolating compute. INT8 dense-FC latency is
+weight-value-independent (a random-weight $W{=}64$ model measured within 0.1\%
+of the trained one), so per-width accuracy (79.6--80.0\%) is taken from the
+real-data ablation.
+
+\begin{table}[t]
+\centering
+\caption{On-board INT8 inference latency (\textmu s) of the same MLP swept over
+hidden width $W$ on three MCU classes (SRAM-resident weights; every clock
+verified on-device). On the STM32N6, the M55 CPU (Helium/MVE) \emph{beats its
+own Neural-ART NPU} below ${\sim}10^5$ MACs.}
+\label{tab:sweep}
+\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$W$ & MACs & N6~CPU & N6~NPU & ESP32-S3 & RA4E1 \\
+ & & {\scriptsize 800\,MHz} & {\scriptsize 800/1G} & {\scriptsize 240\,MHz} & {\scriptsize 100\,MHz} \\
+\midrule
+64  & 7{,}008   & \textbf{13.9} & 30.2  & 114.0 & 264.6 \\
+128 & 26{,}304  & \textbf{50.7} & 81.1  & 289.5 & 782.8 \\
+256 & 101{,}760 & 314.7 & \textbf{275.3} & 832.5 & 2627.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On the same silicon the NPU is \textbf{2.2$\times$ slower} than the CPU at
+$W{=}64$ and \textbf{1.6$\times$ slower} at $W{=}128$, becoming
+\textbf{1.14$\times$ faster} only at $W{=}256$ ($10^5$ MACs). The crossover is
+sharpened by the CPU's 32\,KB L1: at $W{=}256$ its ${\sim}100$\,KB of weights
+spill L1 (1.5$\to$2.5 cyc/MAC), whereas the NPU streams weights through its own
+cache. The NPU thus pays off only for models large enough that its launch
+overhead amortizes \emph{and} the CPU has left its cache-resident regime---the
+regime the 256-wide Ethernet models (Table~\ref{tab:npu}) sit at, but a minimal
+tabular IDS does not. Across platforms the M55's wide Helium INT8 dominates:
+8$\times$ faster than the ESP32-S3 (LX7 SIMD) and 19$\times$ faster than the
+RA4E1 (M33 DSP) at $W{=}64$.
+
 \subsection{INT8 Quantization Robustness}
 \label{sec:quant}
 
