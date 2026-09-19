@@ -6,8 +6,8 @@ set -uo pipefail
 export PATH="/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin:$PATH"
 ROOT=/home/thc1006/dev/SpikeIDS-MCU; ST=/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI
 TP=$ROOT/firmware/n6/third_party; HAL=$TP/stm32n6xx-hal-driver
-MODEL=$ROOT/firmware/n6cpu/model; SRC=$ROOT/firmware/n6cpu/src
-B=/tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/n6cpu_fw
+MODEL=${MODEL:-$ROOT/firmware/n6cpu/model}; SRC=$ROOT/firmware/n6cpu/src
+B=${B:-/tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/n6cpu_fw}
 mkdir -p "$B"; rm -f "$B"/*.o
 CPU="-mcpu=cortex-m55 -mthumb -mfloat-abi=hard -mfpu=auto"
 DEFS="-DSTM32N657xx -DUSE_HAL_DRIVER -DCORE_CM55"
