@@ -114,10 +114,12 @@ NSL-KDD (5-class), UNSW-NB15 (10-class), CICIDS2017 (15-class),
 and IoT-23 (5-class).
 Results are reported as mean$\pm$std over multi-seed runs (5--20 seeds),
 with paired Wilcoxon signed-rank tests and Holm--Bonferroni correction.
-Across all datasets, INT8 NPU inference runs in \textbf{0.29--0.46\,ms}
-(2.7--4.2$\times$ faster than the same model on Cortex-M55 CPU), with
-estimated energy \textbf{44--69\,\textmu J/inference} and Flash
-105--138\,KB.
+On-board (clocks verified), INT8 inference is \textbf{0.28--0.58\,ms}:
+INT8 quantization gives 1.6--1.7$\times$ over FP32 on the Cortex-M55 CPU, but the
+Neural-ART NPU adds only \textbf{${\sim}1.1\times$} over the INT8 CPU (and is
+slower when operators fall back) --- the NPU buys little at this model scale, and
+a width sweep locates the CPU/NPU crossover near $10^5$ MACs. Energy is an
+estimated \textbf{44--69\,\textmu J/inference} (AN5946); Flash 105--138\,KB.
 Compared with recent MCU-class deployments on STM32F7 (31\,ms, 7.86\,mJ)
 and Raspberry Pi~3B+ (27\,ms), our path delivers 59--107$\times$ lower
 latency; the estimated energy envelope implies 114--179$\times$ lower
@@ -170,8 +172,9 @@ Our contributions:
   \item Following a systematic literature search protocol (Supplementary
     File S1: \texttt{novelty\_search\_protocol.md}), the first publicly documented IDS
     classifier deployment on a Cortex-M class MCU paired with a
-    general-purpose NPU (Neural-ART), achieving 0.29--0.46\,ms
-    inference at an estimated 44--69\,\textmu J per inference.
+    general-purpose NPU (Neural-ART), with \emph{on-board} INT8 latency
+    0.28--0.58\,ms (clocks verified) and an on-board CPU-vs-NPU width sweep
+    showing the NPU adds only ${\sim}1.1\times$ over the INT8 CPU at this scale.
   \item A four-dataset multi-seed study (5--20 seeds per arm,
     see Table~\ref{tab:accuracy} caption) with paired Wilcoxon
     signed-rank tests under Holm--Bonferroni family-wise error
@@ -242,12 +245,13 @@ Chehade~\cite{chehade2025stm32} & STM32F7 & MCU & multi & 96.6\% & 31\,ms & 7.86
 Diab~\cite{diab2025rpi} & RPi~3B+ & SBC & multi & 95.3\% & 27\,ms & ${\sim}$6.75\,mJ$^\ddagger$ & None \\
 Farooq~\cite{farooq2025fpga}$^\S$ & Xilinx FPGA & FPGA & bin. & --- & $<$1\,\textmu s & --- & --- \\
 \midrule
-\textbf{This work} & \textbf{STM32N6} & \textbf{MCU} & \textbf{5/10/15/5} & \textbf{78.6/64.7/91.9/75.6\%}$^\dagger$ & \textbf{0.29\,ms} & \textbf{44\,\textmu J} & \textbf{NPU} \\
+\textbf{This work} & \textbf{STM32N6} & \textbf{MCU} & \textbf{5/10/15/5} & \textbf{78.6/64.7/91.9/75.6\%}$^\dagger$ & \textbf{0.28\,ms}$^\P$ & \textbf{44\,\textmu J}$^\ddagger$ & \textbf{NPU} \\
 \bottomrule
 \multicolumn{8}{l}{\scriptsize $^*$Power, not energy; latency not reported.} \\
 \multicolumn{8}{l}{\scriptsize $^\dagger$NSL-KDD 5-class / UNSW-NB15 10-class / CICIDS2017 15-class / IoT-23 5-class.} \\
 \multicolumn{8}{l}{\scriptsize $^\ddagger$Estimated from reported power and latency.} \\
-\multicolumn{8}{l}{\scriptsize $^\S$Edge-IIoT dataset, different hardware class (${\sim}$10\,W FPGA).}
+\multicolumn{8}{l}{\scriptsize $^\S$Edge-IIoT dataset, different hardware class (${\sim}$10\,W FPGA).} \\
+\multicolumn{8}{l}{\scriptsize $^\P$On-board measured (on-device DWT, 800\,MHz verified); INT8 NPU, IoT-23.}
 \end{tabular}%
 }
 \end{table}
@@ -389,14 +393,14 @@ NPU utilization; QCFS INT8 forces CPU fallback at every \texttt{Floor}.}
 \end{table}
 
 For the ReLU INT8 path:
-NSL-KDD compiles to 5~HW + 1~Hyb + 2~SW epochs (0.46\,ms);
+NSL-KDD compiles to 5~HW + 1~Hyb + 2~SW epochs (on-board 0.52\,ms, 52\% HW);
 UNSW-NB15 compiles to 4~HW + 0~Hyb + 0~SW epochs (0.29\,ms, 100\% NPU).
-The QCFS INT8 path compiles to 13~HW + 1~Hyb + 14~SW epochs (0.54\,ms)
+The QCFS INT8 path compiles to 13~HW + 1~Hyb + 14~SW epochs
 because each \texttt{Floor} triggers a CPU round-trip via
 \mbox{\texttt{Dequant}}$\to$\mbox{\texttt{Floor}}$\to$\mbox{\texttt{Quant}}.
-The CICIDS2017 and IoT-23 INT8 ONNX graphs share the same
+The CICIDS2017 and IoT-23 INT8 graphs share the same
 \texttt{Gemm}+\texttt{Relu} structure and compile to 4~HW + 0~SW
-epochs (100\% NPU), achieving 0.42\,ms and 0.38\,ms respectively.
+epochs (100\% NPU), 0.32 and 0.28\,ms on-board (Table~\ref{tab:npu}).
 
 % ============================================================
 \section{Experiments}
@@ -549,60 +553,51 @@ R2L$\to$Normal (63.2\%) and U2R$\to$Probe (45.4\%) dominate errors.}
 
 \begin{table}[t]
 \centering
-\caption{NPU benchmark on STM32N6570-DK. Energy estimated from
-AN5946~\cite{st_an5946} (${\sim}$150\,mW at nominal frequency);
-FP32 CPU-only power differs and is not estimated (---).}
+\caption{\textbf{On-board} INT8 IDS inference latency (\textmu s; on-device DWT,
+CPU clock verified at 800\,MHz) for the four datasets
+($d{\to}256{\to}256{\to}128{\to}C$), replacing our earlier ST Edge~AI \emph{cloud}
+estimates. The speedup is from INT8 quantization (1.6--1.7$\times$ over FP32 on the
+M55 CPU); the Neural-ART NPU adds only ${\sim}1.1\times$ over the same INT8 model on
+the CPU, and is \emph{slower} on NSL-KDD (two software-fallback epochs).}
 \label{tab:npu}
 \small
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}llccccccc@{}}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
-\textbf{Model} & \textbf{Dataset} & \textbf{Time} & \textbf{Energy} & \textbf{HW} & \textbf{Hyb} & \textbf{SW} & \textbf{Flash} & \textbf{RAM} \\
- & & \textbf{(ms)} & \textbf{(\textmu J)} & & & & \textbf{(KB)} & \textbf{(KB)} \\
+\textbf{Dataset} & \textbf{FP32} & \textbf{INT8} & \textbf{INT8} & \textbf{NPU} & \textbf{INT8} \\
+ & \textbf{CPU} & \textbf{CPU} & \textbf{NPU} & \textbf{HW} & \textbf{wts} \\
+ & (\textmu s) & (\textmu s) & (\textmu s) & & (KB) \\
 \midrule
-ReLU FP32 & NSL-KDD & 1.24 & --- & 0 & 0 & 11 & 466.4 & 2.17 \\
-ReLU INT8 & NSL-KDD & 0.46 & 69 & 5 & 1 & 2 & 137.7 & 1.25 \\
-\midrule
-ReLU FP32 & UNSW-NB15 & 1.23 & --- & 0 & 0 & 11 & 461.9 & 2.14 \\
-ReLU INT8 & UNSW-NB15 & \textbf{0.29} & \textbf{44} & 4 & 0 & 0 & 120.6 & 0.50 \\
-\midrule
-ReLU INT8 & CICIDS2017 & 0.42 & 63 & 4 & 0 & 0 & 120.6 & 0.50 \\
-ReLU INT8 & IoT-23 & 0.38 & 57 & 4 & 0 & 0 & 105.0 & 0.50 \\
-\midrule
-QCFS INT8 & NSL-KDD & 0.54 & 81 & 13 & 1 & 14 & 138.0 & 2.00 \\
+NSL-KDD    & 560 & 323 & 518$^\dagger$ & 52\%  & 109 \\
+UNSW-NB15  & 547 & 323 & \textbf{292}  & 100\% & 108 \\
+CICIDS2017 & 580 & 354 & 316           & 100\% & 118 \\
+IoT-23     & 526 & 304 & 277           & 100\% & 102 \\
 \bottomrule
-\end{tabular}%
-}
+\multicolumn{6}{l}{\scriptsize $^\dagger$2 software-fallback epochs (41-feature operator constraint).}
+\end{tabular}
 \end{table}
 
-Table~\ref{tab:npu} presents benchmark results from ST Edge AI
-Developer Cloud on hosted STM32N6570-DK boards (remote benchmark
-service), rather than local emulation~\cite{st_edgeai_dc,st_edgeai_wiki}.
-INT8 NPU execution yields \textbf{2.7$\times$} speedup on NSL-KDD
-and \textbf{4.2$\times$} on UNSW-NB15 over the same model on
-the Cortex-M55 CPU.
-At an estimated 150\,mW (ST AN5946~\cite{st_an5946}), this translates
-to 44--69\,\textmu J per inference, i.e.,
-\textbf{114--179$\times$} lower than Chehade et~al.'s 7.86\,mJ on
-the STM32F7~\cite{chehade2025stm32}.
-UNSW-NB15 achieves 100\% NPU execution (4~HW, 0~SW epochs);
-Flash shrinks 3.4--3.8$\times$ from FP32 to INT8.
-Both ReLU INT8 models on CICIDS2017 and IoT-23 achieve 100\% NPU
-execution (Table~\ref{tab:npu}), with latencies of 0.42 and
-0.38\,ms. The same sub-millisecond operating regime is therefore
-observed across all four datasets.
-
-The energy figure is derived from the reference workload in AN5946,
-not direct measurement of our model. On-board validation with an
-STLINK-V3PWR probe is left to future work.
+Table~\ref{tab:npu} reports \emph{on-board} latency (on-device DWT, CPU clock
+verified at 800\,MHz), superseding our earlier ST~Edge~AI cloud estimates. Two
+findings correct the record. First, the speedup comes from \textbf{INT8
+quantization} (1.6--1.7$\times$ over FP32 on the M55 CPU), not from the NPU.
+Second, over the \emph{same} INT8 model on the CPU the Neural-ART NPU adds only
+\textbf{1.10--1.12$\times$} (UNSW-NB15, CICIDS2017, IoT-23) and is \textbf{1.6$\times$
+slower} on NSL-KDD, whose 41-feature input forces two epochs back onto the CPU via
+\mbox{\texttt{Dequant}}$\to$op$\to$\mbox{\texttt{Quant}}. A ``NPU vs.\ CPU''
+speedup therefore conflates quantization with acceleration; at this scale
+($10^5$ MACs) the NPU's fixed per-inference overhead nearly cancels its throughput
+gain, and for smaller models the CPU wins outright (width sweep,
+Table~\ref{tab:sweep}). All four datasets stay in the sub-millisecond regime
+(0.28--0.58\,ms) on both CPU and NPU. Energy remains an AN5946-based estimate
+(44--69\,\textmu J); direct measurement with an STLINK-V3PWR/PPK2 probe is pending.
 
 \subsection{On-board cross-platform latency and the NPU crossover}
 \label{sec:crossover}
 
-The Table~\ref{tab:npu} figures are ST Edge~AI cloud-benchmark estimates on the
-Ethernet models. To measure directly and answer \emph{what the NPU actually
-buys}, we deployed one MLP family ($11{\to}W{\to}W{\to}W/2{\to}5$, INT8)
-on-board across three MCU classes, sweeping the hidden width $W$
+Table~\ref{tab:npu} measures the four Ethernet models on the N6 itself. To map
+\emph{where} the NPU pays off, we additionally swept one MLP family
+($11{\to}W{\to}W{\to}W/2{\to}5$, INT8) on-board across three MCU classes over
+hidden width $W$
 (Table~\ref{tab:sweep}). Every clock was verified on-device and weights are
 SRAM-resident on all platforms, isolating compute. INT8 dense-FC latency is
 weight-value-independent (a random-weight $W{=}64$ model measured within 0.1\%
@@ -934,7 +929,9 @@ Conv2D $1{\times}3$ TinyCNN under current Neural-ART operator support.
 
 \textbf{Conclusion.}
 We demonstrate sub-millisecond classifier inference on a commodity MCU
-NPU: 2.7--4.2$\times$ CPU speedup and an estimated 114--179$\times$
+NPU: INT8 quantization gives 1.6--1.7$\times$ over FP32 on the M55 CPU, while the
+Neural-ART NPU adds only ${\sim}1.1\times$ over the same INT8 model on the CPU
+(a CPU/NPU crossover near $10^5$ MACs), plus an estimated 114--179$\times$
 energy reduction vs.\ recent STM32F7 deployments. Paired Wilcoxon
 tests show $T{=}1$ QCFS arms are statistically
 indistinguishable from INT8 ReLU across all four datasets

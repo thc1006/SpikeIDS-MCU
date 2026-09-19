@@ -34,11 +34,18 @@ def main():
     ap.add_argument("--classes", type=int, default=5)
     ap.add_argument("--out", required=True)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--fp32", action="store_true", help="emit the FP32 ONNX (no INT8 quantization)")
     a = ap.parse_args()
     torch.manual_seed(a.seed); np.random.seed(a.seed)
 
     m = MLP(a.width, a.din, a.classes).eval()
     dummy = torch.randn(1, a.din)
+    macs = a.din * a.width + a.width * a.width + a.width * (a.width // 2) + (a.width // 2) * a.classes
+    if a.fp32:
+        torch.onnx.export(m, dummy, a.out, input_names=["input"], output_names=["output"],
+                          opset_version=13, dynamic_axes=None)
+        print(f"width={a.width} FP32 arch={a.din}->{a.width}->{a.width}->{a.width//2}->{a.classes} MACs={macs} -> {a.out}")
+        return
     fp32 = a.out + ".fp32.onnx"
     torch.onnx.export(m, dummy, fp32, input_names=["input"], output_names=["output"],
                       opset_version=13, dynamic_axes=None)
