@@ -112,3 +112,4 @@ firmware/n6b/smoke/*.elf
 firmware/n6b/smoke/*.map
 
 firmware/n6b/build/
+ai_runner.log

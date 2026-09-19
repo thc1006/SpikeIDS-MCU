@@ -16,13 +16,13 @@ DEV_SRC="mcu_cache.c npu_cache.c"
 fail=0
 echo "== compile =="
 for f in "$MODEL/stai_ids.c" "$MODEL/ids.c" "$HERE/main_smoke.c"; do
-  arm-none-eabi-gcc $CPU $DEFS $INC $INCPRE -O2 -ffunction-sections -fdata-sections -c "$f" -o "$B/$(basename "$f" .c).o" 2>"$B/$(basename "$f" .c).cc.log" || { echo "  FAIL $(basename $f)"; fail=1; }
+  arm-none-eabi-gcc $CPU $DEFS $INC -O2 -ffunction-sections -fdata-sections -c "$f" -o "$B/$(basename "$f" .c).o" 2>"$B/$(basename "$f" .c).cc.log" || { echo "  FAIL $(basename $f)"; fail=1; }
 done
 for s in $ATON_SRC; do
-  arm-none-eabi-gcc $CPU $DEFS $INC $INCPRE -O2 -ffunction-sections -fdata-sections -c "$ST/Npu/ll_aton/$s" -o "$B/${s%.c}.o" 2>"$B/${s%.c}.cc.log" || { echo "  FAIL $s"; fail=1; }
+  arm-none-eabi-gcc $CPU $DEFS $INC -O2 -ffunction-sections -fdata-sections -c "$ST/Npu/ll_aton/$s" -o "$B/${s%.c}.o" 2>"$B/${s%.c}.cc.log" || { echo "  FAIL $s"; fail=1; }
 done
 for s in $DEV_SRC; do
-  arm-none-eabi-gcc $CPU $DEFS $INC $INCPRE -O2 -ffunction-sections -fdata-sections -c "$ST/Npu/Devices/STM32N6xx/$s" -o "$B/${s%.c}.o" 2>"$B/${s%.c}.cc.log" || { echo "  FAIL $s"; fail=1; }
+  arm-none-eabi-gcc $CPU $DEFS $INC -include stm32n6xx_hal.h -O2 -ffunction-sections -fdata-sections -c "$ST/Npu/Devices/STM32N6xx/$s" -o "$B/${s%.c}.o" 2>"$B/${s%.c}.cc.log" || { echo "  FAIL $s"; fail=1; }
 done
 echo "compile failures: $fail ; objs: $(ls "$B"/*.o 2>/dev/null | wc -l)"
 echo "== link =="

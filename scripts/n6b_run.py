@@ -57,6 +57,9 @@ class B:
             est=next(sm["st_value"] for sm in e.get_section_by_name(".symtab").iter_symbols() if sm.name=="_estack")
         for r,v in (("xpsr",0x01000000),("msp",est),("psp",est),("sp",est),("lr",0xFFFFFFFF),("pc",entry&~1),("primask",1),("control",0)):
             t.write_core_register(r,v)
+        for rname in ("msplim","psplim"):            # clear inherited stack limits (else STKOF on first push)
+            try: t.write_core_register(rname,0)
+            except Exception: pass
         t.resume()
         t0=time.time()
         while time.time()-t0<3:
@@ -65,7 +68,14 @@ class B:
             except (TransferFaultError,TransferError): s.clr()
             time.sleep(0.01)
         else:
-            raise SystemExit("firmware did not come up")
+            try:
+                t.halt(); pc=t.read_core_register('pc'); lr=t.read_core_register('lr')
+                mg=s.r32(MB+OFF["magic"]); ph=s.r32(MB+OFF["boot"]+28); f6=s.r32(MB+OFF["boot"]+24)
+                print(f"DID NOT COME UP: pc={pc:#x} lr={lr:#x} magic={mg:#x}(exp {MAGIC:#x}) "
+                      f"phase={ph} boot6/CFSR={f6:#x} CFSR_now={s.r32(0xE000ED28):#x} HFSR={s.r32(0xE000ED2C):#x}")
+            except Exception as ex:
+                print("DID NOT COME UP + diag failed:", ex)
+            raise SystemExit(1)
         s.seq=s.r32(MB+OFF["seq"])
         return {"loaded":loaded,"entry":entry,
                 "boot":[s.r32(MB+OFF["boot"]+4*i) for i in range(8)]}

@@ -1,0 +1,489 @@
+{
+    "version": "4.0",
+    "environment": {
+        "generated_model": {
+            "model_files": [
+                {
+                    "name": "can_h64_int8_OE_3_3_1.onnx",
+                    "signature": "0xd59af5ff8634aec6a68155caf55e82f2"
+                }
+            ],
+            "name": "network",
+            "generated_time": "2026-09-19T02:12:26+0800"
+        },
+        "tools": [
+            {
+                "name": "ST.EdgeAI.Core",
+                "version": "3.0.0-20426 123672867",
+                "arguments": "generate --model /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/onnx_out/can_h64_int8.onnx --target stm32n6 --st-neural-art default@/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json --name ids --binary --memory-pool firmware/n6b/mypool_n6.json --output firmware/n6b/model --workspace /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/n6b_ws",
+                "environment": [],
+                "input_model": {
+                    "model_files": [
+                        {
+                            "name": "can_h64_int8.onnx",
+                            "signature": "0xa6a15517222aff0db762d65b7a4a425e"
+                        }
+                    ],
+                    "name": "can_h64_int8",
+                    "type": "onnx",
+                    "size": 28692,
+                    "n_params": 7173
+                }
+            }
+        ],
+        "test_name": "",
+        "network_signature": "0x392989213a91f105"
+    },
+    "model_info": {
+        "original_inputs": [
+            {
+                "name": "input",
+                "data_format": {
+                    "type": "FLOAT",
+                    "size": 32,
+                    "scale": [],
+                    "zero": [],
+                    "quantizer": "NONE"
+                },
+                "shape": [
+                    1,
+                    11
+                ],
+                "shape_map": [
+                    "BATCH",
+                    "CH"
+                ],
+                "c_shape_map": [
+                    "BATCH",
+                    "CH"
+                ]
+            }
+        ],
+        "original_outputs": [
+            {
+                "name": "output_QuantizeLinear_Input",
+                "data_format": {
+                    "type": "SIGNED",
+                    "size": 8,
+                    "scale": [
+                        0.0012466589687392116
+                    ],
+                    "zero": [
+                        36
+                    ],
+                    "quantizer": "UNIFORM"
+                },
+                "shape": [
+                    1,
+                    5
+                ],
+                "shape_map": [
+                    "BATCH",
+                    "CH"
+                ],
+                "c_shape_map": [
+                    "BATCH",
+                    "CH"
+                ]
+            }
+        ]
+    },
+    "tensors": {
+        "Input_0_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.024639930576086044
+                    ],
+                    [
+                        4
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            },
+            "data_channel_position": "CHLAST",
+            "data_channel_batch": 1,
+            "user_allocated": false
+        },
+        "Dequantize_1_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.024639930576086044
+                    ],
+                    [
+                        4
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Quantize_2_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.024639930576086044
+                    ],
+                    [
+                        4
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Dequantize_3_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.024639930576086044
+                    ],
+                    [
+                        4
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_4_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.00823040958493948
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_4_weights": {
+            "format": {
+                "params": [
+                    [
+                        0.002371429232880473
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_4_bias": {
+            "format": {
+                "params": [
+                    [
+                        5.8431851357454434e-05
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S32"
+            }
+        },
+        "Quantize_5_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.00823040958493948
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Dequantize_6_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.00823040958493948
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_7_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.003959858324378729
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_7_weights": {
+            "format": {
+                "params": [
+                    [
+                        0.0009842386934906244
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_7_bias": {
+            "format": {
+                "params": [
+                    [
+                        8.100687409751117e-06
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S32"
+            }
+        },
+        "Quantize_8_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.003959858324378729
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Dequantize_9_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.003959858324378729
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_10_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.0018325673881918192
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_10_weights": {
+            "format": {
+                "params": [
+                    [
+                        0.000983905396424234
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_10_bias": {
+            "format": {
+                "params": [
+                    [
+                        3.896126145264134e-06
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S32"
+            }
+        },
+        "Quantize_11_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.0018325673881918192
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Dequantize_12_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.0018325673881918192
+                    ],
+                    [
+                        -128
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_13_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.0012466589687392116
+                    ],
+                    [
+                        36
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_13_weights": {
+            "format": {
+                "params": [
+                    [
+                        0.0013884801883250475
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            }
+        },
+        "Gemm_13_bias": {
+            "format": {
+                "params": [
+                    [
+                        2.5444835500820773e-06
+                    ],
+                    [
+                        0
+                    ]
+                ],
+                "class": "integer",
+                "type": "S32"
+            }
+        },
+        "Quantize_14_out_0": {
+            "format": {
+                "params": [
+                    [
+                        0.0012466589687392116
+                    ],
+                    [
+                        36
+                    ]
+                ],
+                "class": "integer",
+                "type": "S8"
+            },
+            "data_channel_position": "CHFIRST",
+            "data_channel_batch": 1,
+            "user_allocated": false
+        }
+    },
+    "nodes": {
+        "Dequantize_1": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Dequantize_3": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Gemm_4": {
+            "names": [
+                "relu",
+                "input_DequantizeLinear_Output",
+                "input_QuantizeLinear_Output"
+            ]
+        },
+        "Quantize_5": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Dequantize_6": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Gemm_7": {
+            "names": [
+                "relu_1",
+                "relu_DequantizeLinear_Output",
+                "relu_QuantizeLinear_Output"
+            ]
+        },
+        "Quantize_8": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Dequantize_9": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Gemm_10": {
+            "names": [
+                "relu_2",
+                "relu_1_DequantizeLinear_Output",
+                "relu_1_QuantizeLinear_Output"
+            ]
+        },
+        "Quantize_11": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Dequantize_12": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        },
+        "Quantize_14": {
+            "names": [
+                "__FE_GENERATED__"
+            ]
+        }
+    }
+}

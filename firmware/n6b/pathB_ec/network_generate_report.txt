@@ -1,0 +1,140 @@
+ST Edge AI Core v3.0.0-20426 123672867
+Created date          : 2026-09-20 02:45:57
+Parameters            : generate -m /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/onnx_out/can_h64_int8.onnx --target stm32n6 --st-neural-art test-ec@neural_art_reloc.json --name network --binary --output /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/pathB/gen_test-ec --workspace /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/pathB/ws_test-ec
+
+Model name - can_h64_int8
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+m_id   layer (original)                                    oshape        param/size        macc                     connected to 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+0      input ()                                            [b:1,c:11]                                                            
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+1      input_QuantizeLinear_Output (QuantizeLinear)        [b:1,c:11]                        22                            input 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+2      net_0_bias_const (DequantizeLinear)                 [b:64]        64/256                                                  
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+3      net_0_weight_Dequa..tput_const (DequantizeLinear)   [b:64,c:11]   704/2,816                                               
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+4      net_2_bias_const (DequantizeLinear)                 [b:64]        64/256                                                  
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+5      net_2_weight_Dequa..tput_const (DequantizeLinear)   [b:64,c:64]   4,096/16,384                                            
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+6      net_4_bias_const (DequantizeLinear)                 [b:32]        32/128                                                  
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+7      net_4_weight_Dequa..tput_const (DequantizeLinear)   [b:32,c:64]   2,048/8,192                                             
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+8      net_6_bias_const (DequantizeLinear)                 [b:5]         5/20                                                    
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+9      net_6_weight_Dequa..tput_const (DequantizeLinear)   [b:5,c:32]    160/640                                                 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+10     input_DequantizeLinear_Output (DequantizeLinear)    [b:1,c:11]                        22      input_QuantizeLinear_Output 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+11     relu (Gemm)                                         [b:1,c:64]                       768    input_DequantizeLinear_Output 
+                                                                                                  net_0_weight_Dequa..tput_const 
+                                                                                                                net_0_bias_const 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+12     relu_QuantizeLinear_Output (QuantizeLinear)         [b:1,c:64]                       128                             relu 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+13     relu_DequantizeLinear_Output (DequantizeLinear)     [b:1,c:64]                       128       relu_QuantizeLinear_Output 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+14     relu_1 (Gemm)                                       [b:1,c:64]                     4,160     relu_DequantizeLinear_Output 
+                                                                                                  net_2_weight_Dequa..tput_const 
+                                                                                                                net_2_bias_const 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+15     relu_1_QuantizeLinear_Output (QuantizeLinear)       [b:1,c:64]                       128                           relu_1 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+16     relu_1_DequantizeLinear_Output (DequantizeLinear)   [b:1,c:64]                       128     relu_1_QuantizeLinear_Output 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+17     relu_2 (Gemm)                                       [b:1,c:32]                     2,080   relu_1_DequantizeLinear_Output 
+                                                                                                  net_4_weight_Dequa..tput_const 
+                                                                                                                net_4_bias_const 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+18     relu_2_QuantizeLinear_Output (QuantizeLinear)       [b:1,c:32]                        64                           relu_2 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+19     relu_2_DequantizeLinear_Output (DequantizeLinear)   [b:1,c:32]                        64     relu_2_QuantizeLinear_Output 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+20     output_QuantizeLinear_Input (Gemm)                  [b:1,c:5]                        165   relu_2_DequantizeLinear_Output 
+                                                                                                  net_6_weight_Dequa..tput_const 
+                                                                                                                net_6_bias_const 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+21     output_QuantizeLinear_Output (QuantizeLinear)       [b:1,c:5]                         10      output_QuantizeLinear_Input 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+22     output (DequantizeLinear)                           [b:1,c:5]                         10     output_QuantizeLinear_Output 
+------ --------------------------------------------------- ------------- -------------- ------- -------------------------------- 
+model: macc=7,877 weights=28,692 activations=-- io=--
+
+
+
+
+
+Compilation details
+------------------------------------------------------------------------------------
+Compiler version: 1.1.3-8
+Compiler arguments:  -i /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/pathB/gen_test-ec/can_h64_int8_OE_3_3_1.onnx --json-quant-file /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/pathB/gen_test-ec/can_h64_int8_OE_3_3_1_Q.json -g network.c --load-mdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc --load-mpool /home/thc1006/opt/stedgeai/3.0/scripts/N6_reloc/test/mpools/stm32n6_reloc.mpool --load-cdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc --save-mpool-file /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/pathB/ws_test-ec/neural_art__network/stm32n6_reloc.mpool --out-dir-prefix /tmp/claude-1000/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7/scratchpad/pathB/ws_test-ec/neural_art__network/ --network-name network --native-float --cache-maintenance --Ocache-opt --enable-virtual-mem-pools --Os --optimization 3 --Oauto-sched --all-buffers-info --csv-file network.csv --enable-epoch-controller --output-info-file c_info.json --generate-stai
+====================================================================================
+
+Memory usage information  (input/output buffers are included in activations)
+------------------------------------------------------------------------------------
+	flexMEM    [0x34000000 - 0x34000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM1    [0x34064000 - 0x34064000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM2    [0x34100000 - 0x34200000]:          0  B /      1.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM3    [0x34200000 - 0x34270000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM4    [0x34270000 - 0x342E0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM5    [0x342E0000 - 0x34350000]:        128  B /    448.000 kB  (  0.03 % used) -- weights:          0  B (  0.00 % used)  activations:        128  B (  0.03 % used)
+	npuRAM6    [0x34350000 - 0x343C0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	octoFlash  [0x70400000 - 0x74400000]:      6.877 kB /     64.000 MB  (  0.01 % used) -- weights:      6.877 kB (  0.01 % used)  activations:          0  B (  0.00 % used)
+	hyperRAM   [0x90000000 - 0x92000000]:          0  B /     32.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+---
+Total:                                             7.002 kB                                  -- weights:      6.877 kB                  activations:        128  B                   
+====================================================================================
+
+
+Used memory ranges
+------------------------------------------------------------------------------------
+	npuRAM5    [0x342E0000 - 0x34350000]: 0x342E0000-0x342E0080
+	octoFlash  [0x70400000 - 0x74400000]: 0x70400000-0x70401B90
+====================================================================================
+
+Epochs details
+------------------------------------------------------------------------------------
+Total number of epochs                               4
+>> pure software (SW) epochs                         0
+>> hybrid epochs (using both software and hardware)  0
+>> pure hardware (HW or EC) epochs                   4  (implemented in 1 epoch controller blobs/meta epochs)
+---
++------------------+------+---------+
+| epoch ID         | Type | Details |
++------------------+------+---------+
+| epochs    2 -> 5 |  EC  |         |
++------------------+------+---------+
+==================================================================================== 
+ Requested memory size by section - "stm32n6npu" target
+ ------------------------------- ------- -------- ------ ------- 
+ module                             text   rodata   data     bss 
+ ------------------------------- ------- -------- ------ ------- 
+ network.o                           130    6,416      0   4,800 
+ stai_network.o                        0        0      0       0 
+ NetworkRuntime1100_CM55_GCC.a         0        0      0       0 
+ lib (toolchain)*                      0        0      0       0 
+ ll atonn runtime                  3,092    2,402      0      13 
+ ------------------------------- ------- -------- ------ ------- 
+ RT total**                        3,222    8,818      0   4,813 
+ ------------------------------- ------- -------- ------ ------- 
+ weights/binary                        0    7,042      0       0 
+ activations                           0        0      0     128 
+ io                                    0        0      0       0 
+ ------------------------------- ------- -------- ------ ------- 
+ TOTAL                             3,222   15,860      0   4,941 
+ ------------------------------- ------- -------- ------ ------- 
+ *  toolchain objects (libm/libgcc*)
+ ** RT AI runtime objects (kernels+infrastructure)
+  
+  Summary - "stm32n6npu" target
+  ---------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)       % 
+  ---------------------------------------------------
+  RT total         12,040   63.1%      4,813   97.4% 
+  ---------------------------------------------------
+  TOTAL            19,082              4,941         
+  ---------------------------------------------------
+  *  rt/total
+
