@@ -29,7 +29,7 @@
 \hypersetup{
   colorlinks=false,
   pdftitle={Sub-Millijoule Intrusion Detection on a Commodity MCU Neural Processing Unit: A Four-Dataset Deployment Study},
-  pdfauthor={Hsiu-Chi Tsai}
+  pdfauthor={Hsiu-Chi Tsai, Chia-Tung Chung}
 }
 
 % Tighter lists
@@ -96,10 +96,16 @@
 MCU Neural Processing Unit: A Four-Dataset Deployment Study}
 
 \author{\IEEEauthorblockN{Hsiu-Chi Tsai}
-\IEEEauthorblockA{\textit{Department of Computer Science} \\
+\IEEEauthorblockA{\textit{Arete Honors Program} \\
 \textit{National Yang Ming Chiao Tung University}\\
 Hsinchu, Taiwan \\
-hctsai1006@cs.nctu.edu.tw}}
+hctsai1006@cs.nctu.edu.tw}
+\and
+\IEEEauthorblockN{Chia-Tung Chung}
+\IEEEauthorblockA{\textit{Department of Photonics} \\
+\textit{National Yang Ming Chiao Tung University}\\
+Hsinchu, Taiwan \\
+jun.514114.ee10@nycu.edu.tw}}
 
 \begin{document}
 \maketitle
@@ -320,9 +326,11 @@ counts~\cite{st_neural_art}.
 34 features, 10-class.
 \textbf{CICIDS2017}~\cite{sharafaldin2018cicids}: ${\approx}$2.26\,M
 train / 566\,K test, 78 raw features (69 after removing all-constant
-columns), 15-class. We use the HuggingFace cleaned version, which
-corrects the TCP-splitting and label-alignment issues documented by
-Engelen et~al.~\cite{engelen2021cicids}.
+columns), 15-class. We train on the original CIC-IDS-2017 flow
+CSVs~\cite{sharafaldin2018cicids} with column-name normalization and
+NaN/Inf handling; we do \emph{not} apply the Engelen
+et~al.~\cite{engelen2021cicids} re-cleaning, so the TCP-splitting and
+label-alignment issues it documents remain present (see caveats below).
 \textbf{IoT-23}~\cite{garcia2020iot23}: ${\approx}$4.84\,M
 train / 1.21\,M test, 13 features, 5-class (Benign, C\&C, DDoS,
 Okiru, PortScan). This dataset provides contemporary IoT botnet
@@ -330,8 +338,8 @@ traffic from 2018--2019 captures.
 Training: Adam ($\text{lr}{=}10^{-3}$), cosine annealing, 40--80 epochs,
 inverse-frequency class weighting. ReLU arms use $n{=}20$ seeds on
 NSL-KDD and UNSW-NB15, and $n{=}10$ on CICIDS2017 and IoT-23;
-QCFS arms use $n{=}10$ on UNSW-NB15 and $n{=}5$ on CICIDS2017
-and IoT-23 due to training-set size.
+QCFS arms use $n{=}10$ on UNSW-NB15 and CICIDS2017, and $n{=}5$ on
+IoT-23 due to training-set size.
 Three categorical features are label-encoded; remaining features are
 z-score normalized using training-set statistics.
 FP32 models are quantized to INT8 via ONNX Runtime static PTQ
@@ -347,10 +355,10 @@ continuity with the MCU-IDS literature
 (HH-NIDS~\cite{ngo2022hhnids}, Chehade~\cite{chehade2025stm32},
 Diab~\cite{diab2025rpi} all report NSL-KDD-derived results).
 CICIDS2017's original release contained TCP splitting bugs, duplicate
-flows, and mislabeled port scans~\cite{engelen2021cicids}; the cleaned
-HuggingFace version we use mitigates but does not eliminate these
-issues. We report per-class recall in
-Section~\ref{sec:experiments} to expose label-noise effects.
+flows, and mislabeled port scans~\cite{engelen2021cicids}; because we
+train on these original flows rather than the re-cleaned release, these
+issues persist in our data. We report per-class recall in
+Section~\ref{sec:experiments} to expose the resulting label-noise effects.
 
 \textbf{Fair-comparison caveats.}
 The MCU-IDS literature uses heterogeneous preprocessing: Ngo
@@ -422,7 +430,7 @@ epochs (100\% NPU), 0.32 and 0.28\,ms on-board (Table~\ref{tab:npu}).
 \centering
 \caption{Test accuracy (\%, mean$\pm$std, 5--20 seeds per arm;
 NSL-KDD ReLU/QCFS $n{=}20$, UNSW ReLU $n{=}20$/QCFS $n{=}10$,
-CICIDS ReLU $n{=}10$/QCFS $n{=}5$, IoT-23 ReLU $n{=}10$/QCFS $n{=}5$).
+CICIDS ReLU $n{=}10$/QCFS $n{=}10$, IoT-23 ReLU $n{=}10$/QCFS $n{=}5$).
 MLP and TinyCNN are the only NPU-eligible models.
 $\dagger$TinyCNN uses Conv2D $1{\times}3$ kernels, the only non-MLP
 topology that fits within Neural-ART's operator set.}
@@ -775,14 +783,13 @@ differences, with Holm--Bonferroni family-wise error correction across
 the primary comparisons per dataset (Table~\ref{tab:stats}). Effect
 sizes are reported as Cohen's~$d_z$; 95\% percentile-bootstrap
 confidence intervals are computed over 10,000 resamples. At
-$n{=}5$ (CICIDS2017) the smallest attainable two-sided $p$-value of
-the signed-rank test is $0.0625$, so we treat CICIDS2017 tests as
-power-limited. The ReLU vs.\ QCFS comparison measures
-$p{=}\pcicrelu$, sitting well above the floor, i.e., a genuine
-non-rejection. The ReLU vs.\ TinyCNN comparison, by contrast, is
-exactly at the floor ($p{=}0.063$, all five seeds in the same
-direction, $d_z{=}{+}1.32$); we report it but do not claim
-significance at $\alpha{=}0.05$. We therefore add paired TOST with a
+$n{=}10$ matched seeds the CICIDS2017 ReLU vs.\ QCFS comparison
+measures $p{=}\pcicrelu$ ($d_z{=}{+}0.20$), a genuine non-rejection
+with adequate power. The ReLU vs.\ TinyCNN comparison, still at
+$n{=}5$, is power-limited by the signed-rank floor (smallest attainable
+two-sided $p$-value $0.0625$): it sits exactly at the floor
+($p{=}0.063$, all five seeds in the same direction, $d_z{=}{+}1.32$);
+we report it but do not claim significance at $\alpha{=}0.05$. We therefore add paired TOST with a
 pre-specified $\pm 1.0$\,pp bound (ReLU vs.\ QCFS, overall accuracy and
 macro-F1): UNSW-NB15 passes, while NSL-KDD/CICIDS2017/IoT-23 remain
 inconclusive under current seed counts.
@@ -810,7 +817,7 @@ unequal seed counts the test uses the first $n$ seeds of the longer arm.}
  & ReLU vs.\ TinyCNN ($n{=}10$) & 0.002 & 0.004 & $+2.06$ & \checkmark \\
 \midrule
 \multirow{2}{*}{CICIDS2017}
- & ReLU vs.\ QCFS ($n{=}5$)     & \cicpqcfs & \cicpadjqcfs & \cicdzqcfs & \cicrejqcfs \\
+ & ReLU vs.\ QCFS ($n{=}10$)    & \cicpqcfs & \cicpadjqcfs & \cicdzqcfs & \cicrejqcfs \\
  & ReLU vs.\ TinyCNN ($n{=}5$)  & 0.063 & 0.125 & $+1.32$ & \ding{55} \\
 \midrule
 IoT-23
@@ -828,7 +835,7 @@ to a modern 15-class intrusion dataset. The ReLU MLP achieves
 \cicoarelu\ overall accuracy and \cicmfrelu\ macro-F1, with ROC-AUC
 0.992 and weighted-F1 94.0\%. The QCFS L$=$4 arm reaches
 \cicoaqcfs\ / \cicmfqcfs\ (paired Wilcoxon $p{=}\pcicrelu$,
-$n{=}5$), sitting ${\approx}0.9$\,pp below the ReLU mean on
+$n{=}10$), sitting ${\approx}0.3$\,pp below the ReLU mean on
 overall accuracy, consistent with the same $T{=}1$ approximation trend
 observed on NSL-KDD ($p{=}0.227$) and UNSW-NB15
 ($p{=}\punswrelu$). Per-class performance

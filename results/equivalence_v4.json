@@ -162,6 +162,86 @@
         "monte_carlo": 0.9957
       }
     },
+    "cicids2017:overall_acc": {
+      "tost_t": {
+        "test": "tost_t",
+        "delta": 1.0,
+        "alpha": 0.05,
+        "n": 10,
+        "mean_diff": 0.2871328925777519,
+        "sd_diff": 1.4356813291702741,
+        "ci": [
+          -0.5451045939733166,
+          1.11937037912882
+        ],
+        "p_lower": 0.00977978160489963,
+        "p_upper": 0.07540975431220336,
+        "p_tost": 0.07540975431220336,
+        "equivalent": false,
+        "delta_min": 1.11937037912882
+      },
+      "tost_wilcoxon": {
+        "test": "tost_wilcoxon",
+        "delta": 1.0,
+        "alpha": 0.05,
+        "n": 10,
+        "median_diff": 0.0331184900088175,
+        "hodges_lehmann": 0.08654965388970481,
+        "p_lower": 0.0048828125,
+        "p_upper": 0.0654296875,
+        "p_tost": 0.0654296875,
+        "equivalent": false
+      },
+      "normality_shapiro_p": 0.1996831810264108,
+      "required_n": {
+        "power_0.80": 18,
+        "power_0.90": 23
+      },
+      "power_at_n": {
+        "normal_approx": 0.4230042783084358,
+        "monte_carlo": 0.3306
+      }
+    },
+    "cicids2017:macro_f1": {
+      "tost_t": {
+        "test": "tost_t",
+        "delta": 1.0,
+        "alpha": 0.05,
+        "n": 10,
+        "mean_diff": -1.2166510871617,
+        "sd_diff": 3.7023144384482465,
+        "ci": [
+          -3.3628131915728687,
+          0.929511017249468
+        ],
+        "p_lower": 0.5713533636826733,
+        "p_upper": 0.04542651021822123,
+        "p_tost": 0.5713533636826733,
+        "equivalent": false,
+        "delta_min": 3.3628131915728687
+      },
+      "tost_wilcoxon": {
+        "test": "tost_wilcoxon",
+        "delta": 1.0,
+        "alpha": 0.05,
+        "n": 10,
+        "median_diff": -1.0530463333647369,
+        "hodges_lehmann": -1.0530463333647369,
+        "p_lower": 0.5390625,
+        "p_upper": 0.080078125,
+        "p_tost": 0.5390625,
+        "equivalent": false
+      },
+      "normality_shapiro_p": 0.8070279474293864,
+      "required_n": {
+        "power_0.80": 118,
+        "power_0.90": 149
+      },
+      "power_at_n": {
+        "normal_approx": 0.0,
+        "monte_carlo": 0.0009
+      }
+    },
     "iot23:overall_acc": {
       "tost_t": {
         "test": "tost_t",
@@ -241,86 +321,6 @@
         "normal_approx": 0.7150881720531586,
         "monte_carlo": 0.61055
       }
-    },
-    "cicids2017:overall_acc": {
-      "tost_t": {
-        "test": "tost_t",
-        "delta": 1.0,
-        "alpha": 0.05,
-        "n": 5,
-        "mean_diff": 0.9092659352926546,
-        "sd_diff": 1.4482204133571523,
-        "ci": [
-          -0.4714541792899931,
-          2.2899860498753015
-        ],
-        "p_lower": 0.02102798440781852,
-        "p_upper": 0.44767831656909335,
-        "p_tost": 0.44767831656909335,
-        "equivalent": false,
-        "delta_min": 2.2899860498753015
-      },
-      "tost_wilcoxon": {
-        "test": "tost_wilcoxon",
-        "delta": 1.0,
-        "alpha": 0.05,
-        "n": 5,
-        "median_diff": 1.6262503333928038,
-        "hodges_lehmann": 0.7372617455828774,
-        "p_lower": 0.0625,
-        "p_upper": 0.5,
-        "p_tost": 0.5,
-        "equivalent": false
-      },
-      "normality_shapiro_p": 0.4590374757988592,
-      "required_n": {
-        "power_0.80": 18,
-        "power_0.90": 23
-      },
-      "power_at_n": {
-        "normal_approx": 0.0,
-        "monte_carlo": 0.08065
-      }
-    },
-    "cicids2017:macro_f1": {
-      "tost_t": {
-        "test": "tost_t",
-        "delta": 1.0,
-        "alpha": 0.05,
-        "n": 5,
-        "mean_diff": -0.8723880395292752,
-        "sd_diff": 2.54803268122603,
-        "ci": [
-          -3.301659125017776,
-          1.556883045959224
-        ],
-        "p_lower": 0.4581138742810543,
-        "p_upper": 0.08784890489966411,
-        "p_tost": 0.4581138742810543,
-        "equivalent": false,
-        "delta_min": 3.301659125017776
-      },
-      "tost_wilcoxon": {
-        "test": "tost_wilcoxon",
-        "delta": 1.0,
-        "alpha": 0.05,
-        "n": 5,
-        "median_diff": -0.5858550554887358,
-        "hodges_lehmann": -0.8715523823668221,
-        "p_lower": 0.5,
-        "p_upper": 0.09375,
-        "p_tost": 0.5,
-        "equivalent": false
-      },
-      "normality_shapiro_p": 0.9836868967762014,
-      "required_n": {
-        "power_0.80": 56,
-        "power_0.90": 71
-      },
-      "power_at_n": {
-        "normal_approx": 0.0,
-        "monte_carlo": 0.00675
-      }
     }
   },
   "sensitivity": {
@@ -348,6 +348,18 @@
       "2": true,
       "3": true
     },
+    "cicids2017:overall_acc": {
+      "0.5": false,
+      "1": false,
+      "2": true,
+      "3": true
+    },
+    "cicids2017:macro_f1": {
+      "0.5": false,
+      "1": false,
+      "2": false,
+      "3": false
+    },
     "iot23:overall_acc": {
       "0.5": false,
       "1": false,
@@ -359,49 +371,47 @@
       "1": false,
       "2": true,
       "3": true
-    },
-    "cicids2017:overall_acc": {
-      "0.5": false,
-      "1": false,
-      "2": false,
-      "3": true
-    },
-    "cicids2017:macro_f1": {
-      "0.5": false,
-      "1": false,
-      "2": false,
-      "3": false
     }
   },
   "holm_bonferroni_tost_t": {
     "nslkdd:overall_acc": {
       "p_raw": 0.06918798980799329,
-      "p_corrected": 0.27675195923197315,
+      "p_corrected": 0.41512793884795973,
       "equivalent": false
     },
     "nslkdd:macro_f1": {
       "p_raw": 0.3110959507451869,
-      "p_corrected": 0.9332878522355608,
+      "p_corrected": 1.0,
       "equivalent": false
     },
     "unsw:overall_acc": {
       "p_raw": 2.8305365930060963e-05,
-      "p_corrected": 0.00016983219558036578,
+      "p_corrected": 0.0002264429274404877,
       "equivalent": true
     },
     "unsw:macro_f1": {
       "p_raw": 0.0054107293447640675,
-      "p_corrected": 0.027053646723820338,
+      "p_corrected": 0.03787510541334847,
       "equivalent": true
+    },
+    "cicids2017:overall_acc": {
+      "p_raw": 0.07540975431220336,
+      "p_corrected": 0.41512793884795973,
+      "equivalent": false
+    },
+    "cicids2017:macro_f1": {
+      "p_raw": 0.5713533636826733,
+      "p_corrected": 1.0,
+      "equivalent": false
     },
     "iot23:overall_acc": {
       "p_raw": 0.8708965519729472,
-      "p_corrected": 0.9332878522355608,
+      "p_corrected": 1.0,
       "equivalent": false
     },
     "iot23:macro_f1": {
       "p_raw": 0.33718118610071485,
-      "p_corrected": 0.9332878522355608,
+      "p_corrected": 1.0,
       "equivalent": false
     }
   },
@@ -422,13 +432,10 @@
     },
     "cicids2017": {
       "n_relu": 10,
-      "n_qcfs": 5,
-      "n_paired": 5,
-      "valid": false,
-      "confounds": [
-        "epochs 80 vs 40",
-        "batch_size 512 vs 1024"
-      ]
+      "n_qcfs": 10,
+      "n_paired": 10,
+      "valid": true,
+      "confounds": []
     },
     "iot23": {
       "n_relu": 10,

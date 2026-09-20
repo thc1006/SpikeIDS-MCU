@@ -38,7 +38,7 @@ METRICS = ("overall_acc", "macro_f1")
 TRAIN_BATCH = {
     "nslkdd": {"relu": ("experiment_multiseed.py", 512), "qcfs": ("experiment_multiseed.py", 512)},
     "unsw": {"relu": ("experiment_unsw.py", 512), "qcfs": ("experiment_unsw_qcfs.py", 512)},
-    "cicids2017": {"relu": ("experiment_cicids2017.py", 512), "qcfs": ("experiment_cicids_qcfs.py", 1024)},
+    "cicids2017": {"relu": ("experiment_cicids2017.py", 512), "qcfs": ("experiment_cicids_qcfs.py", 512)},
     "iot23": {"relu": ("experiment_iot23.py", 1024), "qcfs": ("experiment_iot23_qcfs.py", 1024)},
 }
 
