@@ -114,4 +114,11 @@ firmware/n6b/smoke/*.map
 firmware/n6b/build/
 ai_runner.log
 paper/globecom/main.pdf
-paper/globecom/main.tex
+*.tex
+*.npz
+*.pt
+
+# NSL leakage-safe run artifacts (large/regenerable; kept local)
+results/nsl_leakagesafe_multiseed/
+results/nsl_leakagesafe_multiseed.json
+results/*.lock

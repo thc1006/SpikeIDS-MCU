@@ -16,7 +16,7 @@
 3. `finalize_and_check.sh` — rebuilds macros + consistency check + PDF (calls REPO scripts).
 
 *Code SNAPSHOTS (read-only reference — see caveat):*
-4. `train_fast.py` · 5. `finalize_all_det.py` · 6. `assemble_nsl_legacy.py` ·
+4. `experiment_all.py` (complete-version SCAFFOLD, from `src/` — **the file to fill**, §12) · 5. `finalize_all_det.py` · 6. `assemble_nsl_legacy.py` ·
 7. `assemble_cnn_legacy.py` · 8. `run_globecom_stats.py` · 9. `run_v4_equivalence.py` ·
 10. `check_paper_consistency.py`
 
@@ -365,4 +365,97 @@ re-derive it. `✍️` = written this session (review it too — not infallible)
 - Full session transcript (if you want the reasoning trail):
   `~/.claude/projects/-home-thc1006-dev-SpikeIDS-MCU/e287e8df-b593-44ae-b9b0-05620b77d9a7.jsonl`
 
-Nothing here is "done" — it is "ready to be reviewed to correctness." Start with §4, then §7.
+---
+
+## 12. PREFERRED BASE — `src/experiment_multiseed(1).py` (supersedes train_fast) + how to complete it
+
+A newer, **more rigorous** trainer exists: `src/experiment_multiseed(1).py` (1021 lines,
+"Leakage-safe, audited"). It was smoke-verified this session and is **strictly better** than
+`scripts/train_fast.py`:
+- fit/val/test split with **fit-only preprocessing** (`TrainOnlyPreprocessor().fit(train.iloc[fit])`)
+  — fixes the categorical-encoder-on-test leakage that `data_loaders.py` still has;
+- validation-based epoch selection (val macro-recall) — the §4 fix, already done correctly;
+- full determinism (env set before torch import), SHA256 fingerprints, `--resume` checkpoints,
+  QCFS threshold health checks, fit-then-evaluate (test touched only after all fits).
+
+**So §4 (patching train_fast) is MOOT if you adopt this file** — prefer this file. **A 20-seed
+NSL run using it is already in progress** (`results/nsl_leakagesafe_multiseed.json`, per-fit
+checkpoints under `results/nsl_leakagesafe_multiseed/runs/`; resume with the same command +
+`--resume`). Its output is a **rich custom schema** (not `multiseed_20.json`).
+
+### 12a. Complete the SCAFFOLD `src/experiment_all.py` (ALREADY CREATED — just fill it)
+`src/experiment_all.py` **already exists** (also snapshot #4 in this folder): a copy of
+`experiment_multiseed(1).py` with the full leakage-safe machinery, the **NSL-KDD path working**,
+and **`--model cnn` (TinyCNN) already wired into `build_model`**. UNSW / CICIDS2017 / IoT-23 are
+placeholders — `prepare_data` raises `NotImplementedError` carrying the exact per-dataset
+requirement + a 7-step blueprint (see the `_DATASET_SPECS` dict). Verified: it compiles,
+`--dataset nslkdd` runs, and `--dataset unsw|cicids2017|iot23` prints its precise TODO.
+**Do NOT edit `experiment_multiseed(1).py`** (its in-flight NSL run needs `--resume`
+source-hash stability). Fill each placeholder in `experiment_all.py`:
+1. Add `--dataset {nslkdd,unsw,cicids2017,iot23}`; dispatch in `prepare_data`. Reuse the RAW
+   loaders (`data_loaders.load_nslkdd_raw`/`load_unsw_raw`, `experiment_iot23.load_iot23`,
+   `experiment_cicids2017.load_cicids2017`) to get train/test DataFrames, **but do the
+   preprocessing fit-only** via the `TrainOnlyPreprocessor` pattern (fit on `train.iloc[fit]`).
+2. Parameterize `CAT_COLS` per dataset — take the exact categorical/numeric column lists from
+   the existing preprocessors: NSL = protocol_type/service/flag; UNSW = proto/service/state
+   (see `data_loaders.preprocess_unsw`); CICIDS = numeric-only + Inf/NaN handling (see
+   `experiment_cicids2017.preprocess_cicids`); IoT-23 = per `experiment_iot23.preprocess_iot23`
+   (audit its `enc.fit(df[col])` — must be fit-split only). **Verify no scaler/encoder ever
+   sees val or test.**
+3. Add `cnn` to `build_model` (`models.TinyCNN_IDS(input_dim, num_classes)`) and to `--model`
+   choices; TinyCNN runs only nslkdd/unsw/cicids2017.
+4. Budgets are CLI, not code: iot23 = `--epochs 40 --batch-size 1024`; all others =
+   `--epochs 80 --batch-size 512`. The runner script sets them per dataset.
+5. **Smoke EACH dataset** (`--seeds 0 --model relu --epochs 3`) before any full run — confirm
+   it loads, preprocesses fit-only, and the val path works. This is where per-dataset bugs hide.
+
+### 12b. Output adapter (so the pipeline can consume it)
+Write `scripts/assemble_from_leakagesafe.py`: read each dataset's rich-schema output
+(`fit_runs`/per-seed test metrics) and emit the schema the existing stats scripts expect
+(`results/multiseed_20.json` with `relu`/`qcfs_L4` `per_seed`; `unsw_multiseed_20.json` +
+`unsw_qcfs_multiseed.json`; `cicids2017_*`; `iot23_*`; `cnn_baseline_merged.json`). Then §6
+(finalize) and §7 review proceed unchanged. Record the reduced `n_train` (= n_fit) + `n_val` +
+the val-holdout methods sentence in the paper (§6).
+
+---
+
+---
+
+## 13. COMPLETE RUN MANIFEST — everything that must be executed ("what to run")
+
+**Single source of truth for the runs** (supersedes the scattered mentions in §3/§5/§7). Every
+model result must be produced by the leakage-safe, deterministic, val-selection protocol
+(§12). Tick each as you finish it.
+
+### A. Model training — 11 runs, 20 seeds each, val-selection, deterministic
+| # | dataset | arm(s) | budget | how | status |
+|---|---|---|---|---|---|
+| A1 | NSL-KDD | ReLU + QCFS | 80ep / 512 | `experiment_multiseed(1).py` | **IN PROGRESS** |
+| A2 | UNSW-NB15 | ReLU + QCFS | 80ep / 512 | extend (1) → `experiment_all.py` (§12a) | TODO |
+| A3 | CICIDS2017 | ReLU + QCFS | 80ep / 512 | " | TODO |
+| A4 | IoT-23 | ReLU + QCFS | **40ep / 1024** | " | TODO |
+| A5 | NSL-KDD, UNSW, CICIDS2017 | TinyCNN | 80ep / 512 | " (add `cnn` kind) | TODO |
+
+### B. Non-NN baselines
+| B1 | NSL-KDD, UNSW | RandomForest + XGBoost | `src/tree_baseline.py` — verify `random_state` determinism; feeds `tab:accuracy` RF row | TODO/verify |
+
+### C. Ablations / secondary tables
+| C1 | NSL-KDD | QCFS L∈{1,2,4,8} | `src/experiment_qcfs_lsweep.py` — feeds `tab:lsweep`; audit for the same leakage + re-run leakage-safe if it feeds the paper | TODO/verify |
+| C2 | UNSW | layerwise analysis | `src/layerwise_analysis.py` — **stale (old 75.2% model); re-run on the NEW checkpoint** | TODO |
+
+### D. Statistics (consume A/B/C outputs)
+| D1 | `scripts/run_globecom_stats.py` → paired Wilcoxon + Holm + TOST + bootstrap | TODO (after A) |
+| D2 | `scripts/run_v4_equivalence.py` → TOST equivalence family | TODO (after A) |
+
+### E. Deployment tables (INT8 / latency / energy)
+| E1 | INT8 quantize + ONNX export | `src/quantize*.py` + `src/export_*.py` — must match the RE-TRAINED weights; audit train↔export parity | TODO/verify |
+| E2 | on-board 3-platform latency (N6 CPU/NPU, RA4E1, ESP32-S3) | `scripts/n6_*.py` + `firmware/` — re-confirm the deployed net == the re-trained one; a CPU-clock bug was caught here once | verify |
+
+### F. Paper assembly (after A–E)
+| F1 | schema adapter + finalize | `scripts/assemble_from_leakagesafe.py` (§12b) + `scripts/finalize_all_det.py` | TODO |
+| F2 | prose reframe | `paper/globecom/main.tex` (§6 catalog: "all four indistinguishable"→honest, n→20, TinyCNN, conclusion, val-holdout methods sentence) | TODO |
+| F3 | consistency + build | `scripts/check_paper_consistency.py --strict` (exit 0) + `latexmk` | TODO |
+
+**Order:** §12a (extend + smoke EACH dataset) → A2–A5 → B/C → D → E → F. A2–A5 are the bulk of
+the work and all depend on §12a. Nothing is "done" — every file is "ready to be reviewed to
+correctness" (§7). If you adopt §12's file, start there; otherwise start at §4 then §7.
