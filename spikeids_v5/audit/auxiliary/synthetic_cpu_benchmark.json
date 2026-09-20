@@ -1,0 +1,39 @@
+{
+  "content_sha256": "f711085232988d1e1d4265ebea03085b5c7afef29c35d940abf2053747a72cae",
+  "dataset": "nslkdd",
+  "device": "cpu",
+  "epochs": 1,
+  "failed": {},
+  "fastest_measured": {
+    "median_wall_seconds": 7.448757395500024,
+    "profile": "foreach:1",
+    "wall_seconds": [
+      7.438634313999955,
+      7.458880477000093
+    ]
+  },
+  "models": [
+    "relu",
+    "qcfs"
+  ],
+  "qualified": [
+    {
+      "median_wall_seconds": 7.448757395500024,
+      "profile": "foreach:1",
+      "wall_seconds": [
+        7.438634313999955,
+        7.458880477000093
+      ]
+    },
+    {
+      "median_wall_seconds": 8.149330839999948,
+      "profile": "single:1",
+      "wall_seconds": [
+        8.51393049599983,
+        7.784731184000066
+      ]
+    }
+  ],
+  "selection": "runtime only, not accuracy; passing short repeats still requires full planned-budget validation",
+  "test_evaluated": false
+}

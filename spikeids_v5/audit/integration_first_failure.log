@@ -1,0 +1,19 @@
+STEP ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/suite.py', 'prepare', '--data-dir', '/mnt/data/v5_integration/raw', '--cache-root', '/mnt/data/v5_integration/cache', '--chunksize', '31']
+nslkdd {'fit': 48, 'test': 25, 'validation': 12} b5d139e866b841fccb24d1f8d88428793e68bd6d5aaf468b3ca2645b5b9cc8d9
+unsw {'fit': 96, 'test': 50, 'validation': 24} 28c77947ef572805ca258d66c3c65257a5858b55d4e89da0bc13e736b2dd1234
+cicids2017 {'fit': 192, 'test': 60, 'validation': 48} 93070bb998808a197bf51efd26fa0d561805ab46432a62dffb1337cdc0244a94
+iot23 {'fit': 64, 'test': 20, 'validation': 16} c5cafe6eca7f626b5ee43c56eb96d5103c0342ce58e33b2ff62ce3685448209b
+STEP ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/suite.py', 'freeze', '--cache-root', '/mnt/data/v5_integration/cache', '--run-dir', '/mnt/data/v5_integration/run', '--device', 'cpu', '--optimizer', 'single', '--threads', '1', '--seeds', '0', '1', '--smoke-epochs', '2']
+Running: /opt/pyvenv/bin/python /mnt/data/spikeids_v5/experiment_all.py --probe --device cpu --threads 1 --output /mnt/data/v5_integration/run/environment.json
+Frozen /mnt/data/v5_integration/run/plan.json
+STEP ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/suite.py', 'run', '--run-dir', '/mnt/data/v5_integration/run']
+Running: /opt/pyvenv/bin/python /mnt/data/spikeids_v5/experiment_all.py --cache /mnt/data/v5_integration/cache/nslkdd --output /mnt/data/v5_integration/run/results/nslkdd_relu.json --stage fit --batch-size 512 --checkpoint-every 10 --data-placement cpu --dataset nslkdd --device cpu --epochs 2 --eval-batch-size 4096 --eval-every 10 --hidden 256 --levels 4 --lr 0.001 --model relu --optimizer single --qcfs-formula shifted_v1 --seeds 0 1 --threads 1 --weight-decay 1e-05
+ERROR: Command failed with exit 1; full log: /mnt/data/v5_integration/run/logs/nslkdd_relu_fit.log
+Traceback (most recent call last):
+  File "/mnt/data/v5_integration_steps.py", line 17, in <module>
+    subprocess.run(cmd,check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/suite.py', 'run', '--run-dir', '/mnt/data/v5_integration/run']' returned non-zero exit status 2.

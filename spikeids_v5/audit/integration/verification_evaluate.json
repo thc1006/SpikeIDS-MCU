@@ -1,0 +1,19 @@
+{
+  "content_sha256": "9d10bd5230675df958c4ba31000e68bd12ef94a9513bd26f67bf9b98231a7809",
+  "jobs": {
+    "cicids2017_cnn": "56229ea06e1c4a55f0172f74c0626dae8abc3f43ceffcc4307aa2518789231ab",
+    "cicids2017_qcfs": "75dbfc48613ecd037f2962f06668610b908be291e04353b818e652a21a6165ff",
+    "cicids2017_relu": "312c1393d70aa7b2383d0d77cd4bd76067023106b823b9cf7fa6e790a871e87f",
+    "iot23_qcfs": "f7a4ee414ed2af023cf4f65897e1758d72a7dac0fa0f025fce2ba486b973bfdf",
+    "iot23_relu": "43397978d0c40ab1bc650224fc1a5ff34fb5cd7c05bbd2780741fe6f2c10bafc",
+    "nslkdd_cnn": "3b9acd79d7c2b716fd31d0bd5ca6ff3f7a476d2b8a6ba17ff3b26fe7e9e8f3a5",
+    "nslkdd_qcfs": "cfb1dc6768cc5c141dc6ad3dfc100f4a70bab4c2ae06938c3ceada82638e7001",
+    "nslkdd_relu": "24e648268c17a6a974bb822075d171939623c4a57d0997428882e55d165d3eef",
+    "unsw_cnn": "9ec4c3d691ff5f5e10b626e4a15ced521538db4355374906aae8fb2e56070a62",
+    "unsw_qcfs": "9cb36498d673cdae8218a21b16a89b757327130585a2f28963026e1c50f43d1c",
+    "unsw_relu": "0bca528da095efd61593aa13500f265a136fec9a04cdbb541510e877e46264ab"
+  },
+  "passed": true,
+  "plan_sha256": "5fd673ea530bc0fae243163e54bba216a10ec12ded7e98f0e675f4d90d074025",
+  "scope": "per-seed states, logits, probabilities, predictions, and independently recomputed metrics"
+}

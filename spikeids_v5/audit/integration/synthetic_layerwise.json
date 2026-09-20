@@ -1,0 +1,58 @@
+{
+  "checkpoint_sha256": "7971e224adf73ab07b4bc6f27938650219ce4b0eb1ac9378180a964fc796fddb",
+  "comparisons": {
+    "layers.0": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    },
+    "layers.2": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    },
+    "layers.3": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    },
+    "layers.5": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    },
+    "layers.6": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    },
+    "layers.8": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    },
+    "layers.9": {
+      "allclose": true,
+      "max_abs_error": 0.0,
+      "prediction_disagreement_fraction": 0.0,
+      "scope": "only these validation vectors, not every possible input",
+      "vectors_checked": 12
+    }
+  },
+  "content_sha256": "dada6b510ad9fd641e0201fbdbcf2cc09ba91bf64858d20f934f12bc34969663",
+  "data_fingerprint": "284a7d8f678d07347d534ae44c8bd5b95360c01bc9b9e1ca3884c4b5a9761564",
+  "schema": 5,
+  "scope": "PyTorch ANN vs frozen ANN only; no INT8/SNN identity assertion"
+}

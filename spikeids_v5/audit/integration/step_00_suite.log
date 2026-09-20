@@ -1,0 +1,4 @@
+nslkdd {'fit': 48, 'test': 25, 'validation': 12} 284a7d8f678d07347d534ae44c8bd5b95360c01bc9b9e1ca3884c4b5a9761564
+unsw {'fit': 96, 'test': 50, 'validation': 24} 809068d188871ff1b7aa6f168c72233539d6e5f9c137563414900dfaa1f3a677
+cicids2017 {'fit': 192, 'test': 60, 'validation': 48} 0da7817a2546e911d37e81614e86de3eabc976bf73cf172c5be06860c0fc7a5c
+iot23 {'fit': 64, 'test': 20, 'validation': 16} 6f8bfa0107b22fc3309ce0df102e5ec096d43518b02f91c15a104410ced11334

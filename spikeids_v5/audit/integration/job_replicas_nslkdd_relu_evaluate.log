@@ -1,0 +1,3 @@
+
+COMMAND: ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/experiment_all.py', '--cache', '/mnt/data/v5_integration_final/cache/nslkdd', '--output', '/mnt/data/v5_integration_final/run/replicas/nslkdd_relu.json', '--stage', 'evaluate', '--batch-size', '512', '--checkpoint-every', '10', '--data-placement', 'cpu', '--dataset', 'nslkdd', '--device', 'cpu', '--epochs', '2', '--eval-batch-size', '4096', '--eval-every', '10', '--hidden', '256', '--levels', '4', '--lr', '0.001', '--model', 'relu', '--optimizer', 'single', '--qcfs-formula', 'shifted_v1', '--seeds', '0', '1', '--threads', '1', '--weight-decay', '1e-05', '--resume']
+COMPLETE /mnt/data/v5_integration_final/run/replicas/nslkdd_relu.json 24e648268c17a6a974bb822075d171939623c4a57d0997428882e55d165d3eef
