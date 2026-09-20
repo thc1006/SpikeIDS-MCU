@@ -65,9 +65,14 @@
 \newcommand{\cicoacnn}{--}
 \newcommand{\cicmfcnn}{--}
 % Statistical test p-values (Wilcoxon + Holm-Bonferroni)
-\newcommand{\pnslrelu}{--}
+\newcommand{\pnslrelu}{0.227}
 \newcommand{\punswrelu}{--}
 \newcommand{\pcicrelu}{--}
+% NSL-KDD QCFS stats row (tab:stats)
+\newcommand{\nslpqcfs}{0.227}
+\newcommand{\nslpadjqcfs}{0.227}
+\newcommand{\nsldzqcfs}{$+0.26$}
+\newcommand{\nslrejqcfs}{\ding{55}}
 % UNSW QCFS stats row (tab:stats)
 \newcommand{\unswpqcfs}{--}
 \newcommand{\unswpadjqcfs}{--}
@@ -78,6 +83,20 @@
 \newcommand{\cicpadjqcfs}{--}
 \newcommand{\cicdzqcfs}{--}
 \newcommand{\cicrejqcfs}{\ding{55}}
+% TinyCNN stats rows (tab:stats) — budget-matched 80ep / 20-seed re-run.
+% Defaults are the pre-re-run values; finalize_all_det.py overrides them.
+\newcommand{\nslpcnn}{0.027}
+\newcommand{\nslpadjcnn}{0.055}
+\newcommand{\nsldzcnn}{$-0.97$}
+\newcommand{\nslrejcnn}{\ding{55}}
+\newcommand{\unswpcnn}{0.002}
+\newcommand{\unswpadjcnn}{0.004}
+\newcommand{\unswdzcnn}{$+2.06$}
+\newcommand{\unswrejcnn}{\checkmark}
+\newcommand{\cicpcnn}{0.063}
+\newcommand{\cicpadjcnn}{0.125}
+\newcommand{\cicdzcnn}{$+1.32$}
+\newcommand{\cicrejcnn}{\ding{55}}
 % IoT-23 multi-seed
 \newcommand{\iotoarelu}{--}
 \newcommand{\iotmfrelu}{--}
@@ -468,7 +487,7 @@ topology that fits within Neural-ART's operator set.}
 
 Table~\ref{tab:accuracy} reports multi-seed results.
 On NSL-KDD, ReLU MLP and QCFS MLP are statistically indistinguishable
-($p{=}0.227$, Table~\ref{tab:stats}), which provides evidence of
+($p{=}\pnslrelu$, Table~\ref{tab:stats}), which provides evidence of
 non-rejection of
 $T{=}1$ SNN--ANN approximation, since the QCFS-trained network behaves
 like the ReLU model once BatchNorm is folded and the graph is
@@ -777,10 +796,12 @@ UNSW-NB15 MF1& 40.64$\pm$0.20 & 41.36$\pm$0.25 & 41.23$\pm$0.36 & 41.28$\pm$0.29
 \subsection{Statistical Significance}
 \label{sec:stats}
 
-We test ReLU-MLP vs.\ each baseline (QCFS, TinyCNN, Random Forest)
+We test ReLU-MLP vs.\ each NPU-eligible baseline (QCFS, TinyCNN)
 using a paired Wilcoxon signed-rank test on per-seed overall-accuracy
 differences, with Holm--Bonferroni family-wise error correction across
-the primary comparisons per dataset (Table~\ref{tab:stats}). Effect
+the primary comparisons per dataset (Table~\ref{tab:stats}); Random
+Forest is a non-NPU accuracy reference (Table~\ref{tab:accuracy}) and is
+not part of these deployability-focused significance tests. Effect
 sizes are reported as Cohen's~$d_z$; 95\% percentile-bootstrap
 confidence intervals are computed over 10,000 resamples. At
 $n{=}10$ matched seeds the CICIDS2017 ReLU vs.\ QCFS comparison
@@ -809,16 +830,16 @@ unequal seed counts the test uses the first $n$ seeds of the longer arm.}
 \textbf{Dataset} & \textbf{Comparison} & $p$ & $p_{\text{adj}}$ & $d_z$ & \textbf{Reject?} \\
 \midrule
 \multirow{2}{*}{NSL-KDD}
- & ReLU vs.\ QCFS ($n{=}20$)    & 0.227 & 0.227 & $+0.26$ & \ding{55} \\
- & ReLU vs.\ TinyCNN ($n{=}10$) & 0.027 & 0.055 & $-0.97$ & \ding{55} \\
+ & ReLU vs.\ QCFS ($n{=}20$)    & \nslpqcfs & \nslpadjqcfs & \nsldzqcfs & \nslrejqcfs \\
+ & ReLU vs.\ TinyCNN ($n{=}10$) & \nslpcnn & \nslpadjcnn & \nsldzcnn & \nslrejcnn \\
 \midrule
 \multirow{2}{*}{UNSW-NB15}
  & ReLU vs.\ QCFS ($n{=}10$)    & \unswpqcfs & \unswpadjqcfs & \unswdzqcfs & \unswrejqcfs \\
- & ReLU vs.\ TinyCNN ($n{=}10$) & 0.002 & 0.004 & $+2.06$ & \checkmark \\
+ & ReLU vs.\ TinyCNN ($n{=}10$) & \unswpcnn & \unswpadjcnn & \unswdzcnn & \unswrejcnn \\
 \midrule
 \multirow{2}{*}{CICIDS2017}
  & ReLU vs.\ QCFS ($n{=}10$)    & \cicpqcfs & \cicpadjqcfs & \cicdzqcfs & \cicrejqcfs \\
- & ReLU vs.\ TinyCNN ($n{=}5$)  & 0.063 & 0.125 & $+1.32$ & \ding{55} \\
+ & ReLU vs.\ TinyCNN ($n{=}5$)  & \cicpcnn & \cicpadjcnn & \cicdzcnn & \cicrejcnn \\
 \midrule
 IoT-23
  & ReLU vs.\ QCFS ($n{=}5$)     & \iotpqcfs & \iotpadjqcfs & \iotdzqcfs & \iotrejqcfs \\
@@ -837,7 +858,7 @@ to a modern 15-class intrusion dataset. The ReLU MLP achieves
 \cicoaqcfs\ / \cicmfqcfs\ (paired Wilcoxon $p{=}\pcicrelu$,
 $n{=}10$), sitting ${\approx}0.3$\,pp below the ReLU mean on
 overall accuracy, consistent with the same $T{=}1$ approximation trend
-observed on NSL-KDD ($p{=}0.227$) and UNSW-NB15
+observed on NSL-KDD ($p{=}\pnslrelu$) and UNSW-NB15
 ($p{=}\punswrelu$). Per-class performance
 is bimodal: DDoS reaches F1~98.1\% and benign 94.7\%, while
 extreme-rare classes collapse (SQL Injection F1~1.4\% on 4 test

@@ -113,3 +113,5 @@ firmware/n6b/smoke/*.map
 
 firmware/n6b/build/
 ai_runner.log
+paper/globecom/main.pdf
+paper/globecom/main.tex

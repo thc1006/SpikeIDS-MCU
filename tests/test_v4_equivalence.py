@@ -54,9 +54,10 @@ def test_loaded_arms_all_matched():
     arms = v4.load_arms()
     invalid = {ds for ds, a in arms.items() if not a["validity"]["valid"]}
     assert invalid == set(), f"unexpected confounded arms: {invalid}"
-    assert arms["nslkdd"]["n"] == 20 and arms["unsw"]["n"] == 10
-    # CICIDS QCFS re-run to 10 matched seeds; IoT-23 v4 pair is 10 as well
-    assert arms["cicids2017"]["n"] == 10 and arms["iot23"]["n"] == 10
+    # All four datasets re-run to 20 deterministic seeds with the shared train_fast
+    # trainer (NSL migrated too); every ReLU-vs-QCFS pair is now 20 matched seeds.
+    assert arms["nslkdd"]["n"] == 20 and arms["unsw"]["n"] == 20
+    assert arms["cicids2017"]["n"] == 20 and arms["iot23"]["n"] == 20
 
 
 def test_end_to_end_report(tmp_path):

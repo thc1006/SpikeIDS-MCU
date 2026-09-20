@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# v4 deterministic re-run — ALL 11 jobs (8 MLP + 3 TinyCNN), 20 seeds each, via
+# scripts/train_fast.py. Self-contained: cd's to the repo root, safe to run from anywhere.
+#
+# PREREQUISITE: apply the validation-based model-selection fix to scripts/train_fast.py
+# (README.md §4) and pass the §4d smoke test BEFORE running this. Otherwise the numbers are
+# either leaked (old behavior) or overfit (interim last-epoch).
+#
+# Usage:
+#   nohup bash codex_handoff/run_v4_rerun.sh > results/rerun_v4.log 2>&1 &
+#   tail -f results/rerun_v4.log      # done at "ALL 11 ... COMPLETE"; ~4-5 hours
+set -u
+cd /home/thc1006/dev/SpikeIDS-MCU || { echo "repo not found"; exit 1; }
+PY=.venv/bin/python
+SEEDS="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19"
+
+run(){  # dataset arm epochs batch output
+  echo "=== $(date +%H:%M:%S) START $1/$2 n=20 ep=$3 bs=$4 -> $5 ==="
+  CUDA_VISIBLE_DEVICES=0 $PY scripts/train_fast.py --dataset "$1" --arm "$2" \
+    --seeds $SEEDS --epochs "$3" --batch-size "$4" --L 4 --workers 2 --output "$5"
+  rc=$?
+  if [ $rc -ne 0 ]; then echo "=== $(date +%H:%M:%S) $1/$2 FAILED rc=$rc — STOPPING ==="; exit $rc; fi
+  echo "=== $(date +%H:%M:%S) DONE $1/$2 ==="
+}
+
+# ---- 8 MLP (ReLU + QCFS) ----
+run iot23      relu 40 1024 iot23_multiseed.json
+run iot23      qcfs 40 1024 iot23_qcfs_multiseed.json
+run cicids2017 relu 80 512  cicids2017_multiseed_experiment.json
+run cicids2017 qcfs 80 512  cicids_qcfs_multiseed.json
+run unsw       relu 80 512  unsw_multiseed_20.json
+run unsw       qcfs 80 512  unsw_qcfs_multiseed.json
+run nslkdd     relu 80 512  nslkdd_relu_multiseed.json
+run nslkdd     qcfs 80 512  nslkdd_qcfs_multiseed.json
+# ---- 3 TinyCNN baseline (budget-matched 80ep) ----
+run nslkdd     cnn  80 512  cnn_nslkdd_multiseed.json
+run unsw       cnn  80 512  cnn_unsw_multiseed.json
+run cicids2017 cnn  80 512  cnn_cicids_multiseed.json
+
+echo "=== ALL 11 DETERMINISTIC RE-RUNS COMPLETE (val-based selection, leakage-free) $(date +%H:%M:%S) ==="
