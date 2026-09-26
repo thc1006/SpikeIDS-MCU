@@ -1,0 +1,30 @@
+{
+  "kind": "root_record_of_actual_vendor_launcher",
+  "source": "Exact command from root tool invocation; stdout and actual exit are in vendor_actual_01_execution.json",
+  "unit": "spikeids-n6-v5-prep-20260925-naivhm.service",
+  "invocation_id": "f11e42e216334053a9c6742c0b762713",
+  "launch_tool_chunk": "ead5c7",
+  "completion_tool_chunk": "5fc850",
+  "outer_exit_code": 0,
+  "argv": [
+    "systemd-run", "--user", "--unit=spikeids-n6-v5-prep-20260925-naivhm",
+    "--wait", "--pipe", "--collect", "--property=MemoryMax=4G",
+    "--property=MemorySwapMax=0", "--property=CPUQuota=400%",
+    "--property=TasksMax=128", "--property=RuntimeMaxSec=600",
+    "--property=KillMode=control-group", "--property=TimeoutStopSec=10",
+    "--property=UMask=0077", "/home/thc1006/.local/bin/uv", "run",
+    "--no-project", "--offline", "--python",
+    "/home/thc1006/.local/opt/ppk2-headless/.venv/bin/python", "python",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/prepare_vendor.py",
+    "--output-dir",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01",
+    "--timeout-seconds", "300"
+  ],
+  "python_binary_resolved_by_wrapper": "/home/thc1006/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "service_reported_runtime_seconds": 34.242,
+  "service_reported_cpu_seconds": 17.734,
+  "service_reported_memory_peak_display": "828.8M",
+  "service_reported_swap_peak_display": "0B",
+  "board_validated": false,
+  "energy_measured": false
+}

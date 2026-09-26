@@ -1,0 +1,500 @@
+{
+  "artifacts_before_result": {
+    "directories": [
+      "analyze",
+      "analyze_workspace",
+      "cache",
+      "generate",
+      "generate_workspace",
+      "tmp"
+    ],
+    "files": {
+      "INTENT.json": {
+        "ctime_ns": 1790292596709238972,
+        "device": 66306,
+        "inode": 31774693,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596709238972,
+        "sha256": "5dcd7a996618a038d7860e2a107c7c1ea50f19f7e562f1f01f535d5b1c03de7f",
+        "size": 2960
+      },
+      "analyze.json": {
+        "ctime_ns": 1790292596808226225,
+        "device": 66306,
+        "inode": 31774701,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596808226225,
+        "sha256": "a8807079e2f29a7bd2866ebddd74b695fa8a02167cf7e2ae93dbc6f6c833208b",
+        "size": 2448
+      },
+      "analyze.stderr": {
+        "ctime_ns": 1790292596801466635,
+        "device": 66306,
+        "inode": 31774699,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596801466635,
+        "sha256": "a8fb800e72cadea9dbe273fdd47a8234c20b960ba22a2aa10b4d2d7a1d240ec7",
+        "size": 15
+      },
+      "analyze.stdout": {
+        "ctime_ns": 1790292596801466635,
+        "device": 66306,
+        "inode": 31774698,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596801466635,
+        "sha256": "421ddb80575b45cfb2f7c8ca47b5c40650c12eb19cb4833004db5cae4e837cb6",
+        "size": 15
+      },
+      "analyze/nsl_qcfs_seed0_analyze_report.txt": {
+        "ctime_ns": 1790292596802612197,
+        "device": 66306,
+        "inode": 31774700,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596802612197,
+        "sha256": "3900a1f90dd9d9e3339d7da72c6bf06c43ef59dcc51ddccf33e53ae1efd8e1cc",
+        "size": 18
+      },
+      "generate.json": {
+        "ctime_ns": 1790292596884071824,
+        "device": 66306,
+        "inode": 31774711,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596884071824,
+        "sha256": "cf42874a6dea722e46fd0c8424cfa01d4c67939cb711514d2b2aeebdf2f26416",
+        "size": 2468
+      },
+      "generate.stderr": {
+        "ctime_ns": 1790292596860468771,
+        "device": 66306,
+        "inode": 31774703,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596860468771,
+        "sha256": "6b4399863bcc6795d51376ee31bb0001fea2743a77cd4a714705f5aba27ad4f2",
+        "size": 16
+      },
+      "generate.stdout": {
+        "ctime_ns": 1790292596860468771,
+        "device": 66306,
+        "inode": 31774702,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596860468771,
+        "sha256": "9a7c3f519059bec6ad981070cc9ec15614ccf9040cd28f2ec8ac76cbf82a41a9",
+        "size": 16
+      },
+      "generate/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292596861821950,
+        "device": 66306,
+        "inode": 31774704,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861821950,
+        "sha256": "302ee032b673b5e15c465e36d77ee7bac4923d31d62d8c39146f20e39dea6b2b",
+        "size": 21
+      },
+      "generate/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292596861852229,
+        "device": 66306,
+        "inode": 31774705,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861852229,
+        "sha256": "302ee032b673b5e15c465e36d77ee7bac4923d31d62d8c39146f20e39dea6b2b",
+        "size": 21
+      },
+      "generate/nsl_qcfs_seed0_atonbuf.xSPI2.raw": {
+        "ctime_ns": 1790292596861932844,
+        "device": 66306,
+        "inode": 31774710,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861932844,
+        "sha256": "fe2315704ff4d81863f1cb65d0b737f901b35a149991663bbae570090eda5de7",
+        "size": 11
+      },
+      "generate/nsl_qcfs_seed0_c_info.json": {
+        "ctime_ns": 1790292596861870940,
+        "device": 66306,
+        "inode": 31774706,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861870940,
+        "sha256": "302ee032b673b5e15c465e36d77ee7bac4923d31d62d8c39146f20e39dea6b2b",
+        "size": 21
+      },
+      "generate/nsl_qcfs_seed0_generate_report.txt": {
+        "ctime_ns": 1790292596861917258,
+        "device": 66306,
+        "inode": 31774709,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861917258,
+        "sha256": "189ac598d1795e6918f07f30f32ca625131ad1d91d0fa28ba81fcbbe1cae4892",
+        "size": 220
+      },
+      "generate/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292596861887295,
+        "device": 66306,
+        "inode": 31774707,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861887295,
+        "sha256": "18c341c91016c15ef9c940f6d3da878d51bf47eabe689274d80fdb90f4c96d76",
+        "size": 11
+      },
+      "generate/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292596861902126,
+        "device": 66306,
+        "inode": 31774708,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790292596861902126,
+        "sha256": "18c341c91016c15ef9c940f6d3da878d51bf47eabe689274d80fdb90f4c96d76",
+        "size": 11
+      },
+      "model_qdq_int8.onnx": {
+        "ctime_ns": 1790292596711031014,
+        "device": 66306,
+        "inode": 31774694,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596711031014,
+        "sha256": "22ee39579a7148b7b53dced530a3eb3f07a8baf4492e05244315c4f17e9fd36f",
+        "size": 28
+      },
+      "version.json": {
+        "ctime_ns": 1790292596751192480,
+        "device": 66306,
+        "inode": 31774697,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596751192480,
+        "sha256": "3e83a8eaeb4b929e4a72c34b7fdb2aaea41d0d916482879a83c177f9ed17e6bd",
+        "size": 1547
+      },
+      "version.stderr": {
+        "ctime_ns": 1790292596742464499,
+        "device": 66306,
+        "inode": 31774696,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596742464499,
+        "sha256": "428c56109cc082b64b5a6df489e9690750dbf620539d2716f7ca26210c08c951",
+        "size": 17
+      },
+      "version.stdout": {
+        "ctime_ns": 1790292596742464499,
+        "device": 66306,
+        "inode": 31774695,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596742464499,
+        "sha256": "5cb666142d3291f89683e8e0b59c985c4a39c20f25495451e37ca3d5ce632e14",
+        "size": 39
+      }
+    }
+  },
+  "binary_weight_files": [
+    "nsl_qcfs_seed0_atonbuf.xSPI2.raw"
+  ],
+  "board_validated": false,
+  "calls": [
+    {
+      "actual_return_code": 0,
+      "argv": [
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/fake_vendor",
+        "--version"
+      ],
+      "cwd": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh",
+      "elapsed_seconds": 0.015657283016480505,
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/tmp",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/cache"
+      },
+      "exception": null,
+      "phase": "version",
+      "stderr": {
+        "ctime_ns": 1790292596742464499,
+        "device": 66306,
+        "inode": 31774696,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596742464499,
+        "sha256": "428c56109cc082b64b5a6df489e9690750dbf620539d2716f7ca26210c08c951",
+        "size": 17
+      },
+      "stdout": {
+        "ctime_ns": 1790292596742464499,
+        "device": 66306,
+        "inode": 31774695,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596742464499,
+        "sha256": "5cb666142d3291f89683e8e0b59c985c4a39c20f25495451e37ca3d5ce632e14",
+        "size": 39
+      },
+      "timed_out": false
+    },
+    {
+      "actual_return_code": 0,
+      "argv": [
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/fake_vendor",
+        "analyze",
+        "--model",
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/model_qdq_int8.onnx",
+        "--type",
+        "onnx",
+        "--target",
+        "stm32n6",
+        "--name",
+        "nsl_qcfs_seed0",
+        "--st-neural-art",
+        "default@/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/profile.json",
+        "--c-api",
+        "st-ai",
+        "--input-data-type",
+        "float32",
+        "--output-data-type",
+        "float32",
+        "--compression",
+        "lossless",
+        "--optimization",
+        "balanced",
+        "--workspace",
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/analyze_workspace",
+        "--output",
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/analyze",
+        "--verbosity",
+        "2"
+      ],
+      "cwd": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh",
+      "elapsed_seconds": 0.01568596193101257,
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/tmp",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/cache"
+      },
+      "exception": null,
+      "phase": "analyze",
+      "stderr": {
+        "ctime_ns": 1790292596801466635,
+        "device": 66306,
+        "inode": 31774699,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596801466635,
+        "sha256": "a8fb800e72cadea9dbe273fdd47a8234c20b960ba22a2aa10b4d2d7a1d240ec7",
+        "size": 15
+      },
+      "stdout": {
+        "ctime_ns": 1790292596801466635,
+        "device": 66306,
+        "inode": 31774698,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596801466635,
+        "sha256": "421ddb80575b45cfb2f7c8ca47b5c40650c12eb19cb4833004db5cae4e837cb6",
+        "size": 15
+      },
+      "timed_out": false
+    },
+    {
+      "actual_return_code": 0,
+      "argv": [
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/fake_vendor",
+        "generate",
+        "--model",
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/model_qdq_int8.onnx",
+        "--type",
+        "onnx",
+        "--target",
+        "stm32n6",
+        "--name",
+        "nsl_qcfs_seed0",
+        "--st-neural-art",
+        "default@/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/profile.json",
+        "--c-api",
+        "st-ai",
+        "--input-data-type",
+        "float32",
+        "--output-data-type",
+        "float32",
+        "--compression",
+        "lossless",
+        "--optimization",
+        "balanced",
+        "--workspace",
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/generate_workspace",
+        "--output",
+        "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/generate",
+        "--verbosity",
+        "2",
+        "--binary"
+      ],
+      "cwd": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh",
+      "elapsed_seconds": 0.03184917906764895,
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/tmp",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/cache"
+      },
+      "exception": null,
+      "phase": "generate",
+      "stderr": {
+        "ctime_ns": 1790292596860468771,
+        "device": 66306,
+        "inode": 31774703,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596860468771,
+        "sha256": "6b4399863bcc6795d51376ee31bb0001fea2743a77cd4a714705f5aba27ad4f2",
+        "size": 16
+      },
+      "stdout": {
+        "ctime_ns": 1790292596860468771,
+        "device": 66306,
+        "inode": 31774702,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292596860468771,
+        "sha256": "9a7c3f519059bec6ad981070cc9ec15614ccf9040cd28f2ec8ac76cbf82a41a9",
+        "size": 16
+      },
+      "timed_out": false
+    }
+  ],
+  "content_sha256": "8dec3e448128614b633242a2ccb3aa2ad82e8d8c321415eb50a2b88817074049",
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "full_toolchain_closure": false,
+  "held_inputs_source_tools": {
+    "/home/thc1006/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/bin/python3.13": {
+      "ctime_ns": 1788058984940510488,
+      "device": 66306,
+      "inode": 18003766,
+      "links": 1,
+      "mode": 33277,
+      "mtime_ns": 1788058984939925383,
+      "sha256": "4ceefc12dbe6f01efa99bf5cf594df33cc8dc45a0ff23c3229e2e955059a374e",
+      "size": 31362304
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/fake_vendor": {
+      "ctime_ns": 1790292596671207390,
+      "device": 66306,
+      "inode": 31774685,
+      "links": 1,
+      "mode": 33216,
+      "mtime_ns": 1790292596671207390,
+      "sha256": "37f51b243644ec88f41ee1b2cd4cb9aff1b176d7b0484c31b33404756e1320a6",
+      "size": 1891
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/profile.json": {
+      "ctime_ns": 1790292596671165949,
+      "device": 66306,
+      "inode": 31774683,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671165949,
+      "sha256": "a51ddcaaf1a89c129ae7888b3ff10688fbac2dedbc2c471c0b8aee2304fd5b78",
+      "size": 11
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/fresh/analyze/nsl_qcfs_seed0_analyze_report.txt": {
+      "ctime_ns": 1790292596802612197,
+      "device": 66306,
+      "inode": 31774700,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596802612197,
+      "sha256": "3900a1f90dd9d9e3339d7da72c6bf06c43ef59dcc51ddccf33e53ae1efd8e1cc",
+      "size": 18
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/original/nslkdd/qcfs/qdq/export_report.json": {
+      "ctime_ns": 1790292596671149737,
+      "device": 66306,
+      "inode": 31774682,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671149737,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "size": 2
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/original/nslkdd/qcfs/qdq/model_qdq_int8.onnx": {
+      "ctime_ns": 1790292596671136499,
+      "device": 66306,
+      "inode": 31774681,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671136499,
+      "sha256": "22ee39579a7148b7b53dced530a3eb3f07a8baf4492e05244315c4f17e9fd36f",
+      "size": 28
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/source.py": {
+      "ctime_ns": 1790292596671116650,
+      "device": 66306,
+      "inode": 31774680,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671116650,
+      "sha256": "56fdcd7625a5d20163825e0405f5aee394207e3340ffefcec9f314a3d45d8527",
+      "size": 27
+    }
+  },
+  "kind": "n6_offline_vendor_preparation",
+  "limits": [
+    "No model inference, validation command, board, serial, flash or power measurement requested.",
+    "Selected tool binaries/front-end/profile/config files are pinned; transitive libraries are not fully captured.",
+    "Finite filesystem bookends, not an atomic snapshot, OS sandbox, or independent compiler correctness proof.",
+    "Default vendor memory profile is diagnostic, not an approved firmware/linker/flash layout.",
+    "Preserves all 17 historical export negatives; no threshold/checkpoint/quantization changes."
+  ],
+  "mapping": {
+    "interpretation": "vendor report observation only; not kernel, parity or board proof",
+    "reported_epochs": {
+      "hardware": 4,
+      "hybrid": 0,
+      "software": 3,
+      "total": 7
+    }
+  },
+  "model_sha256": "22ee39579a7148b7b53dced530a3eb3f07a8baf4492e05244315c4f17e9fd36f",
+  "npu_placement_verified": false,
+  "offline_compilation_completed": true,
+  "publication_accepted": false,
+  "schema": 1,
+  "version": "ST Edge AI Core v3.0.0-20426 123672867"
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "agent_observed_portable_qdq_native_execution",
+  "actual_process": {
+    "session": null,
+    "completion_chunk": "39226f",
+    "observed_return_code": 0,
+    "invocation": "f5b49340e549419c85402838ea5ee0f0"
+  },
+  "scope_unit": "spikeids-portable-qdq-native-01.scope",
+  "launch_policy": {"memory_max_bytes": 4294967296, "memory_swap_max_bytes": 0, "cpu_quota_percent": 200, "tasks_max": 128, "timeout_seconds": 360},
+  "command": ["uv", "run", "--no-project", "--python", "/home/thc1006/dev/SpikeIDS-MCU/.venv/bin/python", "python", "tools/board_deployment/portable_qdq/run_native.py", "--output-dir", "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01"],
+  "source_before_tool": "7fd3bb",
+  "source_after_and_first_report_pin_tool": "47f9a4",
+  "source_bookends_match": true,
+  "report_path": "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/RESULT.json",
+  "report_original_pin": {
+    "sha256": "cb3536b760e40ad2fe6ce942e677ab2472837e2a73ffb86edd15700c3a171a93",
+    "st_ctime_ns": 1790306433697150412,
+    "st_dev": 66306,
+    "st_ino": 31903400,
+    "st_mode": 33152,
+    "st_mtime_ns": 1790306433697150412,
+    "st_nlink": 1,
+    "st_size": 10459
+  },
+  "source_sha256": {
+    "generate.py": "df7792e04ab5763971b0b3a0045df94e901ce78131eec24d422805c7e59cacdd",
+    "portable_qdq.c": "e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851",
+    "portable_qdq.h": "e8abd58b44e15806eff54df5245757c23aa491bd044f579dd59d0efc7c5be406",
+    "native_main.c": "e06cf0d6e33298ba75f5cdc91f6ad58f8843464c4e446a2082450b0ce88ede50",
+    "run_native.py": "b2057e38b99608ae9cabe9c57de4c11dd6c7d74abafd8a71971d6dde12ba5fba"
+  },
+  "generation_invocations": 1,
+  "native_compile_invocations": 1,
+  "native_inference_process_invocations": 1,
+  "automatic_retry": false,
+  "rows": 1024,
+  "logit_words": 5120,
+  "raw_native_bytes": 28672,
+  "reported_differing_fp32_words": 0,
+  "reported_argmax_disagreements": 0,
+  "reported_max_abs_error": 0.0,
+  "original_input_source_pins": 9,
+  "output_pins_before_result": 14,
+  "hardware_accessed": false,
+  "board_parity_accepted": false,
+  "ort_or_torch_forward_executed": false,
+  "independent_saved_review_completed_by_this_receipt": false
+}

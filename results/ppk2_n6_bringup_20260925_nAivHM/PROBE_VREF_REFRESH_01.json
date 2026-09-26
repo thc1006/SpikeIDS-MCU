@@ -1,0 +1,33 @@
+{
+  "kind": "operator_retained_stlink_vref_current_refresh",
+  "actual_completion_chunk": "6f4721",
+  "observed_return_code": 0,
+  "outer_timeout_seconds": 15,
+  "serial": "004000183234510E37333934",
+  "source": "tools/n6_deployment/read_probe_vref.py",
+  "source_sha256": "d8ade05ee62c638d256124058bda316883c8e2a570eb725c054509075e19dd2d",
+  "installed_sources": {
+    "pyocd/probe/stlink/constants.py": "695008ba58c96423dd97235be9e58cdf410a2f5bce97f05b231f7f56d03e98a0",
+    "pyocd/probe/stlink/stlink.py": "99a0cede4dbd1aa218a96d70ddfba332c5a7f8e6389248793b417d9f5b0be7fc",
+    "pyocd/probe/stlink/usb.py": "f668f479e8de8929c2af4ffe861f8aca4e9a9d02ac063178beafe46cb296c33f"
+  },
+  "source_bookend_passed": true,
+  "open_completed": true,
+  "close_attempted": true,
+  "close_completed": true,
+  "samples": [
+    {"raw_hex": "e305000002000000", "adc_reference": 1507, "adc_target": 2, "reported_volts": 0.0031851360318513604, "monotonic_before_ns": 607271661163304, "monotonic_after_ns": 607271661301971},
+    {"raw_hex": "e305000001000000", "adc_reference": 1507, "adc_target": 1, "reported_volts": 0.0015925680159256802, "monotonic_before_ns": 607271661303730, "monotonic_after_ns": 607271661393128},
+    {"raw_hex": "e305000001000000", "adc_reference": 1507, "adc_target": 1, "reported_volts": 0.0015925680159256802, "monotonic_before_ns": 607271661393757, "monotonic_after_ns": 607271661472744}
+  ],
+  "preflight_decoder_controls": {"chunk": "1c88ff", "observed_return_code": 0, "controls": 7},
+  "independent_fake_usb_controls": {"chunk": "4310be", "observed_return_code": 0, "tests": 4, "test_sha256": "39531e5b4cda683604da758ff50754ed8e1915f1fe632228b9f079d7d685a77e"},
+  "ppk_accessed": false,
+  "target_power_switched": false,
+  "target_debug_entered": false,
+  "target_reset_requested": false,
+  "model_executed": false,
+  "calibrated_voltage_claimed": false,
+  "short_reply_raw_retained_by_library": false,
+  "interpretation": "ST-LINK target-reference indication after the last commanded PPK OFF; not a new powered-load failure, not VIN, and not a during-ON measurement. Near-zero readings do not establish the physical cause of the earlier current collapse or identify a bypass power source. No fifth ON was performed."
+}

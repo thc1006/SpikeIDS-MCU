@@ -1,0 +1,293 @@
+{
+  "expected_epoch_callback_events": 160,
+  "expected_lifecycle_events": [
+    5,
+    4
+  ],
+  "expected_total_callback_events": 162,
+  "model_file_sha256": "8b7a8703240811f4b4f12517f33ce5c77bc004911c088514435340bc92c3b43e",
+  "rows": [
+    {
+      "compiler_epoch": 1,
+      "flags": 35,
+      "index": 0,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 3,
+      "flags": 19,
+      "index": 1,
+      "kind": "pure_hw",
+      "wait_mask": 4
+    },
+    {
+      "compiler_epoch": 4,
+      "flags": 35,
+      "index": 2,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 5,
+      "flags": 35,
+      "index": 3,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 6,
+      "flags": 67,
+      "index": 4,
+      "kind": "hybrid",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 7,
+      "flags": 19,
+      "index": 5,
+      "kind": "pure_hw",
+      "wait_mask": 1
+    },
+    {
+      "compiler_epoch": 8,
+      "flags": 35,
+      "index": 6,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 9,
+      "flags": 35,
+      "index": 7,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 10,
+      "flags": 35,
+      "index": 8,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 11,
+      "flags": 35,
+      "index": 9,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 12,
+      "flags": 35,
+      "index": 10,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 13,
+      "flags": 35,
+      "index": 11,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 14,
+      "flags": 35,
+      "index": 12,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 15,
+      "flags": 35,
+      "index": 13,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 16,
+      "flags": 35,
+      "index": 14,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 18,
+      "flags": 19,
+      "index": 15,
+      "kind": "pure_hw",
+      "wait_mask": 32
+    },
+    {
+      "compiler_epoch": 19,
+      "flags": 19,
+      "index": 16,
+      "kind": "pure_hw",
+      "wait_mask": 256
+    },
+    {
+      "compiler_epoch": 20,
+      "flags": 35,
+      "index": 17,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 21,
+      "flags": 35,
+      "index": 18,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 22,
+      "flags": 35,
+      "index": 19,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 23,
+      "flags": 35,
+      "index": 20,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 24,
+      "flags": 35,
+      "index": 21,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 25,
+      "flags": 35,
+      "index": 22,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 26,
+      "flags": 35,
+      "index": 23,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 27,
+      "flags": 35,
+      "index": 24,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 28,
+      "flags": 35,
+      "index": 25,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 30,
+      "flags": 19,
+      "index": 26,
+      "kind": "pure_hw",
+      "wait_mask": 128
+    },
+    {
+      "compiler_epoch": 31,
+      "flags": 19,
+      "index": 27,
+      "kind": "pure_hw",
+      "wait_mask": 32
+    },
+    {
+      "compiler_epoch": 32,
+      "flags": 35,
+      "index": 28,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 33,
+      "flags": 35,
+      "index": 29,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 34,
+      "flags": 35,
+      "index": 30,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 35,
+      "flags": 35,
+      "index": 31,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 36,
+      "flags": 35,
+      "index": 32,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 37,
+      "flags": 35,
+      "index": 33,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 38,
+      "flags": 35,
+      "index": 34,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 39,
+      "flags": 35,
+      "index": 35,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 40,
+      "flags": 35,
+      "index": 36,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    },
+    {
+      "compiler_epoch": 42,
+      "flags": 19,
+      "index": 37,
+      "kind": "pure_hw",
+      "wait_mask": 4
+    },
+    {
+      "compiler_epoch": 43,
+      "flags": 19,
+      "index": 38,
+      "kind": "pure_hw",
+      "wait_mask": 4
+    },
+    {
+      "compiler_epoch": 44,
+      "flags": 35,
+      "index": 39,
+      "kind": "pure_sw",
+      "wait_mask": 0
+    }
+  ],
+  "sentinel_executes": false,
+  "terminating_sentinel_index": 40
+}

@@ -1,0 +1,139 @@
+{
+  "schema": "ppk2-n6-power-probe-capture-v2",
+  "utc": "2026-09-25T00:20:00.513240+00:00",
+  "original_pulse_source_sha256": "c74d945e81dce5f5647d3795e4f70bdcf0ebae3ccf27cca37daf6d3a00ef4e8f",
+  "nominal_correction_voltage_v": 5.0,
+  "voltage_basis": "unmeasured_USB_nominal_assumption",
+  "research_measurement_accepted": false,
+  "firmware_changed": false,
+  "wiring_basis": "user_reported_JP2_series_connection",
+  "commands": [
+    {
+      "name": "initial_output_off",
+      "hex": "0c00",
+      "at_monotonic": 593347.764933167,
+      "write_completed": true
+    },
+    {
+      "name": "sampling_start",
+      "hex": "06",
+      "at_monotonic": 593347.915922377,
+      "write_completed": true
+    },
+    {
+      "name": "output_on",
+      "hex": "0c01",
+      "at_monotonic": 593347.966108022,
+      "write_completed": true
+    },
+    {
+      "name": "final_output_off",
+      "hex": "0c00",
+      "at_monotonic": 593348.27130718,
+      "write_completed": true
+    },
+    {
+      "name": "sampling_stop",
+      "hex": "07",
+      "at_monotonic": 593348.321502173,
+      "write_completed": true
+    }
+  ],
+  "power_probe_completed": false,
+  "input_voltage_measured": false,
+  "electrical_output_off_verified": false,
+  "pulse_target_seconds": 3.0,
+  "whole_pulse_watchdog_seconds": 6.0,
+  "software_cleanup_is_not_hardware_protection": true,
+  "ppk": {
+    "port": "/dev/ttyACM0",
+    "serial": "F4728E9B55E0",
+    "vid": 6421,
+    "pid": 49162
+  },
+  "stlink_serial": "004000183234510E37333934",
+  "raw_metadata": "Calibrated: 0\nR0: 997.9588\nR1: 101.3213\nR2: 10.2998\nR3: 0.9688\nR4: 0.0562\nGS0: 0.0000\nGS1: 142.6852\nGS2: 20.8866\nGS3: 2.9386\nGS4: 0.0834\nGI0: 1.0000\nGI1: 0.9609\nGI2: 0.9563\nGI3: 0.9442\nGI4: 0.9534\nO0: 130.4886\nO1: 89.9935\nO2: 77.4222\nO3: 59.5241\nO4: 104.6074\nVDD: 4000\nHW: 61568\nmode: 1\nS0: 0.000000001\nS1: 0.000000179\nS2: 0.000001771\nS3: 0.000020370\nS4: 0.002760722\nI0: 0.000000036\nI1: -0.000000243\nI2: 0.000055379\nI3: -0.000295807\nI4: -0.008772146\nUG0: 1.00\nUG1: 1.00\nUG2: 1.00\nUG3: 1.00\nUG4: 1.00\nIA: 55\nEND\n",
+  "metadata_fields": {
+    "Calibrated": "0",
+    "R0": "997.9588",
+    "R1": "101.3213",
+    "R2": "10.2998",
+    "R3": "0.9688",
+    "R4": "0.0562",
+    "GS0": "0.0000",
+    "GS1": "142.6852",
+    "GS2": "20.8866",
+    "GS3": "2.9386",
+    "GS4": "0.0834",
+    "GI0": "1.0000",
+    "GI1": "0.9609",
+    "GI2": "0.9563",
+    "GI3": "0.9442",
+    "GI4": "0.9534",
+    "O0": "130.4886",
+    "O1": "89.9935",
+    "O2": "77.4222",
+    "O3": "59.5241",
+    "O4": "104.6074",
+    "VDD": "4000",
+    "HW": "61568",
+    "mode": "1",
+    "S0": "0.000000001",
+    "S1": "0.000000179",
+    "S2": "0.000001771",
+    "S3": "0.000020370",
+    "S4": "0.002760722",
+    "I0": "0.000000036",
+    "I1": "-0.000000243",
+    "I2": "0.000055379",
+    "I3": "-0.000295807",
+    "I4": "-0.008772146",
+    "UG0": "1.00",
+    "UG1": "1.00",
+    "UG2": "1.00",
+    "UG3": "1.00",
+    "UG4": "1.00",
+    "IA": "55"
+  },
+  "samples": 34816,
+  "minimum_uA": -1.3955207429267795,
+  "maximum_uA": 0.2337795249825915,
+  "current_sum_uA": -5628.2474358129075,
+  "references": [
+    {
+      "phase": "before",
+      "at_monotonic": 593347.915883159,
+      "raw_hex": "e205000002000000",
+      "estimated_v": 0.003187250996015936,
+      "is_vin_measurement": false
+    },
+    {
+      "phase": "during",
+      "at_monotonic": 593348.271276442,
+      "raw_hex": "e205000002000000",
+      "estimated_v": 0.003187250996015936,
+      "is_vin_measurement": false
+    },
+    {
+      "phase": "after",
+      "at_monotonic": 593348.412716286,
+      "raw_hex": "e205000002000000",
+      "estimated_v": 0.003187250996015936,
+      "is_vin_measurement": false
+    }
+  ],
+  "cleanup_errors": [],
+  "raw_bytes_written": 139264,
+  "unprocessed_trailing_bytes": 0,
+  "pulse_error": "RuntimeError: Target reference outside 2.7..3.6 V after startup",
+  "post_stop_drain": {
+    "bytes": 10240,
+    "empty_read_observed": true,
+    "elapsed_seconds": 0.04052082006819546
+  },
+  "error": "RuntimeError: Target reference outside 2.7..3.6 V after startup",
+  "raw_sha256": "ed084a0e12abc0b566965d17e466a980cb57bf247430a7940bd452c1e8c73ada",
+  "raw_size_bytes": 149504,
+  "raw_frame_aligned": true,
+  "source_sha256": "bb15b725a0aa63dab6c8c12f1564d7ebefc3805a090749aa096b9d1576a8152f"
+}

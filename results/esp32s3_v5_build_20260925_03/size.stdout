@@ -1,0 +1,38 @@
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/spikeids_v5_qdq.elf  :
+section                  size         addr
+.rtc.text                   0   1611653120
+.rtc.force_fast             0   1611653120
+.rtc_noinit                 0   1342177280
+.rtc.force_slow            28   1342177280
+.rtc_reserved              24   1611661288
+.iram0.vectors           1027   1077362688
+.iram0.text             55719   1077363716
+.dram0.dummy            40448   1070104576
+.dram0.data             10396   1070145024
+.noinit                     0   1070155420
+.dram0.bss               1832   1070155424
+.flash.text             58972   1107296288
+.flash_rodata_dummy     65536   1006632992
+.flash.appdesc            256   1006698528
+.flash.rodata          142964   1006698784
+.ext_ram.dummy         262112   1006632992
+.iram0.text_end            85   1077419435
+.iram0.data                 0   1077419520
+.iram0.bss                  0   1077419520
+.dram0.heap_start           0   1070157256
+.debug_aranges          16864            0
+.debug_info           1302399            0
+.debug_abbrev          139757            0
+.debug_line            762549            0
+.debug_frame            39584            0
+.debug_str             179707            0
+.debug_loc             336748            0
+.debug_ranges           55848            0
+.debug_line_str          4093            0
+.debug_loclists         38306            0
+.debug_rnglists          1253            0
+.comment                   84            0
+.xtensa.info               56            0
+Total                 3516647
+
+

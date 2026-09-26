@@ -1,0 +1,17 @@
+{
+  "actual_child_return_code": 1,
+  "hardware_accessed": false,
+  "kind": "independent_ra_mailbox_offline_counterexample",
+  "schema": 1,
+  "source_bookends": {
+    "protocol.py": "83cf8a99255c5d5a44f9446e853226f240fe5b18b7a9eec7f1ae770039d4e1db",
+    "ra_mailbox.py": "b27b6438846c3af0844f6057ed467a4a12ea315538f6711dda63f345133beb96",
+    "serial_transport.py": "5060e1922aeeac7de932da317318c3f170941b397483c7702f9b2f3748a4e146",
+    "test_independent_ra.py": "dd34094fa235cd4aac1698f6b932fa051b3b9fc50bf575155877aa617d2c5c01",
+    "test_protocol.py": "3344b85c4992941da741e044199b14dd2eb0b40a0eab4ace493a1dd9aa8de9b1",
+    "test_ra_mailbox.py": "2e78754d6e02dfe68fc4da1657e06eff6dd0d4ba7b5f7fbdfafe6115c5817696"
+  },
+  "source_bookends_equal": true,
+  "stderr": "test_deadline_crossed_by_final_read_is_retained_and_refused (test_independent_ra.IndependentRAMailboxTests.test_deadline_crossed_by_final_read_is_retained_and_refused) ... ok\ntest_deadline_when_target_never_commits (test_independent_ra.IndependentRAMailboxTests.test_deadline_when_target_never_commits) ... ok\ntest_hello_stale_commit_not_fresh (test_independent_ra.IndependentRAMailboxTests.test_hello_stale_commit_not_fresh) ... ok\ntest_input_frame_mutated_after_commit_refused (test_independent_ra.IndependentRAMailboxTests.test_input_frame_mutated_after_commit_refused) ... ok\ntest_nonfinite_now_after_finite_deadline_must_refuse (test_independent_ra.IndependentRAMailboxTests.test_nonfinite_now_after_finite_deadline_must_refuse) ... FAIL\ntest_positive_all1024_fixed_inputs_and_full_outputs (test_independent_ra.IndependentRAMailboxTests.test_positive_all1024_fixed_inputs_and_full_outputs) ... ok\ntest_short_staging_write_never_commits (test_independent_ra.IndependentRAMailboxTests.test_short_staging_write_never_commits) ... ok\ntest_sink_fails_after_commit_no_retry (test_independent_ra.IndependentRAMailboxTests.test_sink_fails_after_commit_no_retry) ... ok\ntest_sink_fails_before_any_write (test_independent_ra.IndependentRAMailboxTests.test_sink_fails_before_any_write) ... ok\ntest_staging_header_changed_never_commit (test_independent_ra.IndependentRAMailboxTests.test_staging_header_changed_never_commit) ... ok\ntest_stale_crc_valid_response_refused (test_independent_ra.IndependentRAMailboxTests.test_stale_crc_valid_response_refused) ... ok\ntest_wrong_request_and_bool_reply_length_never_writes (test_independent_ra.IndependentRAMailboxTests.test_wrong_request_and_bool_reply_length_never_writes) ... ok\n\n======================================================================\nFAIL: test_nonfinite_now_after_finite_deadline_must_refuse (test_independent_ra.IndependentRAMailboxTests.test_nonfinite_now_after_finite_deadline_must_refuse)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/host_v5/test_independent_ra.py\", line 32, in test_nonfinite_now_after_finite_deadline_must_refuse\n    with self.assertRaises((ValueError,TimeoutError)):s.hello()\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: (<class 'ValueError'>, <class 'TimeoutError'>) not raised\n\n----------------------------------------------------------------------\nRan 12 tests in 0.052s\n\nFAILED (failures=1)\n",
+  "stdout": ""
+}

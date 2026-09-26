@@ -1,0 +1,15 @@
+{
+  "board_validated": false,
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "exception": "Generated cache field enabled/missing",
+  "full_toolchain_closure": false,
+  "hardware_executed": false,
+  "kind": "offline_internal_sram_candidate_failure",
+  "npu_placement_verified": false,
+  "numerical_equivalence_verified": false,
+  "original_export_matrix_changed": false,
+  "platform_initialized": false,
+  "publication_accepted": false,
+  "schema": 1
+}

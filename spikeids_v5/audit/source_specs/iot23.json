@@ -1,0 +1,51 @@
+{
+  "dataset": "iot23",
+  "source_contract_version": 1,
+  "provenance_note": "Pinned local reserialization of the 19kmunz IoT-23 preprocessed Hugging Face dataset. Raw categorical tokens remain strings, but the publisher notebook globally drop_duplicates before publication and does not supply reliable device/capture/time group IDs. This source supports only the declared stratified row benchmark, not unseen-device or unseen-capture claims.",
+  "origin": {
+    "repository": "19kmunz/iot-23-preprocessed-allcolumns",
+    "revision": "04de595b618478668d5974a861a9f4f7305814b1",
+    "url": "https://huggingface.co/datasets/19kmunz/iot-23-preprocessed-allcolumns",
+    "upstream_dataset": "IoT-23",
+    "upstream_url": "https://www.stratosphereips.org/datasets-iot23"
+  },
+  "origin_verification": {
+    "method": "Hugging Face Hub revision metadata plus local cached-blob SHA-256 and byte-size verification",
+    "verified_revision": "04de595b618478668d5974a861a9f4f7305814b1"
+  },
+  "origin_shards": [
+    {
+      "path": "data/train-00000-of-00003-47134d3a10206e3c.parquet",
+      "bytes": 91377382,
+      "lfs_sha256": "6e34d6e6b20e55b096315bd0b5873dd61a98c8a1b64b6d10da158569cc5018b5"
+    },
+    {
+      "path": "data/train-00001-of-00003-7fb0937ba34dd762.parquet",
+      "bytes": 94804621,
+      "lfs_sha256": "8f3e5fd699213d31f6ea21f3406c5b046a83c724fd4953233191aef51e8c6283"
+    },
+    {
+      "path": "data/train-00002-of-00003-78be3fca5c692525.parquet",
+      "bytes": 88036992,
+      "lfs_sha256": "e227f605a0e10e22c5cc8d8783ee81ca779a25834c293b43de4aa69255630b45"
+    }
+  ],
+  "upstream_preprocessing": {
+    "global_exact_row_deduplication": true,
+    "categorical_tokens_preserved": true,
+    "group_ids_sufficient_for_device_capture_time_holdout": false,
+    "fully_reproducible_from_original_IoT23": false
+  },
+  "files": [
+    {
+      "path": "iot23/iot23_combined.parquet",
+      "role": "combined",
+      "bytes": 208124338,
+      "sha256": "8b40d893d47127fa7ac3cafd59b745f1100c403202cad5de0177fb0ebc4c2050",
+      "expected_rows": 6046623,
+      "expected_columns": 21,
+      "local_generation": "Hugging Face datasets load_dataset train split followed by local parquet serialization"
+    }
+  ],
+  "expected_total_rows": 6046623
+}

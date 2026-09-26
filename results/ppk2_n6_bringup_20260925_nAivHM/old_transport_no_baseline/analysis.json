@@ -1,0 +1,172 @@
+{
+  "schema": "ppk2-offline-engineering-v1",
+  "research_measurement_accepted": false,
+  "physical_voltage_verified_by_this_tool": false,
+  "logic_reference_and_wiring_verified": false,
+  "calibration_accuracy_verified": false,
+  "sample_clock_accuracy_verified": false,
+  "board_model_and_inference_count_verified": false,
+  "analysis_completed": true,
+  "analysis_checks_passed": false,
+  "parameters": {
+    "capture": "/home/thc1006/.local/opt/ppk2-headless/captures/transport-fyhlcuoi",
+    "capture_report_sha256": "4b38c0f13e6bbee937f836383f15de93e129cc7c196ed0eba6bbf40d73b58309",
+    "output": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/old_transport_no_baseline",
+    "correction_voltage_v": 4.0,
+    "correction_voltage_basis": "gui-setting-replay",
+    "energy_voltage_v": null,
+    "energy_voltage_basis": null,
+    "coefficient_policy": "metadata-exact",
+    "spike_filter": "nordic-4.4.1",
+    "channel": 0,
+    "baseline": null,
+    "min_window_samples": 100,
+    "inferences_per_window": 1,
+    "expected_windows": 1,
+    "save_current_csv": false
+  },
+  "analyzer_sha256": "7eae8347391b11e747be73a7368f55587a9f154e7749f622844e5fae8a9869a9",
+  "conversion_reference": {
+    "url": "https://github.com/NordicSemiconductor/pc-nrfconnect-ppk/blob/4cbb4c41c420ddb8125638fffc6d72f6b21c5aaa/src/device/serialDevice.ts",
+    "version": "4.4.1",
+    "source_sha256": "37bda3ca2fb927ec67aa0d981773ec09371a2a799138397f2da6b362bd1ae926",
+    "scope": "Arithmetic and optional spike filter, not full GUI initialization or hardware writes"
+  },
+  "limitations": [
+    "Only observed modulo-64 counter gaps detected; whole 64-sample losses can be invisible",
+    "GPIO sampled at nominal 10 us; analog bandwidth/filter/boundary uncertainty not certified",
+    "Constant supplied voltage is not a synchronous voltage measurement",
+    "Low GPIO is not proof of matched idle workload; baseline choice is externally declared",
+    "Per-inference divisor is declared, not checked against firmware execution",
+    "Hashes identify read-time bytes against a caller-provided pin, not immutable archival storage"
+  ],
+  "capture_report_sha256": "4b38c0f13e6bbee937f836383f15de93e129cc7c196ed0eba6bbf40d73b58309",
+  "device": {
+    "port": "/dev/ttyACM0",
+    "serial": "F4728E9B55E0",
+    "vid": 6421,
+    "pid": 49162
+  },
+  "original_metadata": {
+    "Calibrated": "0",
+    "R0": "997.9588",
+    "R1": "101.3213",
+    "R2": "10.2998",
+    "R3": "0.9688",
+    "R4": "0.0562",
+    "GS0": "0.0000",
+    "GS1": "142.6852",
+    "GS2": "20.8866",
+    "GS3": "2.9386",
+    "GS4": "0.0834",
+    "GI0": "1.0000",
+    "GI1": "0.9609",
+    "GI2": "0.9563",
+    "GI3": "0.9442",
+    "GI4": "0.9534",
+    "O0": "130.4886",
+    "O1": "89.9935",
+    "O2": "77.4222",
+    "O3": "59.5241",
+    "O4": "104.6074",
+    "VDD": "4000",
+    "HW": "61568",
+    "mode": "1",
+    "S0": "0.000000001",
+    "S1": "0.000000179",
+    "S2": "0.000001771",
+    "S3": "0.000020370",
+    "S4": "0.002760722",
+    "I0": "0.000000036",
+    "I1": "-0.000000243",
+    "I2": "0.000055379",
+    "I3": "-0.000295807",
+    "I4": "-0.008772146",
+    "UG0": "1.00",
+    "UG1": "1.00",
+    "UG2": "1.00",
+    "UG3": "1.00",
+    "UG4": "1.00",
+    "IA": "56"
+  },
+  "effective_coefficients": {
+    "R": [
+      997.9588,
+      101.3213,
+      10.2998,
+      0.9688,
+      0.0562
+    ],
+    "GS": [
+      0.0,
+      142.6852,
+      20.8866,
+      2.9386,
+      0.0834
+    ],
+    "GI": [
+      1.0,
+      0.9609,
+      0.9563,
+      0.9442,
+      0.9534
+    ],
+    "O": [
+      130.4886,
+      89.9935,
+      77.4222,
+      59.5241,
+      104.6074
+    ],
+    "S": [
+      1e-09,
+      1.79e-07,
+      1.771e-06,
+      2.037e-05,
+      0.002760722
+    ],
+    "I": [
+      3.6e-08,
+      -2.43e-07,
+      5.5379e-05,
+      -0.000295807,
+      -0.008772146
+    ],
+    "UG": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "zero_value_substitutions": {},
+  "metadata_vdd_used_as_voltage": false,
+  "analysis": {
+    "samples": 303104,
+    "raw_sha256": "ac2f0336f3257fa46a3171547298c70685021fc648dddd67ff0c1f96060772f9",
+    "nominal_duration_s": 3.0310400000000004,
+    "range_histogram": [
+      303104,
+      0,
+      0,
+      0,
+      0
+    ],
+    "range_transitions": 0,
+    "upper_rail_adc_samples": 0,
+    "minimum_current_uA": -0.38371327220309587,
+    "maximum_current_uA": 0.36488507925189406,
+    "mean_current_uA": 0.021058119316499535,
+    "baseline_interval": null,
+    "baseline_samples": 0,
+    "baseline_mean_current_uA": null,
+    "windows": [],
+    "window_checks_passed": false,
+    "problems": [
+      "Capture ends HIGH: trailing window is truncated and not integrated",
+      "Expected 1 complete windows, found 0",
+      "No explicit idle baseline; incremental energy unavailable"
+    ]
+  }
+}

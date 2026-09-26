@@ -1,0 +1,346 @@
+{
+  "board_validated": false,
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "full_toolchain_closure": false,
+  "hardware_executed": false,
+  "held_inputs_source_tools": {
+    "/home/thc1006/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/bin/python3.13": {
+      "ctime_ns": 1788058984940510488,
+      "device": 66306,
+      "inode": 18003766,
+      "links": 1,
+      "mode": 33277,
+      "mtime_ns": 1788058984939925383,
+      "sha256": "4ceefc12dbe6f01efa99bf5cf594df33cc8dc45a0ff23c3229e2e955059a374e",
+      "size": 31362304
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/calibration_rows.json": {
+      "ctime_ns": 1790019100779673432,
+      "device": 66306,
+      "inode": 26525479,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100779426853,
+      "sha256": "af48ddf5d8d218b4975385b7819ef8e30d1db495650488062a22cd0860f74cbe",
+      "size": 11253
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_policy.json": {
+      "ctime_ns": 1790019100454796273,
+      "device": 66306,
+      "inode": 26525474,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100454796273,
+      "sha256": "2ca6fda8b6bbca50784a48318544f55634b48e6dddd8af04d0d8dc5109639d0f",
+      "size": 1631
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_report.json": {
+      "ctime_ns": 1790019102017717723,
+      "device": 66306,
+      "inode": 26525482,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019102017509272,
+      "sha256": "46a0f963aa7401320a017a2506cfca0f704b81d50270f4dda76d4fca34e4e881",
+      "size": 2714
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_fp32.onnx": {
+      "ctime_ns": 1790019100642153937,
+      "device": 66306,
+      "inode": 26525476,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790019100642153937,
+      "sha256": "3b14adf8179a5df0fd4215a7b6000e7edf22c8a0d462a11e10c21731b3d12038",
+      "size": 445835
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": {
+      "ctime_ns": 1790019100743760532,
+      "device": 66306,
+      "inode": 26525477,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790019100743760532,
+      "sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+      "size": 134626
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/preprocessing.json": {
+      "ctime_ns": 1790019100780739781,
+      "device": 66306,
+      "inode": 26525481,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100780739781,
+      "sha256": "c296ddcd0cc89eac605a3277f9077a9f3b76d34a737496328a915763e3f02aec",
+      "size": 7211
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": {
+      "ctime_ns": 1790019100777673361,
+      "device": 66306,
+      "inode": 26525478,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100777321483,
+      "sha256": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+      "size": 218138
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/PLAN.md": {
+      "ctime_ns": 1790299885200018426,
+      "device": 66306,
+      "inode": 31890145,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790299885200018426,
+      "sha256": "3d3d7a08fdd32fc75b2288547a238d2ce1e6d1c5d8377050c8cb0707d2e5d914",
+      "size": 3361
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/generate.py": {
+      "ctime_ns": 1790300459824609508,
+      "device": 66306,
+      "inode": 31890146,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790300459824609508,
+      "sha256": "673fae4638731a6f0edbe45c5ef8e61c152e57b52ce1afae38e4224901cbf19a",
+      "size": 16596
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/internal_sram.mpool": {
+      "ctime_ns": 1790299885195018246,
+      "device": 66306,
+      "inode": 31890143,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790299885195018246,
+      "sha256": "4969fd25574d5db4e603080f9fa03ef092b12ffa7b26b29bc65aab22daf94a15",
+      "size": 1571
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/neural_art.json": {
+      "ctime_ns": 1790299885198018354,
+      "device": 66306,
+      "inode": 31890144,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790299885198018354,
+      "sha256": "64fb217c2a0fce1452f97b21ac31dd74f07149a0d5e7d25cce68fbe1e9c959f9",
+      "size": 172
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/prepare_vendor.py": {
+      "ctime_ns": 1790292532613142613,
+      "device": 66306,
+      "inode": 31773176,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292532613142613,
+      "sha256": "cd1bb490fa913d0ffde3c5c59ff8108134537228ded9ec130e5ac17939f7a94f",
+      "size": 19322
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Documentation/stneuralart_memory_initializers.html": {
+      "ctime_ns": 1789752913948494008,
+      "device": 66306,
+      "inode": 23366052,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "1236cd79f6b32f3bb3a3e8d9df8c949e546c8e04d4e9ff382c663157316403d9",
+      "size": 3412534
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Documentation/stneuralart_neural_art_compiler.html": {
+      "ctime_ns": 1789752913907492546,
+      "device": 66306,
+      "inode": 23366001,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "20215905ac72e08e614ea0a751cf81821a78f1468ddb4384aa8287458453dfe9",
+      "size": 1923482
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc": {
+      "ctime_ns": 1789752913627613413,
+      "device": 66306,
+      "inode": 23365131,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859242000000000,
+      "sha256": "98faf4e88d63cfbfd8cae704e78cf6adffffad751bb378d23fcc8df988675d03",
+      "size": 84
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc": {
+      "ctime_ns": 1789752913627613413,
+      "device": 66306,
+      "inode": 23365135,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859244000000000,
+      "sha256": "f29a0cf46aeb7c5eae90568b43f0f6f694b0a5ec97bba4223f5acc46005a1aac",
+      "size": 5912
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/atonn": {
+      "ctime_ns": 1789752913694484949,
+      "device": 66306,
+      "inode": 23365137,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859240000000000,
+      "sha256": "fb9c35c207dda7fecd9933fdabdde5c92b91e0c3c45ad1a60dbb9275f29b2a19",
+      "size": 19688672
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/ecasm": {
+      "ctime_ns": 1789752913703485270,
+      "device": 66306,
+      "inode": 23365221,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859240000000000,
+      "sha256": "e8bc1781131a405772ebf46c38046953b00cec164d32edc1e57e33a779070e26",
+      "size": 2817584
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/python": {
+      "ctime_ns": 1789752914093499180,
+      "device": 66306,
+      "inode": 23366312,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1716772904000000000,
+      "sha256": "a52afb14c4356d39135cc0fbe78e35c8245003b4dc5b5a47c2b85dd7906df529",
+      "size": 25824
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914090499073,
+      "device": 66306,
+      "inode": 23366304,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "9721892ba0b43f51adcec41c26e834e4e2b858e34cec7752d6f89cada97f41a4",
+      "size": 322888
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_args.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914092499144,
+      "device": 66306,
+      "inode": 23366308,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "5b03227fdc323180f196daacc805f04bd3217e9bc229fdb13f9309b7769cd1b9",
+      "size": 685800
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_defaults.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914093499180,
+      "device": 66306,
+      "inode": 23366311,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "5a5a782df2fbdb484f580f1c4d0484d662916bedc9536e460e035040aee3bd99",
+      "size": 101952
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_utility.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914088499001,
+      "device": 66306,
+      "inode": 23366299,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "bb42d35e00d2e1bfad96745709fd059fdf0e7ad1527c09c746a5ed24c465814b",
+      "size": 295984
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_version.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914088499001,
+      "device": 66306,
+      "inode": 23366301,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "8796895e58ef543d9821929f87395a143906529ccfd410a0e74d25ed3c98debd",
+      "size": 163336
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_config.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914089499037,
+      "device": 66306,
+      "inode": 23366303,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "67f137fd8a999c8fdc15edd508e1df99030e72be06cb7b3f5b7628ec2c97064f",
+      "size": 374240
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai": {
+      "ctime_ns": 1789752914087498966,
+      "device": 66306,
+      "inode": 23366297,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "0aa7d9222af9620fce802037f09432f0320b77e90d3415f1d2c1d366b7872714",
+      "size": 21024
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json": {
+      "ctime_ns": 1789752913504901823,
+      "device": 66306,
+      "inode": 23363174,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764852684000000000,
+      "sha256": "5a416483007fc8ae1896d1a14a8eb2bc488ae9e8ec4077e418d4b76512b86e55",
+      "size": 1238
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/stm32n6.mpool": {
+      "ctime_ns": 1789752913504901823,
+      "device": 66306,
+      "inode": 23363178,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764852684000000000,
+      "sha256": "85cbb7205023b482f1ae640fd0c02d6ccf9574ca4bf05abbe6640bf6a69acb49",
+      "size": 3965
+    },
+    "/home/thc1006/opt/stedgeai/3.0/scripts/N6_reloc/test/mpools/stm32n6_int2.mpool": {
+      "ctime_ns": 1789752913789072330,
+      "device": 66306,
+      "inode": 23365779,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859292000000000,
+      "sha256": "dcce1bb3221edfbf8634501a86c2181fc129fbf028c094e0dfd267533abf3d2f",
+      "size": 2382
+    }
+  },
+  "kind": "offline_internal_sram_generation_intent",
+  "npu_placement_verified": false,
+  "numerical_equivalence_verified": false,
+  "original_export_matrix_changed": false,
+  "platform_initialized": false,
+  "publication_accepted": false,
+  "reference_headers": {
+    "original_logits.npy": {
+      "dtype": "<f4",
+      "shape": [
+        1024,
+        5
+      ]
+    },
+    "reference_logits.npy": {
+      "dtype": "<f4",
+      "shape": [
+        1024,
+        5
+      ]
+    },
+    "validation_row_ids.npy": {
+      "dtype": "<i8",
+      "shape": [
+        1024
+      ]
+    },
+    "x.npy": {
+      "dtype": "<f4",
+      "shape": [
+        1024,
+        41
+      ]
+    }
+  },
+  "schema": 1,
+  "single_generate_only": true
+}

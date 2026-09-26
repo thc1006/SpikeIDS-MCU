@@ -39,11 +39,17 @@ def exact_signed_rank(d, alternative="two-sided", decimals=12):
     """
     require(alternative in ("two-sided", "greater", "less"), "Unknown alternative")
     d = np.round(vector(d), decimals=decimals)
+    absolute_nonzero = np.abs(d[d != 0])
+    _, tie_counts = np.unique(absolute_nonzero, return_counts=True)
+    tie_groups = sorted((int(count) for count in tie_counts if count > 1), reverse=True)
     z = d[d != 0]; n = len(z)
     require(n <= 100, "Exact DP supports <=100 nonzero pairs")
     if n == 0:
-        return {"statistic": 0., "p": 1., "n_nonzero": 0, "rank_biserial": 0.,
-                "method": "exact_conditional_sign_flip", "round_decimals": decimals}
+        return {"statistic": 0., "p": 1., "n_nonzero": 0,
+                "n_zero": int(len(d)), "absolute_rank_tie_group_sizes": [],
+                "rank_biserial": 0., "method": "exact_conditional_sign_flip",
+                "zero_method": "wilcox_discard_after_declared_rounding",
+                "tie_method": "average_ranks", "round_decimals": decimals}
     ranks = np.rint(2*stats.rankdata(np.abs(z), method="average")).astype(int)
     total = int(ranks.sum()); counts = [0]*(total+1); counts[0] = 1; reached = 0
     for rank in ranks:
@@ -55,16 +61,42 @@ def exact_signed_rank(d, alternative="two-sided", decimals=12):
     p_greater = sum(counts[positive:])/(1 << n)
     p = min(1., 2*min(p_less, p_greater)) if alternative == "two-sided" else (p_less if alternative == "less" else p_greater)
     return {"statistic": min(positive, total-positive)/2 if alternative == "two-sided" else positive/2,
-            "p": float(p), "n_nonzero": n, "rank_biserial": (2*positive-total)/total,
-            "method": "exact_conditional_sign_flip", "round_decimals": decimals}
+            "p": float(p), "n_nonzero": n, "n_zero": int(len(d)-n),
+            "absolute_rank_tie_group_sizes": tie_groups,
+            "rank_biserial": (2*positive-total)/total,
+            "method": "exact_conditional_sign_flip",
+            "zero_method": "wilcox_discard_after_declared_rounding",
+            "tie_method": "average_ranks", "round_decimals": decimals}
+
+
+def hodges_lehmann_pseudomedian(d, decimals=12):
+    """One-sample Hodges--Lehmann estimate from all Walsh averages.
+
+    The declared rounding matches the signed-rank test's numerical identity.
+    This is a location estimate under the same symmetry interpretation, not a
+    sample mean and not a dataset-resampling estimand.
+    """
+    rounded = np.round(vector(d), decimals=decimals)
+    upper = np.triu_indices(len(rounded))
+    walsh = (rounded[upper[0]] + rounded[upper[1]]) / 2.0
+    require(np.isfinite(walsh).all(), "Non-finite Walsh average")
+    return float(np.median(walsh))
 
 
 def wilcoxon_pair(x, y):
     d = differences(x, y); n = len(d)
     sd = (0. if np.ptp(d) == 0 else float(d.std(ddof=1))) if n > 1 else None
     dz = float(d.mean()/sd) if sd is not None and sd > 0 else None
-    return {**exact_signed_rank(d), "n": n, "mean_diff": float(d.mean()), "median_diff": float(np.median(d)),
+    signed_rank = exact_signed_rank(d)
+    return {**signed_rank, "n": n, "mean_diff": float(d.mean()),
+            "median_diff": float(np.median(d)),
+            "hodges_lehmann_pseudomedian_diff":
+                hodges_lehmann_pseudomedian(d, signed_rank["round_decimals"]),
             "dz": dz, "dz_status": "defined" if dz is not None else "undefined_zero_or_insufficient_variance",
+            "test_estimand": "symmetric paired-difference location/pseudomedian",
+            "symmetry_assumption":
+                "paired seed differences are independent and symmetric about the tested location",
+            "mean_diff_role": "descriptive only; the signed-rank p-value does not test the mean",
             "differences": d.tolist()}
 
 
@@ -109,10 +141,19 @@ def tost_wilcoxon(x, y, delta, alpha=.05):
     validate_alpha(alpha)
     require(math.isfinite(delta) and delta > 0, "Invalid equivalence margin")
     d = differences(x,y)
-    a = exact_signed_rank(d+delta, "greater")["p"]
-    b = exact_signed_rank(d-delta, "less")["p"]
+    lower = exact_signed_rank(d+delta, "greater")
+    upper = exact_signed_rank(d-delta, "less")
+    a = lower["p"]
+    b = upper["p"]
     return {"p_lower": a, "p_upper": b, "p_tost": max(a,b), "equivalent": max(a,b) < alpha,
-            "estimand": "symmetric location/pseudomedian, NOT generally the mean", "role": "robustness only; no Shapiro-based primary-test switching"}
+            "estimand": "symmetric location/pseudomedian, NOT generally the mean",
+            "symmetry_assumption":
+                "paired seed differences are independent and symmetric about the location",
+            "zero_method": "wilcox_discard_after_declared_rounding",
+            "tie_method": "average_ranks",
+            "lower_n_nonzero": lower["n_nonzero"],
+            "upper_n_nonzero": upper["n_nonzero"],
+            "role": "prespecified robustness analysis; no test-selection switching"}
 
 
 def bootstrap_mean(values, seed=0, n_boot=10000, confidence=.95, block=1024):

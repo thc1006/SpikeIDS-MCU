@@ -1,0 +1,26 @@
+#!/home/thc1006/dev/SpikeIDS-MCU/.venv/bin/python
+import pathlib,sys,time
+mode=pathlib.Path('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_real_subprocess_failures_0/mode.txt').read_text()
+phase=sys.argv[1]
+print('stdout '+phase,flush=True) if phase!='--version' else None
+print('stderr '+phase,file=sys.stderr,flush=True)
+if phase=='--version':
+ print('ST Edge AI Core v3.0.0-20426 123672867' if mode!='version' else 'ST Edge AI Core v4.0')
+ raise SystemExit(0)
+assert phase in ('analyze','generate')
+if mode=='nonzero' and phase=='analyze': raise SystemExit(23)
+if mode=='timeout' and phase=='analyze': time.sleep(10)
+if mode=='mutation' and phase=='analyze': pathlib.Path('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_real_subprocess_failures_0/repo/results/original/nslkdd/qcfs/qdq/export_report.json').write_text('changed')
+out=pathlib.Path(sys.argv[sys.argv.index('--output')+1])
+name=sys.argv[sys.argv.index('--name')+1]
+if phase=='analyze':
+ if mode!='no_analyze': (out/(name+'_analyze_report.txt')).write_text('toy analyze report')
+else:
+ for suffix in ('.c','.h','_c_info.json'):
+  (out/(name+suffix)).write_text('toy generated content')
+ for suffix in ('.c','.h'): (out/('stai_'+name+suffix)).write_text('toy wrapper')
+ if mode!='no_mapping':
+  (out/(name+'_generate_report.txt')).write_text('Total number of epochs                               7\n>> pure software (SW) epochs                         3\n>> hybrid epochs (using both software and hardware)  0\n>> pure hardware (HW or EC) epochs                   4\n' if mode!='bad_mapping' else 'missing mapping')
+ if mode!='no_binary':
+  (out/(name+'_atonbuf.xSPI2.raw')).write_bytes(b'toy weights' if mode!='empty_binary' else b'')
+ if mode=='symlink': (out/'foreign').symlink_to('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_real_subprocess_failures_0/repo/source.py')

@@ -49,11 +49,17 @@ def _pairs(pairs):
     return out
 
 
-def load_json(path: Path) -> Any:
+def loads_json(payload: str | bytes, source: str = "<memory>") -> Any:
     def bad_constant(value):
-        raise ContractError(f"Non-finite JSON constant {value} in {path}")
-    return json.loads(Path(path).read_text(encoding="utf-8"), object_pairs_hook=_pairs,
+        raise ContractError(f"Non-finite JSON constant {value} in {source}")
+    if isinstance(payload, bytes):
+        payload = payload.decode("utf-8", errors="strict")
+    return json.loads(payload, object_pairs_hook=_pairs,
                       parse_constant=bad_constant)
+
+
+def load_json(path: Path) -> Any:
+    return loads_json(Path(path).read_bytes(), str(path))
 
 
 def atomic_write(path: Path, writer) -> None:
@@ -152,7 +158,8 @@ def same_pairing(a: dict, b: dict) -> None:
     pa, pb = a["protocol"], b["protocol"]
     for name in ("seeds", "epochs", "batch_size", "eval_every", "eval_batch_size", "lr",
                  "weight_decay", "optimizer", "threads", "device", "hidden", "compile",
-                 "data_placement", "qcfs_formula", "levels"):
+                 "data_placement", "vram_reserve_gib", "qcfs_formula", "levels",
+                 "loss_weighting", "checkpoint_policy", "checkpoint_every"):
         require(name in pa and name in pb and pa[name] == pb[name], f"Paired budget differs or omits {name}")
     require(a["environment"] == b["environment"], "Paired arms used different software/hardware environments")
     ra = seed_rows(a["per_seed"], pa["seeds"])

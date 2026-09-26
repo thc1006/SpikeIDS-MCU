@@ -1,0 +1,9 @@
+In file included from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_caches_interface.h:31,
+                 from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_rt_user_api.h:29,
+                 from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_stai_internal.h:23,
+                 from /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/stai_nsl_qcfs_seed0.h:27,
+                 from /home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/npu_trace/npu_trace_bind.c:3:
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_platform.h:201:10: fatal error: mcu_cache.h: 沒有此一檔案或目錄
+  201 | #include "mcu_cache.h"
+      |          ^~~~~~~~~~~~~
+compilation terminated.

@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "agent_observed_saved_fixed_am_review_exit",
+  "actual_launch_chunk": "2bc927",
+  "actual_exec_session": 58613,
+  "actual_completion_chunk": "08dfa1",
+  "actual_return_code": 0,
+  "producer_actual_exec_session_reported_by_root": 12809,
+  "producer_actual_completion_chunk_reported_by_root": "c59d4e",
+  "producer_actual_return_code_reported_by_root": 0,
+  "capture_report_file_sha256": "d718b7dd1fe708c467ca9a670c22db00f1544dd9e5364a9fbf36176385fc959d",
+  "capture_raw_file_sha256": "594b60173f76e7e08df1de75bebf7a701fbb409972bff83671375e0d632fd29e",
+  "decoder_file_sha256": "7eae8347391b11e747be73a7368f55587a9f154e7749f622844e5fae8a9869a9",
+  "review_raw_file_sha256": "aab2fe0b9f8c81d088b21e8322747ab0851d79a1e9a5a199e455f81d98d2c7a8",
+  "review_role_disclosure": "Reviewer authored the collector, reused the pinned decoder and separately analyzed root's retained raw waveform. Not an independent software reimplementation or instrument-calibration attestation.",
+  "files_checked_with_hash_and_metadata_bookends": 6,
+  "hardware_accessed_by_reviewer": false,
+  "capture_modified": false,
+  "energy_computed": false,
+  "boot_verified": false,
+  "electrical_safety_verified": false,
+  "research_measurement_accepted": false
+}

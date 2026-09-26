@@ -1,0 +1,385 @@
+[
+  {
+    "address": 872830952,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 873431068,
+    "hex": "01000000600a000029000000",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 873431168,
+    "hex": "e727d9bdfc85fbbdcfa8b23fa657403f701de9bbaae496bb968a6cbc5fe3b7bd58b309bcef02c2bd5a06e2bc94f89d3fd87c2bbc36c713bd3dbec1bc277235bc58eed4bcf5a89ebc501e2cbd0000000021734ebb3de6c7bddc9239bffb10bcbe5f3a23bf57ee21bf3c60bfbec551bfbea46e453f9f01b3be4cd0bfbee642e2be25e3573eb6309e3ec7618fbe2ec3e5be132ee6bd13ab23bf0b0d20bf9246c6be7350c0be",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 873431060,
+    "hex": "01040000",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 872830952,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830284,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830284,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829556,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829556,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829136,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829136,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834528,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834528,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834460,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834460,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872828952,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872828952,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872833736,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872833736,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834320,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834320,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872833552,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872833552,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872833368,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872833368,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834184,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834184,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872833184,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872833184,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872833000,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872833000,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830760,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830760,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830124,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830124,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829492,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829492,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829984,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829984,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829460,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829460,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872828768,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872828768,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832816,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832816,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834456,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834456,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832632,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832632,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832448,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832448,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834312,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834312,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832264,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832264,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832080,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832080,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830568,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830568,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829912,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829912,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829428,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829428,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829772,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829772,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829396,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829396,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872828584,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872828584,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872831896,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872831896,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872834048,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872834048,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872831712,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872831712,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872831528,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872831528,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872833920,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872833920,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872831344,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872831344,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872831160,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872831160,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830376,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830376,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829700,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829700,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829364,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829364,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829588,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829588,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872829332,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872829332,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872828376,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872828376,
+    "op": "removed_hw_breakpoint"
+  }
+]

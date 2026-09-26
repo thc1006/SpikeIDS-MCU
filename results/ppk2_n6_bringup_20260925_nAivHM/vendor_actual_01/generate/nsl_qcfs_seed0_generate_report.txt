@@ -1,0 +1,241 @@
+ST Edge AI Core v3.0.0-20426 123672867
+Created date          : 2026-09-25 07:32:02
+Parameters            : generate --model /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/model_qdq_int8.onnx --type onnx --target stm32n6 --name nsl_qcfs_seed0 --st-neural-art default@/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json --c-api st-ai --input-data-type float32 --output-data-type float32 --compression lossless --optimization balanced --workspace /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate_workspace --output /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate --verbosity 2 --binary
+
+Model name - model_qdq_int8
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+m_id   layer (original)                                    oshape          param/size           macc                     connected to 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+31     layers_1_threshold (Div)                            []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+33     _layers_layers_1_C..2_output_0 (Mul)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+34     _layers_layers_1_C..3_output_0 (Add)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+1      _layers_layers_1_C..4_output_0 (Div)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+43     layers_3_threshold (Div)                            []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+45     _layers_layers_3_C..t_output_0 (Mul)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+46     _layers_layers_3_C..1_output_0 (Add)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+1      _layers_layers_3_C..2_output_0 (Div)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+55     layers_5_threshold (Div)                            []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+57     _layers_layers_5_C..t_output_0 (Mul)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+58     _layers_layers_5_C..1_output_0 (Add)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+1      _layers_layers_5_C..2_output_0 (Div)                []              1/4                                                        
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+0      input ()                                            [b:1,c:41]                                                                 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+12     input_QuantizeLinear_Output (QuantizeLinear)        [b:1,c:41]                             82                            input 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+13     layers_0_bias_const (DequantizeLinear)              [b:256]         256/1,024                                                  
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+14     layers_0_weight_De..tput_const (DequantizeLinear)   [b:256,c:41]    10,496/41,984                                              
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+15     layers_2_bias_const (DequantizeLinear)              [b:256]         256/1,024                                                  
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+16     layers_2_weight_De..tput_const (DequantizeLinear)   [b:256,c:256]   65,536/262,144                                             
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+17     layers_4_bias_const (DequantizeLinear)              [b:128]         128/512                                                    
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+18     layers_4_weight_De..tput_const (DequantizeLinear)   [b:128,c:256]   32,768/131,072                                             
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+19     layers_6_bias_const (DequantizeLinear)              [b:5]           5/20                                                       
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+20     layers_6_weight_De..tput_const (DequantizeLinear)   [b:5,c:128]     640/2,560                                                  
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+27     input_DequantizeLinear_Output (DequantizeLinear)    [b:1,c:41]                             82      input_QuantizeLinear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+28     _layers_layers_0_Gemm_output_0 (Gemm)               [b:1,c:256]                        10,752    input_DequantizeLinear_Output 
+                                                                                                       layers_0_weight_De..tput_const 
+                                                                                                                  layers_0_bias_const 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+29     _layers_layers_0_G..ear_Output (QuantizeLinear)     [b:1,c:256]                           512   _layers_layers_0_Gemm_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+30     _layers_layers_0_G..ear_Output (DequantizeLinear)   [b:1,c:256]                           512   _layers_layers_0_G..ear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+31     _layers_layers_1_Div_output_0 (Div)                 [b:1,c:256]                         1,280   _layers_layers_0_G..ear_Output 
+                                                                                                                   layers_1_threshold 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+32     _layers_layers_1_Clip_output_0 (Clip)               [b:1,c:256]                           512    _layers_layers_1_Div_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+33     _layers_layers_1_Mul_output_0 (Mul)                 [b:1,c:256]                           256   _layers_layers_1_Clip_output_0 
+                                                                                                       _layers_layers_1_C..2_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+34     _layers_layers_1_Add_output_0 (Add)                 [b:1,c:256]                           256    _layers_layers_1_Mul_output_0 
+                                                                                                       _layers_layers_1_C..3_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+35     _layers_layers_1_F..r_output_0 (Floor)              [b:1,c:256]                           512    _layers_layers_1_Add_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+36     _layers_layers_1_D..1_output_0 (Div)                [b:1,c:256]                         1,280   _layers_layers_1_F..r_output_0 
+                                                                                                       _layers_layers_1_C..4_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+37     _layers_layers_1_M..1_output_0 (Mul)                [b:1,c:256]                           256   _layers_layers_1_D..1_output_0 
+                                                                                                                   layers_1_threshold 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+38     _layers_layers_1_M..ear_Output (QuantizeLinear)     [b:1,c:256]                           512   _layers_layers_1_M..1_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+39     _layers_layers_1_M..ear_Output (DequantizeLinear)   [b:1,c:256]                           512   _layers_layers_1_M..ear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+40     _layers_layers_2_Gemm_output_0 (Gemm)               [b:1,c:256]                        65,792   _layers_layers_1_M..ear_Output 
+                                                                                                       layers_2_weight_De..tput_const 
+                                                                                                                  layers_2_bias_const 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+41     _layers_layers_2_G..ear_Output (QuantizeLinear)     [b:1,c:256]                           512   _layers_layers_2_Gemm_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+42     _layers_layers_2_G..ear_Output (DequantizeLinear)   [b:1,c:256]                           512   _layers_layers_2_G..ear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+43     _layers_layers_3_Div_output_0 (Div)                 [b:1,c:256]                         1,280   _layers_layers_2_G..ear_Output 
+                                                                                                                   layers_3_threshold 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+44     _layers_layers_3_Clip_output_0 (Clip)               [b:1,c:256]                           512    _layers_layers_3_Div_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+45     _layers_layers_3_Mul_output_0 (Mul)                 [b:1,c:256]                           256   _layers_layers_3_Clip_output_0 
+                                                                                                       _layers_layers_3_C..t_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+46     _layers_layers_3_Add_output_0 (Add)                 [b:1,c:256]                           256    _layers_layers_3_Mul_output_0 
+                                                                                                       _layers_layers_3_C..1_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+47     _layers_layers_3_F..r_output_0 (Floor)              [b:1,c:256]                           512    _layers_layers_3_Add_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+48     _layers_layers_3_D..1_output_0 (Div)                [b:1,c:256]                         1,280   _layers_layers_3_F..r_output_0 
+                                                                                                       _layers_layers_3_C..2_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+49     _layers_layers_3_M..1_output_0 (Mul)                [b:1,c:256]                           256   _layers_layers_3_D..1_output_0 
+                                                                                                                   layers_3_threshold 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+50     _layers_layers_3_M..ear_Output (QuantizeLinear)     [b:1,c:256]                           512   _layers_layers_3_M..1_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+51     _layers_layers_3_M..ear_Output (DequantizeLinear)   [b:1,c:256]                           512   _layers_layers_3_M..ear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+52     _layers_layers_4_Gemm_output_0 (Gemm)               [b:1,c:128]                        32,896   _layers_layers_3_M..ear_Output 
+                                                                                                       layers_4_weight_De..tput_const 
+                                                                                                                  layers_4_bias_const 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+53     _layers_layers_4_G..ear_Output (QuantizeLinear)     [b:1,c:128]                           256   _layers_layers_4_Gemm_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+54     _layers_layers_4_G..ear_Output (DequantizeLinear)   [b:1,c:128]                           256   _layers_layers_4_G..ear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+55     _layers_layers_5_Div_output_0 (Div)                 [b:1,c:128]                           640   _layers_layers_4_G..ear_Output 
+                                                                                                                   layers_5_threshold 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+56     _layers_layers_5_Clip_output_0 (Clip)               [b:1,c:128]                           256    _layers_layers_5_Div_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+57     _layers_layers_5_Mul_output_0 (Mul)                 [b:1,c:128]                           128   _layers_layers_5_Clip_output_0 
+                                                                                                       _layers_layers_5_C..t_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+58     _layers_layers_5_Add_output_0 (Add)                 [b:1,c:128]                           128    _layers_layers_5_Mul_output_0 
+                                                                                                       _layers_layers_5_C..1_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+59     _layers_layers_5_F..r_output_0 (Floor)              [b:1,c:128]                           256    _layers_layers_5_Add_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+60     _layers_layers_5_D..1_output_0 (Div)                [b:1,c:128]                           640   _layers_layers_5_F..r_output_0 
+                                                                                                       _layers_layers_5_C..2_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+61     _layers_layers_5_M..1_output_0 (Mul)                [b:1,c:128]                           128   _layers_layers_5_D..1_output_0 
+                                                                                                                   layers_5_threshold 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+62     _layers_layers_5_M..ear_Output (QuantizeLinear)     [b:1,c:128]                           256   _layers_layers_5_M..1_output_0 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+63     _layers_layers_5_M..ear_Output (DequantizeLinear)   [b:1,c:128]                           256   _layers_layers_5_M..ear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+64     logits_QuantizeLinear_Input (Gemm)                  [b:1,c:5]                             645   _layers_layers_5_M..ear_Output 
+                                                                                                       layers_6_weight_De..tput_const 
+                                                                                                                  layers_6_bias_const 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+65     logits_QuantizeLinear_Output (QuantizeLinear)       [b:1,c:5]                              10      logits_QuantizeLinear_Input 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+66     logits (DequantizeLinear)                           [b:1,c:5]                              10     logits_QuantizeLinear_Output 
+------ --------------------------------------------------- --------------- ---------------- -------- -------------------------------- 
+model: macc=126,269 weights=440,388 activations=-- io=--
+
+
+
+
+
+Compilation details
+------------------------------------------------------------------------------------
+Compiler version: 1.1.3-8
+Compiler arguments:  -i /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate/model_qdq_int8_OE_3_3_1.onnx --json-quant-file /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate/model_qdq_int8_OE_3_3_1_Q.json -g nsl_qcfs_seed0.c --load-mdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc --load-mpool /home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/stm32n6.mpool --load-cdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc --save-mpool-file /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate_workspace/neural_art__nsl_qcfs_seed0/stm32n6.mpool --out-dir-prefix /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate_workspace/neural_art__nsl_qcfs_seed0/ --network-name nsl_qcfs_seed0 --native-float --cache-maintenance --Ocache-opt --enable-virtual-mem-pools --Os --Oauto-sched --output-info-file c_info.json --generate-stai
+====================================================================================
+
+Memory usage information  (input/output buffers are included in activations)
+------------------------------------------------------------------------------------
+	flexMEM    [0x34000000 - 0x34000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM1    [0x34064000 - 0x34064000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM2    [0x34100000 - 0x34200000]:          0  B /      1.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM3    [0x34200000 - 0x34270000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM4    [0x34270000 - 0x342E0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM5    [0x342E0000 - 0x34350000]:      2.000 kB /    448.000 kB  (  0.45 % used) -- weights:          0  B (  0.00 % used)  activations:      2.000 kB (  0.45 % used)
+	npuRAM6    [0x34350000 - 0x343C0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	octoFlash  [0x71000000 - 0x78000000]:    142.048 kB /    112.000 MB  (  0.12 % used) -- weights:    142.048 kB (  0.12 % used)  activations:          0  B (  0.00 % used)
+	hyperRAM   [0x90000000 - 0x92000000]:          0  B /     32.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+---
+Total:                                           144.048 kB                                  -- weights:    142.048 kB                  activations:      2.000 kB                   
+====================================================================================
+
+
+Used memory ranges
+------------------------------------------------------------------------------------
+	npuRAM5    [0x342E0000 - 0x34350000]: 0x342E0000-0x342E0800
+	octoFlash  [0x71000000 - 0x78000000]: 0x71000000-0x71023840
+====================================================================================
+
+Epochs details
+------------------------------------------------------------------------------------
+Total number of epochs                               40
+>> pure software (SW) epochs                         31
+>> hybrid epochs (using both software and hardware)   1
+>> pure hardware (HW or EC) epochs                    8  (implemented in 0 epoch controller blobs/meta epochs)
+---
++----------+--------+------------------+
+| epoch ID |  Type  |     Details      |
++----------+--------+------------------+
+| epoch_1  |   SW   |  QuantizeLinear  |
+| epoch_3  |   HW   |                  |
+| epoch_4  |   SW   | DequantizeLinear |
+| epoch_5  |   SW   |   Conv(float)    |
+| epoch_6  | Hybrid |       Cast       |
+| epoch_7  |   HW   |                  |
+| epoch_8  |   SW   | DequantizeLinear |
+| epoch_9  |   SW   |    Div(float)    |
+| epoch_10 |   SW   |   Clip(float)    |
+| epoch_11 |   SW   |    Mul(float)    |
+| epoch_12 |   SW   |    Add(float)    |
+| epoch_13 |   SW   |   Floor(float)   |
+| epoch_14 |   SW   |    Div(float)    |
+| epoch_15 |   SW   |    Mul(float)    |
+| epoch_16 |   SW   |  QuantizeLinear  |
+| epoch_18 |   HW   |                  |
+| epoch_19 |   HW   |                  |
+| epoch_20 |   SW   | DequantizeLinear |
+| epoch_21 |   SW   |    Div(float)    |
+| epoch_22 |   SW   |   Clip(float)    |
+| epoch_23 |   SW   |    Mul(float)    |
+| epoch_24 |   SW   |    Add(float)    |
+| epoch_25 |   SW   |   Floor(float)   |
+| epoch_26 |   SW   |    Div(float)    |
+| epoch_27 |   SW   |    Mul(float)    |
+| epoch_28 |   SW   |  QuantizeLinear  |
+| epoch_30 |   HW   |                  |
+| epoch_31 |   HW   |                  |
+| epoch_32 |   SW   | DequantizeLinear |
+| epoch_33 |   SW   |    Div(float)    |
+| epoch_34 |   SW   |   Clip(float)    |
+| epoch_35 |   SW   |    Mul(float)    |
+| epoch_36 |   SW   |    Add(float)    |
+| epoch_37 |   SW   |   Floor(float)   |
+| epoch_38 |   SW   |    Div(float)    |
+| epoch_39 |   SW   |    Mul(float)    |
+| epoch_40 |   SW   |  QuantizeLinear  |
+| epoch_42 |   HW   |                  |
+| epoch_43 |   HW   |                  |
+| epoch_44 |   SW   | DequantizeLinear |
++----------+--------+------------------+
+====================================================================================

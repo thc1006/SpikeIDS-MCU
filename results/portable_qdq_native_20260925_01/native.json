@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/candidate"
+  ],
+  "environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PATH": "/usr/bin:/bin",
+    "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01",
+    "TZ": "UTC"
+  },
+  "returncode": 0,
+  "stderr_sha256": "92aa23c72ab1d9a0d92f716ed835ecb6a34d1673c0aa66c7a78bcac2a7c91c8e",
+  "stdin_sha256": "0c1b82b878c0c4c283c4739a6c0bbd7a7797881aa2d4baf78aa676beebfb4185",
+  "stdout_sha256": "b7d8f354ef425c3355a7d4effffbadc4dd5fd452314a5472ecb2cd4c1c7cce7f"
+}

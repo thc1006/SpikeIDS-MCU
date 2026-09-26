@@ -1,0 +1,575 @@
+{
+  "combined": {
+    "bytes": 208124338,
+    "path": "iot23/iot23_combined.parquet",
+    "physical_schema": {
+      "fields": [
+        {
+          "name": "ts",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "uid",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "id.orig_h",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "id.orig_p",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "id.resp_h",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "id.resp_p",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "proto",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "service",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "duration",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "orig_bytes",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "resp_bytes",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "conn_state",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "local_orig",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "local_resp",
+          "nullable": true,
+          "type": "double"
+        },
+        {
+          "name": "missed_bytes",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "history",
+          "nullable": true,
+          "type": "large_string"
+        },
+        {
+          "name": "orig_pkts",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "orig_ip_bytes",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "resp_pkts",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "resp_ip_bytes",
+          "nullable": true,
+          "type": "int64"
+        },
+        {
+          "name": "label",
+          "nullable": true,
+          "type": "large_string"
+        }
+      ],
+      "metadata": [
+        {
+          "key_hex": "70616e646173",
+          "value_bytes": 2568,
+          "value_sha256": "c2efe813f80d570ef0f58e0b7b0db048484ae7752aaba30567675d42ffcce7e4"
+        }
+      ]
+    },
+    "rows": 6046623,
+    "sha256": "8b40d893d47127fa7ac3cafd59b745f1100c403202cad5de0177fb0ebc4c2050"
+  },
+  "comparison_passed": true,
+  "content_sha256": "07cd9462d3ef5486394cc0ad8eb7e7a107c82d78237c0a846f6eccd680163cb1",
+  "kind": "spikeids_v5_iot23_provenance",
+  "limitations": {
+    "capture_group_generalization_established": false,
+    "device_group_generalization_established": false,
+    "external_authenticity_established": false,
+    "original_iot23_reconstruction_established": false,
+    "time_group_generalization_established": false,
+    "upstream_publisher_preprocessing_reproduced": false
+  },
+  "origin_revision": "04de595b618478668d5974a861a9f4f7305814b1",
+  "origin_shards": [
+    {
+      "bytes": 91377382,
+      "path": "data/train-00000-of-00003-47134d3a10206e3c.parquet",
+      "physical_schema": {
+        "fields": [
+          {
+            "name": "ts",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "uid",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.orig_h",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.orig_p",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "id.resp_h",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.resp_p",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "proto",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "duration",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "orig_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "conn_state",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "local_orig",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "local_resp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "missed_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "history",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "orig_pkts",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "orig_ip_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_pkts",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_ip_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "label",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "metadata": [
+          {
+            "key_hex": "68756767696e6766616365",
+            "value_bytes": 1101,
+            "value_sha256": "c51b2c6b111ccff24eff97846b76542db86a4f39bd943e9a0381187628e7ef6d"
+          }
+        ]
+      },
+      "rows": 2015541,
+      "sha256": "6e34d6e6b20e55b096315bd0b5873dd61a98c8a1b64b6d10da158569cc5018b5"
+    },
+    {
+      "bytes": 94804621,
+      "path": "data/train-00001-of-00003-7fb0937ba34dd762.parquet",
+      "physical_schema": {
+        "fields": [
+          {
+            "name": "ts",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "uid",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.orig_h",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.orig_p",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "id.resp_h",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.resp_p",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "proto",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "duration",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "orig_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "conn_state",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "local_orig",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "local_resp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "missed_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "history",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "orig_pkts",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "orig_ip_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_pkts",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_ip_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "label",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "metadata": [
+          {
+            "key_hex": "68756767696e6766616365",
+            "value_bytes": 1101,
+            "value_sha256": "c51b2c6b111ccff24eff97846b76542db86a4f39bd943e9a0381187628e7ef6d"
+          }
+        ]
+      },
+      "rows": 2015541,
+      "sha256": "8f3e5fd699213d31f6ea21f3406c5b046a83c724fd4953233191aef51e8c6283"
+    },
+    {
+      "bytes": 88036992,
+      "path": "data/train-00002-of-00003-78be3fca5c692525.parquet",
+      "physical_schema": {
+        "fields": [
+          {
+            "name": "ts",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "uid",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.orig_h",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.orig_p",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "id.resp_h",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "id.resp_p",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "proto",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "duration",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "orig_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "conn_state",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "local_orig",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "local_resp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "name": "missed_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "history",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "name": "orig_pkts",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "orig_ip_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_pkts",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "resp_ip_bytes",
+            "nullable": true,
+            "type": "int64"
+          },
+          {
+            "name": "label",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "metadata": [
+          {
+            "key_hex": "68756767696e6766616365",
+            "value_bytes": 1101,
+            "value_sha256": "c51b2c6b111ccff24eff97846b76542db86a4f39bd943e9a0381187628e7ef6d"
+          }
+        ]
+      },
+      "rows": 2015541,
+      "sha256": "e227f605a0e10e22c5cc8d8783ee81ca779a25834c293b43de4aa69255630b45"
+    }
+  ],
+  "passed": true,
+  "schema": 1,
+  "semantic_comparison": {
+    "chunk_rows": 65536,
+    "chunks": 155,
+    "column_order_equal": true,
+    "columns": [
+      "ts",
+      "uid",
+      "id.orig_h",
+      "id.orig_p",
+      "id.resp_h",
+      "id.resp_p",
+      "proto",
+      "service",
+      "duration",
+      "orig_bytes",
+      "resp_bytes",
+      "conn_state",
+      "local_orig",
+      "local_resp",
+      "missed_bytes",
+      "history",
+      "orig_pkts",
+      "orig_ip_bytes",
+      "resp_pkts",
+      "resp_ip_bytes",
+      "label"
+    ],
+    "missingness_equal": true,
+    "normalizations": [
+      {
+        "columns": [
+          "uid",
+          "id.orig_h",
+          "id.resp_h",
+          "proto",
+          "service",
+          "conn_state",
+          "history",
+          "label"
+        ],
+        "combined_type": "large_string",
+        "origin_type": "string",
+        "policy": "offset_width_only; UTF-8 values and null positions must be identical"
+      },
+      {
+        "columns": [
+          "orig_bytes",
+          "resp_bytes"
+        ],
+        "combined_type": "double",
+        "origin_type": "int64",
+        "policy": "nullable integer-to-float representation only; each non-null double must be finite, integral, in int64 range, exactly round-trip to double, and equal int64"
+      }
+    ],
+    "parquet_schema_metadata_equal": false,
+    "parquet_schema_metadata_is_semantic": false,
+    "row_order_equal": true,
+    "rows": 6046623,
+    "values_equal": true
+  },
+  "source_spec": {
+    "bytes": 2250,
+    "path": "spikeids_v5/audit/source_specs/iot23.json",
+    "sha256": "3c06131b5c157918418138439f1d8bd2116a3ada773969eddcbe6c1351ef32c4"
+  },
+  "tool": {
+    "path": "tools/verify_iot23_provenance.py",
+    "sha256": "c279f410dfffb2b29782abbd19ca176b93be13babf5180bbe067cc4e766149da"
+  }
+}

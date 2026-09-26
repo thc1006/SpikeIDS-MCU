@@ -1,0 +1,84 @@
+{
+  "artifact_sha256": {
+    "disassembly.stdout": "9c876f1b4e3064534adc654f06a9d113af83294318f14708480da279d78ee958",
+    "n6_sram_trace.bin": "0672dca402d57755f4568ebc6ea20d079981cde4c7287cbc3b8ae2ed5a642129",
+    "n6_sram_trace.elf": "2fa120c9bb3d2fc58840a2e2668f8bd6e3090a9afa69ee359153a3f3ada5926d",
+    "n6_sram_trace.map": "5f1b7ffa5cf7bc6048608fefa227b74319f971493418afa7571916ad73e8bc65"
+  },
+  "artifacts_before_result": 256,
+  "command_count": 67,
+  "content_sha256": "e9994415834a134925a02e83e1b4bf5e1e05d1629c016f6bbcf95259ef852c22",
+  "elf_layout": {
+    "entry_thumb": 872824929,
+    "initial_msp": 873431040,
+    "reserved_pools": [
+      [
+        874512384,
+        874774528
+      ],
+      [
+        874774528,
+        874790912
+      ]
+    ],
+    "segments": [
+      {
+        "address": 872824832,
+        "file_bytes": 76151,
+        "file_offset": 4096,
+        "flags": 5,
+        "memory_bytes": 76151
+      },
+      {
+        "address": 872900984,
+        "file_bytes": 4116,
+        "file_offset": 80248,
+        "flags": 6,
+        "memory_bytes": 24520
+      },
+      {
+        "address": 873398272,
+        "file_bytes": 0,
+        "file_offset": 0,
+        "flags": 6,
+        "memory_bytes": 32768
+      },
+      {
+        "address": 873431040,
+        "file_bytes": 0,
+        "file_offset": 0,
+        "flags": 6,
+        "memory_bytes": 512
+      },
+      {
+        "address": 873431552,
+        "file_bytes": 0,
+        "file_offset": 512,
+        "flags": 6,
+        "memory_bytes": 6556
+      }
+    ]
+  },
+  "energy_accepted": false,
+  "exact_output_files": 257,
+  "hardware_accessed": false,
+  "input_pins_checked": 291,
+  "kind": "n6_sram_trace_author_saved_postcheck",
+  "model_executed": false,
+  "original_candidate_namespace_unchanged": true,
+  "passed": true,
+  "performance_accepted": false,
+  "result_original_pin": {
+    "sha256": "aae2d1f3e3572f8afac200f17a8cc7671d051770c9a3182a2664f983e7e38f42",
+    "st_ctime_ns": 1790309666825264097,
+    "st_dev": 66306,
+    "st_ino": 31907558,
+    "st_mode": 33204,
+    "st_mtime_ns": 1790309666825264097,
+    "st_nlink": 1,
+    "st_size": 308221
+  },
+  "schema": 1,
+  "total_hash_stat_bookends": 548,
+  "zero_command_return_codes": true
+}

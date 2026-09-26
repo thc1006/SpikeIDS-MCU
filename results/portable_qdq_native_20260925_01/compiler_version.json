@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/usr/bin/x86_64-linux-gnu-gcc-15",
+    "--version"
+  ],
+  "environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PATH": "/usr/bin:/bin",
+    "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01",
+    "TZ": "UTC"
+  },
+  "returncode": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_sha256": null,
+  "stdout_sha256": "60f7dc07ed00e918c903d995b6f86bfcd5452856f75f2816cc8ca379ce2b5344"
+}

@@ -1,0 +1,242 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_macro   0x00000000      0xacc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_macro   0x00000000      0x34e /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_macro   0x00000000      0x190 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_macro   0x00000000       0x16 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_macro   0x00000000       0x10 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .group         0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .debug_macro   0x00000000      0xacc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .debug_macro   0x00000000      0x34e /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .debug_macro   0x00000000      0x190 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .debug_macro   0x00000000       0x16 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+CODE             0x34180400         0x00007c00         xr
+MAILBOX          0x34188000         0x00001000         rw
+STACK            0x34189000         0x00002000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+                0x34189000                        _sstack = ORIGIN (STACK)
+                0x3418b000                        _estack = (ORIGIN (STACK) + LENGTH (STACK))
+
+.isr_vector     0x34180400       0x40
+ *(.isr_vector)
+ .isr_vector    0x34180400       0x40 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+                0x34180400                vectors
+
+.text           0x34180440      0xa88
+ *(.text .text.*)
+ .text.read32   0x34180440        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .text.write32  0x34180444        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .text.barrier  0x34180448        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .text.stage_main
+                0x34180454       0xe4 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+                0x34180454                stage_main
+ .text.Reset_Handler
+                0x34180538       0x50 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+                0x34180538                Reset_Handler
+ .text.fault_handler
+                0x34180588       0x5c /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+                0x34180588                fault_handler
+ .text.read_reg
+                0x341805e4       0x58 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text.check    0x3418063c       0x30 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text.wait_mask
+                0x3418066c       0x58 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text.change   0x341806c4       0x70 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text.default_filters
+                0x34180734       0xf8 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text.alias_change
+                0x3418082c       0x9c /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+ .text.platform_init
+                0x341808c8      0x5c0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+                0x341808c8                platform_init
+ *(.rodata .rodata.*)
+ .rodata        0x34180e88       0x10 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .rodata        0x34180e98       0x30 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.glue_7         0x34180ec8        0x0
+ .glue_7        0x34180ec8        0x0 linker stubs
+
+.glue_7t        0x34180ec8        0x0
+ .glue_7t       0x34180ec8        0x0 linker stubs
+
+.vfp11_veneer   0x34180ec8        0x0
+ .vfp11_veneer  0x34180ec8        0x0 linker stubs
+
+.v4_bx          0x34180ec8        0x0
+ .v4_bx         0x34180ec8        0x0 linker stubs
+
+.iplt           0x34180ec8        0x0
+ .iplt          0x34180ec8        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+
+.rel.dyn        0x34180ec8        0x0
+ .rel.iplt      0x34180ec8        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+
+.ARM.extab
+ *(.ARM.extab*)
+
+.ARM.exidx
+ *(.ARM.exidx*)
+
+.data
+ *(.data .data.*)
+
+.igot.plt       0x34180ec8        0x0
+ .igot.plt      0x34180ec8        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+
+.bss
+ *(.bss .bss.*)
+ *(COMMON)
+
+.mailbox        0x34188000     0x1000
+ *(.mailbox)
+ .mailbox       0x34188000     0x1000 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+                0x34188000                g_stage
+
+.stack          0x34189000     0x2000
+                0x3418b000                        . = (. + LENGTH (STACK))
+ *fill*         0x34189000     0x2000 
+
+/DISCARD/
+ *(.comment)
+ *(.note.GNU-stack)
+                0x00000001                        ASSERT (((ADDR (.isr_vector) == 0x34180400) && (SIZEOF (.isr_vector) == 0x40)), vector ABI)
+                0x00000001                        ASSERT (((SIZEOF (.data) == 0x0) && (SIZEOF (.bss) == 0x0)), no uninitialized C runtime)
+                0x00000001                        ASSERT (((ADDR (.mailbox) == 0x34188000) && (SIZEOF (.mailbox) == 0x1000)), mailbox ABI)
+                0x00000001                        ASSERT (((ORIGIN (CODE) + LENGTH (CODE)) == ORIGIN (MAILBOX)), code/mail boundary)
+                0x00000001                        ASSERT (((ORIGIN (MAILBOX) + LENGTH (MAILBOX)) == ORIGIN (STACK)), mail/stack boundary)
+                0x00000001                        ASSERT (((ORIGIN (STACK) + LENGTH (STACK)) <= 0x34200000), outside SRAM2)
+OUTPUT(/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/stage.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x36
+ .ARM.attributes
+                0x00000000       0x36 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .ARM.attributes
+                0x00000036       0x36 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .ARM.attributes
+                0x0000006c       0x36 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_info     0x00000000     0x27fb
+ .debug_info    0x00000000      0xb88 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_info    0x00000b88       0xde /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_info    0x00000c66     0x1b95 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_abbrev   0x00000000      0x6af
+ .debug_abbrev  0x00000000      0x322 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_abbrev  0x00000322       0x9b /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_abbrev  0x000003bd      0x2f2 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_loclists
+                0x00000000      0xe80
+ .debug_loclists
+                0x00000000      0x133 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_loclists
+                0x00000133      0xd4d /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_aranges  0x00000000       0xb0
+ .debug_aranges
+                0x00000000       0x38 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_aranges
+                0x00000038       0x28 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_aranges
+                0x00000060       0x50 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_rnglists
+                0x00000000      0x139
+ .debug_rnglists
+                0x00000000       0x4d /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_rnglists
+                0x0000004d       0x19 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_rnglists
+                0x00000066       0xd3 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_macro    0x00000000    0x433d1
+ .debug_macro   0x00000000       0xe7 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x000000e7      0xacc /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00000bb3       0x2e /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00000be1       0x6c /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00000c4d      0x34e /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00000f9b       0x2e /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00000fc9       0x17 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00000fe0       0x34 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00001014      0x26d /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00001281       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x000012bb     0x2ed4 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x0000418f      0x130 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x000042bf      0x344 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00004603      0x146 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00004749       0x22 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x0000476b    0x3e927 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x00043092       0x6c /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x000430fe      0x190 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x0004328e       0x16 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x000432a4       0x10 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_macro   0x000432b4       0x4b /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_macro   0x000432ff       0xd2 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_line     0x00000000     0x14d3
+ .debug_line    0x00000000      0x5ef /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_line    0x000005ef      0x151 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_line    0x00000740      0xd93 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_str      0x00000000   0x18b326
+ .debug_str     0x00000000   0x18b326 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+                             0x18b079 (size before relaxing)
+ .debug_str     0x0018b326     0x3e6d /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_str     0x0018b326     0x43bb /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o
+
+.debug_frame    0x00000000      0x1b4
+ .debug_frame   0x00000000       0x5c /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/main.o
+ .debug_frame   0x0000005c       0x30 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/startup.o
+ .debug_frame   0x0000008c      0x128 /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/platform_init.o

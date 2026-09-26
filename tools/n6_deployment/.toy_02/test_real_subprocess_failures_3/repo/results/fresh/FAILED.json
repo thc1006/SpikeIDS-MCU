@@ -1,0 +1,11 @@
+{
+  "board_validated": false,
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "exception": "FileNotFoundError: [Errno 2] No such file or directory: '/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_real_subprocess_failures_3/repo/results/fresh/generate/nsl_qcfs_seed0_generate_report.txt'",
+  "full_toolchain_closure": false,
+  "kind": "n6_offline_vendor_preparation_failure",
+  "npu_placement_verified": false,
+  "publication_accepted": false,
+  "schema": 1
+}

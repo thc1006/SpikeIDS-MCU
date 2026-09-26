@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="24" time="0.054" timestamp="2026-09-25T10:43:58.105170+08:00" hostname="thc1006"><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_valid_elf32_reserved_layout" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[0-B-0]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[4-B-2]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[18-H-62]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[42-H-56]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[44-H-3]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[24-I-872825088]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[256-I-874008576]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[64-I-872824836]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[68-I-4096]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[92-I-874774512]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[92-I-874774528]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[136-I-16384]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_bad_elf_layout_rejected[168-I-256]" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_mailbox_abi_and_fixed_model" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_request_checks_and_final_commit_source_contract" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_startup_and_full_pool_reservation_source_contract" time="0.000" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_pin_rejects_mutate_restore_and_symlink" time="0.001" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_candidate_original_failure_and_pins" time="0.001" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_candidate_extra_empty_directory" time="0.001" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_candidate_late_namespace_after_hashes" time="0.001"><failure message="Failed: DID NOT RAISE RuntimeError">candidate = (PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_candidate_late_namespace_0/vendor'), PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_candidate_late_namespace_0/review'))
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0xacf4ae579b0&gt;
+
+    def test_candidate_late_namespace_after_hashes(candidate, monkeypatch):
+        vendor, _ = candidate
+        original = b.bookend
+        def late(pins):
+            original(pins)
+            (vendor / "late_empty").mkdir(exist_ok=True)
+        monkeypatch.setattr(b, "bookend", late)
+&gt;       with pytest.raises(RuntimeError): b.candidate_pins()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE RuntimeError
+
+tools/n6_deployment/firmware_sram/test_firmware_sram_independent.py:149: Failed</failure></testcase><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_existing_output_not_adopted" time="0.001" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_failed_child_preserves_raw_exit_and_no_result" time="0.003" /><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_late_parent_rebind_must_not_create_foreign_directory" time="0.003"><failure message="AssertionError: Rejected publication must not create a directory through rebound parent&#10;assert [PosixPath('/...reign/build')] == []&#10;  &#10;  Left contains one more item: PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_late_parent_rebind_must_n0/foreign/build')&#10;  Use -v to get more diff">entry = (PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_late_parent_rebind_must_n0/adapter'), {'HERE': PosixPath('/tmp/pyte...ent_rebind_must_n0/tc'), 'TP': PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_late_parent_rebind_must_n0/tp'), ...})
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0xacf4af31250&gt;
+tmp_path = PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_late_parent_rebind_must_n0')
+
+    def test_late_parent_rebind_must_not_create_foreign_directory(entry, monkeypatch, tmp_path):
+        work, paths=entry; foreign=tmp_path/"foreign"; foreign.mkdir()
+        original=b.pin
+        def late(path):
+            result=original(path)
+            if Path(path)==paths["TC"]/"bin/arm-none-eabi-objdump":
+                work.rename(tmp_path/"original_adapter"); work.symlink_to(foreign, target_is_directory=True)
+            return result
+        monkeypatch.setattr(b,"pin",late)
+        with pytest.raises(RuntimeError): b.run(work/"build")
+&gt;       assert list(foreign.iterdir()) == [], "Rejected publication must not create a directory through rebound parent"
+E       AssertionError: Rejected publication must not create a directory through rebound parent
+E       assert [PosixPath('/...reign/build')] == []
+E         
+E         Left contains one more item: PosixPath('/tmp/pytest-of-thc1006/pytest-339/test_late_parent_rebind_must_n0/foreign/build')
+E         Use -v to get more diff
+
+tools/n6_deployment/firmware_sram/test_firmware_sram_independent.py:206: AssertionError</failure></testcase></testsuite></testsuites>

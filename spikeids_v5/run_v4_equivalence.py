@@ -23,15 +23,28 @@ def analyze(run_dir, context=None):
                 "paired_seeds":plan["seeds"]}
     require(list(pairs)==plan["equivalence_family"],"Complete frozen equivalence family required")
     family=holm({k:v["tost_t"]["p_tost"] for k,v in pairs.items()},plan["alpha"])
+    robustness_family=holm(
+        {k:v["tost_signed_rank_robustness"]["p_tost"] for k,v in pairs.items()},
+        plan["alpha"],
+    )
     for key in pairs:
         pairs[key]["holm"]=family[key]
         pairs[key]["equivalent_familywise"]=family[key]["reject"]
+        pairs[key]["signed_rank_robustness_holm"]=robustness_family[key]
+        pairs[key]["equivalent_familywise_signed_rank_robustness"]=robustness_family[key]["reject"]
+        pairs[key]["primary_robustness_discordant"]=(
+            family[key]["reject"] != robustness_family[key]["reject"]
+        )
     return {"schema":SCHEMA,"plan_sha256":plan["content_sha256"],"alpha":plan["alpha"],
             "margin_pp":plan["equivalence_margin_pp"],"pairs":pairs,"family":plan["equivalence_family"],
             "source_result_digests":{f"{d}_{a}":r["scientific_digest"] for (d,a),r in results.items()},
             "ci_scope":"individual 1-2alpha intervals; not simultaneous Holm-adjusted intervals",
             "margin_provenance":plan["margin_status"],
-            "interpretation":"A significant difference can coexist with practical equivalence. Nonrejection of a difference test alone does not establish equivalence.",
+            "margin_interpretation":"prespecified numerical-equivalence sensitivity margin; not an empirically established practical-importance threshold",
+            "primary_estimand":"mean paired seed difference via paired t-TOST",
+            "robustness_estimand":"symmetric paired-difference location/pseudomedian via signed-rank TOST",
+            "robustness_family_definition":"the same eight hypotheses, Holm-adjusted separately as a robustness family",
+            "interpretation":"A significant difference can coexist with numerical equivalence under the frozen sensitivity margin. Nonrejection of a difference test alone does not establish equivalence, and this margin is not evidence of practical importance.",
             "power":"No observed-power or data-chosen sample-size claim is made; explicit normal-model planning is available in stats_tests.py."}
 
 
@@ -39,13 +52,15 @@ def markdown(r):
     lines=["# ReLU ANN vs shifted-QCFS ANN: mean-difference equivalence", "",
            f"Margin ±{r['margin_pp']} percentage points; alpha={r['alpha']}; full family={len(r['family'])}.",
            "Intervals are individual, not simultaneous familywise intervals. Undefined variance remains inconclusive.","",
-           "| Pair | n | Mean difference | Individual CI | raw TOST p | Holm p | Equivalence supported |",
-           "|---|---:|---:|---|---:|---:|---|"]
+           "| Pair | n | Mean difference | Individual CI | raw t-TOST p | t-TOST Holm p | Signed-rank Holm p | Primary / robustness |",
+           "|---|---:|---:|---|---:|---:|---:|---|"]
     for key,v in r["pairs"].items():
         t,h=v["tost_t"],v["holm"]
         ci="undefined" if t["ci"] is None else f"[{t['ci'][0]:.6g}, {t['ci'][1]:.6g}]"
         p="undefined" if t["p_tost"] is None else f"{t['p_tost']:.6g}"
-        lines.append(f"| {key} | {t['n']} | {t['mean_diff']:.6g} | {ci} | {p} | {h['p_adj']:.6g} | {v['equivalent_familywise']} |")
+        robust=v["signed_rank_robustness_holm"]
+        decision=f"{v['equivalent_familywise']} / {v['equivalent_familywise_signed_rank_robustness']}"
+        lines.append(f"| {key} | {t['n']} | {t['mean_diff']:.6g} | {ci} | {p} | {h['p_adj']:.6g} | {robust['p_adj']:.6g} | {decision} |")
     return '\n'.join(lines)+'\n'
 
 

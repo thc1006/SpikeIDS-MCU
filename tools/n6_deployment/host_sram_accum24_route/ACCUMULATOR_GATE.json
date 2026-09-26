@@ -1,0 +1,80 @@
+{
+  "allows_next_full_validation": true,
+  "artifacts": {
+    "INTENT.json": "30ed49549065f169f5d8002f57246ffc41e97df4e4442e2959167870cafb9162",
+    "LL_ATON_End_EpochBlock_44_activation.bin": "4b407061679f9a11b9f5d5dcd0b347d4b41fb31069f82b0c592d3f5d532f69e5",
+    "LL_ATON_End_EpochBlock_44_context.json": "c6ca794c47059717519e0a807d8654867ff108931c131937b541426f4981d4b2",
+    "LL_ATON_End_EpochBlock_44_fp.json": "b16b7a8e54fec7c9c19e9c9bc4175b9529064faf6ac8ceb15d37a1e0ff9808d1",
+    "LL_ATON_End_EpochBlock_44_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "RESULT.json": "3e558f85a8aeda3a0b381eb7f0e3cf624d29cbef732231e853eb2219dc8d3dc6",
+    "SM05_Post_19_activation.bin": "c19139e3ca5a83b84f3a7ac6a816882ab0773a491162f0ac96d4313548723fab",
+    "SM05_Post_19_context.json": "8fef8142fa895376e4a3dbe70ad06d0dda3bc57c4b2dcd5921af759aaab8a0e1",
+    "SM05_Post_19_fp.json": "b16b7a8e54fec7c9c19e9c9bc4175b9529064faf6ac8ceb15d37a1e0ff9808d1",
+    "SM05_Post_19_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "SM05_Post_31_activation.bin": "438ab428ca940ec8ff28be8ceede31ba20dab19fba188c1d7845b17b15d0e25b",
+    "SM05_Post_31_context.json": "ceb3cda8c05789ea8aa0d0841c9daff0666ee7b2afff68b057672ec2386a0d56",
+    "SM05_Post_31_fp.json": "e261693a70ef89c47267253e2543394be33147480db526cbe28c12a66211f696",
+    "SM05_Post_31_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "SM05_Post_43_activation.bin": "cc1f993c97392c5d5050104466c053f8145d05562f6b5c5c7169a4cedb780d68",
+    "SM05_Post_43_context.json": "b8cbd34bde490e3436867ca05ed8360ea2921aaa260503ecbc56fd4fdd0a24e3",
+    "SM05_Post_43_fp.json": "e261693a70ef89c47267253e2543394be33147480db526cbe28c12a66211f696",
+    "SM05_Post_43_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "SM05_Start_19_activation.bin": "278320dab41acfaf8649869fdd08b323d344a0b0d845d7ec8c15d8d8949fa045",
+    "SM05_Start_19_context.json": "5d9997b288762bef3c58f4edfae7aa2ba1e903c38c8c84d0694f9a251e3160ce",
+    "SM05_Start_19_fp.json": "b16b7a8e54fec7c9c19e9c9bc4175b9529064faf6ac8ceb15d37a1e0ff9808d1",
+    "SM05_Start_19_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "SM05_Start_31_activation.bin": "c80ff4ab744da95955b496dc4d82de967196b1b1fd43ffd5e3cb2fd3de0888a7",
+    "SM05_Start_31_context.json": "1261b9d3530798a51bb31c6489f6bf484f5b709137b5d613190774aaaa4cd798",
+    "SM05_Start_31_fp.json": "e261693a70ef89c47267253e2543394be33147480db526cbe28c12a66211f696",
+    "SM05_Start_31_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "SM05_Start_43_activation.bin": "c8f972dfc97ffd1a4c28f70514b5b5168a0dd9853c2c5b3208c9ec2977223151",
+    "SM05_Start_43_context.json": "fbd0d3ffe80ec249c5702cf03d138ed7b781aa8dd66a5321faf47157bdc485af",
+    "SM05_Start_43_fp.json": "e261693a70ef89c47267253e2543394be33147480db526cbe28c12a66211f696",
+    "SM05_Start_43_mailbox.bin": "30d7fd789933f9c961e45e200db1ce3cad9c372bfdf3ea7d8fb94bb601e4fa75",
+    "cleanup.json": "05263cf1e0db0522a0b42b13c02756c018218c7a6343fc9ea5973142da47b740",
+    "events.json": "ea4b2420dce048ce8defa4c93c2aef3fc2c531e1180f4df83248806fc0b3d0fd",
+    "final_mailbox.bin": "012d878996235c5acf6ad37bbbbba2651380be4bbc692db464029860b8a35174",
+    "floating_environment.json": "e261693a70ef89c47267253e2543394be33147480db526cbe28c12a66211f696",
+    "initial_registers.json": "acb843a2431ec5348377b70cb4a142639227b3c494ccd192bf5f8db2d3b31239",
+    "live_payload_verified.json": "1278bd10ea101e211422963aeaf5fe8ddb602349b9536b68db8b2149357391e1",
+    "previous_mailbox.bin": "90ee5c07fe1b02920b08aacdb654d5c9fdd93d8161d9393b6450f258673dbd4e",
+    "staged_mailbox.bin": "24b55d181b5b0b8af2d7e539b1e2db1ba34ef1b686f1b9f8e4056aae1bc0aec5"
+  },
+  "diagnostic_directory": "/home/thc1006/dev/SpikeIDS-MCU/results/n6_accumulator_diagnostic_20260926_02",
+  "energy_measured": false,
+  "kind": "SM06_saved_raw_NPU_gate_for_next_full_validation_only",
+  "research_measurement_accepted": false,
+  "review": {
+    "energy_measured": false,
+    "final_output_bitwise_equal_values": 5,
+    "full_1024_validation_accepted": false,
+    "npu_integer_layers": [
+      {
+        "exact_integer_matches": 256,
+        "maximum": 509420,
+        "minimum": -438393,
+        "original_dense_layer": 2,
+        "values": 256
+      },
+      {
+        "exact_integer_matches": 128,
+        "maximum": 561472,
+        "minimum": -319140,
+        "original_dense_layer": 3,
+        "values": 128
+      },
+      {
+        "exact_integer_matches": 5,
+        "maximum": 627852,
+        "minimum": -475125,
+        "original_dense_layer": 4,
+        "values": 5
+      }
+    ],
+    "original_row_id": 2656,
+    "original_validation_index": 20,
+    "research_measurement_accepted": false,
+    "saved_only": true
+  },
+  "reviewer_sha256": "71c5fe199c0fcdc0312707e691dc0ccf0384fecf9bd9c85eb1ec65134b058a27"
+}

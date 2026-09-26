@@ -32,9 +32,11 @@ def main():
         c.require((p.returncode==0)==success,f'Unexpected exit {p.returncode}: {command}; see {log}')
         steps.append({'script':script,'arguments':list(map(str,arguments)),
                       'returncode':p.returncode,'expected_success':success,'log':log.name})
-    run('suite.py','prepare','--data-dir',work/'raw','--cache-root',work/'cache','--chunksize','31')
+    run('suite.py','prepare','--data-dir',work/'raw','--cache-root',work/'cache','--chunksize','31',
+        '--nonformal-fixture-source-bypass')
     run('suite.py','freeze','--cache-root',work/'cache','--run-dir',work/'run',
-        '--device','cpu','--optimizer','single','--threads','1','--seeds','0','1','--smoke-epochs','2')
+        '--device','cpu','--optimizer','single','--threads','1','--seeds','0','1','--smoke-epochs','2',
+        '--nonformal-fixture-evidence-bypass','--bounded-memory')
     run('suite.py','run','--run-dir',work/'run')
     for name in ('run_globecom_stats.py','run_v4_equivalence.py','assemble_nsl_legacy.py','assemble_cnn_legacy.py'):
         run(name,'--run-dir',work/'run')

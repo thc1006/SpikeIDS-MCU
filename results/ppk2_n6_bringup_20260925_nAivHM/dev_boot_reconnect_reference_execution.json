@@ -1,0 +1,7 @@
+{
+  "chunk_id": "490182",
+  "wall_time_seconds": 0.250114013,
+  "exit_code": 0,
+  "original_token_count": 70,
+  "output": "{\"utc\": \"2026-09-25T00:39:30.196322+00:00\", \"serial\": \"004000183234510E37333934\", \"command_hex\": \"f7\", \"raw_hex\": \"e205000077000000\", \"reference_estimate_v\": 0.1896414342629482, \"is_vin_measurement\": false, \"debug_entry\": false, \"reset_sent\": false, \"monotonic\": 594517.41196937}\n"
+}

@@ -1,0 +1,38 @@
+{
+  "actual_process_exit": null,
+  "energy_measurement": false,
+  "flash_write": false,
+  "kind": "SM02_runtime_initialized_full_validation",
+  "model_inputs": {
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0_atonbuf.SRAM_WEIGHTS.raw": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram/build_actual_01/RESULT.json": "49225e31bc906e86fe73c3ca7f5a0d18592411f7692fa4173fdbe83c059a2e01",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram/build_actual_01/n6_sram.elf": "9a68e6893b59d3d8d0952b70ccecdae6af14c3f3561532bd2a22540d69b562ca",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram_runtime/build_actual_01/RESULT.json": "2f7571ef7f878da5d710c949dd590593b1308321c0a83934f62c4930dc50e5fd",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram_runtime/build_actual_01/n6_sram.elf": "bf2671fbf5c63ceec5e2b154be6b718dd24e74673bf7dc61a0bf0e0423539556"
+  },
+  "power_control": false,
+  "sources": {
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/bundle.py": "d83e032d018c564936d30016c2f26e2933f71ce45b9595f536da73f44ca6a423",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/empty_user_script.py": "e37f0c329b40ee23e5f014079276ac040d517be8981fe6101a809a0b005f6480",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/orchestrate.py": "2d2328bc8d46c762910d628a8d1c65d0c7b8e296c332ec4eccc6b07f538e1f93",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/protocol.py": "78b25d2622774d77b7241c943f884bd1cadb1517657246d398e2702785afe50e",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/pyocd_backend.py": "ccea760c695766a23c9b9d8180f7d53b4ab33d0de266ba6817613b02fe004a5d",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/ram_loader.py": "847e1cb3f0c876f2cd0a5dcdf7433c859e2f353538c2b7f2806802752a9ff950",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/stage_bundle.py": "b1eefbe71b122efe4393ddd42e1d54a75acaba9b20cbaf2fbed04b9a80e1a6f9",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/stage_protocol.py": "9c0b472eefc04a19048baa0964359779ac77304501b95e9ebd8c61407c0412c5",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/validation.py": "684068f35b9c55d4fec967fcb5e8fc7d34d3af5b729f361e722452cd39947f75",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_fp/fp_entry.py": "60178340e307a55b3c9a4c88440828694092f4ccd27a7ac1c53fc3c725db1403",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_fp/run.py": "20a6e45afc01731eb02983f2a3ff8a7af01b524b54f46dd349279d0424c13371",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/controller.py": "15f546cbc8e74c729ec5c66458b631317db393885d02b42dcf3a17ecc5908759",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/run.py": "190ff04a743bb1508269ef4a52f1524b272c7ed4761b424a4e0e57cd91810f30",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/runtime_protocol.py": "b6c5c33565caad1a4e91f32137ef1debecc76d8197d782dcc12e78ac268955c7"
+  },
+  "stage_inputs": {
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/RESULT.json": "f61956f96cc3a13f690ec75cd17355048cae9eb3e80b4444ed5f84b31676bf73",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/stage.bin": "2c8857750005ee5ca13f634b6d45a3b18a8b5b9d935a67e40ac817a446a3bfaa",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/stage.elf": "cc3fef71e251ce26e6b024067e673408c0f0bbc323aa985b0987019cb7567ec5",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/ABI.json": "66baa5f6a2499bdaac2e9666e1b3a489c2dddc6d570c347b8bcd6e795fd2bb80"
+  }
+}

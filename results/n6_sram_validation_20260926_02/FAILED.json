@@ -1,0 +1,5 @@
+{
+  "energy_measured": false,
+  "error": "ProtocolError: Inference deadline crossed during transport read",
+  "research_measurement_accepted": false
+}

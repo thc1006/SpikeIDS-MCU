@@ -1,0 +1,75 @@
+{
+  "board_validated": false,
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "expected_version": "ST Edge AI Core v3.0.0-20426 123672867",
+  "full_toolchain_closure": false,
+  "held_inputs_source_tools": {
+    "/home/thc1006/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/bin/python3.13": {
+      "ctime_ns": 1788058984940510488,
+      "device": 66306,
+      "inode": 18003766,
+      "links": 1,
+      "mode": 33277,
+      "mtime_ns": 1788058984939925383,
+      "sha256": "4ceefc12dbe6f01efa99bf5cf594df33cc8dc45a0ff23c3229e2e955059a374e",
+      "size": 31362304
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/fake_vendor": {
+      "ctime_ns": 1790292596671207390,
+      "device": 66306,
+      "inode": 31774685,
+      "links": 1,
+      "mode": 33216,
+      "mtime_ns": 1790292596671207390,
+      "sha256": "37f51b243644ec88f41ee1b2cd4cb9aff1b176d7b0484c31b33404756e1320a6",
+      "size": 1891
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/installed/profile.json": {
+      "ctime_ns": 1790292596671165949,
+      "device": 66306,
+      "inode": 31774683,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671165949,
+      "sha256": "a51ddcaaf1a89c129ae7888b3ff10688fbac2dedbc2c471c0b8aee2304fd5b78",
+      "size": 11
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/original/nslkdd/qcfs/qdq/export_report.json": {
+      "ctime_ns": 1790292596671149737,
+      "device": 66306,
+      "inode": 31774682,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671149737,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "size": 2
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/original/nslkdd/qcfs/qdq/model_qdq_int8.onnx": {
+      "ctime_ns": 1790292596671136499,
+      "device": 66306,
+      "inode": 31774681,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671136499,
+      "sha256": "22ee39579a7148b7b53dced530a3eb3f07a8baf4492e05244315c4f17e9fd36f",
+      "size": 28
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/source.py": {
+      "ctime_ns": 1790292596671116650,
+      "device": 66306,
+      "inode": 31774680,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292596671116650,
+      "sha256": "56fdcd7625a5d20163825e0405f5aee394207e3340ffefcec9f314a3d45d8527",
+      "size": 27
+    }
+  },
+  "kind": "n6_offline_vendor_preparation_intent",
+  "model": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_02/test_publication_endpoint_extr0/repo/results/original/nslkdd/qcfs/qdq/model_qdq_int8.onnx",
+  "npu_placement_verified": false,
+  "publication_accepted": false,
+  "schema": 1,
+  "timeout_seconds": 5
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "operator_observed_offline_esp32s3_crossbuild_failure",
+  "session": 66449,
+  "launch_chunk": "38d2b7",
+  "completion_chunk": "0590d3",
+  "observed_return_code": 1,
+  "scope_unit": "spikeids-esp32s3-v5-build-01.scope",
+  "scope_invocation_id": "96f888bedcb14c87b6e051ccb4f162a0",
+  "source_sha256": "786df9ccd494acf1a0b8e21d6b7b6e4a353197ac243180f408dedb10351d3de3",
+  "failed_path": "results/esp32s3_v5_build_20260925_01/FAILED.json",
+  "failed_sha256": "9cf4712dfc5dbff99a07bd4936123e176637f642f73330eff90bf89f8941a7c6",
+  "configure_exit": 0,
+  "build_exit": 1,
+  "cause": "SDK-facing app.c inherited strict C11, which rejects GNU asm in Xtensa and FreeRTOS headers",
+  "preserved_old_configuration": ["esp32s3_v5_candidate_history/01_main_CMakeLists.txt", "esp32s3_v5_candidate_history/01_sdkconfig.defaults"],
+  "additional_observation": "Secondary USB console default was enabled; explicit NONE added in candidate02. Missing ESP_ROM_ELF_DIR generated a retained nonfatal gdbinit warning, not the compiler failure.",
+  "hardware_accessed": false,
+  "accepted": false,
+  "automatic_retry": false
+}

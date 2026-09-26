@@ -1,0 +1,192 @@
+{
+  "board_ready": false,
+  "energy_measured": false,
+  "flash_written": false,
+  "hardware_executed": false,
+  "inputs": {
+    "/home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/core_cm55.h": {
+      "ctime_ns": 1789742879582484978,
+      "device": 66306,
+      "inode": 23355378,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1789742879582484978,
+      "sha256": "512b3fe4e5b9975d4178675ec3411df20f904c395d79f46123afb23517754d53",
+      "size": 318976
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/cmsis-device-n6/Include/stm32n657xx.h": {
+      "ctime_ns": 1789742912308600139,
+      "device": 66306,
+      "inode": 23358100,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1789742912308600139,
+      "sha256": "559792ea50e7253ddb386bd77267e475c7f5ecbccfc917adeea9398ef3aaa689",
+      "size": 3599048
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/cmsis-device-n6/Include/stm32n6xx.h": {
+      "ctime_ns": 1789742912309630290,
+      "device": 66306,
+      "inode": 23358101,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1789742912309630290,
+      "sha256": "d34dc59f4cc80a17832e628d6fb80f0993cf901047c88524db230011b2bae62d",
+      "size": 7076
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/ABI.json": {
+      "ctime_ns": 1790305464403398372,
+      "device": 66306,
+      "inode": 31890545,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790305464403398372,
+      "sha256": "66baa5f6a2499bdaac2e9666e1b3a489c2dddc6d570c347b8bcd6e795fd2bb80",
+      "size": 1886
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/build_v3.py": {
+      "ctime_ns": 1790306474428682599,
+      "device": 66306,
+      "inode": 31903401,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790306474428682599,
+      "sha256": "7f1ab0314e2c92f33bd595b6d663c0cf75bb0d476d3fd246231c7dfa42858401",
+      "size": 10299
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/linker_v2.ld": {
+      "ctime_ns": 1790306468160457430,
+      "device": 66306,
+      "inode": 31903402,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790306468160457430,
+      "sha256": "b8b0bae3d8d01bc6fb05ebd36bf1f0715e31d99f5bacbd26264f7864223cf6cf",
+      "size": 1264
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/mailbox.h": {
+      "ctime_ns": 1790305012964179477,
+      "device": 66306,
+      "inode": 31890522,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790305012964179477,
+      "sha256": "cc97cb1b330768cd31888e44bb8f858182dc90e6f9ac3a1298bc46bb3d2fb7ae",
+      "size": 1195
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/main.c": {
+      "ctime_ns": 1790305464403398372,
+      "device": 66306,
+      "inode": 31890523,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790305464403398372,
+      "sha256": "30d32be707d874b8072639c5a28afee958c1790ec4d8626be166d17bac4c44b5",
+      "size": 2323
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/platform_init.c": {
+      "ctime_ns": 1790305464403398372,
+      "device": 66306,
+      "inode": 31890521,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790305464403398372,
+      "sha256": "f044508ad7b6336a737a8a2eb2555603811f612981b1a61d5384134f5f2c2f77",
+      "size": 8863
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/platform_init.h": {
+      "ctime_ns": 1790305464402398336,
+      "device": 66306,
+      "inode": 31890520,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790305464402398336,
+      "sha256": "d55d43b2e13bd9e257c2fd195686b23bc24befff541bda5e2fa3a8f37874e328",
+      "size": 1859
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/startup.c": {
+      "ctime_ns": 1790305012964179477,
+      "device": 66306,
+      "inode": 31890524,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790305012964179477,
+      "sha256": "0d3beac9927d68bb66921cdc874cf30144790058a585a7e5fbd0e62499a65f1c",
+      "size": 1707
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/prepare_vendor.py": {
+      "ctime_ns": 1790292532613142613,
+      "device": 66306,
+      "inode": 31773176,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292532613142613,
+      "sha256": "cd1bb490fa913d0ffde3c5c59ff8108134537228ded9ec130e5ac17939f7a94f",
+      "size": 19322
+    },
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc": {
+      "ctime_ns": 1780708422600206348,
+      "device": 66306,
+      "inode": 17964283,
+      "links": 2,
+      "mode": 33261,
+      "mtime_ns": 1696874805000000000,
+      "sha256": "725420a3769300df85578fe0ca78de9cdc842be6fe6e31f53b5b2a4b68a9b4d9",
+      "size": 1894528
+    },
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-nm": {
+      "ctime_ns": 1780708422601721740,
+      "device": 66306,
+      "inode": 17964268,
+      "links": 2,
+      "mode": 33261,
+      "mtime_ns": 1696870252000000000,
+      "sha256": "bdd5bca64f898749157b82a4ce096f28f8eb26c08b277f4b194091c72f39776e",
+      "size": 1051688
+    },
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-objcopy": {
+      "ctime_ns": 1780708422601721740,
+      "device": 66306,
+      "inode": 17964264,
+      "links": 2,
+      "mode": 33261,
+      "mtime_ns": 1696870252000000000,
+      "sha256": "689ba74d8d2969e68fb61e06fae8f56de9435729c91fcb1ac0d55af76128c84c",
+      "size": 1184000
+    },
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-objdump": {
+      "ctime_ns": 1780708422601721740,
+      "device": 66306,
+      "inode": 17964260,
+      "links": 2,
+      "mode": 33261,
+      "mtime_ns": 1696870252000000000,
+      "sha256": "f9ee89b63472d108effac2b31432fabc49ac3294768cb886db91437f6bd59e04",
+      "size": 1861848
+    },
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-readelf": {
+      "ctime_ns": 1780708422601721740,
+      "device": 66306,
+      "inode": 17964266,
+      "links": 2,
+      "mode": 33261,
+      "mtime_ns": 1696870252000000000,
+      "sha256": "7a55a927627b4be83be5050ea340e239e5ec97b6e64d1e51d91f16023d9afb2c",
+      "size": 1050776
+    },
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-size": {
+      "ctime_ns": 1780708420882145190,
+      "device": 66306,
+      "inode": 17964259,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1696870252000000000,
+      "sha256": "6bc8b18a2cd4383e440c46c7459961f61646c28578da7d0ef6edabc6cd116ec9",
+      "size": 1032024
+    }
+  },
+  "kind": "offline_platform_stage_build_intent",
+  "model_executed": false,
+  "platform_initialized": false,
+  "schema": 1
+}

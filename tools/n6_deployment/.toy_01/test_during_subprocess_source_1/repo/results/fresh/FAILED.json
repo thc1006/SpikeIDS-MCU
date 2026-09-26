@@ -1,0 +1,11 @@
+{
+  "board_validated": false,
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "exception": "PreparationError: Held file changed: /home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_during_subprocess_source_1/installed/fake_vendor",
+  "full_toolchain_closure": false,
+  "kind": "n6_offline_vendor_preparation_failure",
+  "npu_placement_verified": false,
+  "publication_accepted": false,
+  "schema": 1
+}

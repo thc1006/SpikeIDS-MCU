@@ -1,0 +1,676 @@
+digraph G {
+graph [ fontsize=11 ];
+node [ fontsize=11 ];
+edge [ fontsize=10 ];
+rankdir=BU
+ranksep=1.5
+nodesep=1
+splines=spline
+compound=true
+Graphinfo [ label="" shape=plaintext, style=rounded, color=black, fontname="Arial-Bold" ];
+subgraph cluster_1 { label="epoch 1"; fontsize=14; 
+subgraph cluster_1_nodes { label="nodes "; peripheries=0;
+Quantize_13 ;  }
+
+subgraph cluster_dma_1_in { label=""; peripheries=0;
+dummy_1[ style=invis ];  };
+ }
+subgraph cluster_2 { label="epoch 2"; fontsize=14; 
+subgraph cluster_2_nodes { label="nodes "; peripheries=0;
+Gemm_15_reshape_x_2 ;  }
+
+subgraph cluster_dma_2_in { label=""; peripheries=0;
+dummy_2[ style=invis ];  };
+ }
+Quantize_13:s -> dummy_2:n [ltail="cluster_1" lhead=cluster_2 strength=1000 penwidth=5];
+subgraph cluster_3 { label="epoch 3"; fontsize=14; 
+subgraph cluster_3_nodes { label="nodes "; peripheries=0;
+Gemm_15_conv_4_suboff_24 ;  }
+
+subgraph cluster_dma_3_in { label="dma inputs "; peripheries=0;
+dma_9i3 ;  };
+
+subgraph cluster_dma_3_out { label="dma outputs "; peripheries=0;
+dma_2i3 ;  }
+ }
+Gemm_15_reshape_x_2:s -> dma_9i3:n [ltail="cluster_2" lhead=cluster_3 strength=1000 penwidth=5];
+subgraph cluster_4 { label="epoch 4"; fontsize=14; 
+subgraph cluster_4_nodes { label="nodes "; peripheries=0;
+DequantizeLinear_inserted_id108 ;  }
+
+subgraph cluster_dma_4_in { label=""; peripheries=0;
+dummy_4[ style=invis ];  };
+ }
+dma_2i3:s -> dummy_4:n [ltail="cluster_3" lhead=cluster_4 strength=1000 penwidth=5];
+subgraph cluster_5 { label="epoch 5"; fontsize=14; 
+subgraph cluster_5_nodes { label="nodes "; peripheries=0;
+Gemm_15_conv_4 ;  }
+
+subgraph cluster_dma_5_in { label=""; peripheries=0;
+dummy_5[ style=invis ];  };
+ }
+DequantizeLinear_inserted_id108:s -> dummy_5:n [ltail="cluster_4" lhead=cluster_5 strength=1000 penwidth=5];
+subgraph cluster_6 { label="epoch 6"; fontsize=14; 
+subgraph cluster_6_nodes { label="nodes "; peripheries=0;
+Cast_inserted_id109 ;  }
+
+subgraph cluster_dma_6_in { label=""; peripheries=0;
+dummy_6[ style=invis ];  };
+ }
+Gemm_15_conv_4:s -> dummy_6:n [ltail="cluster_5" lhead=cluster_6 strength=1000 penwidth=5];
+subgraph cluster_7 { label="epoch 7"; fontsize=14; 
+subgraph cluster_7_nodes { label="nodes "; peripheries=0;
+Gemm_15_conv_4_off_bias_30 ; Gemm_15_squeeze_y_5 ;  }
+
+subgraph cluster_dma_7_in { label="dma inputs "; peripheries=0;
+dma_7i7 ;  };
+
+subgraph cluster_dma_7_out { label="dma outputs "; peripheries=0;
+dma_0i7 ;  }
+ }
+Cast_inserted_id109:s -> dma_7i7:n [ltail="cluster_6" lhead=cluster_7 strength=1000 penwidth=5];
+subgraph cluster_8 { label="epoch 8"; fontsize=14; 
+subgraph cluster_8_nodes { label="nodes "; peripheries=0;
+DequantizeLinear_inserted_id110 ;  }
+
+subgraph cluster_dma_8_in { label=""; peripheries=0;
+dummy_8[ style=invis ];  };
+ }
+dma_0i7:s -> dummy_8:n [ltail="cluster_7" lhead=cluster_8 strength=1000 penwidth=5];
+subgraph cluster_9 { label="epoch 9"; fontsize=14; 
+subgraph cluster_9_nodes { label="nodes "; peripheries=0;
+Div_18 ;  }
+
+subgraph cluster_dma_9_in { label=""; peripheries=0;
+dummy_9[ style=invis ];  };
+ }
+DequantizeLinear_inserted_id110:s -> dummy_9:n [ltail="cluster_8" lhead=cluster_9 strength=1000 penwidth=5];
+subgraph cluster_10 { label="epoch 10"; fontsize=14; 
+subgraph cluster_10_nodes { label="nodes "; peripheries=0;
+Clip_19 ;  }
+
+subgraph cluster_dma_10_in { label=""; peripheries=0;
+dummy_10[ style=invis ];  };
+ }
+Div_18:s -> dummy_10:n [ltail="cluster_9" lhead=cluster_10 strength=1000 penwidth=5];
+subgraph cluster_11 { label="epoch 11"; fontsize=14; 
+subgraph cluster_11_nodes { label="nodes "; peripheries=0;
+Mul_20 ;  }
+
+subgraph cluster_dma_11_in { label=""; peripheries=0;
+dummy_11[ style=invis ];  };
+ }
+Clip_19:s -> dummy_11:n [ltail="cluster_10" lhead=cluster_11 strength=1000 penwidth=5];
+subgraph cluster_12 { label="epoch 12"; fontsize=14; 
+subgraph cluster_12_nodes { label="nodes "; peripheries=0;
+Add_21 ;  }
+
+subgraph cluster_dma_12_in { label=""; peripheries=0;
+dummy_12[ style=invis ];  };
+ }
+Mul_20:s -> dummy_12:n [ltail="cluster_11" lhead=cluster_12 strength=1000 penwidth=5];
+subgraph cluster_13 { label="epoch 13"; fontsize=14; 
+subgraph cluster_13_nodes { label="nodes "; peripheries=0;
+Floor_22 ;  }
+
+subgraph cluster_dma_13_in { label=""; peripheries=0;
+dummy_13[ style=invis ];  };
+ }
+Add_21:s -> dummy_13:n [ltail="cluster_12" lhead=cluster_13 strength=1000 penwidth=5];
+subgraph cluster_14 { label="epoch 14"; fontsize=14; 
+subgraph cluster_14_nodes { label="nodes "; peripheries=0;
+Div_23 ;  }
+
+subgraph cluster_dma_14_in { label=""; peripheries=0;
+dummy_14[ style=invis ];  };
+ }
+Floor_22:s -> dummy_14:n [ltail="cluster_13" lhead=cluster_14 strength=1000 penwidth=5];
+subgraph cluster_15 { label="epoch 15"; fontsize=14; 
+subgraph cluster_15_nodes { label="nodes "; peripheries=0;
+Mul_24 ;  }
+
+subgraph cluster_dma_15_in { label=""; peripheries=0;
+dummy_15[ style=invis ];  };
+ }
+Div_23:s -> dummy_15:n [ltail="cluster_14" lhead=cluster_15 strength=1000 penwidth=5];
+subgraph cluster_16 { label="epoch 16"; fontsize=14; 
+subgraph cluster_16_nodes { label="nodes "; peripheries=0;
+QuantizeLinear_inserted_id111 ;  }
+
+subgraph cluster_dma_16_in { label=""; peripheries=0;
+dummy_16[ style=invis ];  };
+ }
+Mul_24:s -> dummy_16:n [ltail="cluster_15" lhead=cluster_16 strength=1000 penwidth=5];
+subgraph cluster_17 { label="epoch 17"; fontsize=14; 
+subgraph cluster_17_nodes { label="nodes "; peripheries=0;
+Gemm_27_reshape_x_8 ;  }
+
+subgraph cluster_dma_17_in { label=""; peripheries=0;
+dummy_17[ style=invis ];  };
+ }
+QuantizeLinear_inserted_id111:s -> dummy_17:n [ltail="cluster_16" lhead=cluster_17 strength=1000 penwidth=5];
+subgraph cluster_18 { label="epoch 18"; fontsize=14; 
+subgraph cluster_18_nodes { label="nodes "; peripheries=0;
+Gemm_27_conv_10_suboff_33 ;  }
+
+subgraph cluster_dma_18_in { label="dma inputs "; peripheries=0;
+dma_0i18 ;  };
+
+subgraph cluster_dma_18_out { label="dma outputs "; peripheries=0;
+dma_5i18 ; dma_5i18 ;  }
+ }
+Gemm_27_reshape_x_8:s -> dma_0i18:n [ltail="cluster_17" lhead=cluster_18 strength=1000 penwidth=5];
+subgraph cluster_19 { label="epoch 19"; fontsize=14; 
+subgraph cluster_19_nodes { label="nodes "; peripheries=0;
+Gemm_27_conv_10 ; Gemm_27_conv_10_ca_pipe_1 ; Gemm_27_conv_10_off_bias_39 ; Gemm_27_squeeze_y_11 ;  }
+
+subgraph cluster_dma_19_in { label="dma inputs "; peripheries=0;
+dma_7i19 ; dma_3i19 ; dma_0i19 ;  };
+
+subgraph cluster_dma_19_out { label="dma outputs "; peripheries=0;
+dma_8i19 ;  }
+ }
+dma_5i18:s -> dma_7i19:n [ltail="cluster_18" lhead=cluster_19 strength=1000 penwidth=5];
+subgraph cluster_20 { label="epoch 20"; fontsize=14; 
+subgraph cluster_20_nodes { label="nodes "; peripheries=0;
+DequantizeLinear_inserted_id113 ;  }
+
+subgraph cluster_dma_20_in { label=""; peripheries=0;
+dummy_20[ style=invis ];  };
+ }
+dma_8i19:s -> dummy_20:n [ltail="cluster_19" lhead=cluster_20 strength=1000 penwidth=5];
+subgraph cluster_21 { label="epoch 21"; fontsize=14; 
+subgraph cluster_21_nodes { label="nodes "; peripheries=0;
+Div_30 ;  }
+
+subgraph cluster_dma_21_in { label=""; peripheries=0;
+dummy_21[ style=invis ];  };
+ }
+DequantizeLinear_inserted_id113:s -> dummy_21:n [ltail="cluster_20" lhead=cluster_21 strength=1000 penwidth=5];
+subgraph cluster_22 { label="epoch 22"; fontsize=14; 
+subgraph cluster_22_nodes { label="nodes "; peripheries=0;
+Clip_31 ;  }
+
+subgraph cluster_dma_22_in { label=""; peripheries=0;
+dummy_22[ style=invis ];  };
+ }
+Div_30:s -> dummy_22:n [ltail="cluster_21" lhead=cluster_22 strength=1000 penwidth=5];
+subgraph cluster_23 { label="epoch 23"; fontsize=14; 
+subgraph cluster_23_nodes { label="nodes "; peripheries=0;
+Mul_32 ;  }
+
+subgraph cluster_dma_23_in { label=""; peripheries=0;
+dummy_23[ style=invis ];  };
+ }
+Clip_31:s -> dummy_23:n [ltail="cluster_22" lhead=cluster_23 strength=1000 penwidth=5];
+subgraph cluster_24 { label="epoch 24"; fontsize=14; 
+subgraph cluster_24_nodes { label="nodes "; peripheries=0;
+Add_33 ;  }
+
+subgraph cluster_dma_24_in { label=""; peripheries=0;
+dummy_24[ style=invis ];  };
+ }
+Mul_32:s -> dummy_24:n [ltail="cluster_23" lhead=cluster_24 strength=1000 penwidth=5];
+subgraph cluster_25 { label="epoch 25"; fontsize=14; 
+subgraph cluster_25_nodes { label="nodes "; peripheries=0;
+Floor_34 ;  }
+
+subgraph cluster_dma_25_in { label=""; peripheries=0;
+dummy_25[ style=invis ];  };
+ }
+Add_33:s -> dummy_25:n [ltail="cluster_24" lhead=cluster_25 strength=1000 penwidth=5];
+subgraph cluster_26 { label="epoch 26"; fontsize=14; 
+subgraph cluster_26_nodes { label="nodes "; peripheries=0;
+Div_35 ;  }
+
+subgraph cluster_dma_26_in { label=""; peripheries=0;
+dummy_26[ style=invis ];  };
+ }
+Floor_34:s -> dummy_26:n [ltail="cluster_25" lhead=cluster_26 strength=1000 penwidth=5];
+subgraph cluster_27 { label="epoch 27"; fontsize=14; 
+subgraph cluster_27_nodes { label="nodes "; peripheries=0;
+Mul_36 ;  }
+
+subgraph cluster_dma_27_in { label=""; peripheries=0;
+dummy_27[ style=invis ];  };
+ }
+Div_35:s -> dummy_27:n [ltail="cluster_26" lhead=cluster_27 strength=1000 penwidth=5];
+subgraph cluster_28 { label="epoch 28"; fontsize=14; 
+subgraph cluster_28_nodes { label="nodes "; peripheries=0;
+QuantizeLinear_inserted_id114 ;  }
+
+subgraph cluster_dma_28_in { label=""; peripheries=0;
+dummy_28[ style=invis ];  };
+ }
+Mul_36:s -> dummy_28:n [ltail="cluster_27" lhead=cluster_28 strength=1000 penwidth=5];
+subgraph cluster_29 { label="epoch 29"; fontsize=14; 
+subgraph cluster_29_nodes { label="nodes "; peripheries=0;
+Gemm_39_reshape_x_14 ;  }
+
+subgraph cluster_dma_29_in { label=""; peripheries=0;
+dummy_29[ style=invis ];  };
+ }
+QuantizeLinear_inserted_id114:s -> dummy_29:n [ltail="cluster_28" lhead=cluster_29 strength=1000 penwidth=5];
+subgraph cluster_30 { label="epoch 30"; fontsize=14; 
+subgraph cluster_30_nodes { label="nodes "; peripheries=0;
+Gemm_39_conv_16_suboff_42 ;  }
+
+subgraph cluster_dma_30_in { label="dma inputs "; peripheries=0;
+dma_0i30 ;  };
+
+subgraph cluster_dma_30_out { label="dma outputs "; peripheries=0;
+dma_7i30 ; dma_7i30 ;  }
+ }
+Gemm_39_reshape_x_14:s -> dma_0i30:n [ltail="cluster_29" lhead=cluster_30 strength=1000 penwidth=5];
+subgraph cluster_31 { label="epoch 31"; fontsize=14; 
+subgraph cluster_31_nodes { label="nodes "; peripheries=0;
+Gemm_39_conv_16 ; Gemm_39_conv_16_ca_pipe_1 ; Gemm_39_conv_16_off_bias_48 ; Gemm_39_squeeze_y_17 ;  }
+
+subgraph cluster_dma_31_in { label="dma inputs "; peripheries=0;
+dma_6i31 ; dma_3i31 ; dma_1i31 ;  };
+
+subgraph cluster_dma_31_out { label="dma outputs "; peripheries=0;
+dma_5i31 ;  }
+ }
+dma_7i30:s -> dma_6i31:n [ltail="cluster_30" lhead=cluster_31 strength=1000 penwidth=5];
+subgraph cluster_32 { label="epoch 32"; fontsize=14; 
+subgraph cluster_32_nodes { label="nodes "; peripheries=0;
+DequantizeLinear_inserted_id116 ;  }
+
+subgraph cluster_dma_32_in { label=""; peripheries=0;
+dummy_32[ style=invis ];  };
+ }
+dma_5i31:s -> dummy_32:n [ltail="cluster_31" lhead=cluster_32 strength=1000 penwidth=5];
+subgraph cluster_33 { label="epoch 33"; fontsize=14; 
+subgraph cluster_33_nodes { label="nodes "; peripheries=0;
+Div_42 ;  }
+
+subgraph cluster_dma_33_in { label=""; peripheries=0;
+dummy_33[ style=invis ];  };
+ }
+DequantizeLinear_inserted_id116:s -> dummy_33:n [ltail="cluster_32" lhead=cluster_33 strength=1000 penwidth=5];
+subgraph cluster_34 { label="epoch 34"; fontsize=14; 
+subgraph cluster_34_nodes { label="nodes "; peripheries=0;
+Clip_43 ;  }
+
+subgraph cluster_dma_34_in { label=""; peripheries=0;
+dummy_34[ style=invis ];  };
+ }
+Div_42:s -> dummy_34:n [ltail="cluster_33" lhead=cluster_34 strength=1000 penwidth=5];
+subgraph cluster_35 { label="epoch 35"; fontsize=14; 
+subgraph cluster_35_nodes { label="nodes "; peripheries=0;
+Mul_44 ;  }
+
+subgraph cluster_dma_35_in { label=""; peripheries=0;
+dummy_35[ style=invis ];  };
+ }
+Clip_43:s -> dummy_35:n [ltail="cluster_34" lhead=cluster_35 strength=1000 penwidth=5];
+subgraph cluster_36 { label="epoch 36"; fontsize=14; 
+subgraph cluster_36_nodes { label="nodes "; peripheries=0;
+Add_45 ;  }
+
+subgraph cluster_dma_36_in { label=""; peripheries=0;
+dummy_36[ style=invis ];  };
+ }
+Mul_44:s -> dummy_36:n [ltail="cluster_35" lhead=cluster_36 strength=1000 penwidth=5];
+subgraph cluster_37 { label="epoch 37"; fontsize=14; 
+subgraph cluster_37_nodes { label="nodes "; peripheries=0;
+Floor_46 ;  }
+
+subgraph cluster_dma_37_in { label=""; peripheries=0;
+dummy_37[ style=invis ];  };
+ }
+Add_45:s -> dummy_37:n [ltail="cluster_36" lhead=cluster_37 strength=1000 penwidth=5];
+subgraph cluster_38 { label="epoch 38"; fontsize=14; 
+subgraph cluster_38_nodes { label="nodes "; peripheries=0;
+Div_47 ;  }
+
+subgraph cluster_dma_38_in { label=""; peripheries=0;
+dummy_38[ style=invis ];  };
+ }
+Floor_46:s -> dummy_38:n [ltail="cluster_37" lhead=cluster_38 strength=1000 penwidth=5];
+subgraph cluster_39 { label="epoch 39"; fontsize=14; 
+subgraph cluster_39_nodes { label="nodes "; peripheries=0;
+Mul_48 ;  }
+
+subgraph cluster_dma_39_in { label=""; peripheries=0;
+dummy_39[ style=invis ];  };
+ }
+Div_47:s -> dummy_39:n [ltail="cluster_38" lhead=cluster_39 strength=1000 penwidth=5];
+subgraph cluster_40 { label="epoch 40"; fontsize=14; 
+subgraph cluster_40_nodes { label="nodes "; peripheries=0;
+QuantizeLinear_inserted_id117 ;  }
+
+subgraph cluster_dma_40_in { label=""; peripheries=0;
+dummy_40[ style=invis ];  };
+ }
+Mul_48:s -> dummy_40:n [ltail="cluster_39" lhead=cluster_40 strength=1000 penwidth=5];
+subgraph cluster_41 { label="epoch 41"; fontsize=14; 
+subgraph cluster_41_nodes { label="nodes "; peripheries=0;
+Gemm_51_reshape_x_20 ;  }
+
+subgraph cluster_dma_41_in { label=""; peripheries=0;
+dummy_41[ style=invis ];  };
+ }
+QuantizeLinear_inserted_id117:s -> dummy_41:n [ltail="cluster_40" lhead=cluster_41 strength=1000 penwidth=5];
+subgraph cluster_42 { label="epoch 42"; fontsize=14; 
+subgraph cluster_42_nodes { label="nodes "; peripheries=0;
+Gemm_51_conv_22_suboff_51 ;  }
+
+subgraph cluster_dma_42_in { label="dma inputs "; peripheries=0;
+dma_5i42 ;  };
+
+subgraph cluster_dma_42_out { label="dma outputs "; peripheries=0;
+dma_2i42 ;  }
+ }
+Gemm_51_reshape_x_20:s -> dma_5i42:n [ltail="cluster_41" lhead=cluster_42 strength=1000 penwidth=5];
+subgraph cluster_43 { label="epoch 43"; fontsize=14; 
+subgraph cluster_43_nodes { label="nodes "; peripheries=0;
+Gemm_51_conv_22 ; Gemm_51_conv_22_off_bias_57 ; Gemm_51_squeeze_y_23 ;  }
+
+subgraph cluster_dma_43_in { label="dma inputs "; peripheries=0;
+dma_0i43 ; dma_9i43 ;  };
+
+subgraph cluster_dma_43_out { label="dma outputs "; peripheries=0;
+dma_2i43 ;  }
+ }
+dma_2i42:s -> dma_0i43:n [ltail="cluster_42" lhead=cluster_43 strength=1000 penwidth=5];
+subgraph cluster_44 { label="epoch 44"; fontsize=14; 
+subgraph cluster_44_nodes { label="nodes "; peripheries=0;
+Dequantize_53 ;  }
+
+subgraph cluster_dma_44_in { label=""; peripheries=0;
+dummy_44[ style=invis ];  };
+ }
+dma_2i43:s -> dummy_44:n [ltail="cluster_43" lhead=cluster_44 strength=1000 penwidth=5];
+subgraph cluster_45 { label="epoch 45"; fontsize=14; 
+subgraph cluster_45_nodes { label="nodes "; peripheries=0;
+__NN__RETURN__ ;  }
+
+subgraph cluster_dma_45_in { label=""; peripheries=0;
+dummy_45[ style=invis ];  };
+ }
+Dequantize_53:s -> dummy_45:n [ltail="cluster_44" lhead=cluster_45 strength=1000 penwidth=5];
+Div_47_param1 [ label="{ { <i0> 0} |  [84]\lDiv_47_param1\l(bytes=4 , 0.0036% of total)\l\l 4 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Div_42_param1 [ label="{ { <i0> 0} |  [74]\lDiv_42_param1\l(bytes=4 , 0.0036% of total)\l\l 1.3843 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Div_35_param1 [ label="{ { <i0> 0} |  [57]\lDiv_35_param1\l(bytes=4 , 0.0036% of total)\l\l 4 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Div_30_param1 [ label="{ { <i0> 0} |  [47]\lDiv_30_param1\l(bytes=4 , 0.0036% of total)\l\l 0.542095 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Div_23_param1 [ label="{ { <i0> 0} |  [30]\lDiv_23_param1\l(bytes=4 , 0.0036% of total)\l\l 4 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Div_18_param1 [ label="{ { <i0> 0} |  [20]\lDiv_18_param1\l(bytes=4 , 0.0036% of total)\l\l 0.340284 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_conv_4_suboff_24_118_atonn_internal_offset [ label="{ { <i0> 0} |  [119]\lGemm_15_conv_4_suboff_24_118_atonn_internal_offset\l 0 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Dequantize_53_x_zero_point [ label="{ { <i0> 0} |  [105]\lDequantize_53_x_zero_point\l -1 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Mul_48_param1 [ label="{ { <i0> 0} |  [86]\lMul_48_param1\l(bytes=4 , 0.0036% of total)\l\l 1.3843 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Mul_44_param1 [ label="{ { <i0> 0} |  [79]\lMul_44_param1\l(bytes=4 , 0.0036% of total)\l\l 4 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Mul_36_param1 [ label="{ { <i0> 0} |  [59]\lMul_36_param1\l(bytes=4 , 0.0036% of total)\l\l 0.542095 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Mul_32_param1 [ label="{ { <i0> 0} |  [52]\lMul_32_param1\l(bytes=4 , 0.0036% of total)\l\l 4 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Mul_24_param1 [ label="{ { <i0> 0} |  [32]\lMul_24_param1\l(bytes=4 , 0.0036% of total)\l\l 0.340284 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Mul_20_param1 [ label="{ { <i0> 0} |  [25]\lMul_20_param1\l(bytes=4 , 0.0036% of total)\l\l 4 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Quantize_13_y_zero_point [ label="{ { <i0> 0} |  [1]\lQuantize_13_y_zero_point\l -119 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_39_conv_16_zero_off_44 [ label="{ { <i0> 0} |  [64]\lGemm_39_conv_16_zero_off_44\l(bytes=1 , 0.00089% of total)\l\l 0 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_39_conv_16_off_bias_50 [ label="{ { <i0> 0} |  [70]\lGemm_39_conv_16_off_bias_50\l(bytes=512 , 0.46% of total)\l\l -83162360 -72807416 -32283611 -38268053 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_39_conv_16_off_bias_48_A_16_130 [ label="{ { <i0> 0} |  [130]\lGemm_39_conv_16_off_bias_48_A_16_130\l 11321 11857 14140 9718 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_27_conv_10_off_bias_39_A_16_125 [ label="{ { <i0> 0} |  [125]\lGemm_27_conv_10_off_bias_39_A_16_125\l 4782 6511 8195 6966 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Add_45_param1 [ label="{ { <i0> 0} |  [81]\lAdd_45_param1\l(bytes=4 , 0.0036% of total)\l\l 0.5 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Add_33_param1 [ label="{ { <i0> 0} |  [54]\lAdd_33_param1\l(bytes=4 , 0.0036% of total)\l\l 0.5 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Add_21_param1 [ label="{ { <i0> 0} |  [27]\lAdd_21_param1\l(bytes=4 , 0.0036% of total)\l\l 0.5 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Dequantize_53_x_scale [ label="{ { <i0> 0} |  [104]\lDequantize_53_x_scale\l 0.0992241 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id114_128_atonn_internal_scale [ label="{ { <i0> 0} |  [128]\lQuantizeLinear_inserted_id114_128_atonn_internal_scale\l 0.00212586 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_squeeze_y_5_121_atonn_internal_scale [ label="{ { <i0> 0} |  [121]\lGemm_15_squeeze_y_5_121_atonn_internal_scale\l 0.164471 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_27_squeeze_y_11_126_atonn_internal_offset [ label="{ { <i0> 0} |  [127]\lGemm_27_squeeze_y_11_126_atonn_internal_offset\l -3 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_conv_4_off_bias_30_A_16_120 [ label="{ { <i0> 0} |  [120]\lGemm_15_conv_4_off_bias_30_A_16_120\l 4641 9286 5715 4595 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_51_weights_transposed_21 [ label="{ { <i0> 0} |  [93]\lGemm_51_weights_transposed_21\l(bytes=640 , 0.57% of total)\l\l -0.096942 -0.0848242 0.181766 0.26659 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_51_conv_22_off_bias_57_A_16_135 [ label="{ { <i0> 0} |  [135]\lGemm_51_conv_22_off_bias_57_A_16_135\l 29661 28666 27550 24639 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id117_133_atonn_internal_offset [ label="{ { <i0> 0} |  [134]\lQuantizeLinear_inserted_id117_133_atonn_internal_offset\l -128 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_51_conv_22_zero_off_53 [ label="{ { <i0> 0} |  [91]\lGemm_51_conv_22_zero_off_53\l(bytes=1 , 0.00089% of total)\l\l 0 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_51_conv_22_off_bias_59 [ label="{ { <i0> 0} |  [97]\lGemm_51_conv_22_off_bias_59\l(bytes=20 , 0.018% of total)\l\l 766464 -10215913 -4295034 -4635495 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id114_128_atonn_internal_offset [ label="{ { <i0> 0} |  [129]\lQuantizeLinear_inserted_id114_128_atonn_internal_offset\l -128 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_conv_4_zero_off_26 [ label="{ { <i0> 0} |  [10]\lGemm_15_conv_4_zero_off_26\l(bytes=1 , 0.00089% of total)\l\l 0 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_conv_4_off_bias_32 [ label="{ { <i0> 0} |  [16]\lGemm_15_conv_4_off_bias_32\l(bytes=1024 , 0.91% of total)\l\l 2228781 2291971 2327863 2268538 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id111_123_atonn_internal_offset [ label="{ { <i0> 0} |  [124]\lQuantizeLinear_inserted_id111_123_atonn_internal_offset\l -128 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_39_squeeze_y_17_131_atonn_internal_scale [ label="{ { <i0> 0} |  [131]\lGemm_39_squeeze_y_17_131_atonn_internal_scale\l 0.0335523 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Input_12_out_0 [ label="{ { <i0> 0} |  [2]\lInput_12_out_0 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id117_133_atonn_internal_scale [ label="{ { <i0> 0} |  [133]\lQuantizeLinear_inserted_id117_133_atonn_internal_scale\l 0.00542862 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_39_squeeze_y_17_131_atonn_internal_offset [ label="{ { <i0> 0} |  [132]\lGemm_39_squeeze_y_17_131_atonn_internal_offset\l -15 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_27_squeeze_y_11_126_atonn_internal_scale [ label="{ { <i0> 0} |  [126]\lGemm_27_squeeze_y_11_126_atonn_internal_scale\l 0.0308066 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_squeeze_y_5_121_atonn_internal_offset [ label="{ { <i0> 0} |  [122]\lGemm_15_squeeze_y_5_121_atonn_internal_offset\l 18 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id111_123_atonn_internal_scale [ label="{ { <i0> 0} |  [123]\lQuantizeLinear_inserted_id111_123_atonn_internal_scale\l 0.00133445 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_conv_4_suboff_24_118_atonn_internal_scale [ label="{ { <i0> 0} |  [118]\lGemm_15_conv_4_suboff_24_118_atonn_internal_scale\l 0.281307 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_39_weights_transposed_15 [ label="{ { <i0> 0} |  [66]\lGemm_39_weights_transposed_15\l(bytes=32768 , 29% of total)\l\l -0.0133124 -0.101174 -0.045262 -0.0399371 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_15_weights_transposed_3 [ label="{ { <i0> 0} |  [12]\lGemm_15_weights_transposed_3\l(bytes=10496 , 9.4% of total)\l\l -0.033637 0.0983236 -0.126786 -0.0491618 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Quantize_13_y_scale [ label="{ { <i0> 0} |  [0]\lQuantize_13_y_scale\l 0.281307 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_27_conv_10_zero_off_35 [ label="{ { <i0> 0} |  [37]\lGemm_27_conv_10_zero_off_35\l(bytes=1 , 0.00089% of total)\l\l 0 | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_27_conv_10_off_bias_41 [ label="{ { <i0> 0} |  [43]\lGemm_27_conv_10_off_bias_41\l(bytes=1024 , 0.91% of total)\l\l -4202652 -5168308 11653777 8198683 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Gemm_27_weights_transposed_9 [ label="{ { <i0> 0} |  [39]\lGemm_27_weights_transposed_9\l(bytes=65536 , 58% of total)\l\l -0.0230289 -0.0164493 0.0263188 0.0230289 ... | { <o0> 0} }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Quantize_13 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[3] tid=[50]\lQuantize_13\lkind=QuantizeLinear\llatency = 84 cycles\lsched epoch=1.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="aquamarine", style="rounded,filled"  ] ;
+Gemm_15_reshape_x_2 [ label="{ { < i0>  0 M } | id=[9] tid=[51]\lGemm_15_reshape_x_2\lkind=Reshape\lsched epoch=2.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="burlywood1", style="rounded,filled"  ] ;
+dma_2i3 [ label="Dma out\nepoch=3.\nsw=41-> mem=41
+ axi port=0\nSTREAM_ENG_V2 2", shape=ellipse, width=0.1, fillcolor="cadetblue1", style="rounded,filled"  ]
+Gemm_15_conv_4_suboff_24:o0:s->dma_2i3:n [ label="edge id=[112]\ltid=82 708\lbatch: 0(in,L) 41(out,L) 0(mem,L) \l1x41x1x1\lbits=16\lin=out: (S16)\lscale=(0.281307, )\loffset=(0, )\lGemm_15_conv_4_zero_off_out_25 FLOAT( 1 41 1 1 )\lGemm_15_conv_4_zero_off_out_25 live(3, 4, id=52)\lpool=1[176, 258]=82 B\lnpuRAM5 edge bs=82\l context[0](1,0)\lout bw=82 B\l" ]; 
+dma_9i3 [ label="Dma in\nepoch=3.\nmem=41-> sw=41
+ axi port=1\nSTREAM_ENG_V2 9", shape=ellipse, width=0.1, fillcolor="cadetblue1", style="rounded,filled"  ]
+Gemm_15_conv_4_suboff_24 [ label="{ { < i0>  0 M  | < i1>  1 P } | id=[11] tid=[52]\lGemm_15_conv_4_suboff_24\lkind=Sub\lNUM_OPS = 41 OPS\llatency = 41 cycles\lOPS/cycle = 1\lsched epoch=3.\lsched unit= ARITH_ACC_V2 0\lA=16384 B=29 C=49152 B C combined= 1949696\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=14\lunit max power % 35\l | { < o0>  0 M } }", shape=record, fillcolor="cadetblue1", style="rounded,filled"  ] ;
+DequantizeLinear_inserted_id108 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[108] tid=[53]\lDequantizeLinear_inserted_id108\lkind=DequantizeLinear\llatency = 84 cycles\lsched epoch=4.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="chartreuse", style="rounded,filled"  ] ;
+Gemm_15_conv_4 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[13] tid=[54]\lGemm_15_conv_4\lkind=Conv\lNUM_OPS = 20.99 KOPS( 4.8% of total )\llatency = 10.79 Kcycles\lOPS/cycle = 1.9\lsched epoch=5.\lsched unit= PROCESSOR 0\lkernel_shape is 1 1\lgroup i 1\lstrides is 1 1\lpads is 0 0 0 0\ldilations is 1 1\l | { < o0>  0 M } }", shape=record, fillcolor="chocolate1", style="rounded,filled"  ] ;
+Cast_inserted_id109 [ label="{ { < i0>  0 M } | id=[109] tid=[55]\lCast_inserted_id109\lkind=Cast\llatency = 512 cycles\lsched epoch=6.\lsched unit= PROCESSOR 0\lextra DMAs (2 3 )\lto i 1\l | { < o0>  0 M } }", shape=record, fillcolor="cyan", style="rounded,filled"  ] ;
+dma_0i7 [ label="Dma out\nepoch=7.\nsw=256-> mem=256
+ axi port=0\nSTREAM_ENG_V2 0", shape=ellipse, width=0.1, fillcolor="darkolivegreen1", style="rounded,filled"  ]
+Gemm_15_conv_4_off_bias_30:o0:s->dma_0i7:n [ label="edge id=[17]\ltid=121 122\lbatch: 256(in) 256(out,L) 0(mem,L) \l1x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.164471, )\loffset=(18, )\lGemm_15_conv_4_off_bias_out_31 FLOAT( 1 256 1 1 )\lGemm_15_conv_4_off_bias_out_31 live(7, 8, id=55)\lpool=1[1024, 1280]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lout bw=256 B\l" ]; 
+dma_7i7 [ label="Dma in\nepoch=7.\nmem=256-> sw=256
+ axi port=1\nSTREAM_ENG_V2 7", shape=ellipse, width=0.1, fillcolor="darkolivegreen1", style="rounded,filled"  ]
+Gemm_15_conv_4_off_bias_30 [ label="{ { < i0>  0 M  | < i1>  1 P  | < i2>  2 P } | id=[17] tid=[56]\lGemm_15_conv_4_off_bias_30\lkind=Add\lNUM_OPS = 256 OPS\llatency = 256 cycles\lOPS/cycle = 1\lsched epoch=7.\lsched unit= ARITH_ACC_V2 1\lA=0 B=0 C=0 B C combined= 0\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=17\lunit max power % 100\l | { < o0>  0 M } }", shape=record, fillcolor="darkolivegreen1", style="rounded,filled"  ] ;
+Gemm_15_squeeze_y_5 [ label="{ { < i0>  0 M } | id=[19] tid=[57]\lGemm_15_squeeze_y_5\lkind=Reshape\lsched epoch=7.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="darkolivegreen1", style="rounded,filled"  ] ;
+DequantizeLinear_inserted_id110 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[110] tid=[58]\lDequantizeLinear_inserted_id110\lkind=DequantizeLinear\llatency = 514 cycles\lsched epoch=8.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="deepskyblue1", style="rounded,filled"  ] ;
+Div_18 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[21] tid=[59]\lDiv_18\lkind=Div\llatency = 513 cycles\lsched epoch=9.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="gold", style="rounded,filled"  ] ;
+Clip_19 [ label="{ { < i0>  0 M } | id=[24] tid=[60]\lClip_19\lkind=Clip\llatency = 512 cycles\lsched epoch=10.\lsched unit= PROCESSOR 0\lmin f 0\lmax f 1\l | { < o0>  0 M } }", shape=record, fillcolor="green", style="rounded,filled"  ] ;
+Mul_20 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[26] tid=[61]\lMul_20\lkind=Mul\lNUM_OPS = 256 OPS\llatency = 513 cycles\lOPS/cycle = 0.499025\lsched epoch=11.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="hotpink", style="rounded,filled"  ] ;
+Add_21 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[28] tid=[62]\lAdd_21\lkind=Add\lNUM_OPS = 256 OPS\llatency = 513 cycles\lOPS/cycle = 0.499025\lsched epoch=12.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="khaki1", style="rounded,filled"  ] ;
+Floor_22 [ label="{ { < i0>  0 M } | id=[29] tid=[63]\lFloor_22\lkind=Floor\llatency = 512 cycles\lsched epoch=13.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="lightblue2", style="rounded,filled"  ] ;
+Div_23 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[31] tid=[64]\lDiv_23\lkind=Div\llatency = 513 cycles\lsched epoch=14.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="yellow", style="rounded,filled"  ] ;
+Mul_24 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[33] tid=[65]\lMul_24\lkind=Mul\lNUM_OPS = 256 OPS\llatency = 513 cycles\lOPS/cycle = 0.499025\lsched epoch=15.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id111 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[111] tid=[66]\lQuantizeLinear_inserted_id111\lkind=QuantizeLinear\llatency = 514 cycles\lsched epoch=16.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="aquamarine", style="rounded,filled"  ] ;
+Gemm_27_reshape_x_8 [ label="{ { < i0>  0 M } | id=[36] tid=[67]\lGemm_27_reshape_x_8\lkind=Reshape\lsched epoch=17.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="burlywood1", style="rounded,filled"  ] ;
+dma_5i18 [ label="Dma out\nepoch=18.\nsw=256-> mem=256
+ axi port=1\nSTREAM_ENG_V2 5", shape=ellipse, width=0.1, fillcolor="cadetblue1", style="rounded,filled"  ]
+Gemm_27_conv_10_suboff_33:o0:s->dma_5i18:n [ label="edge id=[38]\ltid=724 258\lbatch: 128(in,L) 256(out,L) 128(mem,L) \l1x256x1x1\lbits=8\lin=out: (U8)\lscale=(0.00133445, )\loffset=(0, )\lGemm_27_conv_10_zero_off_out_34 FLOAT( 1 256 1 1 )\lGemm_27_conv_10_zero_off_out_34 live(18, 19, id=63)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lout bw=256 B\l" ]; 
+dma_0i18 [ label="Dma in\nepoch=18.\nmem=256-> sw=256
+ axi port=0\nSTREAM_ENG_V2 0", shape=ellipse, width=0.1, fillcolor="cadetblue1", style="rounded,filled"  ]
+Gemm_27_conv_10_suboff_33 [ label="{ { < i0>  0 M  | < i1>  1 P } | id=[38] tid=[68]\lGemm_27_conv_10_suboff_33\lkind=Sub\lNUM_OPS = 256 OPS\llatency = 256 cycles\lOPS/cycle = 1\lsched epoch=18.\lsched unit= ARITH_ACC_V2 2\lA=16384 B=32 C=0 B C combined= 2097152\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=14\lunit max power % 35\l | { < o0>  0 M } }", shape=record, fillcolor="cadetblue1", style="rounded,filled"  ] ;
+dma_3i19 [ label="Dma in\nepoch=19.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=0\nSTREAM_ENG_V2 3", shape=ellipse, width=0.1, fillcolor="chartreuse", style="rounded,filled"  ]
+dma_7i19 [ label="Dma in\nepoch=19.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=1\nSTREAM_ENG_V2 7", shape=ellipse, width=0.1, fillcolor="chartreuse", style="rounded,filled"  ]
+Gemm_27_conv_10 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[40] tid=[69]\lGemm_27_conv_10\lkind=Conv\lNUM_OPS = 131.07 KOPS( 30% of total )\llatency = 21.85 Kcycles\lOPS/cycle = 6\lsched epoch=19.\lsched unit= CONV_ACC_V2 0\lconv mode=F outer, K inner\lchoked ports=( weights  )\lDeep mode kx3\lshifts: f=0 a=6 o=0\lsimd mode:8x8\lunit max power % 34\lkernel_shape is 1 1\lgroup i 1\lstrides is 1 1\lpads is 0 0 0 0\ldilations is 1 1\lConv_pipe_node_lead s Gemm?27?conv?10\l | { < o0>  0 S } }", shape=record, fillcolor="chartreuse", style="rounded,filled"  ] ;
+dma_0i19 [ label="Dma in\nepoch=19.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=0\nSTREAM_ENG_V2 0", shape=ellipse, width=0.1, fillcolor="chartreuse", style="rounded,filled"  ]
+Gemm_27_conv_10_ca_pipe_1 [ label="{ { < i0>  0 M  | < i1>  1 M (must clone)  | < i2>  2 S } | id=[112] tid=[70]\lGemm_27_conv_10_ca_pipe_1\lkind=Conv\llatency = 21.85 Kcycles\lsched epoch=19.\lsched unit= CONV_ACC_V2 1\lconv mode=F outer, K inner\lchoked ports=( weights  )\lDeep mode kx3\lshifts: f=0 a=0 o=6\lsimd mode:8x8\lunit max power % 34\lkernel_shape is 1 1\lgroup i 1\lstrides is 1 1\lpads is 0 0 0 0\ldilations is 1 1\lConv_pipe_node s Gemm?27?conv?10\l | { < o0>  0 S } }", shape=record, fillcolor="chartreuse", style="rounded,filled"  ] ;
+dma_8i19 [ label="Dma out\nepoch=19.\nsw=16-> mem=16
+ axi port=1\nSTREAM_ENG_V2 8", shape=ellipse, width=0.1, fillcolor="chartreuse", style="rounded,filled"  ]
+Gemm_27_conv_10_off_bias_39:o0:s->dma_8i19:n [ label="edge id=[44]\ltid=296 297\lbatch: 16(in) 16(out,L) 0(mem,L) \l1x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.0308066, )\loffset=(-3, )\lGemm_27_conv_10_off_bias_out_40 FLOAT( 1 256 1 1 )\lGemm_27_conv_10_off_bias_out_40 live(19, 20, id=66)\lpool=1[1024, 1280]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lout bw=256 B\l" ]; 
+Gemm_27_conv_10_off_bias_39 [ label="{ { < i0>  0 S  | < i1>  1 P  | < i2>  2 P } | id=[44] tid=[71]\lGemm_27_conv_10_off_bias_39\lkind=Add\lNUM_OPS = 256 OPS\llatency = 256 cycles\lOPS/cycle = 1\lsched epoch=19.\lsched unit= ARITH_ACC_V2 3\lA=0 B=0 C=0 B C combined= 0\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=19\lunit max power % 100\l | { < o0>  0 M } }", shape=record, fillcolor="chartreuse", style="rounded,filled"  ] ;
+Gemm_27_squeeze_y_11 [ label="{ { < i0>  0 M } | id=[46] tid=[72]\lGemm_27_squeeze_y_11\lkind=Reshape\lsched epoch=19.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="chartreuse", style="rounded,filled"  ] ;
+DequantizeLinear_inserted_id113 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[113] tid=[73]\lDequantizeLinear_inserted_id113\lkind=DequantizeLinear\llatency = 514 cycles\lsched epoch=20.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="chocolate1", style="rounded,filled"  ] ;
+Div_30 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[48] tid=[74]\lDiv_30\lkind=Div\llatency = 513 cycles\lsched epoch=21.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="cyan", style="rounded,filled"  ] ;
+Clip_31 [ label="{ { < i0>  0 M } | id=[51] tid=[75]\lClip_31\lkind=Clip\llatency = 512 cycles\lsched epoch=22.\lsched unit= PROCESSOR 0\lmin f 0\lmax f 1\l | { < o0>  0 M } }", shape=record, fillcolor="darkolivegreen1", style="rounded,filled"  ] ;
+Mul_32 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[53] tid=[76]\lMul_32\lkind=Mul\lNUM_OPS = 256 OPS\llatency = 513 cycles\lOPS/cycle = 0.499025\lsched epoch=23.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="deepskyblue1", style="rounded,filled"  ] ;
+Add_33 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[55] tid=[77]\lAdd_33\lkind=Add\lNUM_OPS = 256 OPS\llatency = 513 cycles\lOPS/cycle = 0.499025\lsched epoch=24.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="gold", style="rounded,filled"  ] ;
+Floor_34 [ label="{ { < i0>  0 M } | id=[56] tid=[78]\lFloor_34\lkind=Floor\llatency = 512 cycles\lsched epoch=25.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="green", style="rounded,filled"  ] ;
+Div_35 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[58] tid=[79]\lDiv_35\lkind=Div\llatency = 513 cycles\lsched epoch=26.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="hotpink", style="rounded,filled"  ] ;
+Mul_36 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[60] tid=[80]\lMul_36\lkind=Mul\lNUM_OPS = 256 OPS\llatency = 513 cycles\lOPS/cycle = 0.499025\lsched epoch=27.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="khaki1", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id114 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[114] tid=[81]\lQuantizeLinear_inserted_id114\lkind=QuantizeLinear\llatency = 514 cycles\lsched epoch=28.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="lightblue2", style="rounded,filled"  ] ;
+Gemm_39_reshape_x_14 [ label="{ { < i0>  0 M } | id=[63] tid=[82]\lGemm_39_reshape_x_14\lkind=Reshape\lsched epoch=29.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="yellow", style="rounded,filled"  ] ;
+dma_7i30 [ label="Dma out\nepoch=30.\nsw=256-> mem=256
+ axi port=1\nSTREAM_ENG_V2 7", shape=ellipse, width=0.1, fillcolor="aliceblue", style="rounded,filled"  ]
+Gemm_39_conv_16_suboff_42:o0:s->dma_7i30:n [ label="edge id=[65]\ltid=744 433\lbatch: 128(in,L) 256(out,L) 128(mem,L) \l1x256x1x1\lbits=8\lin=out: (U8)\lscale=(0.00212586, )\loffset=(0, )\lGemm_39_conv_16_zero_off_out_43 FLOAT( 1 256 1 1 )\lGemm_39_conv_16_zero_off_out_43 live(30, 31, id=74)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lout bw=256 B\l" ]; 
+dma_0i30 [ label="Dma in\nepoch=30.\nmem=256-> sw=256
+ axi port=0\nSTREAM_ENG_V2 0", shape=ellipse, width=0.1, fillcolor="aliceblue", style="rounded,filled"  ]
+Gemm_39_conv_16_suboff_42 [ label="{ { < i0>  0 M  | < i1>  1 P } | id=[65] tid=[83]\lGemm_39_conv_16_suboff_42\lkind=Sub\lNUM_OPS = 256 OPS\llatency = 256 cycles\lOPS/cycle = 1\lsched epoch=30.\lsched unit= ARITH_ACC_V2 0\lA=16384 B=32 C=0 B C combined= 2097152\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=14\lunit max power % 35\l | { < o0>  0 M } }", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+dma_3i31 [ label="Dma in\nepoch=31.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=0\nSTREAM_ENG_V2 3", shape=ellipse, width=0.1, fillcolor="aquamarine", style="rounded,filled"  ]
+dma_6i31 [ label="Dma in\nepoch=31.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=1\nSTREAM_ENG_V2 6", shape=ellipse, width=0.1, fillcolor="aquamarine", style="rounded,filled"  ]
+Gemm_39_conv_16 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[67] tid=[84]\lGemm_39_conv_16\lkind=Conv\lNUM_OPS = 65.54 KOPS( 15% of total )\llatency = 10.92 Kcycles\lOPS/cycle = 6\lsched epoch=31.\lsched unit= CONV_ACC_V2 2\lconv mode=F outer, K inner\lchoked ports=( weights  )\lDeep mode kx3\lshifts: f=0 a=5 o=0\lsimd mode:8x8\lunit max power % 34\lkernel_shape is 1 1\lgroup i 1\lstrides is 1 1\lpads is 0 0 0 0\ldilations is 1 1\lConv_pipe_node_lead s Gemm?39?conv?16\l | { < o0>  0 S } }", shape=record, fillcolor="aquamarine", style="rounded,filled"  ] ;
+dma_1i31 [ label="Dma in\nepoch=31.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=0\nSTREAM_ENG_V2 1", shape=ellipse, width=0.1, fillcolor="aquamarine", style="rounded,filled"  ]
+Gemm_39_conv_16_ca_pipe_1 [ label="{ { < i0>  0 M  | < i1>  1 M (must clone)  | < i2>  2 S } | id=[115] tid=[85]\lGemm_39_conv_16_ca_pipe_1\lkind=Conv\llatency = 10.92 Kcycles\lsched epoch=31.\lsched unit= CONV_ACC_V2 3\lconv mode=F outer, K inner\lchoked ports=( weights  )\lDeep mode kx3\lshifts: f=0 a=0 o=5\lsimd mode:8x8\lunit max power % 34\lkernel_shape is 1 1\lgroup i 1\lstrides is 1 1\lpads is 0 0 0 0\ldilations is 1 1\lConv_pipe_node s Gemm?39?conv?16\l | { < o0>  0 S } }", shape=record, fillcolor="aquamarine", style="rounded,filled"  ] ;
+dma_5i31 [ label="Dma out\nepoch=31.\nsw=16-> mem=16
+ axi port=1\nSTREAM_ENG_V2 5", shape=ellipse, width=0.1, fillcolor="aquamarine", style="rounded,filled"  ]
+Gemm_39_conv_16_off_bias_48:o0:s->dma_5i31:n [ label="edge id=[71]\ltid=471 472\lbatch: 16(in) 16(out,L) 0(mem,L) \l1x128x1x1\lbits=8\lin=out: (S8)\lscale=(0.0335523, )\loffset=(-15, )\lGemm_39_conv_16_off_bias_out_49 FLOAT( 1 128 1 1 )\lGemm_39_conv_16_off_bias_out_49 live(31, 32, id=77)\lpool=1[512, 640]=128 B\lnpuRAM5 edge bs=128\l context[0](1,0)\lout bw=128 B\l" ]; 
+Gemm_39_conv_16_off_bias_48 [ label="{ { < i0>  0 S  | < i1>  1 P  | < i2>  2 P } | id=[71] tid=[86]\lGemm_39_conv_16_off_bias_48\lkind=Add\lNUM_OPS = 128 OPS\llatency = 128 cycles\lOPS/cycle = 1\lsched epoch=31.\lsched unit= ARITH_ACC_V2 1\lA=0 B=0 C=0 B C combined= 0\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=21\lunit max power % 100\l | { < o0>  0 M } }", shape=record, fillcolor="aquamarine", style="rounded,filled"  ] ;
+Gemm_39_squeeze_y_17 [ label="{ { < i0>  0 M } | id=[73] tid=[87]\lGemm_39_squeeze_y_17\lkind=Reshape\lsched epoch=31.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="aquamarine", style="rounded,filled"  ] ;
+DequantizeLinear_inserted_id116 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[116] tid=[88]\lDequantizeLinear_inserted_id116\lkind=DequantizeLinear\llatency = 258 cycles\lsched epoch=32.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="burlywood1", style="rounded,filled"  ] ;
+Div_42 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[75] tid=[89]\lDiv_42\lkind=Div\llatency = 257 cycles\lsched epoch=33.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="cadetblue1", style="rounded,filled"  ] ;
+Clip_43 [ label="{ { < i0>  0 M } | id=[78] tid=[90]\lClip_43\lkind=Clip\llatency = 256 cycles\lsched epoch=34.\lsched unit= PROCESSOR 0\lmin f 0\lmax f 1\l | { < o0>  0 M } }", shape=record, fillcolor="chartreuse", style="rounded,filled"  ] ;
+Mul_44 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[80] tid=[91]\lMul_44\lkind=Mul\lNUM_OPS = 128 OPS\llatency = 257 cycles\lOPS/cycle = 0.498054\lsched epoch=35.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="chocolate1", style="rounded,filled"  ] ;
+Add_45 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[82] tid=[92]\lAdd_45\lkind=Add\lNUM_OPS = 128 OPS\llatency = 257 cycles\lOPS/cycle = 0.498054\lsched epoch=36.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="cyan", style="rounded,filled"  ] ;
+Floor_46 [ label="{ { < i0>  0 M } | id=[83] tid=[93]\lFloor_46\lkind=Floor\llatency = 256 cycles\lsched epoch=37.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="darkolivegreen1", style="rounded,filled"  ] ;
+Div_47 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[85] tid=[94]\lDiv_47\lkind=Div\llatency = 257 cycles\lsched epoch=38.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="deepskyblue1", style="rounded,filled"  ] ;
+Mul_48 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[87] tid=[95]\lMul_48\lkind=Mul\lNUM_OPS = 128 OPS\llatency = 257 cycles\lOPS/cycle = 0.498054\lsched epoch=39.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="gold", style="rounded,filled"  ] ;
+QuantizeLinear_inserted_id117 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[117] tid=[96]\lQuantizeLinear_inserted_id117\lkind=QuantizeLinear\llatency = 258 cycles\lsched epoch=40.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="green", style="rounded,filled"  ] ;
+Gemm_51_reshape_x_20 [ label="{ { < i0>  0 M } | id=[90] tid=[97]\lGemm_51_reshape_x_20\lkind=Reshape\lsched epoch=41.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="hotpink", style="rounded,filled"  ] ;
+dma_2i42 [ label="Dma out\nepoch=42.\nsw=128-> mem=128
+ axi port=0\nSTREAM_ENG_V2 2", shape=ellipse, width=0.1, fillcolor="khaki1", style="rounded,filled"  ]
+Gemm_51_conv_22_suboff_51:o0:s->dma_2i42:n [ label="edge id=[92]\ltid=607 608\lbatch: 128(in,L) 128(out,L) 0(mem,L) \l1x128x1x1\lbits=8\lin=out: (U8)\lscale=(0.00542862, )\loffset=(0, )\lGemm_51_conv_22_zero_off_out_52 FLOAT( 1 128 1 1 )\lGemm_51_conv_22_zero_off_out_52 live(42, 43, id=85)\lpool=1[0, 128]=128 B\lnpuRAM5 edge bs=128\l context[0](1,0)\lout bw=128 B\l" ]; 
+dma_5i42 [ label="Dma in\nepoch=42.\nmem=128-> sw=128
+ axi port=1\nSTREAM_ENG_V2 5", shape=ellipse, width=0.1, fillcolor="khaki1", style="rounded,filled"  ]
+Gemm_51_conv_22_suboff_51 [ label="{ { < i0>  0 M  | < i1>  1 P } | id=[92] tid=[98]\lGemm_51_conv_22_suboff_51\lkind=Sub\lNUM_OPS = 128 OPS\llatency = 128 cycles\lOPS/cycle = 1\lsched epoch=42.\lsched unit= ARITH_ACC_V2 2\lA=16384 B=32 C=0 B C combined= 2097152\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=14\lunit max power % 35\l | { < o0>  0 M } }", shape=record, fillcolor="khaki1", style="rounded,filled"  ] ;
+dma_9i43 [ label="Dma in\nepoch=43.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=1\nSTREAM_ENG_V2 9", shape=ellipse, width=0.1, fillcolor="lightblue2", style="rounded,filled"  ]
+dma_0i43 [ label="Dma in\nepoch=43.\nmem=128-> sw=128
+nbits= 24 RAW
+ axi port=0\nSTREAM_ENG_V2 0", shape=ellipse, width=0.1, fillcolor="lightblue2", style="rounded,filled"  ]
+Gemm_51_conv_22 [ label="{ { < i0>  0 M  | < i1>  1 M } | id=[94] tid=[99]\lGemm_51_conv_22\lkind=Conv\lNUM_OPS = 1.28 KOPS( 0.29% of total )\llatency = 214 cycles\lOPS/cycle = 6\lsched epoch=43.\lsched unit= CONV_ACC_V2 0\lconv mode=F outer, K inner\lchoked ports=( weights  )\lDeep mode kx3\lshifts: f=0 a=5 o=5\lsimd mode:8x8\lunit max power % 22\lkernel_shape is 1 1\lgroup i 1\lstrides is 1 1\lpads is 0 0 0 0\ldilations is 1 1\l | { < o0>  0 S } }", shape=record, fillcolor="lightblue2", style="rounded,filled"  ] ;
+dma_2i43 [ label="Dma out\nepoch=43.\nsw=5-> mem=5
+ axi port=0\nSTREAM_ENG_V2 2", shape=ellipse, width=0.1, fillcolor="lightblue2", style="rounded,filled"  ]
+Gemm_51_conv_22_off_bias_57:o0:s->dma_2i43:n [ label="edge id=[98]\ltid=646 647\lbatch: 5(in) 5(out,L) 0(mem,L) \l1x5x1x1\lbits=8\lin=out: (S8)\lscale=(0.0992241, )\loffset=(-1, )\lGemm_51_conv_22_off_bias_out_58 FLOAT( 1 5 1 1 )\lGemm_51_conv_22_off_bias_out_58 live(43, 44, id=87)\lpool=1[128, 133]=5 B\lnpuRAM5 edge bs=5\l context[0](1,0)\lout bw=5 B\l" ]; 
+Gemm_51_conv_22_off_bias_57 [ label="{ { < i0>  0 S  | < i1>  1 P  | < i2>  2 P } | id=[98] tid=[100]\lGemm_51_conv_22_off_bias_57\lkind=Add\lNUM_OPS = 5 OPS\llatency = 5 cycles\lOPS/cycle = 1\lsched epoch=43.\lsched unit= ARITH_ACC_V2 3\lA=0 B=0 C=0 B C combined= 0\lshifts: x=0 y=0 AX_RS=0 BY_RS=0 C_LS=0 o=22\lunit max power % 100\l | { < o0>  0 M } }", shape=record, fillcolor="lightblue2", style="rounded,filled"  ] ;
+Gemm_51_squeeze_y_23 [ label="{ { < i0>  0 M } | id=[100] tid=[101]\lGemm_51_squeeze_y_23\lkind=Reshape\lsched epoch=43.\lhw unit=NULL_UNIT\l | { < o0>  0 M } }", shape=record, fillcolor="lightblue2", style="rounded,filled"  ] ;
+Dequantize_53 [ label="{ { < i0>  0 M  | < i1>  1 M  | < i2>  2 M } | id=[106] tid=[102]\lDequantize_53\lkind=DequantizeLinear\llatency = 12 cycles\lsched epoch=44.\lsched unit= PROCESSOR 0\l | { < o0>  0 M } }", shape=record, fillcolor="yellow", style="rounded,filled"  ] ;
+__NN__RETURN__ [ label="{ { < i0>  0 M } | id=[107] tid=[103]\l__NN__RETURN__\lkind=Return\lsched epoch=45.\lsched unit= PROCESSOR 0\l}", shape=record, fillcolor="aliceblue", style="rounded,filled"  ] ;
+Input_12_out_0:o0:s->Quantize_13:i0:n [ label="edge id=[0]\ltid=13 14\lbatch: 0(in,L) 1(out,L) 1(mem,L) \l1x41\lbits=32\lin=out: Float\lInput_12_out_0 FLOAT( 1 41 )\lInput_12_out_0 live(0, 1, id=38)\lpool=1[0, 164]=164 B\lnpuRAM5 edge bs=164\l context[0](1,0)\lout bw=?\l" ]; 
+Quantize_13_y_scale:o0:s->Quantize_13:i1:n [ label="edge id=[1]\ltid=17 18\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lQuantize_13_y_scale FLOAT( )\lQuantize_13_y_scale live(0, inf, id=47)\lpool=8[144880, 144884]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Quantize_13_y_zero_point:o0:s->Quantize_13:i2:n [ label="edge id=[2]\ltid=21 22\lbatch: 0(in,L) 0(mem,L) \l1\lbits=8\lin=out: No format info\lQuantize_13_y_zero_point INT8( )\lQuantize_13_y_zero_point live(0, inf, id=15)\lpool=8[145328, 145329]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_reshape_x_2:o0:s->dma_9i3:n [ penwidth=2, style=dashed  ]; 
+dma_9i3:s->Gemm_15_conv_4_suboff_24:i0:n [ label="cloned=0\ledge id=[9]\ltid=69 70\lbatch: 41(in) 0(out,L) 0(mem,L) \l1x41x1x1\lbits=8\lin=out: (S8)\lscale=(0.281307, )\loffset=(-119, )\lGemm_15_reshape_x_2 FLOAT( 1 41 1 1 )\lGemm_15_reshape_x_2 live(1, 3, id=51)\lpool=1[272, 313]=41 B\lnpuRAM5 edge bs=41\l context[0](1,0)\lin bw=41 B\l"   ]; 
+Gemm_15_conv_4_zero_off_26:o0:s->Gemm_15_conv_4_suboff_24:i1:n [ label="edge id=[10]\ltid=73 74\l1\lbits=8\lin=out: (S8)\lscale=(0.281307, )\loffset=(0, )\lGemm_15_conv_4_zero_off_26 FLOAT( 1 )\lGemm_15_conv_4_zero_off_26 live(0, inf, id=34)\lpool=8[145264, 145265]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_weights_transposed_3:o0:s->Gemm_15_conv_4:i1:n [ label="edge id=[12]\ltid=86 87\lbatch: 0(in,L) 0(mem,L) \l256x41x1x1\lbits=32\lin=out: Float\lGemm_15_weights_transposed_3 FLOAT( 256 41 1 1 )\lGemm_15_weights_transposed_3 live(0, inf, id=46)\lpool=8[65568, 107552]=41.00 KB\loctoFlash edge bs=41984\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_conv_4_off_bias_32:o0:s->Gemm_15_conv_4_off_bias_30:i1:n [ label="edge id=[16]\ltid=112 113\lbatch: 256(in,L) 256(out,L) 256(mem,L) \l256x1x1\lin=out Q[14S.17]\lin=out: (S32) M=14 N=17 sign=true\lGemm_15_conv_4_off_bias_32 FLOAT( 256 1 1 )\lGemm_15_conv_4_off_bias_32 live(0, inf, id=35)\lpool=8[140336, 141360]=1.00 KB\loctoFlash edge bs=1024\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_conv_4_off_bias_30:o0:s->Gemm_15_squeeze_y_5:i0:n [ label="edge id=[17]\ltid=121 122\lbatch: 256(in) 256(out,L) 0(mem,L) \l1x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.164471, )\loffset=(18, )\lGemm_15_conv_4_off_bias_out_31 FLOAT( 1 256 1 1 )\lGemm_15_conv_4_off_bias_out_31 live(7, 8, id=55)\lpool=1[1024, 1280]=256 B\lnpuRAM5 edge bs=256\lout bw=256 B\l" ]; 
+Div_18_param1:o0:s->Div_18:i1:n [ label="edge id=[20]\ltid=138 139\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDiv_18_param1 FLOAT( 1 )\lDiv_18_param1 live(0, inf, id=6)\lpool=8[144896, 144900]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Div_18:o0:s->Clip_19:i0:n [ label="edge id=[21]\ltid=150 151\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lDiv_18_out_0 FLOAT( 1 256 )\lDiv_18_out_0 live(9, 11, id=57)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Clip_19:o0:s->Mul_20:i0:n [ label="edge id=[24]\ltid=167 168\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lClip_19_out_0 FLOAT( 1 256 )\lClip_19_out_0 live(9, 11, id=57)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Mul_20_param1:o0:s->Mul_20:i1:n [ label="edge id=[25]\ltid=171 172\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lMul_20_param1 FLOAT( 1 )\lMul_20_param1 live(0, inf, id=14)\lpool=8[144912, 144916]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Mul_20:o0:s->Add_21:i0:n [ label="edge id=[26]\ltid=180 181\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lMul_20_out_0 FLOAT( 1 256 )\lMul_20_out_0 live(11, 12, id=58)\lpool=1[0, 1024]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Add_21_param1:o0:s->Add_21:i1:n [ label="edge id=[27]\ltid=184 185\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lAdd_21_param1 FLOAT( 1 )\lAdd_21_param1 live(0, inf, id=22)\lpool=8[144928, 144932]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Add_21:o0:s->Floor_22:i0:n [ label="edge id=[28]\ltid=190 191\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lAdd_21_out_0 FLOAT( 1 256 )\lAdd_21_out_0 live(12, 14, id=59)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Floor_22:o0:s->Div_23:i0:n [ label="edge id=[29]\ltid=199 200\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lFloor_22_out_0 FLOAT( 1 256 )\lFloor_22_out_0 live(12, 14, id=59)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Div_23_param1:o0:s->Div_23:i1:n [ label="edge id=[30]\ltid=203 204\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDiv_23_param1 FLOAT( 1 )\lDiv_23_param1 live(0, inf, id=5)\lpool=8[144944, 144948]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Div_23:o0:s->Mul_24:i0:n [ label="edge id=[31]\ltid=212 213\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lDiv_23_out_0 FLOAT( 1 256 )\lDiv_23_out_0 live(14, 15, id=60)\lpool=1[0, 1024]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Mul_24_param1:o0:s->Mul_24:i1:n [ label="edge id=[32]\ltid=216 217\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lMul_24_param1 FLOAT( 1 )\lMul_24_param1 live(0, inf, id=13)\lpool=8[144960, 144964]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_reshape_x_8:o0:s->dma_0i18:n [ penwidth=2, style=dashed  ]; 
+dma_0i18:s->Gemm_27_conv_10_suboff_33:i0:n [ label="cloned=0\ledge id=[36]\ltid=244 245\lbatch: 256(in) 0(out,L) 0(mem,L) \l1x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.00133445, )\loffset=(-128, )\lGemm_27_reshape_x_8 FLOAT( 1 256 1 1 )\lGemm_27_reshape_x_8 live(16, 18, id=62)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lin bw=256 B\l"   ]; 
+Gemm_27_conv_10_zero_off_35:o0:s->Gemm_27_conv_10_suboff_33:i1:n [ label="edge id=[37]\ltid=248 249\l1\lbits=8\lin=out: (S8)\lscale=(0.00133445, )\loffset=(0, )\lGemm_27_conv_10_zero_off_35 FLOAT( 1 )\lGemm_27_conv_10_zero_off_35 live(0, inf, id=48)\lpool=8[145280, 145281]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+dma_5i18:s->dma_3i19:n [ penwidth=2, style=dashed  ]; 
+dma_3i19:s->Gemm_27_conv_10:i0:n [ label="cloned=0\ledge id=[38]\ltid=724 258\lbatch: 128(in,L) 256(out,L) 128(mem,L) \l1x256x1x1\lbits=8\lin=out: (U8)\lscale=(0.00133445, )\loffset=(0, )\lGemm_27_conv_10_zero_off_out_34 FLOAT( 1 256 1 1 )\lGemm_27_conv_10_zero_off_out_34 live(18, 19, id=63)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lin bw=2.00 KB\lbatch depth=128\lbatch iter=16\lbatch stride=2\ltotal iter=16\l"   ]; 
+Gemm_27_weights_transposed_9:o0:s->dma_7i19:n [ penwidth=2, style=dashed  ]; 
+dma_7i19:s->Gemm_27_conv_10:i1:n [ label="cloned=0\ledge id=[39]\ltid=726 262\lbatch: 128(in,L) 128(out,L) 128(mem,L) \l16(nkern) 1(kern groups) (deep knr=16 nk=8) (pad dim val=1 off=2048)\l256x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.00328985, 0.00447981, 0.00563797, 0.00479266, 0.00679307, 0.00579278, 0.00328177, 0.00612516, 0.013683, 0.00359088, \l0.00211269, 0.00209952, 0.00362984, 0.0033066, 0.00474885, 0.00500957, 0.00414254, 0.00348612, 0.00453299, 0.0064849, \l0.00216637, 0.0105489, 0.0039257, 0.00436868, 0.00208999, 0.00502049, 0.00387181, 0.00595846, 0.0056516, 0.00217105, \l0.00438126,  ... )\loffset=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0,  ... )\lGemm_27_weights_transposed_9 FLOAT( 256 256 1 1 )\lGemm_27_weights_transposed_9 live(0, inf, id=50)\lpool=8[0, 65568]=64.03 KB\loctoFlash edge bs=65568\l context[0](1,0)\lin bw=64.00 KB\lis cache path\l"   ]; 
+Gemm_27_conv_10_off_bias_41:o0:s->Gemm_27_conv_10_off_bias_39:i1:n [ label="edge id=[43]\ltid=287 288\lbatch: 16(in,L) 16(out,L) 16(mem,L) \l256x1x1\lin=out Q[12S.19]\lin=out: (S32) M=12 N=19 sign=true\lGemm_27_conv_10_off_bias_41 FLOAT( 256 1 1 )\lGemm_27_conv_10_off_bias_41 live(0, inf, id=49)\lpool=8[141360, 142384]=1.00 KB\loctoFlash edge bs=1024\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_conv_10_off_bias_39:o0:s->Gemm_27_squeeze_y_11:i0:n [ label="edge id=[44]\ltid=296 297\lbatch: 16(in) 16(out,L) 0(mem,L) \l1x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.0308066, )\loffset=(-3, )\lGemm_27_conv_10_off_bias_out_40 FLOAT( 1 256 1 1 )\lGemm_27_conv_10_off_bias_out_40 live(19, 20, id=66)\lpool=1[1024, 1280]=256 B\lnpuRAM5 edge bs=256\lout bw=256 B\l" ]; 
+Div_30_param1:o0:s->Div_30:i1:n [ label="edge id=[47]\ltid=313 314\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDiv_30_param1 FLOAT( 1 )\lDiv_30_param1 live(0, inf, id=4)\lpool=8[144976, 144980]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Div_30:o0:s->Clip_31:i0:n [ label="edge id=[48]\ltid=325 326\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lDiv_30_out_0 FLOAT( 1 256 )\lDiv_30_out_0 live(21, 23, id=68)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Clip_31:o0:s->Mul_32:i0:n [ label="edge id=[51]\ltid=342 343\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lClip_31_out_0 FLOAT( 1 256 )\lClip_31_out_0 live(21, 23, id=68)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Mul_32_param1:o0:s->Mul_32:i1:n [ label="edge id=[52]\ltid=346 347\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lMul_32_param1 FLOAT( 1 )\lMul_32_param1 live(0, inf, id=12)\lpool=8[144992, 144996]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Mul_32:o0:s->Add_33:i0:n [ label="edge id=[53]\ltid=355 356\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lMul_32_out_0 FLOAT( 1 256 )\lMul_32_out_0 live(23, 24, id=69)\lpool=1[0, 1024]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Add_33_param1:o0:s->Add_33:i1:n [ label="edge id=[54]\ltid=359 360\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lAdd_33_param1 FLOAT( 1 )\lAdd_33_param1 live(0, inf, id=21)\lpool=8[145008, 145012]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Add_33:o0:s->Floor_34:i0:n [ label="edge id=[55]\ltid=365 366\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lAdd_33_out_0 FLOAT( 1 256 )\lAdd_33_out_0 live(24, 26, id=70)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Floor_34:o0:s->Div_35:i0:n [ label="edge id=[56]\ltid=374 375\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lFloor_34_out_0 FLOAT( 1 256 )\lFloor_34_out_0 live(24, 26, id=70)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Div_35_param1:o0:s->Div_35:i1:n [ label="edge id=[57]\ltid=378 379\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDiv_35_param1 FLOAT( 1 )\lDiv_35_param1 live(0, inf, id=3)\lpool=8[145024, 145028]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Div_35:o0:s->Mul_36:i0:n [ label="edge id=[58]\ltid=387 388\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lDiv_35_out_0 FLOAT( 1 256 )\lDiv_35_out_0 live(26, 27, id=71)\lpool=1[0, 1024]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Mul_36_param1:o0:s->Mul_36:i1:n [ label="edge id=[59]\ltid=391 392\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lMul_36_param1 FLOAT( 1 )\lMul_36_param1 live(0, inf, id=11)\lpool=8[145040, 145044]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_reshape_x_14:o0:s->dma_0i30:n [ penwidth=2, style=dashed  ]; 
+dma_0i30:s->Gemm_39_conv_16_suboff_42:i0:n [ label="cloned=0\ledge id=[63]\ltid=419 420\lbatch: 256(in) 0(out,L) 0(mem,L) \l1x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.00212586, )\loffset=(-128, )\lGemm_39_reshape_x_14 FLOAT( 1 256 1 1 )\lGemm_39_reshape_x_14 live(28, 30, id=73)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lin bw=256 B\l"   ]; 
+Gemm_39_conv_16_zero_off_44:o0:s->Gemm_39_conv_16_suboff_42:i1:n [ label="edge id=[64]\ltid=423 424\l1\lbits=8\lin=out: (S8)\lscale=(0.00212586, )\loffset=(0, )\lGemm_39_conv_16_zero_off_44 FLOAT( 1 )\lGemm_39_conv_16_zero_off_44 live(0, inf, id=16)\lpool=8[145296, 145297]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+dma_7i30:s->dma_3i31:n [ penwidth=2, style=dashed  ]; 
+dma_3i31:s->Gemm_39_conv_16:i0:n [ label="cloned=0\ledge id=[65]\ltid=744 433\lbatch: 128(in,L) 256(out,L) 128(mem,L) \l1x256x1x1\lbits=8\lin=out: (U8)\lscale=(0.00212586, )\loffset=(0, )\lGemm_39_conv_16_zero_off_out_43 FLOAT( 1 256 1 1 )\lGemm_39_conv_16_zero_off_out_43 live(30, 31, id=74)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lin bw=1.00 KB\lbatch depth=128\lbatch iter=8\lbatch stride=2\ltotal iter=8\l"   ]; 
+Gemm_39_weights_transposed_15:o0:s->dma_6i31:n [ penwidth=2, style=dashed  ]; 
+dma_6i31:s->Gemm_39_conv_16:i1:n [ label="cloned=0\ledge id=[66]\ltid=746 437\lbatch: 128(in,L) 128(out,L) 128(mem,L) \l16(nkern) 1(kern groups) (deep knr=16 nk=8) (pad dim val=1 off=2048)\l128x256x1x1\lbits=8\lin=out: (S8)\lscale=(0.00266247, 0.00278864, 0.00332559, 0.00228561, 0.00241653, 0.00595011, 0.00430192, 0.00345639, 0.00483715, 0.00427507, \l0.00484676, 0.00254216, 0.00520467, 0.00276531, 0.00483627, 0.00390372, 0.00284487, 0.00436991, 0.0028812, 0.00222089, \l0.00371728, 0.00433411, 0.00315266, 0.00272366, 0.00562235, 0.00197474, 0.00315788, 0.00298807, 0.00461366, 0.00383166, \l0.00275272,  ... )\loffset=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0,  ... )\lGemm_39_weights_transposed_15 FLOAT( 128 256 1 1 )\lGemm_39_weights_transposed_15 live(0, inf, id=45)\lpool=8[107552, 140336]=32.02 KB\loctoFlash edge bs=32784\l context[0](1,0)\lin bw=32.00 KB\lis cache path\l"   ]; 
+Gemm_39_conv_16_off_bias_50:o0:s->Gemm_39_conv_16_off_bias_48:i1:n [ label="edge id=[70]\ltid=462 463\lbatch: 16(in,L) 16(out,L) 16(mem,L) \l128x1x1\lin=out Q[10S.21]\lin=out: (S32) M=10 N=21 sign=true\lGemm_39_conv_16_off_bias_50 FLOAT( 128 1 1 )\lGemm_39_conv_16_off_bias_50 live(0, inf, id=17)\lpool=8[143040, 143552]=512 B\loctoFlash edge bs=512\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_conv_16_off_bias_48:o0:s->Gemm_39_squeeze_y_17:i0:n [ label="edge id=[71]\ltid=471 472\lbatch: 16(in) 16(out,L) 0(mem,L) \l1x128x1x1\lbits=8\lin=out: (S8)\lscale=(0.0335523, )\loffset=(-15, )\lGemm_39_conv_16_off_bias_out_49 FLOAT( 1 128 1 1 )\lGemm_39_conv_16_off_bias_out_49 live(31, 32, id=77)\lpool=1[512, 640]=128 B\lnpuRAM5 edge bs=128\lout bw=128 B\l" ]; 
+Div_42_param1:o0:s->Div_42:i1:n [ label="edge id=[74]\ltid=488 489\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDiv_42_param1 FLOAT( 1 )\lDiv_42_param1 live(0, inf, id=2)\lpool=8[145056, 145060]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Div_42:o0:s->Clip_43:i0:n [ label="edge id=[75]\ltid=500 501\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lDiv_42_out_0 FLOAT( 1 128 )\lDiv_42_out_0 live(33, 35, id=79)\lpool=1[512, 1024]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Clip_43:o0:s->Mul_44:i0:n [ label="edge id=[78]\ltid=517 518\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lClip_43_out_0 FLOAT( 1 128 )\lClip_43_out_0 live(33, 35, id=79)\lpool=1[512, 1024]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Mul_44_param1:o0:s->Mul_44:i1:n [ label="edge id=[79]\ltid=521 522\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lMul_44_param1 FLOAT( 1 )\lMul_44_param1 live(0, inf, id=10)\lpool=8[145072, 145076]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Mul_44:o0:s->Add_45:i0:n [ label="edge id=[80]\ltid=530 531\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lMul_44_out_0 FLOAT( 1 128 )\lMul_44_out_0 live(35, 36, id=80)\lpool=1[0, 512]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Add_45_param1:o0:s->Add_45:i1:n [ label="edge id=[81]\ltid=534 535\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lAdd_45_param1 FLOAT( 1 )\lAdd_45_param1 live(0, inf, id=20)\lpool=8[145088, 145092]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Add_45:o0:s->Floor_46:i0:n [ label="edge id=[82]\ltid=540 541\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lAdd_45_out_0 FLOAT( 1 128 )\lAdd_45_out_0 live(36, 38, id=81)\lpool=1[512, 1024]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Floor_46:o0:s->Div_47:i0:n [ label="edge id=[83]\ltid=549 550\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lFloor_46_out_0 FLOAT( 1 128 )\lFloor_46_out_0 live(36, 38, id=81)\lpool=1[512, 1024]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Div_47_param1:o0:s->Div_47:i1:n [ label="edge id=[84]\ltid=553 554\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDiv_47_param1 FLOAT( 1 )\lDiv_47_param1 live(0, inf, id=1)\lpool=8[145104, 145108]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Div_47:o0:s->Mul_48:i0:n [ label="edge id=[85]\ltid=562 563\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lDiv_47_out_0 FLOAT( 1 128 )\lDiv_47_out_0 live(38, 39, id=82)\lpool=1[0, 512]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Mul_48_param1:o0:s->Mul_48:i1:n [ label="edge id=[86]\ltid=566 567\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lMul_48_param1 FLOAT( 1 )\lMul_48_param1 live(0, inf, id=9)\lpool=8[145120, 145124]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_51_reshape_x_20:o0:s->dma_5i42:n [ penwidth=2, style=dashed  ]; 
+dma_5i42:s->Gemm_51_conv_22_suboff_51:i0:n [ label="cloned=0\ledge id=[90]\ltid=594 595\lbatch: 128(in) 0(out,L) 0(mem,L) \l1x128x1x1\lbits=8\lin=out: (S8)\lscale=(0.00542862, )\loffset=(-128, )\lGemm_51_reshape_x_20 FLOAT( 1 128 1 1 )\lGemm_51_reshape_x_20 live(40, 42, id=84)\lpool=1[0, 128]=128 B\lnpuRAM5 edge bs=128\l context[0](1,0)\lin bw=128 B\l"   ]; 
+Gemm_51_conv_22_zero_off_53:o0:s->Gemm_51_conv_22_suboff_51:i1:n [ label="edge id=[91]\ltid=598 599\l1\lbits=8\lin=out: (S8)\lscale=(0.00542862, )\loffset=(0, )\lGemm_51_conv_22_zero_off_53 FLOAT( 1 )\lGemm_51_conv_22_zero_off_53 live(0, inf, id=31)\lpool=8[145312, 145313]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+dma_2i42:s->dma_9i43:n [ penwidth=2, style=dashed  ]; 
+dma_9i43:s->Gemm_51_conv_22:i0:n [ label="cloned=0\ledge id=[92]\ltid=607 608\lbatch: 128(in,L) 128(out,L) 0(mem,L) \l1x128x1x1\lbits=8\lin=out: (U8)\lscale=(0.00542862, )\loffset=(0, )\lGemm_51_conv_22_zero_off_out_52 FLOAT( 1 128 1 1 )\lGemm_51_conv_22_zero_off_out_52 live(42, 43, id=85)\lpool=1[0, 128]=128 B\lnpuRAM5 edge bs=128\l context[0](1,0)\lin bw=128 B\lbatch depth=128\lbatch iter=1\ltotal iter=1\l"   ]; 
+Gemm_51_weights_transposed_21:o0:s->dma_0i43:n [ penwidth=2, style=dashed  ]; 
+dma_0i43:s->Gemm_51_conv_22:i1:n [ label="cloned=0\ledge id=[93]\ltid=611 612\lbatch: 128(in,L) 128(out,L) 128(mem,L) \l5(nkern)  (deep knr=5 nk=8,rem=5) (pad dim val=2 off=640)\l5x128x1x1\lbits=8\lin=out: (S8)\lscale=(0.00403925, 0.00390375, 0.0037518, 0.00335536, 0.00248514, )\loffset=(0, 0, 0, 0, 0, )\lGemm_51_weights_transposed_21 FLOAT( 5 128 1 1 )\lGemm_51_weights_transposed_21 live(0, inf, id=28)\lpool=8[142384, 143026]=642 B\loctoFlash edge bs=642\l context[0](1,0)\lin bw=640 B\lis cache path\l"   ]; 
+Gemm_51_conv_22_off_bias_59:o0:s->Gemm_51_conv_22_off_bias_57:i1:n [ label="edge id=[97]\ltid=637 638\lbatch: 5(in,L) 5(out,L) 5(mem,L) \l5x1x1\lin=out Q[9S.22]\lin=out: (S32) M=9 N=22 sign=true\lGemm_51_conv_22_off_bias_59 FLOAT( 5 1 1 )\lGemm_51_conv_22_off_bias_59 live(0, inf, id=32)\lpool=8[144832, 144852]=20 B\loctoFlash edge bs=20\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_51_conv_22_off_bias_57:o0:s->Gemm_51_squeeze_y_23:i0:n [ label="edge id=[98]\ltid=646 647\lbatch: 5(in) 5(out,L) 0(mem,L) \l1x5x1x1\lbits=8\lin=out: (S8)\lscale=(0.0992241, )\loffset=(-1, )\lGemm_51_conv_22_off_bias_out_58 FLOAT( 1 5 1 1 )\lGemm_51_conv_22_off_bias_out_58 live(43, 44, id=87)\lpool=1[128, 133]=5 B\lnpuRAM5 edge bs=5\lout bw=5 B\l" ]; 
+Dequantize_53_x_scale:o0:s->Dequantize_53:i1:n [ label="edge id=[104]\ltid=686 687\lbatch: 0(in,L) 0(mem,L) \l1\lbits=32\lin=out: Float\lDequantize_53_x_scale FLOAT( )\lDequantize_53_x_scale live(0, inf, id=23)\lpool=8[145136, 145140]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Dequantize_53_x_zero_point:o0:s->Dequantize_53:i2:n [ label="edge id=[105]\ltid=690 691\lbatch: 0(in,L) 0(mem,L) \l1\lbits=8\lin=out: No format info\lDequantize_53_x_zero_point INT8( )\lDequantize_53_x_zero_point live(0, inf, id=8)\lpool=8[145344, 145345]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Dequantize_53:o0:s->__NN__RETURN__:i0:n [ label="edge id=[106]\ltid=696 697\lbatch: 0(out,L) 0(mem,L) \l1x5\lbits=32\lin=out: Float\lDequantize_53_out_0 FLOAT( 1 5 )\lDequantize_53_out_0 live(44, 45, id=88)\lpool=1[0, 20]=20 B\lnpuRAM5 edge bs=20\l context[0](1,0)\lout bw=20 B\l" ]; 
+Quantize_13:o0:s->Gemm_15_reshape_x_2:i0:n [ label="edge id=[111]\ltid=33 699\lbatch: 0(out,L) 0(mem,L) \l1x41\lbits=8\lin=out: (S8)\lscale=(0.281307, )\loffset=(-119, )\lDequantize_14_out_0 FLOAT( 1 41 )\lQuantize_13_out_0 live(1, 3, id=51)\lpool=1[272, 313]=41 B\lnpuRAM5 edge bs=41\lout bw=41 B\l" ]; 
+dma_2i3->DequantizeLinear_inserted_id108:i0:n [ label="edge id=[112]\ltid=82 708\lbatch: 0(in,L) 41(out,L) 0(mem,L) \l1x41x1x1\lbits=16\lin=out: (S16)\lscale=(0.281307, )\loffset=(0, )\lGemm_15_conv_4_zero_off_out_25 FLOAT( 1 41 1 1 )\lGemm_15_conv_4_zero_off_out_25 live(3, 4, id=52)\lpool=1[176, 258]=82 B\lnpuRAM5 edge bs=82\l context[0](1,0)\lout bw=82 B\l" ]; 
+DequantizeLinear_inserted_id108:o0:s->Gemm_15_conv_4:i0:n [ label="edge id=[113]\ltid=709 83\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x41x1x1\lbits=32\lin=out: Float\lGemm_15_conv_4_zero_off_out_25 FLOAT( 1 41 1 1 )\lGemm_15_conv_4_zero_off_out_25_inserted_out108 live(4, 5, id=53)\lpool=1[0, 164]=164 B\lnpuRAM5 edge bs=164\l context[0](1,0)\lout bw=164 B\l" ]; 
+Gemm_15_conv_4:o0:s->Cast_inserted_id109:i0:n [ label="edge id=[114]\ltid=95 712\lbatch: 0(out,L) 0(mem,L) \l1x256x1x1\lbits=32\lin=out: Float\lGemm_15_conv_4 FLOAT( 1 256 1 1 )\lGemm_15_conv_4 live(5, 7, id=54)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Gemm_15_squeeze_y_5:o0:s->DequantizeLinear_inserted_id110:i0:n [ label="edge id=[116]\ltid=134 716\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=8\lin=out: (S8)\lscale=(0.164471, )\loffset=(18, )\lGemm_15_out_0 FLOAT( 1 256 )\lGemm_15_out_0 live(7, 8, id=55)\lpool=1[1024, 1280]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lout bw=?\l" ]; 
+DequantizeLinear_inserted_id110:o0:s->Div_18:i0:n [ label="edge id=[117]\ltid=717 135\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lGemm_15_out_0 FLOAT( 1 256 )\lGemm_15_out_0_inserted_out110 live(8, 9, id=56)\lpool=1[0, 1024]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Mul_24:o0:s->QuantizeLinear_inserted_id111:i0:n [ label="edge id=[118]\ltid=700 720\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lMul_24_out_0 FLOAT( 1 256 )\lMul_24_out_0 live(15, 16, id=61)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+QuantizeLinear_inserted_id111:o0:s->Gemm_27_reshape_x_8:i0:n [ label="edge id=[119]\ltid=721 701\lbatch: 0(out,L) 0(mem,L) \l1x256\lbits=8\lin=out: (S8)\lscale=(0.00133445, )\loffset=(-128, )\lMul_24_out_0 FLOAT( 1 256 )\lMul_24_out_0_inserted_out111 live(16, 18, id=62)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\lout bw=256 B\l" ]; 
+dma_5i18:s->dma_0i19:n [ penwidth=2, style=dashed  ]; 
+dma_0i19:s->Gemm_27_conv_10_ca_pipe_1:i0:n [ label="cloned=0\ledge id=[120]\ltid=724 725\lbatch: 128(in,L) 256(out,L) 128(mem,L) \l1x256x1x1\lbits=8\lin=out: (U8)\lscale=(0.00133445, )\loffset=(0, )\lGemm_27_conv_10_zero_off_out_34 FLOAT( 1 256 1 1 )\lGemm_27_conv_10_zero_off_out_34 live(18, 19, id=63)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lin bw=2.00 KB\lbatch depth=128\lbatch iter=16\lbatch offset=1\lbatch stride=2\ltotal iter=16\l"   ]; 
+dma_7i19:s->Gemm_27_conv_10_ca_pipe_1:i1:n [ label="cloned=1\ledge id=[121]\ltid=726 727\l context[0](1,0)\lin bw=?\l"   ]; 
+Gemm_27_conv_10:o0:s->Gemm_27_conv_10_ca_pipe_1:i2:n [ label="edge id=[122]\ltid=732 733\lbatch: 16(in) 16(out,L) \l1x256x1x1\lin=out Q[23S.0]\lin=out: (S24) M=23 N=0 sign=true\lGemm_27_conv_10 FLOAT( 1 256 1 1 )\lGemm_27_conv_10 live(19, 19, id=64) edge bs=768\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_squeeze_y_11:o0:s->DequantizeLinear_inserted_id113:i0:n [ label="edge id=[124]\ltid=309 736\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=8\lin=out: (S8)\lscale=(0.0308066, )\loffset=(-3, )\lGemm_27_out_0 FLOAT( 1 256 )\lGemm_27_out_0 live(19, 20, id=66)\lpool=1[1024, 1280]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lout bw=?\l" ]; 
+DequantizeLinear_inserted_id113:o0:s->Div_30:i0:n [ label="edge id=[125]\ltid=737 310\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lGemm_27_out_0 FLOAT( 1 256 )\lGemm_27_out_0_inserted_out113 live(20, 21, id=67)\lpool=1[0, 1024]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+Mul_36:o0:s->QuantizeLinear_inserted_id114:i0:n [ label="edge id=[126]\ltid=702 740\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x256\lbits=32\lin=out: Float\lMul_36_out_0 FLOAT( 1 256 )\lMul_36_out_0 live(27, 28, id=72)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=1024\l context[0](1,0)\lout bw=1.00 KB\l" ]; 
+QuantizeLinear_inserted_id114:o0:s->Gemm_39_reshape_x_14:i0:n [ label="edge id=[127]\ltid=741 703\lbatch: 0(out,L) 0(mem,L) \l1x256\lbits=8\lin=out: (S8)\lscale=(0.00212586, )\loffset=(-128, )\lMul_36_out_0 FLOAT( 1 256 )\lMul_36_out_0_inserted_out114 live(28, 30, id=73)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\lout bw=256 B\l" ]; 
+dma_7i30:s->dma_1i31:n [ penwidth=2, style=dashed  ]; 
+dma_1i31:s->Gemm_39_conv_16_ca_pipe_1:i0:n [ label="cloned=0\ledge id=[128]\ltid=744 745\lbatch: 128(in,L) 256(out,L) 128(mem,L) \l1x256x1x1\lbits=8\lin=out: (U8)\lscale=(0.00212586, )\loffset=(0, )\lGemm_39_conv_16_zero_off_out_43 FLOAT( 1 256 1 1 )\lGemm_39_conv_16_zero_off_out_43 live(30, 31, id=74)\lpool=1[0, 256]=256 B\lnpuRAM5 edge bs=256\l context[0](1,0)\lin bw=1.00 KB\lbatch depth=128\lbatch iter=8\lbatch offset=1\lbatch stride=2\ltotal iter=8\l"   ]; 
+dma_6i31:s->Gemm_39_conv_16_ca_pipe_1:i1:n [ label="cloned=1\ledge id=[129]\ltid=746 747\l context[0](1,0)\lin bw=?\l"   ]; 
+Gemm_39_conv_16:o0:s->Gemm_39_conv_16_ca_pipe_1:i2:n [ label="edge id=[130]\ltid=752 753\lbatch: 16(in) 16(out,L) \l1x128x1x1\lin=out Q[23S.0]\lin=out: (S24) M=23 N=0 sign=true\lGemm_39_conv_16 FLOAT( 1 128 1 1 )\lGemm_39_conv_16 live(31, 31, id=75) edge bs=384\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_squeeze_y_17:o0:s->DequantizeLinear_inserted_id116:i0:n [ label="edge id=[132]\ltid=484 756\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=8\lin=out: (S8)\lscale=(0.0335523, )\loffset=(-15, )\lGemm_39_out_0 FLOAT( 1 128 )\lGemm_39_out_0 live(31, 32, id=77)\lpool=1[512, 640]=128 B\lnpuRAM5 edge bs=128\l context[0](1,0)\lout bw=?\l" ]; 
+DequantizeLinear_inserted_id116:o0:s->Div_42:i0:n [ label="edge id=[133]\ltid=757 485\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lGemm_39_out_0 FLOAT( 1 128 )\lGemm_39_out_0_inserted_out116 live(32, 33, id=78)\lpool=1[0, 512]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+Mul_48:o0:s->QuantizeLinear_inserted_id117:i0:n [ label="edge id=[134]\ltid=704 760\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x128\lbits=32\lin=out: Float\lMul_48_out_0 FLOAT( 1 128 )\lMul_48_out_0 live(39, 40, id=83)\lpool=1[512, 1024]=512 B\lnpuRAM5 edge bs=512\l context[0](1,0)\lout bw=512 B\l" ]; 
+QuantizeLinear_inserted_id117:o0:s->Gemm_51_reshape_x_20:i0:n [ label="edge id=[135]\ltid=761 705\lbatch: 0(out,L) 0(mem,L) \l1x128\lbits=8\lin=out: (S8)\lscale=(0.00542862, )\loffset=(-128, )\lMul_48_out_0 FLOAT( 1 128 )\lMul_48_out_0_inserted_out117 live(40, 42, id=84)\lpool=1[0, 128]=128 B\lnpuRAM5 edge bs=128\lout bw=128 B\l" ]; 
+Gemm_51_squeeze_y_23:o0:s->Dequantize_53:i0:n [ label="edge id=[136]\ltid=662 683\lbatch: 0(in,L) 0(out,L) 0(mem,L) \l1x5\lbits=8\lin=out: (S8)\lscale=(0.0992241, )\loffset=(-1, )\lQuantize_52_out_0 INT8( 1 5 )\lGemm_51_out_0 live(43, 44, id=87)\lpool=1[128, 133]=5 B\lnpuRAM5 edge bs=5\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_conv_4_suboff_24_118_atonn_internal_scale:o0:s->DequantizeLinear_inserted_id108:i1:n [ label="edge id=[137]\ltid=767 768\l1\lbits=32\lin=out: Float\lGemm_15_conv_4_suboff_24_118_atonn_internal_scale\lGemm_15_conv_4_suboff_24_118_atonn_internal_scale live(0, inf, id=44)\lpool=8[145152, 145156]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_conv_4_suboff_24_118_atonn_internal_offset:o0:s->DequantizeLinear_inserted_id108:i2:n [ label="edge id=[138]\ltid=774 775\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lGemm_15_conv_4_suboff_24_118_atonn_internal_offset\lGemm_15_conv_4_suboff_24_118_atonn_internal_offset live(0, inf, id=7)\lpool=8[145360, 145361]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Cast_inserted_id109:o0:s->dma_7i7:n [ penwidth=2, style=dashed  ]; 
+dma_7i7:s->Gemm_15_conv_4_off_bias_30:i0:n [ label="cloned=0\ledge id=[139]\ltid=713 109\lbatch: 256(in) 0(mem,L) \l1x256x1x1\lin=out Q[18S.-3]\lin: (S18.-3)\lscale=(0.000727873, 0.00145654, 0.000896404, 0.000720788, 0.00184017, 0.000748878, 0.000903797, 0.000849152, 0.000820462, 0.000552328, \l0.000623614, 0.000844669, 0.00085162, 0.000705358, 0.00066399, 0.000859399, 0.0011071, 0.000651378, 0.000715352, 0.000555019, \l0.000885177, 0.000661751, 0.00129499, 0.00108956, 0.000780506, 0.000880604, 0.00170558, 0.000406733, 0.00123789, 0.000997718, \l0.000988351,  ... )\loffset=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0,  ... )\lout: (S16) M=18 N=-3 sign=true\l\lGemm_15_conv_4_mul_scale_out_29 FLOAT( 1 256 1 1 )\lGemm_15_conv_4_inserted_out109 live(5, 7, id=54)\lpool=1[1024, 2048]=1.00 KB\lnpuRAM5 edge bs=512\l context[0](1,0)\lin bw=512 B\l"   ]; 
+Gemm_15_conv_4_off_bias_30_A_16_120:o0:s->Gemm_15_conv_4_off_bias_30:i2:n [ label="edge id=[140]\ltid=781 782\l256x1x1\lin=out Q[-2S.17]\lin=out: (S16) M=-2 N=17 sign=true\lGemm_15_conv_4_off_bias_30_A_16_120\lGemm_15_conv_4_off_bias_30_A_16_120 live(0, inf, id=27)\lpool=8[143552, 144064]=512 B\loctoFlash edge bs=512\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_squeeze_y_5_121_atonn_internal_scale:o0:s->DequantizeLinear_inserted_id110:i1:n [ label="edge id=[141]\ltid=789 790\l1\lbits=32\lin=out: Float\lGemm_15_squeeze_y_5_121_atonn_internal_scale\lGemm_15_squeeze_y_5_121_atonn_internal_scale live(0, inf, id=25)\lpool=8[145168, 145172]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_15_squeeze_y_5_121_atonn_internal_offset:o0:s->DequantizeLinear_inserted_id110:i2:n [ label="edge id=[142]\ltid=796 797\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lGemm_15_squeeze_y_5_121_atonn_internal_offset\lGemm_15_squeeze_y_5_121_atonn_internal_offset live(0, inf, id=42)\lpool=8[145376, 145377]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+QuantizeLinear_inserted_id111_123_atonn_internal_scale:o0:s->QuantizeLinear_inserted_id111:i1:n [ label="edge id=[143]\ltid=803 804\l1\lbits=32\lin=out: Float\lQuantizeLinear_inserted_id111_123_atonn_internal_scale\lQuantizeLinear_inserted_id111_123_atonn_internal_scale live(0, inf, id=43)\lpool=8[145184, 145188]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+QuantizeLinear_inserted_id111_123_atonn_internal_offset:o0:s->QuantizeLinear_inserted_id111:i2:n [ label="edge id=[144]\ltid=810 811\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lQuantizeLinear_inserted_id111_123_atonn_internal_offset\lQuantizeLinear_inserted_id111_123_atonn_internal_offset live(0, inf, id=36)\lpool=8[145392, 145393]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_conv_10_ca_pipe_1:o0:s->Gemm_27_conv_10_off_bias_39:i0:n [ label="edge id=[145]\ltid=730 284\lbatch: 16(in) 16(out,L) \l1x256x1x1\lin=out Q[21S.-6]\lin: (S21.-6)\lscale=(4.39012e-06, 5.97806e-06, 7.52356e-06, 6.39554e-06, 9.06498e-06, 7.73015e-06, 4.37935e-06, 8.17369e-06, 1.82592e-05, 4.79184e-06, \l2.81927e-06, 2.8017e-06, 4.84382e-06, 4.41248e-06, 6.33708e-06, 6.685e-06, 5.528e-06, 4.65204e-06, 6.04903e-06, 8.65374e-06, \l2.8909e-06, 1.40769e-05, 5.23863e-06, 5.82976e-06, 2.78898e-06, 6.69957e-06, 5.16672e-06, 7.95124e-06, 7.54175e-06, 2.89714e-06, \l5.84655e-06,  ... )\loffset=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0,  ... )\lout: (S16) M=21 N=-6 sign=true\l\lGemm_27_conv_10_mul_scale_out_38 FLOAT( 1 256 1 1 )\lGemm_27_conv_10_cp_in_5 live(19, 19, id=65) edge bs=512\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_conv_10_off_bias_39_A_16_125:o0:s->Gemm_27_conv_10_off_bias_39:i2:n [ label="edge id=[146]\ltid=817 818\l256x1x1\lin=out Q[-4S.19]\lin=out: (S16) M=-4 N=19 sign=true\lGemm_27_conv_10_off_bias_39_A_16_125\lGemm_27_conv_10_off_bias_39_A_16_125 live(0, inf, id=19)\lpool=8[144064, 144576]=512 B\loctoFlash edge bs=512\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_squeeze_y_11_126_atonn_internal_scale:o0:s->DequantizeLinear_inserted_id113:i1:n [ label="edge id=[147]\ltid=825 826\l1\lbits=32\lin=out: Float\lGemm_27_squeeze_y_11_126_atonn_internal_scale\lGemm_27_squeeze_y_11_126_atonn_internal_scale live(0, inf, id=41)\lpool=8[145200, 145204]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_27_squeeze_y_11_126_atonn_internal_offset:o0:s->DequantizeLinear_inserted_id113:i2:n [ label="edge id=[148]\ltid=832 833\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lGemm_27_squeeze_y_11_126_atonn_internal_offset\lGemm_27_squeeze_y_11_126_atonn_internal_offset live(0, inf, id=26)\lpool=8[145408, 145409]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+QuantizeLinear_inserted_id114_128_atonn_internal_scale:o0:s->QuantizeLinear_inserted_id114:i1:n [ label="edge id=[149]\ltid=839 840\l1\lbits=32\lin=out: Float\lQuantizeLinear_inserted_id114_128_atonn_internal_scale\lQuantizeLinear_inserted_id114_128_atonn_internal_scale live(0, inf, id=24)\lpool=8[145216, 145220]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+QuantizeLinear_inserted_id114_128_atonn_internal_offset:o0:s->QuantizeLinear_inserted_id114:i2:n [ label="edge id=[150]\ltid=846 847\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lQuantizeLinear_inserted_id114_128_atonn_internal_offset\lQuantizeLinear_inserted_id114_128_atonn_internal_offset live(0, inf, id=33)\lpool=8[145424, 145425]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_conv_16_ca_pipe_1:o0:s->Gemm_39_conv_16_off_bias_48:i0:n [ label="edge id=[151]\ltid=750 459\lbatch: 16(in) 16(out,L) \l1x128x1x1\lin=out Q[20S.-5]\lin: (S20.-5)\lscale=(5.66005e-06, 5.92827e-06, 7.06975e-06, 4.85889e-06, 5.1372e-06, 1.26491e-05, 9.1453e-06, 7.34782e-06, 1.02831e-05, 9.08821e-06, \l1.03036e-05, 5.40428e-06, 1.10644e-05, 5.87866e-06, 1.02812e-05, 8.29877e-06, 6.0478e-06, 9.28982e-06, 6.12503e-06, 4.72131e-06, \l7.90242e-06, 9.21373e-06, 6.70212e-06, 5.79012e-06, 1.19523e-05, 4.19804e-06, 6.71322e-06, 6.35224e-06, 9.80802e-06, 8.14559e-06, \l5.8519e-06,  ... )\loffset=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \l0,  ... )\lout: (S16) M=20 N=-5 sign=true\l\lGemm_39_conv_16_mul_scale_out_47 FLOAT( 1 128 1 1 )\lGemm_39_conv_16_cp_in_6 live(31, 31, id=76) edge bs=256\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_conv_16_off_bias_48_A_16_130:o0:s->Gemm_39_conv_16_off_bias_48:i2:n [ label="edge id=[152]\ltid=853 854\l128x1x1\lin=out Q[-6S.21]\lin=out: (S16) M=-6 N=21 sign=true\lGemm_39_conv_16_off_bias_48_A_16_130\lGemm_39_conv_16_off_bias_48_A_16_130 live(0, inf, id=18)\lpool=8[144576, 144832]=256 B\loctoFlash edge bs=256\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_squeeze_y_17_131_atonn_internal_scale:o0:s->DequantizeLinear_inserted_id116:i1:n [ label="edge id=[153]\ltid=861 862\l1\lbits=32\lin=out: Float\lGemm_39_squeeze_y_17_131_atonn_internal_scale\lGemm_39_squeeze_y_17_131_atonn_internal_scale live(0, inf, id=37)\lpool=8[145232, 145236]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_39_squeeze_y_17_131_atonn_internal_offset:o0:s->DequantizeLinear_inserted_id116:i2:n [ label="edge id=[154]\ltid=868 869\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lGemm_39_squeeze_y_17_131_atonn_internal_offset\lGemm_39_squeeze_y_17_131_atonn_internal_offset live(0, inf, id=40)\lpool=8[145440, 145441]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+QuantizeLinear_inserted_id117_133_atonn_internal_scale:o0:s->QuantizeLinear_inserted_id117:i1:n [ label="edge id=[155]\ltid=875 876\l1\lbits=32\lin=out: Float\lQuantizeLinear_inserted_id117_133_atonn_internal_scale\lQuantizeLinear_inserted_id117_133_atonn_internal_scale live(0, inf, id=39)\lpool=8[145248, 145252]=4 B\loctoFlash edge bs=4\l context[0](1,0)\lout bw=?\l" ]; 
+QuantizeLinear_inserted_id117_133_atonn_internal_offset:o0:s->QuantizeLinear_inserted_id117:i2:n [ label="edge id=[156]\ltid=882 883\l1\lin=out Q[7S.0]\lin=out: (S8) M=7 N=0 sign=true\lQuantizeLinear_inserted_id117_133_atonn_internal_offset\lQuantizeLinear_inserted_id117_133_atonn_internal_offset live(0, inf, id=30)\lpool=8[145456, 145457]=1 B\loctoFlash edge bs=1\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_51_conv_22:o0:s->Gemm_51_conv_22_off_bias_57:i0:n [ label="edge id=[157]\ltid=620 634\lbatch: 5(in) 5(out,L) \l1x5x1x1\lin=out Q[20S.-5]\lin: (S20.-5)\lscale=(2.19275e-05, 2.1192e-05, 2.03671e-05, 1.8215e-05, 1.34909e-05, )\loffset=(0, 0, 0, 0, 0, )\lout: (S16) M=20 N=-5 sign=true\l\lGemm_51_conv_22_mul_scale_out_56 FLOAT( 1 5 1 1 )\lGemm_51_conv_22 live(43, 43, id=86) edge bs=10\l context[0](1,0)\lout bw=?\l" ]; 
+Gemm_51_conv_22_off_bias_57_A_16_135:o0:s->Gemm_51_conv_22_off_bias_57:i2:n [ label="edge id=[158]\ltid=889 890\l5x1x1\lin=out Q[-7S.22]\lin=out: (S16) M=-7 N=22 sign=true\lGemm_51_conv_22_off_bias_57_A_16_135\lGemm_51_conv_22_off_bias_57_A_16_135 live(0, inf, id=29)\lpool=8[144864, 144874]=10 B\loctoFlash edge bs=10\l context[0](1,0)\lout bw=?\l" ]; 
+}

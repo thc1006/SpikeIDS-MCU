@@ -1,0 +1,22 @@
+{
+  "context": {
+    "ccr": 513,
+    "control": 0,
+    "cpuid": 1092604449,
+    "dscsr": 196608,
+    "msp": 873430896,
+    "pc": 872825708,
+    "primask": 1,
+    "xpsr": 1627389952
+  },
+  "energy_measured": false,
+  "npu_execution_independently_verified": false,
+  "registers": {
+    "0x580e0000": 9,
+    "0x580e0008": 15,
+    "0x580e000c": 15,
+    "0x580e0010": 0,
+    "0x580e2000": 1,
+    "0x580e3000": 1
+  }
+}

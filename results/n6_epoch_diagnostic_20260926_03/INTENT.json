@@ -1,0 +1,223 @@
+{
+  "flash_write": false,
+  "kind": "SM04_first_failed_row_46_stop_diagnostic_not_acceptance",
+  "model_inputs": {
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0_atonbuf.SRAM_WEIGHTS.raw": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram/build_actual_01/RESULT.json": "49225e31bc906e86fe73c3ca7f5a0d18592411f7692fa4173fdbe83c059a2e01",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram/build_actual_01/n6_sram.elf": "9a68e6893b59d3d8d0952b70ccecdae6af14c3f3561532bd2a22540d69b562ca",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram_firstfloat/build_actual_01/RESULT.json": "6ba56223fbd8ee055d02cf149df9cb0ff53039789b44a4c224eb1b6d94ce9a1b",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/firmware_sram_firstfloat/build_actual_01/n6_sram.elf": "dbd51b7de4a1a09b5507e9876d72c12dba0c55e67672749f5f68a353e9ee4dc7"
+  },
+  "original_row_id": 2656,
+  "original_validation_index": 20,
+  "points": [
+    [
+      "End_EpochBlock_1",
+      872830952
+    ],
+    [
+      "Start_EpochBlock_3",
+      872830284
+    ],
+    [
+      "End_EpochBlock_3",
+      872829556
+    ],
+    [
+      "End_EpochBlock_4",
+      872829136
+    ],
+    [
+      "End_EpochBlock_5",
+      872834528
+    ],
+    [
+      "End_EpochBlock_6",
+      872834460
+    ],
+    [
+      "End_EpochBlock_8",
+      872828952
+    ],
+    [
+      "End_EpochBlock_9",
+      872833736
+    ],
+    [
+      "End_EpochBlock_10",
+      872834320
+    ],
+    [
+      "End_EpochBlock_11",
+      872833552
+    ],
+    [
+      "End_EpochBlock_12",
+      872833368
+    ],
+    [
+      "End_EpochBlock_13",
+      872834184
+    ],
+    [
+      "End_EpochBlock_14",
+      872833184
+    ],
+    [
+      "End_EpochBlock_15",
+      872833000
+    ],
+    [
+      "End_EpochBlock_16",
+      872830760
+    ],
+    [
+      "Start_EpochBlock_18",
+      872830124
+    ],
+    [
+      "End_EpochBlock_18",
+      872829492
+    ],
+    [
+      "Start_EpochBlock_19",
+      872829984
+    ],
+    [
+      "End_EpochBlock_19",
+      872829460
+    ],
+    [
+      "End_EpochBlock_20",
+      872828768
+    ],
+    [
+      "End_EpochBlock_21",
+      872832816
+    ],
+    [
+      "End_EpochBlock_22",
+      872834456
+    ],
+    [
+      "End_EpochBlock_23",
+      872832632
+    ],
+    [
+      "End_EpochBlock_24",
+      872832448
+    ],
+    [
+      "End_EpochBlock_25",
+      872834312
+    ],
+    [
+      "End_EpochBlock_26",
+      872832264
+    ],
+    [
+      "End_EpochBlock_27",
+      872832080
+    ],
+    [
+      "End_EpochBlock_28",
+      872830568
+    ],
+    [
+      "Start_EpochBlock_30",
+      872829912
+    ],
+    [
+      "End_EpochBlock_30",
+      872829428
+    ],
+    [
+      "Start_EpochBlock_31",
+      872829772
+    ],
+    [
+      "End_EpochBlock_31",
+      872829396
+    ],
+    [
+      "End_EpochBlock_32",
+      872828584
+    ],
+    [
+      "End_EpochBlock_33",
+      872831896
+    ],
+    [
+      "End_EpochBlock_34",
+      872834048
+    ],
+    [
+      "End_EpochBlock_35",
+      872831712
+    ],
+    [
+      "End_EpochBlock_36",
+      872831528
+    ],
+    [
+      "End_EpochBlock_37",
+      872833920
+    ],
+    [
+      "End_EpochBlock_38",
+      872831344
+    ],
+    [
+      "End_EpochBlock_39",
+      872831160
+    ],
+    [
+      "End_EpochBlock_40",
+      872830376
+    ],
+    [
+      "Start_EpochBlock_42",
+      872829700
+    ],
+    [
+      "End_EpochBlock_42",
+      872829364
+    ],
+    [
+      "Start_EpochBlock_43",
+      872829588
+    ],
+    [
+      "End_EpochBlock_43",
+      872829332
+    ],
+    [
+      "End_EpochBlock_44",
+      872828376
+    ]
+  ],
+  "power_control": false,
+  "previous_mailbox_sha256": "d2f741c967d15f6ac7d7b51594e0c282852661ccbd4b2b199f7c19d35fa498cf",
+  "software_breakpoints": false,
+  "sources": {
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/bundle.py": "d83e032d018c564936d30016c2f26e2933f71ce45b9595f536da73f44ca6a423",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/empty_user_script.py": "e37f0c329b40ee23e5f014079276ac040d517be8981fe6101a809a0b005f6480",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/orchestrate.py": "2d2328bc8d46c762910d628a8d1c65d0c7b8e296c332ec4eccc6b07f538e1f93",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/protocol.py": "78b25d2622774d77b7241c943f884bd1cadb1517657246d398e2702785afe50e",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/pyocd_backend.py": "ccea760c695766a23c9b9d8180f7d53b4ab33d0de266ba6817613b02fe004a5d",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/ram_loader.py": "847e1cb3f0c876f2cd0a5dcdf7433c859e2f353538c2b7f2806802752a9ff950",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/stage_bundle.py": "b1eefbe71b122efe4393ddd42e1d54a75acaba9b20cbaf2fbed04b9a80e1a6f9",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/stage_protocol.py": "9c0b472eefc04a19048baa0964359779ac77304501b95e9ebd8c61407c0412c5",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram/validation.py": "684068f35b9c55d4fec967fcb5e8fc7d34d3af5b729f361e722452cd39947f75",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_firstfloat/diagnose_epochs.py": "d453adfed7d0c59f39e49d1ed4a43b169df81ca4ace32c30cf8eeaef3533611e",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_firstfloat/run.py": "2edb34656c77b4006283a3c5ec284647f851c49ae2b5cc84e2edda25f6c2a25b",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_fp/fp_entry.py": "60178340e307a55b3c9a4c88440828694092f4ccd27a7ac1c53fc3c725db1403",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_fp/run.py": "20a6e45afc01731eb02983f2a3ff8a7af01b524b54f46dd349279d0424c13371",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/controller.py": "15f546cbc8e74c729ec5c66458b631317db393885d02b42dcf3a17ecc5908759",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/diagnose_epochs.py": "ee1151a1c3462fbb871daab24001b57b1457ec729a29c3dd2f109145587bd0f6",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/run.py": "190ff04a743bb1508269ef4a52f1524b272c7ed4761b424a4e0e57cd91810f30",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/runtime_protocol.py": "b6c5c33565caad1a4e91f32137ef1debecc76d8197d782dcc12e78ac268955c7"
+  }
+}

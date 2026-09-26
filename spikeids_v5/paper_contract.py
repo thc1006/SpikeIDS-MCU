@@ -6,23 +6,47 @@ from metrics import summary
 
 PREFIX={"nslkdd":"Nsl","unsw":"Unsw","cicids2017":"Cic","iot23":"Iot"}
 METRIC_NAME={"overall_acc":"Oa","macro_f1":"MacroFone"}
+PAPER_METRICS={**METRIC_NAME,"mcc":"Mcc","balanced_acc":"BalancedAcc",
+               "macro_precision":"MacroPrecision","macro_recall":"MacroRecall",
+               "weighted_f1":"WeightedFone","roc_auc_macro":"RocAucMacro"}
+
+
+def _latex_number(value, *, signed=False):
+    value=finite(value,"formatted number")
+    if value == 0:
+        return "0"
+    text=format(value,"+.8g" if signed else ".8g")
+    if "e" not in text.lower():
+        return text
+    mantissa,exponent=re.split("[eE]",text)
+    return mantissa+r"\mathbin{\times}10^{"+str(int(exponent))+"}"
 
 
 def fmt_p(p):
     if p is None: return r"\text{undefined}"
     p=finite(p,"p value");require(0<=p<=1,"Invalid p")
-    return "<0.001" if p<.001 else f"{p:.3f}"
+    return _latex_number(p)
 
 
-def expected_macros(plan,results,difference,equivalence):
+def fmt_effect(value):
+    return _latex_number(value,signed=True)
+
+
+def _metric_text(metric,values):
+    s=summary(values);digits=3 if metric in ("mcc","roc_auc_macro") else 2
+    mean=f"{s['mean']:.{digits}f}"
+    return mean if s['std'] is None else mean+f"\\mathbin{{\\pm}}{s['std']:.{digits}f}"
+
+
+def expected_macros(plan,results,difference,equivalence,tree_report):
     values={"vFiveSeeds":str(len(plan["seeds"])),"vFiveAlpha":str(plan["alpha"]),
             "vFiveMargin":str(plan["equivalence_margin_pp"])}
     for (dataset,arm),r in results.items():
         prefix="vFive"+PREFIX[dataset]+arm.capitalize()
-        for metric in METRICS:
-            s=summary([row[metric] for row in r["per_seed"]])
-            require(s["std"] is not None,"Paper macros need at least two valid seeds")
-            values[prefix+METRIC_NAME[metric]]=f"{s['mean']:.2f}\\mathbin{{\\pm}}{s['std']:.2f}"
+        for metric,name in PAPER_METRICS.items():
+            text=_metric_text(metric,[row[metric] for row in r["per_seed"]])
+            require("pm" in text,"Neural paper macros need at least two valid seeds")
+            values[prefix+name]=text
         for part,name in (("fit","FitCount"),("validation","ValidationCount"),("test","TestCount")):
             values[prefix+name]=str(r["counts"][part])
     for key,w in difference["comparisons"].items():
@@ -31,13 +55,33 @@ def expected_macros(plan,results,difference,equivalence):
         prefix="vFive"+PREFIX[dataset]+"ReluVs"+arm.capitalize()+METRIC_NAME[metric]
         values[prefix+"RawP"]=fmt_p(w["p_raw"])
         values[prefix+"HolmP"]=fmt_p(w["p_adj"])
-        values[prefix+"MeanDifference"]=f"{w['mean_diff']:+.4f}"
+        values[prefix+"MeanDifference"]=fmt_effect(w["mean_diff"])
+        values[prefix+"PseudomedianDifference"]=fmt_effect(
+            w["hodges_lehmann_pseudomedian_diff"]
+        )
         values[prefix+"DifferenceSupported"]="yes" if w["reject"] else "no"
     for key,q in equivalence["pairs"].items():
         dataset,metric=key.split(":")
         prefix="vFive"+PREFIX[dataset]+"Equivalence"+METRIC_NAME[metric]
         values[prefix+"HolmP"]=fmt_p(q["holm"]["p_adj"])
         values[prefix+"Supported"]="yes" if q["equivalent_familywise"] else "no"
+        values[prefix+"SignedRankHolmP"]=fmt_p(
+            q["signed_rank_robustness_holm"]["p_adj"]
+        )
+        values[prefix+"SignedRankSupported"]=(
+            "yes" if q["equivalent_familywise_signed_rank_robustness"] else "no"
+        )
+        values[prefix+"Discordant"]=(
+            "yes" if q["primary_robustness_discordant"] else "no"
+        )
+    for dataset in ("nslkdd","unsw"):
+        for kind,model_name in (("random_forest","RandomForest"),("xgboost","Xgboost")):
+            result=tree_report["results"][dataset][kind]
+            prefix="vFive"+PREFIX[dataset]+model_name
+            values[prefix+"Seeds"]=str(len(result["per_seed"]))
+            values[prefix+"UniqueModels"]=str(result["n_unique_model_digests"])
+            for metric,name in PAPER_METRICS.items():
+                values[prefix+name]=_metric_text(metric,[row[metric] for row in result["per_seed"]])
     return values
 
 

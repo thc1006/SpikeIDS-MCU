@@ -1,0 +1,8 @@
+{
+  "Profiles": {
+    "internal_sram": {
+      "memory_pool": "./internal_sram.mpool",
+      "options": "--native-float --cache-maintenance --Os --Oauto-sched"
+    }
+  }
+}

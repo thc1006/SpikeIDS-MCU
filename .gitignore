@@ -113,12 +113,21 @@ firmware/n6b/smoke/*.map
 
 firmware/n6b/build/
 ai_runner.log
-paper/globecom/main.pdf
-*.tex
-*.npz
-*.pt
 
 # NSL leakage-safe run artifacts (large/regenerable; kept local)
 results/nsl_leakagesafe_multiseed/
 results/nsl_leakagesafe_multiseed.json
 results/*.lock
+
+# Version-5 formal/smoke runs stay local. Small sealed manifests and the model
+# card under artifacts/ remain visible to Git; only the binary payload is local.
+/results/v5_*/
+/results/**/*.lock
+/results/**/*.log
+/results/**/*.npy
+/results/**/*.npz
+/results/**/*.pt
+/results/**/*.joblib
+/artifacts/spikeids-v5/*/payload/
+/archive/local_toolchain_installers/
+/archive/local_handoffs/

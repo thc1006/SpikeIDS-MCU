@@ -1,0 +1,57 @@
+[
+  {
+    "address": 872828944,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 873431068,
+    "hex": "010000001400000029000000",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 873431168,
+    "hex": "d107e1bdfc85fbbd1f786e3e38743cbf4865efbb3c6299bb968a6cbc5fe3b7bd58b309bcef02c2bd5a06e2bc326e4fbfd87c2bbc36c713bd3dbec1bc277235bc58eed4bcf5a89ebc501e2cbd0000000021734ebb3de6c7bd33249b3f560285bddb0ecd3fb247cd3f3c60bfbec551bfbe7456a3bfc1f194bd4cd0bfbe036b3c3feb5b56bf54fe75bfe92f32bede4df6be9f8994beddeccd3fe21bcf3f9246c6be7350c0be",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 873431060,
+    "hex": "01040000",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 872828944,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872828276,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872828276,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872827548,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872827548,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832520,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832520,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872832452,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872832452,
+    "op": "removed_hw_breakpoint"
+  }
+]

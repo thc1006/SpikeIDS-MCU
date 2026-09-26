@@ -1,0 +1,10 @@
+{
+  "expected": 262160,
+  "fpdscr_write": false,
+  "mask": 12582912,
+  "preserved_all_other_bits": true,
+  "previous": 262160,
+  "register": "fpscr",
+  "write_is_not_yet_observed": true,
+  "write_planned": false
+}

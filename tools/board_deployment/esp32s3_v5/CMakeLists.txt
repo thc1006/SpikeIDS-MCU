@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+set(PROJECT_VER "v5_qdq_candidate_01")
+set(COMPONENTS main)
+include(/home/thc1006/esp/esp-idf/tools/cmake/project.cmake)
+project(spikeids_v5_qdq)

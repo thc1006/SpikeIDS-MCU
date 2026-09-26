@@ -10,4 +10,6 @@ xgboost==3.2.0
 skl2onnx==1.20.0
 pyarrow==23.0.1
 huggingface_hub==1.7.1
-pytest>=8.0
+statsmodels==0.15.0
+joblib==1.6.0
+pytest==9.1.1

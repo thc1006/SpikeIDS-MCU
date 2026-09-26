@@ -1,0 +1,33 @@
+{
+  "dataset": "nslkdd",
+  "source_contract_version": 1,
+  "provenance_note": "Pinned NSL-KDD train/test text files. Official file roles are preserved; test rows are never used to fit preprocessing or select checkpoints.",
+  "origin": {
+    "publisher": "Canadian Institute for Cybersecurity, University of New Brunswick",
+    "upstream_url": "https://www.unb.ca/cic/datasets/nsl.html",
+    "availability_note": "The official page now states that the dataset is no longer available for download.",
+    "mirror_repository": "defcom17/NSL_KDD on GitHub",
+    "mirror_revision": "27bbbdf5c5cccf9970b8b6037a0f19dc09c5a0a9",
+    "mirror_url": "https://github.com/defcom17/NSL_KDD"
+  },
+  "files": [
+    {
+      "path": "KDDTrain+.txt",
+      "role": "train",
+      "bytes": 19109424,
+      "sha256": "1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95",
+      "expected_rows": 125973,
+      "expected_columns": 43,
+      "origin_path": "KDDTrain+.txt"
+    },
+    {
+      "path": "KDDTest+.txt",
+      "role": "test",
+      "bytes": 3441513,
+      "sha256": "fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84",
+      "expected_rows": 22544,
+      "expected_columns": 43,
+      "origin_path": "KDDTest+.txt"
+    }
+  ]
+}

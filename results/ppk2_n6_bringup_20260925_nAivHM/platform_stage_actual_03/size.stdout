@@ -1,0 +1,19 @@
+/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/stage.elf  :
+section              size        addr
+.isr_vector            64   873989120
+.text                2696   873989184
+.mailbox             4096   874020864
+.stack               8192   874024960
+.ARM.attributes        54           0
+.debug_info         10235           0
+.debug_abbrev        1711           0
+.debug_loclists      3712           0
+.debug_aranges        176           0
+.debug_rnglists       313           0
+.debug_macro       275409           0
+.debug_line          5331           0
+.debug_str        1618726           0
+.debug_frame          436           0
+Total             1931151
+
+

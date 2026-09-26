@@ -1,251 +1,67 @@
-# SNN-IDS: Sub-Millijoule Intrusion Detection on the STM32N6 Neural-ART NPU
+# SpikeIDS-MCU — 可稽核的 v5 研究管線
 
-[![Preprint v3](https://img.shields.io/badge/Preprint-10.20944%2Fpreprints202603.0817.v3-orange.svg)](https://doi.org/10.20944/preprints202603.0817.v3)
-[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18906060.svg)](https://doi.org/10.5281/zenodo.18906060)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Target](https://img.shields.io/badge/Target-STM32N6570--DK-03234B.svg)](https://www.st.com/en/evaluation-tools/stm32n6570-dk.html)
-[![NPU](https://img.shields.io/badge/NPU-Neural--ART_600_GOPS-green.svg)](#)
-[![Inference](https://img.shields.io/badge/Inference-0.29--0.46ms_@_800MHz-brightgreen.svg)](#key-results)
+目前狀態（2026-09-24）：正式神經網路與 tree baseline 實驗、固定 export 矩陣、有界論文產物審查，以及本機完整模型／證據副本驗收已完成。新增的 export 數值診斷、QCFS 追蹤／介入／精確算術核對、四組 BN folding 診斷、unfused ReLU 候選、逐層追蹤及雙錨定等輸入 BN 診斷均已真實執行並完成限定後覆核。最新BN診斷36個原生回放全部逐位元吻合，120組比較獨立重算一致；等輸入下11/12個BN通過原容差，IoT23第三個BN仍有21／23列超限。原候選仍各0/4，未修復整體數值門檻。**這不代表所有 export 通過，也不是投稿、release 或板端效能驗收。**
 
-To our knowledge, the first publicly documented IDS classifier deployment on a Cortex-M class MCU paired with a general-purpose NPU (Neural-ART), evaluated across four datasets and bounded by the systematic literature search documented in [Supplementary File S1](paper/preprint_v3/Supplementary_S1_novelty_search_protocol.md).
+以下 `results/` 連結指向本工作站產物，目前尚未發布新的可下載 release。既有公開舊版、旧稿及旧數字不能替代這些來源綁定的 v5 證據。
 
-## Key Results
+## 目前應使用的入口
 
-Multi-seed runs with paired Wilcoxon signed-rank tests and Holm-Bonferroni family-wise error correction. INT8 deployment numbers from STMicroelectronics ST Edge AI Developer Cloud on STM32N6570-DK.
+- [最新 phase 狀態：雙錨定等輸入 BN 診斷，非 export 修復](results/v5_local_bn_20260924_rPaQeD/STATUS.md)
+- [前一 phase：四組 unfused 逐層對齊追蹤](results/v5_unfused_trace_20260923_wMbEyy/STATUS.md)
+- [前一 phase：四組 unfused ReLU export 候選，兩模式各0/4](results/v5_unfused_export_20260923_uVH0Au/STATUS.md)
+- [前一 phase：四組 BN folding 診斷](results/v5_bn_trace_20260922_EJIpEB/STATUS.md)
+- [前一 phase：QCFS 精確算術核對](results/v5_qcfs_exact_20260922_0BoR5D/STATUS.md)
+- [前一 phase：QCFS 雙向介入](results/v5_qcfs_intervention_20260922_YkeMwN/STATUS.md)、[逐層追蹤](results/v5_qcfs_trace_20260922_mQlmHa/STATUS.md)、[原 export 數值診斷](results/v5_export_engineering_20260922_sx9DXw/STATUS.md)
+- [論文 phase 狀態](results/v5_paper_continued_review_20260922_sQdjK1/STATUS.md)
+- [已審查的 9 頁 PDF](results/v5_paper_continued_review_20260922_sQdjK1/pdf_actual_02/build/main.pdf)
+- [對應論文原始稿](results/v5_paper_continued_review_20260922_sQdjK1/candidate_actual_03/paper/main.tex)
+- [論文產物驗收](results/v5_paper_continued_review_20260922_sQdjK1/manuscript_acceptance_actual_01/MANUSCRIPT_ARTIFACT_ACCEPTANCE.json)、[實際退出紀錄](results/v5_paper_continued_review_20260922_sQdjK1/ROOT_MANUSCRIPT_ACCEPTANCE_ACTUAL_EXIT.json)、[獨立後覆核](results/v5_paper_continued_review_20260922_sQdjK1/MANUSCRIPT_ACCEPTANCE_ACTUAL_POSTREVIEW.md)
+- [v5 方法與操作文件](spikeids_v5/README.md)、[接續工作 handoff](spikeids_v5/CODEX_HANDOFF.md)
+- [正式模型與副本存放入口](results/v5_evidence_copy_review_20260922_1srUIm/MODEL_STORAGE.md)、[本機副本驗收](results/v5_evidence_copy_review_20260922_1srUIm/LOCAL_COPY_PHASE_ACCEPTANCE.json)
 
-| Metric                    | NSL-KDD (5-class) | UNSW-NB15 (10-class) | CICIDS2017 (15-class) | IoT-23 (5-class) |
-|---------------------------|------------------:|---------------------:|----------------------:|-----------------:|
-| Overall Accuracy          | 78.57 ± 1.28%     | 64.67 ± 0.55%        | 91.89 ± 1.21%         | 75.59 ± 2.71%    |
-| Macro F1                  | 58.91 ± 2.80%     | 40.18 ± 1.02%        | 56.35 ± 2.80%         | 66.41 ± 1.50%    |
-| Seeds                     | 20                | 20                   | 10                    | 10               |
-| QCFS vs ReLU Wilcoxon p   | 0.227             | 0.846                | 0.312                 | 0.438            |
-| INT8 Latency (ms)         | 0.46              | **0.29**             | 0.42                  | 0.38             |
-| CPU FP32 Latency (ms)     | 1.24              | 1.23                 | 1.16                  | 1.04             |
-| Speed-up over CPU         | 2.7×              | **4.2×**             | 2.8×                  | 2.7×             |
-| Energy / inference (est.) | 69 µJ             | 44 µJ                | 63 µJ                 | 57 µJ            |
-| Flash / RAM               | 137.7 / 1.25 KB   | 120.6 / 0.50 KB      | 120.6 / 0.50 KB       | 105.0 / 0.50 KB  |
+## 已完成的範圍
 
-The non-significant Wilcoxon tests above do **not** by themselves establish equivalence (absence of evidence is not evidence of absence). The v4 re-analysis with paired TOST (two one-sided tests, ±1 pp margin, [`results/equivalence_v4.md`](results/equivalence_v4.md)) shows a more nuanced picture: **UNSW-NB15** is equivalent within ±0.32 pp (accuracy) / ±0.72 pp (macro-F1); **NSL-KDD** supports equivalence only within ±1.1 / ±1.9 pp; **IoT-23** (now n = 10 matched) is **not** equivalent — QCFS is modestly but consistently **better** than ReLU (accuracy +1.8 pp, 90 % CI [−2.9, −0.6] excludes 0; QCFS wins 8/10 seeds), a difference v3's own data also shows (ReLU 75.6 vs QCFS 77.7) but could not detect at its underpowered n = 5; **CICIDS2017** is confounded (QCFS arm 40 ep/batch 1024 vs ReLU 80/512) and excluded until re-run. The honest conclusion is therefore **T = 1 SNN-equivalent QCFS is statistically indistinguishable from, or modestly better than, INT8 ReLU — never worse** at the T = 1 approximation. v3's blanket "indistinguishable on all four datasets" was in part an underpowered Type II error on IoT-23.
+| 項目 | 目前結果 |
+| --- | --- |
+| 神經網路正式實驗 | 440 fits：220 primary＋220 replica；[原始 run](results/v5_run_20260921_r6_recovery1/) |
+| RF／XGBoost baseline | 84 fits；[原始 tree run](results/v5_tree_20260921_r6_1/) |
+| 固定 export 矩陣 | 原 3＋續跑 19，共 22 項；FP32 parity 通過 4/11、QDQ 通過 1/11；17 個負結果保留 |
+| 新增 export 診斷 | 11 個原 checkpoint 重現全部原判定；保存 logits 的 55 組比較後驗證通過；12 組 BASIC／DISABLED 輸出逐位元相同，未改判原 17 個負結果 |
+| QCFS 邊界定位與介入 | 原1024筆插樁不改最終輸出；九條件單座標雙向介入及獨立後覆核通過，支持所選樣本的局部差異傳播，非 export 修復 |
+| QCFS 精確算術 | 原保存座標的13項dot精確加總與逐步FP32核對完成；獨立抽值52words、303欄位重算及21個保存stage比較吻合，不代表找出唯一kernel原因 |
+| 四組 BN folding 診斷 | 原模型各1024筆native／hooked輸出逐位元重現；52組逐層／等輸入比較、4组freeze與狀態digest獨立吻合；最終超限列仍0／7／3／430，未修復export |
+| 四組 unfused ReLU 候選 | 初始及 session 保存圖均保留3個BN；BASIC／DISABLED各0/4，超限列2／20／17／447，argmax未變；16組比較與保留性獨立吻合，8個新負結果另存 |
+| 四組 unfused 對齊追蹤 | native／插樁端點逐位元重現，120組逐層與16組原端點比較獨立吻合；四組首個數值差異皆為block0.linear，BASIC／DISABLED全部40層比較逐位元相同；尚未隔離局部BN原因 |
+| 雙錨定等輸入 BN 診斷 | 36個原生回放逐位元重現，120組比較、92state與12局部圖獨立吻合；IoT第三個BN兩錨21／23列超限，其餘11個BN通過原容差；不能分攤因果比例或宣稱export修復 |
+| 論文產物 | 內容核對、真實 PDF build/replay、保留性、9 頁視覺檢查及驗收後覆核完成 |
+| 模型與證據副本 | 4,177 檔／18.819 GB；複製與獨立完整 SHA-256 驗證均實際退出 0，保留性與交接覆核通過，見[副本 phase](results/v5_evidence_copy_review_20260922_1srUIm/STATUS.md) |
 
-Energy is estimated from STMicroelectronics application note AN5946 (~150 mW nominal) rather than direct on-board measurement; STLINK-V3PWR measurement is listed as future work.
+440 個正式 checkpoint、440 份預測與 84 個 tree 模型保留在原始 run；不只保存 seed 0。副本工具逐檔核對來源與寫入內容後，另一套獨立程式已重新完整雜湊全部目的端 payload；原檔未搬移、未以 hardlink 替代。副本不等於異地備份或包含全部 raw data／系統套件的可移植重播環境，也不是重新推論或重新證明數值結論。
 
-**Target Board:** STM32N6570-DK (ARM Cortex-M55 @ 800 MHz + Neural-ART NPU 600 GOPS INT8).
+## 必須保留的研究限制
 
-## v4 (in progress, branch `v4`)
+- 固定 benchmark、既有 test exposure、資料來源與泛化限制見新稿；不能宣稱新的未接觸 holdout 或跨裝置／時間泛化已成立。
+- 不支持「四資料集全部等效」：差異與等效／robustness 結果須按稿件完整表格分別解讀。
+- 17 個 export 負結果不是可隱藏的工程雜訊；軟體 parity 通過也不代表 NPU／實體部署通過。
+- 9 頁稿件是完整證據審查版，尚未確認投稿頁數與版型限制；AI-agent 覆核不等於作者簽核或外部認證。
+- N6／RA4E1／ESP32 的 v5 板端部署、延遲及能耗尚未驗收。不得引用舊 timing／energy 檔作為新結果。
 
-Work following the GLOBECOM 2026 reviews. Done so far:
+## 接續與保護規則
 
-1. **Equivalence testing done properly** — paired TOST (parametric primary, Wilcoxon signed-rank secondary with Hodges-Lehmann location) replaces "p > 0.05 ⇒ indistinguishable"; reports δ_min (the tightest margin the data support), Shapiro-Wilk on the differences, Holm-Bonferroni over the family of valid equivalence claims, and the seed count needed for 80 %/90 % power. `uv run scripts/run_v4_equivalence.py` → `results/equivalence_v4.{json,md}`; tests in `tests/test_tost.py`, `tests/test_v4_equivalence.py`.
-2. **Training-budget guard** — `run_v4_equivalence.py` refuses to pool a ReLU/QCFS pair trained under different epochs or batch sizes, which caught the CICIDS2017 mismatch inherited from v3.
+每個 issue／phase 都必須經對抗審查、修復與有來源綁定的實際測試；只有檔案存在、程式內寫了 success 或合成測試通過，均不足以判定真實執行成功。需要外部觀察的實際退出與後覆核。
 
-Planned: re-run CICIDS2017 QCFS at 80 epochs / batch 512 and extend the QCFS arms (IoT-23, CICIDS2017 → 10+ seeds, UNSW → 20) so every dataset reaches the power the table in `results/equivalence_v4.md` asks for; on-board energy measurement; end-to-end pipeline latency; stronger baselines.
+自動化是已固定、已審查 phase 內的執行與檢查，不是無人自動修程式或略過審查。失敗即停、保留原失敗；修復後用新計畫／新目錄明示接續。神經訓練主線曾自動接續資料驗收、選型、440 fits、evaluation 與統計；tree、export、paper、copy 則各用另外審查的階段工具。本輪已完成，沒有背景 supervisor 等待自動發布或刷板。
 
-## What's New in v3
+已完成的 plans／來源／模型／結果保持不變；不要直接重新訓練、覆寫、移動或刪除。舊 `tools/package_v5_artifacts.py` 與 `tools/archive_pre_v5.py` 不適用目前 mixed-origin 證據鏈；原因見[相容性盤點](results/v5_paper_continued_review_20260922_sQdjK1/DOWNSTREAM_RELEASE_GAP_INVENTORY.md)。新版 copy-only 工具須通過自己的 gate，不能以舊工具代跑。
 
-Compared with [preprint v2](https://doi.org/10.20944/preprints202603.0817.v2):
+IoT23 QCFS 原 validation row ID `5662534` 已定位到第一段 Floor 跨箱（Torch 3／ORT 2）。固定單一輸出座標雙向替換後，目標樣本對相反 backend 原生輸出的最大殘差為 `1.430511474609375e-6`，原差為 `0.23552179336547852`；全部1024列通過原容差，但不等於逐位元一致。[精確 affine／QCFS 算術核對](results/v5_qcfs_exact_20260922_0BoR5D/STATUS.md)的21個保存中間值重算吻合，不能指定唯一Gemm/FMA累加順序或宣稱runtime違規。
 
-1. **Statistical correction** — v2's 10-seed Wilcoxon p = 0.037 on NSL-KDD flips to p = 0.227 with 20 seeds. The v3 conclusion is the opposite of v2 and **supports** the T = 1 equivalence rather than contradicting it. All paired tests now apply Holm-Bonferroni correction; effect sizes (Cohen's d_z) and 95% percentile-bootstrap confidence intervals (10,000 resamples) are reported alongside p-values.
-2. **Two more datasets** — CICIDS2017 (HuggingFace cleaned version, 15-class) and IoT-23 (5-class) added to the existing NSL-KDD and UNSW-NB15.
-3. **Energy claim downgraded** — "energy-efficient" wording removed from the title; energy reported as an AN5946-derived estimate rather than direct on-board measurement.
-4. **Novelty claim narrowed and bounded** — broad "first" wording replaced by a tightly-scoped claim, supported by a systematic literature search of 5 databases and 8 query variants (~320 records inspected) in [Supplementary File S1](paper/preprint_v3/Supplementary_S1_novelty_search_protocol.md).
-5. **QCFS Floor → CPU fallback as deployment finding** — QCFS adds 17.6 % latency overhead because the `Floor` operator falls back to CPU on Neural-ART; documented with an L-sweep ablation that justifies L = 4 as Pareto-optimal on operator cost.
-6. **Format change** — IEEEtran 6-page conference build added under `paper/globecom/`; the same content was submitted to IEEE GLOBECOM 2026 (Communication and Information System Security Symposium) on 2026-04-15. The full v2 → v3 changelog lives in [`paper/preprint_v3/Details_of_Changes_v2_to_v3.md`](paper/preprint_v3/Details_of_Changes_v2_to_v3.md).
+接續的[四組 BN folding 診斷](results/v5_bn_trace_20260922_EJIpEB/STATUS.md)已完成，52組比較未觀察到ReLU啟用狀態翻轉；IoT23第三段完整傳播與等原始輸入局部比較分別有785／207列preactivation超限，不能相減當因果比例。其後的[unfused export 候選](results/v5_unfused_export_20260923_uVH0Au/STATUS.md)也已真跑及後覆核：四張初始圖及八張session保存圖都保留3個BN，但兩種模式仍各0/4。[unfused對齊追蹤](results/v5_unfused_trace_20260923_wMbEyy/STATUS.md)確認四組在block0.linear已有數值差異，首次超出原容差的stage依序為1／4／0／4；不能把首次超限當成唯一根因。
 
-## Theoretical Basis
+最新[雙錨定等輸入BN診斷](results/v5_local_bn_20260924_rPaQeD/STATUS.md)的50檔及獨立後覆核完成：36個原生回放逐位元吻合，BASIC／DISABLED全部24個等輸入比較逐位元相同；Torch／ORT在IoT第三個BN仍有21／23列超限。固定backend換輸入錨則有915／914列超限，舊傳播比較920列；這些不是可相減的因果成分。下一個最小scope是只讀保存陣列列出全部失敗座標與容差餘量；互補實驗是16個Linear／Gemm含classifier的雙錨定原生回放，兩者尚未執行，需新計畫與審查。原8個候選負結果與原22項矩陣分開；不逐筆補epsilon、不放寬容差、不重訓440 fits以掩蓋失敗。
 
-A single-timestep (T = 1) SNN with zero initial membrane potential produces a forward pass approximately equivalent to an INT8 quantized ANN with ReLU activation:
+## 歷史內容與歸檔
 
-```
-T = 1 SNN inference  ≈  INT8 quantized ANN inference
-```
+先前 README 的全部內容已逐位元保存於[歷史 README 副本](archive/legacy_documentation_20260922/README.pre_manuscript_acceptance.md)，[歸檔紀錄](archive/legacy_documentation_20260922/ARCHIVE_RECORD.md)記錄原 SHA-256。該副本內的相對連結依原 repo 根目錄解讀，舊成果主張不是目前已驗證的結論。
 
-Key references:
-
-- Bu et al., "Optimal ANN-SNN Conversion" (QCFS), **ICLR 2022**
-- Jiang et al., "Unified Optimization Framework", **ICML 2023**
-- Bu et al., "Inference-Scale Complexity in ANN-SNN Conversion", **CVPR 2025**
-
-## Architecture
-
-```
-IDS_MLP: Linear(d → 256) → BN → σ → Linear(256 → 256) → BN → σ → Linear(256 → 128) → BN → σ → Linear(128 → C)
-```
-
-- `d ∈ {41, 34, 78, 23}` for NSL-KDD / UNSW-NB15 / CICIDS2017 / IoT-23
-- `C ∈ {5, 10, 15, 5}` (number of classes)
-- `σ` = ReLU (Path B) or QCFS L = 4 (Path A)
-- BatchNorm fused into Linear at export → ONNX graph: `Gemm` + `Relu` only
-- Inverse-frequency class weighting for extreme imbalance
-
-## NPU Hardware Benchmark
-
-All models benchmarked on STM32N6570-DK via ST Edge AI Developer Cloud:
-
-| Model               | Dataset     | Inference  | HW | Hyb | SW | Flash    | RAM     |
-|---------------------|-------------|-----------:|---:|----:|---:|---------:|--------:|
-| ReLU FP32 (CPU)     | NSL-KDD     | 1.24 ms    | 0  | 0   | 11 | 466.4 KB | 2.17 KB |
-| **ReLU INT8 (NPU)** | **NSL-KDD** | **0.46 ms (2.7×)** | 5  | 1   | 2  | 137.7 KB | 1.25 KB |
-| ReLU FP32 (CPU)     | UNSW-NB15   | 1.23 ms    | 0  | 0   | 11 | 461.9 KB | 2.14 KB |
-| **ReLU INT8 (NPU)** | **UNSW-NB15** | **0.29 ms (4.2×)** | 4  | 0   | 0  | 120.6 KB | 0.50 KB |
-| **ReLU INT8 (NPU)** | **CICIDS2017** | **0.42 ms (2.8×)** | 4  | 0   | 0  | 120.6 KB | 0.50 KB |
-| **ReLU INT8 (NPU)** | **IoT-23**  | **0.38 ms (2.7×)** | 4  | 0   | 0  | 105.0 KB | 0.50 KB |
-| QCFS INT8           | NSL-KDD     | 0.54 ms    | 13 | 1   | 14 | 138.0 KB | 2.00 KB |
-
-Key findings:
-
-- **NPU gives 2.7-4.2× speed-up** over Cortex-M55 CPU on the same model.
-- **Estimated energy 44-69 µJ per inference** (AN5946-based), implying a 114-179× envelope relative to STM32F7 (Chehade et al., 7.86 mJ).
-- **`Floor` operator is not in the Neural-ART operator set** — QCFS falls back to CPU at every activation, costing 17.6 % latency.
-- **ReLU INT8 is the optimal NPU path** — `Gemm` + `Relu` only, no CPU fallback.
-- **Tree-based models (RF, XGBoost) cannot run on STM32N6** — `TreeEnsembleClassifier` rejected by ST Edge AI Core.
-
-## Reproduce
-
-```bash
-# Setup
-python3 -m venv snn-ids-env
-source snn-ids-env/bin/activate
-pip install -r requirements.txt
-
-# Datasets — place raw files in data/
-#   NSL-KDD     : KDDTrain+.txt, KDDTest+.txt
-#   UNSW-NB15   : parquet files
-#   CICIDS2017  : HuggingFace rdpahalavan/CICIDS2017 cleaned version
-#   IoT-23      : Stratosphere IPS captures
-
-# Multi-seed experiments (4 datasets)
-make multiseed         # NSL-KDD (20 seeds)
-make unsw              # UNSW-NB15 (20 seeds)
-make cicids            # CICIDS2017 (10 seeds)
-make iot23             # IoT-23 (10 seeds)
-
-# Ablations and baselines
-make qcfs-lsweep       # QCFS L in {2, 4, 8, 16}
-make tree-baseline     # RF + XGBoost (CPU-only sanity)
-make cnn-baseline      # TinyCNN (Conv2D 1x3, NPU-compatible)
-make layerwise         # FP32 vs INT8 layer-wise analysis
-make quant-ablation    # 24-config quantization ablation
-
-# Statistics + paper
-make stats             # Paired Wilcoxon + Holm-Bonferroni
-make paper             # Compile preprint v3 (paper/preprint_v3)
-make globecom          # Compile IEEEtran 6-page (paper/globecom)
-
-# Tests
-pytest tests/
-
-# NPU benchmark (browser; requires STMicroelectronics account)
-# Upload models/*.onnx to https://stedgeai-dc.st.com
-# Select target: STM32N6570-DK -> Benchmark
-```
-
-## Project Structure
-
-```
-.
-├── src/
-│   ├── config.py              # Centralized hyperparameters and dataset configs
-│   ├── data_loaders.py        # Dataset loaders (NSL-KDD / UNSW / CICIDS / IoT-23)
-│   ├── models.py              # IDS_MLP, TinyCNN, QCFS activation
-│   ├── metrics.py             # Per-class P/R/F1, macro F1, false-alarm rate
-│   ├── quantize_utils.py      # INT8 PTQ helpers (MinMax / Entropy / Percentile)
-│   ├── train_utils.py         # Training loops with class weighting / focal loss
-│   ├── stats_tests.py         # Wilcoxon, Holm-Bonferroni, TOST, bootstrap CI
-│   ├── train.py               # ReLU model training (Path B)
-│   ├── train_qcfs.py          # QCFS model training (Path A)
-│   ├── experiment_multiseed.py / experiment_unsw.py
-│   │                          # NSL-KDD / UNSW multi-seed (20 seeds)
-│   ├── experiment_cicids2017.py / experiment_cicids_qcfs.py
-│   ├── experiment_iot23.py    / experiment_iot23_qcfs.py
-│   ├── experiment_qcfs_lsweep.py / experiment_unsw_qcfs.py
-│   ├── experiment_baselines.py / experiment_focal.py / experiment_cnn_baseline.py
-│   ├── export_onnx.py / export_qcfs_onnx.py
-│   │                          # ONNX export with BN fusion
-│   ├── export_unsw_onnx.py / export_cicids_onnx.py / export_iot23_onnx.py / export_baselines_onnx.py
-│   ├── quantize.py / quantize_qcfs.py / quantize_ablation.py
-│   ├── layerwise_analysis.py  # FP32 vs INT8 layer-wise MSE / cosine
-│   └── tree_baseline.py       # RF + XGBoost
-├── scripts/
-│   ├── emit_paper_macros.py   # Lock paper numbers to source JSONs
-│   ├── run_globecom_stats.py  # Cross-dataset stats report
-│   ├── iot23_equivalence_test.py
-│   ├── finalize_globecom.py
-│   ├── run_cicids_pipeline.sh
-│   └── run_gate7_review.sh
-├── tests/                     # pytest unit tests for metrics, focal, QCFS, stats
-├── results/                   # Per-seed JSONs backing every paper number
-│   ├── multiseed_20.json                    # NSL-KDD 20-seed
-│   ├── unsw_multiseed_20.json               # UNSW-NB15 20-seed
-│   ├── cicids2017_multiseed_experiment.json # CICIDS2017 10-seed
-│   ├── iot23_multiseed.json                 # IoT-23 10-seed
-│   ├── qcfs_lsweep.json                     # L in {2, 4, 8, 16}
-│   ├── st_cloud_benchmarks.json             # ST Edge AI Cloud measurements
-│   ├── stats_report_globecom.json           # Cross-dataset Wilcoxon report
-│   └── ...
-├── paper/
-│   ├── preprint_v3/           # preprints.org v3 (PDF + source + supplementary)
-│   ├── globecom/              # IEEEtran 6-page (GLOBECOM 2026 submission)
-│   ├── aicas/                 # AICAS 2026 build
-│   ├── main.tex               # Original v1 preprint source
-│   └── main.pdf
-├── docs/
-│   ├── ADR-001-SNN-NPU-GoNoGo-Verification.md
-│   ├── SNN_RTOS_Telecom_Analysis.md
-│   └── novelty_search_protocol.md   # Source of Supplementary File S1
-├── configs/default.yaml
-├── CITATION.cff
-├── requirements.txt
-├── Makefile
-└── LICENSE
-```
-
-## Citation
-
-Cite both the preprint and the software entry. The preprint is the primary scholarly artifact; the software DOI provides version-locked code reproducibility.
-
-**Preprint (v3):**
-
-```bibtex
-@article{tsai2026snnids_v3,
-  title   = {Sub-Millijoule Intrusion Detection on a Commodity MCU Neural Processing Unit: A Four-Dataset Deployment Study},
-  author  = {Tsai, Hsiu-Chi},
-  journal = {Preprints.org},
-  year    = {2026},
-  month   = {April},
-  doi     = {10.20944/preprints202603.0817.v3},
-  url     = {https://doi.org/10.20944/preprints202603.0817.v3}
-}
-```
-
-**Software:**
-
-```bibtex
-@software{tsai2026snnids_software,
-  title   = {SNN-IDS: SNN-Equivalent Intrusion Detection on the STM32N6 Neural-ART NPU},
-  author  = {Tsai, Hsiu-Chi},
-  year    = {2026},
-  url     = {https://github.com/thc1006/SpikeIDS-MCU},
-  doi     = {10.5281/zenodo.18906060},
-  version = {3.0.0}
-}
-```
-
-## References
-
-- **QCFS Activation**: Bu et al., "Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks," *ICLR 2022*.
-- **Unified ANN-SNN Framework**: Jiang et al., "A Unified Optimization Framework of ANN-SNN Conversion," *ICML 2023*.
-- **Inference-Scale Complexity**: Bu et al., "Inference-Scale Complexity in ANN-SNN Conversion," *CVPR 2025*.
-- **NSL-KDD**: Tavallaee et al., *IEEE CISDA*, 2009.
-- **UNSW-NB15**: Moustafa & Slay, *MilCIS*, 2015.
-- **CICIDS2017**: Sharafaldin et al., *ICISSP*, 2018; cleaned version per Engelen et al., 2021.
-- **IoT-23**: Garcia, Parmisano & Erquiaga, Stratosphere Lab, 2020.
-- **HH-NIDS (MAX78000)**: Ngo et al., *Future Internet* 15(1):9, 2022.
-- **Akida IDS**: Zahm et al., *CSIAC*, 2024.
-- **STM32F7 IDS**: Chehade et al., *ISCC*, 2025.
-- **Neural-ART NPU**: STMicroelectronics, STM32N6 Application Note UM3225.
-- **Energy estimation**: STMicroelectronics, Application Note AN5946.
-
-## License
-
-Apache License 2.0. See [LICENSE](LICENSE).
+舊 `paper/globecom/`、舊結果及 legacy 實驗程式仍原址保留供追查，不是最新稿件或 v5 數字入口。已固定路徑的證據不能為了清理目錄而搬走；使用新首頁與 phase index 區分目前成果、歷史失敗和未驗收項目。

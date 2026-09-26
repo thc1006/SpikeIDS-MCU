@@ -1,0 +1,23 @@
+In file included from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_platform.h:274,
+                 from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_caches_interface.h:31,
+                 from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_rt_user_api.h:29,
+                 from /home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton_stai_internal.h:23,
+                 from /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/stai_nsl_qcfs_seed0.h:27,
+                 from /home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/npu_trace/npu_trace_bind.c:4:
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h: In function 'ATON_GET_STREAMSWITCH_CONNECTED_TO_UNIT_INPUT_STREAM':
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h:23629:124: error: unused parameter 'src_port_vc' [-Werror=unused-parameter]
+23629 | static inline uint32_t ATON_GET_STREAMSWITCH_CONNECTED_TO_UNIT_INPUT_STREAM(uint32_t src_unit, uint32_t src_port, uint32_t src_port_vc, uint32_t *dst_plug, uint32_t *dst_plug_vc)
+      |                                                                                                                   ~~~~~~~~~^~~~~~~~~~~
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h: In function 'ATON_GET_UNIT_CONNECTED_TO_STREAMSWITCH_INPUT_STREAM_PLUG':
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h:24006:131: error: unused parameter 'src_plug_vc' [-Werror=unused-parameter]
+24006 | static inline uint32_t ATON_GET_UNIT_CONNECTED_TO_STREAMSWITCH_INPUT_STREAM_PLUG(uint32_t src_switch, uint32_t src_plug, uint32_t src_plug_vc, uint32_t *dst_port, uint32_t *dst_port_vc)
+      |                                                                                                                          ~~~~~~~~~^~~~~~~~~~~
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h: In function 'ATON_GET_STREAMSWITCH_CONNECTED_TO_UNIT_OUTPUT_STREAM':
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h:24362:125: error: unused parameter 'src_port_vc' [-Werror=unused-parameter]
+24362 | static inline uint32_t ATON_GET_STREAMSWITCH_CONNECTED_TO_UNIT_OUTPUT_STREAM(uint32_t src_unit, uint32_t src_port, uint32_t src_port_vc, uint32_t *dst_plug, uint32_t *dst_plug_vc)
+      |                                                                                                                    ~~~~~~~~~^~~~~~~~~~~
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h: In function 'ATON_GET_UNIT_CONNECTED_TO_STREAMSWITCH_OUTPUT_STREAM_PLUG':
+/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/Devices/STM32N6xx/ATON.h:24669:132: error: unused parameter 'src_plug_vc' [-Werror=unused-parameter]
+24669 | static inline uint32_t ATON_GET_UNIT_CONNECTED_TO_STREAMSWITCH_OUTPUT_STREAM_PLUG(uint32_t src_switch, uint32_t src_plug, uint32_t src_plug_vc, uint32_t *dst_port, uint32_t *dst_port_vc)
+      |                                                                                                                           ~~~~~~~~~^~~~~~~~~~~
+cc1: all warnings being treated as errors

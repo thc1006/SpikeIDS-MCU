@@ -12,6 +12,7 @@ import contracts as c
 import data_loaders as dl
 import models
 import experiment_all as runner
+import tree_baseline as trees
 import paper_contract as paper
 from export_verified import compare_logits
 from deployment_gate import cycles_to_microseconds
@@ -56,7 +57,7 @@ def test_missing_macro_input_fails(tmp_path):
 
 
 def test_small_p_never_printed_as_zero():
-    assert paper.fmt_p(.0000007)=='<0.001'
+    assert paper.fmt_p(.0000007)==r'7\mathbin{\times}10^{-7}'
     assert paper.fmt_p(None)==r'\text{undefined}'
     with pytest.raises(c.ContractError):paper.fmt_p(float('nan'))
 
@@ -117,6 +118,20 @@ def test_cpu_optimizer_independent_repeat_and_resume(prepared,tmp_path,optimizer
 def test_no_assert_statement_is_used_as_a_runtime_contract():
     for p in c.PACKAGE.glob('*.py'):
         assert not any(isinstance(node,ast.Assert) for node in ast.walk(ast.parse(p.read_text()))),p.name
+
+
+@pytest.mark.parametrize('kind',trees.KINDS)
+def test_tree_baseline_independent_fit_semantics(kind):
+    rng=np.random.default_rng(20260920)
+    x=rng.normal(size=(90,6)).astype(np.float32)
+    y=np.tile(np.arange(3,dtype=np.int64),30)
+    a=trees.make_estimator(kind,7,2,3);b=trees.make_estimator(kind,7,2,3)
+    kwargs={'sample_weight':trees._sample_weights(y,3)} if kind=='xgboost' else {}
+    a.fit(x,y,**kwargs);b.fit(x,y,**kwargs)
+    assert trees.model_semantic_digest(kind,a)==trees.model_semantic_digest(kind,b)
+    if kind=='random_forest':a.n_jobs=b.n_jobs=1
+    assert np.array_equal(a.predict(x),b.predict(x))
+    assert np.array_equal(a.predict_proba(x),b.predict_proba(x))
 
 
 def test_parquet_raw_preparation_when_dependency_available(raw,tmp_path):

@@ -1,0 +1,8 @@
+{
+  "argv": [
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc",
+    "--version"
+  ],
+  "returncode": 0,
+  "timeout": false
+}

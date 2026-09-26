@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/usr/bin/cmake",
+    "--build",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_01/build",
+    "-j2"
+  ],
+  "returncode": 1,
+  "timeout": false
+}

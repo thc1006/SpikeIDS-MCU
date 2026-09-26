@@ -1,45 +1,32 @@
 cff-version: 1.2.0
-title: "SNN-IDS: SNN-Equivalent Intrusion Detection on the STM32N6 Neural-ART NPU"
-message: "If you use this software, please cite both the software entry and the preprint listed under preferred-citation."
+title: "SpikeIDS v5: Leakage-Safe and Reproducible Four-Dataset Intrusion Detection"
+message: >-
+  This working tree is an unreleased version-5 revision. Cite the exact
+  repository revision or the plan-addressed artifact bundle used in your work;
+  do not cite the historical Zenodo v1 record as if it contained v5.
 type: software
 authors:
   - given-names: "Hsiu-Chi"
     family-names: "Tsai"
     affiliation: "National Yang Ming Chiao Tung University"
     email: "hctsai1006@cs.nctu.edu.tw"
-version: 3.0.0
-doi: 10.5281/zenodo.18906060
-date-released: 2026-04-15
+version: "5.0.0-dev"
 url: "https://github.com/thc1006/SpikeIDS-MCU"
 repository-code: "https://github.com/thc1006/SpikeIDS-MCU"
 license: Apache-2.0
 keywords:
   - intrusion-detection
-  - spiking-neural-network
-  - neural-processing-unit
-  - int8-quantization
+  - reproducible-machine-learning
+  - data-leakage
+  - quantized-neural-network
+  - onnx
   - edge-ai
-  - stm32n6
 abstract: >-
-  Deployment of an INT8 quantized ANN (approximately equivalent to a
-  T=1 SNN) for network intrusion detection on the STM32N6570-DK,
-  evaluated across four datasets (NSL-KDD, UNSW-NB15, CICIDS2017,
-  IoT-23) with multi-seed runs (5-20 seeds), paired Wilcoxon
-  signed-rank tests and Holm-Bonferroni correction. INT8 NPU
-  inference runs in 0.29-0.46 ms (2.7-4.2x faster than Cortex-M55
-  CPU) with estimated energy of 44-69 microjoules per inference and
-  Flash of 105-138 KB.
-preferred-citation:
-  type: article
-  title: "Sub-Millijoule Intrusion Detection on a Commodity MCU Neural Processing Unit: A Four-Dataset Deployment Study"
-  authors:
-    - given-names: "Hsiu-Chi"
-      family-names: "Tsai"
-      affiliation: "National Yang Ming Chiao Tung University"
-      email: "hctsai1006@cs.nctu.edu.tw"
-  year: 2026
-  month: 4
-  doi: 10.20944/preprints202603.0817.v3
-  url: "https://www.preprints.org/manuscript/202603.0817/v3"
-  publisher:
-    name: "Preprints.org (MDPI)"
+  A fail-closed experimental pipeline for ReLU MLP, QCFS quantized-activation
+  MLP, TinyCNN, Random Forest, and XGBoost intrusion-detection experiments on
+  NSL-KDD, UNSW-NB15, CICIDS2017, and IoT-23. Version 5 binds audited source
+  data, fit-only preprocessing, validation-based checkpoint selection,
+  independent deterministic repetitions, paired statistical families, and
+  sampled ONNX/QDQ software gates. It does not claim unseen-device or
+  capture/time generalization, full-NPU placement, physical-board latency, or
+  energy without separate evidence.

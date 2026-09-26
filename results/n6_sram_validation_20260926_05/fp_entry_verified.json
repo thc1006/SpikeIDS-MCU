@@ -1,0 +1,12 @@
+{
+  "already_rne": true,
+  "floating_environment": {
+    "arithmetic_policy": "round-nearest-even; FZ/DN/AHP/FZ16 off",
+    "cpacr": 15728640,
+    "fpccr": 3221225476,
+    "fpdscr": 262144,
+    "fpscr": 2147745808
+  },
+  "research_measurement_accepted": false,
+  "write_completed_and_verified": false
+}

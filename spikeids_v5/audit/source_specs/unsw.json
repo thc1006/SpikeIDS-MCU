@@ -1,0 +1,62 @@
+{
+  "dataset": "unsw",
+  "source_contract_version": 1,
+  "provenance_note": "Pinned full 45-column UNSW-NB15 CSV splits. The mirror filenames are reversed relative to canonical semantic roles; roles below were assigned from row count, id range, schema, and published class composition, not filename or model accuracy. The older local 36-column parquet derivatives are excluded.",
+  "origin": {
+    "publisher": "UNSW Canberra at ADFA",
+    "upstream_url": "https://research.unsw.edu.au/projects/unsw-nb15-dataset",
+    "mirror_repository": "Mireu-Lab/UNSW-NB15 on Hugging Face Datasets",
+    "mirror_revision": "3eb02c4a0a29866b7abcb5ef77c45cf4fcc8f6b0",
+    "mirror_url": "https://huggingface.co/datasets/Mireu-Lab/UNSW-NB15"
+  },
+  "files": [
+    {
+      "path": "UNSW_NB15_training-set.csv",
+      "role": "train",
+      "bytes": 32293018,
+      "sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+      "expected_rows": 175341,
+      "expected_columns": 45,
+      "expected_raw_label_counts": {
+        "Analysis": 2000,
+        "Backdoor": 1746,
+        "DoS": 12264,
+        "Exploits": 33393,
+        "Fuzzers": 18184,
+        "Generic": 40000,
+        "Normal": 56000,
+        "Reconnaissance": 10491,
+        "Shellcode": 1133,
+        "Worms": 130
+      },
+      "origin_path": "test.csv",
+      "role_note": "Mirror test.csv content is the canonical 175341-row training split."
+    },
+    {
+      "path": "UNSW_NB15_testing-set.csv",
+      "role": "test",
+      "bytes": 15380800,
+      "sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+      "expected_rows": 82332,
+      "expected_columns": 45,
+      "expected_raw_label_counts": {
+        "Analysis": 677,
+        "Backdoor": 583,
+        "DoS": 4089,
+        "Exploits": 11132,
+        "Fuzzers": 6062,
+        "Generic": 18871,
+        "Normal": 37000,
+        "Reconnaissance": 3496,
+        "Shellcode": 378,
+        "Worms": 44
+      },
+      "origin_path": "train.csv",
+      "role_note": "Mirror train.csv content is the canonical 82332-row testing split."
+    }
+  ],
+  "excluded_local_derivatives": [
+    "UNSW_NB15_training-set.parquet",
+    "UNSW_NB15_testing-set.parquet"
+  ]
+}

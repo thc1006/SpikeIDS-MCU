@@ -1,0 +1,26 @@
+{
+  "all_17_calls_zero": true,
+  "artifact_count_before_result": 62,
+  "board_ready": false,
+  "checked_pin_count": 96,
+  "exact_output_inventory": true,
+  "finite_final_stat_bookend": true,
+  "hardware_executed": false,
+  "kind": "offline_platform_stage_postexit_pin_check",
+  "model_executed": false,
+  "passed": true,
+  "result_content_sha256": "13a4e753c8d4c40b5d6f888a09ccc998ea2460fa942e56f10c19cbf3289edcfa",
+  "result_file_pin": {
+    "ctime_ns": 1790306531588961036,
+    "device": 66306,
+    "inode": 31903466,
+    "links": 1,
+    "mode": 33152,
+    "mtime_ns": 1790306531588961036,
+    "sha256": "f61956f96cc3a13f690ec75cd17355048cae9eb3e80b4444ed5f84b31676bf73",
+    "size": 48172
+  },
+  "schema": 1,
+  "source_count": 33,
+  "total_output_files": 63
+}

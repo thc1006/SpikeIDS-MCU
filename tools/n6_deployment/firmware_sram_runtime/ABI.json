@@ -1,0 +1,13 @@
+{
+  "kind": "S6-runtime-initialized-variant",
+  "mailbox_address": "0x340f8000",
+  "mailbox_bytes": 512,
+  "deployment_tag": "0x534d3032",
+  "runtime_receipt_offset": 292,
+  "runtime_receipt_words": ["0x52544932", "stai_runtime_init return code", "call count 1"],
+  "before_runtime_receipt": [0, 0, 0],
+  "runtime_stage": 6,
+  "remaining_offsets": "unchanged from frozen firmware_sram/mailbox.h",
+  "energy_measured": false,
+  "board_validated": false
+}
