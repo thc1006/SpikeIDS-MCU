@@ -6,3 +6,8 @@ amendment1_registered_utc 2026-09-29T14:19:29Z (before any PPK2-powered run)
 amendment2_registered_utc 2026-09-29T16:04:35Z (after diag_07, before any formal session)
 e2da69e62d38bba6c267be8b00da18d07168fb7005b22dbc099f5ddc628cc616  PROTOCOL.md
 amendment3_registered_utc 2026-09-29T16:25:37Z (after independent review, before any formal session)
+external_timestamp_utc 2026-09-29T16:26:37Z protocol amendment3 e2da69e6 + code pushed to github.com/thc1006/SpikeIDS-MCU branch wip/power-ra4e1-20260930 commit e787bc6ee9b63e792ed1f3e69df2aaebb28fb624
+4429cef22c274124d9e352f7e80c6e3e5bb4732970120d592e09ba5dd132b3cb  PROTOCOL.md
+observation1_logged_utc 2026-09-29T16:57:26Z (after formal sessions; descriptive only)
+0474bd103976654db7e1c88059d20b57831952d82fd0df3cb2cd2b1dd0e992ee  PROTOCOL.md
+erratum1_observation2_logged_utc 2026-09-29T17:02:27Z (post-data; no definition or number changed)

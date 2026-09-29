@@ -1,0 +1,45 @@
+{
+ "sessions": 3,
+ "eligible": 3,
+ "gross_J_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.003478541443936512,
+  "sd": 1.1677952201139989e-06,
+  "ci95": [
+   0.003475640479790625,
+   0.003481442408082399
+  ],
+  "cv": 0.00033571404536507593
+ },
+ "incremental_J_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.0004783488810852514,
+  "sd": 2.4344791395526446e-07,
+  "ci95": [
+   0.0004777441229413482,
+   0.0004789536392291546
+  ],
+  "cv": 0.0005089338003737844
+ },
+ "time_s_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.028851456018518518,
+  "sd": 1.256948536928487e-05,
+  "ci95": [
+   0.028820231685895384,
+   0.02888268035114165
+  ],
+  "cv": 0.00043566208101307105
+ },
+ "board_power_W_between_sessions": {
+  "n": 3,
+  "mean": 0.12056728732437956,
+  "sd": 1.7417837992945e-05,
+  "ci95": [
+   0.12052401901616412,
+   0.120610555632595
+  ],
+  "cv": 0.0001444657035874356
+ },
+ "scope": "FPB-RA4E1 whole board at its main 5 V net (J2-5), PPK2 Source Meter 5.000 V setpoint (VOUT unmeasured), J9 unplugged"
+}

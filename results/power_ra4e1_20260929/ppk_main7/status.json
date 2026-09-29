@@ -1,24 +1,24 @@
 {
- "utc": "2026-09-29T16:26:17.242092+00:00",
- "samples": 188102144,
- "seconds": 1881.02144,
+ "utc": "2026-09-29T17:02:42.944200+00:00",
+ "samples": 406673344,
+ "seconds": 4066.73344,
  "output_on": false,
  "guard_tripped": false,
- "mean_uA_last_1s": 0.03377558555648799,
+ "mean_uA_last_1s": 0.038091475228611726,
  "max_uA_last_1s": 0.3658850792518941,
  "powered_seen": true,
  "counter_discontinuities": 0,
  "reader_gaps": 0,
  "invalid_range_frames": 0,
- "adc_upper_rail_frames": 0,
+ "adc_upper_rail_frames": 13,
  "range_histogram": [
-  144505470,
-  1,
-  149,
-  43596462,
-  62
+  225619314,
+  6,
+  882,
+  181052753,
+  389
  ],
  "recording": null,
- "segments_done": 1,
+ "segments_done": 6,
  "usb_guard_present_while_on": 0
 }

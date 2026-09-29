@@ -261,3 +261,29 @@ Dose schedules are auxiliary linearity checks. They are reported, but do not aff
 | analyze_schedule.py | 782ed8ba, unchanged |
 
 160 offline tests pass.
+
+## Observation 1 (2026-09-30 00:57 +08, after the formal sessions; descriptive, no change to any definition)
+
+The board was powered from the PPK2 via J2-5 with J9 unplugged, exactly as in the formal sessions, for two non-pooled captures: `led_check_01` and `led_check_02` in `ppk_main7`.
+- **LED.** The operator observed the yellow DEBUG/POWER LED **blinking**. Per UM §5.2.1, blinking means the J-Link OB is powered but not connected to a host.
+- **Scope consequence.** The J-Link OB section is therefore powered from the main rails. It is inside the registered board-level scope and inside the headline.
+- **Current signature.** In `led_check_02`, during the parity phase (constant CPU load), the current shows a ~9.95 Hz square-wave modulation (third harmonic at 29.9 Hz) of about 0.8 mA peak-to-peak, alternating between 23.7 and 24.5 mA in 10 ms bins.
+- **Averaging.** In 100 ms bins it averages out to 24.09–24.16 mA. The shortest analyzed window is 0.988 s, which spans more than 9 modulation periods.
+- **Edge-phase effect.** The residual effect is bounded at ≈0.06 % of the window mean, consistent with the observed between-window CV of about 0.03 %.
+
+## Erratum 1 and Observation 2 (2026-09-30 01:15 +08, after the formal sessions; no change to any definition or number)
+
+**Erratum.** The heading of Amendment 3 says "00:35 +08". It was in fact registered at **00:25:37 +08** (16:25:37Z, `PROTOCOL.sha256`), before the first formal output-ON at 16:26:38.6Z.
+- The external timestamp is GitHub's server-side branch creation for `wip/power-ra4e1-20260930`, at 16:26:19Z.
+- The local line in `PROTOCOL.sha256` (16:26:37Z) was written after the push.
+
+**Observation 2 (independent post-data review, 01:10 +08).**
+- **Reproduction.** An independent decoder reproduced all three sessions: per-window agreement ≤ 4.4e-16 relative, and telemetry decoded independently.
+- **Fresh boots.** The first wiring pulse came 33.55 / 33.56 / 33.55 s after ON in the three sessions.
+- **Latched logic byte.** It was 0x01 before ON in all three sessions and cleared 10–11 ms after ON. The Amendment 3 mask removed exactly one stale run per session.
+- **Session-2 dose intercept (+0.121 mJ).** This is 0.073 % of the smallest window. It is explained by a −0.1 % drift in idle-spin power, because the dose schedules always run last. Per-window idle-drift correction gives a CI that contains 0.
+  - Descriptive only: no linearity criterion was registered for RA. Applying the N6 2 % rule is post hoc.
+- **Clock.** Pure 1/f clock variation explains about 82 % of the between-session variance.
+  - Clock-normalized to 100 MHz nominal, the sessions give 3.4831 / 3.4823 / 3.4821 mJ.
+  - At exactly 100 MHz the headline would be 0 to +0.12 % higher.
+- **Inrush.** Peaks were 0.34 / 0.92 / 1.02 A for about 0.65 ms, outside all analyzed slices. Session 3 briefly exceeded the PPK2 1 A rating.
