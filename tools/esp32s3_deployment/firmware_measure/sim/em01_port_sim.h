@@ -14,6 +14,7 @@ void sim_snapshot(volatile rm_result_t *r);
 #define __DSB() sim_dsb()
 #define __DMB() sim_dsb()
 #define __NOP() sim_nop()
+#define EM_WAIT_ATTR __attribute__((noinline))
 static inline uint32_t em_cycles(void) { return sim_cycles(); }
 static inline void em_marker_write(int high) { sim_marker(high); }
 static inline void em_marker_setup(void) { sim_marker(0); }

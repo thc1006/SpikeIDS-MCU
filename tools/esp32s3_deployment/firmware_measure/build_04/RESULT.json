@@ -1,0 +1,70 @@
+{
+ "schema": "em01-build-v1",
+ "firmware": "EM01 (RM01 logic, ESP32-S3 port)",
+ "board": "ESP32-S3 N16R8 (module)",
+ "marker": "GPIO5",
+ "time_base": "Xtensa CCOUNT at CPU clock (240 MHz)",
+ "idf": "ESP-IDF v5.4.4",
+ "pins": {
+  "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c": "bba723cc7b031815c2aaf848f6893eb87dd91cb05f5580f93df611be489bb1e9",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c": "e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.h": "e8abd58b44e15806eff54df5245757c23aa491bd044f579dd59d0efc7c5be406"
+ },
+ "derived_from": {
+  "rm01.c": "daaf2bd6433fb3090566f6c97850f0cc3019867b811808df6f3b8aab9b9b39e7",
+  "derive_em01.py": "d47dfb062d7a9b2e4574c62c62ed09da1963109625904eca152a74ee7661c6ea"
+ },
+ "sources_sha256": {
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/em01.c": "c14aace1c5399672990322b77fadcb1cce6659d72986ecedafb8797607272584",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/em01.h": "2053fb50268182f57b79dfdbcdcfd2d15550df59c1faeb29a06e8333187120e6",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/em01_port.h": "433e03ee34e6373b8ffee62edd158536e186885e08ca758fd56bb55dd8d401b6",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/main/app_main.c": "6e3621160dd7c91a115add24709716111664a6c9616a56f2fe284a19e0a1b68a",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/main/CMakeLists.txt": "4ada989a061d3ba5582d2f25f27fd0a6661d98f073ff8e9931d3f0d966f4504e",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/CMakeLists.txt": "84787fe29ea8a5281659707f07d9645b9b8967f79168384cf348e3ded10c4fac",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/sdkconfig.defaults": "f047afcc5a98016431532a7e9acadf58ccf4c06b8787ccd47cb11a3af0d05329",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/build.py": "7bdaed5303b16516a0b1cd3bea2d22902711c002a12fe826ef942b914f37b4d3"
+ },
+ "vectors": {
+  "inputs_sha256": "0c1b82b878c0c4c283c4739a6c0bbd7a7797881aa2d4baf78aa676beebfb4185",
+  "expected_sha256": "c71eb32146b49a9140160000a5841152ec38db8b7b38f97fefde0fa08a7bb553",
+  "row_ids_first": [
+   20,
+   348,
+   444,
+   607
+  ]
+ },
+ "sdkconfig_sha256": "60858ead72febf2d7c8c37035dbc551cf949247943a58707ecf0ca40b298e77a",
+ "sha256": {
+  "em01.bin": "1dea01cee5deb540d70418b54faa09b07e6c657ebfa184c0853dc8f60db299f1",
+  "em01.elf": "5a8c2233f9c7877c5692fc53979c3c3cae847662cc72e0e6c933aeb33fd66376",
+  "bootloader/bootloader.bin": "d5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513",
+  "partition_table/partition-table.bin": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820",
+  "flasher_args.json": "8e675b84d8586366d3d1affdcf944bf1ec3e3ca3ba76a56a271f0fd1f6b8943c"
+ },
+ "app_bytes": 452928,
+ "idf_commit": "7da14d493472664437e01b97b57c91a2e9bacdae",
+ "toolchain": "xtensa-esp-elf-gcc (crosstool-NG esp-14.2.0_20260121) 14.2.0",
+ "usb_serial_jtag": "disabled at boot by IDF clk.c (component not built); see review B1",
+ "symbols": {
+  "g_rm": [
+   "0x3fc93b20",
+   8448
+  ],
+  "hal_entry": [
+   "0x42006314",
+   2857
+  ],
+  "rm_expected": [
+   "0x3c030ecc",
+   20480
+  ],
+  "rm_inputs": [
+   "0x3c035ecc",
+   167936
+  ]
+ },
+ "hardware_accessed": false
+}

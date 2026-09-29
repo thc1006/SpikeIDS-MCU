@@ -3,8 +3,9 @@
  *
  * Same model path (portable_qdq.c + model.c, strict FP32 flags), same autonomous
  * sequence, window kinds, checksums and telemetry encoding as RM01, so the same
- * decoder/analysis applies. Platform differences only: marker = GPIO4 (no
- * strapping, LED, USB, flash or octal-PSRAM function on ESP32-S3 N16R8 boards),
+ * decoder/analysis applies. Platform differences only: marker = EM_MARKER_GPIO
+ * (em01.h; GPIO5 since ESP Amendment 1), one non-inlined IRAM busy-wait for every
+ * wait (EM_WAIT_ATTR, ESP Amendment 2),
  * time base = Xtensa CCOUNT at the CPU clock (240 MHz from the 40 MHz crystal),
  * snapshot words 0xD0.. = APB/XTAL/CPU clock, reset reason, tick rate, core,
  * flash size, IDF version. Entry hal_entry() is called by app_main.c. */
@@ -43,7 +44,7 @@ static void marker_init(void)
     marker(0);
 }
 
-static void wait_cycles(uint32_t cycles)
+static void EM_WAIT_ATTR wait_cycles(uint32_t cycles)
 {
     const uint32_t start = cycles_now();
     while ((uint32_t)(cycles_now() - start) < cycles) __NOP();

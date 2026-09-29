@@ -1,0 +1,36 @@
+{
+ "diag": {
+  "L8a IDLE after OVERHEAD (0x42006aa1)": [
+   65.128,
+   0.218,
+   45
+  ],
+  "L8b IDLE after BENCH (0x42006b81)": [
+   65.684,
+   0.21,
+   50
+  ],
+  "L9 final IDLE after OVERHEAD (0x42006cba)": [
+   67.909,
+   0.246,
+   5
+  ]
+ },
+ "attrib": {
+  "L8a IDLE after OVERHEAD (0x42006aa1)": [
+   64.905,
+   0.269,
+   45
+  ],
+  "L8b IDLE after BENCH (0x42006b81)": [
+   65.495,
+   0.225,
+   50
+  ],
+  "L9 final IDLE after OVERHEAD (0x42006cba)": [
+   67.613,
+   0.361,
+   5
+  ]
+ }
+}

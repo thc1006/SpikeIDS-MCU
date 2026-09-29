@@ -10,6 +10,7 @@
 #include "em01_port_sim.h"
 #else
 #include "driver/gpio.h"
+#include "esp_attr.h"
 #include "esp_chip_info.h"
 #include "esp_cpu.h"
 #include "esp_flash.h"
@@ -22,6 +23,10 @@
 #include "soc/soc.h"
 #include "soc/system_reg.h"
 
+/* ESP Amendment 2 (review B1): one busy-wait for every wait -- not inlined, in IRAM
+ * (no flash-cache dependence), 16-byte aligned. Inlined copies at different
+ * addresses and cache-line alignments drew currents differing by up to ~3 mA. */
+#define EM_WAIT_ATTR __attribute__((noinline, aligned(16))) IRAM_ATTR
 #define __DSB() __asm__ __volatile__("memw" ::: "memory")
 #define __DMB() __asm__ __volatile__("memw" ::: "memory")
 #define __NOP() __asm__ __volatile__("nop")

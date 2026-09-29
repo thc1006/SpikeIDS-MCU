@@ -97,8 +97,12 @@ class Em01Provenance(unittest.TestCase):
 
     def test_measurement_functions_identical(self):
         rm, em = derive_em01.RM01.read_text(), (HERE / 'em01.c').read_text()
+        # The one ESP-specific change inside a measurement function is the attribute that
+        # makes wait_cycles a single non-inlined IRAM copy (ESP Amendment 2); its body is
+        # identical to RM01.
+        self.assertEqual(em.count('static void EM_WAIT_ATTR wait_cycles(uint32_t cycles)\n'), 1)
         for name in MEASUREMENT_FUNCTIONS:
-            self.assertEqual(function_text(em, name), function_text(rm, name), name)
+            self.assertEqual(function_text(em, name).replace(' EM_WAIT_ATTR', '', 1), function_text(rm, name), name)
 
     def test_header_layout_matches_rm01(self):
         rm_h = (REPO / 'tools/ra4e1_deployment/firmware_measure/rm01.h').read_text()

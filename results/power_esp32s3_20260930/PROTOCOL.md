@@ -205,3 +205,60 @@ As in the RA4E1 protocol with Amendment 3:
 - If diag_esp_02 fails the sham gate, no formal session is run on that pin.
 
 **Reporting:** diag_esp_01 and attrib_nod0_01 are reported as a documented finding (a marker-pin load on this board) and are never pooled.
+
+## Amendment 2 (2026-09-30 06:19 +08, after an independent max-rigor review of Amendment 1, before diag_esp_02 and any formal session)
+
+**Withdrawn: the GPIO4 attribution of Amendment 1.** The review is in `analysis/review_amendment1/REVIEW.md` and was confirmed here by disassembly and one spot check.
+- **Two different wait loops.** `wait_cycles` was inlined 19 times in build_02 and build_03. The sham's two halves therefore ran different machine code:
+  - HIGH half: loop at 0x420061d4, inside one 32-byte cache line;
+  - LOW half: loop at 0x420061fd, which crosses a line boundary.
+- **Code placement changes the current.** Inlined waits at different addresses drew different currents. Per the review, in diag_esp_01:
+  - two adjacent marker-LOW waits read 64.49 and 67.81 mA;
+  - IDLE read 65.13 mA against 67.91 mA for final-IDLE.
+- **Moving the marker did not help.** attrib_nod0_01 (D0 detached) reproduces the effect. wiringcheck_esp_01 (GPIO5, build_03) shows the same sham offset: −0.526 and −0.648 mA in its two sham windows, recomputed here.
+- **Conclusion.** The diag_esp_01 sham offset is a code-placement effect of the busy-wait. It is not a GPIO4 load and not the PPK2 D0 input.
+  - The "marker-pin load on this board" finding of Amendment 1 is withdrawn; no load on GPIO4 is known.
+  - The same inlining exists in RM01. The RA4E1 sham ΔI (−0.137 mA, passed) and its attribution to the D0 input network are to be re-examined and reported with the RA4E1 results. The registered RA4E1 eligibility and headline are unaffected.
+
+**Change: build_04.** Every wait runs **one** copy of the busy-wait.
+- **Source.** `derive_em01.py` adds exactly one substitution: `static void EM_WAIT_ATTR wait_cycles(uint32_t cycles)`. `em01_port.h` defines `EM_WAIT_ATTR` as `__attribute__((noinline, aligned(16))) IRAM_ATTR`. The body is identical to RM01, and `test_em01.py` checks both facts.
+- **Binaries.** `em01.bin` 1dea01ce…, `em01.elf` 5a8c2233…. Bootloader and partition table are unchanged. A rebuild in a second directory was byte-identical.
+- **Disassembly.**
+  - `wait_cycles` sits at 0x40377c70 (IRAM, 16-byte aligned), with the CCOUNT read inlined and no flash access.
+  - The 19 former inline sites load its address and call it: `pulses` 2, `tel_word` 2, `hal_entry` 15.
+  - No other CCOUNT polling loop remains in the application (only FreeRTOS `xPortEnterCriticalTimeout`).
+- **Objects.** Only `em01.c.obj` differs from build_03. `portable_qdq.c.obj`, `model.c.obj`, `rm_vectors.c.obj` and `app_main.c.obj` are byte-identical, and `infer_row` and `window_begin` are instruction-identical.
+- **Marker.** The marker stays on GPIO5 (wired and validated). Nothing now favours GPIO4.
+- **Consequences.** IDLE, sham and gap levels change, because the loop now runs from IRAM. The BENCH code is unchanged, but its current and timing can shift slightly with the flash layout, so results are conditional on build_04.
+
+**Procedure changes (review M2, M3; `run_sessions_esp.py`):**
+- **Preflight.** It requires:
+  - the registered guard (300 mA) and a registered build;
+  - a live recorder (status < 5 s old);
+  - a **fresh recorder whose logic port read unpowered (0xFF) in every bin since it started** (≥ 3 s). This is the instrumented check that the board has no other supply.
+- **Between sessions.** The latched logic byte must stay constant while the output is OFF (from OFF + 1 s to the next ON); otherwise the session is ineligible. Verified: the byte stayed constant for 980 s (ppk_esp2) and 2468 s (ppk_esp8) after OFF, including while leads were moved.
+- **Dead recorder.** An unreadable or stale status, or a failed control command, ends the run with an abort record as an instrument fault, instead of waiting or crashing.
+- **Wiring phase.** A PPK2 counter discontinuity in the wiring phase makes the session ineligible.
+- **Instrument-fault replacement rule (pre-registered).**
+  - A formal session that ends with an instrument fault is reported, never pooled, and replaced by one additional formal session, with at most two replacements. Instrument faults are: recorder exit, PPK2 disconnect or stall, or output OFF without a guard.
+  - Sessions failing a registered gate are not replaced.
+  - The headline aggregate uses all eligible formal sessions.
+- **`analysis/live_sham.py`** (non-registered early check): width checks on the 5 wiring and 20 sham runs. It aborts a diagnostic only when the whole early 95 % CI lies beyond 0.5 mA.
+
+**Corrections to Amendment 1** (review minors):
+- diag_esp_01: board current 63–71.5 mA (OVERHEAD windows ~71 mA); non-R4 time 0.14 s; BENCH−IDLE −1.63 mA.
+- With the registered estimator, the attrib_nod0_01 sham ΔI is −0.604 mA (95 % CI −0.674 to −0.533). The D0-attachment share is −0.053 mA (95 % CI −0.105 to −0.0005).
+- The quadrature-shifted null tests drift only.
+- The current step overshoots ~40 % and settles in 5–8 ms.
+- The offset between captures is phase-dependent (0.24–0.47 mA).
+- The self-test's ~0.06 µA is within the PPK2 zero offset and is not a measured VCC current.
+- The Amendment 1 heading time "05:40" is approximate. Its registration time is 05:37:21 +08, external timestamp 05:38:48 +08 (`PROTOCOL.sha256`).
+
+**Next:**
+1. Flash build_04 (VOUT detached, CH343P port), keeping the Amendment 1 wiring (jumpers).
+2. Start a fresh recorder.
+3. Run diag_esp_02 with `run_sessions_esp.py --build build_04 --sessions 1` (not pooled).
+4. Full analysis and an independent review.
+5. Three formal sessions with `--build build_04 --flash-record flash_em01_build04`.
+
+If diag_esp_02 fails the sham gate, no formal session is run.

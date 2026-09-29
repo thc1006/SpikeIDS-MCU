@@ -28,7 +28,11 @@ I = conv.ua(w)[0] / 1000.0
 wid = [round((b - a) / 1e5, 4) for a, b in runs[:25]]
 print(f'captured {len(w) / 1e5:.1f} s; D0 runs {len(runs)}; wiring widths {wid[:5]}; sham widths {sorted(set(wid[5:25]))}')
 if len(runs) < 26:
-    print('not enough runs yet'); sys.exit(1)
+    print('VERDICT: WAIT (not enough runs yet)'); sys.exit(1)
+wid_s = [(b - a) / 1e5 for a, b in runs[:25]]
+if not (all(0.09 <= x <= 0.11 for x in wid_s[:5]) and all(0.98 <= x <= 1.02 for x in wid_s[5:25])):
+    print('VERDICT: NO-DECISION (D0 run widths are not 5 wiring + 20 sham pulses; leave it to the pipeline)')
+    sys.exit(3)
 G = 5000
 sham = runs[5:25]
 dI = []
@@ -39,7 +43,13 @@ for j, (a, b) in enumerate(sham):
     dI.append(I[a + G: b - G].mean() - lo)
 dI = np.array(dI)
 ci = 1.96 * dI.std(ddof=1) / np.sqrt(len(dI))
-print(f'EARLY SHAM dI = {dI.mean():+.4f} mA (95% CI {dI.mean() - ci:+.4f} .. {dI.mean() + ci:+.4f}, n={len(dI)}); '
-      f'gate |dI| < 0.5 mA -> {"PASS" if abs(dI.mean()) < 0.5 else "FAIL"} (early estimate)')
+m = float(dI.mean())
+if not np.isfinite(m) or not np.isfinite(ci):
+    print('VERDICT: NO-DECISION (non-finite estimate)'); sys.exit(3)
+# Early abort only when the whole early CI lies beyond the gate: the registered decision
+# is the pipeline's; this estimator reads ~0.03 mA more negative (review minor).
+abort = abs(m) - ci > 0.5
+print(f'EARLY SHAM dI = {m:+.4f} mA (95% CI {m - ci:+.4f} .. {m + ci:+.4f}, n={len(dI)}); '
+      f'VERDICT: {"ABORT (clearly beyond the 0.5 mA gate)" if abort else "CONTINUE (pipeline decides)"}')
 print('per-pulse:', np.round(dI, 3).tolist())
 print(f'current: {I[on["sample_index"] - st["sample_index"] + 150_000:].mean():.3f} mA mean after ON+1.5 s')

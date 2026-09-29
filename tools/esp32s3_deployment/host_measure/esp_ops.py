@@ -33,8 +33,14 @@ BUILDS = {
                  'em01.elf': '2a244cc3cad10181e69336a6753a070b4f8f2750fb01e180f4785d088b774da6',
                  'bootloader/bootloader.bin': 'd5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513',
                  'partition_table/partition-table.bin': '7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820'},
+    # build_04 = build_03 with ONE non-inlined IRAM busy-wait (ESP Amendment 2, review B1);
+    # only em01.c.obj differs; portable_qdq/model/vectors objects byte-identical.
+    'build_04': {'em01.bin': '1dea01cee5deb540d70418b54faa09b07e6c657ebfa184c0853dc8f60db299f1',
+                 'em01.elf': '5a8c2233f9c7877c5692fc53979c3c3cae847662cc72e0e6c933aeb33fd66376',
+                 'bootloader/bootloader.bin': 'd5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513',
+                 'partition_table/partition-table.bin': '7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820'},
 }
-DEFAULT_BUILD = 'build_03'
+DEFAULT_BUILD = 'build_04'
 FLASH_BYTES = 16 * 1024 * 1024
 
 

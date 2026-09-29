@@ -1,0 +1,104 @@
+{
+ "loop_alignment": {
+  "L2 parity->wiring gap": [
+   "0x42006766",
+   "no-32B-cross"
+  ],
+  "L3/L5 pulses LOW span": [
+   "0x420061fd",
+   "CROSSES"
+  ],
+  "L4 wiring->sham gap": [
+   "0x4200679e",
+   "CROSSES"
+  ],
+  "L6 sham->cal gap": [
+   "0x420067d6",
+   "CROSSES"
+  ],
+  "L7 cal/idle->schedule gap": [
+   "0x42006a32",
+   "no-32B-cross"
+  ],
+  "L8 IDLE windows": [
+   "0x42006aa1/0x42006b81",
+   "no-32B-cross"
+  ],
+  "L9 final IDLE": [
+   "0x42006cba",
+   "CROSSES"
+  ],
+  "L10 pre-telemetry gap": [
+   "0x42006d3c",
+   "CROSSES"
+  ],
+  "L11 post-sync LOW 100ms": [
+   "0x42006dc0",
+   "no-32B-cross"
+  ],
+  "H1/H2 pulses HIGH span": [
+   "0x420061d4",
+   "no-32B-cross"
+  ],
+  "H4 telemetry sync HIGH 300ms": [
+   "0x42006d7e",
+   "CROSSES"
+  ]
+ },
+ "diag_GPIO4_D0on": {
+  "L4 wiring->sham gap": 65.81615835382887,
+  "L3/L5 pulses LOW span": 65.42409271791585,
+  "H1/H2 pulses HIGH span": 64.75372727991692,
+  "wiring HIGH (0.1 s, 10 ms guard)": 64.89062810749263,
+  "wiring LOW (0.1 s, 10 ms guard)": 65.28801864752653,
+  "L2 parity->wiring gap": 65.58744651374185,
+  "L6 sham->cal gap": 64.48607782340805,
+  "L7 cal/idle->schedule gap": 67.80728075953195,
+  "L8 IDLE windows": 65.40996648968431,
+  "L9 final IDLE": 67.90897385470548,
+  "L10 pre-telemetry gap": 66.578264185981,
+  "H4 telemetry sync HIGH 300ms": 67.98668462044041,
+  "L11 post-sync LOW 100ms": 66.03721925301566,
+  "pair L9(final IDLE, CROSSES) - L7(next gap, no-cross), schedules 0-3": [
+   -0.104,
+   -0.06,
+   0.027,
+   0.142
+  ],
+  "pair L6(CROSSES) - L7 first(no-cross)": -3.118,
+  "pair H4(sync HIGH, CROSSES) - L10(LOW, CROSSES)": 1.408,
+  "pair H4(sync HIGH) - L11(LOW, no-cross)": 1.949
+ },
+ "attrib_GPIO4_D0off": {
+  "L4 wiring->sham gap": 65.3021905620123,
+  "L3/L5 pulses LOW span": 64.98553656689835,
+  "H1/H2 pulses HIGH span": 64.37198331074909,
+  "wiring HIGH (0.1 s, 10 ms guard)": 64.3568292217391,
+  "wiring LOW (0.1 s, 10 ms guard)": 64.84011321116043,
+  "L2 parity->wiring gap": 64.94752878379282,
+  "L6 sham->cal gap": 64.11749470918406,
+  "L7 cal/idle->schedule gap": 67.45808805226523,
+  "L8 IDLE windows": 65.20443918698803,
+  "L9 final IDLE": 67.61331086176921,
+  "L10 pre-telemetry gap": 66.11431582403,
+  "H4 telemetry sync HIGH 300ms": 67.78161149579606,
+  "L11 post-sync LOW 100ms": 65.86019160831458,
+  "pair L9(final IDLE, CROSSES) - L7(next gap, no-cross), schedules 0-3": [
+   -0.186,
+   0.11,
+   -0.016,
+   0.104
+  ],
+  "pair L6(CROSSES) - L7 first(no-cross)": -2.944,
+  "pair H4(sync HIGH, CROSSES) - L10(LOW, CROSSES)": 1.667,
+  "pair H4(sync HIGH) - L11(LOW, no-cross)": 1.921
+ },
+ "wiringcheck_GPIO5_D0on": {
+  "L2 parity->wiring gap": 65.57317267621252,
+  "L4 wiring->sham gap": 65.74588461295247,
+  "wiring HIGH (0.1 s, 10 ms guard)": 64.75246672212944,
+  "wiring LOW (0.1 s, 10 ms guard)": 65.12799626111217,
+  "H1/H2 pulses HIGH span (2 sham)": 64.7515588850446,
+  "L3/L5 pulses LOW span (1 sham LOW)": 65.32231889415516
+ }
+}
