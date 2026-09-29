@@ -304,3 +304,26 @@ If diag_esp_02 fails the sham gate, no formal session is run.
 - 5 of 9 recorders in this setup phase ended with a PPK2 `SerialException`, because the PPK2 USB cable was moved between host ports (kernel log: ports 1-6, 1-5, 1-1).
 - From diag_esp_02 on, the PPK2 stays on one host port, and nobody touches the PPK2, its cables or the board during a run.
 - The self-test's 2 counter gaps fell 5 ms after its output OFF, outside the ON period.
+
+## Observation 1 (2026-09-30 07:03 +08, after the CLEAN independent review of diag_esp_02; written while formal session esp_session_01 was running, before any formal analysis output existed)
+
+**diag_esp_02** (build_04; recorder `ppk_esp9`; not pooled). Independent review: `analysis/review_diag02/REVIEW.md`, verdict CLEAN.
+- **Gates.** Every registered gate and the Amendment 3 checks C1–C3 passed; eligible.
+  - sham ΔI −0.062 mA (95 % CI −0.140 to +0.015);
+  - C1 −0.10…+0.11 mA; C2 +0.13 mA; C3 −0.09 / −0.06 mA.
+- **Results (for the record only).**
+  - Gross 7.937 mJ/inference (3 repeat schedules, CV 0.22 %); 24.852 ms/inference; 240.005 MHz.
+  - Incremental +0.113 mJ/inference (sham-corrected +0.121 mJ). BENCH−IDLE is +0.91 mA, stable across schedules.
+  - The independent re-decode matched the pipeline to ≤ 7e-16 relative on all 30 repeat BENCH windows.
+
+**Reporting rules**, fixed now, before any formal result:
+- **Warm-up drift.** Gross and IDLE drift upward within a power-on: +0.43 % across the 3 repeat schedules in diag_esp_02 and +0.26 % in diag_esp_01, with BENCH−IDLE constant.
+  - The between-schedule CI of a session describes this warm-up trend plus noise and is reported as such.
+  - The per-schedule values are reported alongside it.
+- **Dose-response intercept.** It is confounded by this drift, because the dose schedules run last, so it is not interpreted as a fixed per-window cost.
+- **Logic-port fraction.** The logic-port-powered fraction is reported after the mask (100 % in diag_esp_02). The pipeline's `logic_powered_fraction` includes the masked frames.
+
+**Errata and observations:**
+- Under PPK2 power the D0 power-on artifact lasts 6.96 ms (3.79 ms at the USB bring-up), still well inside the 1.5 s mask.
+- The OVERHEAD repetition count is calibrated at every power-on: 32 287 in diag_esp_02, against the 32 346 quoted from the bring-up.
+- An `em01.c` comment attributes 1.19 s OVERHEAD windows to build_02; that refers to build_01. The source is hash-pinned and left unedited.

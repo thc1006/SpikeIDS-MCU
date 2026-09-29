@@ -1,0 +1,18 @@
+{
+ "build": "build_04",
+ "pins": {
+  "em01.bin": "1dea01cee5deb540d70418b54faa09b07e6c657ebfa184c0853dc8f60db299f1",
+  "em01.elf": "5a8c2233f9c7877c5692fc53979c3c3cae847662cc72e0e6c933aeb33fd66376",
+  "bootloader/bootloader.bin": "d5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513",
+  "partition_table/partition-table.bin": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+ },
+ "regions_verified": 3,
+ "mac": "e8:f6:0a:8b:40:80",
+ "usb": {
+  "idVendor": "1a86",
+  "idProduct": "55d3",
+  "serial": "5B5E017386",
+  "product": "USB Single Serial",
+  "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-2"
+ }
+}
