@@ -364,6 +364,16 @@ class SourceModeTest(unittest.TestCase):
             self.assertTrue(ps.usb_present('000831033862', root=Path(tmp)))
             self.assertFalse(ps.usb_present('other', root=Path(tmp)))
 
+    def test_usb_present_vendor_tokens(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp) / '1-5'
+            d.mkdir()
+            (d / 'idVendor').write_text('303a\n')
+            self.assertTrue(ps.usb_present('vid:303a,vid:1a86', root=Path(tmp)))
+            self.assertTrue(ps.usb_present('vid:1a86, vid:303A', root=Path(tmp)))
+            self.assertFalse(ps.usb_present('vid:1a86', root=Path(tmp)))
+            self.assertFalse(ps.usb_present('SOMESERIAL,vid:10c4', root=Path(tmp)))
+
 
 if __name__ == '__main__':
     unittest.main()

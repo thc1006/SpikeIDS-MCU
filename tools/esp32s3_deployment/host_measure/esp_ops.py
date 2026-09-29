@@ -23,11 +23,13 @@ HERE = Path(__file__).resolve().parent
 FW = HERE.parent / 'firmware_measure'
 ESPTOOL = [str(Path.home() / '.espressif/python_env/idf5.4_py3.14_env/bin/python'), '-m', 'esptool']
 BUILDS = {
-    'build_01': {'em01.bin': '5d28723de1bd4452f25646aba30a3917fa0648b5ac610b06be5f53295e905a31',
-                 'bootloader/bootloader.bin': '17fbdd9dede0ad3ca3d9195d789812b533ae29cd5f81411dc80310c25b5c04b6',
+    # build_01 is retired (not reproducible: build date/time in the image; review M2).
+    'build_02': {'em01.bin': '46a95057c1d371aa99c9166fe00437aeb5076254a4f7ea77a417531eb6c9a625',
+                 'em01.elf': '1b296f551600ed76f62ccbcf5ecc61f647edaa4604b41515d7e8553b14c15273',
+                 'bootloader/bootloader.bin': 'd5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513',
                  'partition_table/partition-table.bin': '7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820'},
 }
-DEFAULT_BUILD = 'build_01'
+DEFAULT_BUILD = 'build_02'
 FLASH_BYTES = 16 * 1024 * 1024
 
 
@@ -68,17 +70,31 @@ def parse_identity(text):
     return info
 
 
+def usb_info(port):
+    """USB identity of the tty's device from sysfs (vendor, product, iSerial)."""
+    try:
+        d = (Path('/sys/class/tty') / Path(port).name / 'device').resolve().parent
+        rd = lambda n: (d / n).read_text().strip() if (d / n).is_file() else None
+        return dict(idVendor=rd('idVendor'), idProduct=rd('idProduct'), serial=rd('serial'),
+                    product=rd('product'), sysfs=str(d))
+    except OSError as exc:
+        return dict(error=str(exc))
+
+
 def identify(out, port):
     text = esptool(out, 'identify', port, ['--before', 'default_reset', '--after', 'no_reset', 'flash_id'])
     info = parse_identity(text)
     (out / 'identity.json').write_text(json.dumps(info, indent=1) + '\n')
+    info['usb'] = usb_info(port)
     problems = []
     if not (info['chip'] or '').startswith('ESP32-S3'):
         problems.append(f"chip is {info['chip']}, expected ESP32-S3")
     if info['flash_size'] != '16MB':
         problems.append(f"flash size is {info['flash_size']}, expected 16MB (N16)")
-    if 'PSRAM 8MB' not in (info['features'] or ''):
-        problems.append(f"features {info['features']!r} do not list 8MB PSRAM (R8)")
+    if 'PSRAM 8MB' not in (info['features'] or '') or 'AP_3v3' not in (info['features'] or ''):
+        problems.append(f"features {info['features']!r} do not list 8MB PSRAM (AP_3v3) (R8)")
+    if not (info['flash_type_efuse'] or 'quad').startswith('quad'):
+        problems.append(f"flash type {info['flash_type_efuse']!r} is not quad (octal-flash modules cannot boot the DIO image)")
     if problems:
         raise SystemExit('identity check failed: ' + '; '.join(problems))
     return info
@@ -103,15 +119,27 @@ def flash(out, port, build):
     for n, want in pins.items():
         if sha(d / n) != want:
             raise SystemExit(f'build pin mismatch {n}')
+    # 'keep': esptool must not rewrite the bootloader header, so the flashed bytes
+    # are exactly the pinned files (the header already says DIO/80m/16MB).
     text = esptool(out, 'flash', port, [
         '--before', 'default_reset', '--after', 'hard_reset', 'write_flash',
-        '--flash_mode', 'dio', '--flash_size', '16MB', '--flash_freq', '80m',
+        '--flash_mode', 'keep', '--flash_size', 'keep', '--flash_freq', 'keep',
         '0x0', str(d / 'bootloader/bootloader.bin'), '0x8000', str(d / 'partition_table/partition-table.bin'),
         '0x10000', str(d / 'em01.bin')])
     verified = text.count('Hash of data verified')
     if verified != 3:
         raise SystemExit(f'expected 3 "Hash of data verified", got {verified}; see flash.console.txt')
-    return dict(build=build, pins=pins, regions_verified=verified)
+    import re
+    import shutil
+    mac = next((m.group(1).strip().lower() for m in (re.match(r'^MAC: (.+)$', l.strip()) for l in text.splitlines()) if m), None)
+    fw = out / 'firmware'
+    fw.mkdir(exist_ok=True)
+    for n in pins:                                   # keep the exact flashed files with the record
+        shutil.copy2(d / n, fw / Path(n).name)
+    shutil.copy2(FW / build / 'RESULT.json', fw / 'RESULT.json')
+    rec = dict(build=build, pins=pins, regions_verified=verified, mac=mac, usb=usb_info(port))
+    (out / 'flash_record.json').write_text(json.dumps(rec, indent=1) + '\n')
+    return rec
 
 
 def restore(out, port, image):

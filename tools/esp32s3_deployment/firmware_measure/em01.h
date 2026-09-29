@@ -54,7 +54,7 @@ typedef struct {
     uint32_t model_sha_prefix[2], vectors_sha_prefix[2];                 /* 0xC0 */
     uint32_t apb_hz, xtal_hz, cpu_hz_clk, reset_reason;                  /* 0xD0 platform snapshot */
     uint32_t marker_gpio, tick_hz, core_id, flash_bytes;                 /* 0xE0 */
-    uint32_t idf_version, reserved_f4, reserved_f8, reserved_fc;         /* 0xF0 */
+    uint32_t idf_version, cpu_per_conf, sysclk_conf, reserved_fc;        /* 0xF0 */
     rm_window_t window[RM_MAX_WINDOWS];                                  /* 0x100 */
 } rm_result_t;
 

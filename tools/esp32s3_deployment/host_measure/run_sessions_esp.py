@@ -4,12 +4,14 @@ Same session procedure, DONE rule, decoder and analysis as the FPB-RA4E1 driver
 (tools/ra4e1_deployment/host_measure/run_sessions.py, imported here and not
 modified): the platform is recognised from the EM01 telemetry magic. What
 differs is the preflight:
-  * the recorder runs in Source Meter mode at 5000 mV with --absent-guard set
-    to the board's USB serial (recorded by esp_ops.py identify);
+  * the recorder runs in Source Meter mode at 5000 mV with --absent-guard
+    including 'vid:303a,vid:1a86' (native USB-Serial/JTAG and CH343P): output ON
+    is refused, and switched OFF, while either USB port of the board is connected;
   * no ESP32-S3 USB device (Espressif 303a, or a CH34x/CP210x/FTDI bridge) may
     be on the bus: the board is powered only from the PPK2 via its 5V pin;
-  * the board holds a verified EM01 build (esp_ops.py flash record: 3 regions
-    'Hash of data verified', pinned build hashes).
+  * the board holds a verified EM01 build (esp_ops.py flash record: rc 0, 3 regions
+    'Hash of data verified', pinned hashes of the build and of the retained copies,
+    MAC equal to --mac).
 Never flashes, resets or changes the PPK2 mode/voltage.
 """
 import argparse
@@ -27,6 +29,9 @@ import esp_ops  # noqa: E402
 import run_sessions as rs  # noqa: E402
 
 USB_VENDORS_FORBIDDEN = {'303a', '1a86', '10c4', '0403'}     # Espressif, WCH, Silicon Labs, FTDI
+GUARD_TOKENS_REQUIRED = {'vid:303a', 'vid:1a86'}             # native USB-Serial/JTAG + CH343P
+MASK_S = 1.5    # EM01 boot (ROM + 2nd-stage bootloader + app) precedes marker_init; RM01 settle keeps
+                # the marker LOW for 2 s after it, so frames before ON + 1.5 s carry no marker (review minor)
 
 
 def usb_vendors_present(root=Path('/sys/bus/usb/devices')):
@@ -42,24 +47,31 @@ def usb_vendors_present(root=Path('/sys/bus/usb/devices')):
         return {'sysfs-unreadable'}
 
 
-def preflight(rec, guard_serial, flash_record, build):
+def preflight(rec, flash_record, build, mac):
     s = rec.session()
     running = [v for k, v in s['source_sha256'].items() if k.endswith('ppk2_session.py')]
     rs.require(running == [rs.sha(rs.PPK / 'ppk2_session.py')], 'recorder is not the current ppk2_session.py')
     rs.require(s.get('source_mv') == rs.SOURCE_MV and s['metadata'].get('mode') == '2'
                and s['metadata'].get('VDD') == str(rs.SOURCE_MV), 'recorder not in Source mode at 5000 mV')
-    rs.require(s.get('absent_guard_serial') == guard_serial, 'recorder absent-guard is not the ESP board serial')
+    tokens = {t.strip().lower() for t in (s.get('absent_guard_serial') or '').split(',') if t.strip()}
+    rs.require(GUARD_TOKENS_REQUIRED <= tokens,
+               f"recorder --absent-guard must include {sorted(GUARD_TOKENS_REQUIRED)} (has {sorted(tokens)})")
     st = rec.status()
     rs.require(not st['output_on'] and not st['guard_tripped'], f'recorder output/guard state {st}')
     rs.require(st['recording'] is None, f"recorder already recording {st['recording']}")
     present = usb_vendors_present()
     rs.require(not present, f'ESP/USB-bridge device on the bus ({sorted(present)}): unplug the board USB first')
     txt = (flash_record / 'flash.console.txt').read_text()
-    argv = json.loads((flash_record / 'flash.json').read_text())['argv']
+    fj = json.loads((flash_record / 'flash.json').read_text())
+    frec = json.loads((flash_record / 'flash_record.json').read_text())
     pins = esp_ops.BUILDS[build]
     d = esp_ops.FW / build / 'build'
-    rs.require(txt.count('Hash of data verified') == 3 and str(d / 'em01.bin') in argv
-               and all(rs.sha(d / n) == h for n, h in pins.items()), f'no verified {build} flash record')
+    rs.require(fj['returncode'] == 0 and txt.count('Hash of data verified') == 3
+               and str(d / 'em01.bin') in fj['argv'] and frec['build'] == build and frec['pins'] == pins
+               and all(rs.sha(d / n) == h for n, h in pins.items())
+               and all(rs.sha(flash_record / 'firmware' / Path(n).name) == h for n, h in pins.items()),
+               f'no verified {build} flash record')
+    rs.require((frec.get('mac') or '').lower() == mac.lower(), f"flash record MAC {frec.get('mac')} != board {mac}")
     return s
 
 
@@ -67,8 +79,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--ppk-session', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
-    ap.add_argument('--guard-serial', required=True, help='ESP board USB iSerial (esp_ops identify)')
-    ap.add_argument('--flash-record', type=Path, required=True)
+    ap.add_argument('--flash-record', type=Path, required=True, help='esp_ops.py flash --out DIR')
+    ap.add_argument('--mac', required=True, help='board MAC from esp_ops identify (e.g. e8:f6:0a:8b:40:80)')
     ap.add_argument('--build', default=esp_ops.DEFAULT_BUILD, choices=sorted(esp_ops.BUILDS))
     ap.add_argument('--sessions', type=int, default=3)
     ap.add_argument('--off-s', type=float, default=10.0)
@@ -77,7 +89,7 @@ def main(argv=None):
     a = ap.parse_args(argv)
     rs.require(a.out.is_absolute() and not os.path.lexists(a.out), 'fresh absolute --out required')
     rec = rs.Recorder(a.ppk_session)
-    sess_meta = preflight(rec, a.guard_serial, a.flash_record, a.build)
+    sess_meta = preflight(rec, a.flash_record, a.build, a.mac)
     a.out.mkdir(parents=True)
     logf = (a.out / 'driver_log.jsonl').open('a')
 
@@ -128,7 +140,7 @@ def main(argv=None):
         conv = None
         if done['done']:
             try:
-                res, conv = rs.analyze(rec, seg, sess_meta, start_ev, stop_ev, on_ev)
+                res, conv = rs.analyze(rec, seg, sess_meta, start_ev, stop_ev, on_ev, mask_s=MASK_S)
             except Exception as exc:
                 res = dict(problems=[f'analysis error: {type(exc).__name__}: {exc}'], phases={}, header=None)
         else:

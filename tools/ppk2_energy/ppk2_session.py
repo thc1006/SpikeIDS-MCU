@@ -15,10 +15,11 @@ writes full-rate raw frames inside labelled segments.
   from the metadata of a second connection; then, like the Nordic app on open,
   0D hi lo is sent again before sampling. The S-term uses the setpoint, as the
   Nordic app does (currentVdd = regulator setpoint); VOUT is not measured.
-- --absent-guard SERIAL: output ON is refused while a USB device with this
-  serial is present (e.g. the FPB-RA4E1 J-Link OB on J9, which would share
-  the board 5 V through its reverse-current protection); its appearance while
-  the output is ON is logged (usb_guard_present_while_on).
+- --absent-guard SPEC: output ON is refused while a matching USB device is
+  present, and the output is switched OFF if one appears while ON (logged as
+  usb_guard_present_while_on). SPEC = comma-separated iSerial strings and/or
+  'vid:XXXX' vendor tokens, e.g. the FPB-RA4E1 J-Link OB serial, or
+  'vid:303a,vid:1a86' for an ESP32-S3 board's native USB and CH343P bridge.
 - Always-on 10 ms summary (CSV) and a live status.json for monitoring.
 - Sustained-overcurrent guard (default 950 mA mean over 100 ms, PPK2 AM rating
   is 1 A continuous) switches the output OFF. This is a PPK2 self-protection
@@ -300,17 +301,25 @@ def regulator_cmd(mv):
     return bytes((0x0D, (mv >> 8) & 0xFF, mv & 0xFF))
 
 
-def usb_present(serial_no, root=Path('/sys/bus/usb/devices')):
-    """True if any USB device reports this iSerial (sysfs; no device I/O).
-    Fails CLOSED: if sysfs cannot be listed, the device counts as present."""
+def usb_present(spec, root=Path('/sys/bus/usb/devices')):
+    """True if any USB device matches the guard spec (sysfs; no device I/O).
+    spec = comma-separated tokens: an iSerial string, or 'vid:XXXX' matching any
+    device with that idVendor (e.g. 'vid:303a,vid:1a86' = any Espressif native
+    USB or WCH CH34x bridge). Fails CLOSED: unreadable sysfs counts as present."""
+    tokens = [t.strip() for t in spec.split(',') if t.strip()]
+    serials = {t for t in tokens if not t.lower().startswith('vid:')}
+    vids = {t[4:].lower() for t in tokens if t.lower().startswith('vid:')}
     try:
         entries = list(root.iterdir())
     except OSError:
         return True
     for d in entries:
-        f = d / 'serial'
         try:
-            if f.is_file() and f.read_text().strip() == serial_no:
+            f = d / 'serial'
+            if serials and f.is_file() and f.read_text().strip() in serials:
+                return True
+            v = d / 'idVendor'
+            if vids and v.is_file() and v.read_text().strip().lower() in vids:
                 return True
         except OSError:
             continue
@@ -631,8 +640,8 @@ def main(argv=None):
     p.add_argument('--record-initial', default=None, metavar='LABEL')
     p.add_argument('--source-mv', type=int, default=None, metavar='MV',
                    help='switch to Source Meter at MV millivolts (800..5000) before sampling')
-    p.add_argument('--absent-guard', default=None, metavar='USB_SERIAL',
-                   help='refuse output ON while a USB device with this iSerial is present')
+    p.add_argument('--absent-guard', default=None, metavar='SPEC',
+                   help="refuse/stop output while a matching USB device is present: iSerial and/or 'vid:XXXX', comma-separated")
     p.add_argument('--arm-on-when-absent', default=None, metavar='STLINK_SERIAL',
                    help='turn output ON once this ST-LINK has been unplugged for 2 s')
     args = p.parse_args(argv)

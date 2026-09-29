@@ -1,0 +1,9 @@
+{"kind": "setup_command", "host_monotonic": 247529.772562171, "utc": "2026-09-29T19:08:54.567052+00:00", "sample_index": 0, "name": "output_off_on_open", "hex": "0c00", "sent_utc": "2026-09-29T19:08:54.544358+00:00"}
+{"kind": "setup_command", "host_monotonic": 247529.772682196, "utc": "2026-09-29T19:08:54.567169+00:00", "sample_index": 0, "name": "set_power_mode_source_on_open", "hex": "1102", "sent_utc": "2026-09-29T19:08:54.544401+00:00"}
+{"kind": "setup_command", "host_monotonic": 247529.772708614, "utc": "2026-09-29T19:08:54.567195+00:00", "sample_index": 0, "name": "regulator_set_on_open", "hex": "0d1388", "sent_utc": "2026-09-29T19:08:54.544464+00:00"}
+{"kind": "command", "host_monotonic": 247529.772824292, "utc": "2026-09-29T19:08:54.567311+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "usb_guard_state", "host_monotonic": 247529.824660087, "utc": "2026-09-29T19:08:54.619148+00:00", "sample_index": 1216, "serial": "vid:303a,vid:1a86", "present": false, "output_on": false}
+{"kind": "control", "host_monotonic": 247592.870602031, "utc": "2026-09-29T19:09:57.665091+00:00", "sample_index": 6308864, "text": "start bringup_esp_01"}
+{"kind": "segment_start", "host_monotonic": 247592.870888875, "utc": "2026-09-29T19:09:57.665377+00:00", "sample_index": 6308864, "label": "bringup_esp_01", "path": "seg_000_bringup_esp_01.u32le"}
+{"kind": "control", "host_monotonic": 248082.181730458, "utc": "2026-09-29T19:18:06.976218+00:00", "sample_index": 55240192, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 248082.190844424, "utc": "2026-09-29T19:18:06.985332+00:00", "sample_index": 55240192, "label": "bringup_esp_01", "path": "seg_000_bringup_esp_01.u32le", "frames": 48931328, "sha256": "889e0f152f14294b4a673a7324d17c86e4fdff644702684a89fdb05fb6b72023", "d0_rising": 41486}

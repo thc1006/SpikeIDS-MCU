@@ -27,12 +27,25 @@ import derive_em01  # noqa: E402
 IDF = Path('/home/thc1006/esp/esp-idf')
 NM = Path('/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp-elf-nm')
 PINS = {k: v for k, v in rm_build.PINS.items() if 'ra4e1_v5_build' not in str(k)}   # npz, onnx, model.c
+PINS[REPO / 'tools/board_deployment/portable_qdq/portable_qdq.c'] = \
+    'e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851'   # = RA RM01 build_03
+PINS[REPO / 'tools/board_deployment/portable_qdq/portable_qdq.h'] = \
+    'e8abd58b44e15806eff54df5245757c23aa491bd044f579dd59d0efc7c5be406'
+IDF_COMMIT = '7da14d493472664437e01b97b57c91a2e9bacdae'   # shallow release/v5.4 checkout ("v5.4.4" header)
+GCC = Path('/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc')
 REQUIRED_CONFIG = {
     'CONFIG_IDF_TARGET': '"esp32s3"', 'CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ': '240',
     'CONFIG_ESPTOOLPY_FLASHSIZE': '"16MB"', 'CONFIG_ESP_CONSOLE_NONE': 'y', 'CONFIG_FREERTOS_HZ': '100',
+    'CONFIG_APP_REPRODUCIBLE_BUILD': 'y', 'CONFIG_ESP_SYSTEM_PANIC_PRINT_HALT': 'y',
+    'CONFIG_ESPTOOLPY_FLASHMODE': '"dio"', 'CONFIG_ESPTOOLPY_FLASHFREQ': '"80m"',
 }
 FORBIDDEN_CONFIG = ('CONFIG_SPIRAM=y', 'CONFIG_PM_ENABLE=y', 'CONFIG_ESP_TASK_WDT_EN=y',
-                    'CONFIG_BT_ENABLED=y')
+                    'CONFIG_BT_ENABLED=y', 'CONFIG_USJ_ENABLE_USB_SERIAL_JTAG=y',
+                    'CONFIG_ESP_SYSTEM_PANIC_PRINT_REBOOT=y')
+# Review 2026-09-30 B1: with only the main component built, IDF's clk.c disables the
+# USB-Serial/JTAG pad and clock at boot (its default for apps not using USJ). That
+# state is kept on purpose: the measured board state is IDF's default for an app
+# without USB; bring-up uses the marker telemetry instead of JTAG readback.
 
 
 def sha(p):
@@ -61,6 +74,10 @@ def main(argv=None):
     require(out.is_absolute() and not os.path.lexists(out), 'use a fresh absolute --output-dir')
     for p, want in PINS.items():
         require(sha(p) == want, f'pin mismatch {p}')
+    idf_head = subprocess.run(['git', '-C', str(IDF), 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip()
+    require(idf_head == IDF_COMMIT, f'ESP-IDF checkout is {idf_head}, pinned {IDF_COMMIT}')
+    gcc_version = subprocess.run([str(GCC), '--version'], capture_output=True, text=True).stdout.splitlines()[0]
+    require('esp-14.2.0_20260121' in gcc_version, f'toolchain {gcc_version}')
     require((HERE / 'em01.c').read_text() == derive_em01.derive(derive_em01.RM01.read_text()),
             'em01.c is not derive(rm01.c); run derive_em01.py')
     out.mkdir(parents=True)
@@ -106,6 +123,8 @@ def main(argv=None):
                                                  Path(__file__).resolve()]},
         vectors=vec, sdkconfig_sha256=sha(out / 'sdkconfig'),
         sha256={n: sha(p) for n, p in arts.items()}, app_bytes=(build / 'em01.bin').stat().st_size,
+        idf_commit=idf_head, toolchain=gcc_version,
+        usb_serial_jtag='disabled at boot by IDF clk.c (component not built); see review B1',
         symbols={k: [hex(v[0]), v[1]] for k, v in syms.items() if k in ('g_rm', 'rm_inputs', 'rm_expected', 'hal_entry')},
         hardware_accessed=False)
     (out / 'RESULT.json').write_text(json.dumps(result, indent=1) + '\n')

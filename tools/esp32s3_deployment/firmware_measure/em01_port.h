@@ -20,6 +20,7 @@
 #include "freertos/task.h"
 #include "soc/gpio_reg.h"
 #include "soc/soc.h"
+#include "soc/system_reg.h"
 
 #define __DSB() __asm__ __volatile__("memw" ::: "memory")
 #define __DMB() __asm__ __volatile__("memw" ::: "memory")
@@ -69,10 +70,15 @@ static inline void em_snapshot(volatile rm_result_t *r)
     r->marker_gpio = EM_MARKER_GPIO;
     r->tick_hz = (uint32_t)configTICK_RATE_HZ;
     r->core_id = (uint32_t)xPortGetCoreID();
-    uint32_t flash = 0;
-    if (esp_flash_get_size(NULL, &flash) != ESP_OK) flash = 0;
+    uint32_t flash = 0;                        /* physical size from the flash JEDEC ID, */
+    if (esp_flash_get_physical_size(NULL, &flash) != ESP_OK) flash = 0;   /* not the image header */
     r->flash_bytes = flash;
     r->idf_version = (uint32_t)ESP_IDF_VERSION;
+    /* Hardware clock configuration as it is, not the software frequency variable:
+     * CPUPERIOD_SEL[1:0] (2 = 240 MHz), PLL_FREQ_SEL[2] (1 = 480 MHz PLL),
+     * SOC_CLK_SEL[11:10] (1 = PLL), PRE_DIV_CNT[9:0]. */
+    r->cpu_per_conf = REG_READ(SYSTEM_CPU_PER_CONF_REG);
+    r->sysclk_conf = REG_READ(SYSTEM_SYSCLK_CONF_REG);
 }
 #endif
 #endif

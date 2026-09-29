@@ -44,7 +44,9 @@ CLOCK_FIELDS = ['sckdivcr', 'sckscr', 'pllccr', 'pllcr', 'hococr', 'mococr', 'op
 CLOCK_AT = 52                                    # rm01.h 0xD0
 TIMER_ID = 0x31545047                          # 'GPT1': GPT321 at PCLKD/1 (= ICLK)
 ESP_CLOCK_FIELDS = ['apb_hz', 'xtal_hz', 'cpu_hz_clk', 'reset_reason', 'marker_gpio', 'tick_hz',
-                    'core_id', 'flash_bytes', 'idf_version']
+                    'core_id', 'flash_bytes', 'idf_version', 'cpu_per_conf', 'sysclk_conf', 'reserved_fc']
+PARITY_FNV = 0xCCC5EB8B            # FNV-1a of the 5120 reference output words (RA/N6/host identical)
+ESP_CLOCK_TOL = 0.005              # PPK2-timebase CPU clock vs 240 MHz (crystal-derived)
 MODEL_SHA = '22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d'
 VECTORS_SHA = 'cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb'
 
@@ -54,20 +56,38 @@ def _clock_ok_ra(c):
 
 
 def _clock_ok_esp(c):
-    """EM01 snapshot: APB 80 MHz, XTAL 40 MHz, CPU 240 MHz, marker GPIO4,
-    16 MiB flash (N16). The reset reason is reported, not gated here."""
+    """EM01 snapshot: software clocks APB 80 / XTAL 40 / CPU 240 MHz, marker GPIO4,
+    16 MiB physical flash (JEDEC), and the HARDWARE clock registers (review M3):
+    SYSTEM_CPU_PER_CONF CPUPERIOD_SEL[1:0] = 2 (240 MHz) with PLL_FREQ_SEL[2] = 1
+    (480 MHz PLL), SYSTEM_SYSCLK_CONF SOC_CLK_SEL[11:10] = 1 (PLL)."""
     return (c['apb_hz'] == 80_000_000 and c['xtal_hz'] == 40_000_000 and c['cpu_hz_clk'] == 240_000_000
-            and c['marker_gpio'] == 4 and c['flash_bytes'] == 16 * 1024 * 1024)
+            and c['marker_gpio'] == 4 and c['flash_bytes'] == 16 * 1024 * 1024
+            and c['cpu_per_conf'] & 3 == 2 and (c['cpu_per_conf'] >> 2) & 1 == 1
+            and (c['sysclk_conf'] >> 10) & 3 == 1)
+
+
+def _extra_esp(h):
+    """EM01 boot gates (review M3): a genuine power-on boot (ESP_RST_POWERON = 1),
+    measurement task on core 0, parity output FNV identical to RA/N6/host."""
+    c, p = h['clock_snapshot'], []
+    if c.get('reset_reason') != 1:
+        p.append(f"reset reason {c.get('reset_reason')} is not POWERON (1)")
+    if c.get('core_id') != 0:
+        p.append(f"measurement ran on core {c.get('core_id')}, not core 0")
+    if h['parity_outputs_fnv'] != PARITY_FNV:
+        p.append(f"parity output FNV {h['parity_outputs_fnv']:#x} != {PARITY_FNV:#x}")
+    return p
 
 
 PLATFORMS = {
     RM_MAGIC: dict(name='ra4e1', tel_magic=TEL_MAGIC, timer_id=TIMER_ID, timer='GPT321 at PCLKD/1',
-                   clock_fields=CLOCK_FIELDS, renames={}, clock_ok=_clock_ok_ra,
+                   clock_fields=CLOCK_FIELDS, renames={}, clock_ok=_clock_ok_ra, extra=lambda h: [],
+                   clock_tol=None,
                    scope='FPB-RA4E1 whole board at its main 5 V net (J2-5, PPK2 source 5.0 V setpoint), '
                          'J9 unplugged; not MCU core'),
     0x31304D45: dict(name='esp32s3', tel_magic=0x54314D45, timer_id=0x544E4343, timer='Xtensa CCOUNT (CPU clock)',
                      clock_fields=ESP_CLOCK_FIELDS, renames={'fcachee': 'psram_enabled', 'cpuid': 'chip_info'},
-                     clock_ok=_clock_ok_esp,
+                     clock_ok=_clock_ok_esp, extra=_extra_esp, clock_tol=ESP_CLOCK_TOL,
                      scope='ESP32-S3 N16R8 whole board at its 5V pin (PPK2 source 5.0 V setpoint), '
                            'USB unplugged; not SoC core'),
 }
@@ -196,6 +216,8 @@ def header_problems(h, pins=True):
     c = h.get('clock_snapshot', {})
     if pins and c and not plat['clock_ok'](c):
         p.append(f"{plat['name']} clock/platform snapshot differs from the registered configuration: {c}")
+    if pins and c:
+        p.extend(plat['extra'](h))
     return p
 
 
@@ -325,6 +347,12 @@ def analyze_capture(words, ua_fn, volts, inputs_words, outputs_words, reader_gap
                 outputs_words, inputs_words, params['n_rows'], params['bench_reps'], params['overhead_reps'])))
             res = az.analyze_schedule(seg, ua_fn, table, params, volts, expected=expected,
                                       per_code_mA=per_code_mA, reader_gaps=g, top_range_only=top_range_only)
+            plat = PLATFORMS.get(header['magic'], PLATFORMS[RM_MAGIC])
+            f_est = (res.get('summary') or {}).get('cpu_hz_estimate', {}).get('mean')
+            if plat['clock_tol'] is not None and f_est and abs(f_est / header['system_core_clock'] - 1) > plat['clock_tol']:
+                res['valid'] = False
+                res.setdefault('problems', []).append(
+                    f"PPK2-timebase CPU clock {f_est / 1e6:.4f} MHz outside +/-{plat['clock_tol']:.1%} of nominal")
             cons = range_consistency(seg, res)
             inc_ok = [x['incremental_J_per_iter'] for x in res.get('bench', []) if x.get('range_consistent')]
             res.update(params=params, expected=expected, multiplier=mult,

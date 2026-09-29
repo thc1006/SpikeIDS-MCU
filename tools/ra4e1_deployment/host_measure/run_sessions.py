@@ -165,7 +165,7 @@ def wait_done(rec, start_sample, t_on, timeout_s, log):
     return dict(done=False, reason='timeout')
 
 
-def analyze(rec, seg, sess_meta, start_ev, stop_ev, on_ev):
+def analyze(rec, seg, sess_meta, start_ev, stop_ev, on_ev, mask_s=0.5):
     conv = ppk2_session.Converter(sess_meta['metadata'], SOURCE_MV / 1000.0)
     ua = lambda w: conv.ua(w)[0]
     words = az.load_words(rec.d / seg['path'])
@@ -176,7 +176,7 @@ def analyze(rec, seg, sess_meta, start_ev, stop_ev, on_ev):
     outs = [tuple(r) for r in np.ascontiguousarray(z['reference_logits'], '<f4').view('<u4')]
     # Frames before output ON + 0.5 s are physically unpowered (J9 unplugged); the PPK2
     # latches its last logic byte while the board is off (Amendment 3, review B1).
-    unpowered_before = max(0, on_ev['sample_index'] - start_ev['sample_index'] + 50_000)
+    unpowered_before = max(0, on_ev['sample_index'] - start_ev['sample_index'] + int(mask_s * 100_000))
     res = rd.analyze_capture(words, ua, SOURCE_MV / 1000.0, ins, outs, reader_gaps=gaps, top_range_only=False,
                              unpowered_before=unpowered_before)
     r = (words >> 14) & 7
