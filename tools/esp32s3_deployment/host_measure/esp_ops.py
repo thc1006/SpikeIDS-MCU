@@ -28,8 +28,13 @@ BUILDS = {
                  'em01.elf': '1b296f551600ed76f62ccbcf5ecc61f647edaa4604b41515d7e8553b14c15273',
                  'bootloader/bootloader.bin': 'd5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513',
                  'partition_table/partition-table.bin': '7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820'},
+    # build_03 = build_02 with the marker on GPIO5 (ESP Amendment 1); every other function byte-identical.
+    'build_03': {'em01.bin': 'bcf2ca474778490a2e561f6d13ca10df1762c3623dc6d7cdef2a46248db7ccae',
+                 'em01.elf': '2a244cc3cad10181e69336a6753a070b4f8f2750fb01e180f4785d088b774da6',
+                 'bootloader/bootloader.bin': 'd5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513',
+                 'partition_table/partition-table.bin': '7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820'},
 }
-DEFAULT_BUILD = 'build_02'
+DEFAULT_BUILD = 'build_03'
 FLASH_BYTES = 16 * 1024 * 1024
 
 

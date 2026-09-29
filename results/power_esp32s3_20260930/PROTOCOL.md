@@ -143,3 +143,65 @@ As in the RA4E1 protocol with Amendment 3:
 - LED states during a PPK2-powered run (power LED, RGB LED), recorded by the operator.
 - PSRAM powered but not initialised; native USB disabled by IDF at power-on; CH343P power state unknown.
 - Room temperature not controlled.
+
+## Amendment 1 (2026-09-30 05:40 +08, after diag_esp_01, one attribution power-on and a logic-port repair, before any formal session)
+
+**diag_esp_01** (recorder `ppk_esp2`, segment sha256 81bffe29…, 44 905 760 frames; not pooled):
+- Every ESP boot-level gate passed:
+  - platform esp32s3, stage TELEMETRY, error 0, pq_env 1;
+  - 1024-row parity with 0 mismatched words (FNV 0xccc5eb8b);
+  - reset reason POWERON, core 0;
+  - `SYSTEM_CPU_PER_CONF` 0x6, `SYSTEM_SYSCLK_CONF` 0xa8400, APB 80 / XTAL 40 / CPU 240 MHz, 16 MiB;
+  - telemetry CRC ok.
+- Wiring valid (5 × 0.1000 s); all 5 schedules valid; CPU clock against the PPK2 time base 240.005 MHz; no counter or reader gaps. The only ADC upper-rail frame is 8.45 ms after ON (inrush, R0), inside the mask.
+- **Sham invalid:** ΔI(marker HIGH − LOW) = **−0.657 mA** (95 % CI −0.732 to −0.581, n = 20), beyond the 0.5 mA gate. The session is ineligible, and every formal session with this setup would be too.
+- For the record only:
+  - gross 7.917 mJ/inference (3 repeat schedules, CV 0.14 %); 24.852 ms/inference;
+  - board current 63–66 mA, in R4 except 0.13 s at power-on;
+  - BENCH draws 1.65 mA less than the IDLE spin (incremental −0.20 mJ/inference).
+
+**Attribution power-on `attrib_nod0_01`** (same firmware and wiring with the D0 lead detached from GPIO4; segment sha256 e5442939…; not a measurement, not pooled):
+- **Method.** The diag_esp_01 marker edges were mapped onto this capture by the parity-end current step (offset −1 ms; residual at 100 BENCH edges: median +0.75 ms, max 5.3 ms). Scripts: `analysis/sham_nod0.py`, `analysis/full_nod0.py`.
+- **Sham slots.** With the identical estimator for both captures, ΔI = **−0.618 mA** (95 % CI ±0.057) with D0 detached, against −0.674 mA (±0.060) with D0 on GPIO4.
+  - Quadrature-shifted null: −0.007 / −0.008 mA.
+  - The current step completes within ~0.1 ms of each marker edge.
+- **Conclusion.** The marker-state current is not the PPK2 D0 input, whose share is ≤ ~0.06 mA (the order seen on RA4E1 and N6). It is a load on the board side of GPIO4 that draws ~0.62 mA more while GPIO4 is driven LOW.
+  - GPIO4 read LOW while undriven at boot, which excludes a resistive pull-up.
+  - The load's form is unknown (no schematic; LED observation not reported by the operator).
+- **Offset.** The capture ran ~0.25 mA (~0.4 %) below diag_esp_01 in both marker states alike: a power-on-to-power-on offset.
+
+**Change** — the only one to the measurement: the marker moves to **GPIO5** (silkscreen "5", J1-5).
+- **Firmware.** EM01 **build_03** differs from build_02 only in `EM_MARKER_GPIO` (em01.h, 5u).
+  - `em01.bin` bcf2ca47…, `em01.elf` 2a244cc3…; bootloader d5bb0adc… and partition table 7f00b6c0… unchanged; sdkconfig identical; a rebuild in a second directory was byte-identical.
+  - Disassembly: all 768 functions keep their names. The only differences are:
+    - the marker constants (1<<4 → 1<<5; snapshot 4 → 5) in `window_begin`, `pulses`, `hal_entry` and the fail-closed path of `infer_row`;
+    - a register re-allocation in the telemetry transmitter `tel_word` (one instruction fewer).
+  - The inference arithmetic and every timed loop are unchanged.
+- **Host code.**
+  - The ESP snapshot gate accepts marker GPIO 4 or 5 (`rm01_decode.ESP_MARKER_GPIOS`).
+  - `run_sessions_esp.py` requires the flashed build's value (build_03 → 5).
+  - `esp_ops.py` pins build_03 and uses it by default.
+  - Tests: EM01 sim 5/5, PPK2 recorder 17/17, RA4E1 diag_07 regression 3/3.
+  - The three RA4E1 formal sessions re-analysed with the current decoder are identical in every numeric leaf (max relative difference 0; only the new `platform` key).
+- **Flash.** `flash_em01_build03/`, 2026-09-30 04:22:29 +08, via the CH343P port (1a86:55d3, serial 5B5E017386), with VOUT detached. All 3 regions verified; MAC e8:f6:0a:8b:40:80.
+- **Unchanged.** Everything else, including the sham gate (|ΔI| < 0.5 mA), eligibility, headline and statistics.
+
+**Logic-port incident and repair** (setup only; no measurement):
+- **04:26:17.** The PPK2 stream stalled for > 1 s while the operator re-routed D0 (recorder `ppk_esp3`, fail-safe exit, output OFF). The cause was not identified.
+- **After the stall.** From then on, the logic port read VCC absent (D1–D7 = 1) through the 10-pin ribbon cable, although the board's 3V3 was live and D0 still followed the marker.
+- **Self-test `ppk_selftest_logic_01`.** The PPK2's own VOUT (3300 mV, 20 mA guard, board not involved) was put directly on the logic header VCC pin. The logic port woke 0.01 s after ON with ~0.06 µA static VCC current, so the PPK2 logic port is healthy.
+- **Repair.** The ribbon cable is set aside. The logic port is now wired with three female-female jumpers from the PPK2 header (VCC → 3V3, GND → G, D0 → GPIO5); VOUT → 5V and PPK2 GND → G are as registered.
+- **Wiring check `wiringcheck_esp_01`** (recorder `ppk_esp8`, 36 s, not a measurement):
+  - a fresh connection read logic 0xFF before ON;
+  - the logic port was powered 0.01 s after ON (3602/3603 bins);
+  - board current 63.4–63.9 mA;
+  - 5 wiring pulses from 29.59 s after ON (diag_esp_01: 29.60 s), then 1.01 s sham pulses on D0.
+- **Other events.**
+  - Between 04:07 and 05:23 the operator plugged the board's native USB port several times: 4 aborted enumerations each, the EM01 signature. These were setup steps with the PPK2 output OFF throughout.
+  - Whether VOUT was attached to 5V during those USB connections was not reported.
+  - Recorders `ppk_esp3`–`ppk_esp7` were idle diagnostics only.
+
+**Next:** diag_esp_02 with build_03 (not pooled), an early sham check at ~80 s (`analysis/live_sham.py`, non-registered, abort only), the full registered analysis and an independent review, then three formal sessions with `--build build_03 --flash-record flash_em01_build03`.
+- If diag_esp_02 fails the sham gate, no formal session is run on that pin.
+
+**Reporting:** diag_esp_01 and attrib_nod0_01 are reported as a documented finding (a marker-pin load on this board) and are never pooled.

@@ -1,0 +1,8 @@
+{"kind": "setup_command", "host_monotonic": 252497.938086288, "utc": "2026-09-29T20:31:42.732580+00:00", "sample_index": 0, "name": "output_off_on_open", "hex": "0c00", "sent_utc": "2026-09-29T20:31:42.710172+00:00"}
+{"kind": "setup_command", "host_monotonic": 252497.938339833, "utc": "2026-09-29T20:31:42.732829+00:00", "sample_index": 0, "name": "set_power_mode_source_on_open", "hex": "1102", "sent_utc": "2026-09-29T20:31:42.710343+00:00"}
+{"kind": "setup_command", "host_monotonic": 252497.938441978, "utc": "2026-09-29T20:31:42.732930+00:00", "sample_index": 0, "name": "regulator_set_on_open", "hex": "0d1388", "sent_utc": "2026-09-29T20:31:42.710475+00:00"}
+{"kind": "command", "host_monotonic": 252497.938723603, "utc": "2026-09-29T20:31:42.733212+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "usb_guard_state", "host_monotonic": 252497.964697409, "utc": "2026-09-29T20:31:42.759188+00:00", "sample_index": 1344, "serial": "vid:303a,vid:1a86", "present": true, "output_on": false}
+{"kind": "error", "host_monotonic": 253787.512473556, "utc": "2026-09-29T20:53:12.306964+00:00", "sample_index": 128956416, "text": "SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)"}
+{"kind": "cleanup_error", "host_monotonic": 253787.513065756, "utc": "2026-09-29T20:53:12.307555+00:00", "sample_index": 128956416, "name": "final_output_off", "text": "write failed: [Errno 5] Input/output error"}
+{"kind": "cleanup_error", "host_monotonic": 253787.513217344, "utc": "2026-09-29T20:53:12.307705+00:00", "sample_index": 128956416, "name": "sampling_stop", "text": "write failed: [Errno 5] Input/output error"}

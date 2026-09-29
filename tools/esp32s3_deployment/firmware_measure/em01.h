@@ -23,7 +23,8 @@
 #define RM_BENCH_ROWS 16u
 #define RM_HEADER_WORDS 64u                   /* header telemetered verbatim */
 #define RM_WINDOW_TEL_WORDS 5u
-#define EM_MARKER_GPIO 4u                     /* GPIO4: no strapping/LED/USB/PSRAM/flash use */
+#define EM_MARKER_GPIO 5u                     /* GPIO5 (J1-5), Amendment 1: GPIO4 on this board draws
+                                              * ~0.62 mA more while LOW (diag_esp_01, attrib_nod0_01) */
 
 enum { RM_S_BOOT=1, RM_S_PARITY=2, RM_S_WIRING=3, RM_S_SHAM=4, RM_S_CALIB=5,
        RM_S_SCHEDULE=6, RM_S_TELEMETRY=7, RM_S_DONE=8, RM_S_ERROR=9 };

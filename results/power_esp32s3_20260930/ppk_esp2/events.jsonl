@@ -1,0 +1,24 @@
+{"kind": "setup_command", "host_monotonic": 248487.507414532, "utc": "2026-09-29T19:24:52.301905+00:00", "sample_index": 0, "name": "output_off_on_open", "hex": "0c00", "sent_utc": "2026-09-29T19:24:52.280271+00:00"}
+{"kind": "setup_command", "host_monotonic": 248487.507575223, "utc": "2026-09-29T19:24:52.302063+00:00", "sample_index": 0, "name": "set_power_mode_source_on_open", "hex": "1102", "sent_utc": "2026-09-29T19:24:52.280393+00:00"}
+{"kind": "setup_command", "host_monotonic": 248487.507636499, "utc": "2026-09-29T19:24:52.302124+00:00", "sample_index": 0, "name": "regulator_set_on_open", "hex": "0d1388", "sent_utc": "2026-09-29T19:24:52.280474+00:00"}
+{"kind": "command", "host_monotonic": 248487.507795765, "utc": "2026-09-29T19:24:52.302283+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "usb_guard_state", "host_monotonic": 248487.531647356, "utc": "2026-09-29T19:24:52.326137+00:00", "sample_index": 1184, "serial": "vid:303a,vid:1a86", "present": false, "output_on": false}
+{"kind": "control", "host_monotonic": 248507.919882944, "utc": "2026-09-29T19:25:12.714370+00:00", "sample_index": 2040320, "text": "start diag_esp_01"}
+{"kind": "segment_start", "host_monotonic": 248507.919982809, "utc": "2026-09-29T19:25:12.714470+00:00", "sample_index": 2040320, "label": "diag_esp_01", "path": "seg_000_diag_esp_01.u32le"}
+{"kind": "control", "host_monotonic": 248509.550496303, "utc": "2026-09-29T19:25:14.344986+00:00", "sample_index": 2203168, "text": "on"}
+{"kind": "command", "host_monotonic": 248509.551862288, "utc": "2026-09-29T19:25:14.346351+00:00", "sample_index": 2203168, "name": "output_on", "hex": "0c01"}
+{"kind": "control", "host_monotonic": 248956.975552095, "utc": "2026-09-29T19:32:41.770040+00:00", "sample_index": 46946080, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 248956.978770773, "utc": "2026-09-29T19:32:41.773258+00:00", "sample_index": 46946080, "label": "diag_esp_01", "path": "seg_000_diag_esp_01.u32le", "frames": 44905760, "sha256": "81bffe293d861b82286df8dcf4c54ad272d4323e89b7ff3193b88b5fe062d547", "d0_rising": 41486}
+{"kind": "control", "host_monotonic": 248958.102145797, "utc": "2026-09-29T19:32:42.896636+00:00", "sample_index": 47058656, "text": "off"}
+{"kind": "command", "host_monotonic": 248958.102442185, "utc": "2026-09-29T19:32:42.896930+00:00", "sample_index": 47058656, "name": "output_off", "hex": "0c00"}
+{"kind": "control", "host_monotonic": 249936.47545272, "utc": "2026-09-29T19:49:01.269941+00:00", "sample_index": 144896512, "text": "start attrib_nod0_01"}
+{"kind": "segment_start", "host_monotonic": 249936.475594584, "utc": "2026-09-29T19:49:01.270081+00:00", "sample_index": 144896512, "label": "attrib_nod0_01", "path": "seg_001_attrib_nod0_01.u32le"}
+{"kind": "control", "host_monotonic": 249938.085122377, "utc": "2026-09-29T19:49:02.879612+00:00", "sample_index": 145057280, "text": "on"}
+{"kind": "command", "host_monotonic": 249938.086498844, "utc": "2026-09-29T19:49:02.880988+00:00", "sample_index": 145057280, "name": "output_on", "hex": "0c01"}
+{"kind": "control", "host_monotonic": 250393.966823486, "utc": "2026-09-29T19:56:38.761313+00:00", "sample_index": 190645760, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 250393.979174034, "utc": "2026-09-29T19:56:38.773663+00:00", "sample_index": 190645760, "label": "attrib_nod0_01", "path": "seg_001_attrib_nod0_01.u32le", "frames": 45749248, "sha256": "e54429393aaf736489d8e55945b42684582d7c9aea95f2c39ace38bf51de6d1f", "d0_rising": 0}
+{"kind": "control", "host_monotonic": 250394.971625956, "utc": "2026-09-29T19:56:39.766117+00:00", "sample_index": 190746144, "text": "off"}
+{"kind": "command", "host_monotonic": 250394.971888632, "utc": "2026-09-29T19:56:39.766376+00:00", "sample_index": 190746144, "name": "output_off", "hex": "0c00"}
+{"kind": "error", "host_monotonic": 251125.319496125, "utc": "2026-09-29T20:08:50.113989+00:00", "sample_index": 263780800, "text": "SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)"}
+{"kind": "cleanup_error", "host_monotonic": 251125.320272789, "utc": "2026-09-29T20:08:50.114763+00:00", "sample_index": 263780800, "name": "final_output_off", "text": "write failed: [Errno 5] Input/output error"}
+{"kind": "cleanup_error", "host_monotonic": 251125.320533922, "utc": "2026-09-29T20:08:50.115023+00:00", "sample_index": 263780800, "name": "sampling_stop", "text": "write failed: [Errno 5] Input/output error"}

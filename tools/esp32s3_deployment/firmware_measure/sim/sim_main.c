@@ -36,7 +36,7 @@ void sim_snapshot(volatile rm_result_t *r)
 {
     r->psram_enabled = 0; r->chip_info = 9u | (2u << 8) | (2u << 16);
     r->apb_hz = 80000000u; r->xtal_hz = 40000000u; r->cpu_hz_clk = 240000000u; r->reset_reason = 1u;
-    r->marker_gpio = 4u; r->tick_hz = 100u; r->core_id = 0u; r->flash_bytes = 16u * 1024u * 1024u;
+    r->marker_gpio = EM_MARKER_GPIO; r->tick_hz = 100u; r->core_id = 0u; r->flash_bytes = 16u * 1024u * 1024u;
     r->idf_version = (5u << 16) | (4u << 8) | 4u;
     r->cpu_per_conf = 2u | (1u << 2); r->sysclk_conf = 1u << 10;
 }

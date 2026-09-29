@@ -47,6 +47,8 @@ ESP_CLOCK_FIELDS = ['apb_hz', 'xtal_hz', 'cpu_hz_clk', 'reset_reason', 'marker_g
                     'core_id', 'flash_bytes', 'idf_version', 'cpu_per_conf', 'sysclk_conf', 'reserved_fc']
 PARITY_FNV = 0xCCC5EB8B            # FNV-1a of the 5120 reference output words (RA/N6/host identical)
 ESP_CLOCK_TOL = 0.005              # PPK2-timebase CPU clock vs 240 MHz (crystal-derived)
+ESP_MARKER_GPIOS = (4, 5)          # 4 = build_02 (diag_esp_01, attrib_nod0_01); 5 = build_03 (ESP
+                                   # Amendment 1); the session driver pins the value of the flashed build
 MODEL_SHA = '22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d'
 VECTORS_SHA = 'cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb'
 
@@ -56,12 +58,12 @@ def _clock_ok_ra(c):
 
 
 def _clock_ok_esp(c):
-    """EM01 snapshot: software clocks APB 80 / XTAL 40 / CPU 240 MHz, marker GPIO4,
+    """EM01 snapshot: software clocks APB 80 / XTAL 40 / CPU 240 MHz, a registered marker GPIO,
     16 MiB physical flash (JEDEC), and the HARDWARE clock registers (review M3):
     SYSTEM_CPU_PER_CONF CPUPERIOD_SEL[1:0] = 2 (240 MHz) with PLL_FREQ_SEL[2] = 1
     (480 MHz PLL), SYSTEM_SYSCLK_CONF SOC_CLK_SEL[11:10] = 1 (PLL)."""
     return (c['apb_hz'] == 80_000_000 and c['xtal_hz'] == 40_000_000 and c['cpu_hz_clk'] == 240_000_000
-            and c['marker_gpio'] == 4 and c['flash_bytes'] == 16 * 1024 * 1024
+            and c['marker_gpio'] in ESP_MARKER_GPIOS and c['flash_bytes'] == 16 * 1024 * 1024
             and c['cpu_per_conf'] & 3 == 2 and (c['cpu_per_conf'] >> 2) & 1 == 1
             and (c['sysclk_conf'] >> 10) & 3 == 1)
 

@@ -1,2 +1,5 @@
 cca7ecb871098007e4c9c40a047738c10bd22a41ff9b789c2456921d6dadbfbe  PROTOCOL.md
 registered_utc 2026-09-29T19:20:36Z (before any PPK2-powered ESP32-S3 run; only identify/backup/flash/USB bring-up so far)
+external_timestamp_utc 2026-09-29T19:21:03Z protocol cca7ecb8 + code pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit ccef3a6eada1f2f9ff8ec3f01184d62cf1fc6e42
+e73f3cfb74697f444a61474ac571b850d6328dcb9fa1495ceaeff0344a9be2fe  PROTOCOL.md (after Amendment 1; lines 1-145 unchanged = cca7ecb8)
+amendment1_registered_utc 2026-09-29T21:37:21Z (after diag_esp_01, attrib_nod0_01, ppk_selftest_logic_01, wiringcheck_esp_01; before diag_esp_02 and any formal session)

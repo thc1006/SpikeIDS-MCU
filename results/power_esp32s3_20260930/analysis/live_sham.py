@@ -1,0 +1,45 @@
+"""Early (non-registered) sham check on a segment that is still being recorded:
+D0 runs after output-ON + 1.5 s, first 5 = wiring, next 20 = sham; per-pulse
+dI = mean(HIGH) - mean(neighbouring LOWs), 50 ms guard at every edge. The
+registered gate is decided later by the full pipeline; this only allows an
+early abort when the marker pin is clearly loaded."""
+import json
+import sys
+import numpy as np
+
+sys.path.insert(0, '/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/host_measure')
+sys.path.insert(0, '/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy')
+import rm01_decode as rd  # noqa: E402
+import analyze_schedule as az  # noqa: E402
+import ppk2_session  # noqa: E402
+
+R, label = sys.argv[1], sys.argv[2]
+ev = [json.loads(x) for x in open(f'{R}/events.jsonl') if x.strip()]
+st = [e for e in ev if e['kind'] == 'segment_start' and e['label'] == label][-1]
+on = [e for e in ev if e.get('name') == 'output_on' and e['sample_index'] >= st['sample_index']][0]
+conv = ppk2_session.Converter(json.load(open(f'{R}/session.json'))['metadata'], 5.0)
+raw = open(f"{R}/{st['path']}", 'rb').read()
+w = np.frombuffer(raw[: len(raw) // 4 * 4], dtype='<u4')
+d0, powered = rd.logic_d0(w)
+d0 = d0.copy()
+d0[: on['sample_index'] - st['sample_index'] + 150_000] = False
+runs = az.high_runs(d0)
+I = conv.ua(w)[0] / 1000.0
+wid = [round((b - a) / 1e5, 4) for a, b in runs[:25]]
+print(f'captured {len(w) / 1e5:.1f} s; D0 runs {len(runs)}; wiring widths {wid[:5]}; sham widths {sorted(set(wid[5:25]))}')
+if len(runs) < 26:
+    print('not enough runs yet'); sys.exit(1)
+G = 5000
+sham = runs[5:25]
+dI = []
+for j, (a, b) in enumerate(sham):
+    nxt = runs[5 + j + 1][0]
+    prv = runs[5 + j - 1][1]
+    lo = 0.5 * (I[prv + G: a - G].mean() + I[b + G: nxt - G].mean())
+    dI.append(I[a + G: b - G].mean() - lo)
+dI = np.array(dI)
+ci = 1.96 * dI.std(ddof=1) / np.sqrt(len(dI))
+print(f'EARLY SHAM dI = {dI.mean():+.4f} mA (95% CI {dI.mean() - ci:+.4f} .. {dI.mean() + ci:+.4f}, n={len(dI)}); '
+      f'gate |dI| < 0.5 mA -> {"PASS" if abs(dI.mean()) < 0.5 else "FAIL"} (early estimate)')
+print('per-pulse:', np.round(dI, 3).tolist())
+print(f'current: {I[on["sample_index"] - st["sample_index"] + 150_000:].mean():.3f} mA mean after ON+1.5 s')

@@ -30,6 +30,7 @@ import run_sessions as rs  # noqa: E402
 
 USB_VENDORS_FORBIDDEN = {'303a', '1a86', '10c4', '0403'}     # Espressif, WCH, Silicon Labs, FTDI
 GUARD_TOKENS_REQUIRED = {'vid:303a', 'vid:1a86'}             # native USB-Serial/JTAG + CH343P
+BUILD_MARKER_GPIO = {'build_02': 4, 'build_03': 5}            # ESP Amendment 1: formal sessions use GPIO5
 MASK_S = 1.5    # EM01 boot (ROM + 2nd-stage bootloader + app) precedes marker_init; RM01 settle keeps
                 # the marker LOW for 2 s after it, so frames before ON + 1.5 s carry no marker (review minor)
 
@@ -149,6 +150,9 @@ def main(argv=None):
             res['problems'].append('ESP board USB appeared while the output was ON')
         if res.get('header') and res['header'].get('platform') != 'esp32s3':
             res['problems'].append(f"telemetry platform is {res['header'].get('platform')}, not esp32s3")
+        if res.get('header') and res['header']['clock_snapshot'].get('marker_gpio') != BUILD_MARKER_GPIO[a.build]:
+            res['problems'].append(f"marker GPIO {res['header']['clock_snapshot'].get('marker_gpio')} is not "
+                                   f"{BUILD_MARKER_GPIO[a.build]} of {a.build}")
         res.update(label=label, segment=seg, done=done, start_event=start_ev, stop_event=stop_ev)
         (a.out / f'{label}_analysis.json').write_text(json.dumps(res, indent=1, default=str) + '\n')
         summ = rs.session_summary(res, conv) if res.get('header') else dict(eligible=False, problems=res['problems'])

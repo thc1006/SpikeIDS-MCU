@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -114,7 +115,8 @@ def main(argv=None):
                                      'partition_table/partition-table.bin', 'flasher_args.json')}
     result = dict(
         schema='em01-build-v1', firmware='EM01 (RM01 logic, ESP32-S3 port)', board='ESP32-S3 N16R8 (module)',
-        marker='GPIO4', time_base='Xtensa CCOUNT at CPU clock (240 MHz)', idf=idf_version,
+        marker='GPIO%d' % int(re.search(r'#define EM_MARKER_GPIO (\d+)u', (HERE / 'em01.h').read_text()).group(1)),
+        time_base='Xtensa CCOUNT at CPU clock (240 MHz)', idf=idf_version,
         pins={str(k): v for k, v in PINS.items()},
         derived_from={'rm01.c': sha(derive_em01.RM01), 'derive_em01.py': sha(HERE / 'derive_em01.py')},
         sources_sha256={str(p): sha(p) for p in [HERE / 'em01.c', HERE / 'em01.h', HERE / 'em01_port.h',
