@@ -34,3 +34,17 @@ All three sessions were eligible. An independent re-decode of the raw frames agr
 - Firmware: RM01 build_03 (`firmware.bin` 19532b80…).
 - Driver, decoder and analysis: sha256 d30c0a8c… / 94ab0ec4… / 782ed8ba….
 - Data: `formal_20260930/` holds the per-session analysis, summary and aggregate. Raw frames are kept locally in `ppk_main7/*.u32le` and are not in git.
+
+## Erratum (2026-09-30 07:45 +08, found during the ESP32-S3 measurement)
+
+**Attribution withdrawn.** Caveat 3 attributes the sham ΔI (−0.137 mA) to the PPK2 D0 input network. That attribution is not established.
+- On the ESP32-S3, the same RM01 source inlined the busy-wait into separate machine-code copies for the sham's HIGH and LOW halves. The copies drew different currents, by up to 3.1 mA (`results/power_esp32s3_20260930/PROTOCOL.md`, Amendment 2).
+- RM01 build_03 has the same structure: `pulses()` contains two inlined wait loops, the HIGH span at 0x1a0 and the LOW span at 0x1c4, each within one 16-byte line.
+- The −0.137 mA may therefore be partly or wholly a code-placement effect.
+
+**Unaffected:**
+- **Eligibility.** The registered gate |ΔI| < 0.5 mA passed.
+- **The headline gross.** BENCH windows contain no wait.
+- **The ±0.020 mJ band.** It remains a conservative sensitivity bound for the marker- and code-state difference.
+
+**Inherits the ambiguity:** the incremental values (0.478 mJ, and 0.4985 mJ sham-corrected). The IDLE spin is itself one inlined wait copy, and on RA4E1 the current difference between copies was not measured.
