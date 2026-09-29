@@ -1,0 +1,40 @@
+{
+ "rows": 1024,
+ "rc_fail": 0,
+ "mismatched_words": 0,
+ "fp_ops": 345082439,
+ "subnormal_operands": 0,
+ "subnormal_results": 0,
+ "exact_zero_results": 68633928,
+ "subnormal_input_features": 0,
+ "instrumented": [
+  "add32",
+  "mul32",
+  "div32",
+  "QCFS floorf"
+ ],
+ "not_instrumented": "int64->float conversions of INT8/INT32 codes (cannot yield subnormals) and pq_quantize floorf of |x/scale| >= 0 (checked via div32/add32)",
+ "host_compiler": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+ "flags": [
+  "-std=gnu11",
+  "-O2",
+  "-fno-fast-math",
+  "-ffp-contract=off",
+  "-fexcess-precision=standard"
+ ],
+ "sources_sha256": {
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c": "e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c": "bba723cc7b031815c2aaf848f6893eb87dd91cb05f5580f93df611be489bb1e9",
+  "fp_census.py": "015920def549f15e0b545883d5729138b02e860eeab3e3978ab37f9bce0706ae"
+ },
+ "vectors": {
+  "inputs_sha256": "0c1b82b878c0c4c283c4739a6c0bbd7a7797881aa2d4baf78aa676beebfb4185",
+  "expected_sha256": "c71eb32146b49a9140160000a5841152ec38db8b7b38f97fefde0fa08a7bb553",
+  "row_ids_first": [
+   20,
+   348,
+   444,
+   607
+  ]
+ }
+}
