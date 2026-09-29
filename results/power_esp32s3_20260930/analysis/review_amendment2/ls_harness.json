@@ -1,0 +1,175 @@
+{
+ "on_sample": 162848,
+ "run24": [
+  7222525,
+  7322523
+ ],
+ "run25": [
+  7832610,
+  7834610
+ ],
+ "run26": [
+  7836610,
+  7838610
+ ],
+ "run25_after_on_s": 76.69762,
+ "run24_end_after_on_s": 71.59675,
+ "truncations": {
+  "mid_sham20": {
+   "cut_after_on_s": 71.09676,
+   "exit": 1,
+   "stdout": [
+    "captured 72.7 s; D0 runs 25; wiring widths [0.1, 0.1, 0.1, 0.1, 0.1]; sham widths [0.5, 1.0]",
+    "VERDICT: WAIT (not enough runs yet)"
+   ],
+   "stderr": ""
+  },
+  "after_sham20": {
+   "cut_after_on_s": 72.09675,
+   "exit": 1,
+   "stdout": [
+    "captured 73.7 s; D0 runs 25; wiring widths [0.1, 0.1, 0.1, 0.1, 0.1]; sham widths [1.0]",
+    "VERDICT: WAIT (not enough runs yet)"
+   ],
+   "stderr": ""
+  },
+  "run25_plus2": {
+   "cut_after_on_s": 76.69764,
+   "exit": 1,
+   "stdout": [
+    "captured 78.3 s; D0 runs 25; wiring widths [0.1, 0.1, 0.1, 0.1, 0.1]; sham widths [1.0]",
+    "VERDICT: WAIT (not enough runs yet)"
+   ],
+   "stderr": ""
+  },
+  "run25_plus10": {
+   "cut_after_on_s": 76.69772,
+   "exit": 0,
+   "stdout": [
+    "captured 78.3 s; D0 runs 26; wiring widths [0.1, 0.1, 0.1, 0.1, 0.1]; sham widths [1.0]",
+    "EARLY SHAM dI = -0.6901 mA (95% CI -0.7511 .. -0.6290, n=20); VERDICT: ABORT (clearly beyond the 0.5 mA gate)"
+   ],
+   "stderr": ""
+  },
+  "on_plus80s": {
+   "cut_after_on_s": 80.0,
+   "exit": 0,
+   "stdout": [
+    "captured 81.6 s; D0 runs 29; wiring widths [0.1, 0.1, 0.1, 0.1, 0.1]; sham widths [1.0]",
+    "EARLY SHAM dI = -0.6901 mA (95% CI -0.7511 .. -0.6290, n=20); VERDICT: ABORT (clearly beyond the 0.5 mA gate)"
+   ],
+   "stderr": ""
+  }
+ },
+ "registered_def": {
+  "mean": -0.6565092701409441,
+  "ci": [
+   -0.7321286498483285,
+   -0.5808898904335597
+  ]
+ },
+ "live_def": {
+  "mean": -0.6900962684480156,
+  "hw_z": 0.061047196699906686
+ },
+ "live_minus_reg_per_pulse": [
+  -0.373,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  -0.299
+ ],
+ "j19_live_low_span_s": 5.00087,
+ "j19_low_1s_to_2s_mean": 65.2288970501566,
+ "j19_live_low_mean": 65.82673514193117,
+ "j0_live_low_span_s": 1.99995,
+ "synthetic": {
+  "-0.45": {
+   "delta": 0.2401,
+   "reg_mean": -0.4164,
+   "reg_pass": true,
+   "live": [
+    0,
+    "EARLY SHAM dI = -0.4500 mA (95% CI -0.5110 .. -0.3890, n=20); VERDICT: CONTINUE (pipeline decides)"
+   ]
+  },
+  "-0.53": {
+   "delta": 0.1601,
+   "reg_mean": -0.4964,
+   "reg_pass": true,
+   "live": [
+    0,
+    "EARLY SHAM dI = -0.5300 mA (95% CI -0.5910 .. -0.4690, n=20); VERDICT: CONTINUE (pipeline decides)"
+   ]
+  },
+  "-0.56": {
+   "delta": 0.1301,
+   "reg_mean": -0.5264,
+   "reg_pass": false,
+   "live": [
+    0,
+    "EARLY SHAM dI = -0.5600 mA (95% CI -0.6210 .. -0.4990, n=20); VERDICT: CONTINUE (pipeline decides)"
+   ]
+  },
+  "-0.60": {
+   "delta": 0.0901,
+   "reg_mean": -0.5664,
+   "reg_pass": false,
+   "live": [
+    0,
+    "EARLY SHAM dI = -0.6000 mA (95% CI -0.6610 .. -0.5390, n=20); VERDICT: ABORT (clearly beyond the 0.5 mA gate)"
+   ]
+  },
+  "+0.45": {
+   "delta": 1.1401,
+   "reg_mean": 0.4836,
+   "reg_pass": true,
+   "live": [
+    0,
+    "EARLY SHAM dI = +0.4500 mA (95% CI +0.3890 .. +0.5110, n=20); VERDICT: CONTINUE (pipeline decides)"
+   ]
+  },
+  "+0.53": {
+   "delta": 1.2201,
+   "reg_mean": 0.5636,
+   "reg_pass": false,
+   "live": [
+    0,
+    "EARLY SHAM dI = +0.5300 mA (95% CI +0.4690 .. +0.5910, n=20); VERDICT: CONTINUE (pipeline decides)"
+   ]
+  },
+  "+0.60": {
+   "delta": 1.2901,
+   "reg_mean": 0.6336,
+   "reg_pass": false,
+   "live": [
+    0,
+    "EARLY SHAM dI = +0.6000 mA (95% CI +0.5390 .. +0.6610, n=20); VERDICT: ABORT (clearly beyond the 0.5 mA gate)"
+   ]
+  },
+  "-0.40": {
+   "delta": 0.2901,
+   "reg_mean": -0.3664,
+   "reg_pass": true,
+   "live": [
+    0,
+    "EARLY SHAM dI = -0.4000 mA (95% CI -0.4610 .. -0.3390, n=20); VERDICT: CONTINUE (pipeline decides)"
+   ]
+  }
+ }
+}

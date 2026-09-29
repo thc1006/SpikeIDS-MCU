@@ -1,4 +1,5 @@
-"""Early (non-registered) sham check on a segment that is still being recorded:
+"""Early (non-registered) sham check on a segment that is still being recorded
+(exit 10 = ABORT, 0 = CONTINUE, 1 = WAIT, 3 = NO-DECISION):
 D0 runs after output-ON + 1.5 s, first 5 = wiring, next 20 = sham; per-pulse
 dI = mean(HIGH) - mean(neighbouring LOWs), 50 ms guard at every edge. The
 registered gate is decided later by the full pipeline; this only allows an
@@ -42,7 +43,8 @@ for j, (a, b) in enumerate(sham):
     lo = 0.5 * (I[prv + G: a - G].mean() + I[b + G: nxt - G].mean())
     dI.append(I[a + G: b - G].mean() - lo)
 dI = np.array(dI)
-ci = 1.96 * dI.std(ddof=1) / np.sqrt(len(dI))
+T975 = {19: 2.093}.get(len(dI) - 1, 2.093)            # Student t, 19 dof (review A2 minor 6)
+ci = T975 * dI.std(ddof=1) / np.sqrt(len(dI))
 m = float(dI.mean())
 if not np.isfinite(m) or not np.isfinite(ci):
     print('VERDICT: NO-DECISION (non-finite estimate)'); sys.exit(3)
@@ -53,3 +55,4 @@ print(f'EARLY SHAM dI = {m:+.4f} mA (95% CI {m - ci:+.4f} .. {m + ci:+.4f}, n={l
       f'VERDICT: {"ABORT (clearly beyond the 0.5 mA gate)" if abort else "CONTINUE (pipeline decides)"}')
 print('per-pulse:', np.round(dI, 3).tolist())
 print(f'current: {I[on["sample_index"] - st["sample_index"] + 150_000:].mean():.3f} mA mean after ON+1.5 s')
+sys.exit(10 if abort else 0)

@@ -1,0 +1,26 @@
+{
+ "runs": 7,
+ "widths_s": [
+  0.1,
+  0.1,
+  0.1,
+  0.1,
+  0.1,
+  1.0,
+  1.0
+ ],
+ "samples_after_last_run": 46356,
+ "review1_W0_hi0_minus_mean_gapbefore_after0": -0.5256523031128069,
+ "review1_W1_hi1_minus_after0": -0.815015420068903,
+ "registered_style_W0_hi0_minus_after0": -0.3265045981521979,
+ "registered_style_W1_hi1_minus_mean_after0_after1": -0.6482032916242417,
+ "W1_hi1_minus_after1": -0.4813911631795662,
+ "levels_mA": {
+  "lo_before0": 65.72061430407636,
+  "hi0": 64.99581429600296,
+  "lo_after0": 65.32231889415516,
+  "hi1": 64.50730347408626,
+  "lo_after1": 64.98869463726582,
+  "lo_after1_span_s": 0.36356
+ }
+}

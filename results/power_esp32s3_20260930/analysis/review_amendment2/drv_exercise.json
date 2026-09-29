@@ -1,0 +1,283 @@
+{
+ "fresh_check_pre_on": {
+  "ppk_esp1": {
+   "bins_total": 83796,
+   "bins_pre_on": 83796,
+   "bad_pre_on": 73141,
+   "first_bad": [
+    "10655000",
+    "255",
+    "0"
+   ],
+   "first_on_sample": null,
+   "preflight_would_pass": false
+  },
+  "ppk_esp2": {
+   "bins_total": 263780,
+   "bins_pre_on": 2204,
+   "bad_pre_on": 0,
+   "first_bad": null,
+   "first_on_sample": 2203168,
+   "preflight_would_pass": true
+  },
+  "ppk_esp3": {
+   "bins_total": 83363,
+   "bins_pre_on": 83363,
+   "bad_pre_on": 69210,
+   "first_bad": [
+    "14153000",
+    "255",
+    "0"
+   ],
+   "first_on_sample": null,
+   "preflight_would_pass": false
+  },
+  "ppk_esp4": {
+   "bins_total": 128956,
+   "bins_pre_on": 128956,
+   "bad_pre_on": 15390,
+   "first_bad": [
+    "44000",
+    "255",
+    "254"
+   ],
+   "first_on_sample": null,
+   "preflight_would_pass": false
+  },
+  "ppk_esp5": {
+   "bins_total": 89116,
+   "bins_pre_on": 89116,
+   "bad_pre_on": 78977,
+   "first_bad": [
+    "47000",
+    "255",
+    "254"
+   ],
+   "first_on_sample": null,
+   "preflight_would_pass": false
+  },
+  "ppk_esp6": {
+   "bins_total": 10414,
+   "bins_pre_on": 10414,
+   "bad_pre_on": 0,
+   "first_bad": null,
+   "first_on_sample": null,
+   "preflight_would_pass": true
+  },
+  "ppk_esp7": {
+   "bins_total": 24696,
+   "bins_pre_on": 24696,
+   "bad_pre_on": 0,
+   "first_bad": null,
+   "first_on_sample": null,
+   "preflight_would_pass": true
+  },
+  "ppk_esp8": {
+   "bins_total": 300123,
+   "bins_pre_on": 2253,
+   "bad_pre_on": 0,
+   "first_bad": null,
+   "first_on_sample": 2252800,
+   "preflight_would_pass": true
+  },
+  "ppk_esp9": {
+   "bins_total": 4558,
+   "bins_pre_on": 4558,
+   "bad_pre_on": 0,
+   "first_bad": null,
+   "first_on_sample": null,
+   "preflight_would_pass": true
+  },
+  "ppk_selftest_logic_01": {
+   "bins_total": 8815,
+   "bins_pre_on": 1798,
+   "bad_pre_on": 0,
+   "first_bad": null,
+   "first_on_sample": 1797696,
+   "preflight_would_pass": true
+  }
+ },
+ "off_gap": {
+  "ppk_esp2": [
+   {
+    "off_sample": 47058656,
+    "window_to": 145057280,
+    "window_to_is_next_on": true,
+    "states": [
+     [
+      1,
+      1
+     ]
+    ],
+    "bins": 97899,
+    "gate_pass": true,
+    "last_change_s_after_off": null,
+    "states_incl_first_second": [
+     [
+      1,
+      1
+     ]
+    ]
+   },
+   {
+    "off_sample": 190746144,
+    "window_to": 263780000,
+    "window_to_is_next_on": false,
+    "states": [
+     [
+      0,
+      0
+     ]
+    ],
+    "bins": 72933,
+    "gate_pass": true,
+    "last_change_s_after_off": null,
+    "states_incl_first_second": [
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ],
+  "ppk_esp8": [
+   {
+    "off_sample": 5908960,
+    "window_to": 300123000,
+    "window_to_is_next_on": false,
+    "states": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      1
+     ]
+    ],
+    "bins": 294114,
+    "gate_pass": false,
+    "last_change_s_after_off": 2909.7904,
+    "states_incl_first_second": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      1
+     ]
+    ]
+   }
+  ],
+  "ppk_selftest_logic_01": [
+   {
+    "off_sample": 2300288,
+    "window_to": 8815000,
+    "window_to_is_next_on": false,
+    "states": [
+     [
+      0,
+      0
+     ]
+    ],
+    "bins": 6414,
+    "gate_pass": true,
+    "last_change_s_after_off": null,
+    "states_incl_first_second": [
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  ]
+ },
+ "status_age_s": {
+  "aware_+00:00_now": 1.2e-05,
+  "Z_suffix": 3e-05,
+  "naive": Infinity,
+  "missing": Infinity,
+  "recorded_ppk_esp2": 8213.826759,
+  "python": "3.13.14"
+ },
+ "wait_done_equivalence_ppk_esp2_s1": {
+  "rs.wait_done": {
+   "result": {
+    "done": true,
+    "captured_s": 440.0,
+    "done_high_s": 12.67,
+    "d0_rises": 143
+   },
+   "fake_elapsed_s": 440.0
+  },
+  "wait_done_esp": {
+   "result": {
+    "done": true,
+    "captured_s": 440.0,
+    "done_high_s": 12.67,
+    "d0_rises": 143
+   },
+   "fake_elapsed_s": 440.0
+  }
+ },
+ "wait_done_esp_fault_cases": {
+  "stale": {
+   "done": false,
+   "instrument_fault": true,
+   "reason": "recorder status stale (2026-09-29T22:25:42.634743+00:00)"
+  },
+  "off_no_guard": {
+   "done": false,
+   "instrument_fault": true,
+   "reason": "output OFF without a guard: {'utc': '2026-09-29T22:25:53.332823+00:00', 'output_on': False, 'guard_tripped': False, 'mean_uA_last_1s': 65000.0, 'usb_guard_present_while_on': 0}"
+  },
+  "off_usb_guard": {
+   "done": false,
+   "instrument_fault": false,
+   "reason": "USB guard switched the output OFF: {'utc': '2026-09-29T22:25:53.677537+00:00', 'output_on': False, 'guard_tripped': False, 'mean_uA_last_1s': 65000.0, 'usb_guard_present_while_on': 3}"
+  },
+  "guard_trip": {
+   "done": false,
+   "reason": "current guard tripped: {'utc': '2026-09-29T22:25:54.028161+00:00', 'output_on': False, 'guard_tripped': True, 'mean_uA_last_1s': 65000.0, 'usb_guard_present_while_on': 0}"
+  },
+  "utc_missing": {
+   "done": false,
+   "instrument_fault": true,
+   "reason": "recorder status stale (None)"
+  },
+  "status_unreadable": {
+   "done": false,
+   "instrument_fault": true,
+   "reason": "recorder status unreadable: status.json unreadable"
+  }
+ },
+ "safe_command_dead_fifo": {
+  "returned": false,
+  "log": [
+   {
+    "event": "command_failed",
+    "command": "stop",
+    "error": "OSError: [Errno 6] No such device or address: '/tmp/tmpze89vtqn/control'"
+   }
+  ]
+ },
+ "safe_command_missing_fifo": {
+  "returned": false,
+  "log": [
+   {
+    "event": "command_failed",
+    "command": "stop",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpze89vtqn/control'"
+   }
+  ]
+ }
+}

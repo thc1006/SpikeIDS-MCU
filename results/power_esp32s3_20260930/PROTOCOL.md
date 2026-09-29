@@ -262,3 +262,45 @@ As in the RA4E1 protocol with Amendment 3:
 5. Three formal sessions with `--build build_04 --flash-record flash_em01_build04`.
 
 If diag_esp_02 fails the sham gate, no formal session is run.
+
+## Amendment 3 (2026-09-30 06:36 +08, after an independent re-review of Amendment 2 — verdict CLEAN with one MAJOR — before diag_esp_02 and any formal session)
+
+**Pre-registered code-placement check** (re-review A2-M1; script `analysis/lowspan_check.py`, applied to every diagnostic and formal session). All busy-wait spans with the marker LOW must agree with their neighbours, which cancels slow thermal drift:
+- **C1:** in each schedule, |mean(IDLE before BENCH) − mean(IDLE after BENCH)| ≤ 0.25 mA. The two are interleaved; the per-schedule noise is ~0.08 mA.
+- **C2:** pooled over the 5 schedules, |mean(final IDLE) − mean(all IDLE)| ≤ 0.5 mA.
+- **C3:** |mean(sham LOW halves) − mean(2 s gap before the sham)| ≤ 0.5 mA, and likewise for the 2 s gap after the sham.
+- **Spans.** The spans are the marker-LOW intervals between D0 runs, with 50 ms excluded at every edge.
+- **Calibration on diag_esp_01 (build_02), which fails as expected:**
+  - C1: −0.67, −0.56, −0.59, −0.49, −0.44 mA;
+  - C2: +2.50 mA;
+  - C3: −0.39 / +0.93 mA.
+- **Decision rules:**
+  - **diag_esp_02** must pass C1–C3 in addition to every registered gate, otherwise no formal session is run.
+  - **In a formal session**, a C1–C3 failure makes that session's incremental "not interpretable". Its gross headline and eligibility are unaffected, because BENCH windows contain no wait.
+- **diag_esp_01 incremental.** The diag_esp_01 incremental (−0.20 mJ/inference) is not interpretable: its IDLE baseline mixed wait copies whose currents differ by up to 3.1 mA.
+
+**Driver fixes** (re-review minors; `run_sessions_esp.py`, tests in `test_run_sessions_esp.py`, 5/5):
+- Any instrument fault (stale or unreadable status, a failed command) ends the run.
+- Every aborted session is listed in the aggregate's `instrument_faults`.
+- Board-state evidence before each ON uses whole 10 ms bins before the ON sample:
+  - session 1: only 0xFF from the recorder start;
+  - later sessions: the latched byte over the OFF gap must be constant and equal to (1, 1) after a DONE session (verified: 97 898 bins after diag_esp_01).
+- The USB-guard OFF classification compares against its count at session start.
+- `live_sham.py` uses a Student-t CI (19 dof) and exits 10 on ABORT. It still ends its first and last sham LOW spans differently from the pipeline, a ~−0.03 mA bias towards ABORT that is harmless under the CI rule.
+
+**Wording corrections to Amendment 2:**
+- **"BENCH code unchanged."** `portable_qdq.c.obj`, `model.c.obj` and `rm_vectors.c.obj` are byte-identical and `infer_row` is instruction-identical. The BENCH repetition loop inside `hal_entry` has permuted registers and moved (0x42006ade → 0x42006aaa), and the `pq_*` code moved by −164 B.
+- **"Inlined 19 times."** build_04 has 19 call sites of the single `wait_cycles`; build_03 had 16–18 distinct CCOUNT wait loops, depending on how outer loops are counted.
+- **The −0.526 / −0.648 mA of the GPIO5 wiring check** use a two-sided LOW estimator (mean of the LOW spans before and after each HIGH). The pipeline-style estimator gives −0.327 mA for the first window.
+- **The second-directory rebuild of build_04** was compared file by file (4 identical sha256) and then deleted. No artefact is kept, and a rebuild with `build.py` reproduces it.
+- **The IDLE baseline** of build_04 is an IRAM spin, so incrementals are not comparable with RA4E1 (as registered, never across boards).
+- **Wiring-check figures in Amendment 1:**
+  - "1.01 s" is the 10 ms-bin width; the raw sham pulses are 1.000 s.
+  - "3602/3603" counts bins, with the first bin containing the power-up.
+  - "63.4–63.9 mA" are the 0.5 s value at 2 s and the 36 s mean.
+- **em01.h.** The `em01.h` comment on `EM_MARKER_GPIO` still states the withdrawn GPIO4 cause. It is left unedited, because the build source is hash-pinned.
+
+**Instrument handling:**
+- 5 of 9 recorders in this setup phase ended with a PPK2 `SerialException`, because the PPK2 USB cable was moved between host ports (kernel log: ports 1-6, 1-5, 1-1).
+- From diag_esp_02 on, the PPK2 stays on one host port, and nobody touches the PPK2, its cables or the board during a run.
+- The self-test's 2 counter gaps fell 5 ms after its output OFF, outside the ON period.

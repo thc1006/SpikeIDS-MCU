@@ -81,7 +81,7 @@ def logic_states(rec, a, b):
     return sorted({(int(r['bits_or']), int(r['bits_and'])) for r in rows}), len(rows)
 
 
-def wait_done_esp(rec, start_sample, t_on, timeout_s, log):
+def wait_done_esp(rec, start_sample, t_on, timeout_s, log, usb_hits0=0):
     """rs.wait_done (same DONE rule) plus instrument-fault detection (review M3)."""
     need = int(rs.DONE_HIGH_S * 100)
     last_print = 0
@@ -96,7 +96,7 @@ def wait_done_esp(rec, start_sample, t_on, timeout_s, log):
         if st['guard_tripped']:
             return dict(done=False, reason=f'current guard tripped: {st}')
         if not st['output_on']:
-            usb = st.get('usb_guard_present_while_on')
+            usb = (st.get('usb_guard_present_while_on') or 0) > usb_hits0
             return dict(done=False, instrument_fault=not usb,
                         reason=('USB guard switched the output OFF' if usb else 'output OFF without a guard') + f': {st}')
         rows = rec.summary_rows(start_sample)
@@ -176,7 +176,7 @@ def main(argv=None):
              shared_driver_sha256=rs.sha(Path(rs.__file__)), decoder_sha256=rs.sha(Path(rs.rd.__file__)),
              analysis_sha256=rs.sha(rs.PPK / 'analyze_schedule.py'), build=a.build))
     results = []
-    prev_off = None
+    prev_off, prev_done = None, False
     for k in range(a.sessions):
         label = f'{a.label}_{k + 1:02d}'
         present = usb_vendors_present()
@@ -184,6 +184,7 @@ def main(argv=None):
         n_ev = len(rec.events())
         if not safe_command(rec, f'start {label}', log):
             log(dict(event='abort', session=label, reason='recorder gone', instrument_fault=True))
+            results.append(dict(label=label, eligible=False, instrument_fault=True, problems=['recorder gone']))
             break
         time.sleep(1.0)
         safe_command(rec, 'on', log)
@@ -194,16 +195,26 @@ def main(argv=None):
         if not (start_ev and on_ev):
             safe_command(rec, 'off', log); safe_command(rec, 'stop', log)
             log(dict(event='abort', session=label, reason='segment/ON not confirmed', new_events=new))
+            results.append(dict(label=label, eligible=False, instrument_fault=True, problems=['segment/ON not confirmed']))
             break
         log(dict(event='powered', session=label, segment_sample=start_ev['sample_index']))
-        gap = None
-        if prev_off is not None:
-            gap = logic_states(rec, prev_off + int(OFF_GAP_SKIP_S * 100_000), on_ev['sample_index'])
-            log(dict(event='off_gap_logic', session=label, states=gap[0], bins=gap[1]))
+        # Board-not-otherwise-powered evidence up to this ON (review A2 minor 2): session 1 from the
+        # recorder start (0xFF only); later sessions over the OFF gap, where the byte stays latched
+        # at the previous session's last state -- (1, 1) after DONE (marker held HIGH).
+        if prev_off is None:
+            gap = logic_states(rec, 0, on_ev['sample_index'] - 1000) + ([(255, 255)],)   # whole bins before ON
+        else:
+            gap = logic_states(rec, prev_off + int(OFF_GAP_SKIP_S * 100_000), on_ev['sample_index'] - 1000) + (
+                [(1, 1)] if prev_done else None,)
+        log(dict(event='pre_on_logic', session=label, states=gap[0], bins=gap[1], required=gap[2]))
         t_on = time.monotonic()
         done = dict(done=False, reason='driver exception')
         try:
-            done = wait_done_esp(rec, start_ev['sample_index'], t_on, a.timeout_s, log)
+            usb0 = rec.status().get('usb_guard_present_while_on') or 0
+        except Exception:
+            usb0 = 0
+        try:
+            done = wait_done_esp(rec, start_ev['sample_index'], t_on, a.timeout_s, log, usb0)
             time.sleep(1.0)
         finally:
             alive = safe_command(rec, 'stop', log)
@@ -211,6 +222,8 @@ def main(argv=None):
             alive = safe_command(rec, 'off', log) and alive
         if not alive:
             done = dict(done, done=False, instrument_fault=True, reason='recorder gone: ' + done.get('reason', ''))
+        alive = alive and not done.get('instrument_fault')        # any instrument fault ends the run
+        prev_done = bool(done.get('done'))
         log(dict(event='session_end', session=label, **done))
         time.sleep(1.0)
         evs = rec.events()
@@ -219,6 +232,7 @@ def main(argv=None):
         stops = [e for e in evs[n_ev:] if e['kind'] == 'segment_stop' and e.get('label') == label]
         if not stops:
             log(dict(event='abort', session=label, reason='no segment_stop event'))
+            results.append(dict(label=label, eligible=False, instrument_fault=True, problems=['no segment_stop event']))
             break
         stop_ev = stops[-1]
         seg = dict(path=start_ev['path'], label=label, frames=stop_ev.get('frames'), sha256=stop_ev.get('sha256'))
@@ -233,9 +247,9 @@ def main(argv=None):
             res = dict(problems=['session did not reach DONE: ' + done.get('reason', '?')], phases={}, header=None)
         if guard_hits:
             res['problems'].append('ESP board USB appeared while the output was ON')
-        if gap is not None and (len(gap[0]) != 1 or gap[1] < 100):
-            res['problems'].append(f'logic byte changed (or < 1 s observed) while the output was OFF before this '
-                                   f'session: {gap[0]} in {gap[1]} bins -> board powered from another source?')
+        if len(gap[0]) != 1 or gap[1] < 100 or (gap[2] is not None and gap[0] != gap[2]):
+            res['problems'].append(f'logic byte before this ON was {gap[0]} in {gap[1]} bins (required {gap[2]}, '
+                                   f'constant, >= 1 s): board powered from another source?')
         wiring = (res.get('phases') or {}).get('wiring') or {}
         if wiring.get('counter_gaps'):
             res['problems'].append(f"PPK2 counter discontinuity in the wiring phase ({wiring['counter_gaps']})")

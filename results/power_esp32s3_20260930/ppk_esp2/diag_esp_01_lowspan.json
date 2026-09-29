@@ -1,0 +1,57 @@
+{
+ "label": "diag_esp_01",
+ "thresholds_mA": {
+  "C1": 0.25,
+  "C2": 0.5,
+  "C3": 0.5
+ },
+ "schedules": {
+  "schedule_00_repeat1": {
+   "idle_before_mA": 64.98032179986873,
+   "idle_after_mA": 65.64973896535044,
+   "C1_diff_mA": -0.669417165481704,
+   "C1_pass": false,
+   "final_idle_mA": 67.68967475387213
+  },
+  "schedule_01_repeat1": {
+   "idle_before_mA": 65.00166076927202,
+   "idle_after_mA": 65.55961045900183,
+   "C1_diff_mA": -0.55794968972981,
+   "C1_pass": false,
+   "final_idle_mA": 67.60278707091311
+  },
+  "schedule_02_repeat1": {
+   "idle_before_mA": 65.13218214218418,
+   "idle_after_mA": 65.7209579110944,
+   "C1_diff_mA": -0.5887757689102244,
+   "C1_pass": false,
+   "final_idle_mA": 68.01372132295425
+  },
+  "schedule_03_dose2": {
+   "idle_before_mA": 65.26818709716358,
+   "idle_after_mA": 65.75694081378421,
+   "C1_diff_mA": -0.4887537166206357,
+   "C1_pass": false,
+   "final_idle_mA": 68.13081223492195
+  },
+  "schedule_04_dose4": {
+   "idle_before_mA": 65.29472087910737,
+   "idle_after_mA": 65.73516777020157,
+   "C1_diff_mA": -0.4404468910941972,
+   "C1_pass": false,
+   "final_idle_mA": 68.10787389086593
+  }
+ },
+ "C2_final_minus_idle_mA": 2.499024994002653,
+ "C2_pass": false,
+ "sham_low_mA": 65.41433293452789,
+ "gap_before_mA": 65.80556566690076,
+ "gap_after_mA": 64.48604006616341,
+ "C3_diffs_mA": [
+  -0.3912327323728704,
+  0.9282928683644798
+ ],
+ "C3_pass": false,
+ "C1_pass": false,
+ "PASS": false
+}
