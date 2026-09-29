@@ -1,0 +1,24 @@
+{
+ "argv": [
+  "/usr/bin/JLinkExe",
+  "-NoGui",
+  "1",
+  "-USB",
+  "000831033862",
+  "-device",
+  "R7FA4E10D",
+  "-if",
+  "SWD",
+  "-speed",
+  "4000",
+  "-autoconnect",
+  "1",
+  "-ExitOnError",
+  "1",
+  "-CommandFile",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/flash_rm01_build01/flash.jlink"
+ ],
+ "returncode": 0,
+ "started_utc": "2026-09-29T12:16:22.537663+00:00",
+ "finished_utc": "2026-09-29T12:16:27.764328+00:00"
+}

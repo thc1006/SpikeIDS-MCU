@@ -1,0 +1,71 @@
+{
+ "schema": "rm01-build-v1",
+ "firmware": "RM01",
+ "board": "FPB-RA4E1 (R7FA4E10D2CFM)",
+ "marker": "P107 = J5-5 (Arduino D4)",
+ "result_block": "0x2001c000",
+ "recipe": "RA01 compile/link argv verbatim except app.c->rm01.c, wire.c dropped, include dir, linker.ld",
+ "ra01_recipe_dir": "/home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01",
+ "pins": {
+  "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c": "bba723cc7b031815c2aaf848f6893eb87dd91cb05f5580f93df611be489bb1e9",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/firmware.elf": "fbe5bdd0f4cf5138d37336a01ba2a5bdf4c1923060db32d9c9c9356c947066fe"
+ },
+ "sources_sha256": {
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/rm01.c": "78850587f5c645f47b1b21b875b721121ef4533faf343b4c93ef8c4609db14a1",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/rm01.h": "63f34c4473f8f443b170556f4505d3aefe8bc2ce43283eead8df5717094f916e",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/linker.ld": "f62a00e6c1453549edefc4addf364215b9ad04e42ade2e347e55f8b22fe43bb6",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/bsp_cfg.h": "00591cbc336faa05e29c76a9bc602aaa3a4a89d267a7753f88f903f509c37023",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/build.py": "5343dbb13bc394829549c2c6f13f511266b5d8558f2ca5a6fd1d85dd9c3d1292"
+ },
+ "portable_sources_sha256": {
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c": "e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c": "bba723cc7b031815c2aaf848f6893eb87dd91cb05f5580f93df611be489bb1e9"
+ },
+ "vectors": {
+  "inputs_sha256": "0c1b82b878c0c4c283c4739a6c0bbd7a7797881aa2d4baf78aa676beebfb4185",
+  "expected_sha256": "c71eb32146b49a9140160000a5841152ec38db8b7b38f97fefde0fa08a7bb553",
+  "row_ids_first": [
+   20,
+   348,
+   444,
+   607
+  ]
+ },
+ "bin_bytes": 314508,
+ "sha256": {
+  "firmware.elf": "414c3c0f1812f6c94e4260915b0fc1c944e94f25458caabbc4860b4878cb5a19",
+  "firmware.bin": "d77f884b32bf8b394aec39e0f92b3f440dec8296896633220d56571400efd731",
+  "firmware.hex": "f6d63550ea435d50f4a52fa4d20dd0e9650f4686afd6b94656572d7f52546e73",
+  "rm_vectors.c": "9ebc37b1f385550096c474af4d941d515d274b11e3e300b32441b56a50b6cf39"
+ },
+ "symbols": {
+  "hal_entry": [
+   "0x368",
+   2568
+  ],
+  "spikeids_qdq_model": [
+   "0x1ddc",
+   280
+  ],
+  "rm_expected": [
+   "0x1ebe0",
+   20480
+  ],
+  "rm_inputs": [
+   "0x23be0",
+   167936
+  ],
+  "g_main_stack": [
+   "0x20000000",
+   8192
+  ],
+  "g_rm": [
+   "0x2001c000",
+   8448
+  ]
+ },
+ "size_A": "/home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/build_02/firmware.elf  :\nsection                  size        addr\n__flash_vectors$$          84           0\n__ram_noinit$$           8220   536870912\n__ram_zero$$              308   536879132\n__flash_readonly$$     314400          84\n.init                       4      314484\n.fini                       4      314488\n__flash_init_array$$        4      314492\n__flash_fini_array$$        4      314496\n__flash_arm.exidx$$         8      314500\n.rm01_result             8448   536985600\n.ARM.attributes            54           0\n.comment                   68           0\n.debug_frame              204           0\n.debug_line_str           210           0\nTotal                  332020\n\n\n",
+ "hardware_accessed": false
+}

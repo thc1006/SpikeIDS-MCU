@@ -1,0 +1,24 @@
+{
+ "utc": "2026-09-29T15:15:51.175857+00:00",
+ "samples": 47368192,
+ "seconds": 473.68192,
+ "output_on": false,
+ "guard_tripped": false,
+ "mean_uA_last_1s": 0.018966548756822514,
+ "max_uA_last_1s": 0.3658850792518941,
+ "powered_seen": false,
+ "counter_discontinuities": 2,
+ "reader_gaps": 0,
+ "invalid_range_frames": 0,
+ "adc_upper_rail_frames": 154,
+ "range_histogram": [
+  47367772,
+  416,
+  2,
+  0,
+  2
+ ],
+ "recording": null,
+ "segments_done": 2,
+ "usb_guard_present_while_on": 0
+}

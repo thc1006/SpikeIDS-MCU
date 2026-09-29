@@ -218,5 +218,152 @@ class ReaderTest(unittest.TestCase):
         self.assertEqual(r.q.get()[0], 'error')
 
 
+class SourceModeTest(unittest.TestCase):
+    """--source-mv: Nordic byte sequence, mode readback, S-term at the setpoint,
+    and the USB interlock refusing output ON while the J-Link is present."""
+    def run_session(self, meta_after, present, extra=(), meta_first=None):
+        meta_first = meta_first or dict(mode='1', VDD='4000')
+        import serial
+        chunks = [b'', b'', frames([2000] * 4096, [3] * 4096, [0] * 4096)]
+        writes, calls = [], []
+
+        class Gone(serial.SerialException):
+            pass
+
+        class Port:
+            def __init__(self, *a, **k):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+            def fileno(self):
+                return os.open('/dev/null', os.O_RDONLY)
+            def write(self, v):
+                writes.append(bytes(v))
+                return len(v)
+            def flush(self):
+                pass
+            def read(self, n):
+                if chunks:
+                    return chunks.pop(0)
+                raise Gone('end of fake stream')
+
+        class Info:
+            @staticmethod
+            def devices():
+                return [{'port': '/dev/null', 'serial': ps.PPK_SERIAL, 'vid': 1, 'pid': 2}]
+            @staticmethod
+            def query_metadata(port):
+                calls.append(len(writes))
+                m = dict(META, **(meta_first if len(calls) == 1 else meta_after))
+                return b'mode: x\nEND\n', m
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'sess'
+            old = (serial.Serial, ps.load_info, ps.fcntl.ioctl, ps.usb_present, ps.time.sleep,
+                   ps.wait_reenumeration)
+            serial.Serial, ps.load_info = Port, (lambda: Info)
+            ps.wait_reenumeration = lambda info, sn, port: (info.devices(), dict(vanished=True))
+            ps.fcntl.ioctl = lambda *a: None
+            ps.usb_present = lambda sn: present
+            ps.time.sleep = lambda s: None
+            try:
+                rc = ps.main(['--out', str(out), '--source-mv', '5000', '--guard-ma', '300',
+                              '--absent-guard', '000831033862', '--initial-output', 'on', *extra])
+            except SystemExit as exc:
+                rc = exc.code
+            finally:
+                (serial.Serial, ps.load_info, ps.fcntl.ioctl, ps.usb_present, ps.time.sleep,
+                 ps.wait_reenumeration) = old
+            report = json.loads((out / 'session.json').read_text())
+            events = [json.loads(x) for x in (out / 'events.jsonl').read_text().splitlines()] \
+                if (out / 'events.jsonl').exists() else []
+        return rc, writes, report, events
+
+    def test_nordic_sequence_and_interlock_refuses_on(self):
+        rc, writes, report, events = self.run_session(dict(mode='2', VDD='5000'), present=True)
+        # first connection: configure; second connection: verify, regulator again, start
+        self.assertEqual(writes[:6], [b'\x0c\x00', b'\x11\x02', b'\x0d\x13\x88',
+                                      b'\x0c\x00', b'\x11\x02', b'\x0d\x13\x88'])
+        self.assertNotIn(ps.CMD_ON, writes)                 # J-Link present: ON refused
+        self.assertEqual(writes[6], ps.CMD_START)
+        self.assertTrue(any(e['kind'] == 'usb_guard_refused_on' for e in events))
+        self.assertEqual(report['correction_voltage_assumed_v'], 5.0)
+        self.assertTrue(report['vdd_readback_matches_setpoint'])
+        self.assertEqual(report['metadata']['mode'], '2')
+
+    def test_output_on_when_absent(self):
+        rc, writes, report, events = self.run_session(dict(mode='2', VDD='5000'), present=False)
+        self.assertIn(ps.CMD_ON, writes)
+        self.assertLess(writes.index(b'\x0d\x13\x88'), writes.index(ps.CMD_ON))
+        self.assertLess(writes.index(ps.CMD_START), writes.index(ps.CMD_ON))
+
+    def test_refuses_when_mode_does_not_switch(self):
+        rc, writes, report, events = self.run_session(dict(mode='1', VDD='4000'), present=False)
+        self.assertNotEqual(rc, 0)
+        self.assertNotIn(ps.CMD_ON, writes)
+        self.assertNotIn(ps.CMD_START, writes)
+        self.assertIn('not Source at setpoint', report['error'])
+
+    def test_already_configured_skips_setup(self):
+        rc, writes, report, events = self.run_session(dict(mode='2', VDD='5000'), present=False,
+                                                      meta_first=dict(mode='2', VDD='5000'))
+        self.assertEqual(writes[:3], [b'\x0c\x00', b'\x11\x02', b'\x0d\x13\x88'])   # re-sent on open
+        self.assertEqual(report['source_setup'][-1]['name'], 'regulator_set_on_open')
+
+    def test_argument_limits(self):
+        for bad in (['--source-mv', '5001'], ['--source-mv', '5000', '--guard-ma', '600']):
+            with self.assertRaises(SystemExit):
+                ps.main(['--out', '/nonexistent/x', *bad])
+        self.assertEqual(ps.regulator_cmd(5000), b'\x0d\x13\x88')
+        self.assertEqual(ps.regulator_cmd(800), b'\x0d\x03\x20')
+
+    def test_wait_reenumeration_sequence(self):
+        t = [0.0]
+        present = {'n': 0}
+        def clock():
+            return t[0]
+        def sleep(d):
+            t[0] += d
+        def exists(path):
+            present['n'] += 1
+            return not (2 <= present['n'] <= 6)      # vanishes briefly, then returns
+        class Info:
+            @staticmethod
+            def devices():
+                return [{'port': '/dev/ttyACM0', 'serial': 'S'}]
+        m, rec = ps.wait_reenumeration(Info, 'S', '/dev/ttyACM0', clock=clock, sleep=sleep, exists=exists)
+        self.assertEqual(len(m), 1)
+        self.assertTrue(rec['vanished'])
+
+    def test_guard_switches_off_when_device_appears(self):
+        class S:
+            def __init__(self):
+                self.ev, self.output_on = [], True
+            def event(self, kind, **kw):
+                self.ev.append(kind)
+            def write_cmd(self, value, name):
+                self.ev.append(name)
+                if value == ps.CMD_OFF:
+                    self.output_on = False
+        g = ps.UsbGuard('x', present=lambda sn: True)
+        s = S()
+        g.poll(s); g.poll(s)
+        self.assertFalse(s.output_on)
+        self.assertEqual(g.seen_while_on, 1)
+        self.assertEqual(s.ev.count('usb_guard_present_while_on'), 1)
+        self.assertIn('usb_guard_output_off', s.ev)
+
+    def test_usb_present_fails_closed(self):
+        self.assertTrue(ps.usb_present('x', root=Path('/nonexistent/sysfs')))
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp) / '1-7'
+            d.mkdir()
+            (d / 'serial').write_text('000831033862\n')
+            self.assertTrue(ps.usb_present('000831033862', root=Path(tmp)))
+            self.assertFalse(ps.usb_present('other', root=Path(tmp)))
+
+
 if __name__ == '__main__':
     unittest.main()

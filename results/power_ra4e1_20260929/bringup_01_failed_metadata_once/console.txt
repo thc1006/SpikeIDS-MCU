@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/ppk2_session.py", line 588, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/ppk2_session.py", line 584, in main
+    return run(args)
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/ppk2_session.py", line 438, in run
+    raw_after, meta_after = info.query_metadata(port)
+                            ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/thc1006/.local/opt/ppk2-headless/ppk2_info.py", line 62, in query_metadata
+    raise TimeoutError("No complete metadata response; no retry or reset sent")
+TimeoutError: No complete metadata response; no retry or reset sent

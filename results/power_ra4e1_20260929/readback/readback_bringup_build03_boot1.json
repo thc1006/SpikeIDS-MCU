@@ -1,0 +1,24 @@
+{
+ "argv": [
+  "/usr/bin/JLinkExe",
+  "-NoGui",
+  "1",
+  "-USB",
+  "000831033862",
+  "-device",
+  "R7FA4E10D",
+  "-if",
+  "SWD",
+  "-speed",
+  "4000",
+  "-autoconnect",
+  "1",
+  "-ExitOnError",
+  "1",
+  "-CommandFile",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/readback/readback_bringup_build03_boot1.jlink"
+ ],
+ "returncode": 0,
+ "started_utc": "2026-09-29T13:01:43.069477+00:00",
+ "finished_utc": "2026-09-29T13:01:43.329923+00:00"
+}
