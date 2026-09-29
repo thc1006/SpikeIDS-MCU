@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_measure/measure.py", line 548, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_measure/measure.py", line 530, in main
+    result = ctx['controller'].run_connected(wrapped, ctx['firmware'], ctx['platform'], sink,
+                                             nonce=secrets.randbelow(0xfffffffe) + 1, modules=local)
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_runtime/controller.py", line 53, in run_connected
+    parity=v.collect(mailbox,firmware['rows'],retain)
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_measure/measure.py", line 527, in collect
+    outcome['parity'] = procedure(wrapped, rows, modules, sink, ppk, args)
+                        ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_measure/measure.py", line 352, in procedure
+    require(wiring['passed'], 'D0 did not record the marker pulses: check PPK2 D0 -> Arduino D12 '
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            '(CN12-5, PH8), logic VCC -> CN2 VDDIO, logic GND -> GND')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/host_sram_measure/measure.py", line 65, in require
+    raise RuntimeError(message)
+RuntimeError: D0 did not record the marker pulses: check PPK2 D0 -> Arduino D12 (CN12-5, PH8), logic VCC -> CN2 VDDIO, logic GND -> GND
+EXIT=1

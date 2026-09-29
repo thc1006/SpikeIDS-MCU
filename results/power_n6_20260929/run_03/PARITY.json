@@ -1,0 +1,157 @@
+{
+  "all_schedules_valid": false,
+  "argmax_disagreements": [],
+  "atol": 1e-06,
+  "bitwise_equal_to_accepted_run08": true,
+  "bitwise_mismatch_rows": [],
+  "comparison": "numpy.isclose(reference_fp32, actual_fp32); actual is relative-tolerance anchor",
+  "cycles_max": 5818128,
+  "cycles_min": 5814112,
+  "cycles_per_inference_mean": 5815316.3603515625,
+  "energy_measured": false,
+  "failed_logit_values": [],
+  "full_logit_parity_passed": true,
+  "host_seconds": 98.00795939101954,
+  "latency_validated": false,
+  "max_abs_error": 0.0,
+  "measurement_summary": {
+    "assumed_volts": 5.0,
+    "bench_dI_codes": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "bench_dI_mA": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "between_session_note": "One power-on only; repeat on >= 3 power cycles for between-session CI.",
+    "board_power_W_bench": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "board_power_W_idle_spin": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "charge_C_per_inference_windows": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "configuration": "bit-exact SM06 validation build, nominal 64000000 Hz HSI, I/D caches off, NPU polling",
+    "cpu_hz_estimate": [],
+    "dose_response_gross_J_vs_N": null,
+    "dose_response_incremental_J_vs_N": null,
+    "gross_J_per_inference_windows": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "headline_gross_J_per_inference_between_schedules": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "incremental_over_spin_J_per_inference_between_schedules": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "incremental_over_spin_J_per_inference_windows": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "incremental_sham_corrected_J_per_inference_windows": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "not_claimable": [
+      "SoC/NPU energy",
+      "deployment-point energy (64 MHz, caches off)",
+      "CPU-vs-NPU attribution (no CPU-only variant)",
+      "cross-board ranking"
+    ],
+    "per_code_mA": 0.7455064223754447,
+    "recorder_source_sha256": {
+      "/home/thc1006/.local/opt/ppk2-headless/ppk2_info.py": "e35b4697f974c74c04ed97965a9df1d9f18ea19a046d3982f0ec59e625f41b13",
+      "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/analyze.py": "7eae8347391b11e747be73a7368f55587a9f154e7749f622844e5fae8a9869a9",
+      "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/ppk2_session.py": "74099db844d26d5b65954235ef3bc86fbc58fec9cd82ab09b55fe5ec27041f46"
+    },
+    "schedules": 5,
+    "scope": "whole-board 5 V input downstream of JP2 (minus ST-LINK); not SoC core/NPU",
+    "sham_null": {
+      "dI_codes": -0.07729719630550991,
+      "dI_mA": {
+        "ci95": [
+          -0.1021279479191847,
+          -0.013123164635561561
+        ],
+        "cv": 1.6500951920566058,
+        "mean": -0.05762555627737313,
+        "n": 20,
+        "sd": 0.09508765335288076
+      },
+      "dP_W": {
+        "ci95": [
+          -0.0005106397395959,
+          -6.56158231777643e-05
+        ],
+        "cv": 1.6500951920568716,
+        "mean": -0.00028812778138683214,
+        "n": 20,
+        "sd": 0.0004754382667644251
+      },
+      "valid": true
+    },
+    "systematic": null,
+    "time_s_per_inference_windows": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    },
+    "valid_repeat_schedules": 0,
+    "valid_schedules": 0,
+    "vs_overhead_J_per_inference_windows": {
+      "ci95": null,
+      "cv": null,
+      "mean": null,
+      "n": 0,
+      "sd": null
+    }
+  },
+  "nominal_cpu_hz": 64000000,
+  "npu_execution_independently_verified": false,
+  "parity_outputs_sha256": "c71eb32146b49a9140160000a5841152ec38db8b7b38f97fefde0fa08a7bb553",
+  "path": "SM07M PARITY batch path",
+  "research_measurement_accepted": false,
+  "rows": 1024,
+  "rtol": 1e-05
+}

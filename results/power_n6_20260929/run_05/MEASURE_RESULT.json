@@ -1,0 +1,287 @@
+{
+  "all_captures_valid": true,
+  "controller_result_is_numerical_phase_only": true,
+  "dose_checks": {
+    "gross_linear": true,
+    "schedules": 2,
+    "valid": 2
+  },
+  "energy_measured": true,
+  "session_eligible": true,
+  "summary": {
+    "assumed_volts": 5.0,
+    "bench_dI_codes": {
+      "ci95": [
+        0.03490755430964649,
+        0.13408595959064576
+      ],
+      "cv": 1.571685452560707,
+      "mean": 0.08449675695014612,
+      "n": 30,
+      "sd": 0.13280232368710246
+    },
+    "bench_dI_mA": {
+      "ci95": [
+        0.026023805927261105,
+        0.09996194402520076
+      ],
+      "cv": 1.5716854525607065,
+      "mean": 0.06299287497623093,
+      "n": 30,
+      "sd": 0.09900498521511751
+    },
+    "between_session_note": "One power-on only; repeat on >= 3 power cycles for between-session CI.",
+    "board_power_W_bench": {
+      "ci95": [
+        0.5417018843546715,
+        0.5420861183910006
+      ],
+      "cv": 0.0009494455050323422,
+      "mean": 0.541894001372836,
+      "n": 30,
+      "sd": 0.000514498823807429
+    },
+    "board_power_W_idle_spin": {
+      "ci95": [
+        0.5413416325045354,
+        0.5418164414913748
+      ],
+      "cv": 0.0011739392896427691,
+      "mean": 0.5415790369979551,
+      "n": 30,
+      "sd": 0.0006357809099787943
+    },
+    "charge_C_per_inference_windows": {
+      "ci95": [
+        0.00987085072241352,
+        0.009877670133892723
+      ],
+      "cv": 0.000924763909304496,
+      "mean": 0.009874260428153122,
+      "n": 30,
+      "sd": 9.131359675029566e-06
+    },
+    "configuration": "bit-exact SM06 validation build, nominal 64000000 Hz HSI, I/D caches off, NPU polling",
+    "cpu_hz_estimate": [
+      {
+        "ci95": [
+          63848692.01615851,
+          63873677.01807735
+        ],
+        "cv": 0.00041797778485733335,
+        "mean": 63861184.51711793,
+        "n": 20,
+        "sd": 26692.556442830388
+      },
+      {
+        "ci95": [
+          63815441.89351272,
+          63842617.7468975
+        ],
+        "cv": 0.00045485788755032205,
+        "mean": 63829029.82020511,
+        "n": 20,
+        "sd": 29033.13766840501
+      },
+      {
+        "ci95": [
+          63832435.46484647,
+          63846699.57712967
+        ],
+        "cv": 0.00023870724209796483,
+        "mean": 63839567.52098807,
+        "n": 20,
+        "sd": 15238.967099661872
+      },
+      {
+        "ci95": [
+          63802684.855758116,
+          63833805.89572482
+        ],
+        "cv": 0.0005209787680260897,
+        "mean": 63818245.37574147,
+        "n": 20,
+        "sd": 33247.95085344049
+      },
+      {
+        "ci95": [
+          63816819.73124792,
+          63847016.828887686
+        ],
+        "cv": 0.0005054033191780045,
+        "mean": 63831918.2800678,
+        "n": 20,
+        "sd": 32260.86336824541
+      }
+    ],
+    "dose_response_gross_J_vs_N": {
+      "intercept": -0.000646464264576263,
+      "intercept_ci95": [
+        -0.0014873743812924727,
+        0.00019444585213994662
+      ],
+      "intercept_ci_contains_zero": true,
+      "intercept_rel_to_smallest_window": -0.0008174605770715728,
+      "linear": true,
+      "n": 50,
+      "slope": 0.04942625695878526,
+      "slope_ci95": [
+        0.04940175218606227,
+        0.04945076173150825
+      ]
+    },
+    "dose_response_incremental_J_vs_N": {
+      "intercept": 0.000629163920487772,
+      "intercept_ci95": [
+        -0.00018156840225735482,
+        0.0014398962432328989
+      ],
+      "intercept_ci_contains_zero": true,
+      "intercept_rel_to_smallest_window": 39.49793631271972,
+      "linear": true,
+      "n": 50,
+      "slope": 9.955645459335668e-07,
+      "slope_ci95": [
+        -2.262980386518108e-05,
+        2.4620932957048213e-05
+      ]
+    },
+    "gross_J_per_inference_windows": {
+      "ci95": [
+        0.0493542536120676,
+        0.049388350669463614
+      ],
+      "cv": 0.0009247639093045006,
+      "mean": 0.049371302140765606,
+      "n": 30,
+      "sd": 4.565679837514806e-05
+    },
+    "headline_gross_J_per_inference_between_schedules": {
+      "ci95": [
+        0.04929771440413855,
+        0.049444889877392664
+      ],
+      "cv": 0.0006000054507789178,
+      "mean": 0.049371302140765606,
+      "n": 3,
+      "sd": 2.9623050396512217e-05
+    },
+    "incremental_over_spin_J_per_inference_between_schedules": {
+      "ci95": [
+        1.1165946997058983e-05,
+        4.6220336846526246e-05
+      ],
+      "cv": 0.24590006426775887,
+      "mean": 2.8693141921792614e-05,
+      "n": 3,
+      "sd": 7.05564544261273e-06
+    },
+    "incremental_over_spin_J_per_inference_windows": {
+      "ci95": [
+        1.1849435217067271e-05,
+        4.5536848626517954e-05
+      ],
+      "cv": 1.5720925622588848,
+      "mean": 2.8693141921792614e-05,
+      "n": 30,
+      "sd": 4.510827500308877e-05
+    },
+    "incremental_sham_corrected_J_per_inference_windows": {
+      "ci95": [
+        2.6659454560330772e-05,
+        6.03461380819743e-05
+      ],
+      "cv": 1.0368827174319535,
+      "mean": 4.350279632115254e-05,
+      "n": 30,
+      "sd": 4.510729766536543e-05
+    },
+    "not_claimable": [
+      "SoC/NPU energy",
+      "deployment-point energy (64 MHz, caches off)",
+      "CPU-vs-NPU attribution (no CPU-only variant)",
+      "cross-board ranking"
+    ],
+    "per_code_mA": 0.7455064223754447,
+    "recorder_source_sha256": {
+      "/home/thc1006/.local/opt/ppk2-headless/ppk2_info.py": "e35b4697f974c74c04ed97965a9df1d9f18ea19a046d3982f0ec59e625f41b13",
+      "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/analyze.py": "7eae8347391b11e747be73a7368f55587a9f154e7749f622844e5fae8a9869a9",
+      "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/ppk2_session.py": "329e826510358b563809051a8903ae6d22d503a8b3b4aa5c49df14ccfe1c7f75"
+    },
+    "schedules": 5,
+    "scope": "whole-board 5 V input downstream of JP2 (minus ST-LINK); not SoC core/NPU",
+    "sham_null": {
+      "dI_codes": -0.04360770625066905,
+      "dI_mA": {
+        "ci95": [
+          -0.09274789518767101,
+          0.02772824503779981
+        ],
+        "cv": 3.959106598126737,
+        "mean": -0.032509825074935605,
+        "n": 20,
+        "sd": 0.1287098629581236
+      },
+      "dP_W": {
+        "ci95": [
+          -0.00046373947593833487,
+          0.00013864122518898994
+        ],
+        "cv": 3.9591065981266795,
+        "mean": -0.00016254912537467248,
+        "n": 20,
+        "sd": 0.0006435493147905867
+      },
+      "valid": true
+    },
+    "systematic": {
+      "gross_rel_bounds": [
+        -0.20077056466850715,
+        0.1603539043352582
+      ],
+      "gross_vin_rel": [
+        -0.1334496895362114,
+        0.05668663542283259
+      ],
+      "incremental_rel_bounds": [
+        -0.1920937271229854,
+        0.15811388300841897
+      ],
+      "incremental_vin_rel": [
+        -0.11999999999999988,
+        0.050000000000000044
+      ],
+      "kind": "Type-B bounds on true/estimated, not confidence intervals",
+      "mean_current_mA": 108.37880027456721,
+      "nordic_app_convention_rel": -0.025472896848885374,
+      "note": "Same-setup ratios cancel gain and VIN; absolute values do not.",
+      "ppk2_gain_rel": 0.15,
+      "vin_band_V": [
+        4.4,
+        5.25
+      ]
+    },
+    "time_s_per_inference_windows": {
+      "ci95": [
+        0.09109412327457851,
+        0.09112346005875487
+      ],
+      "cv": 0.00043116229235155395,
+      "mean": 0.09110879166666669,
+      "n": 30,
+      "sd": 3.9282675468380164e-05
+    },
+    "valid_repeat_schedules": 3,
+    "valid_schedules": 5,
+    "vs_overhead_J_per_inference_windows": {
+      "ci95": [
+        -1.7431920152270645e-05,
+        2.3596964498304007e-05
+      ],
+      "cv": 17.82264082926836,
+      "mean": 3.0825221730166806e-06,
+      "n": 30,
+      "sd": 5.493868553793212e-05
+    }
+  }
+}

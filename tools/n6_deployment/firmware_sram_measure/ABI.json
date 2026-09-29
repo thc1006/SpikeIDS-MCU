@@ -1,0 +1,13 @@
+{
+  "kind": "SM07M-measurement-layer-over-SM06",
+  "mailbox_address": "0x340f8000",
+  "mailbox_bytes": 512,
+  "deployment_tag": "0x534d3037",
+  "measure_block_symbol": "g_measure",
+  "rows_in_symbol": "g_rows_in",
+  "rows_out_symbol": "g_rows_out",
+  "marker": "PH8 = Arduino D12, CN12-5 (PPK2 D0); not PE15/D13 which drives LED LD6",
+  "model_runtime_hooks": "unchanged SM06 translation unit",
+  "energy_measured": false,
+  "board_validated": false
+}

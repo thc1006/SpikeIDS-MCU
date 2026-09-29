@@ -1,0 +1,16 @@
+{"schedule": "schedule_00_repeat1", "valid": true, "problems": []}
+{"schedule": "schedule_01_repeat1", "valid": true, "problems": []}
+{"schedule": "schedule_02_repeat1", "valid": true, "problems": []}
+{"schedule": "schedule_03_dose2", "valid": true, "problems": []}
+{"schedule": "schedule_04_dose4", "valid": true, "problems": []}
+{
+ "n": 3,
+ "mean": 0.049406200260485617,
+ "sd": 1.686133353169904e-05,
+ "ci95": [
+  0.04936431438598912,
+  0.04944808613498211
+ ],
+ "cv": 0.0003412797066522134
+}
+EXIT=0

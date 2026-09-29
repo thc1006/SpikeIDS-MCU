@@ -1,0 +1,360 @@
+{
+  "marker_load_check_passed": true,
+  "max_marker_mA": 0.5,
+  "null_dI_codes": -0.07729719630550991,
+  "null_dI_mA": {
+    "ci95": [
+      -0.1021279479191847,
+      -0.013123164635561561
+    ],
+    "cv": 1.6500951920566058,
+    "mean": -0.05762555627737313,
+    "n": 20,
+    "sd": 0.09508765335288076
+  },
+  "null_dP_W": {
+    "ci95": [
+      -0.0005106397395959,
+      -6.56158231777643e-05
+    ],
+    "cv": 1.6500951920568716,
+    "mean": -0.00028812778138683214,
+    "n": 20,
+    "sd": 0.0004754382667644251
+  },
+  "problems": [],
+  "segment": "/home/thc1006/dev/SpikeIDS-MCU/results/power_n6_20260929/session_02/seg_004_sham.u32le",
+  "segment_sha256": "0303c7263a8d1e9d554045ddd45cf1d2a51bddc55b8f0dc5d3634bb026637ae3",
+  "swd": {
+    "first_poll_found_done": true,
+    "frames_vs_host_ok": true,
+    "pin_samples": 0,
+    "pin_transitions": 0,
+    "segment_frames_s": 52.8528,
+    "segment_host_s": 52.87358456198126,
+    "swd_ops": [
+      {
+        "address": 873100768,
+        "bytes": 112,
+        "op": "read",
+        "t0": 211940.158030473,
+        "t1": 211940.159581912
+      },
+      {
+        "address": 873100816,
+        "bytes": 28,
+        "op": "write",
+        "t0": 211940.159663487,
+        "t1": 211940.160287783
+      },
+      {
+        "address": 873100816,
+        "bytes": 28,
+        "op": "read",
+        "t0": 211940.160290254,
+        "t1": 211940.160884974
+      },
+      {
+        "address": 873100792,
+        "bytes": 4,
+        "op": "write",
+        "t0": 211940.16089082,
+        "t1": 211940.161273744
+      },
+      {
+        "address": 873100792,
+        "bytes": 4,
+        "op": "read",
+        "t0": 211940.161275605,
+        "t1": 211940.161676317
+      },
+      {
+        "address": 873100784,
+        "bytes": 4,
+        "op": "write",
+        "t0": 211940.161682236,
+        "t1": 211940.16206899
+      },
+      {
+        "address": 873100768,
+        "bytes": 112,
+        "op": "read",
+        "t0": 211992.16217501,
+        "t1": 211992.163745874
+      },
+      {
+        "address": 873100880,
+        "bytes": 640,
+        "op": "read",
+        "t0": 211992.515547577,
+        "t1": 211992.521574055
+      }
+    ],
+    "t_commit": 211940.162069975
+  },
+  "table": [
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2244384433,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2180384302
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2372384881,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2308384750
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2500385329,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2436385198
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2628385777,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2564385646
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2756386225,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2692386094
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2884386673,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2820386542
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3012387121,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2948386990
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3140387569,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3076387438
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3268388017,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3204387886
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3396388465,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3332388334
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3524388913,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3460388782
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3652389361,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3588389230
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3780389809,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3716389678
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 3908390257,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3844390126
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 4036390705,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 3972390574
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 4164391153,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 4100391022
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 4292391601,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 4228391470
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 125424753,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 61424622
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 253425201,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 189425070
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 381425649,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 317425518
+    }
+  ],
+  "valid": true,
+  "windows": [
+    {
+      "dI_mA": -0.350136506336753,
+      "dP_W": -0.001750682531683756,
+      "window": 0
+    },
+    {
+      "dI_mA": -0.01286730004602532,
+      "dP_W": -6.433650023007775e-05,
+      "window": 1
+    },
+    {
+      "dI_mA": -0.15013915035289926,
+      "dP_W": -0.0007506957517645629,
+      "window": 2
+    },
+    {
+      "dI_mA": 0.03883945290934321,
+      "dP_W": 0.00019419726454683595,
+      "window": 3
+    },
+    {
+      "dI_mA": -0.04460639105289488,
+      "dP_W": -0.00022303195526440778,
+      "window": 4
+    },
+    {
+      "dI_mA": -0.17749670767955195,
+      "dP_W": -0.0008874835383977375,
+      "window": 5
+    },
+    {
+      "dI_mA": 0.02189992292137788,
+      "dP_W": 0.00010949961460715585,
+      "window": 6
+    },
+    {
+      "dI_mA": -0.131741628816485,
+      "dP_W": -0.0006587081440824205,
+      "window": 7
+    },
+    {
+      "dI_mA": -0.10415771525066475,
+      "dP_W": -0.0005207885762533726,
+      "window": 8
+    },
+    {
+      "dI_mA": -0.020347055873827458,
+      "dP_W": -0.00010173527936907512,
+      "window": 9
+    },
+    {
+      "dI_mA": -0.01378711175092917,
+      "dP_W": -6.893555875464585e-05,
+      "window": 10
+    },
+    {
+      "dI_mA": -0.0021447518239057217,
+      "dP_W": -1.0723759119590781e-05,
+      "window": 11
+    },
+    {
+      "dI_mA": 0.05226950159757848,
+      "dP_W": 0.00026134750798789685,
+      "window": 12
+    },
+    {
+      "dI_mA": -0.05495047222711946,
+      "dP_W": -0.00027475236113572166,
+      "window": 13
+    },
+    {
+      "dI_mA": -0.1060876606525909,
+      "dP_W": -0.0005304383032628257,
+      "window": 14
+    },
+    {
+      "dI_mA": 0.027161411226686027,
+      "dP_W": 0.00013580705613336352,
+      "window": 15
+    },
+    {
+      "dI_mA": -0.006497892432534513,
+      "dP_W": -3.2489462162610394e-05,
+      "window": 16
+    },
+    {
+      "dI_mA": -0.10309009421814608,
+      "dP_W": -0.0005154504710906949,
+      "window": 17
+    },
+    {
+      "dI_mA": -0.0007711117862783112,
+      "dP_W": -3.855558931231684e-06,
+      "window": 18
+    },
+    {
+      "dI_mA": -0.013859863901842573,
+      "dP_W": -6.929931950916401e-05,
+      "window": 19
+    }
+  ]
+}

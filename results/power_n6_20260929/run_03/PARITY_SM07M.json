@@ -1,0 +1,23 @@
+{
+  "argmax_disagreements": [],
+  "atol": 1e-06,
+  "bitwise_equal_to_accepted_run08": true,
+  "bitwise_mismatch_rows": [],
+  "comparison": "numpy.isclose(reference_fp32, actual_fp32); actual is relative-tolerance anchor",
+  "cycles_max": 5818128,
+  "cycles_min": 5814112,
+  "cycles_per_inference_mean": 5815316.3603515625,
+  "energy_measured": false,
+  "failed_logit_values": [],
+  "full_logit_parity_passed": true,
+  "host_seconds": 98.00795939101954,
+  "latency_validated": false,
+  "max_abs_error": 0.0,
+  "nominal_cpu_hz": 64000000,
+  "npu_execution_independently_verified": false,
+  "parity_outputs_sha256": "c71eb32146b49a9140160000a5841152ec38db8b7b38f97fefde0fa08a7bb553",
+  "path": "SM07M PARITY batch path",
+  "research_measurement_accepted": false,
+  "rows": 1024,
+  "rtol": 1e-05
+}

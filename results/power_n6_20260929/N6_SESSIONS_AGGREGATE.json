@@ -1,0 +1,51 @@
+{
+ "sessions": [
+  {
+   "run": "results/power_n6_20260929/run_03",
+   "excluded": "FAILED.json present, MEASURE_RESULT missing, or invalid capture"
+  },
+  {
+   "run": "results/power_n6_20260929/run_04",
+   "valid_repeat_schedules": 3,
+   "headline_gross_J_per_inference_between_schedules": 0.04944846177299864,
+   "incremental_over_spin_J_per_inference_between_schedules": 3.151250472001513e-06,
+   "sham_valid": true
+  },
+  {
+   "run": "results/power_n6_20260929/run_05",
+   "valid_repeat_schedules": 3,
+   "headline_gross_J_per_inference_between_schedules": 0.049371302140765606,
+   "incremental_over_spin_J_per_inference_between_schedules": 2.8693141921792614e-05,
+   "sham_valid": true
+  },
+  {
+   "run": "results/power_n6_20260929/run_06",
+   "valid_repeat_schedules": 3,
+   "headline_gross_J_per_inference_between_schedules": 0.049406200260485617,
+   "incremental_over_spin_J_per_inference_between_schedules": 3.01367768812962e-05,
+   "sham_valid": true
+  }
+ ],
+ "usable_sessions": 3,
+ "gross_J_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.04940865472474996,
+  "sd": 3.863832951491392e-05,
+  "ci95": [
+   0.04931267179328292,
+   0.049504637656216995
+  ],
+  "cv": 0.0007820154126875888
+ },
+ "incremental_over_spin_J_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 2.066038975836344e-05,
+  "sd": 1.5180529944174949e-05,
+  "ci95": [
+   -1.7050137160316685e-05,
+   5.837091667704357e-05
+  ],
+  "cv": 0.7347649353047556
+ },
+ "note": "Between-session t-interval over session means; needs >= 3 power-cycled sessions."
+}

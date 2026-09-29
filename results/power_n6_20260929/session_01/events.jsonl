@@ -1,0 +1,6 @@
+{"kind": "segment_start", "host_monotonic": 204192.200362685, "utc": "2026-09-29T07:06:36.994850+00:00", "sample_index": 0, "label": "bringup", "path": "seg_000_bringup.u32le"}
+{"kind": "command", "host_monotonic": 204192.203014193, "utc": "2026-09-29T07:06:36.997501+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "armed", "host_monotonic": 204192.203112123, "utc": "2026-09-29T07:06:36.997599+00:00", "sample_index": 0, "stlink_serial": "004000183234510E37333934", "stlink_present_now": true}
+{"kind": "error", "host_monotonic": 204680.227249767, "utc": "2026-09-29T07:14:45.021738+00:00", "sample_index": 48766624, "text": "SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)"}
+{"kind": "cleanup_error", "host_monotonic": 204680.22756499, "utc": "2026-09-29T07:14:45.022052+00:00", "sample_index": 48766624, "name": "final_output_off", "text": "write failed: [Errno 5] Input/output error"}
+{"kind": "cleanup_error", "host_monotonic": 204680.227609006, "utc": "2026-09-29T07:14:45.022095+00:00", "sample_index": 48766624, "name": "sampling_stop", "text": "write failed: [Errno 5] Input/output error"}
