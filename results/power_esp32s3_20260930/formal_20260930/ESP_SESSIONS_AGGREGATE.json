@@ -1,0 +1,46 @@
+{
+ "sessions": 3,
+ "eligible": 3,
+ "instrument_faults": [],
+ "gross_J_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.00797603883326705,
+  "sd": 4.759140484116088e-05,
+  "ci95": [
+   0.007857815229745945,
+   0.008094262436788156
+  ],
+  "cv": 0.00596679703246468
+ },
+ "incremental_J_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.00010802580042599673,
+  "sd": 2.070598160967457e-06,
+  "ci95": [
+   0.00010288214944845659,
+   0.00011316945140353688
+  ],
+  "cv": 0.019167626185615946
+ },
+ "time_s_per_inference_between_sessions": {
+  "n": 3,
+  "mean": 0.024851961805555555,
+  "sd": 1.8291065542246097e-08,
+  "ci95": [
+   0.024851916368029855,
+   0.024852007243081255
+  ],
+  "cv": 7.360008712936781e-07
+ },
+ "board_power_W_between_sessions": {
+  "n": 3,
+  "mean": 0.3209420195630603,
+  "sd": 0.0019147778084979195,
+  "ci95": [
+   0.31618544779934793,
+   0.32569859132677265
+  ],
+  "cv": 0.00596611752834594
+ },
+ "scope": "ESP32-S3 N16R8 whole board at its 5V pin (PPK2 source 5.0 V setpoint), USB unplugged; not SoC core"
+}

@@ -12,3 +12,4 @@ amendment3_registered_utc 2026-09-29T22:36:31Z (after the CLEAN re-review of Ame
 external_timestamp_utc 2026-09-29T22:36:48Z amendment 3 (protocol 7509bf44) + driver pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit 19016bc50f547e61b160b2ea8d1e185cdaef6a66
 c94e91fc08939eebfedd83ec2f370c8f3f53cdbdb107f0a792fe72c00c264d6a  PROTOCOL.md (after Observation 1; everything before it unchanged = 7509bf44)
 observation1_registered_utc 2026-09-29T23:03:31Z (during esp_session_01, before any formal analysis output)
+external_timestamp_utc 2026-09-29T23:03:48Z observation 1 (protocol c94e91fc) + diag_esp_02 records pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit f53097c077f9e0a55f4b0c0729b78d8a49a0ad31 (before any formal analysis output)

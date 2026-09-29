@@ -1,0 +1,57 @@
+{
+ "label": "esp_session_02",
+ "thresholds_mA": {
+  "C1": 0.25,
+  "C2": 0.5,
+  "C3": 0.5
+ },
+ "schedules": {
+  "schedule_00_repeat1": {
+   "idle_before_mA": 63.4129990451602,
+   "idle_after_mA": 63.4493867605457,
+   "C1_diff_mA": -0.03638771538550145,
+   "C1_pass": true,
+   "final_idle_mA": 63.783144048638086
+  },
+  "schedule_01_repeat1": {
+   "idle_before_mA": 63.4763790898603,
+   "idle_after_mA": 63.58564804613919,
+   "C1_diff_mA": -0.1092689562788891,
+   "C1_pass": true,
+   "final_idle_mA": 63.39290656808832
+  },
+  "schedule_02_repeat1": {
+   "idle_before_mA": 63.56581901527549,
+   "idle_after_mA": 63.51040689786301,
+   "C1_diff_mA": 0.0554121174124802,
+   "C1_pass": true,
+   "final_idle_mA": 63.56712572069847
+  },
+  "schedule_03_dose2": {
+   "idle_before_mA": 63.56177752015126,
+   "idle_after_mA": 63.49934639986263,
+   "C1_diff_mA": 0.06243112028862896,
+   "C1_pass": true,
+   "final_idle_mA": 63.95322420763183
+  },
+  "schedule_04_dose4": {
+   "idle_before_mA": 63.61447148028683,
+   "idle_after_mA": 63.57588103601539,
+   "C1_diff_mA": 0.03859044427144198,
+   "C1_pass": true,
+   "final_idle_mA": 63.676673592234444
+  }
+ },
+ "C2_final_minus_idle_mA": 0.14940329834223576,
+ "C2_pass": true,
+ "sham_low_mA": 63.483433152121926,
+ "gap_before_mA": 63.62185301619912,
+ "gap_after_mA": 63.42124894998035,
+ "C3_diffs_mA": [
+  -0.13841986407719276,
+  0.06218420214157305
+ ],
+ "C3_pass": true,
+ "C1_pass": true,
+ "PASS": true
+}
