@@ -1,0 +1,15 @@
+Using Python 3.13.5 environment at: /opt/pyvenv
+WARN Retry attempt #0. Sleeping 180.557284ms before the next attempt
+WARN Retry attempt #0. Sleeping 14.733017ms before the next attempt
+WARN Retry attempt #0. Sleeping 966.882765ms before the next attempt
+WARN Retry attempt #1. Sleeping 1.125554723s before the next attempt
+WARN Retry attempt #1. Sleeping 678.677495ms before the next attempt
+WARN Retry attempt #2. Sleeping 272.324223ms before the next attempt
+WARN Retry attempt #2. Sleeping 1.392304526s before the next attempt
+WARN Retry attempt #1. Sleeping 189.168137ms before the next attempt
+error: Request failed after 3 retries
+  Caused by: Failed to fetch: `https://pypi.org/simple/pyarrow/`
+  Caused by: error sending request for url (https://pypi.org/simple/pyarrow/)
+  Caused by: client error (Connect)
+  Caused by: dns error
+  Caused by: failed to lookup address information: Temporary failure in name resolution

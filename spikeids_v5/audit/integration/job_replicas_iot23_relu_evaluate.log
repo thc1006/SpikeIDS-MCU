@@ -1,0 +1,3 @@
+
+COMMAND: ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/experiment_all.py', '--cache', '/mnt/data/v5_integration_final/cache/iot23', '--output', '/mnt/data/v5_integration_final/run/replicas/iot23_relu.json', '--stage', 'evaluate', '--batch-size', '1024', '--checkpoint-every', '10', '--data-placement', 'cpu', '--dataset', 'iot23', '--device', 'cpu', '--epochs', '2', '--eval-batch-size', '4096', '--eval-every', '10', '--hidden', '256', '--levels', '4', '--lr', '0.001', '--model', 'relu', '--optimizer', 'single', '--qcfs-formula', 'shifted_v1', '--seeds', '0', '1', '--threads', '1', '--weight-decay', '1e-05', '--resume']
+COMPLETE /mnt/data/v5_integration_final/run/replicas/iot23_relu.json 43397978d0c40ab1bc650224fc1a5ff34fb5cd7c05bbd2780741fe6f2c10bafc

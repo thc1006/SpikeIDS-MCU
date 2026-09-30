@@ -1,0 +1,3 @@
+
+COMMAND: ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/experiment_all.py', '--cache', '/mnt/data/v5_integration_final/cache/cicids2017', '--output', '/mnt/data/v5_integration_final/run/results/cicids2017_qcfs.json', '--stage', 'evaluate', '--batch-size', '512', '--checkpoint-every', '10', '--data-placement', 'cpu', '--dataset', 'cicids2017', '--device', 'cpu', '--epochs', '2', '--eval-batch-size', '4096', '--eval-every', '10', '--hidden', '256', '--levels', '4', '--lr', '0.001', '--model', 'qcfs', '--optimizer', 'single', '--qcfs-formula', 'shifted_v1', '--seeds', '0', '1', '--threads', '1', '--weight-decay', '1e-05', '--resume']
+COMPLETE /mnt/data/v5_integration_final/run/results/cicids2017_qcfs.json 75dbfc48613ecd037f2962f06668610b908be291e04353b818e652a21a6165ff

@@ -1,0 +1,3 @@
+
+COMMAND: ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/experiment_all.py', '--cache', '/mnt/data/v5_integration_final/cache/unsw', '--output', '/mnt/data/v5_integration_final/run/replicas/unsw_cnn.json', '--stage', 'evaluate', '--batch-size', '512', '--checkpoint-every', '10', '--data-placement', 'cpu', '--dataset', 'unsw', '--device', 'cpu', '--epochs', '2', '--eval-batch-size', '4096', '--eval-every', '10', '--hidden', '256', '--levels', '4', '--lr', '0.001', '--model', 'cnn', '--optimizer', 'single', '--qcfs-formula', 'shifted_v1', '--seeds', '0', '1', '--threads', '1', '--weight-decay', '1e-05', '--resume']
+COMPLETE /mnt/data/v5_integration_final/run/replicas/unsw_cnn.json 9ec4c3d691ff5f5e10b626e4a15ced521538db4355374906aae8fb2e56070a62

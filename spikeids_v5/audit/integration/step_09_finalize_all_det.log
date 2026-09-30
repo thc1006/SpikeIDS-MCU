@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/mnt/data/spikeids_v5/finalize_all_det.py", line 41, in <module>
+    if __name__=="__main__":main()
+                            ~~~~^^
+  File "/mnt/data/spikeids_v5/finalize_all_det.py", line 23, in main
+    require(plan["protocol_role"]=="planned_benchmark" and len(plan["seeds"])==20,"Only full planned 20-seed results may feed these paper macros")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/spikeids_v5/contracts.py", line 24, in require
+    raise ContractError(message)
+contracts.ContractError: Only full planned 20-seed results may feed these paper macros

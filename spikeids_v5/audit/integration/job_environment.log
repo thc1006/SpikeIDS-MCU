@@ -1,0 +1,2 @@
+
+COMMAND: ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/experiment_all.py', '--probe', '--device', 'cpu', '--threads', '1', '--output', '/mnt/data/v5_integration_final/run/environment.json']

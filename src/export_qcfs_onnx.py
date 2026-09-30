@@ -3,6 +3,7 @@ Export trained QCFS models to ONNX.
 Freezes learned thresholds into fixed constants to avoid PyTorch ONNX export issues.
 """
 
+import argparse
 import torch
 import torch.nn as nn
 import numpy as np
@@ -39,18 +40,18 @@ def freeze_model(model, L):
     return IDS_MLP_QCFS_Frozen(frozen_layers)
 
 
-def export_single(L):
-    model_path = MODEL_DIR / f"ids_qcfs_L{L}_best.pth"
+def export_single(L, input_dim=41, num_classes=5, prefix="ids_qcfs"):
+    model_path = MODEL_DIR / f"{prefix}_L{L}_best.pth"
     if not model_path.exists():
         print(f"  Skipping L={L}: {model_path} not found")
         return False
 
     print(f"\n{'='*50}")
-    print(f"Exporting QCFS L={L}")
+    print(f"Exporting QCFS L={L} (d={input_dim}, C={num_classes}) from {model_path.name}")
     print(f"{'='*50}")
 
     # Load trained model
-    model = IDS_MLP_QCFS(input_dim=41, hidden=256, num_classes=5, L=L)
+    model = IDS_MLP_QCFS(input_dim=input_dim, hidden=256, num_classes=num_classes, L=L)
     model.load_state_dict(torch.load(model_path, weights_only=True))
     model.eval()
 
@@ -64,7 +65,7 @@ def export_single(L):
     frozen.eval()
 
     # Verify outputs match
-    dummy = torch.randn(1, 41)
+    dummy = torch.randn(1, input_dim)
     with torch.no_grad():
         out_orig = model(dummy)
         out_frozen = frozen(dummy)
@@ -118,13 +119,22 @@ def export_single(L):
 
 
 def main():
+    ap = argparse.ArgumentParser(description="Export trained QCFS models to ONNX.")
+    ap.add_argument("--input-dim", type=int, default=41,
+                    help="feature dim (41=NSL-KDD, 13=IoT-23, 34=UNSW, 69=CICIDS)")
+    ap.add_argument("--classes", type=int, default=5, help="number of output classes")
+    ap.add_argument("--prefix", default="ids_qcfs",
+                    help="weight file prefix; reads <prefix>_L{L}_best.pth (e.g. iot23_qcfs)")
+    ap.add_argument("--L", type=int, nargs="+", default=[4, 8, 16], help="QCFS L values to export")
+    a = ap.parse_args()
+
     print("=" * 60)
-    print("SNN-IDS: Export QCFS Models to ONNX")
+    print(f"SNN-IDS: Export QCFS Models to ONNX (d={a.input_dim}, C={a.classes})")
     print("=" * 60)
 
     exported = []
-    for L in [4, 8, 16]:
-        if export_single(L):
+    for L in a.L:
+        if export_single(L, input_dim=a.input_dim, num_classes=a.classes, prefix=a.prefix):
             exported.append(L)
 
     if exported:
@@ -132,9 +142,9 @@ def main():
         print("Summary")
         print(f"{'='*60}")
         print(f"  Exported L values: {exported}")
-        print(f"  Next: Upload ids_qcfs_L*.onnx to stedgeai-dc.st.com")
-        print(f"  Goal: Check if Floor operator is NPU-mapped or CPU-fallback")
-        print(f"  Compare inference time vs ReLU model (0.4561 ms)")
+        print(f"  Next: compile with the local ST Edge AI Core toolchain")
+        print(f"        (stedgeai generate --target stm32n6 [--st-neural-art ...])")
+        print(f"  Goal: confirm the Floor operator falls back to CPU (SW epochs)")
     else:
         print("\nNo QCFS models found. Run train_qcfs.py first.")
 

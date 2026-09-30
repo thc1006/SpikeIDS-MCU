@@ -9,6 +9,9 @@ Provides:
 - benjamini_hochberg: FDR control for exploratory hypotheses (secondary)
 - run_full_analysis: orchestrator that reads a multi-seed results JSON and
   writes stats_tests.json with all p-values + effect sizes + corrections
+- tost_paired / tost_wilcoxon: paired TOST equivalence tests (v4) with
+  delta_min, power (normal approx + Monte Carlo) and required-n helpers;
+  run_equivalence_analysis orchestrates them with Holm-Bonferroni
 
 Design notes
 ------------
@@ -297,6 +300,236 @@ def _extract_per_class(per_seed, cls, metric):
                          dtype=float)
     except (KeyError, TypeError):
         return None
+
+
+# ── TOST equivalence testing (v4) ────────────────────────────────────
+#
+# A non-significant Wilcoxon/t-test does NOT support equivalence
+# (absence of evidence != evidence of absence). Equivalence needs a
+# pre-specified margin delta and two one-sided tests (Schuirmann 1987):
+#   H01: mu_d <= -delta   vs  H11: mu_d > -delta
+#   H02: mu_d >= +delta   vs  H12: mu_d < +delta
+# Rejecting both at alpha declares |mu_d| < delta, equivalently the
+# (1 - 2*alpha) CI of mu_d lies inside (-delta, +delta).
+
+def tost_paired(
+    x: Iterable[float],
+    y: Iterable[float],
+    delta: float,
+    alpha: float = 0.05,
+) -> dict:
+    """Parametric paired TOST on d = x - y with margin +/-delta.
+
+    Returns p_lower, p_upper, p_tost = max(p_lower, p_upper), the
+    (1-2*alpha) CI of the mean difference, the decision, and delta_min:
+    the smallest margin at which these data would declare equivalence
+    (= max(|ci_lo|, |ci_hi|)). delta_min is the honest headline number —
+    it says how tight an equivalence the data support instead of a
+    pass/fail at one margin.
+    """
+    if delta <= 0:
+        raise ValueError("delta must be positive")
+    x = np.asarray(list(x), dtype=float)
+    y = np.asarray(list(y), dtype=float)
+    if x.shape != y.shape:
+        raise ValueError(f"x and y must have equal length ({x.shape} vs {y.shape})")
+    d = x - y
+    n = int(d.size)
+    base = {"test": "tost_t", "delta": float(delta), "alpha": float(alpha), "n": n}
+    if n < 2:
+        return {**base, "mean_diff": float(d.mean()) if n else float("nan"),
+                "sd_diff": float("nan"), "ci": [float("nan"), float("nan")],
+                "p_lower": float("nan"), "p_upper": float("nan"),
+                "p_tost": float("nan"), "equivalent": False,
+                "delta_min": float("nan"), "note": "insufficient pairs"}
+
+    mean_d = float(d.mean())
+    sd_d = float(d.std(ddof=1))
+    if sd_d == 0.0:
+        eq = abs(mean_d) < delta
+        return {**base, "mean_diff": mean_d, "sd_diff": 0.0,
+                "ci": [mean_d, mean_d],
+                "p_lower": 0.0 if mean_d > -delta else 1.0,
+                "p_upper": 0.0 if mean_d < delta else 1.0,
+                "p_tost": 0.0 if eq else 1.0, "equivalent": bool(eq),
+                "delta_min": abs(mean_d), "note": "degenerate variance"}
+
+    se = sd_d / math.sqrt(n)
+    df = n - 1
+    p_lower = float(stats.t.sf((mean_d + delta) / se, df))   # H01: mu <= -delta
+    p_upper = float(stats.t.cdf((mean_d - delta) / se, df))  # H02: mu >= +delta
+    ci_lo, ci_hi = stats.t.interval(1.0 - 2.0 * alpha, df, loc=mean_d, scale=se)
+    p_tost = max(p_lower, p_upper)
+    return {**base, "mean_diff": mean_d, "sd_diff": sd_d,
+            "ci": [float(ci_lo), float(ci_hi)],
+            "p_lower": p_lower, "p_upper": p_upper, "p_tost": float(p_tost),
+            "equivalent": bool(p_tost < alpha),
+            "delta_min": float(max(abs(ci_lo), abs(ci_hi)))}
+
+
+def hodges_lehmann(d: Iterable[float]) -> float:
+    """Hodges-Lehmann one-sample estimator: median of the Walsh averages
+    (d_i + d_j) / 2 over i <= j."""
+    d = np.asarray(list(d), dtype=float)
+    if d.size == 0:
+        return float("nan")
+    i, j = np.triu_indices(d.size)
+    return float(np.median((d[i] + d[j]) / 2.0))
+
+
+def tost_wilcoxon(
+    x: Iterable[float],
+    y: Iterable[float],
+    delta: float,
+    alpha: float = 0.05,
+) -> dict:
+    """Non-parametric paired TOST: two one-sided Wilcoxon signed-rank tests
+    on the shifted differences d + delta (alternative 'greater') and
+    d - delta (alternative 'less'). Matches the v3 choice of a signed-rank
+    test for the difference hypotheses; use it when normality of d is
+    doubtful. The exact one-sided p-value floor is 2**-n, so n <= 4 can
+    never declare equivalence and n = 5 only when all five shifted
+    differences share a sign — small arms are power-limited by construction.
+    """
+    if delta <= 0:
+        raise ValueError("delta must be positive")
+    x = np.asarray(list(x), dtype=float)
+    y = np.asarray(list(y), dtype=float)
+    if x.shape != y.shape:
+        raise ValueError(f"x and y must have equal length ({x.shape} vs {y.shape})")
+    d = x - y
+    n = int(d.size)
+    base = {"test": "tost_wilcoxon", "delta": float(delta),
+            "alpha": float(alpha), "n": n,
+            "median_diff": float(np.median(d)) if n else float("nan"),
+            # Hodges-Lehmann pseudo-median: the location the signed-rank
+            # bounds actually apply to (TOSTER::wilcox_TOST convention).
+            "hodges_lehmann": hodges_lehmann(d) if n else float("nan")}
+    if n < 2:
+        return {**base, "p_lower": float("nan"), "p_upper": float("nan"),
+                "p_tost": float("nan"), "equivalent": False, "note": "insufficient pairs"}
+
+    def _one_sided(values, alternative):
+        if np.all(values == 0):
+            return 1.0  # nothing to rank: cannot reject
+        try:
+            return float(stats.wilcoxon(values, zero_method="wilcox",
+                                        alternative=alternative).pvalue)
+        except ValueError:
+            return float("nan")
+
+    p_lower = _one_sided(d + delta, "greater")  # rejects median_d <= -delta
+    p_upper = _one_sided(d - delta, "less")     # rejects median_d >= +delta
+    p_tost = max(p_lower, p_upper)
+    return {**base, "p_lower": p_lower, "p_upper": p_upper,
+            "p_tost": float(p_tost),
+            "equivalent": bool(not math.isnan(p_tost) and p_tost < alpha)}
+
+
+def tost_power_normal(
+    n: int,
+    sd_diff: float,
+    delta: float,
+    alpha: float = 0.05,
+    true_diff: float = 0.0,
+) -> float:
+    """Known-variance normal approximation to paired-TOST power
+    (Julious 2004): P(both one-sided tests reject | true mean = true_diff)."""
+    if n < 2 or sd_diff <= 0 or delta <= 0:
+        return 0.0
+    se = sd_diff / math.sqrt(n)
+    z = stats.norm.ppf(1.0 - alpha)
+    upper = stats.norm.cdf((delta - true_diff) / se - z)
+    lower = stats.norm.cdf((-delta - true_diff) / se + z)
+    return float(max(0.0, upper - lower))
+
+
+def tost_power_mc(
+    n: int,
+    sd_diff: float,
+    delta: float,
+    alpha: float = 0.05,
+    true_diff: float = 0.0,
+    n_sim: int = 20_000,
+    seed: int = 0,
+) -> float:
+    """Monte-Carlo power of the parametric paired TOST with the variance
+    estimated per sample (i.e., the test actually run). Used to check the
+    normal approximation and to size seed counts."""
+    if n < 2 or sd_diff <= 0 or delta <= 0:
+        return 0.0
+    rng = np.random.default_rng(seed)
+    d = rng.normal(true_diff, sd_diff, size=(n_sim, n))
+    mean = d.mean(axis=1)
+    se = d.std(axis=1, ddof=1) / math.sqrt(n)
+    tcrit = stats.t.ppf(1.0 - alpha, n - 1)
+    reject_lower = (mean + delta) / se > tcrit
+    reject_upper = (mean - delta) / se < -tcrit
+    return float(np.mean(reject_lower & reject_upper))
+
+
+def tost_required_n(
+    sd_diff: float,
+    delta: float,
+    alpha: float = 0.05,
+    power: float = 0.8,
+    true_diff: float = 0.0,
+    n_max: int = 100_000,
+) -> int:
+    """Smallest paired sample size whose approximate TOST power reaches
+    *power* at margin delta. Returns n_max + 1 when unattainable (e.g.
+    |true_diff| >= delta)."""
+    if abs(true_diff) >= delta:
+        return n_max + 1
+    for n in range(2, n_max + 1):
+        if tost_power_normal(n, sd_diff, delta, alpha, true_diff) >= power:
+            return n
+    return n_max + 1
+
+
+def run_equivalence_analysis(
+    pairs: Dict[str, Tuple[Iterable[float], Iterable[float]]],
+    delta: float,
+    alpha: float = 0.05,
+    deltas_sensitivity: Iterable[float] = (0.5, 1.0, 2.0, 3.0),
+    powers: Iterable[float] = (0.8, 0.9),
+) -> dict:
+    """Run parametric + non-parametric TOST on named paired arms, apply
+    Holm-Bonferroni across the parametric p_tost values (one family of
+    equivalence claims), and report delta_min, a margin sensitivity sweep,
+    and the seed count needed to reach the requested power at *delta*."""
+    out: dict = {"delta": float(delta), "alpha": float(alpha),
+                 "pairs": {}, "sensitivity": {}}
+    p_family: Dict[str, float] = {}
+    for name, (x, y) in pairs.items():
+        x = np.asarray(list(x), dtype=float)
+        y = np.asarray(list(y), dtype=float)
+        t_res = tost_paired(x, y, delta, alpha)
+        w_res = tost_wilcoxon(x, y, delta, alpha)
+        d = x - y
+        # Shapiro-Wilk on the differences: when it fails, read the
+        # Wilcoxon TOST rather than the t-based one.
+        sw_p = float(stats.shapiro(d).pvalue) if d.size >= 3 and d.std() > 0 else float("nan")
+        entry = {"tost_t": t_res, "tost_wilcoxon": w_res, "normality_shapiro_p": sw_p}
+        if not math.isnan(t_res.get("sd_diff", float("nan"))) and t_res["sd_diff"] > 0:
+            entry["required_n"] = {
+                f"power_{p:.2f}": tost_required_n(t_res["sd_diff"], delta, alpha, p)
+                for p in powers}
+            entry["power_at_n"] = {
+                "normal_approx": tost_power_normal(t_res["n"], t_res["sd_diff"], delta, alpha),
+                "monte_carlo": tost_power_mc(t_res["n"], t_res["sd_diff"], delta, alpha),
+            }
+        out["pairs"][name] = entry
+        if not math.isnan(t_res["p_tost"]):
+            p_family[name] = t_res["p_tost"]
+        out["sensitivity"][name] = {
+            f"{dd:g}": bool(tost_paired(x, y, dd, alpha)["equivalent"])
+            for dd in deltas_sensitivity}
+    if p_family:
+        out["holm_bonferroni_tost_t"] = {
+            k: {"p_raw": v[0], "p_corrected": v[1], "equivalent": v[2]}
+            for k, v in holm_bonferroni(p_family, alpha=alpha).items()}
+    return out
 
 
 # ── CLI ───────────────────────────────────────────────────────────────

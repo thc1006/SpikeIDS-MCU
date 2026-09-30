@@ -1,0 +1,5 @@
+
+COMMAND: ['/opt/pyvenv/bin/python', '/mnt/data/spikeids_v5/experiment_all.py', '--cache', '/mnt/data/v5_integration_final/cache/cicids2017', '--output', '/mnt/data/v5_integration_final/run/results/cicids2017_qcfs.json', '--stage', 'fit', '--batch-size', '512', '--checkpoint-every', '10', '--data-placement', 'cpu', '--dataset', 'cicids2017', '--device', 'cpu', '--epochs', '2', '--eval-batch-size', '4096', '--eval-every', '10', '--hidden', '256', '--levels', '4', '--lr', '0.001', '--model', 'qcfs', '--optimizer', 'single', '--qcfs-formula', 'shifted_v1', '--seeds', '0', '1', '--threads', '1', '--weight-decay', '1e-05']
+  qcfs seed=0 epoch=2/2 val_macro_recall=8.888889% best_epoch=2
+  qcfs seed=1 epoch=2/2 val_macro_recall=10.000000% best_epoch=2
+FIT COMPLETE /mnt/data/v5_integration_final/run/results/cicids2017_qcfs.json test previously exposed: False

@@ -1,0 +1,5 @@
+dataset	d	C	macs	fp32_cpu_us	int8_cpu_us	int8_npu_us	npu_hw_pct	quant_speedup	npu_vs_int8cpu
+NSL-KDD	41	5	109440	560.0	322.8	518.2	52.3	1.73	0.62
+UNSW-NB15	34	10	108288	547.1	322.9	291.9	99.6	1.69	1.11
+CICIDS2017	69	15	117888	580.2	353.7	316.0	99.6	1.64	1.12
+IoT-23	13	5	102272	526.0	303.7	276.6	99.6	1.73	1.10

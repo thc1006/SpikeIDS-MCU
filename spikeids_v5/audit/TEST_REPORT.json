@@ -1,0 +1,140 @@
+{
+  "date": "2026-09-20",
+  "status": "passed_with_explicit_unexecuted_scopes",
+  "unit_tests": {
+    "tests": 93,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3,
+    "passed": 90,
+    "exit_code": 0,
+    "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest tests -q --disable-warnings --junitxml=audit/test_results.xml",
+    "skipped_cases": [
+      {
+        "name": "test_parquet_raw_preparation_when_dependency_available",
+        "reason": "Parquet engine unavailable in this environment"
+      },
+      {
+        "name": "test_onnx_qdq_minimal_execution_when_dependencies_available",
+        "reason": "ONNX is unavailable in this environment"
+      },
+      {
+        "name": "test_cuda_qcfs_repeat_and_resume",
+        "reason": "CUDA hardware is unavailable in this environment"
+      }
+    ]
+  },
+  "four_dataset_integration": {
+    "status": "passed",
+    "dataset_model_jobs": 11,
+    "seeds": [
+      0,
+      1
+    ],
+    "epochs": 2,
+    "independent_training_executions": 44,
+    "checkpoint_test_evaluations": 44,
+    "adversarial_evidence_rejections": [
+      "alter_counts",
+      "reorder_seed_ids",
+      "alter_aggregate",
+      "alter_data_identity",
+      "missing_replica"
+    ],
+    "smoke_cannot_feed_paper": true,
+    "source_report": "integration/integration_report.json"
+  },
+  "auxiliary_integration": {
+    "status": "passed",
+    "independent_training_executions": {
+      "L_sweep": 8,
+      "benchmark": 8,
+      "verifier": 4
+    },
+    "checkpoint_test_evaluations": 8,
+    "source_report": "auxiliary/auxiliary_report.json"
+  },
+  "total_integration_training_executions": 64,
+  "total_integration_test_checkpoint_evaluations": 52,
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "torch": "2.10.0+cpu",
+    "torch_cuda_build": null,
+    "cuda_available": false,
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit_learn": "1.8.0",
+    "pytest": "9.0.2",
+    "statsmodels": "0.14.6",
+    "pyarrow_available": false,
+    "onnx_available": false,
+    "onnxruntime_available": false
+  },
+  "test_data": {
+    "type": "synthetic raw-shaped CSVs, generated in tests/conftest.py",
+    "not_real_benchmark_outcomes": true,
+    "nsl_train": 60,
+    "nsl_test": 25,
+    "nsl_features": 41,
+    "unsw_train": 120,
+    "unsw_test": 50,
+    "unsw_features": "reduced synthetic schema; full official 42-feature data not exercised",
+    "cic_total": 300,
+    "cic_classes": 15,
+    "cic_features": "reduced synthetic schema including constant and identifier columns",
+    "iot_total": 100,
+    "iot_classes": 5,
+    "iot_features": 13
+  },
+  "not_executed": [
+    "RTX4060Ti CUDA full-budget training/speed/memory measurement",
+    "Native Windows-specific lock/bootstrap runtime",
+    "Full actual four-dataset 20-seed experiments",
+    "Parquet processing with pyarrow",
+    "ONNX and QDQ execution/end-to-end export (optional dependencies unavailable)",
+    "Physical MCU/NPU deployment, compiler mapping, clocks, latency and energy",
+    "Full manuscript semantic review and real LaTeX build",
+    "Complete RF/XGBoost and every legacy quantize/export/n6 source path audit"
+  ],
+  "dependency_install_attempt": "Failed due DNS while requesting pyarrow; see dependency_install.log; no successful dependency installation was assumed",
+  "runtime_source_sha256": {
+    "assemble_cnn_legacy.py": "2f08dc512c1756903b319043ab30f06de8b57e1db562ea080b55779257cb9539",
+    "assemble_nsl_legacy.py": "bd7777a74ebed0535cc7a7d701dff5365fe14c2a296b1c670f31669ccd839429",
+    "benchmark_profiles.py": "7fe3d63f9c7577a511239b16acca79bef8600154c54dabe1b6c0c536a4c30fd0",
+    "check_paper_consistency.py": "9c831b37a4ea1cb24276d7ad89781642a13513eca7330ba738021bd60c1fcf46",
+    "contracts.py": "6db706a81a09c862ad5be70be6f713246ca8c403f9674c1da740da6379f60ad8",
+    "data_loaders.py": "f0ca317f1cff639195da48b0cae44f325bfdd16205ca197f0bca24d5009fcb68",
+    "deployment_gate.py": "a8da9d6d9d29a8985af719a29bc1a681f28453c6b3a85f68827af781f3e9693a",
+    "evidence.py": "4b6dd04c983ccee45483564bf17ae620a4a7dc294ce20ff63242f2456c529744",
+    "experiment_all.py": "685cce359c4ee7b2d22321590b790f9ff2f46d264311e6f3b941b88537f92342",
+    "experiment_qcfs_lsweep.py": "bd105fb62bdc13a7339ba5e3fd19e58bba52c96f9ef4647c2b795343d523580c",
+    "export_verified.py": "defaf5a51a44b7704ff609f0b2e5d3f1d604b82f81f9371648067a693f64f0b1",
+    "finalize_all_det.py": "5ad15f52fd7e4e8c1c7f902a72f2923c1334f3278898b6c76ec128afc8492161",
+    "layerwise_analysis.py": "0c3869bea652ed5cf678c053eee719bd7b232951bddf1838ccd7236f64e8f7ca",
+    "metrics.py": "2009a09cb479a0f6542a00d8abcb3b0686d08b9f63932c866bc82581bb652452",
+    "models.py": "1b495e05cf7aa4b4a25a8d7954681a3ebed86d135c862881011b93c1763de849",
+    "paper_contract.py": "ff4d4cbcda3466fee27559e02b58e74f90bd51254919b183460875efe4139b10",
+    "run_globecom_stats.py": "67bee1b325439d41fc1575db97e5158f3c1c381d2bdc4ad86d88eb841115b629",
+    "run_v4_equivalence.py": "ee5b0af36b97f525c9ba2be036dbd8e538a32cce107a4ca8fe70773714b34101",
+    "snn_analysis.py": "c6466b5ec84f9a2b7a21606b17e8a9aa3ea574c3dc9b2385ecc2586cf737c2c7",
+    "stats_tests.py": "84976ed6e4fb1af23f9162a1a4c356964ef9978195db2bbddb005207916f9cb4",
+    "suite.py": "1352e773a83d0be2fbae42ba1d52279128280ea3da8f544e29971c10af0d8297",
+    "verify_reproducibility.py": "4040743b54a5673fe7757148a577d399bbf6a454e94b6295b815020609c23ce3"
+  },
+  "test_source_sha256": {
+    "tests/conftest.py": "3e845d16b1394ba46630dcf2e811f99db8aaeae4ff7ed91a3221994c40cf849e",
+    "tests/run_auxiliary.py": "cf5edc658157d11c8c7ca27be38f6b753bee2910c4a61b86eb64795b6e5eed46",
+    "tests/run_integration.py": "7b73df90a78324f8fab9776afb2a6a9ee323b6d8d1360fffc631e0f3441b4fb7",
+    "tests/test_contracts.py": "25f2e0833af938ba9ff0044a7d96d7300be547059491c7c19358831b1dd48668",
+    "tests/test_science.py": "2b4c45595a2a93c4d4d363cf4ff8db58a4fdeb0cea26a61d5bf70c33188511c0"
+  },
+  "limits": [
+    "Synthetic CPU tests do not establish true dataset accuracy or the claimed hardware speed.",
+    "Determinism means this recorded stack/configuration repeated successfully, not all platforms/releases.",
+    "Checksums are not signatures or physical measurement attestation.",
+    "Group/duplicate/upstream preprocessing leakage is not excluded by fit-only scaling.",
+    "Difference and equivalence families are separately controlled, not a single 22-claim FWER guarantee."
+  ]
+}

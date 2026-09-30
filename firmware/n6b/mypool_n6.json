@@ -1,0 +1,12 @@
+{
+  "memory": {
+    "mempools": [
+      { "name": "POOL_EXT", "prop": {"throughput":"MID","latency":"HIGH"}, "constants_preferred": true,
+        "size": {"value":"64","magnitude":"MBYTES"}, "offset": {"value":"0x70000000","magnitude":"BYTES"} },
+      { "name": "POOL_INTERNAL", "prop": {"throughput":"HIGH","latency":"LOW"},
+        "size": {"value":"1024","magnitude":"KBYTES"}, "offset": {"value":"0x34100000","magnitude":"BYTES"} },
+      { "name": "POOL_NPU", "prop": {"throughput":"HIGH","latency":"MID"},
+        "size": {"value":"448","magnitude":"KBYTES"}, "offset": {"value":"0x34200000","magnitude":"BYTES"} }
+    ]
+  }
+}

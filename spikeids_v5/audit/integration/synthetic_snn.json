@@ -1,0 +1,615 @@
+{
+  "T": {
+    "1": {
+      "ann_if_prediction_disagreement_fraction": 0.5833333333333334,
+      "logit_max_absolute_error": 0.11593848466873169,
+      "validation_metrics": {
+        "auc_status": "defined_multiclass_ovr",
+        "balanced_acc": 20.0,
+        "confusion_matrix": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "macro_acc": 20.0,
+        "macro_f1": 5.714285714285714,
+        "macro_precision": 3.3333333333333335,
+        "macro_recall": 20.0,
+        "mcc": 0.0,
+        "metric_semantics": {
+          "auc_method": "binary positive class index 1; multiclass one-vs-rest",
+          "balanced_acc_denominator": "classes present in ground truth",
+          "fpr_fnr_auc_unit": "fraction",
+          "macro_denominator": "all declared classes; undefined P/R/F1 use zero",
+          "p_r_f1_accuracy_unit": "percent",
+          "per_class_accuracy": "legacy alias of recall, NOT one-vs-rest accuracy"
+        },
+        "overall_acc": 16.666666666666668,
+        "per_class": {
+          "DoS": {
+            "accuracy": 100.0,
+            "f1": 28.57142857142857,
+            "fnr": 0.0,
+            "fpr": 1.0,
+            "precision": 16.666666666666664,
+            "precision_defined": true,
+            "recall": 100.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "Probe": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 3
+          },
+          "R2L": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "U2R": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "normal": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 3
+          }
+        },
+        "roc_auc_macro": 0.5,
+        "roc_auc_weighted": 0.5,
+        "weighted_f1": 4.761904761904762,
+        "weighted_precision": 2.7777777777777777,
+        "weighted_recall": 16.666666666666664
+      }
+    },
+    "16": {
+      "ann_if_prediction_disagreement_fraction": 0.5,
+      "logit_max_absolute_error": 0.07128546386957169,
+      "validation_metrics": {
+        "auc_status": "defined_multiclass_ovr",
+        "balanced_acc": 23.333333333333332,
+        "confusion_matrix": [
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            2
+          ]
+        ],
+        "macro_acc": 23.333333333333332,
+        "macro_f1": 15.555555555555554,
+        "macro_precision": 11.666666666666666,
+        "macro_recall": 23.333333333333332,
+        "mcc": 0.05923488777590923,
+        "metric_semantics": {
+          "auc_method": "binary positive class index 1; multiclass one-vs-rest",
+          "balanced_acc_denominator": "classes present in ground truth",
+          "fpr_fnr_auc_unit": "fraction",
+          "macro_denominator": "all declared classes; undefined P/R/F1 use zero",
+          "p_r_f1_accuracy_unit": "percent",
+          "per_class_accuracy": "legacy alias of recall, NOT one-vs-rest accuracy"
+        },
+        "overall_acc": 25.0,
+        "per_class": {
+          "DoS": {
+            "accuracy": 50.0,
+            "f1": 33.33333333333333,
+            "fnr": 0.5,
+            "fpr": 0.3,
+            "precision": 25.0,
+            "precision_defined": true,
+            "recall": 50.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "Probe": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 3
+          },
+          "R2L": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.1,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "U2R": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.1,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "normal": {
+            "accuracy": 66.66666666666666,
+            "f1": 44.44444444444444,
+            "fnr": 0.3333333333333333,
+            "fpr": 0.4444444444444444,
+            "precision": 33.33333333333333,
+            "precision_defined": true,
+            "recall": 66.66666666666666,
+            "recall_defined": true,
+            "support": 3
+          }
+        },
+        "roc_auc_macro": 0.5670370370370371,
+        "roc_auc_weighted": 0.5712962962962963,
+        "weighted_f1": 16.666666666666664,
+        "weighted_precision": 12.5,
+        "weighted_recall": 25.0
+      }
+    },
+    "2": {
+      "ann_if_prediction_disagreement_fraction": 0.5833333333333334,
+      "logit_max_absolute_error": 0.1607729196548462,
+      "validation_metrics": {
+        "auc_status": "defined_multiclass_ovr",
+        "balanced_acc": 33.33333333333333,
+        "confusion_matrix": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            2
+          ]
+        ],
+        "macro_acc": 33.33333333333333,
+        "macro_f1": 21.333333333333332,
+        "macro_precision": 18.333333333333332,
+        "macro_recall": 33.33333333333333,
+        "mcc": 0.23508117299081363,
+        "metric_semantics": {
+          "auc_method": "binary positive class index 1; multiclass one-vs-rest",
+          "balanced_acc_denominator": "classes present in ground truth",
+          "fpr_fnr_auc_unit": "fraction",
+          "macro_denominator": "all declared classes; undefined P/R/F1 use zero",
+          "p_r_f1_accuracy_unit": "percent",
+          "per_class_accuracy": "legacy alias of recall, NOT one-vs-rest accuracy"
+        },
+        "overall_acc": 33.333333333333336,
+        "per_class": {
+          "DoS": {
+            "accuracy": 100.0,
+            "f1": 40.0,
+            "fnr": 0.0,
+            "fpr": 0.6,
+            "precision": 25.0,
+            "precision_defined": true,
+            "recall": 100.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "Probe": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 3
+          },
+          "R2L": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.1,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "U2R": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "normal": {
+            "accuracy": 66.66666666666666,
+            "f1": 66.66666666666666,
+            "fnr": 0.3333333333333333,
+            "fpr": 0.1111111111111111,
+            "precision": 66.66666666666666,
+            "precision_defined": true,
+            "recall": 66.66666666666666,
+            "recall_defined": true,
+            "support": 3
+          }
+        },
+        "roc_auc_macro": 0.44037037037037036,
+        "roc_auc_weighted": 0.43796296296296294,
+        "weighted_f1": 23.333333333333332,
+        "weighted_precision": 20.833333333333336,
+        "weighted_recall": 33.33333333333333
+      }
+    },
+    "4": {
+      "ann_if_prediction_disagreement_fraction": 0.3333333333333333,
+      "logit_max_absolute_error": 0.08267229050397873,
+      "validation_metrics": {
+        "auc_status": "defined_multiclass_ovr",
+        "balanced_acc": 6.666666666666667,
+        "confusion_matrix": [
+          [
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        "macro_acc": 6.666666666666667,
+        "macro_f1": 5.714285714285714,
+        "macro_precision": 5.0,
+        "macro_recall": 6.666666666666667,
+        "mcc": -0.159219587968888,
+        "metric_semantics": {
+          "auc_method": "binary positive class index 1; multiclass one-vs-rest",
+          "balanced_acc_denominator": "classes present in ground truth",
+          "fpr_fnr_auc_unit": "fraction",
+          "macro_denominator": "all declared classes; undefined P/R/F1 use zero",
+          "p_r_f1_accuracy_unit": "percent",
+          "per_class_accuracy": "legacy alias of recall, NOT one-vs-rest accuracy"
+        },
+        "overall_acc": 8.333333333333334,
+        "per_class": {
+          "DoS": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.5,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "Probe": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.1111111111111111,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 3
+          },
+          "R2L": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.1,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "U2R": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.1,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "normal": {
+            "accuracy": 33.33333333333333,
+            "f1": 28.57142857142857,
+            "fnr": 0.6666666666666666,
+            "fpr": 0.3333333333333333,
+            "precision": 25.0,
+            "precision_defined": true,
+            "recall": 33.33333333333333,
+            "recall_defined": true,
+            "support": 3
+          }
+        },
+        "roc_auc_macro": 0.4892592592592592,
+        "roc_auc_weighted": 0.5157407407407407,
+        "weighted_f1": 7.142857142857142,
+        "weighted_precision": 6.25,
+        "weighted_recall": 8.333333333333332
+      }
+    },
+    "8": {
+      "ann_if_prediction_disagreement_fraction": 0.5,
+      "logit_max_absolute_error": 0.1176513209939003,
+      "validation_metrics": {
+        "auc_status": "defined_multiclass_ovr",
+        "balanced_acc": 23.333333333333332,
+        "confusion_matrix": [
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            2
+          ]
+        ],
+        "macro_acc": 23.333333333333332,
+        "macro_f1": 15.555555555555554,
+        "macro_precision": 11.666666666666666,
+        "macro_recall": 23.333333333333332,
+        "mcc": 0.059904229787315376,
+        "metric_semantics": {
+          "auc_method": "binary positive class index 1; multiclass one-vs-rest",
+          "balanced_acc_denominator": "classes present in ground truth",
+          "fpr_fnr_auc_unit": "fraction",
+          "macro_denominator": "all declared classes; undefined P/R/F1 use zero",
+          "p_r_f1_accuracy_unit": "percent",
+          "per_class_accuracy": "legacy alias of recall, NOT one-vs-rest accuracy"
+        },
+        "overall_acc": 25.0,
+        "per_class": {
+          "DoS": {
+            "accuracy": 50.0,
+            "f1": 33.33333333333333,
+            "fnr": 0.5,
+            "fpr": 0.3,
+            "precision": 25.0,
+            "precision_defined": true,
+            "recall": 50.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "Probe": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 3
+          },
+          "R2L": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.2,
+            "precision": 0.0,
+            "precision_defined": true,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "U2R": {
+            "accuracy": 0.0,
+            "f1": 0.0,
+            "fnr": 1.0,
+            "fpr": 0.0,
+            "precision": 0.0,
+            "precision_defined": false,
+            "recall": 0.0,
+            "recall_defined": true,
+            "support": 2
+          },
+          "normal": {
+            "accuracy": 66.66666666666666,
+            "f1": 44.44444444444444,
+            "fnr": 0.3333333333333333,
+            "fpr": 0.4444444444444444,
+            "precision": 33.33333333333333,
+            "precision_defined": true,
+            "recall": 66.66666666666666,
+            "recall_defined": true,
+            "support": 3
+          }
+        },
+        "roc_auc_macro": 0.5448148148148148,
+        "roc_auc_weighted": 0.5435185185185185,
+        "weighted_f1": 16.666666666666664,
+        "weighted_precision": 12.5,
+        "weighted_recall": 25.0
+      }
+    }
+  },
+  "checkpoint_sha256": "7971e224adf73ab07b4bc6f27938650219ce4b0eb1ac9378180a964fc796fddb",
+  "content_sha256": "144be409dd56bf3362420cba58852aa0600cb39d57a6d08b89ea494f261e5411",
+  "data_fingerprint": "284a7d8f678d07347d534ae44c8bd5b95360c01bc9b9e1ca3884c4b5a9761564",
+  "protocol": "one binary theta-amplitude spike per step; initial membrane theta/2; subtractive reset; constant input; averaged readout",
+  "schema": 5,
+  "scope": "validation diagnostic on the preregistered deployment seed; not a multi-seed SNN performance claim"
+}

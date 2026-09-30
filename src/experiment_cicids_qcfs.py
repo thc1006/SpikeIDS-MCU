@@ -36,17 +36,20 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def _evaluate(model, X_test, y_test, num_classes, class_names):
+    """Device-agnostic full-metric eval (works whether model/tensors are on CPU or GPU)."""
     model.eval()
-    loader = DataLoader(TensorDataset(X_test, y_test), batch_size=4096, shuffle=False)
+    dev = next(model.parameters()).device
     preds_all, labels_all, probs_all = [], [], []
     with torch.no_grad():
-        for X_b, y_b in loader:
-            logits = model(X_b)
+        for j in range(0, X_test.shape[0], 8192):
+            xb = X_test[j:j + 8192].to(dev)
+            yb = y_test[j:j + 8192]
+            logits = model(xb)
             probs = torch.softmax(logits, dim=1)
             preds = logits.argmax(dim=1)
-            preds_all.append(preds.numpy())
-            labels_all.append(y_b.numpy())
-            probs_all.append(probs.numpy())
+            preds_all.append(preds.cpu().numpy())
+            labels_all.append(yb.cpu().numpy())
+            probs_all.append(probs.cpu().numpy())
     return compute_all_metrics(
         np.concatenate(labels_all),
         np.concatenate(preds_all),
@@ -57,27 +60,37 @@ def _evaluate(model, X_test, y_test, num_classes, class_names):
 
 
 def _train_single(seed, L, X_train, y_train, X_test, y_test,
-                   class_weights, num_classes, class_names, input_dim, epochs):
+                   class_weights, num_classes, class_names, input_dim, epochs,
+                   batch_size=512):
+    # X_*/y_*/class_weights are GPU-resident (moved once in main). Manual seeded
+    # batching reproduces DataLoader(shuffle=True, generator=Generator(seed)) EXACTLY:
+    # RandomSampler draws torch.randperm(n, generator=g) each epoch, so slicing that
+    # same permutation yields identical batches (hence identical BN stats / SGD path) —
+    # but without per-batch H2D copies or DataLoader/collate overhead, which dominate a
+    # tiny MLP at batch 512. Numerically equivalent, much faster.
     set_seed(seed)
     model = IDS_MLP_QCFS(input_dim=input_dim, hidden=256,
                           num_classes=num_classes, L=L).to(DEVICE)
-    cw = class_weights.to(DEVICE)
-    train_loader = DataLoader(
-        TensorDataset(X_train, y_train), batch_size=1024, shuffle=True,
-        generator=torch.Generator().manual_seed(seed),
-    )
+    cw = class_weights
     criterion = nn.CrossEntropyLoss(weight=cw)
-    optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
+    # fused=True runs the whole Adam step in a single CUDA kernel (same algorithm,
+    # ~15x fewer launches) — the launch count, not FLOPs, is the bottleneck for this
+    # tiny MLP at batch 512. Falls back to the standard step off-CUDA.
+    optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5,
+                           fused=(DEVICE.type == "cuda"))
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
 
+    n = X_train.shape[0]
+    g = torch.Generator().manual_seed(seed)  # CPU generator == DataLoader default
     best_macro = 0.0
     best_state = None
     for epoch in range(epochs):
         model.train()
-        for X_b, y_b in train_loader:
-            X_b, y_b = X_b.to(DEVICE), y_b.to(DEVICE)
+        perm = torch.randperm(n, generator=g).to(X_train.device)
+        for i in range(0, n, batch_size):
+            idx = perm[i:i + batch_size]
             optimizer.zero_grad()
-            loss = criterion(model(X_b), y_b)
+            loss = criterion(model(X_train[idx]), y_train[idx])
             loss.backward()
             optimizer.step()
         scheduler.step()
@@ -87,23 +100,19 @@ def _train_single(seed, L, X_train, y_train, X_test, y_test,
             with torch.no_grad():
                 correct = np.zeros(num_classes)
                 total = np.zeros(num_classes)
-                loader = DataLoader(
-                    TensorDataset(X_test.to(DEVICE), y_test.to(DEVICE)),
-                    batch_size=4096, shuffle=False,
-                )
-                for X_b, y_b in loader:
-                    preds = model(X_b).argmax(dim=1)
-                    for i in range(num_classes):
-                        mask = y_b == i
-                        correct[i] += (preds[mask] == y_b[mask]).sum().item()
-                        total[i] += mask.sum().item()
+                for j in range(0, X_test.shape[0], 8192):
+                    yb = y_test[j:j + 8192]
+                    preds = model(X_test[j:j + 8192]).argmax(dim=1)
+                    for c in range(num_classes):
+                        mask = yb == c
+                        correct[c] += (preds[mask] == yb[mask]).sum().item()
+                        total[c] += mask.sum().item()
                 per_class = np.where(total > 0, correct / total, 0.0)
                 macro = per_class.mean() * 100
                 if macro > best_macro:
                     best_macro = macro
                     best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
 
-    model = model.cpu()
     if best_state is not None:
         model.load_state_dict(best_state)
     metrics = _evaluate(model, X_test, y_test, num_classes, class_names)
@@ -154,8 +163,11 @@ def _aggregate(per_seed, class_names):
 
 def main():
     ap = argparse.ArgumentParser(description="CICIDS2017 QCFS multi-seed")
-    ap.add_argument("--seeds", type=int, nargs="+", default=list(range(5)))
-    ap.add_argument("--epochs", type=int, default=40)
+    # Defaults match the ReLU baseline (experiment_cicids2017.py: 80 epochs, batch 512,
+    # 10 seeds) so a plain run is a VALID paired comparison (no training-budget confound).
+    ap.add_argument("--seeds", type=int, nargs="+", default=list(range(10)))
+    ap.add_argument("--epochs", type=int, default=80)
+    ap.add_argument("--batch-size", type=int, default=512, dest="batch_size")
     ap.add_argument("--L", type=int, default=4)
     ap.add_argument("--grouped", action="store_true",
                      help="Use 7-class grouped labels")
@@ -177,7 +189,16 @@ def main():
     input_dim = X_train.shape[1]
     class_weights = compute_class_weights(y_train, num_classes)
 
-    print(f"F={input_dim} C={num_classes} train={len(X_train)} test={len(X_test)}")
+    print(f"F={input_dim} C={num_classes} train={len(X_train)} test={len(X_test)} "
+          f"batch={args.batch_size} epochs={args.epochs} device={DEVICE}")
+
+    # Move the whole dataset to the GPU ONCE (all seeds share these read-only tensors);
+    # this removes the per-batch host->device copy that dominated the original loop.
+    X_train = X_train.to(DEVICE); y_train = y_train.to(DEVICE)
+    X_test = X_test.to(DEVICE); y_test = y_test.to(DEVICE)
+    class_weights = class_weights.to(DEVICE)
+    if DEVICE.type == "cuda":
+        torch.backends.cudnn.benchmark = True
 
     per_seed = []
     for i, seed in enumerate(args.seeds):
@@ -185,7 +206,7 @@ def main():
         print(f"[{i+1}/{len(args.seeds)}] seed={seed}...", end=" ", flush=True)
         m = _train_single(seed, args.L, X_train, y_train, X_test, y_test,
                            class_weights, num_classes, class_names,
-                           input_dim, args.epochs)
+                           input_dim, args.epochs, args.batch_size)
         per_seed.append(m)
         elapsed = time.time() - t0
         print(f"done ({elapsed:.1f}s) OA={m['overall_acc']:.2f}% MF1={m['macro_f1']:.2f}%")
@@ -197,6 +218,7 @@ def main():
         "label_mode": label_mode,
         "seeds": args.seeds,
         "epochs": args.epochs,
+        "batch_size": args.batch_size,
         "n_train": int(len(X_train)),
         "n_test": int(len(X_test)),
         "input_dim": int(input_dim),

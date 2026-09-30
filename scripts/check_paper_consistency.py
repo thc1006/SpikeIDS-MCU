@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+"""Paper consistency checker — "no stale number survives".
+
+Two independent checks, exit non-zero if either finds a problem:
+
+(1) MACRO vs JSON. Recompute every accuracy/stats macro straight from the result
+    JSONs (per_seed means; stats_report_globecom.json for the tests) and compare
+    to the \\renewcommand overrides in result_macros.tex. A mismatch means the
+    macro is stale (finalize not run, or hand-edited wrong).
+
+(2) HARDCODED PROSE. Scan main.tex body (outside the macro-definition preamble and
+    outside result_macros.tex) for decimal numbers in stat-like contexts
+    (p{=}0.xx, d_z ... x.xx, $\\pm$ accuracies, isolated $+x.xx$) that are written
+    as literals instead of macros — candidates for going stale.
+
+Usage: python scripts/check_paper_consistency.py [--strict]
+  --strict also fails on hardcoded-prose candidates (default: warn only).
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import statistics
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+R = ROOT / "results"
+G = ROOT / "paper" / "globecom"
+MACROS = G / "result_macros.tex"
+MAIN = G / "main.tex"
+
+# accuracy macros: (macro, json file, per_seed key, metric)
+ACC = []
+for pfx, relu_f, qcfs_f, cnn_f in [
+    ("nsl", "nslkdd_relu_multiseed.json", "nslkdd_qcfs_multiseed.json", "cnn_nslkdd_multiseed.json"),
+    ("unsw", "unsw_multiseed_20.json", "unsw_qcfs_multiseed.json", "cnn_unsw_multiseed.json"),
+    ("cic", "cicids2017_multiseed_experiment.json", "cicids_qcfs_multiseed.json", "cnn_cicids_multiseed.json"),
+    ("iot", "iot23_multiseed.json", "iot23_qcfs_multiseed.json", None),
+]:
+    ACC.append((f"{pfx}oarelu", relu_f, None, "overall_acc"))
+    ACC.append((f"{pfx}mfrelu", relu_f, None, "macro_f1"))
+    ACC.append((f"{pfx}oaqcfs", qcfs_f, "qcfs", "overall_acc"))
+    ACC.append((f"{pfx}mfqcfs", qcfs_f, "qcfs", "macro_f1"))
+    if cnn_f:
+        ACC.append((f"{pfx}oacnn", cnn_f, None, "overall_acc"))
+        ACC.append((f"{pfx}mfcnn", cnn_f, None, "macro_f1"))
+
+# stats macros: (macro, dataset, comparison-key, field)  field in {p_raw,p_adj,dz,reject}
+STATS = []
+for pfx, ds, qk, ck in [
+    ("nsl", "nslkdd", "nslkdd_relu_vs_qcfs", "nslkdd_relu_vs_cnn"),
+    ("unsw", "unsw", "unsw_relu_vs_qcfs", "unsw_relu_vs_cnn"),
+    ("cic", "cicids2017", "cicids_relu_vs_qcfs", "cicids_relu_vs_cnn"),
+    ("iot", "iot23", "iot23_relu_vs_qcfs", None),
+]:
+    STATS += [(f"{pfx}pqcfs", ds, qk, "p_raw"), (f"{pfx}padjqcfs", ds, qk, "p_adj"),
+              (f"{pfx}dzqcfs", ds, qk, "dz"), (f"{pfx}rejqcfs", ds, qk, "reject"),
+              (f"p{pfx}relu", ds, qk, "p_raw")]
+    if ck:
+        STATS += [(f"{pfx}pcnn", ds, ck, "p_raw"), (f"{pfx}padjcnn", ds, ck, "p_adj"),
+                  (f"{pfx}dzcnn", ds, ck, "dz"), (f"{pfx}rejcnn", ds, ck, "reject")]
+
+
+def _per_seed(path: Path, key):
+    d = json.loads(path.read_text())
+    if key and key in d:
+        return d[key]["per_seed"]
+    return d.get("per_seed") or d.get("relu", {}).get("per_seed")
+
+
+def _pm(vals):
+    m = statistics.mean(vals)
+    s = statistics.stdev(vals) if len(vals) > 1 else 0.0
+    return f"{m:.2f}$\\pm${s:.2f}"
+
+
+def _fmt_p(p):
+    return "--" if p is None else f"{p:.3f}"
+
+
+def _fmt_dz(d):
+    return "--" if d is None else (f"$+{d:.2f}$" if d >= 0 else f"${d:.2f}$")
+
+
+def parse_overrides(text: str) -> dict:
+    out = {}
+    for m in re.finditer(r"\\renewcommand\{\\(\w+)\}\{(.*)\}\s*$", text, re.M):
+        out[m.group(1)] = m.group(2)
+    return out
+
+
+def check_macros() -> list[str]:
+    problems = []
+    if not MACROS.exists():
+        return ["result_macros.tex missing"]
+    ov = parse_overrides(MACROS.read_text())
+    # accuracy
+    for macro, fname, key, metric in ACC:
+        p = R / fname
+        if not p.exists():
+            continue
+        try:
+            vals = [float(r[metric]) for r in _per_seed(p, key)]
+        except Exception as e:
+            problems.append(f"[acc] {macro}: cannot compute from {fname}: {e}")
+            continue
+        want = _pm(vals)
+        got = ov.get(macro)
+        if got is not None and got != want:
+            problems.append(f"[acc] \\{macro}: tex={got!r} != json={want!r} ({fname}, n={len(vals)})")
+    # stats
+    sr = R / "stats_report_globecom.json"
+    if sr.exists():
+        stats = json.loads(sr.read_text())
+        for macro, ds, ck, field in STATS:
+            try:
+                cmp = stats["datasets"][ds]["comparisons"][ck]
+            except KeyError:
+                continue
+            if field == "reject":
+                p_adj = cmp.get("p_adj")
+                want = r"\checkmark" if bool(cmp.get("reject", p_adj is not None and p_adj <= 0.05)) else r"\ding{55}"
+            elif field == "dz":
+                want = _fmt_dz(cmp.get("dz"))
+            else:
+                want = _fmt_p(cmp.get(field, cmp.get("p")))
+            got = ov.get(macro)
+            if got is not None and got != want:
+                problems.append(f"[stat] \\{macro}: tex={got!r} != json={want!r} ({ds}/{ck}/{field})")
+    return problems
+
+
+# stat-like literals in prose (skip the preamble macro defs and \input line)
+PROSE_PATS = [
+    re.compile(r"p\s*\{?[=<>]\}?\s*~?\s*0\.\d+"),      # p{=}0.xxx
+    re.compile(r"p_?\{?adj\}?\s*[=~]?\s*0\.\d+"),        # p_adj 0.xxx
+    re.compile(r"d_?z\b[^%\n]{0,8}[+-]?\d\.\d+"),        # d_z ... x.xx
+    re.compile(r"(?<![\w\\])\$[+-]\d\.\d+\$"),           # isolated $+x.xx$
+]
+
+
+def check_prose() -> list[str]:
+    hits = []
+    lines = MAIN.read_text().splitlines()
+    in_preamble = False
+    for i, ln in enumerate(lines, 1):
+        s = ln.strip()
+        if s.startswith("\\newcommand") or s.startswith("%"):
+            continue
+        if "\\IfFileExists{result_macros" in s:
+            in_preamble = True  # macro block ends here; body follows
+            continue
+        for pat in PROSE_PATS:
+            for mm in pat.finditer(ln):
+                frag = mm.group(0)
+                # ignore fragments that are already macro args or thresholds like 0.05 alpha
+                if re.search(r"0\.05\b", frag) and "adj" not in frag:
+                    continue
+                hits.append(f"  L{i}: {frag!r}   in: {s[:90]}")
+    return hits
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--strict", action="store_true", help="also fail on hardcoded-prose candidates")
+    a = ap.parse_args()
+
+    print("=== (1) macro vs JSON ===")
+    mp = check_macros()
+    if mp:
+        print("\n".join("  STALE " + x for x in mp))
+    else:
+        print("  all overridden macros match the JSONs ✓")
+
+    print("\n=== (2) hardcoded stat-like literals in prose ===")
+    hp = check_prose()
+    if hp:
+        print("\n".join(hp))
+        print(f"  ({len(hp)} candidates — macro-ize any that are experiment results)")
+    else:
+        print("  none ✓")
+
+    fail = bool(mp) or (a.strict and bool(hp))
+    print(f"\n{'FAIL' if fail else 'OK'}: {len(mp)} stale macro(s), {len(hp)} prose candidate(s)")
+    sys.exit(1 if fail else 0)
+
+
+if __name__ == "__main__":
+    main()

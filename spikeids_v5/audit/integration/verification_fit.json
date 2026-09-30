@@ -1,0 +1,19 @@
+{
+  "content_sha256": "46f9ca0835c1f91857c2d68d3aaa12a11bf41cab583a4b092f68a953fa5151f1",
+  "jobs": {
+    "cicids2017_cnn": "3c9fb47f468fe052ce34c43a02565bda6397462183777e07b25173f78cbef7c6",
+    "cicids2017_qcfs": "a167e6d750bebb47b2721963a8eef95cdf37b603236a0c296e23f778e60b6a54",
+    "cicids2017_relu": "ea2a2d0d16f4ef0f41400f2896bee07c45375d65082c99f84f4b089bd377a47f",
+    "iot23_qcfs": "74410b95384972d2088f0e79b495723dcaf27eb08f6be8d858a0265682567e1e",
+    "iot23_relu": "fed83f72115c578979ef4a6dea9bda800005b438377c8f935ad484d985992c33",
+    "nslkdd_cnn": "7977d1898411201ace55f05d09acfd96c21e7b7ee3e6fbeb0debd4c938350d4b",
+    "nslkdd_qcfs": "264886e15f80a654f523c398212525ee63bf765715bd8ff69ddab1e63d0d8f6e",
+    "nslkdd_relu": "8fdf95b3d79d75f180072516f69fcfc96bef0011b11d463c1058b80c41af49b2",
+    "unsw_cnn": "5174f830afdb9e9a53e88f8ca8c779491dc4b4444c2be77ba47d380f972ab5c6",
+    "unsw_qcfs": "7c20df4bddb72ab0060c8789498edccff1971bd853e7e7f78aa640f148fda15b",
+    "unsw_relu": "6d78a0510b301d87eaa97e5da00424c06446ce47502f1370dc93df099e4c58e1"
+  },
+  "passed": true,
+  "plan_sha256": "5fd673ea530bc0fae243163e54bba216a10ec12ded7e98f0e675f4d90d074025",
+  "scope": "two independent initializations/training executions on the recorded stack; not cross-platform proof"
+}

@@ -55,6 +55,10 @@ def main() -> None:
     ap.add_argument("--cicids-qcfs", type=Path, required=False,
                      dest="cicids_qcfs",
                      help="results/cicids_qcfs_multiseed.json")
+    ap.add_argument("--iot23", type=Path, required=False,
+                     help="results/iot23_multiseed.json (ReLU)")
+    ap.add_argument("--iot23-qcfs", type=Path, required=False, dest="iot23_qcfs",
+                     help="results/iot23_qcfs_multiseed.json")
     ap.add_argument("--stats", type=Path, required=False)
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args()
@@ -131,6 +135,26 @@ def main() -> None:
         if ms:
             emit("cicmfqcfs", _fmt(*ms))
 
+    # ── IoT-23 (ReLU + QCFS) ───────────────────────────────────────────
+    if args.iot23 and args.iot23.exists():
+        data = json.loads(args.iot23.read_text())
+        relu = data.get("relu") or data  # ReLU stored top-level per_seed
+        ms = _mean_std(relu, "overall_acc")
+        if ms:
+            emit("iotoarelu", _fmt(*ms))
+        ms = _mean_std(relu, "macro_f1")
+        if ms:
+            emit("iotmfrelu", _fmt(*ms))
+    if args.iot23_qcfs and args.iot23_qcfs.exists():
+        data = json.loads(args.iot23_qcfs.read_text())
+        qcfs = data.get("qcfs") or data
+        ms = _mean_std(qcfs, "overall_acc")
+        if ms:
+            emit("iotoaqcfs", _fmt(*ms))
+        ms = _mean_std(qcfs, "macro_f1")
+        if ms:
+            emit("iotmfqcfs", _fmt(*ms))
+
     # ── TinyCNN baseline (NSL-KDD, UNSW, optional CICIDS) ──────────────
     if args.cnn and args.cnn.exists():
         data = json.loads(args.cnn.read_text())
@@ -188,11 +212,21 @@ def main() -> None:
             emit("cicdzqcfs", _fmt_dz(cic_qcfs.get("dz")))
             emit("cicrejqcfs", _reject_mark(cic_qcfs.get("p_adj")))
 
-        # Also emit \punswrelu and \pcicrelu so prose can inline them
+        iot_cmp = datasets.get("iot23", {}).get("comparisons", {})
+        iot_qcfs = iot_cmp.get("iot23_relu_vs_qcfs")
+        if iot_qcfs:
+            emit("iotpqcfs", _fmt_p(iot_qcfs.get("p_raw", iot_qcfs.get("p"))))
+            emit("iotpadjqcfs", _fmt_p(iot_qcfs.get("p_adj")))
+            emit("iotdzqcfs", _fmt_dz(iot_qcfs.get("dz")))
+            emit("iotrejqcfs", _reject_mark(iot_qcfs.get("p_adj")))
+
+        # Also emit \punswrelu, \pcicrelu, \piotrelu so prose can inline them
         if unsw_qcfs:
             emit("punswrelu", _fmt_p(unsw_qcfs.get("p_raw", unsw_qcfs.get("p"))))
         if cic_qcfs:
             emit("pcicrelu", _fmt_p(cic_qcfs.get("p_raw", cic_qcfs.get("p"))))
+        if iot_qcfs:
+            emit("piotrelu", _fmt_p(iot_qcfs.get("p_raw", iot_qcfs.get("p"))))
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text("\n".join(lines) + "\n")

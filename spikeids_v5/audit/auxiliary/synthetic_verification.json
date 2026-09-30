@@ -1,0 +1,11 @@
+{
+  "content_sha256": "8b0ca01193a87bb00ed68941da2e8fb7538820094b6485c084ac4c6a76f29e5c",
+  "fingerprint": "581168924ebd35c8c958cdd0b1ccb0605db06badb3ed090f6a0e1db90217d5c3",
+  "passed": true,
+  "scope": "same recorded hardware/software/protocol; fit only",
+  "training_digest": "19c51cb2c134fb4fbfe76439a71da46e80cd03f46ee629c9225a55201adc6962",
+  "wall_seconds": [
+    3.7170694849996835,
+    3.693305892999888
+  ]
+}

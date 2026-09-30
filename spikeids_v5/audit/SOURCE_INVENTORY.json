@@ -1,0 +1,147 @@
+{
+  "date": "2026-09-20",
+  "uploaded_files": [
+    {
+      "uploaded_filename": "assemble_cnn_legacy(1).py",
+      "uploaded_sha256": "829f60b6ce2999e360c77d8f7584333c6bef439d2b4996234c3e480a9cb48939",
+      "new_path": "assemble_cnn_legacy.py",
+      "new_sha256": "2f08dc512c1756903b319043ab30f06de8b57e1db562ea080b55779257cb9539",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "assemble_nsl_legacy(1).py",
+      "uploaded_sha256": "bc15f458fb23fa996367bb6fae4c3a5d0737d0359e1ce37f354a22601702fedb",
+      "new_path": "assemble_nsl_legacy.py",
+      "new_sha256": "bd7777a74ebed0535cc7a7d701dff5365fe14c2a296b1c670f31669ccd839429",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "check_paper_consistency(1).py",
+      "uploaded_sha256": "28626d8f6112c524cc24279d93d0221195b772e86758b2969d9804bd8e9d828b",
+      "new_path": "check_paper_consistency.py",
+      "new_sha256": "9c831b37a4ea1cb24276d7ad89781642a13513eca7330ba738021bd60c1fcf46",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "experiment_all.py",
+      "uploaded_sha256": "eb4706d2a33c37c5a5c4cb834ee3070cf6f7c20e1b46edebd374133d37f96591",
+      "new_path": "experiment_all.py",
+      "new_sha256": "685cce359c4ee7b2d22321590b790f9ff2f46d264311e6f3b941b88537f92342",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "finalize_all_det(1).py",
+      "uploaded_sha256": "4763fbb0da24475bad2b90c8b9be2cfacb9e781c050d58b7b1db30d147633034",
+      "new_path": "finalize_all_det.py",
+      "new_sha256": "5ad15f52fd7e4e8c1c7f902a72f2923c1334f3278898b6c76ec128afc8492161",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "finalize_and_check(1).sh",
+      "uploaded_sha256": "dc668a294176a1218572d3da437cafeede7725544d9a3d9559d08080b1cd8014",
+      "new_path": "finalize_and_check.sh",
+      "new_sha256": "1d5e60c381739633a47507d8e11cf63d27add40451b3c64ff24b67e6b0ada325",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "README(10).md",
+      "uploaded_sha256": "0f2e5ef7e0dca553a2ab53a09a37ff320ceaa3d16d5164e9a12cbcdf8f93bcf2",
+      "new_path": "README.md",
+      "new_sha256": "8e36bada3ec40deabc2f48967f886d8aafdc232dae59cba0c6cea190b1ea03df",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "run_globecom_stats(1).py",
+      "uploaded_sha256": "1520b5f0f28c7f1d5a99e76d4edea56b97352239d71821fc2890fa5742e04edd",
+      "new_path": "run_globecom_stats.py",
+      "new_sha256": "67bee1b325439d41fc1575db97e5158f3c1c381d2bdc4ad86d88eb841115b629",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "run_v4_equivalence(1).py",
+      "uploaded_sha256": "4fabebafba4a77552675aff9d2032c3003a17320c365f1a5756a37ea5e259639",
+      "new_path": "run_v4_equivalence.py",
+      "new_sha256": "ee5b0af36b97f525c9ba2be036dbd8e538a32cce107a4ca8fe70773714b34101",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    },
+    {
+      "uploaded_filename": "run_v4_rerun(1).sh",
+      "uploaded_sha256": "99b86c61d07206586badb83ed2afc0581f3a75fdf38334856495633d60c132ce",
+      "new_path": "run_v4_rerun.sh",
+      "new_sha256": "2f8efcfd0c384f124f7bf375b297943244b6c6013abfd3996770fc8d38023435",
+      "mode": "isolated namespace refactor, NOT an automatic overwrite of legacy src/scripts"
+    }
+  ],
+  "reviewed_repository": "thc1006/SpikeIDS-MCU",
+  "reviewed_branch_at_fetch": "v4",
+  "reviewed_commit": "fd769747c4b0ba84f33bae4d26a8754a7ef80238",
+  "read_method": "connected GitHub connector; no git clone; no repository write",
+  "remote_reads": [
+    {
+      "path": "src/models.py",
+      "github_blob_sha": "51ec1efb823647dd527a5c0454cae6e14a300dfb",
+      "read_scope": "full"
+    },
+    {
+      "path": "src/data_loaders.py",
+      "github_blob_sha": "9315dbb9f09d9a7b241f82367830e4e34541656b",
+      "read_scope": "full"
+    },
+    {
+      "path": "src/metrics.py",
+      "github_blob_sha": "f20a662c248214a90a525b7c870c618701136327",
+      "read_scope": "full"
+    },
+    {
+      "path": "src/stats_tests.py",
+      "github_blob_sha": "24a72a54ba10fb07f1bef06eb7e3ea8b3d775d54",
+      "read_scope": "lines1-260 and280-550"
+    },
+    {
+      "path": "src/experiment_iot23.py",
+      "github_blob_sha": null,
+      "read_scope": "loader and preprocessing path; long result partially truncated"
+    },
+    {
+      "path": "src/experiment_cicids2017.py",
+      "github_blob_sha": "83a6cd1ae196e013867cf100b0402f7da925ce04",
+      "read_scope": "lines1-230"
+    },
+    {
+      "path": "src/quantize_qcfs.py",
+      "github_blob_sha": "e97877a2647f8c02068d0904ee268cb3b0155758",
+      "read_scope": "full"
+    },
+    {
+      "path": "src/export_qcfs_onnx.py",
+      "github_blob_sha": "b55ef39caa9e1ef02d74d6e662727daf69277720",
+      "read_scope": "full"
+    },
+    {
+      "path": "src/layerwise_analysis.py",
+      "github_blob_sha": "45b8bbc8dbe2e8586ee7d868ca57de9a5cc42984",
+      "read_scope": "lines1-120"
+    },
+    {
+      "path": "src/experiment_qcfs_lsweep.py",
+      "github_blob_sha": "7b382110cd17d54650c3f387220bec9d0a6b9761",
+      "read_scope": "lines1-220"
+    },
+    {
+      "path": "firmware/n6/src/kernels_mlp.c",
+      "github_blob_sha": "e1354930e662c2c3fa48596458716ef19e2dfc3a",
+      "read_scope": "full"
+    },
+    {
+      "path": "firmware/n6/src/bench.c",
+      "github_blob_sha": "b80a2e895244870e286414df636b5def7ab943c6",
+      "read_scope": "lines1-160"
+    }
+  ],
+  "qcfs_author_reference": {
+    "repository": "putshua/ANN_SNN_QCFS",
+    "path": "Models/layer.py",
+    "github_blob_sha": "7553fc7ca05e744df96cd35714868c0b163e72ab"
+  },
+  "not_a_claim": "This inventory is not an exhaustive whole-repository or whole-firmware audit."
+}

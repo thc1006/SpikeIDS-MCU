@@ -1,0 +1,180 @@
+{
+  "data": "synthetic raw-shaped CSV fixtures, NOT real benchmark outcomes",
+  "epochs": 2,
+  "independent_model_training_executions": 44,
+  "n_dataset_model_jobs": 11,
+  "negative_evidence_checks_passed": [
+    "alter_counts",
+    "reorder_seed_ids",
+    "alter_aggregate",
+    "alter_data_identity",
+    "missing_replica"
+  ],
+  "plan_sha256": "5fd673ea530bc0fae243163e54bba216a10ec12ded7e98f0e675f4d90d074025",
+  "seeds": [
+    0,
+    1
+  ],
+  "smoke_paper_promotion_refused": true,
+  "sources": {
+    "assemble_cnn_legacy.py": "2f08dc512c1756903b319043ab30f06de8b57e1db562ea080b55779257cb9539",
+    "assemble_nsl_legacy.py": "bd7777a74ebed0535cc7a7d701dff5365fe14c2a296b1c670f31669ccd839429",
+    "benchmark_profiles.py": "7fe3d63f9c7577a511239b16acca79bef8600154c54dabe1b6c0c536a4c30fd0",
+    "check_paper_consistency.py": "9c831b37a4ea1cb24276d7ad89781642a13513eca7330ba738021bd60c1fcf46",
+    "contracts.py": "6db706a81a09c862ad5be70be6f713246ca8c403f9674c1da740da6379f60ad8",
+    "data_loaders.py": "f0ca317f1cff639195da48b0cae44f325bfdd16205ca197f0bca24d5009fcb68",
+    "deployment_gate.py": "a8da9d6d9d29a8985af719a29bc1a681f28453c6b3a85f68827af781f3e9693a",
+    "evidence.py": "4b6dd04c983ccee45483564bf17ae620a4a7dc294ce20ff63242f2456c529744",
+    "experiment_all.py": "685cce359c4ee7b2d22321590b790f9ff2f46d264311e6f3b941b88537f92342",
+    "experiment_qcfs_lsweep.py": "bd105fb62bdc13a7339ba5e3fd19e58bba52c96f9ef4647c2b795343d523580c",
+    "export_verified.py": "defaf5a51a44b7704ff609f0b2e5d3f1d604b82f81f9371648067a693f64f0b1",
+    "finalize_all_det.py": "5ad15f52fd7e4e8c1c7f902a72f2923c1334f3278898b6c76ec128afc8492161",
+    "layerwise_analysis.py": "0c3869bea652ed5cf678c053eee719bd7b232951bddf1838ccd7236f64e8f7ca",
+    "metrics.py": "2009a09cb479a0f6542a00d8abcb3b0686d08b9f63932c866bc82581bb652452",
+    "models.py": "1b495e05cf7aa4b4a25a8d7954681a3ebed86d135c862881011b93c1763de849",
+    "paper_contract.py": "ff4d4cbcda3466fee27559e02b58e74f90bd51254919b183460875efe4139b10",
+    "run_globecom_stats.py": "67bee1b325439d41fc1575db97e5158f3c1c381d2bdc4ad86d88eb841115b629",
+    "run_v4_equivalence.py": "ee5b0af36b97f525c9ba2be036dbd8e538a32cce107a4ca8fe70773714b34101",
+    "snn_analysis.py": "c6466b5ec84f9a2b7a21606b17e8a9aa3ea574c3dc9b2385ecc2586cf737c2c7",
+    "stats_tests.py": "84976ed6e4fb1af23f9162a1a4c356964ef9978195db2bbddb005207916f9cb4",
+    "suite.py": "1352e773a83d0be2fbae42ba1d52279128280ea3da8f544e29971c10af0d8297",
+    "verify_reproducibility.py": "4040743b54a5673fe7757148a577d399bbf6a454e94b6295b815020609c23ce3"
+  },
+  "status": "passed",
+  "steps": [
+    {
+      "arguments": [
+        "prepare",
+        "--data-dir",
+        "/mnt/data/v5_integration_final/raw",
+        "--cache-root",
+        "/mnt/data/v5_integration_final/cache",
+        "--chunksize",
+        "31"
+      ],
+      "expected_success": true,
+      "log": "step_00_suite.log",
+      "returncode": 0,
+      "script": "suite.py"
+    },
+    {
+      "arguments": [
+        "freeze",
+        "--cache-root",
+        "/mnt/data/v5_integration_final/cache",
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run",
+        "--device",
+        "cpu",
+        "--optimizer",
+        "single",
+        "--threads",
+        "1",
+        "--seeds",
+        "0",
+        "1",
+        "--smoke-epochs",
+        "2"
+      ],
+      "expected_success": true,
+      "log": "step_01_suite.log",
+      "returncode": 0,
+      "script": "suite.py"
+    },
+    {
+      "arguments": [
+        "run",
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run"
+      ],
+      "expected_success": true,
+      "log": "step_02_suite.log",
+      "returncode": 0,
+      "script": "suite.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run"
+      ],
+      "expected_success": true,
+      "log": "step_03_run_globecom_stats.log",
+      "returncode": 0,
+      "script": "run_globecom_stats.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run"
+      ],
+      "expected_success": true,
+      "log": "step_04_run_v4_equivalence.log",
+      "returncode": 0,
+      "script": "run_v4_equivalence.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run"
+      ],
+      "expected_success": true,
+      "log": "step_05_assemble_nsl_legacy.log",
+      "returncode": 0,
+      "script": "assemble_nsl_legacy.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run"
+      ],
+      "expected_success": true,
+      "log": "step_06_assemble_cnn_legacy.log",
+      "returncode": 0,
+      "script": "assemble_cnn_legacy.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run",
+        "--dataset",
+        "nslkdd",
+        "--model",
+        "qcfs",
+        "--output",
+        "/mnt/data/v5_integration_final/layerwise.json"
+      ],
+      "expected_success": true,
+      "log": "step_07_layerwise_analysis.log",
+      "returncode": 0,
+      "script": "layerwise_analysis.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run",
+        "--dataset",
+        "nslkdd",
+        "--output",
+        "/mnt/data/v5_integration_final/snn.json"
+      ],
+      "expected_success": true,
+      "log": "step_08_snn_analysis.log",
+      "returncode": 0,
+      "script": "snn_analysis.py"
+    },
+    {
+      "arguments": [
+        "--run-dir",
+        "/mnt/data/v5_integration_final/run",
+        "--paper-dir",
+        "/mnt/data/v5_integration_final/paper"
+      ],
+      "expected_success": false,
+      "log": "step_09_finalize_all_det.log",
+      "returncode": 1,
+      "script": "finalize_all_det.py"
+    }
+  ],
+  "test_checkpoint_evaluations": 44,
+  "wall_seconds": 208.0367012939996
+}
