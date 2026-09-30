@@ -1,0 +1,13 @@
+{"schedule": "schedule_00_repeat1", "valid": false, "problems": ["Window 3 (BENCH): -138.2 samples vs DWT-predicted length (lost samples?)", "Window 5 (BENCH): -36.1 samples vs DWT-predicted length (lost samples?)", "Window 13 (BENCH): -127.8 samples vs DWT-predicted length (lost samples?)", "Window 12 (OVERHEAD): +34.3 samples vs DWT-predicted length (lost samples?)", "Window 20 (OVERHEAD): +38.4 samples vs DWT-predicted length (lost samples?)"]}
+{"schedule": "schedule_01_repeat1", "valid": false, "problems": ["Window 3 (BENCH): -103.1 samples vs DWT-predicted length (lost samples?)", "Window 5 (BENCH): -157.4 samples vs DWT-predicted length (lost samples?)", "Window 7 (BENCH): -58.0 samples vs DWT-predicted length (lost samples?)", "Window 9 (BENCH): +42.0 samples vs DWT-predicted length (lost samples?)", "Window 13 (BENCH): -117.4 samples vs DWT-predicted length (lost samples?)"]}
+{"schedule": "schedule_02_repeat1", "valid": false, "problems": ["Window 7 (BENCH): +84.0 samples vs DWT-predicted length (lost samples?)", "Window 9 (BENCH): +132.0 samples vs DWT-predicted length (lost samples?)", "Window 11 (BENCH): +55.0 samples vs DWT-predicted length (lost samples?)", "Window 17 (BENCH): -39.1 samples vs DWT-predicted length (lost samples?)", "Window 4 (OVERHEAD): -67.1 samples vs DWT-predicted length (lost samples?)"]}
+{"schedule": "schedule_03_dose2", "valid": false, "problems": ["Window 5 (BENCH): -91.6 samples vs DWT-predicted length (lost samples?)", "Window 7 (BENCH): -41.9 samples vs DWT-predicted length (lost samples?)", "Window 9 (BENCH): +121.8 samples vs DWT-predicted length (lost samples?)", "Window 15 (BENCH): -49.9 samples vs DWT-predicted length (lost samples?)", "Window 19 (BENCH): -120.3 samples vs DWT-predicted length (lost samples?)"]}
+{"schedule": "schedule_04_dose4", "valid": false, "problems": ["Window 5 (BENCH): -309.5 samples vs DWT-predicted length (lost samples?)", "Window 7 (BENCH): -262.9 samples vs DWT-predicted length (lost samples?)", "Window 9 (BENCH): -201.9 samples vs DWT-predicted length (lost samples?)", "Window 13 (BENCH): +192.4 samples vs DWT-predicted length (lost samples?)", "Window 15 (BENCH): +244.1 samples vs DWT-predicted length (lost samples?)"]}
+{
+ "n": 0,
+ "mean": null,
+ "sd": null,
+ "ci95": null,
+ "cv": null
+}
+EXIT=2

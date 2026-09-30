@@ -1,0 +1,16 @@
+{"schedule": "schedule_00_repeat1", "valid": true, "problems": []}
+{"schedule": "schedule_01_repeat1", "valid": true, "problems": []}
+{"schedule": "schedule_02_repeat1", "valid": true, "problems": []}
+{"schedule": "schedule_03_dose2", "valid": true, "problems": []}
+{"schedule": "schedule_04_dose4", "valid": false, "problems": ["PPK2 frames disagree with host time by >= 0.05 s (samples lost)"]}
+{
+ "n": 3,
+ "mean": 0.04944846177299864,
+ "sd": 3.243666722452028e-05,
+ "ci95": [
+  0.049367884624702714,
+  0.04952903892129457
+ ],
+ "cv": 0.0006559691861280979
+}
+EXIT=2

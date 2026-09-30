@@ -1,0 +1,22 @@
+{
+ "utc": "2026-09-29T09:28:52.883082+00:00",
+ "samples": 408195584,
+ "seconds": 4081.95584,
+ "output_on": false,
+ "guard_tripped": false,
+ "mean_uA_last_1s": 107196.73843041614,
+ "max_uA_last_1s": 127026.07643331848,
+ "powered_seen": true,
+ "counter_discontinuities": 0,
+ "invalid_range_frames": 0,
+ "adc_upper_rail_frames": 4998,
+ "range_histogram": [
+  141821488,
+  3,
+  1,
+  14,
+  266374078
+ ],
+ "recording": null,
+ "segments_done": 10
+}

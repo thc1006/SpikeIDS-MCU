@@ -1,0 +1,47 @@
+{"kind": "segment_start", "host_monotonic": 208613.659937874, "utc": "2026-09-29T08:20:18.454429+00:00", "sample_index": 0, "label": "bringup", "path": "seg_000_bringup.u32le"}
+{"kind": "command", "host_monotonic": 208613.66015747, "utc": "2026-09-29T08:20:18.454644+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "armed", "host_monotonic": 208613.660266096, "utc": "2026-09-29T08:20:18.454753+00:00", "sample_index": 0, "stlink_serial": "004000183234510E37333934", "stlink_present_now": true}
+{"kind": "stlink_absent", "host_monotonic": 210015.687266808, "utc": "2026-09-29T08:43:40.481755+00:00", "sample_index": 139843872}
+{"kind": "command", "host_monotonic": 210017.834804808, "utc": "2026-09-29T08:43:42.629292+00:00", "sample_index": 140058624, "name": "armed_output_on_while_stlink_absent", "hex": "0c01"}
+{"kind": "stlink_returned", "host_monotonic": 210035.496399489, "utc": "2026-09-29T08:44:00.290887+00:00", "sample_index": 141824832}
+{"kind": "control", "host_monotonic": 210097.079263611, "utc": "2026-09-29T08:45:01.873751+00:00", "sample_index": 147983136, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 210097.083055625, "utc": "2026-09-29T08:45:01.877543+00:00", "sample_index": 147983136, "label": "bringup", "path": "seg_000_bringup.u32le", "frames": 147983136, "sha256": "791c2b3514ddd389595ec94b8aaecc06736ebd100f9a7ca1a69b603a3e5597f8", "d0_rising": 1}
+{"kind": "control", "host_monotonic": 210774.561793283, "utc": "2026-09-29T08:56:19.356281+00:00", "sample_index": 215280128, "text": "start wiring"}
+{"kind": "segment_start", "host_monotonic": 210774.561954909, "utc": "2026-09-29T08:56:19.356442+00:00", "sample_index": 215280128, "label": "wiring", "path": "seg_001_wiring.u32le"}
+{"kind": "control", "host_monotonic": 210778.666285899, "utc": "2026-09-29T08:56:23.460776+00:00", "sample_index": 215690368, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 210778.669735481, "utc": "2026-09-29T08:56:23.464225+00:00", "sample_index": 215690368, "label": "wiring", "path": "seg_001_wiring.u32le", "frames": 410240, "sha256": "a1a9b774be3f8d97da6b83c04fb639994d06a55b30d753bfc1bcd35ab323bcde", "d0_rising": 1}
+{"kind": "control", "host_monotonic": 211345.371925209, "utc": "2026-09-29T09:05:50.166412+00:00", "sample_index": 272361376, "text": "start wiring"}
+{"kind": "segment_start", "host_monotonic": 211345.372026562, "utc": "2026-09-29T09:05:50.166513+00:00", "sample_index": 272361376, "label": "wiring", "path": "seg_002_wiring.u32le"}
+{"kind": "control", "host_monotonic": 211349.483980904, "utc": "2026-09-29T09:05:54.278474+00:00", "sample_index": 272772512, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 211349.502860933, "utc": "2026-09-29T09:05:54.297350+00:00", "sample_index": 272772512, "label": "wiring", "path": "seg_002_wiring.u32le", "frames": 411136, "sha256": "37541724aaeba23fcc606e780498b55d9f7b165c675109eb03f96a6bffa39ed9", "d0_rising": 0}
+{"kind": "control", "host_monotonic": 211937.193994758, "utc": "2026-09-29T09:15:41.988483+00:00", "sample_index": 331485824, "text": "start wiring"}
+{"kind": "segment_start", "host_monotonic": 211937.194188214, "utc": "2026-09-29T09:15:41.988675+00:00", "sample_index": 331485824, "label": "wiring", "path": "seg_003_wiring.u32le"}
+{"kind": "control", "host_monotonic": 211939.553764712, "utc": "2026-09-29T09:15:44.348255+00:00", "sample_index": 331721728, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 211939.557405211, "utc": "2026-09-29T09:15:44.351895+00:00", "sample_index": 331721728, "label": "wiring", "path": "seg_003_wiring.u32le", "frames": 235904, "sha256": "45c7b3ae7fd80e9ae3a0b20588e00bc5404e376c290ae1d30f29392cb26f927b", "d0_rising": 5}
+{"kind": "control", "host_monotonic": 211939.622141344, "utc": "2026-09-29T09:15:44.416631+00:00", "sample_index": 331728608, "text": "start sham"}
+{"kind": "segment_start", "host_monotonic": 211939.622518946, "utc": "2026-09-29T09:15:44.417008+00:00", "sample_index": 331728608, "label": "sham", "path": "seg_004_sham.u32le"}
+{"kind": "control", "host_monotonic": 211992.47586079, "utc": "2026-09-29T09:16:37.270353+00:00", "sample_index": 337013888, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 211992.496103508, "utc": "2026-09-29T09:16:37.290595+00:00", "sample_index": 337013888, "label": "sham", "path": "seg_004_sham.u32le", "frames": 5285280, "sha256": "0303c7263a8d1e9d554045ddd45cf1d2a51bddc55b8f0dc5d3634bb026637ae3", "d0_rising": 20}
+{"kind": "control", "host_monotonic": 211994.361976792, "utc": "2026-09-29T09:16:39.156464+00:00", "sample_index": 337202688, "text": "start schedule_00_repeat1"}
+{"kind": "segment_start", "host_monotonic": 211994.362086417, "utc": "2026-09-29T09:16:39.156573+00:00", "sample_index": 337202688, "label": "schedule_00_repeat1", "path": "seg_005_schedule_00_repeat1.u32le"}
+{"kind": "control", "host_monotonic": 212054.312935713, "utc": "2026-09-29T09:17:39.107428+00:00", "sample_index": 343197696, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 212054.329471219, "utc": "2026-09-29T09:17:39.123963+00:00", "sample_index": 343197696, "label": "schedule_00_repeat1", "path": "seg_005_schedule_00_repeat1.u32le", "frames": 5995008, "sha256": "a97aec26bd14c8b1463fb806ee04386541db1fdf40aca79d008b69447edf0064", "d0_rising": 23}
+{"kind": "control", "host_monotonic": 212055.211375208, "utc": "2026-09-29T09:17:40.005863+00:00", "sample_index": 343287744, "text": "start schedule_01_repeat1"}
+{"kind": "segment_start", "host_monotonic": 212055.211515528, "utc": "2026-09-29T09:17:40.006002+00:00", "sample_index": 343287744, "label": "schedule_01_repeat1", "path": "seg_006_schedule_01_repeat1.u32le"}
+{"kind": "control", "host_monotonic": 212115.165079849, "utc": "2026-09-29T09:18:39.959572+00:00", "sample_index": 349282816, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 212115.181449231, "utc": "2026-09-29T09:18:39.975941+00:00", "sample_index": 349282816, "label": "schedule_01_repeat1", "path": "seg_006_schedule_01_repeat1.u32le", "frames": 5995072, "sha256": "fec2f11445619129d01c4afc1a4e8964d79804639a1e9874174563b961b3e037", "d0_rising": 23}
+{"kind": "control", "host_monotonic": 212116.044207671, "utc": "2026-09-29T09:18:40.838696+00:00", "sample_index": 349370912, "text": "start schedule_02_repeat1"}
+{"kind": "segment_start", "host_monotonic": 212116.04435298, "utc": "2026-09-29T09:18:40.838840+00:00", "sample_index": 349370912, "label": "schedule_02_repeat1", "path": "seg_007_schedule_02_repeat1.u32le"}
+{"kind": "control", "host_monotonic": 212175.998794923, "utc": "2026-09-29T09:19:40.793285+00:00", "sample_index": 355366400, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 212176.013340985, "utc": "2026-09-29T09:19:40.807830+00:00", "sample_index": 355366400, "label": "schedule_02_repeat1", "path": "seg_007_schedule_02_repeat1.u32le", "frames": 5995488, "sha256": "4143eca828d41b87c36dabbd0d0c1e45701a983ff975739c49497e328759553c", "d0_rising": 23}
+{"kind": "control", "host_monotonic": 212176.878700467, "utc": "2026-09-29T09:19:41.673188+00:00", "sample_index": 355454464, "text": "start schedule_03_dose2"}
+{"kind": "segment_start", "host_monotonic": 212176.878801739, "utc": "2026-09-29T09:19:41.673289+00:00", "sample_index": 355454464, "label": "schedule_03_dose2", "path": "seg_008_schedule_03_dose2.u32le"}
+{"kind": "control", "host_monotonic": 212255.013633807, "utc": "2026-09-29T09:20:59.808124+00:00", "sample_index": 363267936, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 212255.024081708, "utc": "2026-09-29T09:20:59.818571+00:00", "sample_index": 363267936, "label": "schedule_03_dose2", "path": "seg_008_schedule_03_dose2.u32le", "frames": 7813472, "sha256": "db3d6c27c509a2846a9cf292f053b44bc9b074d010e4c89e69e1c8922e2841b5", "d0_rising": 23}
+{"kind": "control", "host_monotonic": 212256.199947687, "utc": "2026-09-29T09:21:00.994435+00:00", "sample_index": 363386624, "text": "start schedule_04_dose4"}
+{"kind": "segment_start", "host_monotonic": 212256.200084551, "utc": "2026-09-29T09:21:00.994572+00:00", "sample_index": 363386624, "label": "schedule_04_dose4", "path": "seg_009_schedule_04_dose4.u32le"}
+{"kind": "control", "host_monotonic": 212371.989781281, "utc": "2026-09-29T09:22:56.784271+00:00", "sample_index": 374514112, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 212373.249143019, "utc": "2026-09-29T09:22:58.043635+00:00", "sample_index": 374514112, "label": "schedule_04_dose4", "path": "seg_009_schedule_04_dose4.u32le", "frames": 11127488, "sha256": "1656ace8e6c790d85dd3c26433d9aa767e6540e4410d500f0a81bf50fab581a2", "d0_rising": 23}
+{"kind": "control", "host_monotonic": 212728.04573116, "utc": "2026-09-29T09:28:52.840218+00:00", "sample_index": 408195136, "text": "quit"}
+{"kind": "command", "host_monotonic": 212728.046141812, "utc": "2026-09-29T09:28:52.840629+00:00", "sample_index": 408195136, "name": "final_output_off", "hex": "0c00"}
+{"kind": "command", "host_monotonic": 212728.046215558, "utc": "2026-09-29T09:28:52.840702+00:00", "sample_index": 408195136, "name": "sampling_stop", "hex": "07"}

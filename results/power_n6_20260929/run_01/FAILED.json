@@ -1,0 +1,4 @@
+{
+  "energy_measured": false,
+  "error": "RuntimeError: D0 did not record the marker pulses: check PPK2 D0 -> Arduino D12 (CN12-5, PH8), logic VCC -> CN2 VDDIO, logic GND -> GND"
+}

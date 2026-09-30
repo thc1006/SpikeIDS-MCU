@@ -1,0 +1,85 @@
+{
+  "base_params": {
+    "bench_reps": 1,
+    "cycles": 10,
+    "idle_cycles": 64000000,
+    "n_rows": 16,
+    "overhead_reps": 555,
+    "pulse_count": 3,
+    "pulse_cycles": 1280000
+  },
+  "cycles_per_bench": 5817055.0,
+  "cycles_per_overhead": 7212.57375,
+  "plan": [
+    [
+      "repeat",
+      1
+    ],
+    [
+      "repeat",
+      1
+    ],
+    [
+      "repeat",
+      1
+    ],
+    [
+      "dose",
+      2
+    ],
+    [
+      "dose",
+      4
+    ]
+  ],
+  "table": [
+    {
+      "checksum": 2166136261,
+      "end_cycle": 1315624384,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 1314984223
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 1319464820,
+      "iterations": 0,
+      "kind": 1,
+      "marker_high": 0,
+      "start_cycle": 1316264674
+    },
+    {
+      "checksum": 385526456,
+      "end_cycle": 1342733263,
+      "iterations": 4,
+      "kind": 2,
+      "marker_high": 1,
+      "start_cycle": 1319465043
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 1345933643,
+      "iterations": 0,
+      "kind": 1,
+      "marker_high": 0,
+      "start_cycle": 1342733506
+    },
+    {
+      "checksum": 1330457733,
+      "end_cycle": 1351703924,
+      "iterations": 800,
+      "kind": 3,
+      "marker_high": 1,
+      "start_cycle": 1345933865
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 1354904367,
+      "iterations": 0,
+      "kind": 1,
+      "marker_high": 0,
+      "start_cycle": 1351704206
+    }
+  ]
+}

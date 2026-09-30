@@ -1,0 +1,20 @@
+{
+  "command": 0,
+  "error": 0,
+  "first_bad_row": 0,
+  "magic": 1295469907,
+  "marker": 4718600,
+  "marker_initialized": 0,
+  "max_rows": 1024,
+  "parity_max": 0,
+  "parity_min": 0,
+  "parity_total": 0,
+  "request": 0,
+  "response": 0,
+  "rows_in": 872932832,
+  "rows_out": 872912352,
+  "state": 1,
+  "struct_bytes": 4208,
+  "version": 1,
+  "windows_used": 0
+}

@@ -1,0 +1,126 @@
+{
+  "counter_gaps": 0,
+  "d0_high_fraction": 0.21247626153011395,
+  "d0_low_at_segment_end": true,
+  "d0_low_at_segment_start": true,
+  "expected_count": 5,
+  "expected_width_s": 0.1,
+  "passed": true,
+  "runs": 5,
+  "swd": {
+    "first_poll_found_done": true,
+    "frames_vs_host_ok": true,
+    "pin_samples": 142,
+    "pin_transitions": 9,
+    "segment_frames_s": 2.35904,
+    "segment_host_s": 2.3632169970078394,
+    "swd_ops": [
+      {
+        "address": 873100768,
+        "bytes": 112,
+        "op": "read",
+        "t0": 211937.732833837,
+        "t1": 211937.73441022
+      },
+      {
+        "address": 873100816,
+        "bytes": 28,
+        "op": "write",
+        "t0": 211937.73448969,
+        "t1": 211937.735161923
+      },
+      {
+        "address": 873100816,
+        "bytes": 28,
+        "op": "read",
+        "t0": 211937.735164886,
+        "t1": 211937.735804616
+      },
+      {
+        "address": 873100792,
+        "bytes": 4,
+        "op": "write",
+        "t0": 211937.735813521,
+        "t1": 211937.736225165
+      },
+      {
+        "address": 873100792,
+        "bytes": 4,
+        "op": "read",
+        "t0": 211937.736227066,
+        "t1": 211937.736895123
+      },
+      {
+        "address": 873100784,
+        "bytes": 4,
+        "op": "write",
+        "t0": 211937.736909936,
+        "t1": 211937.737397425
+      },
+      {
+        "address": 873100768,
+        "bytes": 112,
+        "op": "read",
+        "t0": 211939.242108668,
+        "t1": 211939.243532286
+      },
+      {
+        "address": 873100880,
+        "bytes": 160,
+        "op": "read",
+        "t0": 211939.595244394,
+        "t1": 211939.597215476
+      }
+    ],
+    "t_commit": 211937.737400325
+  },
+  "table": [
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2031945487,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2025545357
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2044745935,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2038345805
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2057546381,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2051146251
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2070346829,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2063946698
+    },
+    {
+      "checksum": 2166136261,
+      "end_cycle": 2083147273,
+      "iterations": 0,
+      "kind": 4,
+      "marker_high": 1,
+      "start_cycle": 2076747143
+    }
+  ],
+  "widths_s": [
+    0.10031,
+    0.10027,
+    0.10022,
+    0.10024,
+    0.1002
+  ]
+}

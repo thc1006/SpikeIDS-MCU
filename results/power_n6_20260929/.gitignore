@@ -1,0 +1,5 @@
+# raw PPK2 frames and 10 ms summaries are large; keep only reviewed JSON/MD in git
+*.u32le
+summary_10ms.csv
+control
+*.tmp
