@@ -1,0 +1,20 @@
+{"utc": "2026-09-29T22:37:09.287176+00:00", "event": "preflight_ok", "recorder": "/home/thc1006/dev/SpikeIDS-MCU/results/power_esp32s3_20260930/ppk_esp9", "driver_sha256": "f83ff6332615c8b83cafc1869735af35589922ff350a2106a52bb59172d29dac", "shared_driver_sha256": "b974229e771ffa1e8f00f7d5050f9e5c7ead3f1574b40315aa184e7115592b62", "decoder_sha256": "69e67852a89b793f70525e9c11e027169f47bf2c37922e8d9a2d5c9272884400", "analysis_sha256": "782ed8babdd0a5bd419dddd86f4125916dba29b6b2518a7d7ad33cff1f0c162d", "build": "build_04"}
+{"utc": "2026-09-29T22:37:11.788047+00:00", "event": "powered", "session": "diag_esp_02_01", "segment_sample": 73272576}
+{"utc": "2026-09-29T22:37:11.919311+00:00", "event": "pre_on_logic", "session": "diag_esp_02_01", "states": [[255, 255]], "bins": 73373, "required": [[255, 255]]}
+{"utc": "2026-09-29T22:37:13.993274+00:00", "t": 2.1, "captured_s": 4.67, "mean_mA_1s": 62.98107636333011, "d0_high_run_s": 0.0, "d0_rises": 0}
+{"utc": "2026-09-29T22:37:45.356074+00:00", "t": 33.4, "captured_s": 36.04, "mean_mA_1s": 62.69668827100363, "d0_high_run_s": 0.44, "d0_rises": 7}
+{"utc": "2026-09-29T22:38:16.753494+00:00", "t": 64.8, "captured_s": 67.43, "mean_mA_1s": 62.75654348302293, "d0_high_run_s": 0.0, "d0_rises": 22}
+{"utc": "2026-09-29T22:38:48.205597+00:00", "t": 96.3, "captured_s": 98.89, "mean_mA_1s": 63.70935609526281, "d0_high_run_s": 0.0, "d0_rises": 37}
+{"utc": "2026-09-29T22:39:19.716413+00:00", "t": 127.8, "captured_s": 130.41, "mean_mA_1s": 63.01898753927209, "d0_high_run_s": 0.31, "d0_rises": 53}
+{"utc": "2026-09-29T22:39:51.326628+00:00", "t": 159.4, "captured_s": 162.02, "mean_mA_1s": 63.64566624532604, "d0_high_run_s": 0.02, "d0_rises": 67}
+{"utc": "2026-09-29T22:40:23.004399+00:00", "t": 191.1, "captured_s": 193.69, "mean_mA_1s": 69.90351819824343, "d0_high_run_s": 0.0, "d0_rises": 82}
+{"utc": "2026-09-29T22:40:54.660474+00:00", "t": 222.7, "captured_s": 225.35, "mean_mA_1s": 63.12969806606204, "d0_high_run_s": 0.46, "d0_rises": 98}
+{"utc": "2026-09-29T22:41:26.417199+00:00", "t": 254.5, "captured_s": 257.1, "mean_mA_1s": 64.092827459611, "d0_high_run_s": 1.48, "d0_rises": 108}
+{"utc": "2026-09-29T22:41:58.274796+00:00", "t": 286.4, "captured_s": 288.96, "mean_mA_1s": 63.422331476812914, "d0_high_run_s": 0.0, "d0_rises": 120}
+{"utc": "2026-09-29T22:42:30.182663+00:00", "t": 318.3, "captured_s": 320.87, "mean_mA_1s": 64.20004763866106, "d0_high_run_s": 3.41, "d0_rises": 127}
+{"utc": "2026-09-29T22:43:02.171091+00:00", "t": 350.3, "captured_s": 352.86, "mean_mA_1s": 63.568201156292766, "d0_high_run_s": 0.05, "d0_rises": 134}
+{"utc": "2026-09-29T22:43:34.252656+00:00", "t": 382.3, "captured_s": 384.93, "mean_mA_1s": 63.26588668994147, "d0_high_run_s": 0.17, "d0_rises": 141}
+{"utc": "2026-09-29T22:44:06.347554+00:00", "t": 414.4, "captured_s": 417.04, "mean_mA_1s": 63.21044850832817, "d0_high_run_s": 0.0, "d0_rises": 142}
+{"utc": "2026-09-29T22:44:31.907966+00:00", "event": "session_end", "session": "diag_esp_02_01", "done": true, "captured_s": 440.59, "done_high_s": 13.97, "d0_rises": 143}
+{"utc": "2026-09-29T22:44:42.837110+00:00", "event": "analyzed", "session": "diag_esp_02_01", "eligible": true, "instrument_fault": false, "problems": [], "gross": 0.007937155054173889}
+{"utc": "2026-09-29T22:44:42.837214+00:00", "event": "aggregate", "sessions": 1, "eligible": 1, "instrument_faults": [], "gross_J_per_inference_between_sessions": {"n": 1, "mean": 0.007937155054173889, "sd": null, "ci95": null, "cv": null}, "incremental_J_per_inference_between_sessions": {"n": 1, "mean": 0.00011285073826236157, "sd": null, "ci95": null, "cv": null}, "time_s_per_inference_between_sessions": {"n": 1, "mean": 0.02485193229166666, "sd": null, "ci95": null, "cv": null}, "board_power_W_between_sessions": {"n": 1, "mean": 0.31937778349517765, "sd": null, "ci95": null, "cv": null}}

@@ -1,0 +1,205 @@
+{
+ "eligible": true,
+ "problems": [],
+ "phase_problems": [],
+ "headline_gross_J_per_inference_between_schedules": {
+  "n": 3,
+  "mean": 0.00792116593316081,
+  "sd": 1.3463273318149361e-05,
+  "ci95": [
+   0.007887721308187594,
+   0.007954610558134026
+  ],
+  "cv": 0.0016996580341521851
+ },
+ "incremental_over_spin_J_per_inference_between_schedules": {
+  "n": 3,
+  "mean": 0.00010649557954951323,
+  "sd": 4.191679096610943e-06,
+  "ci95": [
+   9.608287143006643e-05,
+   0.00011690828766896002
+  ],
+  "cv": 0.03936012287404001
+ },
+ "gross_J_per_inference_windows": {
+  "n": 30,
+  "mean": 0.007921165933160812,
+  "sd": 1.404508858578155e-05,
+  "ci95": [
+   0.00791592141089157,
+   0.007926410455430053
+  ],
+  "cv": 0.0017731087448861315
+ },
+ "time_s_per_inference_windows": {
+  "n": 30,
+  "mean": 0.024851942708333335,
+  "sd": 8.880012143119666e-08,
+  "ci95": [
+   0.024851909549823047,
+   0.024851975866843623
+  ],
+  "cv": 3.573166189596126e-06
+ },
+ "board_power_W_bench": {
+  "n": 30,
+  "mean": 0.31873427472359644,
+  "sd": 0.0005651824736201685,
+  "ci95": [
+   0.3185232321195586,
+   0.3189453173276343
+  ],
+  "cv": 0.0017732089657138059
+ },
+ "board_power_W_idle_spin": {
+  "n": 30,
+  "mean": 0.31444907328283606,
+  "sd": 0.0007214357523791133,
+  "ci95": [
+   0.314179684745621,
+   0.3147184618200511
+  ],
+  "cv": 0.0022942848736914765
+ },
+ "cpu_hz_estimate": [
+  {
+   "n": 20,
+   "mean": 240005100.01709944,
+   "sd": 828.8881787942126,
+   "ci95": [
+    240004712.08549047,
+    240005487.94870842
+   ],
+   "cv": 3.453627355148526e-06
+  },
+  {
+   "n": 20,
+   "mean": 240005044.12576333,
+   "sd": 714.9886791982856,
+   "ci95": [
+    240004709.50076103,
+    240005378.75076562
+   ],
+   "cv": 2.979056885252918e-06
+  },
+  {
+   "n": 20,
+   "mean": 240005074.35118484,
+   "sd": 826.729166028077,
+   "ci95": [
+    240004687.43002492,
+    240005461.27234477
+   ],
+   "cv": 3.444632028147765e-06
+  }
+ ],
+ "sham_null_dI_mA": {
+  "n": 20,
+  "mean": 0.021099932381309118,
+  "sd": 0.15444562625650218,
+  "ci95": [
+   -0.05118284571528051,
+   0.09338271047789876
+  ],
+  "cv": 7.319721384193356
+ },
+ "sham_null_dP_W": {
+  "n": 20,
+  "mean": 0.0001054996619065357,
+  "sd": 0.0007722281312825014,
+  "ci95": [
+   -0.00025591422857640795,
+   0.0004669135523894794
+  ],
+  "cv": 7.319721384193952
+ },
+ "incremental_sham_corrected_J_per_inference_windows": {
+  "n": 30,
+  "mean": 0.00010387370799606347,
+  "sd": 1.4907080617408124e-05,
+  "ci95": [
+   9.830731261237555e-05,
+   0.00010944010337975138
+  ],
+  "cv": 0.14351158637730602
+ },
+ "incremental_range_consistent_windows": 30,
+ "bench_windows": 30,
+ "dominant_range": 4,
+ "dose_valid": [
+  true,
+  true
+ ],
+ "dose_response_gross_J_vs_N": {
+  "n": 50,
+  "slope": 0.008006151268981581,
+  "slope_ci95": [
+   0.008000536059317942,
+   0.00801176647864522
+  ],
+  "intercept": -0.005509132952003504,
+  "intercept_ci95": [
+   -0.006279903065567009,
+   -0.004738362838439998
+  ],
+  "intercept_ci_contains_zero": false
+ },
+ "dose_response_incremental_J_vs_N": {
+  "n": 50,
+  "slope": 0.00010549701580113385,
+  "slope_ci95": [
+   9.859756527534931e-05,
+   0.00011239646632691839
+  ],
+  "intercept": -5.5681543191868355e-06,
+  "intercept_ci95": [
+   -0.0009526192145350961,
+   0.0009414829058967224
+  ],
+  "intercept_ci_contains_zero": true
+ },
+ "systematic": {
+  "kind": "Type-B on true/estimated: RSS (labelled) and multiplicative worst-case bounds",
+  "gross_worst_case_bounds": [
+   -0.22904100227499324,
+   0.22930084775308557
+  ],
+  "incremental_worst_case_bounds": [
+   -0.22399999999999998,
+   0.22399999999999998
+  ],
+  "ppk2_gain_rel": 0.2,
+  "vin_band_V": [
+   4.85,
+   5.1
+  ],
+  "mean_current_mA": 63.746854944719296,
+  "gross_vin_rel": [
+   -0.03630125284374164,
+   0.024417373127571418
+  ],
+  "incremental_vin_rel": [
+   -0.030000000000000027,
+   0.020000000000000018
+  ],
+  "gross_rel_bounds": [
+   -0.20326775680866177,
+   0.20148500716046108
+  ],
+  "incremental_rel_bounds": [
+   -0.20223748416156687,
+   0.2009975124224178
+  ],
+  "nordic_app_convention_rel": -0.0,
+  "note": "Same-setup ratios cancel gain and VIN; absolute values do not.",
+  "S_term_range": 4,
+  "vout_band_basis": "assumption: Nordic gives no Source Meter accuracy; one DevZone user measured 4.918 V at 5000 mV (thread 125227)",
+  "gain_basis": "PPK2 UG v1.0.1 intro \"better than +/-20 %\"; Table 9 lists +/-10 % (R1-R4), +/-15 % (R5) for average readout; the conservative 20 % is used"
+ },
+ "parity": {
+  "mismatched_words": 0,
+  "outputs_fnv": "0xccc5eb8b"
+ },
+ "reset_reason": 1
+}

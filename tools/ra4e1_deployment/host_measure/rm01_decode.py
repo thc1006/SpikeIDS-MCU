@@ -8,6 +8,10 @@ gives the firmware's own window table and header; the D0 HIGH runs before the
 sync are matched one-to-one with the table's marker-HIGH windows, and each
 phase is sliced out and passed to the SM07M analysis (analyze_schedule.py)
 unchanged, so the N6 and RA4E1 numbers come from the same code.
+Platforms are told apart by the block magic: RM01 (FPB-RA4E1) and EM01
+(ESP32-S3, the same logic derived from rm01.c by derive_em01.py). The layout
+and telemetry encoding are identical; only the magics, the time-base id and the
+snapshot words at 0xD0.. differ (PLATFORMS below).
 Never opens hardware.
 """
 import struct
@@ -39,8 +43,57 @@ MULT_AT, TEL_WORDS_AT, SETTLE_AT, TIMER_ID_AT, CAL_CK_AT, SHA_AT = 36, 44, 45, 4
 CLOCK_FIELDS = ['sckdivcr', 'sckscr', 'pllccr', 'pllcr', 'hococr', 'mococr', 'opccr', 'flwt', 'ofs1_sec']
 CLOCK_AT = 52                                    # rm01.h 0xD0
 TIMER_ID = 0x31545047                          # 'GPT1': GPT321 at PCLKD/1 (= ICLK)
+ESP_CLOCK_FIELDS = ['apb_hz', 'xtal_hz', 'cpu_hz_clk', 'reset_reason', 'marker_gpio', 'tick_hz',
+                    'core_id', 'flash_bytes', 'idf_version', 'cpu_per_conf', 'sysclk_conf', 'reserved_fc']
+PARITY_FNV = 0xCCC5EB8B            # FNV-1a of the 5120 reference output words (RA/N6/host identical)
+ESP_CLOCK_TOL = 0.005              # PPK2-timebase CPU clock vs 240 MHz (crystal-derived)
+ESP_MARKER_GPIOS = (4, 5)          # 4 = build_02 (diag_esp_01, attrib_nod0_01); 5 = build_03 (ESP
+                                   # Amendment 1); the session driver pins the value of the flashed build
 MODEL_SHA = '22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d'
 VECTORS_SHA = 'cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb'
+
+
+def _clock_ok_ra(c):
+    return clock_ok(c)
+
+
+def _clock_ok_esp(c):
+    """EM01 snapshot: software clocks APB 80 / XTAL 40 / CPU 240 MHz, a registered marker GPIO,
+    16 MiB physical flash (JEDEC), and the HARDWARE clock registers (review M3):
+    SYSTEM_CPU_PER_CONF CPUPERIOD_SEL[1:0] = 2 (240 MHz) with PLL_FREQ_SEL[2] = 1
+    (480 MHz PLL), SYSTEM_SYSCLK_CONF SOC_CLK_SEL[11:10] = 1 (PLL)."""
+    return (c['apb_hz'] == 80_000_000 and c['xtal_hz'] == 40_000_000 and c['cpu_hz_clk'] == 240_000_000
+            and c['marker_gpio'] in ESP_MARKER_GPIOS and c['flash_bytes'] == 16 * 1024 * 1024
+            and c['cpu_per_conf'] & 3 == 2 and (c['cpu_per_conf'] >> 2) & 1 == 1
+            and (c['sysclk_conf'] >> 10) & 3 == 1)
+
+
+def _extra_esp(h):
+    """EM01 boot gates (review M3): a genuine power-on boot (ESP_RST_POWERON = 1),
+    measurement task on core 0, parity output FNV identical to RA/N6/host."""
+    c, p = h['clock_snapshot'], []
+    if c.get('reset_reason') != 1:
+        p.append(f"reset reason {c.get('reset_reason')} is not POWERON (1)")
+    if c.get('core_id') != 0:
+        p.append(f"measurement ran on core {c.get('core_id')}, not core 0")
+    if h['parity_outputs_fnv'] != PARITY_FNV:
+        p.append(f"parity output FNV {h['parity_outputs_fnv']:#x} != {PARITY_FNV:#x}")
+    return p
+
+
+PLATFORMS = {
+    RM_MAGIC: dict(name='ra4e1', tel_magic=TEL_MAGIC, timer_id=TIMER_ID, timer='GPT321 at PCLKD/1',
+                   clock_fields=CLOCK_FIELDS, renames={}, clock_ok=_clock_ok_ra, extra=lambda h: [],
+                   clock_tol=None,
+                   scope='FPB-RA4E1 whole board at its main 5 V net (J2-5, PPK2 source 5.0 V setpoint), '
+                         'J9 unplugged; not MCU core'),
+    0x31304D45: dict(name='esp32s3', tel_magic=0x54314D45, timer_id=0x544E4343, timer='Xtensa CCOUNT (CPU clock)',
+                     clock_fields=ESP_CLOCK_FIELDS, renames={'fcachee': 'psram_enabled', 'cpuid': 'chip_info'},
+                     clock_ok=_clock_ok_esp, extra=_extra_esp, clock_tol=ESP_CLOCK_TOL,
+                     scope='ESP32-S3 N16R8 whole board at its 5V pin (PPK2 source 5.0 V setpoint), '
+                           'USB unplugged; not SoC core'),
+}
+TEL_MAGICS = {v['tel_magic']: k for k, v in PLATFORMS.items()}
 
 
 class DecodeError(ValueError):
@@ -53,14 +106,16 @@ def crc32_words(words):
 
 
 def parse_header(words):
-    h = {name: words[i] for i, name in enumerate(FIELDS)}
+    plat = PLATFORMS.get(words[0], PLATFORMS[RM_MAGIC])
+    h = {plat['renames'].get(name, name): words[i] for i, name in enumerate(FIELDS)}
+    h['platform'] = plat['name']
     h['error'] = struct.unpack('<i', struct.pack('<I', h['error']))[0]
     h['multiplier'] = list(words[MULT_AT:MULT_AT + 8])
     h['telemetry_words'] = words[TEL_WORDS_AT]
     h['settle_cycles'] = words[SETTLE_AT]
     h['timer_id'] = words[TIMER_ID_AT]
     h['cal_checksum'] = words[CAL_CK_AT]
-    h['clock_snapshot'] = {k: words[CLOCK_AT + i] for i, k in enumerate(CLOCK_FIELDS)}
+    h['clock_snapshot'] = {k: words[CLOCK_AT + i] for i, k in enumerate(plat['clock_fields'])}
     h['model_sha_prefix'] = '%08x%08x' % tuple(words[SHA_AT:SHA_AT + 2])
     h['vectors_sha_prefix'] = '%08x%08x' % tuple(words[SHA_AT + 2:SHA_AT + 4])
     h['stage_name'] = STAGES.get(h['stage'], '?')
@@ -116,7 +171,7 @@ def decode_telemetry(d0):
         bits.append(c)
     nwords = len(bits) // 32
     words = [sum(bits[32 * i + j] << j for j in range(32)) for i in range(nwords)]
-    if nwords < 2 or words[0] != TEL_MAGIC:
+    if nwords < 2 or words[0] not in TEL_MAGICS:
         raise DecodeError(f'telemetry magic missing ({nwords} words decoded)')
     count = words[1]
     if nwords < count + 3:
@@ -126,6 +181,8 @@ def decode_telemetry(d0):
         raise DecodeError('telemetry CRC mismatch')
     payload = frame[2:]
     header = parse_header(payload[:HEADER_WORDS])
+    if TEL_MAGICS[words[0]] != header['magic']:
+        raise DecodeError('telemetry magic does not match the block magic')
     n = header['windows_used']
     if count != HEADER_WORDS + WINDOW_WORDS * n or header['telemetry_words'] != count:
         raise DecodeError('telemetry word count inconsistent with windows_used')
@@ -142,12 +199,14 @@ def decode_telemetry(d0):
 
 def header_problems(h, pins=True):
     p = []
-    if h['magic'] != RM_MAGIC or h['version'] != RM_VERSION:
-        p.append('bad RM01 magic/version')
+    plat = PLATFORMS.get(h['magic'])
+    if plat is None or h['version'] != RM_VERSION:
+        p.append('bad RM01/EM01 magic/version')
+        plat = PLATFORMS[RM_MAGIC]
     if h['stage_name'] != 'TELEMETRY' or h['error'] != 0:
         p.append(f"firmware stage {h['stage_name']} error {h['error']} detail {h['error_detail']:#x}")
-    if h['timer_id'] != TIMER_ID:
-        p.append(f"time base is not GPT321 (timer_id {h['timer_id']:#x})")
+    if h['timer_id'] != plat['timer_id']:
+        p.append(f"time base is not {plat['timer']} (timer_id {h['timer_id']:#x})")
     if h['pq_env'] != 1:
         p.append('FP environment check failed')
     if h['parity_rows'] != 1024 or h['parity_mismatched_words'] != 0:
@@ -157,8 +216,10 @@ def header_problems(h, pins=True):
     if pins and (h['model_sha_prefix'] != MODEL_SHA[:16] or h['vectors_sha_prefix'] != VECTORS_SHA[:16]):
         p.append('model/vectors identity prefix mismatch')
     c = h.get('clock_snapshot', {})
-    if pins and c and not clock_ok(c):
-        p.append(f'clock configuration differs from HOCO20 -> PLL200 -> ICLK=PCLKD=100 MHz: {c}')
+    if pins and c and not plat['clock_ok'](c):
+        p.append(f"{plat['name']} clock/platform snapshot differs from the registered configuration: {c}")
+    if pins and c:
+        p.extend(plat['extra'](h))
     return p
 
 
@@ -288,6 +349,12 @@ def analyze_capture(words, ua_fn, volts, inputs_words, outputs_words, reader_gap
                 outputs_words, inputs_words, params['n_rows'], params['bench_reps'], params['overhead_reps'])))
             res = az.analyze_schedule(seg, ua_fn, table, params, volts, expected=expected,
                                       per_code_mA=per_code_mA, reader_gaps=g, top_range_only=top_range_only)
+            plat = PLATFORMS.get(header['magic'], PLATFORMS[RM_MAGIC])
+            f_est = (res.get('summary') or {}).get('cpu_hz_estimate', {}).get('mean')
+            if plat['clock_tol'] is not None and f_est and abs(f_est / header['system_core_clock'] - 1) > plat['clock_tol']:
+                res['valid'] = False
+                res.setdefault('problems', []).append(
+                    f"PPK2-timebase CPU clock {f_est / 1e6:.4f} MHz outside +/-{plat['clock_tol']:.1%} of nominal")
             cons = range_consistency(seg, res)
             inc_ok = [x['incremental_J_per_iter'] for x in res.get('bench', []) if x.get('range_consistent')]
             res.update(params=params, expected=expected, multiplier=mult,
@@ -297,7 +364,7 @@ def analyze_capture(words, ua_fn, volts, inputs_words, outputs_words, reader_gap
             res['valid'] = False
             res.setdefault('problems', []).append('logic port unpowered or D1-D7 not LOW inside the slice')
         res.update(label=label, kind=kind, slice=[a, b], reader_gaps=g,
-                   scope='FPB-RA4E1 whole board at its main 5 V net (J2-5, PPK2 source 5.0 V setpoint), J9 unplugged; not MCU core')
+                   scope=PLATFORMS.get(header['magic'], PLATFORMS[RM_MAGIC])['scope'])
         out['phases'][label] = res
         if not res.get('valid'):
             out['phase_problems'].append(f"{label}: " + '; '.join(res.get('problems', ['failed'])[:3]))

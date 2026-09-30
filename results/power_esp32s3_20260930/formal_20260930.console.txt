@@ -1,0 +1,58 @@
+{"utc": "2026-09-29T23:02:54.097263+00:00", "event": "preflight_ok", "recorder": "/home/thc1006/dev/SpikeIDS-MCU/results/power_esp32s3_20260930/ppk_esp10", "driver_sha256": "f83ff6332615c8b83cafc1869735af35589922ff350a2106a52bb59172d29dac", "shared_driver_sha256": "b974229e771ffa1e8f00f7d5050f9e5c7ead3f1574b40315aa184e7115592b62", "decoder_sha256": "69e67852a89b793f70525e9c11e027169f47bf2c37922e8d9a2d5c9272884400", "analysis_sha256": "782ed8babdd0a5bd419dddd86f4125916dba29b6b2518a7d7ad33cff1f0c162d", "build": "build_04"}
+{"utc": "2026-09-29T23:02:56.598639+00:00", "event": "powered", "session": "esp_session_01", "segment_sample": 65087488}
+{"utc": "2026-09-29T23:02:56.714558+00:00", "event": "pre_on_logic", "session": "esp_session_01", "states": [[255, 255]], "bins": 65187, "required": [[255, 255]]}
+{"utc": "2026-09-29T23:02:58.786148+00:00", "t": 2.1, "captured_s": 4.65, "mean_mA_1s": 62.949649584962245, "d0_high_run_s": 0.0, "d0_rises": 0}
+{"utc": "2026-09-29T23:03:30.024732+00:00", "t": 33.3, "captured_s": 35.9, "mean_mA_1s": 62.65333498866086, "d0_high_run_s": 0.3, "d0_rises": 7}
+{"utc": "2026-09-29T23:04:01.333928+00:00", "t": 64.6, "captured_s": 67.2, "mean_mA_1s": 62.74243228358889, "d0_high_run_s": 0.0, "d0_rises": 22}
+{"utc": "2026-09-29T23:04:32.680094+00:00", "t": 96.0, "captured_s": 98.55, "mean_mA_1s": 63.667021753469086, "d0_high_run_s": 1.5, "d0_rises": 37}
+{"utc": "2026-09-29T23:05:04.086943+00:00", "t": 127.4, "captured_s": 129.95, "mean_mA_1s": 63.55813402515923, "d0_high_run_s": 0.0, "d0_rises": 52}
+{"utc": "2026-09-29T23:05:35.555166+00:00", "t": 158.8, "captured_s": 161.41, "mean_mA_1s": 63.59070373924731, "d0_high_run_s": 0.0, "d0_rises": 66}
+{"utc": "2026-09-29T23:06:07.097721+00:00", "t": 190.4, "captured_s": 192.96, "mean_mA_1s": 65.85115357339559, "d0_high_run_s": 0.5, "d0_rises": 82}
+{"utc": "2026-09-29T23:06:38.725308+00:00", "t": 222.0, "captured_s": 224.59, "mean_mA_1s": 63.04817996273682, "d0_high_run_s": 0.0, "d0_rises": 97}
+{"utc": "2026-09-29T23:07:10.361021+00:00", "t": 253.6, "captured_s": 256.23, "mean_mA_1s": 63.29230553628779, "d0_high_run_s": 0.61, "d0_rises": 108}
+{"utc": "2026-09-29T23:07:42.111252+00:00", "t": 285.4, "captured_s": 287.98, "mean_mA_1s": 63.49945635412487, "d0_high_run_s": 0.0, "d0_rises": 117}
+{"utc": "2026-09-29T23:08:13.870599+00:00", "t": 317.2, "captured_s": 319.73, "mean_mA_1s": 64.19282337615881, "d0_high_run_s": 2.27, "d0_rises": 127}
+{"utc": "2026-09-29T23:08:45.773860+00:00", "t": 349.1, "captured_s": 351.64, "mean_mA_1s": 64.38690115940128, "d0_high_run_s": 6.19, "d0_rises": 133}
+{"utc": "2026-09-29T23:09:17.701447+00:00", "t": 381.0, "captured_s": 383.57, "mean_mA_1s": 63.60184978841978, "d0_high_run_s": 0.0, "d0_rises": 140}
+{"utc": "2026-09-29T23:09:49.725877+00:00", "t": 413.0, "captured_s": 415.6, "mean_mA_1s": 63.40191552596734, "d0_high_run_s": 0.0, "d0_rises": 142}
+{"utc": "2026-09-29T23:10:15.243084+00:00", "event": "session_end", "session": "esp_session_01", "done": true, "captured_s": 439.11, "done_high_s": 12.49, "d0_rises": 143}
+{"utc": "2026-09-29T23:10:28.267729+00:00", "event": "analyzed", "session": "esp_session_01", "eligible": true, "instrument_fault": false, "problems": [], "gross": 0.00792116593316081}
+{"utc": "2026-09-29T23:10:40.770026+00:00", "event": "powered", "session": "esp_session_02", "segment_sample": 111505056}
+{"utc": "2026-09-29T23:10:40.910185+00:00", "event": "pre_on_logic", "session": "esp_session_02", "states": [[1, 1]], "bins": 2300, "required": [[1, 1]]}
+{"utc": "2026-09-29T23:10:43.042413+00:00", "t": 2.1, "captured_s": 4.73, "mean_mA_1s": 64.14002389557969, "d0_high_run_s": 0.0, "d0_rises": 0}
+{"utc": "2026-09-29T23:11:14.997797+00:00", "t": 34.1, "captured_s": 36.69, "mean_mA_1s": 63.69325989868525, "d0_high_run_s": 0.0, "d0_rises": 7}
+{"utc": "2026-09-29T23:11:47.092999+00:00", "t": 66.2, "captured_s": 68.79, "mean_mA_1s": 63.36719532835757, "d0_high_run_s": 0.0, "d0_rises": 23}
+{"utc": "2026-09-29T23:12:19.119894+00:00", "t": 98.2, "captured_s": 100.8, "mean_mA_1s": 71.31869060802929, "d0_high_run_s": 0.0, "d0_rises": 38}
+{"utc": "2026-09-29T23:12:51.239326+00:00", "t": 130.3, "captured_s": 132.93, "mean_mA_1s": 64.11761683928647, "d0_high_run_s": 0.89, "d0_rises": 54}
+{"utc": "2026-09-29T23:13:21.259908+00:00", "t": 160.3, "captured_s": 162.95, "mean_mA_1s": 67.2539654128107, "d0_high_run_s": 0.0, "d0_rises": 67}
+{"utc": "2026-09-29T23:13:51.371194+00:00", "t": 190.5, "captured_s": 193.05, "mean_mA_1s": 64.45368366253625, "d0_high_run_s": 0.62, "d0_rises": 82}
+{"utc": "2026-09-29T23:14:21.531653+00:00", "t": 220.6, "captured_s": 223.23, "mean_mA_1s": 63.54315165949357, "d0_high_run_s": 0.0, "d0_rises": 94}
+{"utc": "2026-09-29T23:14:51.735363+00:00", "t": 250.8, "captured_s": 253.42, "mean_mA_1s": 64.04034647946919, "d0_high_run_s": 0.0, "d0_rises": 106}
+{"utc": "2026-09-29T23:15:21.990020+00:00", "t": 281.1, "captured_s": 283.68, "mean_mA_1s": 64.4028364671185, "d0_high_run_s": 0.0, "d0_rises": 116}
+{"utc": "2026-09-29T23:15:52.370616+00:00", "t": 311.5, "captured_s": 314.06, "mean_mA_1s": 64.37802528313834, "d0_high_run_s": 5.95, "d0_rises": 125}
+{"utc": "2026-09-29T23:16:22.796449+00:00", "t": 341.9, "captured_s": 344.48, "mean_mA_1s": 70.06428913361687, "d0_high_run_s": 0.0, "d0_rises": 132}
+{"utc": "2026-09-29T23:16:53.239645+00:00", "t": 372.3, "captured_s": 374.92, "mean_mA_1s": 64.33617156709164, "d0_high_run_s": 1.51, "d0_rises": 139}
+{"utc": "2026-09-29T23:17:23.758180+00:00", "t": 402.8, "captured_s": 405.44, "mean_mA_1s": 63.67199917452008, "d0_high_run_s": 0.0, "d0_rises": 142}
+{"utc": "2026-09-29T23:17:54.349780+00:00", "t": 433.4, "captured_s": 436.04, "mean_mA_1s": 64.95674472280069, "d0_high_run_s": 9.44, "d0_rises": 143}
+{"utc": "2026-09-29T23:18:00.739702+00:00", "event": "session_end", "session": "esp_session_02", "done": true, "captured_s": 440.43, "done_high_s": 13.83, "d0_rises": 143}
+{"utc": "2026-09-29T23:18:13.369177+00:00", "event": "analyzed", "session": "esp_session_02", "eligible": true, "instrument_fault": false, "problems": [], "gross": 0.008000893531937265}
+{"utc": "2026-09-29T23:18:25.871762+00:00", "event": "powered", "session": "esp_session_03", "segment_sample": 158014752}
+{"utc": "2026-09-29T23:18:26.047099+00:00", "event": "pre_on_logic", "session": "esp_session_03", "states": [[1, 1]], "bins": 2263, "required": [[1, 1]]}
+{"utc": "2026-09-29T23:18:28.223852+00:00", "t": 2.2, "captured_s": 4.84, "mean_mA_1s": 64.24458966521185, "d0_high_run_s": 0.0, "d0_rises": 0}
+{"utc": "2026-09-29T23:18:58.714383+00:00", "t": 32.7, "captured_s": 35.32, "mean_mA_1s": 63.54148926540309, "d0_high_run_s": 0.0, "d0_rises": 6}
+{"utc": "2026-09-29T23:19:29.269222+00:00", "t": 63.2, "captured_s": 65.87, "mean_mA_1s": 63.541032930636824, "d0_high_run_s": 0.26, "d0_rises": 22}
+{"utc": "2026-09-29T23:19:59.828669+00:00", "t": 93.8, "captured_s": 96.42, "mean_mA_1s": 70.22108150553765, "d0_high_run_s": 0.0, "d0_rises": 36}
+{"utc": "2026-09-29T23:20:30.487668+00:00", "t": 124.4, "captured_s": 127.09, "mean_mA_1s": 63.489128088942635, "d0_high_run_s": 0.0, "d0_rises": 51}
+{"utc": "2026-09-29T23:21:01.193236+00:00", "t": 155.1, "captured_s": 157.79, "mean_mA_1s": 64.31150270696442, "d0_high_run_s": 0.34, "d0_rises": 65}
+{"utc": "2026-09-29T23:21:32.023194+00:00", "t": 186.0, "captured_s": 188.62, "mean_mA_1s": 65.91404496655525, "d0_high_run_s": 0.71, "d0_rises": 80}
+{"utc": "2026-09-29T23:22:02.847751+00:00", "t": 216.8, "captured_s": 219.46, "mean_mA_1s": 64.48309093087396, "d0_high_run_s": 0.0, "d0_rises": 93}
+{"utc": "2026-09-29T23:22:33.747645+00:00", "t": 247.7, "captured_s": 250.36, "mean_mA_1s": 64.14096574490101, "d0_high_run_s": 0.88, "d0_rises": 106}
+{"utc": "2026-09-29T23:23:04.665990+00:00", "t": 278.6, "captured_s": 281.26, "mean_mA_1s": 63.89493486162201, "d0_high_run_s": 1.04, "d0_rises": 116}
+{"utc": "2026-09-29T23:23:35.673904+00:00", "t": 309.6, "captured_s": 312.28, "mean_mA_1s": 64.70660514550879, "d0_high_run_s": 4.14, "d0_rises": 125}
+{"utc": "2026-09-29T23:24:06.715759+00:00", "t": 340.7, "captured_s": 343.32, "mean_mA_1s": 63.966419960398945, "d0_high_run_s": 0.0, "d0_rises": 131}
+{"utc": "2026-09-29T23:24:37.864505+00:00", "t": 371.8, "captured_s": 374.47, "mean_mA_1s": 64.11626597792775, "d0_high_run_s": 1.03, "d0_rises": 139}
+{"utc": "2026-09-29T23:25:09.052510+00:00", "t": 403.0, "captured_s": 405.65, "mean_mA_1s": 63.42149058311196, "d0_high_run_s": 0.0, "d0_rises": 142}
+{"utc": "2026-09-29T23:25:40.267936+00:00", "t": 434.2, "captured_s": 436.87, "mean_mA_1s": 64.80042170871756, "d0_high_run_s": 10.24, "d0_rises": 143}
+{"utc": "2026-09-29T23:25:44.495082+00:00", "event": "session_end", "session": "esp_session_03", "done": true, "captured_s": 439.08, "done_high_s": 12.45, "d0_rises": 143}
+{"utc": "2026-09-29T23:25:56.662043+00:00", "event": "analyzed", "session": "esp_session_03", "eligible": true, "instrument_fault": false, "problems": [], "gross": 0.008006057034703078}
+{"utc": "2026-09-29T23:25:56.662366+00:00", "event": "aggregate", "sessions": 3, "eligible": 3, "instrument_faults": [], "gross_J_per_inference_between_sessions": {"n": 3, "mean": 0.00797603883326705, "sd": 4.759140484116088e-05, "ci95": [0.007857815229745945, 0.008094262436788156], "cv": 0.00596679703246468}, "incremental_J_per_inference_between_sessions": {"n": 3, "mean": 0.00010802580042599673, "sd": 2.070598160967457e-06, "ci95": [0.00010288214944845659, 0.00011316945140353688], "cv": 0.019167626185615946}, "time_s_per_inference_between_sessions": {"n": 3, "mean": 0.024851961805555555, "sd": 1.8291065542246097e-08, "ci95": [0.024851916368029855, 0.024852007243081255], "cv": 7.360008712936781e-07}, "board_power_W_between_sessions": {"n": 3, "mean": 0.3209420195630603, "sd": 0.0019147778084979195, "ci95": [0.31618544779934793, 0.32569859132677265], "cv": 0.00596611752834594}}

@@ -1,0 +1,24 @@
+{
+ "argv": [
+  "/home/thc1006/.espressif/python_env/idf5.4_py3.14_env/bin/python",
+  "-m",
+  "esptool",
+  "--chip",
+  "esp32s3",
+  "--port",
+  "/dev/ttyACM1",
+  "--baud",
+  "460800",
+  "--before",
+  "default_reset",
+  "--after",
+  "no_reset",
+  "read_flash",
+  "0",
+  "0x1000000",
+  "/home/thc1006/dev/SpikeIDS-MCU/results/power_esp32s3_20260930/flash_backup_before_em01/flash_backup_16MiB.bin"
+ ],
+ "returncode": 0,
+ "started_utc": "2026-09-29T17:44:12.974247+00:00",
+ "finished_utc": "2026-09-29T17:51:03.493823+00:00"
+}

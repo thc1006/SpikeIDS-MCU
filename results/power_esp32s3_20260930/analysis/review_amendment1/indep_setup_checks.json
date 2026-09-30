@@ -1,0 +1,74 @@
+{
+ "selftest": {
+  "frames": 653280,
+  "on_offset": 100416,
+  "off_offset": 603008,
+  "logic_bytes_before_on": [
+   255
+  ],
+  "first_powered_frame_after_on_ms": 9.0,
+  "powered_fraction_on_after_wake": 1.0,
+  "logic_bytes_on": [
+   0
+  ],
+  "mean_uA_before_on": 0.10361937712416876,
+  "mean_uA_on_after_20ms": 0.0563961237007574,
+  "mean_uA_on_last_4s": 0.05403142476469855,
+  "mean_uA_after_off": 0.01656959570536769,
+  "ranges_on": [
+   502552,
+   7,
+   33,
+   0,
+   0
+  ],
+  "peak_uA_on": 2154.6656916522834,
+  "counter_gaps": [
+   603539,
+   603540
+  ]
+ },
+ "wiringcheck": {
+  "frames": 3706560,
+  "on_offset": 100640,
+  "seconds_after_on": 36.0592,
+  "logic_bytes_before_on": [
+   255
+  ],
+  "first_powered_frame_after_on_ms": 7.09,
+  "powered_10ms_bins_after_on": "3604/3605",
+  "unpowered_frames_after_first_powered": 0,
+  "runs": 7,
+  "widths_s": [
+   0.1,
+   0.1,
+   0.09999,
+   0.1,
+   0.1,
+   0.99998,
+   0.99997
+  ],
+  "first_rise_after_on_s": 29.59577,
+  "one_s_mean_mA_before_wiring": [
+   63.242962256811644,
+   65.57830538058455
+  ],
+  "non_R4_after_0p2s": 0,
+  "counter_gaps": 0,
+  "last_logic_byte": 0
+ },
+ "gpio5_marker_state_nonregistered": [
+  {
+   "hi": 64.99581429600296,
+   "lo": 65.52146591497845,
+   "dI": -0.5256516189754876,
+   "n_lows": 2
+  },
+  {
+   "hi": 64.50730347408626,
+   "lo": 65.32231889415516,
+   "dI": -0.815015420068903,
+   "n_lows": 1
+  }
+ ]
+}

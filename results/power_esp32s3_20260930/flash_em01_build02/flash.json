@@ -1,0 +1,33 @@
+{
+ "argv": [
+  "/home/thc1006/.espressif/python_env/idf5.4_py3.14_env/bin/python",
+  "-m",
+  "esptool",
+  "--chip",
+  "esp32s3",
+  "--port",
+  "/dev/ttyACM1",
+  "--baud",
+  "460800",
+  "--before",
+  "default_reset",
+  "--after",
+  "hard_reset",
+  "write_flash",
+  "--flash_mode",
+  "keep",
+  "--flash_size",
+  "keep",
+  "--flash_freq",
+  "keep",
+  "0x0",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/build_02/build/bootloader/bootloader.bin",
+  "0x8000",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/build_02/build/partition_table/partition-table.bin",
+  "0x10000",
+  "/home/thc1006/dev/SpikeIDS-MCU/tools/esp32s3_deployment/firmware_measure/build_02/build/em01.bin"
+ ],
+ "returncode": 0,
+ "started_utc": "2026-09-29T17:52:57.493903+00:00",
+ "finished_utc": "2026-09-29T17:53:01.825600+00:00"
+}

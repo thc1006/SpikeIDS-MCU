@@ -1,0 +1,8 @@
+{"kind": "setup_command", "host_monotonic": 255703.377344765, "utc": "2026-09-29T21:25:08.171837+00:00", "sample_index": 0, "name": "output_off_on_open", "hex": "0c00", "sent_utc": "2026-09-29T21:25:08.149783+00:00"}
+{"kind": "setup_command", "host_monotonic": 255703.377549689, "utc": "2026-09-29T21:25:08.172039+00:00", "sample_index": 0, "name": "set_power_mode_source_on_open", "hex": "1102", "sent_utc": "2026-09-29T21:25:08.149929+00:00"}
+{"kind": "setup_command", "host_monotonic": 255703.377638046, "utc": "2026-09-29T21:25:08.172126+00:00", "sample_index": 0, "name": "regulator_set_on_open", "hex": "0d1388", "sent_utc": "2026-09-29T21:25:08.150042+00:00"}
+{"kind": "command", "host_monotonic": 255703.377854106, "utc": "2026-09-29T21:25:08.172342+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "usb_guard_state", "host_monotonic": 255703.401906853, "utc": "2026-09-29T21:25:08.196396+00:00", "sample_index": 1248, "serial": "vid:303a,vid:1a86", "present": false, "output_on": false}
+{"kind": "control", "host_monotonic": 255950.345510546, "utc": "2026-09-29T21:29:15.139998+00:00", "sample_index": 24696000, "text": "quit"}
+{"kind": "command", "host_monotonic": 255950.345613333, "utc": "2026-09-29T21:29:15.140100+00:00", "sample_index": 24696000, "name": "final_output_off", "hex": "0c00"}
+{"kind": "command", "host_monotonic": 255950.34567683, "utc": "2026-09-29T21:29:15.140163+00:00", "sample_index": 24696000, "name": "sampling_stop", "hex": "07"}

@@ -1,0 +1,250 @@
+{
+ "sha256": "f1e25156f408c610126b3f1253d41e068413e57301ff5161dc23bdd338dac77e",
+ "sha256_match_stop_event": true,
+ "frames": 44162304,
+ "frames_event": 44162304,
+ "frames_from_indices": 44162304,
+ "n_output_on_in_segment": 1,
+ "on_offset": 100512,
+ "mask_end": 250512,
+ "output_off_after_stop_samples": 100448,
+ "range_code_gt4": 0,
+ "bit17_set": 0,
+ "range_hist": [
+  101159,
+  1,
+  2,
+  13412,
+  44047730
+ ],
+ "non_R4_after_on": 14062,
+ "non_R4_after_on_first_last_s_after_on": [
+  0.0,
+  0.14146
+ ],
+ "non_R4_after_mask": 0,
+ "adc_rail_frames_s_after_on": [],
+ "counter_gaps": 0,
+ "pre_on_logic_bytes": [
+  255
+ ],
+ "first_powered_s_after_on": 0.00696,
+ "unpowered_frames_after_mask": 0,
+ "unpowered_frames_on_to_mask": 696,
+ "d0_high_frames_on_to_mask": 696,
+ "d0_high_on_to_mask_first_last_ms": [
+  0.0,
+  6.95
+ ],
+ "raw_d0_runs_after_mask": 41486,
+ "recorder_d0_rising_whole_segment": 41486,
+ "raw_d0_rises_whole_segment": 41487,
+ "short_runs_le3": 0,
+ "short_lows_le3": 0,
+ "fw_high_windows": 140,
+ "sync_run_width_s": 0.3,
+ "telemetry_bit_runs": 41344,
+ "telemetry_bits_expected": 41344,
+ "done_run_s": 15.00279,
+ "done_run_reaches_end": true,
+ "segment_end_d0": true,
+ "max_run_vs_ccount_width_mismatch_ms": 0.13670833333367938,
+ "wiring_widths_s": [
+  0.1,
+  0.09999,
+  0.1,
+  0.1,
+  0.1
+ ],
+ "sham_A_pipeline_like": {
+  "n": 20,
+  "mean": -0.06209039427262084,
+  "sd": 0.16564627612784763,
+  "ci95": [
+   -0.13961523787026556,
+   0.015434449325023879
+  ]
+ },
+ "sham_C_interior_two_sided": {
+  "n": 19,
+  "mean": -0.07293753646641744,
+  "sd": 0.16272405058051012,
+  "ci95": [
+   -0.15136801828534086,
+   0.005492945352505954
+  ]
+ },
+ "sham_B_ols_quadtrend": {
+  "dI": -0.05776751908867355,
+  "se": 0.046933384198129736,
+  "ci95": [
+   -0.15294842224248065,
+   0.03741338406513355
+  ]
+ },
+ "sham_per_window_max_absdiff_vs_pipeline_mA": 7.993834408637213e-06,
+ "sham_pipeline_mean": -0.06209079396434021,
+ "C3": {
+  "sham_low": 62.734814416409904,
+  "gap_before": 62.82380367706527,
+  "gap_after": 62.78293202778146,
+  "diffs": [
+   -0.08898926065536727,
+   -0.04811761137155912
+  ]
+ },
+ "schedules": {
+  "0": {
+   "kind": "repeat",
+   "iterations": 64,
+   "gross_mJ_mean": 7.92224759995094,
+   "gross_mJ_sd": 0.009090297118373569,
+   "gross_rel_diff_vs_pipeline_max": 4.440892098500626e-16,
+   "iterations_match": true,
+   "bench_power_W": 0.3187784675692969,
+   "time_ms": 24.851890625000003,
+   "time_cc_ms": 24.852490319010418,
+   "cpu_MHz": 240.0052509135979,
+   "cpu_MHz_min": 240.0034873853923,
+   "cpu_MHz_max": 240.00653874204662,
+   "idle_before": 62.86363436552309,
+   "idle_after": 62.89314379671622,
+   "C1": -0.029509431193126545,
+   "final_idle": 63.2364752657882,
+   "bench_minus_idle_mA": 0.8773044327396988,
+   "all_R4_no_switch": true,
+   "checksums_unique": [
+    1,
+    1
+   ],
+   "bench_ck": [
+    3467897573
+   ],
+   "first_gross": 7.906886033194617,
+   "last_gross": 7.913332136186729
+  },
+  "1": {
+   "kind": "repeat",
+   "iterations": 64,
+   "gross_mJ_mean": 7.932770282078793,
+   "gross_mJ_sd": 0.0183259665003284,
+   "gross_rel_diff_vs_pipeline_max": 2.220446049250313e-16,
+   "iterations_match": true,
+   "bench_power_W": 0.3192008799415284,
+   "time_ms": 24.851968749999997,
+   "time_cc_ms": 24.852477115885417,
+   "cpu_MHz": 240.00526577883227,
+   "cpu_MHz_min": 240.00381822411399,
+   "cpu_MHz_max": 240.00737843179866,
+   "idle_before": 62.852454802309424,
+   "idle_after": 62.95248053803139,
+   "C1": -0.10002573572196383,
+   "final_idle": 62.94487119840811,
+   "bench_minus_idle_mA": 0.9377083181352788,
+   "all_R4_no_switch": true,
+   "checksums_unique": [
+    1,
+    1
+   ],
+   "bench_ck": [
+    3467897573
+   ],
+   "first_gross": 7.916535465693531,
+   "last_gross": 7.948505040212828
+  },
+  "2": {
+   "kind": "repeat",
+   "iterations": 64,
+   "gross_mJ_mean": 7.956447280491932,
+   "gross_mJ_sd": 0.005760741760279648,
+   "gross_rel_diff_vs_pipeline_max": 4.440892098500626e-16,
+   "iterations_match": true,
+   "bench_power_W": 0.3201540029747079,
+   "time_ms": 24.8519375,
+   "time_cc_ms": 24.852475598958332,
+   "cpu_MHz": 240.00485269848673,
+   "cpu_MHz_min": 240.00351429103628,
+   "cpu_MHz_max": 240.00635452556398,
+   "idle_before": 63.11041504383685,
+   "idle_after": 63.1321029781202,
+   "C1": -0.021687934283349364,
+   "final_idle": 62.94292149265255,
+   "bench_minus_idle_mA": 0.9095415839630618,
+   "all_R4_no_switch": true,
+   "checksums_unique": [
+    1,
+    1
+   ],
+   "bench_ck": [
+    3467897573
+   ],
+   "first_gross": 7.9671634122288735,
+   "last_gross": 7.957657758174806
+  },
+  "3": {
+   "kind": "dose",
+   "iterations": 128,
+   "gross_mJ_mean": 7.964890995940749,
+   "gross_mJ_sd": 0.007361732490854264,
+   "gross_rel_diff_vs_pipeline_max": 6.661338147750939e-16,
+   "iterations_match": true,
+   "bench_power_W": 0.3204928572998044,
+   "time_ms": 24.8520078125,
+   "time_cc_ms": 24.852535283203125,
+   "cpu_MHz": 240.00497936510413,
+   "cpu_MHz_min": 240.00357534615148,
+   "cpu_MHz_max": 240.0059989858537,
+   "idle_before": 63.30759397210242,
+   "idle_after": 63.198133347636315,
+   "C1": 0.10946062446610227,
+   "final_idle": 63.396814670216926,
+   "bench_minus_idle_mA": 0.8457078000915175,
+   "all_R4_no_switch": true,
+   "checksums_unique": [
+    1,
+    1
+   ],
+   "bench_ck": [
+    2184088197
+   ],
+   "first_gross": 7.9691686839303415,
+   "last_gross": 7.967706530440443
+  },
+  "4": {
+   "kind": "dose",
+   "iterations": 256,
+   "gross_mJ_mean": 7.974471676556124,
+   "gross_mJ_sd": 0.0060785950690341,
+   "gross_rel_diff_vs_pipeline_max": 4.440892098500626e-16,
+   "iterations_match": true,
+   "bench_power_W": 0.3208775597156358,
+   "time_ms": 24.852070312499997,
+   "time_cc_ms": 24.85258134765625,
+   "cpu_MHz": 240.00496778620678,
+   "cpu_MHz_min": 240.00359914729808,
+   "cpu_MHz_max": 240.00609005205263,
+   "idle_before": 63.321461078643054,
+   "idle_after": 63.24797074456886,
+   "C1": 0.0734903340741937,
+   "final_idle": 63.560638567431624,
+   "bench_minus_idle_mA": 0.8907960315212122,
+   "all_R4_no_switch": true,
+   "checksums_unique": [
+    1,
+    1
+   ],
+   "bench_ck": [
+    100179781
+   ],
+   "first_gross": 7.962433627767723,
+   "last_gross": 7.976851860887871
+  }
+ },
+ "C2": 0.1284051721506927,
+ "headline_gross_mJ": {
+  "mean": 7.937155054173888,
+  "sd": 0.01751639823196869,
+  "cv": 0.002206886234729331
+ },
+ "I_mean_whole_after_mask_mA": 64.4390587857183
+}

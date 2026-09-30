@@ -1,0 +1,57 @@
+# fw check (fork) 2026-09-30: build_04 vs build_03
+## wait_cycles (build_04 em01.elf)
+40377c70 <wait_cycles>:
+40377c70:	004136        	entry	a1, 32
+40377c73:	03ea90        	rsr.ccount	a9
+40377c76:	03ea80        	rsr.ccount	a8
+40377c79:	c08890        	sub	a8, a8, a9
+40377c7c:	0ab827        	bgeu	a8, a2, 40377c8a <wait_cycles+0x1a>
+40377c7f:	f03d      	nop.n
+40377c81:	03ea80        	rsr.ccount	a8
+40377c84:	c08890        	sub	a8, a8, a9
+40377c87:	f43827        	bltu	a8, a2, 40377c7f <wait_cycles+0xf>
+40377c8a:	f01d      	retw.n
+
+## wait_cycles call sites (l32r 0x40377c70 + callx8 a8) -> source
+420061ce a8 dist 1
+420061ea a8 dist 1
+42006275 a8 dist 1
+4200628d a8 dist 1
+42006544 a8 dist 1
+420065cd a8 dist 1
+420066e4 a8 dist 1
+4200673c a8 dist 1
+42006765 a8 dist 1
+420069d1 a8 dist 1
+42006a17 a8 dist 1
+42006a36 a8 dist 1
+42006a75 a8 dist 1
+42006b45 a8 dist 1
+42006c66 a8 dist 1
+42006cdf a8 dist 1
+42006d0c a8 dist 1
+42006d39 a8 dist 1
+42006e14 a8 dist 1
+## main-component obj sha256 (build_03 vs build_04)
+7f5b9b9c8ad37747 app_main.c.obj	7f5b9b9c8ad37747 app_main.c.obj
+772024b45267f550 __/em01.c.obj	a0eba7eec7d1bc5d __/em01.c.obj
+e3aec3a753ae3b5e generated/rm_vectors.c.obj	e3aec3a753ae3b5e generated/rm_vectors.c.obj
+77ab1fb5efd4cb3a home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c.obj	77ab1fb5efd4cb3a home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c.obj
+9c3159c36a40a719 home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c.obj	9c3159c36a40a719 home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c.obj
+## non-main libs/objs: 610 files, 0 differ
+## symbol shifts b03->b04
+hal_entry b03=4200634c b04=42006314 shift=-56
+hex_prefix b03=4200d974 b04=4200d8d0 shift=-164
+infer_row b03=420062d0 b04=42006298 shift=-56
+pq_environment b03=42007050 b04=42006fac shift=-164
+pq_infer b03=420071f0 b04=4200714c shift=-164
+pq_qcfs b03=42007098 b04=42006ff4 shift=-164
+pq_quantize$part$0 b03=42006ee4 b04=42006e40 shift=-164
+pulses b03=420061a8 b04=420061ac shift=4
+tel_word b03=42006218 b04=420061fc shift=-28
+window_begin b03=420060f4 b04=420060f8 shift=4
+## test_em01.py
+Ran 5 tests in 13.244s
+
+OK
+rc=0

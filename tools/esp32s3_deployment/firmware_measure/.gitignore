@@ -1,0 +1,4 @@
+build_*/*
+!build_*/RESULT.json
+sdkconfig
+sdkconfig.old

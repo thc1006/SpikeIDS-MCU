@@ -1,0 +1,12 @@
+{
+ "chip": "ESP32-S3 (QFN56) (revision v0.2)",
+ "features": "WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)",
+ "crystal": "40MHz",
+ "usb_mode": "USB-Serial/JTAG",
+ "mac": "e8:f6:0a:8b:40:80",
+ "flash_manufacturer": "68",
+ "flash_device": "4018",
+ "flash_size": "16MB",
+ "flash_type_efuse": "quad (4 data lines)",
+ "flash_voltage_efuse": "3.3V"
+}

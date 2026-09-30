@@ -1,0 +1,11 @@
+{"kind": "setup_command", "host_monotonic": 251336.801618757, "utc": "2026-09-29T20:12:21.596107+00:00", "sample_index": 0, "name": "output_off_on_open", "hex": "0c00", "sent_utc": "2026-09-29T20:12:21.575063+00:00"}
+{"kind": "setup_command", "host_monotonic": 251336.801677886, "utc": "2026-09-29T20:12:21.596164+00:00", "sample_index": 0, "name": "set_power_mode_source_on_open", "hex": "1102", "sent_utc": "2026-09-29T20:12:21.575183+00:00"}
+{"kind": "setup_command", "host_monotonic": 251336.80169749, "utc": "2026-09-29T20:12:21.596184+00:00", "sample_index": 0, "name": "regulator_set_on_open", "hex": "0d1388", "sent_utc": "2026-09-29T20:12:21.575263+00:00"}
+{"kind": "command", "host_monotonic": 251336.80177045, "utc": "2026-09-29T20:12:21.596257+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "usb_guard_state", "host_monotonic": 251336.822595235, "utc": "2026-09-29T20:12:21.617082+00:00", "sample_index": 256, "serial": "vid:303a,vid:1a86", "present": false, "output_on": false}
+{"kind": "usb_guard_state", "host_monotonic": 251897.296488748, "utc": "2026-09-29T20:21:42.090977+00:00", "sample_index": 56047904, "serial": "vid:303a,vid:1a86", "present": true, "output_on": false}
+{"kind": "error", "host_monotonic": 252172.390828402, "utc": "2026-09-29T20:26:17.185321+00:00", "sample_index": 83234080, "text": "TimeoutError: PPK2 stream silent > 1 s"}
+{"kind": "command", "host_monotonic": 252173.379758578, "utc": "2026-09-29T20:26:18.174252+00:00", "sample_index": 83234080, "name": "final_output_off", "hex": "0c00"}
+{"kind": "command", "host_monotonic": 252173.381728783, "utc": "2026-09-29T20:26:18.176219+00:00", "sample_index": 83234080, "name": "sampling_stop", "hex": "07"}
+{"kind": "reader_gap", "host_monotonic": 252173.896081858, "utc": "2026-09-29T20:26:18.690572+00:00", "sample_index": 83356672, "gap_s": 2.0089710089960136}
+{"kind": "reader_gap", "host_monotonic": 252173.896468485, "utc": "2026-09-29T20:26:18.690956+00:00", "sample_index": 83358656, "gap_s": 0.9890188360004686}

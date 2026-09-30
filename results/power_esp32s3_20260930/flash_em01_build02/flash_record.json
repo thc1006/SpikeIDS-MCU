@@ -1,0 +1,18 @@
+{
+ "build": "build_02",
+ "pins": {
+  "em01.bin": "46a95057c1d371aa99c9166fe00437aeb5076254a4f7ea77a417531eb6c9a625",
+  "em01.elf": "1b296f551600ed76f62ccbcf5ecc61f647edaa4604b41515d7e8553b14c15273",
+  "bootloader/bootloader.bin": "d5bb0adc4f16d93419b765c948e5bfb53978c905c508e0da21102f640dd7d513",
+  "partition_table/partition-table.bin": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+ },
+ "regions_verified": 3,
+ "mac": "e8:f6:0a:8b:40:80",
+ "usb": {
+  "idVendor": "303a",
+  "idProduct": "1001",
+  "serial": "E8:F6:0A:8B:40:80",
+  "product": "USB JTAG/serial debug unit",
+  "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-7"
+ }
+}

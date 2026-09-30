@@ -1,0 +1,57 @@
+{
+ "label": "diag_esp_02_01",
+ "thresholds_mA": {
+  "C1": 0.25,
+  "C2": 0.5,
+  "C3": 0.5
+ },
+ "schedules": {
+  "schedule_00_repeat1": {
+   "idle_before_mA": 62.86363436552309,
+   "idle_after_mA": 62.89314379671622,
+   "C1_diff_mA": -0.029509431193126545,
+   "C1_pass": true,
+   "final_idle_mA": 63.2364752657882
+  },
+  "schedule_01_repeat1": {
+   "idle_before_mA": 62.852454802309424,
+   "idle_after_mA": 62.95248053803139,
+   "C1_diff_mA": -0.10002573572196383,
+   "C1_pass": true,
+   "final_idle_mA": 62.94487119840812
+  },
+  "schedule_02_repeat1": {
+   "idle_before_mA": 63.11041504383685,
+   "idle_after_mA": 63.1321029781202,
+   "C1_diff_mA": -0.021687934283349364,
+   "C1_pass": true,
+   "final_idle_mA": 62.94292149265255
+  },
+  "schedule_03_dose2": {
+   "idle_before_mA": 63.30759397210242,
+   "idle_after_mA": 63.198133347636315,
+   "C1_diff_mA": 0.10946062446610227,
+   "C1_pass": true,
+   "final_idle_mA": 63.396814670216926
+  },
+  "schedule_04_dose4": {
+   "idle_before_mA": 63.321461078643054,
+   "idle_after_mA": 63.24797074456886,
+   "C1_diff_mA": 0.0734903340741937,
+   "C1_pass": true,
+   "final_idle_mA": 63.560638567431624
+  }
+ },
+ "C2_final_minus_idle_mA": 0.1284051721506998,
+ "C2_pass": true,
+ "sham_low_mA": 62.734814416409904,
+ "gap_before_mA": 62.82539011512525,
+ "gap_after_mA": 62.79216660494294,
+ "C3_diffs_mA": [
+  -0.0905756987153481,
+  -0.05735218853303792
+ ],
+ "C3_pass": true,
+ "C1_pass": true,
+ "PASS": true
+}

@@ -1,0 +1,101 @@
+{
+ "n_funcs_02": 768,
+ "n_funcs_03": 768,
+ "only_02": [],
+ "only_03": [],
+ "differing": {
+  "window_begin": {
+   "len02": 68,
+   "len03": 68,
+   "diff": [
+    "-movi.n a9, 16",
+    "+movi.n a9, 32",
+    "-movi.n a9, 16",
+    "+movi.n a9, 32"
+   ]
+  },
+  "pulses": {
+   "len02": 39,
+   "len03": 39,
+   "diff": [
+    "-movi a6, 16",
+    "+movi a6, 32"
+   ]
+  },
+  "tel_word": {
+   "len02": 65,
+   "len03": 64,
+   "diff": [
+    "+movi a12, 0x3e8",
+    "-movi a12, 0x3e8",
+    "-l32r a14, ADDR <SYM+OFF> (ADDR <SYM+OFF>)",
+    "+l32r a15, ADDR <SYM+OFF> (ADDR <SYM+OFF>)",
+    "-movi a15, 0",
+    "-ssr a15",
+    "+movi a12, 0",
+    "+ssr a12",
+    "-mov.n a12, a11",
+    "-loop a12, ADDR <SYM+OFF>",
+    "+mov.n a14, a11",
+    "+loop a14, ADDR <SYM+OFF>",
+    "-and a8, a8, a14",
+    "+and a8, a8, a15",
+    "-addi.n a15, a15, 8",
+    "-bnei a15, 32, ADDR <SYM+OFF>",
+    "+addi a12, a12, 8",
+    "+bnei a12, 32, ADDR <SYM+OFF>",
+    "-s32i.n a9, a6, 0",
+    "-movi.n a12, 16",
+    "+s32i a9, a6, 0"
+   ]
+  },
+  "infer_row": {
+   "len02": 45,
+   "len03": 45,
+   "diff": [
+    "-movi.n a9, 16",
+    "+movi.n a9, 32"
+   ]
+  },
+  "hal_entry": {
+   "len02": 1106,
+   "len03": 1106,
+   "diff": [
+    "-movi.n a8, 4",
+    "+movi.n a8, 5",
+    "-movi.n a4, 16",
+    "+movi.n a4, 32",
+    "-movi.n a9, 16",
+    "+movi.n a9, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a9, 16",
+    "+movi.n a9, 32",
+    "-movi a9, 16",
+    "+movi a9, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi a9, 16",
+    "+movi a9, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a10, 16",
+    "+movi.n a10, 32",
+    "-movi a8, 16",
+    "+movi a8, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32",
+    "-movi.n a8, 16",
+    "+movi.n a8, 32"
+   ]
+  }
+ }
+}

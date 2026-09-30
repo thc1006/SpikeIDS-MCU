@@ -1,0 +1,21 @@
+{
+ "argv": [
+  "/home/thc1006/.espressif/python_env/idf5.4_py3.14_env/bin/python",
+  "-m",
+  "esptool",
+  "--chip",
+  "esp32s3",
+  "--port",
+  "/dev/ttyACM1",
+  "--baud",
+  "460800",
+  "--before",
+  "default_reset",
+  "--after",
+  "no_reset",
+  "flash_id"
+ ],
+ "returncode": 0,
+ "started_utc": "2026-09-29T17:44:03.142090+00:00",
+ "finished_utc": "2026-09-29T17:44:03.780519+00:00"
+}

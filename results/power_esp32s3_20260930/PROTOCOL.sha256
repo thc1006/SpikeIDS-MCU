@@ -1,0 +1,17 @@
+cca7ecb871098007e4c9c40a047738c10bd22a41ff9b789c2456921d6dadbfbe  PROTOCOL.md
+registered_utc 2026-09-29T19:20:36Z (before any PPK2-powered ESP32-S3 run; only identify/backup/flash/USB bring-up so far)
+external_timestamp_utc 2026-09-29T19:21:03Z protocol cca7ecb8 + code pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit ccef3a6eada1f2f9ff8ec3f01184d62cf1fc6e42
+e73f3cfb74697f444a61474ac571b850d6328dcb9fa1495ceaeff0344a9be2fe  PROTOCOL.md (after Amendment 1; lines 1-145 unchanged = cca7ecb8)
+amendment1_registered_utc 2026-09-29T21:37:21Z (after diag_esp_01, attrib_nod0_01, ppk_selftest_logic_01, wiringcheck_esp_01; before diag_esp_02 and any formal session)
+external_timestamp_utc 2026-09-29T21:38:48Z amendment 1 (protocol e73f3cfb) + code pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit c582400ba99e48e16aa7dc8c5faabc290050c0f1
+81436b202500d9a9084d319e3883bec0ea9829afef11250922681192a32926f8  PROTOCOL.md (after Amendment 2; lines 1-207 unchanged = e73f3cfb)
+amendment2_registered_utc 2026-09-29T22:20:03Z (after the max-rigor review of Amendment 1; before flashing build_04, diag_esp_02 and any formal session)
+external_timestamp_utc 2026-09-29T22:20:37Z amendment 2 (protocol 81436b20) + build_04 + driver pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit 0564ee8e2a60b856b5f75c0581feca27f65cd532
+7509bf44bea585f0bb5dd6637cf860218ce95e7dbe76bc9251c1f6ad95776bec  PROTOCOL.md (after Amendment 3; everything before it unchanged = 81436b20)
+amendment3_registered_utc 2026-09-29T22:36:31Z (after the CLEAN re-review of Amendment 2; before diag_esp_02 and any formal session)
+external_timestamp_utc 2026-09-29T22:36:48Z amendment 3 (protocol 7509bf44) + driver pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit 19016bc50f547e61b160b2ea8d1e185cdaef6a66
+c94e91fc08939eebfedd83ec2f370c8f3f53cdbdb107f0a792fe72c00c264d6a  PROTOCOL.md (after Observation 1; everything before it unchanged = 7509bf44)
+observation1_registered_utc 2026-09-29T23:03:31Z (during esp_session_01, before any formal analysis output)
+external_timestamp_utc 2026-09-29T23:03:48Z observation 1 (protocol c94e91fc) + diag_esp_02 records pushed to github.com/thc1006/SpikeIDS-MCU branch wip/esp32s3-em01-20260930 commit f53097c077f9e0a55f4b0c0729b78d8a49a0ad31 (before any formal analysis output)
+4bce291269b8e4b0e70f6c262e05c34975d46301039a136977c7c575ffd6c902  PROTOCOL.md (after Erratum 1; everything before it unchanged = c94e91fc)
+erratum1_registered_utc 2026-09-30T00:39:46Z (after the formal sessions and the three-part final review; no definition, gate or number changed)
