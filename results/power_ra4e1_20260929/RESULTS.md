@@ -19,7 +19,7 @@ All three sessions were eligible. An independent re-decode of the raw frames agr
 2. **Board-level, not MCU core.** The 0.104 W CPU-spin baseline is 86 % of the figure.
    - Incremental energy over the spin is 0.478 mJ/inference.
    - Sham-corrected, it is 0.4985 mJ (95 % CI 0.4979–0.4991).
-3. **Marker-state band.** The PPK2 D0 input network shifts board current by −0.14 mA while P107 is HIGH, giving ±0.020 mJ (±0.58 %) on gross.
+3. **Marker-state band.** The PPK2 D0 input network shifts board current by −0.14 mA while P107 is HIGH, giving ±0.020 mJ (±0.58 %) on gross. *(Attribution withdrawn: see Erratum and its revision below.)*
 4. **Scope includes** the LDO, the J-Link OB section, and the PPK2 logic-port load on 3.3 V.
    - The J-Link OB section is powered in this setup: its DEBUG/POWER LED blinks.
    - It adds a ~10 Hz, ~0.8 mA peak-to-peak current modulation that averages out over the ≥ 1 s windows.
@@ -48,3 +48,11 @@ All three sessions were eligible. An independent re-decode of the raw frames agr
 - **The ±0.020 mJ band.** It remains a conservative sensitivity bound for the marker- and code-state difference.
 
 **Inherits the ambiguity:** the incremental values (0.478 mJ, and 0.4985 mJ sham-corrected). The IDLE spin is itself one inlined wait copy, and on RA4E1 the current difference between copies was not measured.
+
+### Erratum revision (2026-09-30 08:41 +08, after the ESP32-S3 final review)
+
+- **Band withdrawn.** The statement above that the ±0.020 mJ band "remains a conservative sensitivity bound" is withdrawn. A sham that may be confounded by code placement can understate or overstate the true marker-state effect, so the band is not a bound. It moves to the list of quantities that inherit the ambiguity.
+- **Sham values.** "−0.137 mA" is the diag_07 value. The formal sessions gave −0.139, −0.138 and −0.142 mA.
+- **N6.** The N6 firmware (SM07M build_03 `main()`) also has inlined timer-wait loops: 7 copies, two of them 30 bytes apart (0x3406514e, 0x3406516c). So Amendment 2's use of the N6 sham (−0.03…−0.09 mA) as support for the D0-input attribution is not valid evidence.
+- **Type-B.** RA4E1 ran in PPK2 code 3 = UG range R4. The ±20 % gain term is a typical-spec envelope, not a guarantee, and the VOUT band is an unverified assumption. See `results/power_esp32s3_20260930/PROTOCOL.md`, Erratum 1, item 6.
+- **Unaffected.** The headline (3.4785 mJ) and the eligibility stand.
