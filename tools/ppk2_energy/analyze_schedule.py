@@ -148,7 +148,9 @@ def _span_stats(ua, r, a, b, volts, per_code_mA=None):
                mean_power_W=q * volts / t if t else None,
                mean_current_mA=float(seg.mean()) / 1000 if len(seg) else None,
                sd_current_mA=float(seg.std()) / 1000 if len(seg) > 1 else None,
-               non_r5_samples=int((r[a:b] != R5).sum()), over_1A_samples=int((seg > MAX_UA).sum()))
+               non_r5_samples=int((r[a:b] != R5).sum()), over_1A_samples=int((seg > MAX_UA).sum()),
+               range_histogram=np.bincount(r[a:b], minlength=5)[:5].tolist(),
+               range_switches=int((np.diff(r[a:b]) != 0).sum()) if b - a > 1 else 0)
     if per_code_mA and out['sd_current_mA'] is not None:
         out['sd_current_codes'] = out['sd_current_mA'] / per_code_mA
     return out
@@ -170,9 +172,12 @@ def analyze_pulses(words, ua_fn, expected_count, expected_width_s, tol=0.25):
 
 
 def analyze_sham(words, ua_fn, table, volts, guard_s=0.05, per_code_mA=None, max_marker_mA=0.5,
-                 reader_gaps=()):
+                 reader_gaps=(), top_range_only=True):
     """Null control: HIGH and LOW are the same busy-wait; only the marker
-    differs. dP estimates the method floor + the marker pin's own load."""
+    differs. dP estimates the method floor + the marker pin's own load.
+    top_range_only (N6 protocol): any sample outside range R5 invalidates. The
+    RA4E1 protocol (lower board current) permits auto-ranging and reports the
+    per-span range histogram instead."""
     problems = []
     if reader_gaps:
         problems.append(f'{len(reader_gaps)} host reader gap(s) inside the sham capture')
@@ -200,7 +205,7 @@ def analyze_sham(words, ua_fn, table, volts, guard_s=0.05, per_code_mA=None, max
         lo_end = runs[k + 1][0] if k + 1 < len(runs) else min(len(ua), b + width)
         lows.append(_span_stats(ua, r, b + g, lo_end - g, volts, per_code_mA))
         for s in [hi] + lows:
-            if s['non_r5_samples'] or s['over_1A_samples']:
+            if (top_range_only and s['non_r5_samples']) or s['over_1A_samples']:
                 problems.append(f'Sham window {k}: non-R5 or >1 A samples')
         p_lo = sum(s['mean_power_W'] for s in lows) / len(lows)
         i_lo = sum(s['mean_current_mA'] for s in lows) / len(lows)
@@ -216,7 +221,7 @@ def analyze_sham(words, ua_fn, table, volts, guard_s=0.05, per_code_mA=None, max
 
 
 def analyze_schedule(words, ua_fn, table, params, volts, guard_s=0.05, expected=None, per_code_mA=None,
-                     reader_gaps=()):
+                     reader_gaps=(), top_range_only=True):
     """table: firmware window records (dicts with kind/start_cycle/end_cycle/
     iterations/checksum/marker_high) in execution order. reader_gaps: host
     reader stalls (> READER_GAP_S) inside this segment; any gap invalidates it
@@ -251,7 +256,7 @@ def analyze_schedule(words, ua_fn, table, params, volts, guard_s=0.05, expected=
 
     def span(a, b):
         s = _span_stats(ua, r, a, b, volts, per_code_mA)
-        if s['non_r5_samples']:
+        if top_range_only and s['non_r5_samples']:
             problems.append(f'Span [{a},{b}) left range R5 ({s["non_r5_samples"]} samples)')
         if s['over_1A_samples']:
             problems.append(f'Span [{a},{b}) exceeds 1 A (PPK2 rating)')

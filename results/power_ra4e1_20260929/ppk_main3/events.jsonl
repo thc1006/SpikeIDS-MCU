@@ -1,0 +1,16 @@
+{"kind": "setup_command", "host_monotonic": 231514.146891205, "utc": "2026-09-29T14:41:58.941382+00:00", "sample_index": 0, "name": "output_off_on_open", "hex": "0c00", "sent_utc": "2026-09-29T14:41:58.919774+00:00"}
+{"kind": "setup_command", "host_monotonic": 231514.147019853, "utc": "2026-09-29T14:41:58.941507+00:00", "sample_index": 0, "name": "set_power_mode_source_on_open", "hex": "1102", "sent_utc": "2026-09-29T14:41:58.919908+00:00"}
+{"kind": "setup_command", "host_monotonic": 231514.147049747, "utc": "2026-09-29T14:41:58.941536+00:00", "sample_index": 0, "name": "regulator_set_on_open", "hex": "0d1388", "sent_utc": "2026-09-29T14:41:58.920031+00:00"}
+{"kind": "command", "host_monotonic": 231514.150044983, "utc": "2026-09-29T14:41:58.944532+00:00", "sample_index": 0, "name": "sampling_start", "hex": "06"}
+{"kind": "usb_guard_state", "host_monotonic": 231514.171161275, "utc": "2026-09-29T14:41:58.965649+00:00", "sample_index": 1536, "serial": "000831033862", "present": false, "output_on": false}
+{"kind": "control", "host_monotonic": 231522.495415834, "utc": "2026-09-29T14:42:07.289906+00:00", "sample_index": 833888, "text": "start diag_03"}
+{"kind": "segment_start", "host_monotonic": 231522.495697825, "utc": "2026-09-29T14:42:07.290186+00:00", "sample_index": 833888, "label": "diag_03", "path": "seg_000_diag_03.u32le"}
+{"kind": "control", "host_monotonic": 231523.983689849, "utc": "2026-09-29T14:42:08.778180+00:00", "sample_index": 982592, "text": "on"}
+{"kind": "command", "host_monotonic": 231523.985025744, "utc": "2026-09-29T14:42:08.779515+00:00", "sample_index": 982592, "name": "output_on", "hex": "0c01"}
+{"kind": "control", "host_monotonic": 231537.692987825, "utc": "2026-09-29T14:42:22.487475+00:00", "sample_index": 2353664, "text": "off"}
+{"kind": "command", "host_monotonic": 231537.693083303, "utc": "2026-09-29T14:42:22.487570+00:00", "sample_index": 2353664, "name": "output_off", "hex": "0c00"}
+{"kind": "control", "host_monotonic": 231538.196770747, "utc": "2026-09-29T14:42:22.991261+00:00", "sample_index": 2403840, "text": "stop"}
+{"kind": "segment_stop", "host_monotonic": 231538.209891449, "utc": "2026-09-29T14:42:23.004380+00:00", "sample_index": 2403840, "label": "diag_03", "path": "seg_000_diag_03.u32le", "frames": 1569952, "sha256": "d6c0ae1ecd5e254af971e389af3cf01bf526a86403c57d09bd134fd565854d18", "d0_rising": 0}
+{"kind": "control", "host_monotonic": 231642.672324273, "utc": "2026-09-29T14:44:07.466812+00:00", "sample_index": 12851648, "text": "quit"}
+{"kind": "command", "host_monotonic": 231642.672447005, "utc": "2026-09-29T14:44:07.466934+00:00", "sample_index": 12851648, "name": "final_output_off", "hex": "0c00"}
+{"kind": "command", "host_monotonic": 231642.672519031, "utc": "2026-09-29T14:44:07.467005+00:00", "sample_index": 12851648, "name": "sampling_stop", "hex": "07"}

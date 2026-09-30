@@ -1,0 +1,7 @@
+savebin /home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/flash_backup_before_rm01/code_flash_0x0_512KiB.bin 0x0 0x80000
+savebin /home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/flash_backup_before_rm01/data_flash_0x08000000_8KiB.bin 0x08000000 0x2000
+mem32 0x0100A100 1
+mem32 0x0100A180 1
+mem32 0x0100A200 1
+mem32 0x0100A280 1
+exit

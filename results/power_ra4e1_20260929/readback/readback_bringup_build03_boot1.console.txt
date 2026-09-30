@@ -1,0 +1,73 @@
+SEGGER J-Link Commander V9.24a (Compiled Mar  5 2026 11:04:55)
+DLL version V9.24a, compiled Mar  5 2026 11:03:48
+
+J-Link Commander will now exit on Error
+
+J-Link Command File read successfully.
+Processing script file...
+J-Link>savebin /home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/readback/rm01_result_bringup_build03_boot1.bin 0x2001c000 0x2100
+J-Link connection not established yet but required for command.
+Connecting to J-Link via USB...O.K.
+Firmware: J-Link OB-S124 compiled May  6 2026 14:59:45
+Hardware version: V1.00
+J-Link uptime (since boot): 0d 00h 16m 10s
+S/N: 831033862
+USB speed mode: Full speed (12 MBit/s)
+VTref=3.300V
+Target connection not established yet but required for command.
+Device "R7FA4E10D" selected.
+
+
+Connecting to target via SWD
+ConfigTargetSettings() start
+Configuring FlashDLNoRMWThreshold=0x200 in order to make sure that option bytes programming is done via read-modify-write
+ConfigTargetSettings() end - Took 9us
+InitTarget() start
+SWD selected. Executing JTAG -> SWD switching sequence.
+DAP initialized successfully.
+Determining TrustZone configuration...
+  Secure Debug: Enabled (SSD)
+Determining currently configured transfer type by reading the AHB-AP CSW register.
+  --> Correct transfer type configured. Done.
+InitTarget() end - Took 6.83ms
+Found SW-DP with ID 0x6BA02477
+DPIDR: 0x6BA02477
+CoreSight SoC-400 or earlier
+Scanning AP map to find all available APs
+AP[2]: Stopped AP scan as end of AP map has been reached
+AP[0]: AHB-AP (IDR: 0x84770001, ADDR: 0x00000000)
+AP[1]: APB-AP (IDR: 0x54770002, ADDR: 0x01000000)
+Iterating through AP map to find AHB-AP to use
+AP[0]: Core found
+AP[0]: AHB-AP ROM base: 0xE00FE000
+CPUID register: 0x410FD214. Implementer code: 0x41 (ARM)
+Feature set: Mainline
+Cache: No cache
+Found Cortex-M33 r0p4, Little endian.
+FPUnit: 8 code (BP) slots and 0 literal slots
+Security extension: implemented
+Secure debug: enabled
+CoreSight components:
+ROMTbl[0] @ E00FE000
+[0][0]: E0044000 CID B105900D PID 005BB906 DEVARCH 00000000 DEVTYPE 14 CTI (?)
+[0][1]: E0047000 CID B105900D PID 003BB908 DEVARCH 00000000 DEVTYPE 12 CSTF
+[0][2]: E0048000 CID B105900D PID 001BB961 DEVARCH 00000000 DEVTYPE 21 TMC
+[0][3]: E0049000 CID B105F00D PID 001BB101 TSG
+[0][4]: E0040000 CID B105900D PID 000BBD21 DEVARCH 00000000 DEVTYPE 11 TPIU
+[0][5]: E00FF000 CID B105100D PID 000BB4C9 ROM Table
+ROMTbl[1] @ E00FF000
+[1][0]: E000E000 CID B105900D PID 000BBD21 DEVARCH 47702A04 DEVTYPE 00 Cortex-M33
+[1][1]: E0001000 CID B105900D PID 000BBD21 DEVARCH 47701A02 DEVTYPE 00 DWT
+[1][2]: E0002000 CID B105900D PID 000BBD21 DEVARCH 47701A03 DEVTYPE 00 FPB
+[1][3]: E0000000 CID B105900D PID 000BBD21 DEVARCH 47701A01 DEVTYPE 43 ITM
+[1][5]: E0041000 CID B105900D PID 002BBD21 DEVARCH 47724A13 DEVTYPE 13 ETM
+[1][6]: E0042000 CID B105900D PID 000BBD21 DEVARCH 47701A14 DEVTYPE 14 CSS600-CTI
+Memory zones:
+  Zone: "Default" Description: Default access mode
+Cortex-M33 identified.
+Opening binary file for writing... [/home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/readback/rm01_result_bringup_build03_boot1.bin]
+Reading 8448 bytes from addr 0x2001C000 into file...O.K.
+J-Link>exit
+
+Script processing completed.
+

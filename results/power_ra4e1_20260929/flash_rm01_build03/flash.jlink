@@ -1,0 +1,7 @@
+r
+h
+loadfile /home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/build_03/firmware.hex
+verifybin /home/thc1006/dev/SpikeIDS-MCU/tools/ra4e1_deployment/firmware_measure/build_03/firmware.bin 0x0
+r
+g
+exit

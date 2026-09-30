@@ -1,0 +1,2 @@
+savebin /home/thc1006/dev/SpikeIDS-MCU/results/power_ra4e1_20260929/readback/rm01_result_bringup_build02_boot1.bin 0x2001c000 0x2100
+exit

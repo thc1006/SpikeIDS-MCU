@@ -1,11 +1,24 @@
-"""Persistent PPK2 Ampere-Meter session: keeps DUT power ON across runs.
+"""Persistent PPK2 session (Ampere Meter, or Source Meter with --source-mv).
 
 Why this exists: closing the PPK2 serial port re-enumerates the device (seen
 2026-09-25), which drops the output and wipes an SRAM-loaded N6 image. This
 process owns the port for the whole experiment, samples continuously, and only
 writes full-rate raw frames inside labelled segments.
 
-- Mode is never changed; the session refuses to start unless metadata mode==1.
+- Default: mode is never changed; the session refuses to start unless metadata
+  mode==1 (Ampere). With --source-mv N the session switches to Source Meter at
+  N mV before sampling, with the Nordic app's byte sequence (pc-nrfconnect-ppk
+  main@881d596): 0C 00 (output off), 11 02 (source mode), 0D hi lo (mV,
+  big-endian). The PPK2 answers GetMetadata only ONCE per connection and keeps
+  mode/VDD across the port-close reset (both observed 2026-09-29 20:13), so a
+  mismatching unit is configured on a first connection, released, and verified
+  from the metadata of a second connection; then, like the Nordic app on open,
+  0D hi lo is sent again before sampling. The S-term uses the setpoint, as the
+  Nordic app does (currentVdd = regulator setpoint); VOUT is not measured.
+- --absent-guard SERIAL: output ON is refused while a USB device with this
+  serial is present (e.g. the FPB-RA4E1 J-Link OB on J9, which would share
+  the board 5 V through its reverse-current protection); its appearance while
+  the output is ON is logged (usb_guard_present_while_on).
 - Always-on 10 ms summary (CSV) and a live status.json for monitoring.
 - Sustained-overcurrent guard (default 950 mA mean over 100 ms, PPK2 AM rating
   is 1 A continuous) switches the output OFF. This is a PPK2 self-protection
@@ -41,6 +54,9 @@ INFO = Path('/home/thc1006/.local/opt/ppk2-headless/ppk2_info.py')
 PPK_SERIAL = 'F4728E9B55E0'
 CMD_START, CMD_STOP = b'\x06', b'\x07'
 CMD_ON, CMD_OFF = b'\x0c\x01', b'\x0c\x00'
+CMD_SOURCE_MODE = b'\x11\x02'
+SOURCE_MV_RANGE = (800, 5000)
+SOURCE_MAX_GUARD_MA = 500.0  # Source Meter rating 600 mA (PPK2 UG v1.0.1 Table 7)
 FS = 100_000                 # nominal samples/s (Nordic)
 BIN = 1000                   # 10 ms summary bins
 GUARD_WINDOW = 10_000        # 100 ms
@@ -244,7 +260,9 @@ class Session:
                     invalid_range_frames=self.invalid_range,
                     adc_upper_rail_frames=self.saturated, range_histogram=self.ranges,
                     recording=None if not self.segment else self.segment['label'],
-                    segments_done=len(self.segments))
+                    segments_done=len(self.segments),
+                    usb_guard_present_while_on=(self.usb_guard.seen_while_on
+                                                if getattr(self, 'usb_guard', None) else None))
 
 
 class Reader(threading.Thread):
@@ -274,6 +292,59 @@ class Reader(threading.Thread):
                     self.q.put(('data', chunk, now))
         except BaseException as exc:
             self.q.put(('error', exc, self.clock()))
+
+
+def regulator_cmd(mv):
+    if not (SOURCE_MV_RANGE[0] <= mv <= SOURCE_MV_RANGE[1]) or int(mv) != mv:
+        raise ValueError(f'source voltage {mv} mV outside {SOURCE_MV_RANGE}')
+    return bytes((0x0D, (mv >> 8) & 0xFF, mv & 0xFF))
+
+
+def usb_present(serial_no, root=Path('/sys/bus/usb/devices')):
+    """True if any USB device reports this iSerial (sysfs; no device I/O).
+    Fails CLOSED: if sysfs cannot be listed, the device counts as present."""
+    try:
+        entries = list(root.iterdir())
+    except OSError:
+        return True
+    for d in entries:
+        f = d / 'serial'
+        try:
+            if f.is_file() and f.read_text().strip() == serial_no:
+                return True
+        except OSError:
+            continue
+    return False
+
+
+class UsbGuard:
+    """Hard interlock: refuse output ON while `serial_no` is on the USB bus, and
+    switch the output OFF if it appears while ON (the run is invalid anyway; the
+    board's reverse-current protection is the electrical safeguard for the ~1 s
+    before enumeration)."""
+    def __init__(self, serial_no, present=None):
+        self.serial_no = serial_no
+        self.present = present or (lambda sn: usb_present(sn))
+        self.seen_while_on = 0
+        self.last = None
+
+    def allow_on(self, session):
+        here = self.present(self.serial_no)
+        if here:
+            session.event('usb_guard_refused_on', serial=self.serial_no)
+        return not here
+
+    def poll(self, session):
+        here = self.present(self.serial_no)
+        if here != self.last:
+            session.event('usb_guard_state', serial=self.serial_no, present=here,
+                          output_on=session.output_on)
+            self.last = here
+        if here and session.output_on:
+            if self.seen_while_on == 0:
+                session.event('usb_guard_present_while_on', serial=self.serial_no)
+            self.seen_while_on += 1
+            session.write_cmd(CMD_OFF, 'usb_guard_output_off')
 
 
 def stlink_present(serial_no, by_id=Path('/dev/serial/by-id')):
@@ -328,6 +399,56 @@ def load_info():
     return mod
 
 
+def find_ppk(info, serial_no, wait_s=0.0, clock=time.monotonic, sleep=time.sleep):
+    deadline = clock() + wait_s
+    while True:
+        matches = [p for p in info.devices() if p['serial'] == serial_no]
+        if len(matches) == 1 or clock() >= deadline:
+            return matches
+        sleep(0.25)
+
+
+def wait_reenumeration(info, serial_no, port_path, gone_s=5.0, back_s=20.0,
+                       clock=time.monotonic, sleep=time.sleep, exists=os.path.exists):
+    """Closing the port resets the PPK2 (USB disconnect + re-enumeration), even
+    when no command was sent. Wait for the port to vanish, then to come back."""
+    t0 = clock()
+    vanished = False
+    while clock() - t0 < gone_s:
+        if not exists(port_path):
+            vanished = True
+            break
+        sleep(0.05)
+    t1 = clock()
+    while clock() - t1 < back_s:
+        m = [p for p in info.devices() if p['serial'] == serial_no]
+        if len(m) == 1 and exists(m[0]['port']):
+            sleep(0.5)                       # udev permissions settle
+            return m, dict(vanished=vanished, gone_wait_s=t1 - t0, back_wait_s=clock() - t1)
+        sleep(0.1)
+    return [], dict(vanished=vanished, gone_wait_s=t1 - t0, back_wait_s=clock() - t1)
+
+
+def configure_source(serial_mod, info, dev, mv):
+    """First connection: read metadata; if mode/VDD differ, send the Nordic
+    sequence (output stays OFF). Returns (metadata, commands_sent)."""
+    sent = []
+    with serial_mod.Serial(dev['port'], baudrate=115200, timeout=0.02,
+                           write_timeout=0.5, exclusive=True) as port:
+        fcntl.ioctl(port.fileno(), termios.TIOCEXCL)
+        _, meta = info.query_metadata(port)
+        if meta.get('mode') == '2' and meta.get('VDD') == str(mv):
+            return meta, sent
+        for value, name in ((CMD_OFF, 'output_off'), (CMD_SOURCE_MODE, 'set_power_mode_source'),
+                            (regulator_cmd(mv), 'regulator_set')):
+            if port.write(value) != len(value):
+                raise SystemExit(f'Incomplete {name} write')
+            port.flush()
+            sent.append(dict(name=name, hex=value.hex(), sent_utc=utc()))
+            time.sleep(0.2)
+    return meta, sent
+
+
 def run(args):
     import serial
     out = args.out
@@ -337,15 +458,25 @@ def run(args):
     fifo = out / 'control'
     os.mkfifo(fifo)
     info = load_info()
-    matches = [p for p in info.devices() if p['serial'] == args.serial]
+    matches = find_ppk(info, args.serial)
     if len(matches) != 1:
         raise SystemExit(f'PPK2 {args.serial} not uniquely present')
+    source = args.source_mv is not None
+    first_meta, setup, reenum = None, [], None
+    if source:
+        first_meta, setup = configure_source(serial, info, matches[0], args.source_mv)
+        matches, reenum = wait_reenumeration(info, args.serial, matches[0]['port'])
+        if len(matches) != 1:
+            raise SystemExit(f'PPK2 did not re-enumerate after the first connection: {reenum}')
+    volts = args.source_mv / 1000.0 if source else args.volts
     header = dict(schema='ppk2-session-v1', utc=utc(), ppk=matches[0], argv=sys.argv,
                   source_sha256={str(p): hashlib.sha256(Path(p).read_bytes()).hexdigest()
                                  for p in (Path(__file__).resolve(), HERE / 'analyze.py', INFO)},
-                  correction_voltage_assumed_v=args.volts, policy=args.policy,
+                  correction_voltage_assumed_v=volts, policy=args.policy,
                   guard_mA=args.guard_ma, fs_nominal=FS, summary_bin_samples=BIN,
-                  note='VIN not measured; S-term uses assumed voltage.')
+                  source_mv=args.source_mv, absent_guard_serial=args.absent_guard,
+                  note=('Source Meter: S-term uses the VOUT setpoint; VOUT not measured.' if source
+                        else 'VIN not measured; S-term uses assumed voltage.'))
     stop = {'flag': False}
 
     def on_signal(signum, frame):
@@ -359,19 +490,42 @@ def run(args):
                        write_timeout=0.5, exclusive=True) as port:
         fcntl.ioctl(port.fileno(), termios.TIOCEXCL)
         raw_meta, meta = info.query_metadata(port)
-        header.update(raw_metadata=raw_meta.decode('ascii'), metadata=meta)
-        if meta.get('mode') != '1':
+        header.update(raw_metadata=raw_meta.decode('ascii'), metadata=meta, ppk=matches[0])
+        if source:
+            header.update(source_setup=setup, metadata_first_connection=first_meta, reenumeration=reenum,
+                          vdd_readback_matches_setpoint=meta.get('VDD') == str(args.source_mv))
+            if meta.get('mode') != '2' or meta.get('VDD') != str(args.source_mv):
+                write_json_atomic(out / 'session.json', dict(header, error='mode/VDD not Source at setpoint'))
+                raise SystemExit(f"PPK2 reports mode {meta.get('mode')} VDD {meta.get('VDD')}, "
+                                 f"not Source (2) at {args.source_mv} mV; refusing")
+            reg = regulator_cmd(args.source_mv)    # Nordic app re-sends the regulator on open
+            # 2026-09-29 22:41: with metadata already reporting mode 2 / VDD 5000, output ON
+            # delivered no current (diag_01/02). The stored mode may not be the applied
+            # hardware mode after a reset, so the full IRNAS ppk2-api order (use_source_meter,
+            # set_source_voltage) is re-sent on every open, output OFF first.
+            for value, name in ((CMD_OFF, 'output_off_on_open'), (CMD_SOURCE_MODE, 'set_power_mode_source_on_open'),
+                                (reg, 'regulator_set_on_open')):
+                if port.write(value) != len(value):
+                    raise SystemExit(f'Incomplete {name} write')
+                port.flush()
+                setup = setup + [dict(name=name, hex=value.hex(), sent_utc=utc())]
+            header['source_setup'] = setup
+        elif meta.get('mode') != '1':
             write_json_atomic(out / 'session.json', dict(header, error='mode is not Ampere (1)'))
             raise SystemExit('PPK2 not in Ampere mode; refusing (mode is never changed here)')
-        conv = Converter(meta, args.volts, args.policy)
+        conv = Converter(meta, volts, args.policy)
         header['coefficient_substitutions'] = conv.substitutions
         write_json_atomic(out / 'session.json', header)
         s = Session(port, out, conv, args.guard_ma)
         port.read(4096)  # discard metadata tail if any
+        for row in setup:
+            s.event('setup_command', **row)
+        guard = UsbGuard(args.absent_guard) if args.absent_guard else None
+        s.usb_guard = guard
         if args.record_initial:
             s.start_segment(args.record_initial)
         s.write_cmd(CMD_START, 'sampling_start')
-        if args.initial_output == 'on':
+        if args.initial_output == 'on' and (guard is None or guard.allow_on(s)):
             s.write_cmd(CMD_ON, 'output_on')
         arm = Arm(args.arm_on_when_absent) if args.arm_on_when_absent else None
         if arm:
@@ -400,8 +554,11 @@ def run(args):
                 consume(0.05)
                 if time.monotonic() - reader.last_data > SILENCE_S:
                     raise TimeoutError('PPK2 stream silent > 1 s')
-                if arm and time.monotonic() - last_arm > 0.2:
-                    arm.poll(s)
+                if (arm or guard) and time.monotonic() - last_arm > 0.2:
+                    if arm:
+                        arm.poll(s)
+                    if guard:
+                        guard.poll(s)
                     last_arm = time.monotonic()
                 try:
                     ctl_buf += os.read(ctl, 4096)
@@ -419,7 +576,8 @@ def run(args):
                     elif word == 'stop':
                         s.stop_segment()
                     elif word == 'on':
-                        s.write_cmd(CMD_ON, 'output_on')
+                        if guard is None or guard.allow_on(s):
+                            s.write_cmd(CMD_ON, 'output_on')
                     elif word == 'off':
                         s.write_cmd(CMD_OFF, 'output_off')
                     elif word == 'quit':
@@ -471,11 +629,24 @@ def main(argv=None):
     p.add_argument('--guard-ma', type=float, default=950.0)
     p.add_argument('--initial-output', choices=('on', 'off'), default='off')
     p.add_argument('--record-initial', default=None, metavar='LABEL')
+    p.add_argument('--source-mv', type=int, default=None, metavar='MV',
+                   help='switch to Source Meter at MV millivolts (800..5000) before sampling')
+    p.add_argument('--absent-guard', default=None, metavar='USB_SERIAL',
+                   help='refuse output ON while a USB device with this iSerial is present')
     p.add_argument('--arm-on-when-absent', default=None, metavar='STLINK_SERIAL',
                    help='turn output ON once this ST-LINK has been unplugged for 2 s')
     args = p.parse_args(argv)
     if args.arm_on_when_absent and args.initial_output == 'on':
         p.error('--arm-on-when-absent requires --initial-output off')
+    if args.source_mv is not None:
+        try:
+            regulator_cmd(args.source_mv)
+        except ValueError as exc:
+            p.error(str(exc))
+        if args.guard_ma > SOURCE_MAX_GUARD_MA:
+            p.error(f'Source Meter is rated 600 mA: use --guard-ma <= {SOURCE_MAX_GUARD_MA:g}')
+        if args.arm_on_when_absent:
+            p.error('--arm-on-when-absent is the N6 Ampere-mode interlock; use --absent-guard')
     return run(args)
 
 
