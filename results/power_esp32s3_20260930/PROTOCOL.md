@@ -327,3 +327,42 @@ If diag_esp_02 fails the sham gate, no formal session is run.
 - Under PPK2 power the D0 power-on artifact lasts 6.96 ms (3.79 ms at the USB bring-up), still well inside the 1.5 s mask.
 - The OVERHEAD repetition count is calibrated at every power-on: 32 287 in diag_esp_02, against the 32 346 quoted from the bring-up.
 - An `em01.c` comment attributes 1.19 s OVERHEAD windows to build_02; that refers to build_01. The source is hash-pinned and left unedited.
+
+## Erratum 1 (2026-09-30 08:39 +08, after the formal sessions and a three-part final review; no definition, gate or number is changed)
+
+Final review: `analysis/review_final/` — A instrument, B firmware and platform, C documents and statistics. All three returned CLEAN, and each item below was re-checked by the author.
+
+1. **Heading time.** The original heading "Written 2026-09-30 03:25 +08" is later than the registration (03:20:36 +08) and the push (03:21:05 +08); read it as 03:20. The first PPK2-powered ESP32-S3 ON was at 03:25:14 +08.
+2. **Caches.** Code executes through the **16 KB instruction cache**; the weights and other read-only data go through the 32 KB data cache. Both use 32-byte lines. The configuration table's "code … through the 32 KB data cache" is wrong.
+3. **Snapshot gates.** APB, XTAL and CPU are software values (`esp_clk_*`), and on the ESP32-S3 APB = min(CPU, 80 MHz), so the APB gate cannot fail on its own. The effective clock checks are `SYSTEM_CPU_PER_CONF`, `SYSTEM_SYSCLK_CONF` and the PPK2-time-base clock. The registered per-schedule estimates of the formal sessions span 1.8 ppm (240.00467–240.00510 MHz); RESULTS' "0.2 ppm" came from a reviewer's estimator.
+4. **Reset reason.** POWERON (1) also results from an EN reset or a supply dip below the power-on threshold. A restart after ON is excluded by timing: in all five PPK2-powered runs the first wiring rise came 29.5955–29.5976 s after ON (spread 2.1 ms), which includes session 2 with its 1.025 A inrush. A restart would delay it by a whole boot.
+5. **Size of the code-placement effect.** "Up to 3.1 mA" (Amendments 2 and 3) is one pair of spans. The spread across the marker-LOW wait copies of diag_esp_01 is 3.42 mA.
+6. **Type-B basis** (review A; UG v1.0.1 as read by the review, the online manual being unreachable here):
+   - **Range naming.** PPK2 codes 0–4 are UG ranges R1–R5. ESP32-S3 (~64 mA) is code 4 = **UG R5**; RA4E1 (~24 mA) is code 3 = UG R4. Earlier "R3/R4" meant codes.
+   - **Gain.** For R5, Table 9 gives ±15 % accuracy plus ±5 % offset, both typical and for averaged readout. The ±20 % used is their linear sum, as in the UG's "better than ±20 %". It is not a conservative margin, and typical values are not guaranteed limits: "worst case" and "bound" in the summaries mean the typical-spec envelope.
+   - **VOUT.** The −3 %/+2 % band has **no valid basis**. The cited DevZone thread 125227 is unanswered; the poster's own unit read 4.918 V at 5000 mV (and 0.605 V at 800 mV) with no stated load; and the UG gives no Source Meter voltage accuracy. It is an unverified assumption.
+     - Energy scales with V: at 4.918 V the headline would be 2.0 % lower (7.82 mJ).
+     - The lead and contact drop (~0.1–0.3 Ω, 6–20 mV at 64 mA) makes the setpoint-based figure 0.1–0.4 % higher than the energy at the board pin.
+     - No multimeter was available. A known-load check (precision resistor plus DMM) at the operating point would replace both the gain and the VOUT assumptions.
+   - **Offset.** The R5 zero offset cannot be checked from the data, since there are no zero-current code-4 samples. One ADC code is 0.753 mA (1.18 % of the reading).
+   - **ADC non-linearity.** Paired code occupancy shows an effective step of ~1.5 mA. Gross is well dithered (SD 1.8–2.3 codes); the incremental (≈ 1 code) relies on that dither.
+   - **Calibration flag.** The metadata flag "Calibrated: 0" has no public documentation; its meaning is unknown.
+7. **Rating and inrush.** The PPK2 Source Meter rating is 600 mA (UG Table 7); 1 A is the Ampere-mode rating.
+   - Session 2 had one sample at 1.025 A, after 5 saturated range-0 frames at ON + 6.54–6.62 ms, so its true peak is unknown. Session 3 had one at 0.989 A.
+   - All are inside the mask. Every analysed window is code 4 at ≤ 72 mA, and the first window starts 74 s after ON.
+8. **Post-hoc labels.**
+   - The cold/warm reading of the between-session spread is post hoc: Observation 1 fixed only the within-session drift reporting.
+   - All three dose intercepts exclude 0 (−5.51, −0.64, −0.81 mJ), not only session 2's.
+   - The post-mask logic-port-powered fraction is 100 % in all formal sessions; the pipeline's `logic_powered_fraction` (0.994) counts masked frames.
+9. **Layout dependence of BENCH** (review B):
+   - The weights sit at identical addresses in builds 02–04, and the hot 76-byte multiply-accumulate loop runs from the core's loop buffer.
+   - Cycles per inference differ by ≤ 10 between build_02 and build_04. BENCH − OVERHEAD current is −7.334 mA in build_02 against −7.286 to −7.340 mA in build_04, so the build effect on BENCH is ≤ ~0.05 mA (0.08 %).
+   - The figure is for back-to-back inference with a warm instruction cache; a cold-cache inference costs up to 0.8 % more cycles.
+10. **Same confound elsewhere.** N6 SM07M build_03 `main()` has 7 inlined timer busy-wait loops, two of them 30 bytes apart (0x3406514e, 0x3406516c).
+    - The N6 sham ΔI (−0.03…−0.09 mA) and the RA4E1 sham ΔI (formal −0.138/−0.138/−0.142 mA) may therefore include code placement.
+    - Their gross headlines are unaffected; their incrementals and marker bands inherit the ambiguity.
+    - RA4E1 Amendment 2's use of the N6 sham as supporting evidence is withdrawn.
+11. **Protocol deviations.** The operator's per-run confirmation of USB removal and the LED states were not recorded. USB removal is established instrumentally: the logic port read 0xFF from recorder start to session 1 ON, and stayed latched at (1, 1) across the OFF gaps.
+12. **Review wording.** The "independent" reviews were separate automated re-analyses (AI agents) run under the same operator.
+    - The formal-session re-analysis re-used the pipeline's current conversion.
+    - The final instrument review re-implemented the conversion from Nordic's official source (pc-nrfconnect-ppk `serialDevice.ts`) and matched all 345 windows to ≤ 4.3e-16.
