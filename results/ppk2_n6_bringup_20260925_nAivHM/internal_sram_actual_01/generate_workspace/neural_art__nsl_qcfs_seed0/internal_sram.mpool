@@ -1,0 +1,96 @@
+{
+ "memory": {
+  "memFilePrefix": "atonbuf",
+  "mempools": [
+   {
+    "fname": "SRAM_ACTIVATIONS",
+    "name": "activations_sram",
+    "fformat": "FORMAT_RAW",
+    "prop": {
+     "rights": "ACC_WRITE",
+     "throughput": "HIGH",
+     "latency": "LOW",
+     "byteWidth": 8,
+     "freqRatio": 1.25,
+     "burstMaxLength": 4294967295,
+     "burstPenalty": 0,
+     "pipelined": "PIPELINED_ON",
+     "cacheable": "CACHEABLE_OFF",
+     "readPower": 18.531,
+     "writePower": 16.201,
+     "constantsPreferred": false
+    },
+    "offset": {
+     "value": "854272",
+     "magnitude": "KBYTES"
+    },
+    "size": {
+     "value": "16",
+     "magnitude": "KBYTES"
+    },
+    "mode": "USEMODE_ABSOLUTE",
+    "busNode": 0
+   },
+   {
+    "fname": "SRAM_WEIGHTS",
+    "name": "weights_sram",
+    "fformat": "FORMAT_RAW",
+    "prop": {
+     "rights": "ACC_READ",
+     "throughput": "HIGH",
+     "latency": "LOW",
+     "byteWidth": 8,
+     "freqRatio": 1.25,
+     "burstMaxLength": 4294967295,
+     "burstPenalty": 0,
+     "pipelined": "PIPELINED_ON",
+     "cacheable": "CACHEABLE_OFF",
+     "readPower": 18.531,
+     "writePower": 16.201,
+     "constantsPreferred": true
+    },
+    "offset": {
+     "value": "834",
+     "magnitude": "MBYTES"
+    },
+    "size": {
+     "value": "256",
+     "magnitude": "KBYTES"
+    },
+    "mode": "USEMODE_ABSOLUTE",
+    "busNode": 0
+   },
+   {
+    "fname": "params",
+    "name": "ec params pool",
+    "fformat": "FORMAT_C",
+    "prop": {
+     "rights": "ACC_READ",
+     "throughput": "LOW",
+     "latency": "HIGH",
+     "byteWidth": 2,
+     "freqRatio": 1,
+     "burstMaxLength": 4294967295,
+     "burstPenalty": 0,
+     "pipelined": "PIPELINED_ON",
+     "cacheable": "CACHEABLE_OFF",
+     "readPower": 0,
+     "writePower": 0,
+     "constantsPreferred": false
+    },
+    "offset": {
+     "value": "0",
+     "magnitude": "BYTES"
+    },
+    "size": {
+     "value": "9223372036854775776",
+     "magnitude": "BYTES"
+    },
+    "mode": "USEMODE_RELATIVE",
+    "busNode": 0
+   }
+  ],
+  "cacheinfo": []
+ }
+}
+

@@ -1,0 +1,1339 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+                              /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o (fegetround)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o (exit)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o (__libc_init_array)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+                              /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o (memcpy)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o) (__stdio_exit_handler)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o) (__sread)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o) (_read_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o) (_write_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+                              /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o (__errno)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o) (_fwalk_sglue)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+                              /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o (memcmp)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o (memset)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o) (__retarget_lock_init_recursive)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o) (_close_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o) (errno)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o) (_impure_ptr)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o) (_fflush_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o) (_malloc_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o) (_lseek_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o) (__malloc_lock)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o) (_sbrk_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o) (_free_r)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o) (_close)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o) (_lseek)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o) (_read)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o) (_write)
+/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+                              /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o) (_exit)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .rodata.all_implied_fbits
+                0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .data.__dso_handle
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .text          0x00000000       0x7c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .ARM.extab     0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .ARM.exidx     0x00000000       0x10 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .debug_line_str
+                0x00000000       0xd3 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .ARM.attributes
+                0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+ .text.can_callback
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .text.v5_put32
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .text.v5_crc32
+                0x00000000       0x38 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .text.v5_hello_query
+                0x00000000       0x54 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .text.pq_quantize
+                0x00000000       0x44 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.spikeids_validation_sha256
+                0x00000000       0x41 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .text.g_common_init
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .rodata.g_ioport
+                0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .bss.g_ioport_ctrl
+                0x00000000        0x8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .text.g_hal_init
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .rodata.g_can  0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .rodata.g_can_cfg
+                0x00000000       0x18 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .bss.g_can_ctrl
+                0x00000000       0x28 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .rodata.g_can_extended_cfg
+                0x00000000       0x20 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .data.g_can_mailbox
+                0x00000000      0x100 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .data.g_can_mailbox_mask
+                0x00000000       0x20 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .data.g_can_bit_timing_cfg
+                0x00000000       0x10 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .rodata.g_bsp_pin_cfg
+                0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .rodata.g_bsp_pin_cfg_data
+                0x00000000       0xe0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_Read
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_CallbackSet
+                0x00000000       0x34 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.r_can_mode_transition
+                0x00000000       0xb8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_ModeTransition
+                0x00000000       0x20 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_Close
+                0x00000000       0xc4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_InfoGet
+                0x00000000       0x48 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_Write
+                0x00000000       0xc8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.R_CAN_Open
+                0x00000000      0x3c4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .rodata.g_can_on_can
+                0x00000000       0x1c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_Close
+                0x00000000       0x20 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.bsp_vbatt_init
+                0x00000000       0xe8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PinRead
+                0x00000000       0x34 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PortRead
+                0x00000000       0x2c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PortWrite
+                0x00000000       0x48 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PinWrite
+                0x00000000       0x3c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PortDirectionSet
+                0x00000000       0x4c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PortEventInputRead
+                0x00000000       0x40 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PinEventInputRead
+                0x00000000       0x60 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PortEventOutputWrite
+                0x00000000       0x50 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PinEventOutputWrite
+                0x00000000       0x60 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PinCfg
+                0x00000000       0xc0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.r_ioport_pins_config
+                0x00000000       0xac /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_Open
+                0x00000000       0x38 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text.R_IOPORT_PinsCfg
+                0x00000000       0x2c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .rodata.g_vbatt_pins_input
+                0x00000000        0x6 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .rodata.g_ioport_on_ioport
+                0x00000000       0x34 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text.bsp_prv_operating_mode_set
+                0x00000000       0x60 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text.bsp_prv_prepare_pll
+                0x00000000       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text.bsp_prv_clock_dividers_set
+                0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text.bsp_prv_clock_set
+                0x00000000       0xb0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text.R_BSP_OctaclkUpdate
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text.R_BSP_SourceClockHzGet
+                0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .text.R_FSP_VersionGet
+                0x00000000       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .text.__assert_func
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .text.bsp_prv_software_delay_loop
+                0x00000000        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .text.R_BSP_SoftwareDelay
+                0x00000000       0x58 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+ .text.R_BSP_GroupIrqWrite
+                0x00000000       0x18 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_15.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_15.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_15.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_15.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_15.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+ .bss.g_protect_pfswe_counter
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_17.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_17.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_17.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_17.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_17.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+ .rodata.g_interrupt_event_link_select
+                0x00000000        0xa /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_19.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_19.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_19.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_19.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_19.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_20.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_20.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_20.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_20.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_20.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .text._sbrk    0x00000000       0x30 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .bss.current_block_offset.0
+                0x00000000        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_23.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_23.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_23.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_23.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_23.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_24.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_24.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_24.o
+ .comment       0x00000000       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_24.o
+ .ARM.attributes
+                0x00000000       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_24.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+ .bss.g_heap    0x00000000      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+ .text          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+ .data          0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+ .bss           0x00000000        0x0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+ .text.exit     0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+ .debug_frame   0x00000000       0x28 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-exit.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+ .text.__libc_init_array
+                0x00000000       0x48 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+ .debug_frame   0x00000000       0x2c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.std      0x00000000       0x6c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.stdio_exit_handler
+                0x00000000       0x18 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.cleanup_stdio
+                0x00000000       0x40 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_lock
+                0x00000000       0x18 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_unlock
+                0x00000000       0x18 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.global_stdio_init.part.0
+                0x00000000       0x3c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__sfp_lock_acquire
+                0x00000000        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__sfp_lock_release
+                0x00000000        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__sfp    0x00000000       0xa4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__sinit  0x00000000       0x30 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_lock_all
+                0x00000000       0x1c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text.__fp_unlock_all
+                0x00000000       0x1c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .data.__sglue  0x00000000        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .bss.__sf      0x00000000      0x138 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .bss.__stdio_exit_handler
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x00000000      0x144 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .text.__sread  0x00000000       0x22 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .text.__seofread
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .text.__swrite
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .text.__sseek  0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .text.__sclose
+                0x00000000        0x8 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .debug_frame   0x00000000       0x88 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-stdio.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+ .text._read_r  0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+ .debug_frame   0x00000000       0x2c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-readr.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+ .text._write_r
+                0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+ .debug_frame   0x00000000       0x2c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-writer.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+ .text.__errno  0x00000000        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+ .text._fwalk_sglue
+                0x00000000       0x3c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+ .debug_frame   0x00000000       0x34 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fwalk.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_init
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_init_recursive
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_close
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_close_recursive
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_acquire
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_acquire_recursive
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_try_acquire
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_try_acquire_recursive
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_release
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text.__retarget_lock_release_recursive
+                0x00000000        0x2 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___arc4random_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___dd_hash_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___tz_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___env_recursive_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___malloc_recursive_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___at_quick_exit_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___atexit_recursive_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .bss.__lock___sfp_recursive_mutex
+                0x00000000        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .debug_frame   0x00000000       0xb0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lock.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+ .text._close_r
+                0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+ .debug_frame   0x00000000       0x2c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-closer.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .text._reclaim_reent
+                0x00000000       0xac /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .bss.errno     0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .debug_frame   0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-reent.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+ .data._impure_data
+                0x00000000       0x4c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-impure.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .text.__sflush_r
+                0x00000000      0x108 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .text._fflush_r
+                0x00000000       0x50 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .text.fflush   0x00000000       0x28 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .debug_frame   0x00000000       0x5c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-fflush.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .text.sbrk_aligned
+                0x00000000       0x44 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .text._malloc_r
+                0x00000000      0x100 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .bss.__malloc_sbrk_start
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .bss.__malloc_free_list
+                0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x00000000       0x50 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mallocr.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+ .text._lseek_r
+                0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+ .debug_frame   0x00000000       0x2c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-lseekr.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .text.__malloc_lock
+                0x00000000        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .text.__malloc_unlock
+                0x00000000        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x00000000       0x30 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-mlock.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+ .text._sbrk_r  0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+ .debug_frame   0x00000000       0x2c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-sbrkr.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+ .text._free_r  0x00000000       0x94 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-freer.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .text._close   0x00000000       0x10 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .gnu.warning._close
+                0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(close.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .text._lseek   0x00000000       0x10 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .gnu.warning._lseek
+                0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(lseek.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .text._read    0x00000000       0x10 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .gnu.warning._read
+                0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(read.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .text._write   0x00000000       0x10 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .gnu.warning._write
+                0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(write.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+ .text._exit    0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+ .ARM.attributes
+                0x00000000       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a(_exit.o)
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+ .rodata.all_implied_fbits
+                0x00000000       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+ .eh_frame      0x00000000        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+ .text          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+ .data          0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+ .bss           0x00000000        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+ .init          0x00000000        0x8 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+ .fini          0x00000000        0x8 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+ .ARM.attributes
+                0x00000000       0x26 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+RAM              0x20000000         0x0001f000         xrw
+FLASH            0x00000000         0x00080000         xr
+DATA_FLASH       0x08000000         0x00002000         xr
+QSPI_FLASH       0x60000000         0x04000000         xr
+OPTION_SETTING_OFS0 0x0100a100         0x00000004         r
+OPTION_SETTING_OFS1 0x0100a180         0x00000004         r
+OPTION_SETTING_BPS 0x0100a1c0         0x00000004         r
+OPTION_SETTING_PBPS 0x0100a1e0         0x00000004         r
+OPTION_SETTING_OFS1_SEC 0x0100a200         0x00000004         r
+OPTION_SETTING_BPS_SEC 0x0100a240         0x00000004         r
+OPTION_SETTING_PBPS_SEC 0x0100a260         0x00000004         r
+OPTION_SETTING_OFS1_SEL 0x0100a280         0x00000004         r
+OPTION_SETTING_BPS_SEL 0x0100a2c0         0x00000004         r
+
+Linker script and memory map
+
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/crt0.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_05.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_06.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_07.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_10.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_13.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_15.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_16.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_17.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_19.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_20.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_22.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_23.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_24.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+LOAD /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a
+START GROUP
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/libgcc.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a
+END GROUP
+START GROUP
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/libgcc.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a
+END GROUP
+START GROUP
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/libgcc.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libnosys.a
+END GROUP
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtn.o
+                0x20000000                        RAM_START = 0x20000000
+                0x0001f000                        RAM_LENGTH = 0x20000
+                0x00000000                        FLASH_START = 0x0
+                0x00080000                        FLASH_LENGTH = 0x80000
+                0x08000000                        DATA_FLASH_START = 0x8000000
+                0x00002000                        DATA_FLASH_LENGTH = 0x2000
+                0x60000000                        QSPI_FLASH_START = 0x60000000
+                0x04000000                        QSPI_FLASH_LENGTH = 0x4000000
+                0x0100a100                        OPTION_SETTING_OFS0_START = 0x100a100
+                0x00000004                        OPTION_SETTING_OFS0_LENGTH = 0x4
+                0x0100a180                        OPTION_SETTING_OFS1_START = 0x100a180
+                0x00000004                        OPTION_SETTING_OFS1_LENGTH = 0x4
+                0x0100a1c0                        OPTION_SETTING_BPS_START = 0x100a1c0
+                0x00000004                        OPTION_SETTING_BPS_LENGTH = 0x4
+                0x0100a1e0                        OPTION_SETTING_PBPS_START = 0x100a1e0
+                0x00000004                        OPTION_SETTING_PBPS_LENGTH = 0x4
+                0x0100a200                        OPTION_SETTING_OFS1_SEC_START = 0x100a200
+                0x00000004                        OPTION_SETTING_OFS1_SEC_LENGTH = 0x4
+                0x0100a240                        OPTION_SETTING_BPS_SEC_START = 0x100a240
+                0x00000004                        OPTION_SETTING_BPS_SEC_LENGTH = 0x4
+                0x0100a260                        OPTION_SETTING_PBPS_SEC_START = 0x100a260
+                0x00000004                        OPTION_SETTING_PBPS_SEC_LENGTH = 0x4
+                0x0100a280                        OPTION_SETTING_OFS1_SEL_START = 0x100a280
+                0x00000004                        OPTION_SETTING_OFS1_SEL_LENGTH = 0x4
+                0x0100a2c0                        OPTION_SETTING_BPS_SEL_START = 0x100a2c0
+                0x00000004                        OPTION_SETTING_BPS_SEL_LENGTH = 0x4
+                0x0001f000                        RAM_LENGTH = 0x1f000
+
+/DISCARD/
+ *(.option_setting*)
+START GROUP
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/libgcc.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc.a
+LOAD /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a
+END GROUP
+
+.qspi_flash.startof
+                0x60000000        0x0
+                0x60000000                        __ddsc_QSPI_FLASH_START = .
+
+.ram.startof    0x20000000        0x0
+                0x20000000                        __ddsc_RAM_START = .
+
+__ram_dtc_vector$$
+                0x20000000        0x0
+                0x20000000                        __ram_dtc_vector$$Base = .
+ *(.fsp_dtc_vector_table)
+                0x20000000                        __ram_dtc_vector$$Limit = .
+
+__ram_from_qspi_flash$$
+                0x20000000        0x0 load address 0x60000000
+                0x20000000                        __ram_from_qspi_flash$$Base = .
+                0x60000000                        __ram_from_qspi_flash$$Load = LOADADDR (__ram_from_qspi_flash$$)
+ *(.ram_from_qspi_flash)
+ *(.ram_code_from_qspi_flash)
+                0x20000000                        __ram_from_qspi_flash$$Limit = .
+
+__qspi_flash_readonly$$
+                0x60000000        0x0
+                0x60000000                        __qspi_flash_readonly$$Base = .
+ *(.qspi_flash)
+ *(.qspi_flash_code)
+                0x60000000                        __qspi_flash_readonly$$Limit = .
+
+__qspi_flash_noinit$$
+                0x60000000        0x0
+                0x60000000                        __qspi_flash_noinit$$Base = .
+ *(.qspi_flash_noinit)
+                0x60000000                        __qspi_flash_noinit$$Limit = .
+
+.qspi_flash.endof
+                0x60000000        0x0
+                0x60000000                        __ddsc_QSPI_FLASH_END = .
+
+.data_flash.startof
+                0x08000000        0x0
+                0x08000000                        __ddsc_DATA_FLASH_START = .
+
+__ram_from_data_flash$$
+                0x20000000        0x0 load address 0x08000000
+                0x20000000                        __ram_from_data_flash$$Base = .
+                0x08000000                        __ram_from_data_flash$$Load = LOADADDR (__ram_from_data_flash$$)
+ *(.ram_from_data_flash)
+ *(.ram_code_from_data_flash)
+                0x20000000                        __ram_from_data_flash$$Limit = .
+
+__data_flash_readonly$$
+                0x08000000        0x0
+                0x08000000                        __data_flash_readonly$$Base = .
+ *(.data_flash)
+ *(.data_flash_code)
+                0x08000000                        __data_flash_readonly$$Limit = .
+
+__data_flash_noinit$$
+                0x08000000        0x0
+                0x08000000                        __data_flash_noinit$$Base = .
+ *(.data_flash_noinit)
+                0x08000000                        __data_flash_noinit$$Limit = .
+
+.data_flash.endof
+                0x08000000        0x0
+                0x08000000                        __ddsc_DATA_FLASH_END = .
+
+.flash.startof  0x00000000        0x0
+                0x00000000                        __ddsc_FLASH_START = .
+
+__flash_vectors$$
+                0x00000000       0x54
+                0x00000000                        __flash_vectors$$Base = .
+                0x00000000                        _VECTORS = .
+ *(.fixed_vectors)
+ .fixed_vectors
+                0x00000000       0x40 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+                0x00000000                __Vectors
+ *(.application_vectors)
+ .application_vectors
+                0x00000040       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+                0x00000040                g_vector_table
+                0x00000054                        __flash_vectors$$Limit = .
+
+.eh_frame       0x00000054        0x0
+ .eh_frame      0x00000054        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+
+__flash_noinit$$
+                0x00000054        0x0
+                0x00000054                        __flash_noinit$$Base = .
+ *(.flash_noinit)
+                0x00000054                        __flash_noinit$$Limit = .
+
+__ram_from_flash$$
+                0x20000000        0x0 load address 0x00000054
+                0x20000000                        __ram_from_flash$$Base = .
+                0x00000054                        __ram_from_flash$$Load = LOADADDR (__ram_from_flash$$)
+ *(.ram_from_flash)
+ *(.ram_code_from_flash)
+ *(.data*)
+ *(vtable)
+                0x20000000                        __ram_from_flash$$Limit = .
+
+__ram_noinit$$  0x20000000     0x201c load address 0x00000054
+                0x20000000                        __ram_noinit$$Base = .
+ *(.bss.g_heap)
+ *(.bss.g_main_stack)
+ .bss.g_main_stack
+                0x20000000     0x2000 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+                0x20000000                g_main_stack
+ *(.ram_noinit)
+ .ram_noinit    0x20002000       0x1c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ *(.noinit)
+                0x2000201c                        __ram_noinit$$Limit = .
+
+__ram_zero$$    0x2000201c       0x78 load address 0x00000054
+                0x2000201c                        __ram_zero$$Base = .
+ *(.ram)
+ *(.bss*)
+ .bss.completed.1
+                0x2000201c        0x1 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ *fill*         0x2000201d        0x3 
+ .bss.object.0  0x20002020       0x18 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .bss.g_bsp_group_irq_sources
+                0x20002038       0x38 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+                0x20002038                g_bsp_group_irq_sources
+ .bss.gp_renesas_isr_context
+                0x20002070       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+                0x20002070                gp_renesas_isr_context
+ .bss.g_protect_counters
+                0x20002084        0xa /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+                0x20002084                g_protect_counters
+ *fill*         0x2000208e        0x2 
+ .bss.SystemCoreClock
+                0x20002090        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+                0x20002090                SystemCoreClock
+                0x20002094                        __ram_zero$$Limit = .
+
+__ram_thread_stack$$
+                0x20002098        0x0 load address 0x00000058
+                0x20002098                        __ram_thread_stack$$Base = .
+ *(.stack?*)
+                0x20002098                        __ram_thread_stack$$Limit = .
+
+.ram.endof      0x20002400        0x0
+                0x20002400                        __ddsc_RAM_END = .
+
+.ram.flat_nsc   0x20002400        0x0
+                0x20002400                        __ddsc_RAM_NSC = .
+
+__flash_readonly$$
+                0x00000054    0x1e08c
+                0x00000054                        __flash_readonly$$Base = .
+ *(.flash)
+ *(.flash_code)
+ *(.text*)
+ .text.deregister_tm_clones
+                0x00000054       0x1c /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .text.register_tm_clones
+                0x00000070       0x28 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .text.__do_global_dtors_aux
+                0x00000098       0x28 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .text.frame_dummy
+                0x000000c0       0x24 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .text.hal_entry
+                0x000000e4      0x140 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+                0x000000e4                hal_entry
+ .text.base     0x00000224       0x70 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .text.v5_get32
+                0x00000294        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+                0x00000294                v5_get32
+ .text.v5_hello
+                0x00000298       0xdc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+                0x00000298                v5_hello
+ .text.v5_error
+                0x00000374       0x3c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+                0x00000374                v5_error
+ .text.v5_process
+                0x000003b0      0x154 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+                0x000003b0                v5_process
+ .text.pq_quantize.part.0
+                0x00000504       0x8c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .text.qdq      0x00000590       0xc0 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .text.pq_environment
+                0x00000650       0x48 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+                0x00000650                pq_environment
+ .text.pq_qcfs  0x00000698      0x124 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+                0x00000698                pq_qcfs
+ .text.pq_infer
+                0x000007bc      0x340 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+                0x000007bc                pq_infer
+ .text.startup.main
+                0x00000afc        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+                0x00000afc                main
+ .text.r_can_call_callback
+                0x00000b08       0x68 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .text.can_error_isr
+                0x00000b70       0xd8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+                0x00000b70                can_error_isr
+ .text.can_rx_isr
+                0x00000c48      0x114 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+                0x00000c48                can_rx_isr
+ .text.can_tx_isr
+                0x00000d5c       0xa4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+                0x00000d5c                can_tx_isr
+ .text.SystemCoreClockUpdate
+                0x00000e00       0x28 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+                0x00000e00                SystemCoreClockUpdate
+ .text.bsp_clock_init
+                0x00000e28       0xe8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+                0x00000e28                bsp_clock_init
+ .text.R_BSP_Init_RTC
+                0x00000f10       0x28 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+                0x00000f10                R_BSP_Init_RTC
+ .text.bsp_init_internal
+                0x00000f38        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+                0x00000f38                bsp_init
+                0x00000f38                bsp_init_internal
+ .text.NMI_Handler
+                0x00000f3c       0x3c /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+                0x00000f3c                NMI_Handler
+ .text.bsp_irq_cfg
+                0x00000f78       0x94 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+                0x00000f78                bsp_irq_cfg
+ .text.R_BSP_RegisterProtectEnable
+                0x0000100c       0x60 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+                0x0000100c                R_BSP_RegisterProtectEnable
+ .text.R_BSP_RegisterProtectDisable
+                0x0000106c       0x54 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+                0x0000106c                R_BSP_RegisterProtectDisable
+ .text.Default_Handler
+                0x000010c0        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+                0x000010c0                DebugMon_Handler
+                0x000010c0                HardFault_Handler
+                0x000010c0                SysTick_Handler
+                0x000010c0                PendSV_Handler
+                0x000010c0                UsageFault_Handler
+                0x000010c0                SecureFault_Handler
+                0x000010c0                Default_Handler
+                0x000010c0                MemManage_Handler
+                0x000010c0                SVC_Handler
+                0x000010c0                BusFault_Handler
+ .text.Reset_Handler
+                0x000010c4        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+                0x000010c4                Reset_Handler
+ .text.SystemRuntimeInit
+                0x000010d0       0x64 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+ .text.R_BSP_WarmStart
+                0x00001134        0x4 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+                0x00001134                R_BSP_WarmStart
+ .text.SystemInit
+                0x00001138       0xb8 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+                0x00001138                SystemInit
+ .text.fegetround
+                0x000011f0        0xc /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+                0x000011f0                fegetround
+ .text.memcpy   0x000011fc       0x1a /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+                0x000011fc                memcpy
+ .text.memcmp   0x00001216       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+                0x00001216                memcmp
+ .text.memset   0x00001236       0x10 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)
+                0x00001236                memset
+ *(.rodata*)
+ *fill*         0x00001246        0x2 
+ .rodata.v5_hello.str1.4
+                0x00001248       0x41 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ *fill*         0x00001289        0x3 
+ .rodata.spikeids_qdq_model
+                0x0000128c      0x118 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+                0x0000128c                spikeids_qdq_model
+ .rodata.l3_bias_scale
+                0x000013a4       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l3_bias
+                0x000013b8       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l3_weight_scale
+                0x000013cc       0x14 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l3_weight_zero
+                0x000013e0        0x5 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ *fill*         0x000013e5        0x3 
+ .rodata.l3_weights
+                0x000013e8      0x280 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l2_bias_scale
+                0x00001668      0x200 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l2_bias
+                0x00001868      0x200 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l2_weight_scale
+                0x00001a68      0x200 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l2_weight_zero
+                0x00001c68       0x80 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l2_weights
+                0x00001ce8     0x8000 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l1_bias_scale
+                0x00009ce8      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l1_bias
+                0x0000a0e8      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l1_weight_scale
+                0x0000a4e8      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l1_weight_zero
+                0x0000a8e8      0x100 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l1_weights
+                0x0000a9e8    0x10000 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l0_bias_scale
+                0x0001a9e8      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l0_bias
+                0x0001ade8      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l0_weight_scale
+                0x0001b1e8      0x400 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l0_weight_zero
+                0x0001b5e8      0x100 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.l0_weights
+                0x0001b6e8     0x2900 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .rodata.spikeids_qdq_sha256
+                0x0001dfe8       0x41 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+                0x0001dfe8                spikeids_qdq_sha256
+ *fill*         0x0001e029        0x3 
+ .rodata.g_interrupt_event_link_select
+                0x0001e02c        0xa /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+                0x0001e02c                g_interrupt_event_link_select
+ *fill*         0x0001e036        0x2 
+ .rodata.g_prcr_masks
+                0x0001e038        0xa /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+ *fill*         0x0001e042        0x2 
+ .rodata.g_init_info
+                0x0001e044       0x10 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+                0x0001e044                g_init_info
+ .rodata.copy_list
+                0x0001e054       0x30 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ .rodata.zero_list
+                0x0001e084        0xc /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ *(.mcuboot_sce9_key)
+ *(.version)
+ .version       0x0001e090       0x50 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+                0x0001e0e0                        __flash_readonly$$Limit = .
+
+.glue_7         0x0001e0e0        0x0
+ .glue_7        0x0001e0e0        0x0 linker stubs
+
+.glue_7t        0x0001e0e0        0x0
+ .glue_7t       0x0001e0e0        0x0 linker stubs
+
+.vfp11_veneer   0x0001e0e0        0x0
+ .vfp11_veneer  0x0001e0e0        0x0 linker stubs
+
+.v4_bx          0x0001e0e0        0x0
+ .v4_bx         0x0001e0e0        0x0 linker stubs
+
+.init           0x0001e0e0        0x4
+ .init          0x0001e0e0        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+                0x0001e0e0                _init
+
+.fini           0x0001e0e4        0x4
+ .fini          0x0001e0e4        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+                0x0001e0e4                _fini
+
+.iplt           0x0001e0e8        0x0
+ .iplt          0x0001e0e8        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+
+.tm_clone_table
+                0x0001e0e8        0x0
+ .tm_clone_table
+                0x0001e0e8        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .tm_clone_table
+                0x0001e0e8        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+
+.igot.plt       0x0001e0e8        0x0
+ .igot.plt      0x0001e0e8        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+
+__flash_ctor$$
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ EXCLUDE_FILE(*crtend.o *crtend?.o) *(.ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ EXCLUDE_FILE(*crtend.o *crtend?.o) *(.dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+__flash_preinit_array$$
+                0x0001e0e8        0x0
+                0x0001e0e8                        __preinit_array_start = .
+ *(.preinit_array)
+                0x0001e0e8                        __preinit_array_end = .
+
+__flash_.got$$
+ *(.got.plt)
+ *(.got)
+
+__flash_init_array$$
+                0x0001e0e8        0x4
+                0x0001e0e8                        __init_array_start = .
+ *(SORT_BY_NAME(.init_array.*))
+ *(.init_array)
+ .init_array    0x0001e0e8        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x0001e0ec                        __init_array_end = .
+
+__flash_fini_array$$
+                0x0001e0ec        0x4
+                0x0001e0ec                        __fini_array_start = .
+ *(SORT_BY_NAME(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x0001e0ec        0x4 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x0001e0f0                        __fini_array_end = .
+
+.rel.dyn        0x0001e0f0        0x0
+ .rel.iplt      0x0001e0f0        0x0 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+
+__flash_arm.extab$$
+ *(.ARM.extab*)
+ *(.gnu.linkonce.armextab.*)
+
+__flash_arm.exidx$$
+                0x0001e0f0        0x0
+                0x0001e0f0                        __exidx_start = .
+ *(.ARM.exidx*)
+ *(.gnu.linkonce.armexidx.*)
+                0x0001e0f0                        __exidx_end = .
+
+.flash.endof    0x0001e400        0x0
+                0x0001e400                        __ddsc_FLASH_END = .
+
+.flash.flat_nsc
+                0x0001e400        0x0
+                0x0001e400                        __ddsc_FLASH_NSC = .
+
+.option_setting_ofs0.startof
+                0x0100a100        0x0
+                0x0100a100                        __ddsc_OPTION_SETTING_OFS0_START = .
+
+__option_setting_ofs0_reg$$
+                0x0100a100        0x0
+                0x0100a100                        __option_setting_ofs0_reg$$Base = .
+ *(.option_setting_ofs0)
+                0x0100a100                        __option_setting_ofs0_reg$$Limit = .
+
+.option_setting_ofs0.endof
+                0x0100a100        0x0
+                0x0100a100                        __ddsc_OPTION_SETTING_OFS0_END = .
+
+.option_setting_ofs1.startof
+                0x0100a180        0x0
+                0x0100a180                        __ddsc_OPTION_SETTING_OFS1_START = .
+
+__option_setting_ofs1_reg$$
+                0x0100a180        0x0
+                0x0100a180                        __option_setting_ofs1_reg$$Base = .
+ *(.option_setting_ofs1)
+                0x0100a180                        __option_setting_ofs1_reg$$Limit = .
+
+.option_setting_ofs1.endof
+                0x0100a180        0x0
+                0x0100a180                        __ddsc_OPTION_SETTING_OFS1_END = .
+
+.option_setting_bps.startof
+                0x0100a1c0        0x0
+                0x0100a1c0                        __ddsc_OPTION_SETTING_BPS_START = .
+
+__option_setting_bps_reg$$
+                0x0100a1c0        0x0
+                0x0100a1c0                        __option_setting_bps_reg$$Base = .
+ *(.option_setting_bps)
+                0x0100a1c0                        __option_setting_bps_reg$$Limit = .
+
+.option_setting_bps.endof
+                0x0100a1c0        0x0
+                0x0100a1c0                        __ddsc_OPTION_SETTING_BPS_END = .
+
+.option_setting_pbps.startof
+                0x0100a1e0        0x0
+                0x0100a1e0                        __ddsc_OPTION_SETTING_PBPS_START = .
+
+__option_setting_pbps_reg$$
+                0x0100a1e0        0x0
+                0x0100a1e0                        __option_setting_pbps_reg$$Base = .
+ *(.option_setting_pbps)
+                0x0100a1e0                        __option_setting_pbps_reg$$Limit = .
+
+.option_setting_pbps.endof
+                0x0100a1e0        0x0
+                0x0100a1e0                        __ddsc_OPTION_SETTING_PBPS_END = .
+
+.option_setting_ofs1_sec.startof
+                0x0100a200        0x0
+                0x0100a200                        __ddsc_OPTION_SETTING_OFS1_SEC_START = .
+
+__option_setting_ofs1_sec_reg$$
+                0x0100a200        0x0
+                0x0100a200                        __option_setting_ofs1_sec_reg$$Base = .
+ *(.option_setting_ofs1_sec)
+                0x0100a200                        __option_setting_ofs1_sec_reg$$Limit = .
+
+.option_setting_ofs1_sec.endof
+                0x0100a200        0x0
+                0x0100a200                        __ddsc_OPTION_SETTING_OFS1_SEC_END = .
+
+.option_setting_bps_sec.startof
+                0x0100a240        0x0
+                0x0100a240                        __ddsc_OPTION_SETTING_BPS_SEC_START = .
+
+__option_setting_bps_sec_reg$$
+                0x0100a240        0x0
+                0x0100a240                        __option_setting_bps_sec_reg$$Base = .
+ *(.option_setting_bps_sec)
+                0x0100a240                        __option_setting_bps_sec_reg$$Limit = .
+
+.option_setting_bps_sec.endof
+                0x0100a240        0x0
+                0x0100a240                        __ddsc_OPTION_SETTING_BPS_SEC_END = .
+
+.option_setting_pbps_sec.startof
+                0x0100a260        0x0
+                0x0100a260                        __ddsc_OPTION_SETTING_PBPS_SEC_START = .
+
+__option_setting_pbps_sec_reg$$
+                0x0100a260        0x0
+                0x0100a260                        __option_setting_pbps_sec_reg$$Base = .
+ *(.option_setting_pbps_sec)
+                0x0100a260                        __option_setting_pbps_sec_reg$$Limit = .
+
+.option_setting_pbps_sec.endof
+                0x0100a260        0x0
+                0x0100a260                        __ddsc_OPTION_SETTING_PBPS_SEC_END = .
+
+.option_setting_ofs1_sel.startof
+                0x0100a280        0x0
+                0x0100a280                        __ddsc_OPTION_SETTING_OFS1_SEL_START = .
+
+__option_setting_ofs1_sel_reg$$
+                0x0100a280        0x0
+                0x0100a280                        __option_setting_ofs1_sel_reg$$Base = .
+ *(.option_setting_ofs1_sel)
+                0x0100a280                        __option_setting_ofs1_sel_reg$$Limit = .
+
+.option_setting_ofs1_sel.endof
+                0x0100a280        0x0
+                0x0100a280                        __ddsc_OPTION_SETTING_OFS1_SEL_END = .
+
+.option_setting_bps_sel.startof
+                0x0100a2c0        0x0
+                0x0100a2c0                        __ddsc_OPTION_SETTING_BPS_SEL_START = .
+
+__option_setting_bps_sel_reg$$
+                0x0100a2c0        0x0
+                0x0100a2c0                        __option_setting_bps_sel_reg$$Base = .
+ *(.option_setting_bps_sel)
+                0x0100a2c0                        __option_setting_bps_sel_reg$$Limit = .
+
+.option_setting_bps_sel.endof
+                0x0100a2c0        0x0
+                0x0100a2c0                        __ddsc_OPTION_SETTING_BPS_SEL_END = .
+
+.v5_mailbox     0x2001f000      0x200
+ *(.v5_mailbox)
+ .v5_mailbox    0x2001f000      0x200 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+                0x2001f000                g_v5_mailbox
+                0x00000001                        ASSERT ((SIZEOF (.v5_mailbox) == 0x200), mailbox ABI size)
+                0x00000001                        ASSERT (((ADDR (.v5_mailbox) + SIZEOF (.v5_mailbox)) <= 0x20020000), mailbox SRAM)
+OUTPUT(/home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/firmware.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x36
+ .ARM.attributes
+                0x00000000       0x26 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crti.o
+ .ARM.attributes
+                0x00000026       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .ARM.attributes
+                0x0000005e       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+ .ARM.attributes
+                0x00000098       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .ARM.attributes
+                0x000000d2       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .ARM.attributes
+                0x0000010c       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .ARM.attributes
+                0x00000146       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+ .ARM.attributes
+                0x00000180       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+ .ARM.attributes
+                0x000001ba       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .ARM.attributes
+                0x000001f4       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .ARM.attributes
+                0x0000022e       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .ARM.attributes
+                0x00000268       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+ .ARM.attributes
+                0x000002a2       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+ .ARM.attributes
+                0x000002dc       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+ .ARM.attributes
+                0x00000316       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ .ARM.attributes
+                0x00000350       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+ .ARM.attributes
+                0x0000038a       0x3a /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+ .ARM.attributes
+                0x000003c4       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+ .ARM.attributes
+                0x000003fc       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000434       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+ .ARM.attributes
+                0x0000046c       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)
+ .ARM.attributes
+                0x000004a4       0x38 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v8-m.main+fp/hard/crtend.o
+
+.comment        0x00000000       0x44
+ .comment       0x00000000       0x44 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_00.o
+                                 0x45 (size before relaxing)
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_01.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_02.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_03.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_04.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_08.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_09.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_11.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_12.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_14.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_18.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_21.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_25.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_26.o
+ .comment       0x00000044       0x45 /home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/obj_27.o
+
+.debug_frame    0x00000000       0x90
+ .debug_frame   0x00000000       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-fegetround.o)
+ .debug_frame   0x00000020       0x28 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcpy-stub.o)
+ .debug_frame   0x00000048       0x28 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memcmp.o)
+ .debug_frame   0x00000070       0x20 /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-memset.o)

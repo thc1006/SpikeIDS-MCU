@@ -1,0 +1,24 @@
+{
+  "actual_return_code": 1,
+  "argv": [
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc",
+    "-mcpu=cortex-m55",
+    "-mthumb",
+    "-mfloat-abi=soft",
+    "-mgeneral-regs-only",
+    "-mcmse",
+    "-nostdlib",
+    "-nostartfiles",
+    "-nodefaultlibs",
+    "-T",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/linker.ld",
+    "-Wl,--gc-sections,--fatal-warnings,--build-id=none",
+    "-Wl,-Map=/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_02/stage.map",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_02/main.o",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_02/startup.o",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_02/platform_init.o",
+    "-o",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_02/stage.elf"
+  ],
+  "timed_out": false
+}

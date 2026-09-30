@@ -1,0 +1,131 @@
+ST Edge AI Core v3.0.0-20426 123672867
+PASS:   0%|          | 0/103 [00:00<?, ?it/s]PASS:  11%|█         | 11/103 [00:04<00:38,  2.37it/s]PASS:  25%|██▌       | 26/103 [00:04<00:11,  6.78it/s]PASS:  46%|████▌     | 47/103 [00:04<00:03, 15.06it/s]PASS:  70%|██████▉   | 72/103 [00:04<00:01, 27.98it/s]                                                      WARNING: _layers_layers_1_Clip_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_1_Mul_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_1_Add_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_1_Floor_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_1_Div_1_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_3_Clip_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_3_Mul_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_3_Add_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_3_Floor_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_3_Div_1_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_5_Clip_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_5_Mul_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_5_Add_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_5_Floor_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]                                                      WARNING: _layers_layers_5_Div_1_output_0 is not quantized
+PASS:  70%|██████▉   | 72/103 [00:05<00:01, 27.98it/s]PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       >>>> EXECUTING NEURAL ART COMPILER
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                         /home/thc1006/opt/stedgeai/3.0/Utilities/linux/atonn -i "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/model_qdq_int8_OE_3_3_1.onnx" --json-quant-file "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/model_qdq_int8_OE_3_3_1_Q.json" -g "nsl_qcfs_seed0.c" --load-mdesc "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc" --load-mpool "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/internal_sram.mpool" --load-cdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc --save-mpool-file "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate_workspace/neural_art__nsl_qcfs_seed0/internal_sram.mpool" --out-dir-prefix "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate_workspace/neural_art__nsl_qcfs_seed0/" --network-name "nsl_qcfs_seed0" --native-float --cache-maintenance --Os --Oauto-sched --output-info-file "c_info.json" --generate-stai
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       <<<< DONE EXECUTING NEURAL ART COMPILER
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       
+ Exec/report summary (generate)
+ --------------------------------------------------------------------------------------------------------------------------------------------
+ model file         :   /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/model_qdq_int8.onnx   
+ type               :   onnx                                                                                                                 
+ c_name             :   nsl_qcfs_seed0                                                                                                       
+ compression        :   lossless                                                                                                             
+ options            :   allocate-inputs, allocate-outputs, use-lite-runtime, use-st-ai                                                       
+ optimization       :   balanced                                                                                                             
+ target/series      :   stm32n6npu                                                                                                           
+ workspace dir      :   /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate_workspace    
+ output dir         :   /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate              
+ model_fmt          :   ss/sa per tensor                                                                                                     
+ model_name         :   model_qdq_int8                                                                                                       
+ model_hash         :   0x629a22736ba964a507fccc75c2d06eec                                                                                   
+ params #           :   110,097 items (430.07 KiB)                                                                                           
+ --------------------------------------------------------------------------------------------------------------------------------------------
+ input 1/1          :   'Input_12_out_0', f32(1x41), 164 Bytes, activations                                                                  
+ output 1/1         :   'Dequantize_53_out_0', f32(1x5), 20 Bytes, activations                                                               
+ macc               :   0                                                                                                                    
+ weights (ro)       :   145,457 B (142.05 KiB) (1 segment) / -294,931(-67.0%) vs float model                                                 
+ activations (rw)   :   2,048 B (2.00 KiB) (1 segment) *                                                                                     
+ ram (total)        :   2,048 B (2.00 KiB) = 2,048 + 0 + 0                                                                                   
+ --------------------------------------------------------------------------------------------------------------------------------------------
+ (*) 'input'/'output' buffers are allocated in the activations buffer
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      
+Computing AI RT data/code size (target=stm32n6npu)..
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       -> compiler "gcc:arm-none-eabi-gcc" is not in the PATH
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Compilation details
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                         ---------------------------------------------------------------------------------
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Compiler version: 1.1.3-8
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Compiler arguments:  -i /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/model_qdq_int8_OE_3_3_1.onnx --json-quant-file /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/model_qdq_int8_OE_3_3_1_Q.json -g nsl_qcfs_seed0.c --load-mdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc --load-mpool /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/internal_sram.mpool --load-cdesc /home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc --save-mpool-file /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate_workspace/neural_art__nsl_qcfs_seed0/internal_sram.mpool --out-dir-prefix /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate_workspace/neural_art__nsl_qcfs_seed0/ --network-name nsl_qcfs_seed0 --native-float --cache-maintenance --Os --Oauto-sched --output-info-file c_info.json --generate-stai
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      ====================================================================================
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Memory usage information  (input/output buffers are included in activations)
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                         ---------------------------------------------------------------------------------
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      	weights_sram [0x34200000 - 0x34240000]:    142.048 kB /    256.000 kB  ( 55.49 % used) -- weights:    142.048 kB ( 55.49 % used)  activations:          0  B (  0.00 % used)
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      	activations_sram [0x34240000 - 0x34244000]:      2.000 kB /     16.000 kB  ( 12.50 % used) -- weights:          0  B (  0.00 % used)  activations:      2.000 kB ( 12.50 % used)
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Total:                                           144.048 kB                                  -- weights:    142.048 kB                  activations:      2.000 kB
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      ====================================================================================
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Used memory ranges
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                         ---------------------------------------------------------------------------------
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      	weights_sram [0x34200000 - 0x34240000]: 0x34200000-0x34223840
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      	activations_sram [0x34240000 - 0x34244000]: 0x34240000-0x34240800
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      ====================================================================================
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Epochs details
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                         ---------------------------------------------------------------------------------
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      Total number of epochs                               40
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      >> pure software (SW) epochs                         31
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      >> hybrid epochs (using both software and hardware)   1
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      >> pure hardware (HW or EC) epochs                    8  (implemented in 0 epoch controller blobs/meta epochs)
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      +----------+--------+------------------+
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch ID |  Type  |     Details      |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      +----------+--------+------------------+
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_1  |   SW   |  QuantizeLinear  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_3  |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_4  |   SW   | DequantizeLinear |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_5  |   SW   |   Conv(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_6  | Hybrid |       Cast       |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_7  |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_8  |   SW   | DequantizeLinear |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_9  |   SW   |    Div(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_10 |   SW   |   Clip(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_11 |   SW   |    Mul(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_12 |   SW   |    Add(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_13 |   SW   |   Floor(float)   |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_14 |   SW   |    Div(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_15 |   SW   |    Mul(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_16 |   SW   |  QuantizeLinear  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_18 |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_19 |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_20 |   SW   | DequantizeLinear |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_21 |   SW   |    Div(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_22 |   SW   |   Clip(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_23 |   SW   |    Mul(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_24 |   SW   |    Add(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_25 |   SW   |   Floor(float)   |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_26 |   SW   |    Div(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_27 |   SW   |    Mul(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_28 |   SW   |  QuantizeLinear  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_30 |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_31 |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_32 |   SW   | DequantizeLinear |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_33 |   SW   |    Div(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_34 |   SW   |   Clip(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_35 |   SW   |    Mul(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_36 |   SW   |    Add(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_37 |   SW   |   Floor(float)   |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_38 |   SW   |    Div(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_39 |   SW   |    Mul(float)    |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_40 |   SW   |  QuantizeLinear  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_42 |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_43 |   HW   |                  |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      | epoch_44 |   SW   | DequantizeLinear |
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      +----------+--------+------------------+
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      ====================================================================================
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       Generated files (8)
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       -------------------------------------------------------------------------------------------------------------------------------------------------
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/model_qdq_int8_OE_3_3_1.onnx
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/model_qdq_int8_OE_3_3_1_Q.json
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0.c
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0_c_info.json
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/stai_nsl_qcfs_seed0.h
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0_atonbuf.SRAM_WEIGHTS.raw
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/stai_nsl_qcfs_seed0.c
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                       /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0.h
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      
+Creating txt report file /home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/internal_sram_actual_01/generate/nsl_qcfs_seed0_generate_report.txt
+PASS:  91%|█████████▏| 94/103 [00:05<00:00, 41.11it/s]                                                      elapsed time (GENERATE): 15.866s

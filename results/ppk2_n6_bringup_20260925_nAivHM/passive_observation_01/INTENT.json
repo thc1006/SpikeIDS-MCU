@@ -1,0 +1,62 @@
+{
+  "acquisition_completed": false,
+  "commands": [],
+  "current_or_energy_computed": false,
+  "duration_is_not_electrical_time": true,
+  "duration_policy_seconds": 3.0,
+  "electrical_safety_verified": false,
+  "energy_measured": false,
+  "input_voltage_measured": false,
+  "kind": "passive_existing_state_raw_diagnostic",
+  "model_executed": false,
+  "output_state": "not queried or changed",
+  "output_switch_command_sent": false,
+  "physical_lossless_sampling_verified": false,
+  "research_measurement_accepted": false,
+  "schema": 1,
+  "source_pins_before": {
+    "/home/thc1006/.local/opt/ppk2-headless/ppk2_info.py": {
+      "ctime_ns": 1790285592497559747,
+      "device": 66306,
+      "inode": 18671028,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790285592497559747,
+      "sha256": "e35b4697f974c74c04ed97965a9df1d9f18ea19a046d3982f0ec59e625f41b13",
+      "size": 4059
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/prepare_vendor.py": {
+      "ctime_ns": 1790292532613142613,
+      "device": 66306,
+      "inode": 31773176,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292532613142613,
+      "sha256": "cd1bb490fa913d0ffde3c5c59ff8108134537228ded9ec130e5ac17939f7a94f",
+      "size": 19322
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/observe_fixed.py": {
+      "ctime_ns": 1790298836645444564,
+      "device": 66306,
+      "inode": 31775911,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790298836645444564,
+      "sha256": "7ed8fcd668f939665e638e55bb8c486ba727e90687ddf35e91a0b88acf030334",
+      "size": 19613
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/observe_passive.py": {
+      "ctime_ns": 1790304156549410980,
+      "device": 66306,
+      "inode": 31775922,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790304156549410980,
+      "sha256": "ce1ca319dfb71c1d76f3604718d80e8dcc76fa866b34d24a2105f07509c282ec",
+      "size": 8922
+    }
+  },
+  "target_accessed": false,
+  "timestamp_utc": "2026-09-25T02:49:01.262265+00:00",
+  "voltage_or_mode_changed": false
+}

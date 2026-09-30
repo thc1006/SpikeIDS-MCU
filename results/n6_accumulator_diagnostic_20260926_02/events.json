@@ -1,0 +1,73 @@
+[
+  {
+    "address": 872831032,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 873431068,
+    "hex": "01000000600a000029000000",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 873431168,
+    "hex": "e727d9bdfc85fbbdcfa8b23fa657403f701de9bbaae496bb968a6cbc5fe3b7bd58b309bcef02c2bd5a06e2bc94f89d3fd87c2bbc36c713bd3dbec1bc277235bc58eed4bcf5a89ebc501e2cbd0000000021734ebb3de6c7bddc9239bffb10bcbe5f3a23bf57ee21bf3c60bfbec551bfbea46e453f9f01b3be4cd0bfbee642e2be25e3573eb6309e3ec7618fbe2ec3e5be132ee6bd13ab23bf0b0d20bf9246c6be7350c0be",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 873431060,
+    "hex": "01000000",
+    "op": "mailbox_write"
+  },
+  {
+    "address": 872831032,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872835592,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872835592,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830904,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830904,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872835584,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872835584,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872830804,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872830804,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872835576,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872835576,
+    "op": "removed_hw_breakpoint"
+  },
+  {
+    "address": 872828712,
+    "op": "set_hw_breakpoint"
+  },
+  {
+    "address": 872828712,
+    "op": "removed_hw_breakpoint"
+  }
+]

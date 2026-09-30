@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "operator_observed_saved_ppk2_pulse_oracle_exit",
+  "actual_exec_session": null,
+  "actual_completion_chunk": "f59197",
+  "actual_return_code": 0,
+  "source_file": "actual_pulse_oracle.py",
+  "source_sha256": "8efc8c14c69d52f21e26436e928a95f391a7b99836097a8258a8fc660c03d03b",
+  "output_file": "actual_pulse_oracle.json",
+  "output_sha256": "27f4c499fb4a96d2497d96bfb72d6a10631a133ea730793c9127bea6fcf3e6f0",
+  "metadata_summary_chunk": "be3018",
+  "metadata_summary_return_code": 0,
+  "saved_frames": 5120,
+  "official_python_comparisons": 20480,
+  "binary64_mismatches": 0,
+  "hardware_accessed": false,
+  "power_changed": false,
+  "three_second_stability_established": false,
+  "normal_current_established": false,
+  "research_measurement_accepted": false
+}

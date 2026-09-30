@@ -1,0 +1,10 @@
+{
+  "kind": "S6-original-first-Gemm-float-semantics-SM04",
+  "mailbox_address": "0x340f8000",
+  "mailbox_bytes": 512,
+  "deployment_tag": "0x534d3034",
+  "remaining_offsets": "unchanged SM03",
+  "executable_epochs": {"hardware": 7, "software": 32, "hybrid": 0},
+  "energy_measured": false,
+  "board_validated": false
+}

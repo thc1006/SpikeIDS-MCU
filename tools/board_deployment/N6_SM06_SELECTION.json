@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "kind": "SM06_fixed_model_two_run_numerical_acceptance_only",
+  "model": {
+    "dataset": "nslkdd",
+    "architecture": "qcfs_quantized_ann_not_temporal_snn",
+    "seed": 0,
+    "replica": "primary",
+    "epoch": 80,
+    "shape": [
+      41,
+      256,
+      256,
+      128,
+      5
+    ]
+  },
+  "scope": {
+    "board": "STM32N6570-DK",
+    "deployment_tag": "SM06",
+    "validation_rows_per_run": 1024,
+    "logits_per_row": 5,
+    "bitwise_equal_values_per_run": 5120,
+    "full_logit_parity_passed": true,
+    "two_run_reload_repeatability_passed": true,
+    "all_possible_inputs_equivalence_proven": false,
+    "power_cycle_repeatability_proven": false,
+    "energy_measured": false,
+    "latency_validated": false,
+    "frequency_measured": false,
+    "optimized_performance_accepted": false,
+    "all_three_boards_accepted": false,
+    "research_measurement_accepted": false
+  },
+  "pins": {
+    "results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/calibration_rows.json": "af48ddf5d8d218b4975385b7819ef8e30d1db495650488062a22cd0860f74cbe",
+    "results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_policy.json": "2ca6fda8b6bbca50784a48318544f55634b48e6dddd8af04d0d8dc5109639d0f",
+    "results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_report.json": "46a0f963aa7401320a017a2506cfca0f704b81d50270f4dda76d4fca34e4e881",
+    "results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+    "results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/preprocessing.json": "c296ddcd0cc89eac605a3277f9077a9f3b76d34a737496328a915763e3f02aec",
+    "results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+    "results/v5_run_20260921_r6_recovery1/results/nslkdd_qcfs/runs/qcfs_seed_0.pt": "1e1033cd394283d7a82c6f6d8713eb1beeec9ff4b9d43cd247076833920b837e",
+    "tools/n6_deployment/firmware_sram_accum24_route/build_actual_01/RESULT.json": "582163fddcd5e08836588fd4d89f7f6c45540ce0bc017c76fc9ae999d4dc73c6",
+    "tools/n6_deployment/firmware_sram_accum24_route/build_actual_01/n6_sram.bin": "656c04d59f1ad1cc009d1240ca29110714d2f292b0c7640f35a241373bf6c689",
+    "tools/n6_deployment/firmware_sram_accum24_route/build_actual_01/n6_sram.elf": "aa31c20c3f3d3078c5b5e356efaee9fae0a46dfbdf42e6262624033fdaafaec4",
+    "tools/n6_deployment/host_sram_accum24_route/ACCUMULATOR_GATE.json": "2e148b3cb5a67f17ef58a73a1875d75d9b5c9d99b054c2b6c3f14354cc4255b6",
+    "tools/n6_deployment/host_sram_accum24_route/fullrun.py": "c6d66ec1f863d5d0646f9dac917746c6fd5b45723d408df8715bd9aa6d178458",
+    "tools/n6_deployment/host_sram_accum24_route/review_accumulators.py": "71c5fe199c0fcdc0312707e691dc0ccf0384fecf9bd9c85eb1ec65134b058a27",
+    "tools/n6_deployment/host_sram_accum24_route/review_saved.py": "22591caa2724b6e8804f50c7ec8e623785b2c2174458501a422d2c3e5690f52a"
+  },
+  "gate": "tools/n6_deployment/host_sram_accum24_route/ACCUMULATOR_GATE.json",
+  "raw_diagnostic": "results/n6_accumulator_diagnostic_20260926_02",
+  "runs": [
+    {
+      "directory": "results/n6_sram_validation_20260926_08",
+      "inventory_sha256": "1192729f6f8bbfa301ec8cddd14c96156960998634ebeda54cf682d64b96a03a",
+      "artifact_count": 1060,
+      "platform_nonce": 4082609654,
+      "external_tool_receipt": {
+        "launch_chunk": "195b2f",
+        "completion_chunk": "92ef8d",
+        "exit_code": 0
+      }
+    },
+    {
+      "directory": "results/n6_sram_validation_20260926_09",
+      "inventory_sha256": "2fd5c779dca214cbdb2d6189e613f10b75883dca80c68f0b21e4f42d27580211",
+      "artifact_count": 1060,
+      "platform_nonce": 742385446,
+      "external_tool_receipt": {
+        "launch_chunk": "3c5b39",
+        "completion_chunk": "e09089",
+        "exit_code": 0
+      }
+    }
+  ],
+  "limits": [
+    "Pins are integrity checks, not cryptographic authentication of the instrument or the external tool receipt.",
+    "Raw NPU accumulator agreement covers one original row, 389 integer values; full parity covers original 1024 validation rows twice.",
+    "Only fresh RAM reload and platform/NPU initialization were repeated, not removal/reapplication of physical power.",
+    "Nominal 64 MHz, caches disabled; no accepted latency or energy measurement.",
+    "First dense and quantization/QCFS/requantization on CPU; later three dense integer dot products on actual NPU; not all-NPU or all-integer execution.",
+    "Original export records remain unchanged, including quantization versus FP32 differences."
+  ]
+}

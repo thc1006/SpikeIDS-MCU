@@ -1,0 +1,110 @@
+{
+  "dataset": "cicids2017",
+  "source_contract_version": 2,
+  "provenance_note": "Pinned eight MachineLearningCVE CSVs. Every local CSV is byte-identical to the corresponding member of the user-supplied MachineLearningCSV.zip and to the pinned c01dsnap mirror. GeneratedLabelledFlows.zip is supporting upstream provenance with a different schema and is not a model input.",
+  "origin": {
+    "publisher": "Canadian Institute for Cybersecurity, University of New Brunswick",
+    "url": "https://www.unb.ca/cic/datasets/ids-2017.html",
+    "mirror_repository": "c01dsnap/CIC-IDS2017 on Hugging Face Datasets",
+    "mirror_url": "https://huggingface.co/datasets/c01dsnap/CIC-IDS2017",
+    "mirror_revision": "4e9edfa727f800b6f595bc2ee7420527156562b2"
+  },
+  "label_normalization": {
+    "scope": "exact full-label aliases only",
+    "reason": "The pinned official ZIP contains UTF-8 U+FFFD (bytes EF BF BD) at the dash position in the three Web Attack labels.",
+    "aliases": {
+      "Web Attack � Brute Force": "Web Attack - Brute Force",
+      "Web Attack � Sql Injection": "Web Attack - Sql Injection",
+      "Web Attack � XSS": "Web Attack - XSS"
+    }
+  },
+  "physical_duplicate_column_policy": {
+    "name": "Fwd Header Length",
+    "indices_zero_based": [34, 55],
+    "drop_index_zero_based": 55,
+    "require_chunkwise_value_identity": true
+  },
+  "supporting_archives": [
+    {
+      "path_from_repository_root": "MachineLearningCSV.zip",
+      "bytes": 235102953,
+      "md5": "4f83860afbf29cac8163854095bf6cf7",
+      "sha256": "c3f26274b36c837ccf28ffd2dbf4582941c30b3ee70a635c6e5b2f87c4727928",
+      "use": "exact container for all eight model-input CSVs"
+    },
+    {
+      "path_from_repository_root": "GeneratedLabelledFlows.zip",
+      "bytes": 283876488,
+      "md5": "5ca3f8f69e3514950681615824149973",
+      "sha256": "7bdbef286f8893f31c6db12105fa097fa5c2dcc6733179037a08129d150ea27a",
+      "use": "supporting upstream labelled-flow artifact only; not a model input"
+    }
+  ],
+  "files": [
+    {
+      "path": "cicids2017/Monday-WorkingHours.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 176927918,
+      "sha256": "852c4beb34eda186f32561fa79df7a0747e92e1a6535b01270820dd9ffe17f34",
+      "expected_rows": 529918,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Tuesday-WorkingHours.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 135078995,
+      "sha256": "52b8692ae8c7d2ed04671fe2b98335693c0a92c7ab157d8c8b534d6523080851",
+      "expected_rows": 445909,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Wednesday-workingHours.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 225166395,
+      "sha256": "893c27dc968bf7a8adef1689f90be55ca4a4dc3088fb63d6ff247ac56856df2a",
+      "expected_rows": 692703,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 52023263,
+      "sha256": "d67066211fb1689c78406f1506f4c44704ecb92088353d5c96d96d6474eb819d",
+      "expected_rows": 170366,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 83102436,
+      "sha256": "6bcda3857c2504676034e3ea57762d38393cc734cb377a726bd5cb153961b1b5",
+      "expected_rows": 288602,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Friday-WorkingHours-Morning.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 58316725,
+      "sha256": "53a41c24d570ea83b7ac55b2e94df94e7a8216aeb80a2af0246b6bc8bb543000",
+      "expected_rows": 191033,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 76906168,
+      "sha256": "ca1824c51bfbb7b3c72290a11be04366ba8815878c6a1cc5c44cb1cee269e99b",
+      "expected_rows": 286467,
+      "expected_columns": 79
+    },
+    {
+      "path": "cicids2017/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv",
+      "role": "combined",
+      "bytes": 77123859,
+      "sha256": "6ff1580f5f81c0ae28a26f7631721018577f5f7c5e0feac28b795fcfe7b411ee",
+      "expected_rows": 225745,
+      "expected_columns": 79
+    }
+  ],
+  "expected_total_rows": 2830743
+}

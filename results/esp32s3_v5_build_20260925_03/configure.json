@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/usr/bin/cmake",
+    "-S",
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/esp32s3_v5",
+    "-B",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build",
+    "-G",
+    "Ninja",
+    "-DPYTHON=/home/thc1006/.espressif/python_env/idf5.4_py3.14_env/bin/python",
+    "-DIDF_TARGET=esp32s3",
+    "-DSDKCONFIG=/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/sdkconfig",
+    "-DSDKCONFIG_DEFAULTS=/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/esp32s3_v5/sdkconfig.defaults",
+    "-DPYTHON_DEPS_CHECKED=1"
+  ],
+  "returncode": 0,
+  "timeout": false
+}

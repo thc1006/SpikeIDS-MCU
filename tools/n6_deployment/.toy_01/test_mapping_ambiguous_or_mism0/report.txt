@@ -1,0 +1,4 @@
+Total number of epochs                               8
+>> pure software (SW) epochs                         3
+>> hybrid epochs (using both software and hardware)  0
+>> pure hardware (HW or EC) epochs                   4

@@ -1,0 +1,205 @@
+00000000 A FLASH_START
+00000000 R _VECTORS
+00000000 00000040 R __Vectors
+00000000 R __ddsc_FLASH_START
+00000000 R __flash_vectors$$Base
+00000004 A OPTION_SETTING_BPS_LENGTH
+00000004 A OPTION_SETTING_BPS_SEC_LENGTH
+00000004 A OPTION_SETTING_BPS_SEL_LENGTH
+00000004 A OPTION_SETTING_OFS0_LENGTH
+00000004 A OPTION_SETTING_OFS1_LENGTH
+00000004 A OPTION_SETTING_OFS1_SEC_LENGTH
+00000004 A OPTION_SETTING_OFS1_SEL_LENGTH
+00000004 A OPTION_SETTING_PBPS_LENGTH
+00000004 A OPTION_SETTING_PBPS_SEC_LENGTH
+00000040 00000014 R g_vector_table
+00000054 R __flash_noinit$$Base
+00000054 R __flash_noinit$$Limit
+00000054 T __flash_readonly$$Base
+00000054 R __flash_vectors$$Limit
+00000054 A __ram_from_flash$$Load
+00000054 t deregister_tm_clones
+00000070 t register_tm_clones
+00000098 t __do_global_dtors_aux
+000000c0 t frame_dummy
+000000e4 00000140 T hal_entry
+00000224 00000070 t base
+00000294 00000004 T v5_get32
+00000298 000000dc T v5_hello
+00000374 0000003c T v5_error
+000003b0 00000154 T v5_process
+00000504 0000008c t pq_quantize.part.0
+00000590 000000c0 t qdq
+00000650 00000046 T pq_environment
+00000698 00000124 T pq_qcfs
+000007bc 00000340 T pq_infer
+00000afc 0000000a T main
+00000b08 00000068 t r_can_call_callback
+00000b70 000000d8 T can_error_isr
+00000c48 00000114 T can_rx_isr
+00000d5c 000000a4 T can_tx_isr
+00000e00 00000028 T SystemCoreClockUpdate
+00000e28 000000e8 T bsp_clock_init
+00000f10 00000028 T R_BSP_Init_RTC
+00000f38 00000002 W bsp_init
+00000f38 00000002 T bsp_init_internal
+00000f3c 0000003c T NMI_Handler
+00000f78 00000094 T bsp_irq_cfg
+0000100c 00000060 T R_BSP_RegisterProtectEnable
+0000106c 00000054 T R_BSP_RegisterProtectDisable
+000010c0 00000004 W BusFault_Handler
+000010c0 00000004 W DebugMon_Handler
+000010c0 00000004 T Default_Handler
+000010c0 00000004 W HardFault_Handler
+000010c0 00000004 W MemManage_Handler
+000010c0 00000004 W PendSV_Handler
+000010c0 00000004 W SVC_Handler
+000010c0 00000004 W SecureFault_Handler
+000010c0 00000004 W SysTick_Handler
+000010c0 00000004 W UsageFault_Handler
+000010c4 0000000c T Reset_Handler
+000010d0 00000064 t SystemRuntimeInit
+00001134 00000002 W R_BSP_WarmStart
+00001138 000000b8 T SystemInit
+000011f0 0000000a T fegetround
+000011fc 0000001a T memcpy
+00001216 00000020 T memcmp
+00001236 00000010 T memset
+0000128c 00000118 T spikeids_qdq_model
+000013a4 00000014 t l3_bias_scale
+000013b8 00000014 t l3_bias
+000013cc 00000014 t l3_weight_scale
+000013e0 00000005 t l3_weight_zero
+000013e8 00000280 t l3_weights
+00001668 00000200 t l2_bias_scale
+00001868 00000200 t l2_bias
+00001a68 00000200 t l2_weight_scale
+00001c68 00000080 t l2_weight_zero
+00001ce8 00008000 t l2_weights
+00002000 A DATA_FLASH_LENGTH
+00009ce8 00000400 t l1_bias_scale
+0000a0e8 00000400 t l1_bias
+0000a4e8 00000400 t l1_weight_scale
+0000a8e8 00000100 t l1_weight_zero
+0000a9e8 00010000 t l1_weights
+0001a9e8 00000400 t l0_bias_scale
+0001ade8 00000400 t l0_bias
+0001b1e8 00000400 t l0_weight_scale
+0001b5e8 00000100 t l0_weight_zero
+0001b6e8 00002900 t l0_weights
+0001dfe8 00000041 T spikeids_qdq_sha256
+0001e02c 0000000a T g_interrupt_event_link_select
+0001e038 0000000a t g_prcr_masks
+0001e044 00000010 T g_init_info
+0001e054 00000030 t copy_list
+0001e084 0000000c t zero_list
+0001e090 00000044 t g_fsp_version_build_string
+0001e0d4 00000006 t g_fsp_version_string
+0001e0dc 00000004 t g_fsp_version
+0001e0e0 T __flash_readonly$$Limit
+0001e0e0 T _init
+0001e0e4 T _fini
+0001e0e8 R __TMC_END__
+0001e0e8 r __frame_dummy_init_array_entry
+0001e0e8 R __init_array_start
+0001e0e8 R __preinit_array_end
+0001e0e8 R __preinit_array_start
+0001e0ec r __do_global_dtors_aux_fini_array_entry
+0001e0ec R __fini_array_start
+0001e0ec R __init_array_end
+0001e0f0 R __exidx_end
+0001e0f0 R __exidx_start
+0001e0f0 R __fini_array_end
+0001e400 R __ddsc_FLASH_END
+0001e400 R __ddsc_FLASH_NSC
+0001f000 A RAM_LENGTH
+00080000 A FLASH_LENGTH
+0100a100 A OPTION_SETTING_OFS0_START
+0100a100 R __ddsc_OPTION_SETTING_OFS0_END
+0100a100 R __ddsc_OPTION_SETTING_OFS0_START
+0100a100 R __option_setting_ofs0_reg$$Base
+0100a100 R __option_setting_ofs0_reg$$Limit
+0100a180 A OPTION_SETTING_OFS1_START
+0100a180 R __ddsc_OPTION_SETTING_OFS1_END
+0100a180 R __ddsc_OPTION_SETTING_OFS1_START
+0100a180 R __option_setting_ofs1_reg$$Base
+0100a180 R __option_setting_ofs1_reg$$Limit
+0100a1c0 A OPTION_SETTING_BPS_START
+0100a1c0 R __ddsc_OPTION_SETTING_BPS_END
+0100a1c0 R __ddsc_OPTION_SETTING_BPS_START
+0100a1c0 R __option_setting_bps_reg$$Base
+0100a1c0 R __option_setting_bps_reg$$Limit
+0100a1e0 A OPTION_SETTING_PBPS_START
+0100a1e0 R __ddsc_OPTION_SETTING_PBPS_END
+0100a1e0 R __ddsc_OPTION_SETTING_PBPS_START
+0100a1e0 R __option_setting_pbps_reg$$Base
+0100a1e0 R __option_setting_pbps_reg$$Limit
+0100a200 A OPTION_SETTING_OFS1_SEC_START
+0100a200 R __ddsc_OPTION_SETTING_OFS1_SEC_END
+0100a200 R __ddsc_OPTION_SETTING_OFS1_SEC_START
+0100a200 R __option_setting_ofs1_sec_reg$$Base
+0100a200 R __option_setting_ofs1_sec_reg$$Limit
+0100a240 A OPTION_SETTING_BPS_SEC_START
+0100a240 R __ddsc_OPTION_SETTING_BPS_SEC_END
+0100a240 R __ddsc_OPTION_SETTING_BPS_SEC_START
+0100a240 R __option_setting_bps_sec_reg$$Base
+0100a240 R __option_setting_bps_sec_reg$$Limit
+0100a260 A OPTION_SETTING_PBPS_SEC_START
+0100a260 R __ddsc_OPTION_SETTING_PBPS_SEC_END
+0100a260 R __ddsc_OPTION_SETTING_PBPS_SEC_START
+0100a260 R __option_setting_pbps_sec_reg$$Base
+0100a260 R __option_setting_pbps_sec_reg$$Limit
+0100a280 A OPTION_SETTING_OFS1_SEL_START
+0100a280 R __ddsc_OPTION_SETTING_OFS1_SEL_END
+0100a280 R __ddsc_OPTION_SETTING_OFS1_SEL_START
+0100a280 R __option_setting_ofs1_sel_reg$$Base
+0100a280 R __option_setting_ofs1_sel_reg$$Limit
+0100a2c0 A OPTION_SETTING_BPS_SEL_START
+0100a2c0 R __ddsc_OPTION_SETTING_BPS_SEL_END
+0100a2c0 R __ddsc_OPTION_SETTING_BPS_SEL_START
+0100a2c0 R __option_setting_bps_sel_reg$$Base
+0100a2c0 R __option_setting_bps_sel_reg$$Limit
+04000000 A QSPI_FLASH_LENGTH
+08000000 A DATA_FLASH_START
+08000000 R __data_flash_noinit$$Base
+08000000 R __data_flash_noinit$$Limit
+08000000 R __data_flash_readonly$$Base
+08000000 R __data_flash_readonly$$Limit
+08000000 R __ddsc_DATA_FLASH_END
+08000000 R __ddsc_DATA_FLASH_START
+08000000 A __ram_from_data_flash$$Load
+20000000 A RAM_START
+20000000 R __ddsc_RAM_START
+20000000 R __ram_dtc_vector$$Base
+20000000 R __ram_dtc_vector$$Limit
+20000000 R __ram_from_data_flash$$Base
+20000000 R __ram_from_data_flash$$Limit
+20000000 R __ram_from_flash$$Base
+20000000 R __ram_from_flash$$Limit
+20000000 R __ram_from_qspi_flash$$Base
+20000000 R __ram_from_qspi_flash$$Limit
+20000000 B __ram_noinit$$Base
+20000000 00002000 B g_main_stack
+20002000 0000001c b g_clock_freq
+2000201c B __ram_noinit$$Limit
+2000201c B __ram_zero$$Base
+2000201c b completed.1
+20002020 b object.0
+20002038 00000038 B g_bsp_group_irq_sources
+20002070 00000014 B gp_renesas_isr_context
+20002084 0000000a B g_protect_counters
+20002090 00000004 B SystemCoreClock
+20002094 B __ram_zero$$Limit
+20002098 B __ram_thread_stack$$Base
+20002098 B __ram_thread_stack$$Limit
+20002400 B __ddsc_RAM_END
+20002400 B __ddsc_RAM_NSC
+2001f000 00000200 B g_v5_mailbox
+60000000 A QSPI_FLASH_START
+60000000 R __ddsc_QSPI_FLASH_END
+60000000 R __ddsc_QSPI_FLASH_START
+60000000 R __qspi_flash_noinit$$Base
+60000000 R __qspi_flash_noinit$$Limit
+60000000 R __qspi_flash_readonly$$Base
+60000000 R __qspi_flash_readonly$$Limit
+60000000 A __ram_from_qspi_flash$$Load

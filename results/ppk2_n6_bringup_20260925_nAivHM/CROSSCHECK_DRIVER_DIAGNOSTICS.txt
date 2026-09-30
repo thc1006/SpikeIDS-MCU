@@ -1,0 +1,54 @@
+Synthetic attempts 5305aa and 81143f each exited 1 before numeric comparison.
+Root cause: plain-object fixture omitted the official class adcMult field.
+This is an oracle-driver fixture failure, not evidence of a decoder defect.
+5305aa
+Traceback (most recent call last):
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/oracle_crosscheck.py", line 158, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ^^^^^^
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/oracle_crosscheck.py", line 121, in main
+    if node.returncode:raise RuntimeError('Node pure-method driver failed: '+node.stderr.decode())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Node pure-method driver failed: [eval]:26
+    if(!Number.isFinite(ua)) throw new Error('Nonfinite official synthetic value');
+                             ^
+
+Error: Nonfinite official synthetic value
+    at [eval]:26:36
+    at Array.map (<anonymous>)
+    at [eval]:21:27
+    at Array.map (<anonymous>)
+    at [eval]:19:28
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+
+Node.js v24.15.0
+
+81143f
+Traceback (most recent call last):
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/oracle_crosscheck.py", line 158, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ^^^^^^
+  File "/home/thc1006/dev/SpikeIDS-MCU/tools/ppk2_energy/oracle_crosscheck.py", line 121, in main
+    if node.returncode:raise RuntimeError('Node pure-method driver failed: '+node.stderr.decode())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Node pure-method driver failed: [eval]:26
+    if(!Number.isFinite(ua)) throw new Error('Nonfinite official synthetic value '+JSON.stringify({name:test.name,adc,range,object}));
+                             ^
+
+Error: Nonfinite official synthetic value {"name":"general/metadata-exact/0.8/none","adc":0,"range":0,"object":{"modifiers":{"r":[1000,100,10,1,0.05],"gs":[1,1.1,-0.25,0,2],"gi":[0.97,1.1,1,0.99,1.02],"o":[-4,0,5,1,100],"s":[-0.000002,-0.000001,0,0.000001,0.000002],"i":[1e-8,2e-8,3.0000000000000004e-8,4e-8,5e-8],"ug":[0.91,0.9400000000000001,0.97,1,1.03]},"currentVdd":800,"spikeFilter":{"alpha":0.18,"alpha5":0.06,"samples":3},"consecutiveRangeSample":0,"afterSpike":0,"rollingAvg":null,"rollingAvg4":null,"prevRange":0}}
+    at [eval]:26:36
+    at Array.map (<anonymous>)
+    at [eval]:21:27
+    at Array.map (<anonymous>)
+    at [eval]:19:28
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+
+Node.js v24.15.0

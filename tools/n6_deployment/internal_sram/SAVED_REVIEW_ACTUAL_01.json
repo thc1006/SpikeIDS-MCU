@@ -1,0 +1,1846 @@
+{
+  "actual_process_exit": null,
+  "board_validated": false,
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "full_toolchain_closure": false,
+  "hardware_executed": false,
+  "held_inputs_and_reviewer_sources": {
+    "/home/thc1006/.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/bin/python3.13": {
+      "ctime_ns": 1788058984940510488,
+      "device": 66306,
+      "inode": 18003766,
+      "links": 1,
+      "mode": 33277,
+      "mtime_ns": 1788058984939925383,
+      "sha256": "4ceefc12dbe6f01efa99bf5cf594df33cc8dc45a0ff23c3229e2e955059a374e",
+      "size": 31362304
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/calibration_rows.json": {
+      "ctime_ns": 1790019100779673432,
+      "device": 66306,
+      "inode": 26525479,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100779426853,
+      "sha256": "af48ddf5d8d218b4975385b7819ef8e30d1db495650488062a22cd0860f74cbe",
+      "size": 11253
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_policy.json": {
+      "ctime_ns": 1790019100454796273,
+      "device": 66306,
+      "inode": 26525474,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100454796273,
+      "sha256": "2ca6fda8b6bbca50784a48318544f55634b48e6dddd8af04d0d8dc5109639d0f",
+      "size": 1631
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_report.json": {
+      "ctime_ns": 1790019102017717723,
+      "device": 66306,
+      "inode": 26525482,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019102017509272,
+      "sha256": "46a0f963aa7401320a017a2506cfca0f704b81d50270f4dda76d4fca34e4e881",
+      "size": 2714
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_fp32.onnx": {
+      "ctime_ns": 1790019100642153937,
+      "device": 66306,
+      "inode": 26525476,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790019100642153937,
+      "sha256": "3b14adf8179a5df0fd4215a7b6000e7edf22c8a0d462a11e10c21731b3d12038",
+      "size": 445835
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": {
+      "ctime_ns": 1790019100743760532,
+      "device": 66306,
+      "inode": 26525477,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790019100743760532,
+      "sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+      "size": 134626
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/preprocessing.json": {
+      "ctime_ns": 1790019100780739781,
+      "device": 66306,
+      "inode": 26525481,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100780739781,
+      "sha256": "c296ddcd0cc89eac605a3277f9077a9f3b76d34a737496328a915763e3f02aec",
+      "size": 7211
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": {
+      "ctime_ns": 1790019100777673361,
+      "device": 66306,
+      "inode": 26525478,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100777321483,
+      "sha256": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+      "size": 218138
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/ACTUAL_01_EXECUTION.json": {
+      "ctime_ns": 1790300727993230158,
+      "device": 66306,
+      "inode": 31890192,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790300727993230158,
+      "sha256": "306855057d1eb069a7a0dd60293cdd13c57685b3505e2328f19508092ff3b2b1",
+      "size": 1919
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/ACTUAL_01_REVIEW_SNAPSHOT.json": {
+      "ctime_ns": 1790300877494598834,
+      "device": 66306,
+      "inode": 31890193,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790300877494598834,
+      "sha256": "ddf5338a4724bb5ec25487fd1a1f28426d49689dd538419304d6d02d23513d75",
+      "size": 9944
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/PLAN.md": {
+      "ctime_ns": 1790299885200018426,
+      "device": 66306,
+      "inode": 31890145,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790299885200018426,
+      "sha256": "3d3d7a08fdd32fc75b2288547a238d2ce1e6d1c5d8377050c8cb0707d2e5d914",
+      "size": 3361
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/generate.py": {
+      "ctime_ns": 1790300459824609508,
+      "device": 66306,
+      "inode": 31890146,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790300459824609508,
+      "sha256": "673fae4638731a6f0edbe45c5ef8e61c152e57b52ce1afae38e4224901cbf19a",
+      "size": 16596
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/internal_sram.mpool": {
+      "ctime_ns": 1790299885195018246,
+      "device": 66306,
+      "inode": 31890143,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790299885195018246,
+      "sha256": "4969fd25574d5db4e603080f9fa03ef092b12ffa7b26b29bc65aab22daf94a15",
+      "size": 1571
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/neural_art.json": {
+      "ctime_ns": 1790299885198018354,
+      "device": 66306,
+      "inode": 31890144,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790299885198018354,
+      "sha256": "64fb217c2a0fce1452f97b21ac31dd74f07149a0d5e7d25cce68fbe1e9c959f9",
+      "size": 172
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/internal_sram/review_saved.py": {
+      "ctime_ns": 1790301202968286783,
+      "device": 66306,
+      "inode": 31890194,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790301202968286783,
+      "sha256": "909b77937c806510443f848240ee2e0d33eabbdbe35ed6acc06c1cda509f0445",
+      "size": 16636
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/prepare_vendor.py": {
+      "ctime_ns": 1790292532613142613,
+      "device": 66306,
+      "inode": 31773176,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292532613142613,
+      "sha256": "cd1bb490fa913d0ffde3c5c59ff8108134537228ded9ec130e5ac17939f7a94f",
+      "size": 19322
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Documentation/stneuralart_memory_initializers.html": {
+      "ctime_ns": 1789752913948494008,
+      "device": 66306,
+      "inode": 23366052,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "1236cd79f6b32f3bb3a3e8d9df8c949e546c8e04d4e9ff382c663157316403d9",
+      "size": 3412534
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Documentation/stneuralart_neural_art_compiler.html": {
+      "ctime_ns": 1789752913907492546,
+      "device": 66306,
+      "inode": 23366001,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "20215905ac72e08e614ea0a751cf81821a78f1468ddb4384aa8287458453dfe9",
+      "size": 1923482
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton.c": {
+      "ctime_ns": 1789752913523478849,
+      "device": 66306,
+      "inode": 23363424,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859292000000000,
+      "sha256": "9cdd88f5ac450c65a48e164608b59ca215df3dd3afe74fd4572ebbe5b7b7f7e2",
+      "size": 82333
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Middlewares/ST/AI/Npu/ll_aton/ll_aton.h": {
+      "ctime_ns": 1789752913523478849,
+      "device": 66306,
+      "inode": 23363425,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859292000000000,
+      "sha256": "d8a70bceaa40d016a11680fe65e3adec6ad0bff87987d54a8d3018fb555ccbc2",
+      "size": 34253
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc": {
+      "ctime_ns": 1789752913627613413,
+      "device": 66306,
+      "inode": 23365131,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859242000000000,
+      "sha256": "98faf4e88d63cfbfd8cae704e78cf6adffffad751bb378d23fcc8df988675d03",
+      "size": 84
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc": {
+      "ctime_ns": 1789752913627613413,
+      "device": 66306,
+      "inode": 23365135,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859244000000000,
+      "sha256": "f29a0cf46aeb7c5eae90568b43f0f6f694b0a5ec97bba4223f5acc46005a1aac",
+      "size": 5912
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/atonn": {
+      "ctime_ns": 1789752913694484949,
+      "device": 66306,
+      "inode": 23365137,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859240000000000,
+      "sha256": "fb9c35c207dda7fecd9933fdabdde5c92b91e0c3c45ad1a60dbb9275f29b2a19",
+      "size": 19688672
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/ecasm": {
+      "ctime_ns": 1789752913703485270,
+      "device": 66306,
+      "inode": 23365221,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859240000000000,
+      "sha256": "e8bc1781131a405772ebf46c38046953b00cec164d32edc1e57e33a779070e26",
+      "size": 2817584
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/python": {
+      "ctime_ns": 1789752914093499180,
+      "device": 66306,
+      "inode": 23366312,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1716772904000000000,
+      "sha256": "a52afb14c4356d39135cc0fbe78e35c8245003b4dc5b5a47c2b85dd7906df529",
+      "size": 25824
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914090499073,
+      "device": 66306,
+      "inode": 23366304,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "9721892ba0b43f51adcec41c26e834e4e2b858e34cec7752d6f89cada97f41a4",
+      "size": 322888
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_args.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914092499144,
+      "device": 66306,
+      "inode": 23366308,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "5b03227fdc323180f196daacc805f04bd3217e9bc229fdb13f9309b7769cd1b9",
+      "size": 685800
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_defaults.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914093499180,
+      "device": 66306,
+      "inode": 23366311,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "5a5a782df2fbdb484f580f1c4d0484d662916bedc9536e460e035040aee3bd99",
+      "size": 101952
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_utility.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914088499001,
+      "device": 66306,
+      "inode": 23366299,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "bb42d35e00d2e1bfad96745709fd059fdf0e7ad1527c09c746a5ed24c465814b",
+      "size": 295984
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_version.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914088499001,
+      "device": 66306,
+      "inode": 23366301,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "8796895e58ef543d9821929f87395a143906529ccfd410a0e74d25ed3c98debd",
+      "size": 163336
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_config.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914089499037,
+      "device": 66306,
+      "inode": 23366303,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "67f137fd8a999c8fdc15edd508e1df99030e72be06cb7b3f5b7628ec2c97064f",
+      "size": 374240
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai": {
+      "ctime_ns": 1789752914087498966,
+      "device": 66306,
+      "inode": 23366297,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "0aa7d9222af9620fce802037f09432f0320b77e90d3415f1d2c1d366b7872714",
+      "size": 21024
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json": {
+      "ctime_ns": 1789752913504901823,
+      "device": 66306,
+      "inode": 23363174,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764852684000000000,
+      "sha256": "5a416483007fc8ae1896d1a14a8eb2bc488ae9e8ec4077e418d4b76512b86e55",
+      "size": 1238
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/stm32n6.mpool": {
+      "ctime_ns": 1789752913504901823,
+      "device": 66306,
+      "inode": 23363178,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764852684000000000,
+      "sha256": "85cbb7205023b482f1ae640fd0c02d6ccf9574ca4bf05abbe6640bf6a69acb49",
+      "size": 3965
+    },
+    "/home/thc1006/opt/stedgeai/3.0/scripts/N6_reloc/test/mpools/stm32n6_int2.mpool": {
+      "ctime_ns": 1789752913789072330,
+      "device": 66306,
+      "inode": 23365779,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859292000000000,
+      "sha256": "dcce1bb3221edfbf8634501a86c2181fc129fbf028c094e0dfd267533abf3d2f",
+      "size": 2382
+    }
+  },
+  "kind": "saved_internal_sram_candidate_review",
+  "npu_placement_verified": false,
+  "numerical_equivalence_verified": false,
+  "observations": {
+    "cache_semantics": "zero-valued omitted scalar members in static const designated aggregate",
+    "dma_descriptor_count": 21,
+    "dma_descriptors": [
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 41,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 313,
+          "offset_limit": 384,
+          "offset_start": 272,
+          "raw": 1
+        },
+        "name": "Gemm_15_conv_4_suboff_24_dma_init_in_0_3",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 82,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 16,
+          "nbits_out": 16,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 258,
+          "offset_limit": 328,
+          "offset_start": 176,
+          "raw": 1
+        },
+        "name": "Gemm_15_conv_4_suboff_24_dma_init_out_0_3",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 512,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 16,
+          "nbits_out": 16,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 1536,
+          "offset_limit": 2112,
+          "offset_start": 1024,
+          "raw": 1
+        },
+        "name": "Gemm_15_conv_4_off_bias_30_dma_init_in_0_7",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 64
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 256,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 1280,
+          "offset_limit": 1344,
+          "offset_start": 1024,
+          "raw": 1
+        },
+        "name": "Gemm_15_conv_4_off_bias_30_dma_init_out_0_7",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 256,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 256,
+          "offset_limit": 320,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_27_conv_10_suboff_33_dma_init_in_0_18",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 256,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 256,
+          "offset_limit": 320,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_27_conv_10_suboff_33_dma_init_out_0_18",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 16,
+          "frame_offset": 0,
+          "frame_tot_cnt": 16,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 256,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 129,
+          "offset_limit": 320,
+          "offset_start": 0,
+          "raw": 1,
+          "raw_out": 1
+        },
+        "name": "Gemm_27_conv_10_dma_init_in_0_19",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874512384,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "continuous": 1,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 0,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 65568,
+          "offset_limit": 65632,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_27_conv_10_dma_init_in_1_19",
+        "pool": "weights_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 16,
+          "frame_offset": 0,
+          "frame_tot_cnt": 16,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 256,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 257,
+          "offset_limit": 320,
+          "offset_start": 128,
+          "raw": 1,
+          "raw_out": 1
+        },
+        "name": "Gemm_27_conv_10_ca_pipe_1_dma_init_in_0_19",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 16,
+          "frame_tot_cnt": 16,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 1040,
+          "offset_limit": 1344,
+          "offset_start": 1024,
+          "raw": 1
+        },
+        "name": "Gemm_27_conv_10_off_bias_39_dma_init_out_0_19",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 256,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 256,
+          "offset_limit": 320,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_39_conv_16_suboff_42_dma_init_in_0_30",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 256,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 256,
+          "offset_limit": 320,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_39_conv_16_suboff_42_dma_init_out_0_30",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 8,
+          "frame_offset": 0,
+          "frame_tot_cnt": 8,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 256,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 129,
+          "offset_limit": 320,
+          "offset_start": 0,
+          "raw": 1,
+          "raw_out": 1
+        },
+        "name": "Gemm_39_conv_16_dma_init_in_0_31",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874512384,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "continuous": 1,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 0,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 140336,
+          "offset_limit": 140400,
+          "offset_start": 107552,
+          "raw": 1
+        },
+        "name": "Gemm_39_conv_16_dma_init_in_1_31",
+        "pool": "weights_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 8,
+          "frame_offset": 0,
+          "frame_tot_cnt": 8,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 256,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 257,
+          "offset_limit": 320,
+          "offset_start": 128,
+          "raw": 1,
+          "raw_out": 1
+        },
+        "name": "Gemm_39_conv_16_ca_pipe_1_dma_init_in_0_31",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 16,
+          "frame_tot_cnt": 8,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 528,
+          "offset_limit": 704,
+          "offset_start": 512,
+          "raw": 1
+        },
+        "name": "Gemm_39_conv_16_off_bias_48_dma_init_out_0_31",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 128,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 128,
+          "offset_limit": 192,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_51_conv_22_suboff_51_dma_init_in_0_42",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 128,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 128,
+          "offset_limit": 192,
+          "offset_start": 0,
+          "raw": 1
+        },
+        "name": "Gemm_51_conv_22_suboff_51_dma_init_out_0_42",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 1,
+          "frame_offset": 0,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 128,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 1,
+          "noblk": 0,
+          "offset_end": 129,
+          "offset_limit": 192,
+          "offset_start": 0,
+          "raw": 1,
+          "raw_out": 1
+        },
+        "name": "Gemm_51_conv_22_dma_init_in_0_43",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874512384,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "continuous": 1,
+          "dir": 0,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 0,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 24,
+          "nbits_out": 24,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 143026,
+          "offset_limit": 143096,
+          "offset_start": 142384,
+          "raw": 1
+        },
+        "name": "Gemm_51_conv_22_dma_init_in_1_43",
+        "pool": "weights_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      },
+      {
+        "cache_members_explicit": {
+          "cache_allocate": false,
+          "cacheable": false
+        },
+        "effective_cache_allocate": 0,
+        "effective_cacheable": 0,
+        "fields": {
+          "addr_base": 874774528,
+          "align_right": 0,
+          "batch_depth": 0,
+          "batch_offset": 0,
+          "dir": 1,
+          "fheight": 0,
+          "frame_count": 0,
+          "frame_loop_cnt": 0,
+          "frame_offset": 5,
+          "frame_tot_cnt": 1,
+          "fwidth": 0,
+          "line_offset": 0,
+          "loop_offset": 0,
+          "nbits_in": 8,
+          "nbits_out": 8,
+          "nbits_unsigned": 0,
+          "noblk": 0,
+          "offset_end": 133,
+          "offset_limit": 200,
+          "offset_start": 128,
+          "raw": 1
+        },
+        "name": "Gemm_51_conv_22_off_bias_57_dma_init_out_0_43",
+        "pool": "activations_sram",
+        "prefetch_limit_beyond_used_bytes": 0
+      }
+    ],
+    "full_dma_traversal_simulated": false,
+    "hardware_register_state_verified": false,
+    "placement": {
+      "address_expressions_checked": 147,
+      "buffer_count": 98,
+      "epochs": [
+        {
+          "id": 52,
+          "mapping": "NODE_SW",
+          "name": "epoch_1"
+        },
+        {
+          "id": 56,
+          "mapping": "NODE_HW",
+          "name": "epoch_3"
+        },
+        {
+          "id": 58,
+          "mapping": "NODE_SW",
+          "name": "epoch_4"
+        },
+        {
+          "id": 60,
+          "mapping": "NODE_SW",
+          "name": "epoch_5"
+        },
+        {
+          "id": 62,
+          "mapping": "NODE_SW_HW",
+          "name": "epoch_6"
+        },
+        {
+          "id": 64,
+          "mapping": "NODE_HW",
+          "name": "epoch_7"
+        },
+        {
+          "id": 67,
+          "mapping": "NODE_SW",
+          "name": "epoch_8"
+        },
+        {
+          "id": 69,
+          "mapping": "NODE_SW",
+          "name": "epoch_9"
+        },
+        {
+          "id": 71,
+          "mapping": "NODE_SW",
+          "name": "epoch_10"
+        },
+        {
+          "id": 73,
+          "mapping": "NODE_SW",
+          "name": "epoch_11"
+        },
+        {
+          "id": 75,
+          "mapping": "NODE_SW",
+          "name": "epoch_12"
+        },
+        {
+          "id": 77,
+          "mapping": "NODE_SW",
+          "name": "epoch_13"
+        },
+        {
+          "id": 79,
+          "mapping": "NODE_SW",
+          "name": "epoch_14"
+        },
+        {
+          "id": 81,
+          "mapping": "NODE_SW",
+          "name": "epoch_15"
+        },
+        {
+          "id": 83,
+          "mapping": "NODE_SW",
+          "name": "epoch_16"
+        },
+        {
+          "id": 87,
+          "mapping": "NODE_HW",
+          "name": "epoch_18"
+        },
+        {
+          "id": 89,
+          "mapping": "NODE_HW",
+          "name": "epoch_19"
+        },
+        {
+          "id": 94,
+          "mapping": "NODE_SW",
+          "name": "epoch_20"
+        },
+        {
+          "id": 96,
+          "mapping": "NODE_SW",
+          "name": "epoch_21"
+        },
+        {
+          "id": 98,
+          "mapping": "NODE_SW",
+          "name": "epoch_22"
+        },
+        {
+          "id": 100,
+          "mapping": "NODE_SW",
+          "name": "epoch_23"
+        },
+        {
+          "id": 102,
+          "mapping": "NODE_SW",
+          "name": "epoch_24"
+        },
+        {
+          "id": 104,
+          "mapping": "NODE_SW",
+          "name": "epoch_25"
+        },
+        {
+          "id": 106,
+          "mapping": "NODE_SW",
+          "name": "epoch_26"
+        },
+        {
+          "id": 108,
+          "mapping": "NODE_SW",
+          "name": "epoch_27"
+        },
+        {
+          "id": 110,
+          "mapping": "NODE_SW",
+          "name": "epoch_28"
+        },
+        {
+          "id": 114,
+          "mapping": "NODE_HW",
+          "name": "epoch_30"
+        },
+        {
+          "id": 116,
+          "mapping": "NODE_HW",
+          "name": "epoch_31"
+        },
+        {
+          "id": 121,
+          "mapping": "NODE_SW",
+          "name": "epoch_32"
+        },
+        {
+          "id": 123,
+          "mapping": "NODE_SW",
+          "name": "epoch_33"
+        },
+        {
+          "id": 125,
+          "mapping": "NODE_SW",
+          "name": "epoch_34"
+        },
+        {
+          "id": 127,
+          "mapping": "NODE_SW",
+          "name": "epoch_35"
+        },
+        {
+          "id": 129,
+          "mapping": "NODE_SW",
+          "name": "epoch_36"
+        },
+        {
+          "id": 131,
+          "mapping": "NODE_SW",
+          "name": "epoch_37"
+        },
+        {
+          "id": 133,
+          "mapping": "NODE_SW",
+          "name": "epoch_38"
+        },
+        {
+          "id": 135,
+          "mapping": "NODE_SW",
+          "name": "epoch_39"
+        },
+        {
+          "id": 137,
+          "mapping": "NODE_SW",
+          "name": "epoch_40"
+        },
+        {
+          "id": 141,
+          "mapping": "NODE_HW",
+          "name": "epoch_42"
+        },
+        {
+          "id": 143,
+          "mapping": "NODE_HW",
+          "name": "epoch_43"
+        },
+        {
+          "id": 147,
+          "mapping": "NODE_SW",
+          "name": "epoch_44"
+        }
+      ],
+      "footprint": {
+        "activations": 2048,
+        "io": [
+          0,
+          0
+        ],
+        "kernel_flash": null,
+        "kernel_ram": null,
+        "series": "generic",
+        "toolchain": null,
+        "toolchain_flash": null,
+        "toolchain_ram": null,
+        "weights": 145457
+      },
+      "generated_metadata_and_address_scope_checked": true,
+      "initializer_file": "nsl_qcfs_seed0_atonbuf.SRAM_WEIGHTS.raw",
+      "initializer_sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+      "mapping": {
+        "interpretation": "vendor report observation only; not kernel, parity or board proof",
+        "reported_epochs": {
+          "hardware": 8,
+          "hybrid": 1,
+          "software": 31,
+          "total": 40
+        }
+      },
+      "numerical_equivalence_verified": false,
+      "pools": {
+        "activations_sram": {
+          "address": "874774528",
+          "alignment": 8,
+          "attributes": {
+            "burst_max_length": 4294967295,
+            "burst_penalty": 0,
+            "byte_width": 8,
+            "freq_ratio": 1.25,
+            "latency": "LOW",
+            "read_power": 18.531,
+            "score": 94,
+            "throughput": "HIGH",
+            "use_for_initrs": false,
+            "write_power": 16.201
+          },
+          "buffers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49
+          ],
+          "cacheable": "CACHEABLE_OFF",
+          "fname": "atonbuf.SRAM_ACTIVATIONS.raw",
+          "id": 1,
+          "name": "activations_sram",
+          "offset_start": 0,
+          "persistent": true,
+          "pipelined": "PIPELINED_ON",
+          "rights": "ACC_WRITE",
+          "size_bytes": 16384,
+          "subpools": [],
+          "used_size_bytes": 2048,
+          "user_allocated": false
+        },
+        "weights_sram": {
+          "address": "874512384",
+          "alignment": 8,
+          "attributes": {
+            "burst_max_length": 4294967295,
+            "burst_penalty": 0,
+            "byte_width": 8,
+            "freq_ratio": 1.25,
+            "latency": "LOW",
+            "read_power": 18.531,
+            "score": 62,
+            "throughput": "HIGH",
+            "use_for_initrs": true,
+            "write_power": 16.201
+          },
+          "buffers": [
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "cacheable": "CACHEABLE_OFF",
+          "fname": "atonbuf.SRAM_WEIGHTS.raw",
+          "id": 2,
+          "name": "weights_sram",
+          "offset_start": 0,
+          "persistent": true,
+          "pipelined": "PIPELINED_ON",
+          "rights": "ACC_READ",
+          "size_bytes": 262144,
+          "subpools": [],
+          "used_size_bytes": 145457,
+          "user_allocated": false
+        }
+      }
+    },
+    "reserved_pool_exclusion_required": true
+  },
+  "original_compiler_return_code": 0,
+  "original_export_matrix_changed": false,
+  "original_failure_preserved": true,
+  "original_wrapper_return_code": 1,
+  "platform_initialized": false,
+  "publication_accepted": false,
+  "retained_failure_inventory": {
+    "directories": [
+      "cache",
+      "generate",
+      "generate_workspace",
+      "generate_workspace/neural_art__nsl_qcfs_seed0",
+      "tmp"
+    ],
+    "files": {
+      "FAILED.json": {
+        "ctime_ns": 1790300618689036571,
+        "device": 66306,
+        "inode": 31890191,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300618689036571,
+        "sha256": "e0f185738bef0ee8a48a12371a9cf8ea097cba8937318e3655da0787a75210d5",
+        "size": 467
+      },
+      "INTENT.json": {
+        "ctime_ns": 1790300601484997686,
+        "device": 66306,
+        "inode": 31890157,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300601484997686,
+        "sha256": "9c8666a83218eccc4d53d499caf865d6d47b13b3707bb8e8a53cfcb150c13750",
+        "size": 12174
+      },
+      "generate.json": {
+        "ctime_ns": 1790300618620589969,
+        "device": 66306,
+        "inode": 31890190,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300618620589969,
+        "sha256": "83f7b960b9509b5bc1ea91b8345d0618d8cf602d199fa4ad963a86a13a1e2a3a",
+        "size": 2325
+      },
+      "generate.stderr": {
+        "ctime_ns": 1790300601525688636,
+        "device": 66306,
+        "inode": 31890162,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300601525688636,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate.stdout": {
+        "ctime_ns": 1790300618196287292,
+        "device": 66306,
+        "inode": 31890161,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300618196287292,
+        "sha256": "d8ead7e3b999cea884cf19a77b65bf13300014a8e11f6eb2a8017f28ab0e21be",
+        "size": 25338
+      },
+      "generate/LICENSE.txt": {
+        "ctime_ns": 1790300609675358641,
+        "device": 66306,
+        "inode": 31890188,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609675358641,
+        "sha256": "9942019b4bb0d3eaceceb7110148015bc5ea051259d57b48b2c71f9f8e06182b",
+        "size": 10648
+      },
+      "generate/model_qdq_int8_OE_3_3_1.onnx": {
+        "ctime_ns": 1790300609506413621,
+        "device": 66306,
+        "inode": 31890163,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609506413621,
+        "sha256": "7ae5c0f4ea8988957907704ccab6d67a2ddfe4356d81bafb185ea9175ce97aef",
+        "size": 447529
+      },
+      "generate/model_qdq_int8_OE_3_3_1_Q.json": {
+        "ctime_ns": 1790300609510742503,
+        "device": 66306,
+        "inode": 31890164,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609510742503,
+        "sha256": "7714a5f3f7577fa28d3d593a29929cdc809a1fc67e26466f0e97c0c0503f142f",
+        "size": 128076
+      },
+      "generate/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790300609610978984,
+        "device": 66306,
+        "inode": 31890181,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609610978984,
+        "sha256": "8b7a8703240811f4b4f12517f33ce5c77bc004911c088514435340bc92c3b43e",
+        "size": 218550
+      },
+      "generate/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790300609642570949,
+        "device": 66306,
+        "inode": 31890187,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609642570949,
+        "sha256": "309f03ef2875a37be01ff45a92ea54ac436516b86b5b6ca38572d3e741ac02d0",
+        "size": 1804
+      },
+      "generate/nsl_qcfs_seed0_atonbuf.SRAM_WEIGHTS.raw": {
+        "ctime_ns": 1790300609611896318,
+        "device": 66306,
+        "inode": 31890184,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609611896318,
+        "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+        "size": 145457
+      },
+      "generate/nsl_qcfs_seed0_c_info.json": {
+        "ctime_ns": 1790300609685981677,
+        "device": 66306,
+        "inode": 31890182,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609685981677,
+        "sha256": "44e270d1dad5b3df79c53ddf27e7c874562cadabeb21a02c7d1a8b926e0a04a9",
+        "size": 221485
+      },
+      "generate/nsl_qcfs_seed0_generate_report.txt": {
+        "ctime_ns": 1790300609692179955,
+        "device": 66306,
+        "inode": 31890189,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609692179955,
+        "sha256": "66fc34d53536593b93edee62e86d4441c5fcd24699dc045c8d13dbcadc31d881",
+        "size": 25826
+      },
+      "generate/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790300609611972788,
+        "device": 66306,
+        "inode": 31890185,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609611972788,
+        "sha256": "32c26141b873b1265d02d2966ce2323ec2506d7d3de02036a31cd7989e0b467c",
+        "size": 44836
+      },
+      "generate/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790300609611825720,
+        "device": 66306,
+        "inode": 31890183,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609611825720,
+        "sha256": "c26d87684b6495be3fcc016976d271fc62edee49a840fb1afc62986900e6bd43",
+        "size": 71808
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.SRAM_ACTIVATIONS.raw": {
+        "ctime_ns": 1790300609603978732,
+        "device": 66306,
+        "inode": 31890177,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609603978732,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.SRAM_WEIGHTS.raw": {
+        "ctime_ns": 1790300609603978732,
+        "device": 66306,
+        "inode": 31890176,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609603978732,
+        "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+        "size": 145457
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonn_options.ini": {
+        "ctime_ns": 1790300609543976578,
+        "device": 66306,
+        "inode": 31890166,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609543976578,
+        "sha256": "8f6fc31491a62fd7519b3679142bb9e1b1dfdb1027dc5a851b646bef268b8b3b",
+        "size": 1231
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/c_info.json": {
+        "ctime_ns": 1790300609607978876,
+        "device": 66306,
+        "inode": 31890180,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609607978876,
+        "sha256": "07e9d5f2b72bb386cbbd7566731e2114c23a6d42b4e9bfc285b1f3db9ecb13a0",
+        "size": 175012
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/internal_sram.mpool": {
+        "ctime_ns": 1790300609553976937,
+        "device": 66306,
+        "inode": 31890167,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609553976937,
+        "sha256": "0c7e8eda348870a71ecae3cda9bd752f98fdbdf1566102462788c2370a58afdb",
+        "size": 2021
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790300609604978768,
+        "device": 66306,
+        "inode": 31890175,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609604978768,
+        "sha256": "8b7a8703240811f4b4f12517f33ce5c77bc004911c088514435340bc92c3b43e",
+        "size": 218550
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790300609641980097,
+        "device": 66306,
+        "inode": 31890186,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609641980097,
+        "sha256": "309f03ef2875a37be01ff45a92ea54ac436516b86b5b6ca38572d3e741ac02d0",
+        "size": 1804
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790300609604978768,
+        "device": 66306,
+        "inode": 31890179,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609604978768,
+        "sha256": "32c26141b873b1265d02d2966ce2323ec2506d7d3de02036a31cd7989e0b467c",
+        "size": 44836
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790300609604978768,
+        "device": 66306,
+        "inode": 31890178,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609604978768,
+        "sha256": "c26d87684b6495be3fcc016976d271fc62edee49a840fb1afc62986900e6bd43",
+        "size": 71808
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp.dot": {
+        "ctime_ns": 1790300609600978625,
+        "device": 66306,
+        "inode": 31890174,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609600978625,
+        "sha256": "08a901a922eb1371586a241eec22e4aa248dfc962cb58a60de2a8365e1184a83",
+        "size": 87788
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_c.dot": {
+        "ctime_ns": 1790300609591978301,
+        "device": 66306,
+        "inode": 31890169,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609591978301,
+        "sha256": "e66bb126a928ba7d8f9238fd5696366d9bf1f9edad9aba318781fbe80d3cca14",
+        "size": 36325
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_lo.dot": {
+        "ctime_ns": 1790300609593978373,
+        "device": 66306,
+        "inode": 31890170,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609593978373,
+        "sha256": "94ebaccf03f6d9bef952afa4bfa5a4887379b339ff8bac591e5629e8bae0a94a",
+        "size": 50018
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_lv.dot": {
+        "ctime_ns": 1790300609597978517,
+        "device": 66306,
+        "inode": 31890172,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609597978517,
+        "sha256": "c9fd9845d4332a5314f6b1aafe16ce433f6b0bf3511df423bdcb25e8fab756fd",
+        "size": 82174
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_o.dot": {
+        "ctime_ns": 1790300609590978266,
+        "device": 66306,
+        "inode": 31890168,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609590978266,
+        "sha256": "90dd7ba0bc82a67a5da079966b507dab322d790e7f7801b7531190d1ed7d945d",
+        "size": 41768
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_po.dot": {
+        "ctime_ns": 1790300609599978589,
+        "device": 66306,
+        "inode": 31890173,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609599978589,
+        "sha256": "3c8684461fcd7d9d3616f7e112420287863bcbdfc413647c4f4a6d5b9d3c0df8",
+        "size": 87676
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_s.dot": {
+        "ctime_ns": 1790300609596978481,
+        "device": 66306,
+        "inode": 31890171,
+        "links": 1,
+        "mode": 33204,
+        "mtime_ns": 1790300609596978481,
+        "sha256": "d11c4af2c3aad0076c6a527eb508fbf62f6849bed852017ae824ba806303c207",
+        "size": 76923
+      },
+      "internal_sram.mpool": {
+        "ctime_ns": 1790300601488342634,
+        "device": 66306,
+        "inode": 31890159,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300601488342634,
+        "sha256": "4969fd25574d5db4e603080f9fa03ef092b12ffa7b26b29bc65aab22daf94a15",
+        "size": 1571
+      },
+      "model_qdq_int8.onnx": {
+        "ctime_ns": 1790300601486660169,
+        "device": 66306,
+        "inode": 31890158,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300601486660169,
+        "sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+        "size": 134626
+      },
+      "neural_art.json": {
+        "ctime_ns": 1790300601489590727,
+        "device": 66306,
+        "inode": 31890160,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790300601489590727,
+        "sha256": "64fb217c2a0fce1452f97b21ac31dd74f07149a0d5e7d25cce68fbe1e9c959f9",
+        "size": 172
+      }
+    }
+  },
+  "saved_descriptor_review_passed": true,
+  "schema": 1
+}

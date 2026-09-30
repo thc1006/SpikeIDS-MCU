@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="33" time="5.546" timestamp="2026-09-25T07:29:12.521137+08:00" hostname="thc1006"><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_positive" time="0.311" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[version]" time="0.099" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[nonzero]" time="0.186" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[no_analyze]" time="0.181" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[no_mapping]" time="0.290"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_3/repo/results/fresh/generate/nsl_qcfs_seed0_generate_report.txt'">evidence = {'repo': PosixPath('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_3/repo'),...home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_3/installed/fake_vendor'), ...}
+mode = 'no_mapping'
+
+    @pytest.mark.parametrize("mode", ["version", "nonzero", "no_analyze", "no_mapping", "bad_mapping",
+                                      "no_binary", "empty_binary", "mutation", "symlink"])
+    def test_real_subprocess_failures_retained(evidence, mode):
+        evidence["mode"].write_text(mode)
+        with pytest.raises(p.PreparationError):
+&gt;           p.run(evidence["output"], timeout_seconds=5)
+
+tools/n6_deployment/test_prepare_vendor.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/n6_deployment/prepare_vendor.py:329: in run
+    report_pin = snapshot(report_path)
+                 ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_3/repo/results/fresh/generate/nsl_qcfs_seed0_generate_report.txt')
+
+    def snapshot(path):
+        canonical(path)
+&gt;       fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_3/repo/results/fresh/generate/nsl_qcfs_seed0_generate_report.txt'
+
+tools/n6_deployment/prepare_vendor.py:89: FileNotFoundError</failure></testcase><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[bad_mapping]" time="0.261" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[no_binary]" time="0.250" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[empty_binary]" time="0.271" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[mutation]" time="0.195" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_real_subprocess_failures_retained[symlink]" time="0.252" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_timeout_retains_actual_exit_partial_streams" time="1.149" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_during_subprocess_source_tool_change[source]" time="0.135" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_during_subprocess_source_tool_change[tool]" time="0.126" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_during_subprocess_source_tool_change[profile]" time="0.117" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_fixed_input_wrong_sha_before_launch[model_qdq_int8.onnx]" time="0.018" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_fixed_input_wrong_sha_before_launch[export_report.json]" time="0.018" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_existing_output_untouched" time="0.036" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_timeout_type_and_domain[False]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_timeout_type_and_domain[0]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_timeout_type_and_domain[3601]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_timeout_type_and_domain[1.0]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_timeout_type_and_domain[1]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_publication_endpoint[extra_file]" time="0.234" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_publication_endpoint[extra_directory]" time="0.265" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_publication_endpoint[result_replace]" time="0.261" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_publication_endpoint[input_restore]" time="0.278" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_own_fsync_replacement_rejected" time="0.281" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_output_rebind_does_not_write_foreign_marker" time="0.099"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_output_rebind_does_not_wr0/repo/results/fresh/version.stdout'">evidence = {'repo': PosixPath('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_output_rebind_does_not_wr0/repo'),...home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_output_rebind_does_not_wr0/installed/fake_vendor'), ...}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10f9e87832a0&gt;
+
+    def test_output_rebind_does_not_write_foreign_marker(evidence, monkeypatch):
+        original = p.invoke
+        foreign = evidence["repo"] / "foreign"
+        foreign.mkdir()
+        def invoke(owner, phase, timeout, pins):
+            result = original(owner, phase, timeout, pins)
+            if phase == "version":
+                owner.path.rename(owner.path.with_name("moved"))
+                owner.path.symlink_to(foreign, target_is_directory=True)
+            return result
+        monkeypatch.setattr(p, "invoke", invoke)
+        with pytest.raises(p.PreparationError):
+&gt;           p.run(evidence["output"], timeout_seconds=5)
+
+tools/n6_deployment/test_prepare_vendor.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/n6_deployment/prepare_vendor.py:319: in run
+    require((owner.path / "version.stdout").read_text().splitlines()[0] == VERSION, "Unexpected installed tool version")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pathlib/_local.py:546: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_output_rebind_does_not_wr0/repo/results/fresh/version.stdout')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_output_rebind_does_not_wr0/repo/results/fresh/version.stdout'
+
+../../.local/share/uv/python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pathlib/_local.py:537: FileNotFoundError</failure></testcase><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_cli_nonzero_is_nonzero" time="0.156" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_no_abbreviated_or_external_commands[args0]" time="0.002" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_no_abbreviated_or_external_commands[args1]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_no_abbreviated_or_external_commands[args2]" time="0.001" /><testcase classname="tools.n6_deployment.test_prepare_vendor" name="test_mapping_ambiguous_or_mismatched" time="0.001" /></testsuite></testsuites>

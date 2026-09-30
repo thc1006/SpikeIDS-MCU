@@ -1,6 +1,8 @@
 % IEEE GLOBECOM 2026 -- Communication and Information System Security Symposium
-% 6 pages, IEEEtran conference format. Single-blind by default (verify at submit).
-% Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
+% Version-5 manuscript: numerical results are generated from sealed evidence.
+% Method-synchronization draft, NOT accepted evidence. The exact protocol block
+% must be rendered after the verified plans and accepted metadata are available;
+% result/export macros and strict paper acceptance remain separate requirements.
 \documentclass[10pt,conference]{IEEEtran}
 
 \usepackage[utf8]{inputenc}
@@ -9,110 +11,27 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[bookmarks=false,pdfpagelabels=false]{hyperref}
-\usepackage{xcolor}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{url}
 \usepackage{xurl}
 \usepackage{balance}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usetikzlibrary{arrows.meta, positioning}
 \usepackage{cite}
-\usepackage{pifont}
 
-% IEEE PDF requirements: gutter (columnsep) must be >= 0.2in.
-% IEEEtran conference default is 12pt (~0.167in) which fails EDAS PDF check.
 \setlength{\columnsep}{0.22in}
-
 \hypersetup{
   colorlinks=false,
-  pdftitle={Sub-Millijoule Intrusion Detection on a Commodity MCU Neural Processing Unit: A Four-Dataset Deployment Study},
+  pdftitle={Leakage-Safe and Reproducible Four-Dataset Intrusion Detection with MCU-Oriented Export Gates},
   pdfauthor={Hsiu-Chi Tsai, Chia-Tung Chung}
 }
 
-% Tighter lists
-\usepackage{enumitem}
-\setlist[itemize]{itemsep=1pt, parsep=0pt, topsep=3pt}
+% Generated only after the full primary/replica and tree-baseline barriers.
+% There is deliberately no fallback to pre-v5 hand-written numbers.
+\input{result_macros_v5.tex}
+\input{export_macros_v5.tex}
 
-% =============================================================
-% RESULT MACROS -- emitted by scripts/emit_paper_macros.py from
-% results/{multiseed_20.json, unsw_multiseed_20.json,
-%          cicids2017_multiseed_experiment.json,
-%          cnn_baseline_merged.json}.
-% Do not edit by hand; rerun emit_paper_macros.py.
-% =============================================================
-% NSL-KDD 20-seed
-\newcommand{\nsloarelu}{78.57$\pm$1.28}
-\newcommand{\nslmfrelu}{58.91$\pm$2.80}
-\newcommand{\nsloaqcfs}{78.14$\pm$1.08}
-\newcommand{\nslmfqcfs}{58.28$\pm$2.70}
-\newcommand{\nsloacnn}{80.32$\pm$0.48}
-\newcommand{\nslmfcnn}{60.69$\pm$0.77}
-% UNSW-NB15 20-seed
-\newcommand{\unswoarelu}{64.67$\pm$0.55}
-\newcommand{\unswmfrelu}{40.18$\pm$1.02}
-\newcommand{\unswoaqcfs}{--}
-\newcommand{\unswmfqcfs}{--}
-\newcommand{\unswoacnn}{63.28$\pm$0.23}
-\newcommand{\unswmfcnn}{38.12$\pm$0.47}
-% CICIDS2017 multi-seed
-\newcommand{\cicoarelu}{91.89$\pm$1.21}
-\newcommand{\cicmfrelu}{56.35$\pm$2.80}
-\newcommand{\cicoaqcfs}{--}
-\newcommand{\cicmfqcfs}{--}
-\newcommand{\cicoacnn}{--}
-\newcommand{\cicmfcnn}{--}
-% Statistical test p-values (Wilcoxon + Holm-Bonferroni)
-\newcommand{\pnslrelu}{0.227}
-\newcommand{\punswrelu}{--}
-\newcommand{\pcicrelu}{--}
-% NSL-KDD QCFS stats row (tab:stats)
-\newcommand{\nslpqcfs}{0.227}
-\newcommand{\nslpadjqcfs}{0.227}
-\newcommand{\nsldzqcfs}{$+0.26$}
-\newcommand{\nslrejqcfs}{\ding{55}}
-% UNSW QCFS stats row (tab:stats)
-\newcommand{\unswpqcfs}{--}
-\newcommand{\unswpadjqcfs}{--}
-\newcommand{\unswdzqcfs}{--}
-\newcommand{\unswrejqcfs}{\ding{55}}
-% CICIDS QCFS stats row (tab:stats)
-\newcommand{\cicpqcfs}{--}
-\newcommand{\cicpadjqcfs}{--}
-\newcommand{\cicdzqcfs}{--}
-\newcommand{\cicrejqcfs}{\ding{55}}
-% TinyCNN stats rows (tab:stats) — budget-matched 80ep / 20-seed re-run.
-% Defaults are the pre-re-run values; finalize_all_det.py overrides them.
-\newcommand{\nslpcnn}{0.027}
-\newcommand{\nslpadjcnn}{0.055}
-\newcommand{\nsldzcnn}{$-0.97$}
-\newcommand{\nslrejcnn}{\ding{55}}
-\newcommand{\unswpcnn}{0.002}
-\newcommand{\unswpadjcnn}{0.004}
-\newcommand{\unswdzcnn}{$+2.06$}
-\newcommand{\unswrejcnn}{\checkmark}
-\newcommand{\cicpcnn}{0.063}
-\newcommand{\cicpadjcnn}{0.125}
-\newcommand{\cicdzcnn}{$+1.32$}
-\newcommand{\cicrejcnn}{\ding{55}}
-% IoT-23 multi-seed
-\newcommand{\iotoarelu}{--}
-\newcommand{\iotmfrelu}{--}
-\newcommand{\iotoaqcfs}{--}
-\newcommand{\iotmfqcfs}{--}
-\newcommand{\iotpqcfs}{--}
-\newcommand{\iotpadjqcfs}{--}
-\newcommand{\iotdzqcfs}{--}
-\newcommand{\iotrejqcfs}{\ding{55}}
-\newcommand{\piotrelu}{--}
-% Auto-generated overrides (latest experiment values). Must come AFTER
-% the \newcommand fallbacks above.
-\IfFileExists{result_macros.tex}{\input{result_macros.tex}}{}
-
-\title{Sub-Millijoule Intrusion Detection on a Commodity\\
-MCU Neural Processing Unit: A Four-Dataset Deployment Study}
+\title{Leakage-Safe and Reproducible Four-Dataset\\
+Intrusion Detection with MCU-Oriented Export Gates}
 
 \author{\IEEEauthorblockN{Hsiu-Chi Tsai}
 \IEEEauthorblockA{\textit{Arete Honors Program} \\
@@ -129,862 +48,432 @@ jun.514114.ee10@nycu.edu.tw}}
 \begin{document}
 \maketitle
 
-% ============================================================
 \begin{abstract}
-We deploy an intrusion detection classifier on the STM32N6570-DK,
-a Cortex-M55 MCU with the Neural-ART NPU.
-Using the approximate $T{=}1$ SNN--INT8 ANN equivalence, we compile a
-lightweight MLP to the NPU and evaluate four datasets:
-NSL-KDD (5-class), UNSW-NB15 (10-class), CICIDS2017 (15-class),
-and IoT-23 (5-class).
-Results are reported as mean$\pm$std over multi-seed runs (5--20 seeds),
-with paired Wilcoxon signed-rank tests and Holm--Bonferroni correction.
-On-board (clocks verified), INT8 inference is \textbf{0.28--0.58\,ms}:
-INT8 quantization gives 1.6--1.7$\times$ over FP32 on the Cortex-M55 CPU, but the
-Neural-ART NPU adds only \textbf{${\sim}1.1\times$} over the INT8 CPU (and is
-slower when operators fall back) --- the NPU buys little at this model scale, and
-a width sweep locates the CPU/NPU crossover near $10^5$ MACs. Energy is an
-estimated \textbf{44--69\,\textmu J/inference} (AN5946); Flash 105--138\,KB.
-Compared with recent MCU-class deployments on STM32F7 (31\,ms, 7.86\,mJ)
-and Raspberry Pi~3B+ (27\,ms), our path delivers 59--107$\times$ lower
-latency; the estimated energy envelope implies 114--179$\times$ lower
-energy than STM32F7.
-QCFS and ReLU are statistically indistinguishable on all four datasets
-($p\geq 0.227$), supporting practical $T{=}1$ near-equivalence under
-commodity MCU deployment constraints. Energy is estimated from AN5946
-rather than direct on-board measurement, and UNSW shows greater
-quantization fragility than NSL-KDD.
+Edge intrusion-detection studies can report optimistic results when
+preprocessing, checkpoint selection, repeated runs, and deployment evidence
+are not bound to the same protocol. We present a fail-closed evaluation of
+ReLU MLP, quantized-activation (QCFS) MLP, and TinyCNN classifiers on
+NSL-KDD, UNSW-NB15, CICIDS2017, and IoT-23. Every arm uses the same immutable
+fit/validation/test cache and \vFiveSeeds\ paired seeds. Encoders, scaling,
+class weights, and quantization calibration are fit without test data; each
+checkpoint is the fixed final epoch, with validation used only for diagnostics.
+A second independent execution must
+match the complete training-state digest before any test evaluation is
+allowed, after which logits, probabilities, predictions, and recomputed
+metrics must also match. We separate tests for a difference from tests for a
+run-frozen \vFiveMargin\ percentage-point equivalence margin and control
+each family with Holm's method. Random Forest and XGBoost references use the
+same caches and test barrier. ONNX/QDQ validation is checkpoint-bound software
+evidence, not proof of NPU mapping or physical-board latency. This design
+makes the numerical claims reproducible while limiting CICIDS2017 and IoT-23
+conclusions to fixed, exact-input-group-disjoint pattern benchmarks rather than
+unseen-device, capture, or future-time generalization.
 \end{abstract}
 
 \begin{IEEEkeywords}
-intrusion detection, spiking neural network, neural processing unit,
-INT8 quantization, edge AI, STM32N6, Neural-ART
+intrusion detection, data leakage, reproducibility, quantization, edge AI,
+MCU, deterministic training
 \end{IEEEkeywords}
 
-% ============================================================
 \section{Introduction}
-\label{sec:intro}
 
-Deep-learning-based intrusion detection at the IoT edge must operate
-under tight power and latency budgets.
-Recent MCU-class deployments achieve promising accuracy but at high
-energy cost: Chehade et~al.\ reported 31\,ms and 7.86\,mJ per
-inference on an STM32F746G (Cortex-M7, no NPU)~\cite{chehade2025stm32},
-and Diab et~al.\ required 27\,ms on a Raspberry~Pi~3B+~\cite{diab2025rpi}.
-At these latencies, CPU-only inference blocks all concurrent RTOS tasks
-for tens of milliseconds, making real-time packet processing difficult.
+Network intrusion detection at an IoT edge node must balance minority-class
+performance, predictable resource use, and deployability. Those objectives
+are difficult to compare when published values originate from different data
+splits or deployment measurements are not traceable to the evaluated
+checkpoint. The problem is especially acute for datasets containing repeated
+flows or capture-specific artifacts: a conventional random row split is a
+useful benchmark but is not evidence of generalization to a new device or time
+period.
 
-Commodity MCUs are beginning to integrate neural processing units (NPUs)
-that execute INT8 matrix operations at hundreds of GOPS while freeing
-the CPU for other tasks.
-A line of theoretical work~\cite{bu2022optimal, jiang2023unified,
-bu2025inference} has shown that single-timestep ($T{=}1$) SNN inference
-is approximately equivalent to INT8 quantized ANN inference:
-when the membrane potential is initialized to zero, the
-threshold-and-fire mechanism reduces to a ReLU-like clamp.
-Under the stated conversion and quantization assumptions, NPUs that
-execute INT8 \texttt{Gemm}+\texttt{Relu} can approximate
-single-timestep SNN-equivalent behavior.
+This work emphasizes evidence boundaries rather than a claimed universal
+winner. Its contributions are:
 
-We validate this on the STM32N6570-DK (ARM Cortex-M55
-@ 800\,MHz, Neural-ART NPU, 600\,GOPS INT8).
-We focus on classifier inference latency, energy, and memory footprint
-on pre-extracted flow-level features; the full IDS pipeline (packet
-capture, flow aggregation) is left to future work.
-
-Our contributions:
 \begin{itemize}
-  \item Following a systematic literature search protocol (Supplementary
-    File S1: \texttt{novelty\_search\_protocol.md}), the first publicly documented IDS
-    classifier deployment on a Cortex-M class MCU paired with a
-    general-purpose NPU (Neural-ART), with \emph{on-board} INT8 latency
-    0.28--0.58\,ms (clocks verified) and an on-board CPU-vs-NPU width sweep
-    showing the NPU adds only ${\sim}1.1\times$ over the INT8 CPU at this scale.
-  \item A four-dataset multi-seed study (5--20 seeds per arm,
-    see Table~\ref{tab:accuracy} caption) with paired Wilcoxon
-    signed-rank tests under Holm--Bonferroni family-wise error
-    control, covering NSL-KDD, UNSW-NB15, CICIDS2017, and IoT-23.
-  \item A non-MLP TinyCNN baseline (Conv2D $1{\times}3$) under the same
-    Neural-ART operator constraints, enabling same-hardware comparison.
-  \item Empirical validation of practical $T{=}1$ SNN--ANN approximation on
-    commercial NPU silicon across four datasets, with 99\% prediction
-    agreement between FP32 and INT8 models on NSL-KDD.
-  \item A QCFS sweep ($L\in\{2,4,8,16\}$) justifying $L{=}4$, and an
-    on-board finding that \texttt{Floor}-triggered CPU fallback fragments
-    the QCFS-INT8 graph into 12 software epochs that fail to instantiate
-    on ST's NPU validation runtime, and add +11.9\% on the CPU fallback
-    path (vs.\ the same-architecture ReLU-INT8 model).
+  \item a source-hash and schema audit for four multi-class datasets, followed
+  by fit-only categorical encoding, scaling, and class weighting;
+  \item a fixed-final-epoch, \vFiveSeeds-seed protocol with a global
+  primary/replica barrier that prevents test evaluation until every training
+  job is independently reproduced;
+  \item paired difference and equivalence analyses that do not equate a
+  non-significant difference with equivalence;
+  \item leakage-safe Random Forest and XGBoost references on NSL-KDD and
+  UNSW-NB15; and
+  \item checkpoint-bound FP32 ONNX and QDQ gates whose scope excludes vendor
+  compilation, physical-board latency, and energy unless those artifacts are
+  separately supplied.
 \end{itemize}
 
-% ============================================================
+Earlier exploratory results from this repository exposed test data during
+checkpoint selection. They are not reused here. Historical MCU timing files
+also are not attributed to the version-5 checkpoints because they lack the
+required checkpoint-to-binary provenance chain.
+
 \section{Related Work}
-\label{sec:related}
 
-Table~\ref{tab:related} compares IDS deployments on physical hardware.
-Ngo et~al.~\cite{ngo2022hhnids} deployed a 1,360-parameter MLP on
-the MAX78000, an AI-specialized MCU with a fixed CNN accelerator,
-achieving 98.57\% on UNSW-NB15 (binary) at 18\,mW.
-Zahm et~al.~\cite{zahm2024csiac} used the BrainChip Akida AKD1000
-neuromorphic processor (98.4\%, ${\sim}$1\,W).
-Both use purpose-built AI/neuromorphic hardware.
-Chehade et~al.~\cite{chehade2025stm32} deployed a 1D-CNN on the
-STM32F746G (Cortex-M7, no NPU), achieving 96.59\% accuracy on
-ISCX VPN-nonVPN but requiring 31\,ms and 7.86\,mJ per inference.
-Diab et~al.~\cite{diab2025rpi} deployed LightGBM/CNN on Raspberry~Pi~3B+
-(27--300\,ms, 250--275\,mW).
-Farooq et~al.~\cite{farooq2025fpga} report 1.16\,G inferences/sec on a
-Xilinx FPGA, but evaluate on the Edge-IIoT dataset and operate in a
-different hardware class (${\sim}$10\,W FPGA vs.\ ${\sim}$150\,mW MCU),
-so latency and energy are not directly comparable.
-Our work targets a general-purpose MCU with an attached programmable NPU,
-achieving two orders of magnitude lower energy than CPU-only MCU
-deployments.
-Following the systematic literature search protocol documented in
-Supplementary File S1 (\texttt{novelty\_search\_protocol.md};
-5 databases, 8 query variants,
-${\approx}$320 records inspected), we find no prior publicly documented
-IDS classifier deployed on a commodity ARM Cortex-M-class MCU paired
-with a general-purpose neural accelerator.
+NSL-KDD remains common in resource-constrained IDS research despite its origin
+in older DARPA traffic~\cite{tavallaee2009nslkdd}. UNSW-NB15 adds a more
+modern ten-class setting~\cite{moustafa2015unsw}, CICIDS2017 supplies a larger
+flow corpus~\cite{sharafaldin2018cicids}, and IoT-23 contains IoT botnet
+captures~\cite{garcia2020iot23}. CICIDS2017 has documented flow-construction
+and labeling problems~\cite{engelen2021cicids}; preprocessing hygiene cannot
+repair those upstream limitations.
 
-GPU-based SNN-IDS systems~\cite{nature2024csnn,ieee2025event,nature2026transformer}
-report 94--99\% on NSL-KDD/UNSW-NB15, but mostly in binary settings and
-without MCU-class deployment paths.
-Our multi-class formulation (5/10/15/5-class across NSL-KDD,
-UNSW-NB15, CICIDS2017, and IoT-23) and hardware deployment target a
-different design point.
+Prior edge deployments span specialized AI MCUs, conventional MCUs,
+neuromorphic ASICs, SBCs, and FPGAs. Ngo et al. deployed a small network on
+MAX78000~\cite{ngo2023hhnids}; Chehade et al. evaluated a CNN on
+STM32F7~\cite{chehade2025stm32}; and Diab et al. used Raspberry Pi
+hardware~\cite{diab2025rpi}. Their tasks, label spaces, preprocessing, and
+hardware differ, so their latency and accuracy values are context rather than
+head-to-head baselines. Here ``export-ready'' means that a selected
+checkpoint can pass a reproducible export gate. It does not mean that an MCU
+binary has been built or measured.
+
+QCFS was proposed in ANN-to-SNN conversion work as a discretized activation
+with multiple levels~\cite{bu2022optimal,jiang2023unified}. In this paper it
+is evaluated as a quantized ANN activation. A finite-level QCFS output is not
+silently identified with a one-step binary-spike neuron; an explicit temporal
+simulation would be a separate experiment.
+
+\section{Audited Data Protocol}
+
+\subsection{Sources, roles, and labels}
+
+The audit records the byte length and SHA-256 digest of every model input.
+NSL-KDD retains the official train/test roles and maps attacks into five
+declared classes. UNSW-NB15 uses the file roles indicated by content and the
+official schema; its identifier is excluded and its categorical fields remain
+available for fit-only encoding. CICIDS2017 uses all eight MachineLearningCSV
+files. The three Web Attack label spellings containing the release archive's
+replacement character are normalized by exact full-label aliases rather than
+fuzzy matching. IoT-23 uses a pinned preprocessed artifact and preserves its
+five-group historical mapping; this mapping is not described as a pure
+command-and-control ground truth.
+
+Table~\ref{tab:data} specifies the model dimensions and reserves generated
+macros for the immutable split sizes. Those counts must come from accepted
+cache metadata bound to the same verified result records as the metrics;
+dry-simulation counts are not substituted for accepted data evidence.
 
 \begin{table}[t]
 \centering
-\caption{Hardware-deployed IDS comparison. ``Class'' denotes hardware
-class: \textbf{MCU} = commodity microcontroller, \textbf{AI-MCU} =
-AI-specialized MCU with fixed CNN engine, \textbf{ASIC} = neuromorphic
-ASIC, \textbf{SBC} = single-board computer, \textbf{FPGA} = field-
-programmable gate array.}
-\label{tab:related}
+\caption{Version-5 unique-pattern splits. NSL-KDD and UNSW-NB15 retain official
+roles with overlapping test components excluded; CICIDS2017 and IoT-23 use
+fixed exact-input-group-disjoint splits.}
+\label{tab:data}
 \small
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lllllrrc@{}}
+\begin{tabular}{@{}lrrrrr@{}}
 \toprule
-\textbf{Work} & \textbf{Platform} & \textbf{Class} & \textbf{Task} & \textbf{Acc.} & \textbf{Lat.} & \textbf{Energy} & \textbf{NPU} \\
+Dataset & Features & Classes & Fit & Validation & Test \\
 \midrule
-Ngo~\cite{ngo2022hhnids} & MAX78000 & AI-MCU & bin. & 98.6\% & --- & 18\,mW$^*$ & CNN eng. \\
-Zahm~\cite{zahm2024csiac} & Akida & ASIC & multi & 98.4\% & --- & ${\sim}$1\,W$^*$ & Neurom. \\
-Chehade~\cite{chehade2025stm32} & STM32F7 & MCU & multi & 96.6\% & 31\,ms & 7.86\,mJ & None \\
-Diab~\cite{diab2025rpi} & RPi~3B+ & SBC & multi & 95.3\% & 27\,ms & ${\sim}$6.75\,mJ$^\ddagger$ & None \\
-Farooq~\cite{farooq2025fpga}$^\S$ & Xilinx FPGA & FPGA & bin. & --- & $<$1\,\textmu s & --- & --- \\
-\midrule
-\textbf{This work} & \textbf{STM32N6} & \textbf{MCU} & \textbf{5/10/15/5} & \textbf{78.6/64.7/91.9/75.6\%}$^\dagger$ & \textbf{0.28\,ms}$^\P$ & \textbf{44\,\textmu J}$^\ddagger$ & \textbf{NPU} \\
+NSL-KDD    & 41 & 5  & \vFiveNslReluFitCount & \vFiveNslReluValidationCount & \vFiveNslReluTestCount \\
+UNSW-NB15  & 42 & 10 & \vFiveUnswReluFitCount & \vFiveUnswReluValidationCount & \vFiveUnswReluTestCount \\
+CICIDS2017 & 76 & 15 & \vFiveCicReluFitCount & \vFiveCicReluValidationCount & \vFiveCicReluTestCount \\
+IoT-23     & 13 & 5  & \vFiveIotReluFitCount & \vFiveIotReluValidationCount & \vFiveIotReluTestCount \\
 \bottomrule
-\multicolumn{8}{l}{\scriptsize $^*$Power, not energy; latency not reported.} \\
-\multicolumn{8}{l}{\scriptsize $^\dagger$NSL-KDD 5-class / UNSW-NB15 10-class / CICIDS2017 15-class / IoT-23 5-class.} \\
-\multicolumn{8}{l}{\scriptsize $^\ddagger$Estimated from reported power and latency.} \\
-\multicolumn{8}{l}{\scriptsize $^\S$Edge-IIoT dataset, different hardware class (${\sim}$10\,W FPGA).} \\
-\multicolumn{8}{l}{\scriptsize $^\P$On-board measured (on-device DWT, 800\,MHz verified); INT8 NPU, IoT-23.}
-\end{tabular}%
-}
+\end{tabular}}
 \end{table}
 
-% ============================================================
-\section{System Design}
-\label{sec:system}
+\subsection{Split and preprocessing isolation}
 
-\subsection{$T{=}1$ SNN--ANN Equivalence}
+The evaluation unit is a unique labelled final-FP32 input pattern, not a
+traffic-frequency-weighted row. Canonical raw identities are recorded before
+preprocessing. Exact-input groups determine assignment components, with
+components merged when preprocessing creates final-FP32 collisions; no
+component may cross fit, validation, and test. Conflicting labels remain
+distinct labelled patterns within the same component.
 
-A Leaky Integrate-and-Fire (LIF) neuron updates its membrane potential
-$V[t] = \beta \cdot V[t{-}1] + \mathbf{W}\mathbf{x}[t]$ and fires
-when $V[t] > \theta$.
-At $T{=}1$ with $V[0]{=}0$, the leak term vanishes and firing reduces
-to $\Theta(\mathbf{W}\mathbf{x} - \theta)$, which is equivalent to a
-quantized ReLU.
-Bu et~al.~\cite{bu2022optimal} formalized this via QCFS;
-Jiang et~al.~\cite{jiang2023unified} and
-Bu et~al.~\cite{bu2025inference} further showed that INT8
-post-training quantization produces a discretization grid that closely
-approximates the threshold-and-fire operation.
-In practice, under this QCFS/INT8 conversion setting, NPUs that execute
-INT8 \texttt{Gemm}+\texttt{Relu} can approximate the same decision
-function as the $T{=}1$ classifier.
+NSL-KDD and UNSW-NB15 retain the official file roles. Validation is split only
+from official training components; official-test components touching official
+training data are excluded, and repeated labelled patterns are deduplicated.
+CICIDS2017 and IoT-23 use approximate target proportions of 64/16/20 for
+fit/validation/test. Grouped stratification fixes five folds and fold zero,
+with validation seed 20260920 and combined-data test seed 42; group constraints
+need not yield exact proportions. Every final split must contain each declared
+class; a failed support check stops preparation instead of selecting another
+fold.
 
-\subsection{Neural-ART NPU}
+Categorical vocabularies and the incremental standard scaler are fitted on
+canonical-raw unique labelled fit patterns. They are not refitted after final
+FP32 deduplication, so distinct raw patterns that collapse later can influence
+the scaler more than once. Training, evaluation, and neural class-weight
+counts instead use the final unique labelled patterns. Unknown validation/test
+categories receive a declared sentinel. Declared missing or infinite numeric
+values for the applicable datasets become zero before fit-only scaling;
+unexpected numeric tokens fail the run. CICIDS2017 removes the verified
+physical duplicate of \texttt{Fwd Header Length} and excludes destination port,
+while retaining the remaining schema-defined constant features.
 
-The STM32N6570-DK pairs an ARM Cortex-M55 at 800\,MHz with the
-Neural-ART NPU rated at 600\,GOPS for INT8 and 3\,TOPS/W
-efficiency~\cite{st_neural_art}.
-The NPU supports \texttt{Conv}, \texttt{Gemm}, \texttt{Relu},
-\texttt{Add}, \texttt{Clip}, and \texttt{MaxPool} in INT8;
-unsupported operators fall back to the Cortex-M55 CPU with
-automatic cache-maintenance overhead at each NPU$\leftrightarrow$CPU
-handoff.
-The board includes 4.2\,MB internal SRAM and
-128\,MB external NOR Flash.
+The available IoT-23 artifact does not retain reliable device, capture, or
+time-group identifiers and was globally deduplicated upstream. Exact model-input
+disjointness therefore does not establish device, capture, or time isolation,
+or repair unknown upstream preprocessing. CICIDS2017 likewise is not a capture
+holdout. We limit both claims accordingly.
 
-\subsection{Model Architecture}
+\section{Models and Reproducible Training}
 
-We use a four-layer MLP with BatchNorm and ReLU:
-$\texttt{Lin}(d{\to}256) \to \texttt{BN} \to \texttt{ReLU}$
-$\to \texttt{Lin}(256{\to}256) \to \texttt{BN} \to \texttt{ReLU}$
-$\to \texttt{Lin}(256{\to}128) \to \texttt{BN} \to \texttt{ReLU}$
-$\to \texttt{Lin}(128{\to}C)$,
-where $(d, C) \in \{(41, 5), (34, 10), (69, 15), (13, 5)\}$ for
-NSL-KDD, UNSW-NB15, CICIDS2017, and IoT-23 respectively.
-BatchNorm is folded into the preceding Linear at ONNX export, yielding
-a graph of \texttt{Gemm}+\texttt{Relu} operators only (103--119\,K parameters,
-dominated by the 256$\times$256 hidden layer).
-The architecture is deliberately shallow: deeper models could improve
-minority-class recall but risk introducing operators outside the NPU's
-supported set.
-All hidden dimensions are powers of two (256, 128), avoiding a known
-Neural-ART compiler issue with prime-number channel
-counts~\cite{st_neural_art}.
+\subsection{Neural models}
 
-\subsection{Datasets and Training}
+The ReLU MLP contains three hidden affine blocks of widths 256, 256, and 128,
+each followed by BatchNorm and ReLU, and a final class layer. The QCFS arm
+replaces each ReLU with
+\begin{equation}
+ q(x)=\left(\frac{\left\lfloor L\,\mathrm{clip}(x/\theta,0,1)+\tfrac{1}{2}\right\rfloor}{L}\right)\theta,
+ \qquad L=4,
+\end{equation}
+where each activation layer has a trainable threshold initialized to one,
+and the straight-through estimator is used during training. Division by $L$
+precedes multiplication by $\theta$ in the FP32 implementation. This corrected
+shifted formula defines a new method version; checkpoints from the earlier
+unshifted formula are incompatible. TinyCNN uses two one-dimensional
+feature-axis convolutions implemented as $1\times3$ Conv2D layers with 8 and
+16 channels, followed by a linear classifier. IoT-23 omits TinyCNN from the
+declared primary arms.
 
-\textbf{NSL-KDD}~\cite{tavallaee2009nslkdd}: 125,973 train / 22,544 test,
-41 features, 5-class.
-\textbf{UNSW-NB15}~\cite{moustafa2015unsw}: 175,341 train / 82,332 test,
-34 features, 10-class.
-\textbf{CICIDS2017}~\cite{sharafaldin2018cicids}: ${\approx}$2.26\,M
-train / 566\,K test, 78 raw features (69 after removing all-constant
-columns), 15-class. We train on the original CIC-IDS-2017 flow
-CSVs~\cite{sharafaldin2018cicids} with column-name normalization and
-NaN/Inf handling; we do \emph{not} apply the Engelen
-et~al.~\cite{engelen2021cicids} re-cleaning, so the TCP-splitting and
-label-alignment issues it documents remain present (see caveats below).
-\textbf{IoT-23}~\cite{garcia2020iot23}: ${\approx}$4.84\,M
-train / 1.21\,M test, 13 features, 5-class (Benign, C\&C, DDoS,
-Okiru, PortScan). This dataset provides contemporary IoT botnet
-traffic from 2018--2019 captures.
-Training: Adam ($\text{lr}{=}10^{-3}$), cosine annealing, 40--80 epochs,
-inverse-frequency class weighting. ReLU arms use $n{=}20$ seeds on
-NSL-KDD and UNSW-NB15, and $n{=}10$ on CICIDS2017 and IoT-23;
-QCFS arms use $n{=}10$ on UNSW-NB15 and CICIDS2017, and $n{=}5$ on
-IoT-23 due to training-set size.
-Three categorical features are label-encoded; remaining features are
-z-score normalized using training-set statistics.
-FP32 models are quantized to INT8 via ONNX Runtime static PTQ
-(MinMax, per-tensor, 1,000 calibration samples).
-A 24-configuration ablation (Section~\ref{sec:quant}) confirms that
-the choice of calibration method, granularity, and sample size
-changes accuracy by at most 0.82\,pp on NSL-KDD.
+All neural models use Adam, cosine decay, square-root inverse-frequency
+fit-only class weighting, and FP32 deterministic operations. Weights are
+computed from final-deduplicated fit labels and normalized to sum to the number
+of classes. NSL-KDD, UNSW-NB15, and CICIDS2017 train
+for 80 epochs with batch size 512; IoT-23 trains for 40 epochs with batch size
+1024. Every ten epochs and at the final epoch, validation macro recall is
+evaluated only as a diagnostic. The checkpoint is always the fixed final
+epoch; neither validation nor test chooses an epoch or changes the training
+budget.
 
-\textbf{Dataset caveats.}
-NSL-KDD is derived from 1998 DARPA traffic and does not reflect
-modern IoT/5G traffic distributions; we retain it for benchmark
-continuity with the MCU-IDS literature
-(HH-NIDS~\cite{ngo2022hhnids}, Chehade~\cite{chehade2025stm32},
-Diab~\cite{diab2025rpi} all report NSL-KDD-derived results).
-CICIDS2017's original release contained TCP splitting bugs, duplicate
-flows, and mislabeled port scans~\cite{engelen2021cicids}; because we
-train on these original flows rather than the re-cleaned release, these
-issues persist in our data. We report per-class recall in
-Section~\ref{sec:experiments} to expose the resulting label-noise effects.
+\subsection{Independent-execution barrier}
 
-\textbf{Fair-comparison caveats.}
-The MCU-IDS literature uses heterogeneous preprocessing: Ngo
-et~al.~\cite{ngo2022hhnids} apply SMOTE oversampling and report binary
-accuracy; Chehade et~al.~\cite{chehade2025stm32} use ISCX VPN-nonVPN
-(traffic classification, not intrusion detection);
-Farooq et~al.~\cite{farooq2025fpga} use Edge-IIoT at gigabit line rate
-on FPGA. We deliberately report multi-class accuracy with
-inverse-frequency class weighting (no oversampling) on four
-intrusion-detection benchmarks, and confine our head-to-head numerical
-comparison to platforms in the same hardware class (commodity MCU).
+The experiment plan freezes source hashes, environment, cache fingerprints,
+hyperparameters, seed order, and bounded job concurrency. All 11 primary jobs
+must finish before all 11 jobs are executed again in an independent namespace.
+For every seed, the checkpoint tensors, optimizer, scheduler, RNG states,
+batch order, and history contribute to a training digest. Any mismatch blocks
+all test access. After the barrier, primary and replica checkpoints are each
+evaluated on test. Their saved labels, logits, probabilities, predictions,
+and independently recomputed metrics must produce the same scientific digest.
+Only primary values appear in the tables.
 
-\subsection{NPU Compilation and Operator Mapping}
+Concurrency occurs across independent dataset/model jobs, never by changing
+the model, batch size, precision, or seed order. Thus it improves utilization
+without changing the scientific protocol.
 
-Models are compiled and deployed on-board for the STM32N6570-DK using
-the local ST~Edge~AI Core v3.0.0 toolchain (not the cloud), and latencies
-are measured on-device (Section~\ref{sec:crossover}).
-Table~\ref{tab:opmap} shows the operator-level mapping.
-All \texttt{Gemm}+\texttt{Relu} layers map to NPU hardware epochs.
-The \texttt{QuantizeLinear}/\texttt{DequantizeLinear} operators at
-the model boundary may require CPU epochs depending on the input
-dimension.
+\subsection{Tree references}
+
+Random Forest uses 100 trees, maximum depth 20, balanced class weights, and
+\vFiveNslRandomForestSeeds\ seeds. XGBoost uses 100 depth-6 histogram trees,
+learning rate 0.1, and inverse-frequency fit-only sample weights. Because its
+declared configuration has no row or column subsampling, one deterministic
+XGBoost fit is reported rather than repeated identical values with artificial
+zero uncertainty. Tree hyperparameters are fixed without validation or test
+selection. A primary/replica semantic model digest barrier precedes test
+prediction, and the Random Forest export gate requires an ONNX
+\texttt{TreeEnsembleClassifier} with validation parity. The two Random Forest
+exports, one per reference dataset, are separate from the neural export matrix
+and do not require additional fits.
+
+\section{Statistical Protocol}
+
+The two primary metrics are overall accuracy and macro F1, both in percentage
+points. All comparisons use paired seed identifiers and report ReLU minus the
+comparator. The difference family contains ReLU--QCFS for four datasets and
+ReLU--TinyCNN for three datasets, each for both metrics (14 hypotheses). It
+uses a paired signed-rank randomization distribution with fixed tie handling,
+followed by Holm adjustment across the full family. Its estimand is a symmetric
+paired-difference location, summarized by the Hodges--Lehmann pseudomedian;
+arithmetic mean differences are descriptive, not the signed-rank estimand.
+The inference assumes independent paired seed differences symmetric about the
+tested location. Exact conditional computation does not prove those assumptions.
+
+Equivalence is a distinct eight-hypothesis family: four datasets by two
+metrics for ReLU versus QCFS. Two one-sided paired $t$ tests use the frozen
+$\pm\vFiveMargin$ percentage-point margin; the intersection--union value is
+Holm-adjusted across all eight hypotheses. These tests target the mean paired
+seed difference. The margin is a run-frozen numerical-equivalence sensitivity
+margin, not an empirically established practical-importance threshold or
+preregistration for earlier exploratory work. Difference non-rejection is not
+equivalence, and a detected difference can coexist with numerical equivalence
+under this margin.
+
+A separate eight-hypothesis signed-rank TOST family assesses robustness for
+the symmetric paired-difference location, with its own Holm adjustment. All
+eight primary and robustness decisions, adjusted $p$ values, and their
+discordances must be reported, including unfavorable or inconclusive outcomes.
+The primary test is not switched after examining a normality test or a result.
+Family-wise control is separate within the difference, primary-equivalence,
+and robustness families, not a joint guarantee across all three families.
+
+\section{Classification Results}
 
 \begin{table}[t]
 \centering
-\caption{Operator mapping to NPU epochs. ReLU INT8 achieves near-100\%
-NPU utilization; QCFS INT8 forces CPU fallback at every \texttt{Floor}.}
-\label{tab:opmap}
-\small
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}llcl@{}}
-\toprule
-\textbf{ONNX Operator} & \textbf{NPU Support} & \textbf{Epoch Type} & \textbf{Notes} \\
-\midrule
-\texttt{Gemm} (INT8)  & \checkmark & HW & Fused weight + bias \\
-\texttt{Relu}          & \checkmark & HW & Fused with preceding Gemm \\
-\texttt{Clip}          & \checkmark & HW & Used by QCFS \\
-\texttt{Floor}         & \ding{55}  & SW (float) & CPU round-trip, ${+}0.012$\,ms/island (on-board M55) \\
-\texttt{QuantizeLinear}   & \checkmark & HW/Hyb & At model boundary \\
-\texttt{DequantizeLinear} & \checkmark & HW/Hyb & At model boundary \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
-
-For the ReLU INT8 path:
-NSL-KDD compiles to 5~HW + 1~Hyb + 2~SW epochs (on-board 0.52\,ms, 52\% HW);
-UNSW-NB15 compiles to 4~HW + 0~Hyb + 0~SW epochs (0.29\,ms, 100\% NPU).
-The QCFS INT8 path (same architecture) instead compiles to 12~HW + 12~SW
-epochs (24 total, IoT-23): each of its three \texttt{Floor} activations
-becomes a four-epoch software island
-\mbox{\texttt{Dequant}}$\to$\mbox{\texttt{Floor}}$\to$\mbox{\texttt{Quant}}$\to$\mbox{\texttt{Quant}}.
-On-board this graph \emph{fails to instantiate} on ST's standard NPU
-validation runtime (an \texttt{assert}/\texttt{abort} during model
-bring-up), whereas the same-architecture ReLU-INT8 model deploys
-and runs; on the CPU fallback runtime these \texttt{Floor} round-trips
-cost \textbf{+11.9\%} (339 vs.\ 303\,\textmu s).
-The CICIDS2017 and IoT-23 INT8 graphs share the same
-\texttt{Gemm}+\texttt{Relu} structure and compile to 4~HW + 0~SW
-epochs (100\% NPU), 0.32 and 0.28\,ms on-board (Table~\ref{tab:npu}).
-
-% ============================================================
-\section{Experiments}
-\label{sec:experiments}
-
-\subsection{Classification Results}
-
-\begin{table}[t]
-\centering
-\caption{Test accuracy (\%, mean$\pm$std, 5--20 seeds per arm;
-NSL-KDD ReLU/QCFS $n{=}20$, UNSW ReLU $n{=}20$/QCFS $n{=}10$,
-CICIDS ReLU $n{=}10$/QCFS $n{=}10$, IoT-23 ReLU $n{=}10$/QCFS $n{=}5$).
-MLP and TinyCNN are the only NPU-eligible models.
-$\dagger$TinyCNN uses Conv2D $1{\times}3$ kernels, the only non-MLP
-topology that fits within Neural-ART's operator set.}
+\caption{Test metrics (\%, mean $\mathbin{\pm}$ sample standard deviation).
+All neural arms use \vFiveSeeds\ seeds. XGBoost is one deterministic fit.}
 \label{tab:accuracy}
 \small
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}llccc@{}}
+\begin{tabular}{@{}llrr@{}}
 \toprule
-\textbf{Dataset} & \textbf{Model} & \textbf{Overall} & \textbf{Macro F1} & \textbf{NPU?} \\
+Dataset & Model & Overall accuracy & Macro F1 \\
 \midrule
-\multirow{4}{*}{NSL-KDD}
-  & ReLU MLP         & \nsloarelu & \nslmfrelu & \checkmark \\
-  & QCFS MLP         & \nsloaqcfs & \nslmfqcfs & Partial \\
-  & TinyCNN$^\dagger$ & \textbf{\nsloacnn} & \textbf{\nslmfcnn} & \checkmark \\
-  & Rand.\ Forest    & 73.84$\pm$0.19 & 47.13$\pm$0.33 & \ding{55} \\
+\multirow{5}{*}{NSL-KDD}
+ & ReLU MLP      & \vFiveNslReluOa & \vFiveNslReluMacroFone \\
+ & QCFS MLP      & \vFiveNslQcfsOa & \vFiveNslQcfsMacroFone \\
+ & TinyCNN       & \vFiveNslCnnOa & \vFiveNslCnnMacroFone \\
+ & Random Forest & \vFiveNslRandomForestOa & \vFiveNslRandomForestMacroFone \\
+ & XGBoost       & \vFiveNslXgboostOa & \vFiveNslXgboostMacroFone \\
 \midrule
-\multirow{4}{*}{UNSW-NB15}
-  & ReLU MLP         & \unswoarelu & \unswmfrelu & \checkmark \\
-  & QCFS MLP         & \unswoaqcfs & \unswmfqcfs & Partial \\
-  & TinyCNN$^\dagger$ & \unswoacnn & \unswmfcnn & \checkmark \\
-  & Rand.\ Forest    & \textbf{69.46$\pm$0.10} & \textbf{48.63$\pm$0.38} & \ding{55} \\
+\multirow{5}{*}{UNSW-NB15}
+ & ReLU MLP      & \vFiveUnswReluOa & \vFiveUnswReluMacroFone \\
+ & QCFS MLP      & \vFiveUnswQcfsOa & \vFiveUnswQcfsMacroFone \\
+ & TinyCNN       & \vFiveUnswCnnOa & \vFiveUnswCnnMacroFone \\
+ & Random Forest & \vFiveUnswRandomForestOa & \vFiveUnswRandomForestMacroFone \\
+ & XGBoost       & \vFiveUnswXgboostOa & \vFiveUnswXgboostMacroFone \\
 \midrule
 \multirow{3}{*}{CICIDS2017}
-  & ReLU MLP         & \cicoarelu & \cicmfrelu & \checkmark \\
-  & QCFS MLP         & \cicoaqcfs & \cicmfqcfs & Partial \\
-  & TinyCNN$^\dagger$ & \cicoacnn & \cicmfcnn & \checkmark \\
+ & ReLU MLP & \vFiveCicReluOa & \vFiveCicReluMacroFone \\
+ & QCFS MLP & \vFiveCicQcfsOa & \vFiveCicQcfsMacroFone \\
+ & TinyCNN  & \vFiveCicCnnOa & \vFiveCicCnnMacroFone \\
 \midrule
 \multirow{2}{*}{IoT-23}
-  & ReLU MLP         & \iotoarelu & \iotmfrelu & \checkmark \\
-  & QCFS MLP         & \iotoaqcfs & \iotmfqcfs & Partial \\
+ & ReLU MLP & \vFiveIotReluOa & \vFiveIotReluMacroFone \\
+ & QCFS MLP & \vFiveIotQcfsOa & \vFiveIotQcfsMacroFone \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}}
 \end{table}
 
-Table~\ref{tab:accuracy} reports multi-seed results.
-On NSL-KDD, ReLU MLP and QCFS MLP are statistically indistinguishable
-($p{=}\pnslrelu$, Table~\ref{tab:stats}), which provides evidence of
-non-rejection of
-$T{=}1$ SNN--ANN approximation, since the QCFS-trained network behaves
-like the ReLU model once BatchNorm is folded and the graph is
-quantized to INT8. The same non-rejection pattern appears on UNSW-NB15,
-CICIDS2017, and IoT-23 (Table~\ref{tab:accuracy}, QCFS rows), where the
-Wilcoxon signed-rank test against ReLU yields $p{=}\punswrelu$,
-$p{=}\pcicrelu$, and $p{=}\piotrelu$ respectively; we report them in
-Table~\ref{tab:stats}. Taken together, these results extend the
-NSL-KDD finding to four heterogeneous datasets and support
-cross-dataset evidence for practical $T{=}1$ approximation on a
-commodity MCU IDS workload, not formal statistical equivalence.
-TinyCNN (Conv2D $1{\times}3$, 3.7K params) exhibits a large but
-underpowered effect on NSL-KDD ($d_z{=}{-}0.97$, $p_{\text{adj}}{=}0.055$)
-where it trends higher than the MLP. On UNSW-NB15 the MLP
-\emph{significantly} outperforms TinyCNN ($p{=}0.002$, $d_z{=}2.06$).
-On CICIDS2017 the MLP again leads with a large effect
-($d_z{=}{+}1.32$, all five seeds direction-consistent), but at
-$n{=}5$ the Wilcoxon test hits the two-sided floor
-($p{=}0.063$), so we do not claim significance.
-Neither topology dominates across datasets, which is itself a
-deployment finding: an RTOS scheduler could host both models
-(combined Flash ${<}$300\,KB) and dispatch by traffic feature.
-On UNSW-NB15 (10-class), Random Forest achieves higher overall accuracy.
-In our tested toolchain/backend configuration, it cannot be compiled to
-the NPU path: ST Edge AI Core rejects
-\texttt{TreeEnsembleClassifier} with ``NOT IMPLEMENTED.'' While ST
-documentation lists ONNX-ML tree operators in the toolbox support,
-our tested path did not provide a Neural-ART deployment route
-for this model class~\cite{st_edgeai_supported_ops}. We therefore
-report MLP/CNN deployment results for the Neural-ART path.
-The accuracy gap reflects the difficulty of 10-class classification
-with extreme imbalance (Worms: 44 samples), and is consistent with a
-dataset-limited regime rather than a clear modeling limitation
-specific to NPU deployment.
-
-Per-class analysis on NSL-KDD reveals that DoS (F1$=$86.9\%) and
-Normal (82.4\%) are well-classified, while R2L suffers from low recall
-(25.3\%); 63.2\% of R2L samples are misclassified as Normal.
-U2R (200 test samples) scatters across Probe (45.4\%) and Normal (29.2\%).
-On UNSW-NB15, Generic achieves F1$=$97.9\%, but minority classes
-collapse: Worms F1$=$9.1\%, Analysis F1$=$2.9\%.
-These patterns are characteristic of extreme class imbalance, not
-NPU-induced degradation on NSL-KDD; FP32 and INT8 models agree on 99\% of
-predictions.
-
-Fig.~\ref{fig:cm} visualizes these patterns.
-The class imbalance is severe: R2L has only 995 training samples
-(0.8\% of the set) yet 2,754 test samples (12.2\%); U2R has 52
-training samples.
-
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[scale=0.58]
-% 20-seed mean confusion matrix, computed from results/multiseed_20.json
-% Class order: Norm, DoS, Probe, R2L, U2R
-% Row 0: Normal
-\foreach \x/\v [count=\i from 0] in {96.4/96.4, 0.6/0.6, 2.1/2.1, 0.4/0.4, 0.6/0.6} {
-  \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,0) rectangle (\i+1,-1);
-  \pgfmathtruncatemacro{\w}{\x>50?1:0}
-  \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-0.5) {\v\%};
-  \else \node[font=\tiny] at (\i+0.5,-0.5) {\v\%}; \fi}
-% Row 1: DoS
-\foreach \x/\v [count=\i from 0] in {17.8/17.8, 79.7/79.7, 2.2/2.2, 0.0/0.0, 0.3/0.3} {
-  \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-1) rectangle (\i+1,-2);
-  \pgfmathtruncatemacro{\w}{\x>50?1:0}
-  \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-1.5) {\v\%};
-  \else \node[font=\tiny] at (\i+0.5,-1.5) {\v\%}; \fi}
-% Row 2: Probe
-\foreach \x/\v [count=\i from 0] in {21.9/21.9, 8.8/8.8, 69.2/69.2, 0.0/0.0, 0.1/0.1} {
-  \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-2) rectangle (\i+1,-3);
-  \pgfmathtruncatemacro{\w}{\x>50?1:0}
-  \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-2.5) {\v\%};
-  \else \node[font=\tiny] at (\i+0.5,-2.5) {\v\%}; \fi}
-% Row 3: R2L
-\foreach \x/\v [count=\i from 0] in {63.2/63.2, 0.0/0.0, 0.7/0.7, 25.3/25.3, 10.7/10.7} {
-  \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-3) rectangle (\i+1,-4);
-  \pgfmathtruncatemacro{\w}{\x>50?1:0}
-  \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-3.5) {\v\%};
-  \else \node[font=\tiny] at (\i+0.5,-3.5) {\v\%}; \fi}
-% Row 4: U2R
-\foreach \x/\v [count=\i from 0] in {29.2/29.2, 0.0/0.0, 45.4/45.4, 6.4/6.4, 19.0/19.0} {
-  \pgfmathsetmacro{\c}{min(\x*2.5,100)} \fill[blue!\c!white] (\i,-4) rectangle (\i+1,-5);
-  \pgfmathtruncatemacro{\w}{\x>50?1:0}
-  \ifnum\w=1 \node[font=\tiny,white] at (\i+0.5,-4.5) {\v\%};
-  \else \node[font=\tiny] at (\i+0.5,-4.5) {\v\%}; \fi}
-% Labels
-\foreach \lab/\y in {Norm/0, DoS/1, Probe/2, R2L/3, U2R/4} {
-  \node[font=\tiny, rotate=45, anchor=east] at (\y+0.5, 0.15) {\lab};
-  \node[font=\tiny, anchor=east] at (-0.1,-\y-0.5) {\lab};
-}
-\node[font=\scriptsize, rotate=90] at (-1.0,-2.5) {True};
-\node[font=\scriptsize] at (2.5, 0.8) {Predicted};
-\end{tikzpicture}
-\caption{NSL-KDD confusion matrix (\%, 20-seed mean, ReLU MLP).
-R2L$\to$Normal (63.2\%) and U2R$\to$Probe (45.4\%) dominate errors.}
-\label{fig:cm}
-\end{figure}
-
-\subsection{Energy, Latency, and Memory}
+Table~\ref{tab:accuracy} is intentionally not annotated with a winner selected
+after viewing test. The tree rows answer an accuracy-reference question; they
+are not asserted to be executable by a neural accelerator. Conversely, an
+exportable neural operator graph is not evidence that its classifier is more
+accurate.
 
 \begin{table}[t]
 \centering
-\caption{\textbf{On-board} INT8 IDS inference latency (\textmu s; on-device DWT,
-CPU clock verified at 800\,MHz) for the four datasets
-($d{\to}256{\to}256{\to}128{\to}C$), replacing our earlier ST Edge~AI \emph{cloud}
-estimates. The speedup is from INT8 quantization (1.6--1.7$\times$ over FP32 on the
-M55 CPU); the Neural-ART NPU adds only ${\sim}1.1\times$ over the same INT8 model on
-the CPU, and is \emph{slower} on NSL-KDD (two software-fallback epochs).}
-\label{tab:npu}
-\small
-\begin{tabular}{@{}lrrrrr@{}}
-\toprule
-\textbf{Dataset} & \textbf{FP32} & \textbf{INT8} & \textbf{INT8} & \textbf{NPU} & \textbf{INT8} \\
- & \textbf{CPU} & \textbf{CPU} & \textbf{NPU} & \textbf{HW} & \textbf{wts} \\
- & (\textmu s) & (\textmu s) & (\textmu s) & & (KB) \\
-\midrule
-NSL-KDD    & 560 & 323 & 518$^\dagger$ & 52\%  & 109 \\
-UNSW-NB15  & 547 & 323 & \textbf{292}  & 100\% & 108 \\
-CICIDS2017 & 580 & 354 & 316           & 100\% & 118 \\
-IoT-23     & 526 & 304 & 277           & 100\% & 102 \\
-\bottomrule
-\multicolumn{6}{l}{\scriptsize $^\dagger$2 software-fallback epochs (41-feature operator constraint).}
-\end{tabular}
-\end{table}
-
-Table~\ref{tab:npu} reports \emph{on-board} latency (on-device DWT, CPU clock
-verified at 800\,MHz), superseding our earlier ST~Edge~AI cloud estimates. Two
-findings correct the record. First, the speedup comes from \textbf{INT8
-quantization} (1.6--1.7$\times$ over FP32 on the M55 CPU), not from the NPU.
-Second, over the \emph{same} INT8 model on the CPU the Neural-ART NPU adds only
-\textbf{1.10--1.12$\times$} (UNSW-NB15, CICIDS2017, IoT-23) and is \textbf{1.6$\times$
-slower} on NSL-KDD, whose 41-feature input forces two epochs back onto the CPU via
-\mbox{\texttt{Dequant}}$\to$op$\to$\mbox{\texttt{Quant}}. A ``NPU vs.\ CPU''
-speedup therefore conflates quantization with acceleration; at this scale
-($10^5$ MACs) the NPU's fixed per-inference overhead nearly cancels its throughput
-gain, and for smaller models the CPU wins outright (width sweep,
-Table~\ref{tab:sweep}). All four datasets stay in the sub-millisecond regime
-(0.28--0.58\,ms) on both CPU and NPU. Energy remains an AN5946-based estimate
-(44--69\,\textmu J); direct measurement with an STLINK-V3PWR/PPK2 probe is pending.
-
-\subsection{On-board cross-platform latency and the NPU crossover}
-\label{sec:crossover}
-
-Table~\ref{tab:npu} measures the four Ethernet models on the N6 itself. To map
-\emph{where} the NPU pays off, we additionally swept one MLP family
-($11{\to}W{\to}W{\to}W/2{\to}5$, INT8) on-board across three MCU classes over
-hidden width $W$
-(Table~\ref{tab:sweep}). Every clock was verified on-device and weights are
-SRAM-resident on all platforms, isolating compute. INT8 dense-FC latency is
-weight-value-independent (a random-weight $W{=}64$ model measured within 0.1\%
-of the trained one), so per-width accuracy (79.6--80.0\%) is taken from the
-real-data ablation.
-
-\begin{table}[t]
-\centering
-\caption{On-board INT8 inference latency (\textmu s) of the same MLP swept over
-hidden width $W$ on three MCU classes (SRAM-resident weights; every clock
-verified on-device). On the STM32N6, the M55 CPU (Helium/MVE) \emph{beats its
-own Neural-ART NPU} below ${\sim}10^5$ MACs.}
-\label{tab:sweep}
-\small
-\begin{tabular}{@{}rrrrrr@{}}
-\toprule
-$W$ & MACs & N6~CPU & N6~NPU & ESP32-S3 & RA4E1 \\
- & & {\scriptsize 800\,MHz} & {\scriptsize 800/1G} & {\scriptsize 240\,MHz} & {\scriptsize 100\,MHz} \\
-\midrule
-64  & 7{,}008   & \textbf{13.9} & 30.2  & 114.0 & 264.6 \\
-128 & 26{,}304  & \textbf{50.7} & 81.1  & 289.5 & 782.8 \\
-256 & 101{,}760 & 314.7 & \textbf{275.3} & 832.5 & 2627.5 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-On the same silicon the NPU is \textbf{2.2$\times$ slower} than the CPU at
-$W{=}64$ and \textbf{1.6$\times$ slower} at $W{=}128$, becoming
-\textbf{1.14$\times$ faster} only at $W{=}256$ ($10^5$ MACs). The crossover is
-sharpened by the CPU's 32\,KB L1: at $W{=}256$ its ${\sim}100$\,KB of weights
-spill L1 (1.5$\to$2.5 cyc/MAC), whereas the NPU streams weights through its own
-cache. The NPU thus pays off only for models large enough that its launch
-overhead amortizes \emph{and} the CPU has left its cache-resident regime---the
-regime the 256-wide Ethernet models (Table~\ref{tab:npu}) sit at, but a minimal
-tabular IDS does not. Across platforms the M55's wide Helium INT8 dominates:
-8$\times$ faster than the ESP32-S3 (LX7 SIMD) and 19$\times$ faster than the
-RA4E1 (M33 DSP) at $W{=}64$.
-
-\subsection{INT8 Quantization Robustness}
-\label{sec:quant}
-
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[scale=0.85]
-\begin{axis}[
-    ybar,
-    bar width=16pt,
-    ylabel={Energy per inference},
-    ylabel style={font=\small},
-    symbolic x coords={Chehade,Diab,NPU-NSL,NPU-UNSW},
-    xtick=data,
-    x tick label style={rotate=30, anchor=east, font=\scriptsize},
-    ymode=log,
-    ymin=10,
-    ymax=20000,
-    ytick={10,100,1000,10000},
-    yticklabels={10\,\textmu J,100\,\textmu J,1\,mJ,10\,mJ},
-    ytick style={font=\scriptsize},
-    nodes near coords,
-    every node near coord/.append style={font=\tiny, rotate=90, anchor=west},
-    point meta=explicit symbolic,
-    width=\columnwidth,
-    height=4.5cm,
-    grid=major,
-    grid style={gray!20},
-]
-\addplot[fill=red!40] coordinates {
-    (Chehade,7860) [7.86\,mJ]
-    (Diab,6750) [6.75\,mJ]
-    (NPU-NSL,69) [69\,\textmu J]
-    (NPU-UNSW,44) [44\,\textmu J]
-};
-\end{axis}
-\end{tikzpicture}
-\caption{Energy per inference (log scale). Our NPU path achieves
-over two orders of magnitude reduction versus CPU-only MCU baselines.
-NPU = ReLU INT8 on Neural-ART (estimated from AN5946).
-Chehade~\cite{chehade2025stm32}: STM32F7;
-Diab~\cite{diab2025rpi}: RPi~3B+.}
-\label{fig:energy}
-\end{figure}
-
-A 24-configuration ablation (3 calibration methods $\times$
-2 granularities $\times$ 4 sample sizes) shows that INT8 accuracy
-deviates from FP32 by at most 0.82\,pp on NSL-KDD across all
-configurations.
-Several INT8 configurations slightly \emph{improve} over FP32,
-likely due to regularization effects of quantization noise.
-
-Table~\ref{tab:layerwise} presents layer-wise activation comparison
-between FP32 and INT8 models on 1,000 NSL-KDD test samples.
-Hidden layers show moderate cosine similarity (0.65--0.68) due to
-per-neuron quantization noise, but the logit layer recovers to 0.978
-and the overall prediction agreement is 99.0\%.
-INT8 maps each activation to one of 256 discrete levels; the bounded
-per-neuron noise does not propagate into classification errors.
-From the $T{=}1$ SNN perspective, the quantized model (INT8) closely
-reproduces the firing decisions of the FP32 model.
-
-\begin{table}[t]
-\centering
-\caption{Layer-wise FP32 vs INT8 comparison (1,000 NSL-KDD samples).}
-\label{tab:layerwise}
-\small
-\begin{tabular}{@{}lccc@{}}
-\toprule
-\textbf{Layer} & \textbf{Cosine Sim} & \textbf{MAE} & \textbf{$L_\infty$} \\
-\midrule
-Relu\_0 (256) & 0.667 & 0.435 & 43.7 \\
-Relu\_1 (256) & 0.655 & 0.438 & 62.6 \\
-Relu\_2 (128) & 0.683 & 0.400 & 65.2 \\
-Logits (5)    & \textbf{0.978} & 0.103 & 19.8 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{QCFS Hyperparameter Sweep}
-\label{sec:lsweep}
-
-The QCFS activation introduces a quantization-level hyperparameter
-$L$; prior work~\cite{bu2022optimal,jiang2023unified} uses
-$L\in\{4,8,16\}$ without systematic justification on IDS workloads.
-We sweep $L\in\{2,4,8,16\}$ across 5 seeds on NSL-KDD and UNSW-NB15
-(Table~\ref{tab:lsweep}). On NSL-KDD all four $L$ values are
-statistically indistinguishable (pairwise Wilcoxon $p\!\geq\!0.81$),
-and on UNSW-NB15 $L{=}4$ is marginally preferred to $L{=}2$
-($p{=}0.0625$, which is the minimum attainable $p$-value for the
-signed-rank test at $n{=}5$, indicating an unambiguous direction but at
-the detection floor) but tied with $L{=}8$ and $L{=}16$
-($p{\geq}0.31$).
-Since larger $L$ yields no accuracy gain (above) while $L{=}2$ is
-marginally worse on UNSW-NB15, $L{=}4$ is the Pareto-optimal choice: the
-smallest $L$ with no accuracy penalty. The \texttt{Floor}-fallback cost
-is set by the number of QCFS activation layers (one \texttt{Floor} each),
-not by $L$, so it does not by itself favor one $L$ over another. To our
-knowledge this is the first empirical L-justification for QCFS in the IDS
-domain.
-
-\begin{table}[t]
-\centering
-\caption{QCFS L-sweep (mean$\pm$std over 5 seeds). Results refreshed
-from \texttt{results/qcfs\_lsweep.json}.}
-\label{tab:lsweep}
-\small
+\caption{Holm-adjusted paired signed-rank difference tests. $\Delta$ is the
+descriptive mean of ReLU minus comparator in percentage points, not the
+location estimand tested by signed ranks; ``yes'' denotes family-wise rejection at
+$\alpha=\vFiveAlpha$.}
+\label{tab:difference}
+\scriptsize
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabular}{@{}lllrrr@{}}
 \toprule
-\textbf{Dataset} & $L{=}2$ & $L{=}4$ & $L{=}8$ & $L{=}16$ \\
+Dataset & Comparator & Metric & $\Delta$ & Holm $p$ & Difference? \\
 \midrule
-NSL-KDD OA   & 75.48$\pm$0.92 & 75.03$\pm$0.63 & 75.14$\pm$0.74 & 75.22$\pm$1.07 \\
-NSL-KDD MF1  & 52.40$\pm$1.59 & 51.17$\pm$0.83 & 50.94$\pm$1.45 & 51.07$\pm$1.86 \\
-UNSW-NB15 OA & 64.85$\pm$0.20 & 65.76$\pm$0.19 & 65.59$\pm$0.14 & 65.56$\pm$0.54 \\
-UNSW-NB15 MF1& 40.64$\pm$0.20 & 41.36$\pm$0.25 & 41.23$\pm$0.36 & 41.28$\pm$0.29 \\
+NSL & QCFS & OA & \vFiveNslReluVsQcfsOaMeanDifference & \vFiveNslReluVsQcfsOaHolmP & \vFiveNslReluVsQcfsOaDifferenceSupported \\
+NSL & QCFS & MF1 & \vFiveNslReluVsQcfsMacroFoneMeanDifference & \vFiveNslReluVsQcfsMacroFoneHolmP & \vFiveNslReluVsQcfsMacroFoneDifferenceSupported \\
+NSL & TinyCNN & OA & \vFiveNslReluVsCnnOaMeanDifference & \vFiveNslReluVsCnnOaHolmP & \vFiveNslReluVsCnnOaDifferenceSupported \\
+NSL & TinyCNN & MF1 & \vFiveNslReluVsCnnMacroFoneMeanDifference & \vFiveNslReluVsCnnMacroFoneHolmP & \vFiveNslReluVsCnnMacroFoneDifferenceSupported \\
+UNSW & QCFS & OA & \vFiveUnswReluVsQcfsOaMeanDifference & \vFiveUnswReluVsQcfsOaHolmP & \vFiveUnswReluVsQcfsOaDifferenceSupported \\
+UNSW & QCFS & MF1 & \vFiveUnswReluVsQcfsMacroFoneMeanDifference & \vFiveUnswReluVsQcfsMacroFoneHolmP & \vFiveUnswReluVsQcfsMacroFoneDifferenceSupported \\
+UNSW & TinyCNN & OA & \vFiveUnswReluVsCnnOaMeanDifference & \vFiveUnswReluVsCnnOaHolmP & \vFiveUnswReluVsCnnOaDifferenceSupported \\
+UNSW & TinyCNN & MF1 & \vFiveUnswReluVsCnnMacroFoneMeanDifference & \vFiveUnswReluVsCnnMacroFoneHolmP & \vFiveUnswReluVsCnnMacroFoneDifferenceSupported \\
+CIC & QCFS & OA & \vFiveCicReluVsQcfsOaMeanDifference & \vFiveCicReluVsQcfsOaHolmP & \vFiveCicReluVsQcfsOaDifferenceSupported \\
+CIC & QCFS & MF1 & \vFiveCicReluVsQcfsMacroFoneMeanDifference & \vFiveCicReluVsQcfsMacroFoneHolmP & \vFiveCicReluVsQcfsMacroFoneDifferenceSupported \\
+CIC & TinyCNN & OA & \vFiveCicReluVsCnnOaMeanDifference & \vFiveCicReluVsCnnOaHolmP & \vFiveCicReluVsCnnOaDifferenceSupported \\
+CIC & TinyCNN & MF1 & \vFiveCicReluVsCnnMacroFoneMeanDifference & \vFiveCicReluVsCnnMacroFoneHolmP & \vFiveCicReluVsCnnMacroFoneDifferenceSupported \\
+IoT & QCFS & OA & \vFiveIotReluVsQcfsOaMeanDifference & \vFiveIotReluVsQcfsOaHolmP & \vFiveIotReluVsQcfsOaDifferenceSupported \\
+IoT & QCFS & MF1 & \vFiveIotReluVsQcfsMacroFoneMeanDifference & \vFiveIotReluVsQcfsMacroFoneHolmP & \vFiveIotReluVsQcfsMacroFoneDifferenceSupported \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}}
 \end{table}
-
-\subsection{Statistical Significance}
-\label{sec:stats}
-
-We test ReLU-MLP vs.\ each NPU-eligible baseline (QCFS, TinyCNN)
-using a paired Wilcoxon signed-rank test on per-seed overall-accuracy
-differences, with Holm--Bonferroni family-wise error correction across
-the primary comparisons per dataset (Table~\ref{tab:stats}); Random
-Forest is a non-NPU accuracy reference (Table~\ref{tab:accuracy}) and is
-not part of these deployability-focused significance tests. Effect
-sizes are reported as Cohen's~$d_z$; 95\% percentile-bootstrap
-confidence intervals are computed over 10,000 resamples. At
-$n{=}10$ matched seeds the CICIDS2017 ReLU vs.\ QCFS comparison
-measures $p{=}\pcicrelu$ ($d_z{=}{+}0.20$), a genuine non-rejection
-with adequate power. The ReLU vs.\ TinyCNN comparison, still at
-$n{=}5$, is power-limited by the signed-rank floor (smallest attainable
-two-sided $p$-value $0.0625$): it sits exactly at the floor
-($p{=}0.063$, all five seeds in the same direction, $d_z{=}{+}1.32$);
-we report it but do not claim significance at $\alpha{=}0.05$. We therefore add paired TOST with a
-pre-specified $\pm 1.0$\,pp bound (ReLU vs.\ QCFS, overall accuracy and
-macro-F1): UNSW-NB15 passes, while NSL-KDD/CICIDS2017/IoT-23 remain
-inconclusive under current seed counts.
 
 \begin{table}[t]
 \centering
-\caption{Paired Wilcoxon signed-rank tests on per-seed overall accuracy.
-$p_{\text{adj}}$ is Holm--Bonferroni adjusted across all comparisons per
-dataset; reject at $\alpha{=}0.05$. Cohen's $d_z$ is the paired effect
-size (positive = row-one model higher). $n$ is reported per row and
-reflects matched seeds between the two models; when arms have
-unequal seed counts the test uses the first $n$ seeds of the longer arm.}
-\label{tab:stats}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}llcccc@{}}
+\caption{Family-wise equivalence decisions for ReLU versus QCFS at the frozen
+$\pm\vFiveMargin$ percentage-point margin. A ``no'' result is inconclusive,
+not proof of non-equivalence.}
+\label{tab:equivalence}
+\small
+\begin{tabular}{@{}llrr@{}}
 \toprule
-\textbf{Dataset} & \textbf{Comparison} & $p$ & $p_{\text{adj}}$ & $d_z$ & \textbf{Reject?} \\
+Dataset & Metric & Holm $p$ & Equivalent? \\
 \midrule
-\multirow{2}{*}{NSL-KDD}
- & ReLU vs.\ QCFS ($n{=}20$)    & \nslpqcfs & \nslpadjqcfs & \nsldzqcfs & \nslrejqcfs \\
- & ReLU vs.\ TinyCNN ($n{=}10$) & \nslpcnn & \nslpadjcnn & \nsldzcnn & \nslrejcnn \\
-\midrule
-\multirow{2}{*}{UNSW-NB15}
- & ReLU vs.\ QCFS ($n{=}10$)    & \unswpqcfs & \unswpadjqcfs & \unswdzqcfs & \unswrejqcfs \\
- & ReLU vs.\ TinyCNN ($n{=}10$) & \unswpcnn & \unswpadjcnn & \unswdzcnn & \unswrejcnn \\
-\midrule
-\multirow{2}{*}{CICIDS2017}
- & ReLU vs.\ QCFS ($n{=}10$)    & \cicpqcfs & \cicpadjqcfs & \cicdzqcfs & \cicrejqcfs \\
- & ReLU vs.\ TinyCNN ($n{=}5$)  & \cicpcnn & \cicpadjcnn & \cicdzcnn & \cicrejcnn \\
-\midrule
-IoT-23
- & ReLU vs.\ QCFS ($n{=}5$)     & \iotpqcfs & \iotpadjqcfs & \iotdzqcfs & \iotrejqcfs \\
+NSL-KDD & OA  & \vFiveNslEquivalenceOaHolmP & \vFiveNslEquivalenceOaSupported \\
+NSL-KDD & MF1 & \vFiveNslEquivalenceMacroFoneHolmP & \vFiveNslEquivalenceMacroFoneSupported \\
+UNSW-NB15 & OA  & \vFiveUnswEquivalenceOaHolmP & \vFiveUnswEquivalenceOaSupported \\
+UNSW-NB15 & MF1 & \vFiveUnswEquivalenceMacroFoneHolmP & \vFiveUnswEquivalenceMacroFoneSupported \\
+CICIDS2017 & OA  & \vFiveCicEquivalenceOaHolmP & \vFiveCicEquivalenceOaSupported \\
+CICIDS2017 & MF1 & \vFiveCicEquivalenceMacroFoneHolmP & \vFiveCicEquivalenceMacroFoneSupported \\
+IoT-23 & OA  & \vFiveIotEquivalenceOaHolmP & \vFiveIotEquivalenceOaSupported \\
+IoT-23 & MF1 & \vFiveIotEquivalenceMacroFoneHolmP & \vFiveIotEquivalenceMacroFoneSupported \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-\subsection{CICIDS2017 and IoT-23 Results}
-\label{sec:cicids}
+Tables~\ref{tab:difference} and~\ref{tab:equivalence} report different
+questions and use separate, run-frozen Holm families. We do not convert a
+``no'' in the former into a ``yes'' in the latter. This distinction replaces
+the earlier manuscript's unsupported claim that all datasets were
+indistinguishable or equivalent.
 
-CICIDS2017 extends the evaluation from legacy and mid-decade benchmarks
-to a modern 15-class intrusion dataset. The ReLU MLP achieves
-\cicoarelu\ overall accuracy and \cicmfrelu\ macro-F1, with ROC-AUC
-0.992 and weighted-F1 94.0\%. The QCFS L$=$4 arm reaches
-\cicoaqcfs\ / \cicmfqcfs\ (paired Wilcoxon $p{=}\pcicrelu$,
-$n{=}10$), sitting ${\approx}0.3$\,pp below the ReLU mean on
-overall accuracy, consistent with the same $T{=}1$ approximation trend
-observed on NSL-KDD ($p{=}\pnslrelu$) and UNSW-NB15
-($p{=}\punswrelu$). Per-class performance
-is bimodal: DDoS reaches F1~98.1\% and benign 94.7\%, while
-extreme-rare classes collapse (SQL Injection F1~1.4\% on 4 test
-samples, Bot 6.3\%, XSS 8.5\%).
+\section{Export and Deployment Evidence Boundary}
 
-IoT-23 adds a contemporary IoT botnet dataset (5-class, 4.8\,M
-training samples). The ReLU MLP achieves \iotoarelu\ overall accuracy
-and \iotmfrelu\ macro-F1. Okiru is near-perfectly classified
-(F1$>$99.9\%), while DDoS reaches 99.9\% and C\&C collapses to
-F1$=$5.3\% due to severe underrepresentation. The QCFS arm reaches
-\iotoaqcfs\ / \iotmfqcfs\
-(Wilcoxon $p{=}\piotrelu$, $n{=}5$), extending the same non-rejection
-pattern to all four datasets.
-These minority-class patterns mirror UNSW-NB15 and confirm that the
-deployment limit is the long-tail sample count, not the NPU.
+The neural export policy fixes deployment seed zero, BatchNorm folding, ONNX
+opset 17, and export batch one before attempts. Export starts from the verified
+checkpoint and the same cached feature order. Folding and FP32 ONNX execution
+must match the original PyTorch logits with absolute tolerance $10^{-6}$,
+relative tolerance $10^{-5}$, and zero prediction disagreement. ONNX is also
+checked structurally. A fixed seeded, without-replacement sampling procedure
+selects validation vectors and fit-only calibration rows; insufficient rows
+stop the gate rather than silently reducing its sample sizes.
 
-\subsection{Model Capacity Is Not the Bottleneck}
-\label{sec:pareto}
-A 10-seed Pareto sweep over four MLP sizes (logistic regression 210/350~p;
-MLP 64-64 7.3\,K~p; MLP 128-64 13.8/14.3\,K~p; our MLP 256-256-128
-110/111\,K~p) shows that on NSL-KDD every architecture lands within
-0.5\,pp of the 256-256-128 baseline (78.40--78.86\%), and
-logistic regression alone reaches 78.42\%. On UNSW-NB15, a single
-64-64 hidden layer already captures 64.52\%, within 0.23\,pp of the
-full model. The flat top of the curve means that, within our tested
-NPU-friendly MLP family, widening alone does not close the observed gap
-to tree ensembles. This is consistent with a data/feature-signal
-limitation, but is not a general proof that capacity is never the
-bottleneck.
-A 10-seed focal-loss
-ablation ($\gamma{\in}\{0,1,2,3\}$) agrees: the best NSL-KDD
-configuration ($\gamma{=}2$) gains 0.52\,pp overall and 1.32\,pp
-macro-F1 over weighted cross-entropy, within the seed variance and
-therefore not claimed as a primary result.
+Static QDQ uses signed INT8 activations and weights, per-channel weights, and
+MinMax calibration for Gemm, MatMul, and Conv operators. The recorded ONNX
+Runtime CPU provider and recipe define the software gate, whose QDQ prediction
+disagreement limit is fixed at one percent. Operator inventories, selected
+vectors, outputs, disagreements, policy, and file hashes are sealed together.
+All attempts, including numerical failures, are retained; resource or storage
+errors are not treated as scientific quantization failures. A failed gate is
+not repaired by selecting another seed or widening a threshold after inspection.
 
-\subsection{When INT8 Equivalence Breaks Down}
-\label{sec:unsw_fragile}
-The 24-configuration quantization ablation
-(Sec.~\ref{sec:quant}) produced a benign result on NSL-KDD
-(drop $\in[-0.82, +0.17]$\,pp across all configurations), but on
-UNSW-NB15 the same sweep yields drops of +0.85\,pp (best) to
-+11.82\,pp (worst, percentile calibration), with a mean of +6.47\,pp.
-The layer-wise FP32--INT8 cosine similarity is also much lower on
-UNSW (Relu\_0: 0.32, Relu\_1: 0.42, Relu\_2: 0.57, logits: 0.91)
-than on NSL-KDD (0.67/0.65/0.68/0.98), and the UNSW
-FP32/INT8 prediction agreement falls to 75.2\%, versus 99.0\% on
-NSL-KDD. The proximate cause is that UNSW's FP32 margin between
-correct and incorrect classes is already small (macro-F1 40\%),
-so quantization noise crosses more decision boundaries.
-\textbf{This marks a practical limit of the $T{=}1$ approximation:}
-it is strongest when the FP32 model is already confident, and can
-weaken as the margin shrinks. Practical deployers should calibrate
-with MinMax on a small ($\leq 100$-sample) corpus, which empirically
-gives the best UNSW drop; and treat UNSW-scale margin loss as
-an expected cost, not a bug.
+For the fixed seed-0 matrix, FP32 ONNX passed
+\vExportFpPassed/\vExportFpTotal gates, while QDQ passed
+\vExportQdqPassed/\vExportQdqTotal gates. Each gate uses
+\vExportValidationVectors fixed validation vectors; QDQ calibration uses
+\vExportCalibrationRows fit rows. The worst FP32 absolute logit error was
+\vExportFpWorstAbsError. Among passing QDQ attempts, the largest
+prediction-disagreement rate was
+\vExportQdqWorstPassedDisagreementPct\%, against the frozen
+\vExportQdqLimitPct\% limit. These sampled gates do not prove parity for
+every possible input.
 
-% ============================================================
-\section{Discussion and Conclusion}
-\label{sec:conclusion}
+Only passing attempts support sampled software parity for their particular
+checkpoint and the recorded ONNX Runtime stack, not portability of every
+checkpoint or every possible input. QDQ nodes do not establish that every
+operator executes in integer arithmetic or
+on an NPU. A physical deployment claim additionally requires a pinned vendor
+compiler report, mapped-operator report, firmware binary, clock evidence,
+identical input vectors, board logits, raw timing logs, and, for energy, direct
+voltage/current measurements. Those items are outside the automated training
+suite and are not inferred from historical microbenchmarks in the repository.
 
-\textbf{Design-space positioning.}
-This work targets a different point from GPU-based IDS: sub-millisecond,
-sub-millijoule inference on a commodity MCU.
-The absolute accuracy (78.6\% NSL-KDD, 64.7\% UNSW-NB15,
-91.9\% CICIDS2017, 75.6\% IoT-23) is below GPU-simulation and
-binary-classification results, reflecting multi-class evaluation
-(5/10/15/5-class vs.\ binary) and NPU operator constraints
-(shallow MLP or Conv2D $1{\times}3$).
-Improving accuracy within these constraints is orthogonal to the
-deployment findings, and the statistically tested
-(Table~\ref{tab:stats}) differences between ReLU MLP, TinyCNN, and
-QCFS remain small.
+\section{Limitations and Conclusion}
 
-\textbf{Why NPU over CPU?}
-NPU inference frees the Cortex-M55 for RTOS tasks (packet capture,
-feature extraction), whereas CPU-only inference blocks the processor
-for 1.2\,ms.
-Tree models achieve higher accuracy on UNSW-NB15, but in our tested
-toolchain/backend they have no Neural-ART execution path
-(\texttt{TreeEnsembleClassifier} rejected at compile time).
+The deterministic replica test is evidence for this recorded software and
+hardware stack, not a theorem of cross-platform bitwise reproducibility.
+Twenty seeds characterize optimization variation under fixed splits; they do
+not create independent datasets or additional rare-attack observations. The
+CICIDS2017 fifteen-class aggregate is a fixed-pattern descriptive benchmark;
+the protocol does not support claims of reliable Heartbleed, SQL-injection,
+or Infiltration detection or population sampling precision.
+Per-class supports must be disclosed from accepted metadata, not from dry
+simulations. NSL-KDD is old, the original CICIDS2017
+flows retain known upstream issues, and IoT-23's available preprocessing and
+missing group identifiers prevent unseen-device/capture/time claims. The
+study covers a shallow MLP, its QCFS variant, TinyCNN where declared, and two
+tree references; it does not establish optimality over all IDS models.
+L-sweeps, temporal IF simulations, and frozen-ANN layerwise diagnostics are
+optional separate analyses, not completed ablations claimed by this study.
 
-\textbf{QCFS barrier.}
-The \texttt{Floor} operator is absent from the Neural-ART operator set.
-On-board, the QCFS-INT8 graph fragments into 12 software-fallback epochs
-and fails to instantiate on ST's standard NPU validation runtime, while
-the same-architecture ReLU-INT8 model runs at ${\sim}100\%$
-hardware; where the \texttt{Floor} round-trips fall back to the CPU they
-add +11.9\% latency (339 vs.\ 303\,\textmu s, on-board M55).
-ReLU INT8 remains the optimal activation for commodity MCU NPUs.
+Within those boundaries, the work replaces leakage-prone and hand-maintained
+numbers with an auditable chain from source hashes through fit-only
+preprocessing, fixed-final-epoch checkpoints, independent retraining, test artifacts,
+statistical families, and generated manuscript macros. The main scientific
+result is therefore not an unconditional deployment claim: it is a
+reproducible four-dataset comparison whose difference, equivalence, and export
+claims can be accepted or rejected independently from their sealed evidence.
 
-\textbf{MLP vs.\ TinyCNN.}
-Ranking is dataset-dependent: TinyCNN trends higher on NSL-KDD
-($d_z{=}{-}0.97$, $p_{\text{adj}}{=}0.055$), while MLP is superior on
-UNSW-NB15 ($p_{\text{adj}}{=}0.004$, $d_z{=}2.06$). A deployment can
-host both models (combined Flash ${<}$300\,KB) and dispatch by traffic
-feature profile.
-
-\textbf{Limitations.}
-\emph{Energy is estimated, not measured}: we derive 44--69\,\textmu J
-from AN5946's reference workload~\cite{st_an5946} rather than
-instrumenting our model on-silicon. Direct measurement with an
-STLINK-V3PWR probe remains future work.
-\emph{Pipeline scope}: we benchmark classifier inference on
-pre-extracted flow features. Packet capture, flow reassembly, and
-feature extraction are not included in these timings.
-\emph{Dataset coverage}: NSL-KDD is derived from 1998 DARPA traffic,
-CICIDS2017 has documented label-alignment issues~\cite{engelen2021cicids}
-while UNSW-NB15 and IoT-23 contain severe class imbalance.
-\emph{Scope}: novelty is bounded by the Supplementary File S1 search
-window (April~2026), and architecture results are limited to MLP and
-Conv2D $1{\times}3$ TinyCNN under current Neural-ART operator support.
-
-\textbf{Conclusion.}
-We demonstrate sub-millisecond classifier inference on a commodity MCU
-NPU: INT8 quantization gives 1.6--1.7$\times$ over FP32 on the M55 CPU, while the
-Neural-ART NPU adds only ${\sim}1.1\times$ over the same INT8 model on the CPU
-(a CPU/NPU crossover near $10^5$ MACs), plus an estimated 114--179$\times$
-energy reduction vs.\ recent STM32F7 deployments. Paired Wilcoxon
-tests show $T{=}1$ QCFS arms are statistically
-indistinguishable from INT8 ReLU across all four datasets
-(NSL-KDD $p{=}0.227$, UNSW $p{=}0.846$, CICIDS $p{=}0.312$,
-IoT-23 $p{=}0.438$), while TOST with $\pm 1.0$\,pp bound supports
-equivalence on UNSW and remains inconclusive on the other three datasets.
-Code and models will be released upon acceptance.
-
-% ============================================================
 \balance
 {\small
 \bibliographystyle{IEEEtran}

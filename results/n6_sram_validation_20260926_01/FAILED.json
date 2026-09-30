@@ -1,0 +1,5 @@
+{
+  "energy_measured": false,
+  "error": "RuntimeError: Nondefault FP rounding/flush/default-NaN/half mode",
+  "research_measurement_accepted": false
+}

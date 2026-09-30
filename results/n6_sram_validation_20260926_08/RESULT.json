@@ -1,0 +1,11 @@
+{
+  "actual_process_exit": null,
+  "completed_rows": 1024,
+  "energy_measured": false,
+  "frequency_measured": false,
+  "full_logit_parity_passed": true,
+  "latency_validated": false,
+  "nominal_cpu_npu_hz": 64000000,
+  "npu_execution_independently_verified": false,
+  "research_measurement_accepted": false
+}

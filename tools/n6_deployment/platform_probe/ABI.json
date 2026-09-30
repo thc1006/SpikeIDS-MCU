@@ -1,0 +1,227 @@
+{
+  "schema": 1,
+  "kind": "n6_secure_ram_probe_abi",
+  "byte_order": "little",
+  "word_type": "uint32",
+  "struct_bytes": 256,
+  "magic": 1312182354,
+  "version": 1,
+  "mailbox_address": 874008576,
+  "vector_address": 873989120,
+  "code_start": 873989120,
+  "code_end_exclusive": 874004480,
+  "stack_start": 874004480,
+  "stack_top": 874008576,
+  "mailbox_end_exclusive": 874008832,
+  "fields": [
+    {
+      "name": "magic",
+      "offset": 0,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "version",
+      "offset": 4,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "struct_bytes",
+      "offset": 8,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "state",
+      "offset": 12,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "sequence",
+      "offset": 16,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "heartbeat",
+      "offset": 20,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "host_nonce",
+      "offset": 24,
+      "type": "uint32",
+      "owner": "host"
+    },
+    {
+      "name": "echo_nonce",
+      "offset": 28,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "cpuid",
+      "offset": 32,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "ccr",
+      "offset": 36,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "control",
+      "offset": 40,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "vtor",
+      "offset": 44,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "entry_vtor",
+      "offset": 48,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "entry_control",
+      "offset": 52,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "entry_primask",
+      "offset": 56,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "entry_msp",
+      "offset": 60,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "primask",
+      "offset": 64,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "ipsr",
+      "offset": 68,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "msp",
+      "offset": 72,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "msplim",
+      "offset": 76,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "cfsr",
+      "offset": 80,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "hfsr",
+      "offset": 84,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "dfsr",
+      "offset": 88,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "afsr",
+      "offset": 92,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "mmfar",
+      "offset": 96,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "bfar",
+      "offset": 100,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "fault_ipsr",
+      "offset": 104,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "fault_exc_return",
+      "offset": 108,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "fault_msp",
+      "offset": 112,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "fault_psp",
+      "offset": 116,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "platform_initialized",
+      "offset": 120,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "reserved0",
+      "offset": 124,
+      "type": "uint32",
+      "owner": "target"
+    },
+    {
+      "name": "reserved",
+      "offset": 128,
+      "type": "uint32[32]",
+      "owner": "target"
+    }
+  ],
+  "states": {
+    "initializing": 1,
+    "running": 2,
+    "cache_unsupported": 3,
+    "fault": 4,
+    "entry_rejected": 5
+  },
+  "cache_enable_mask": 196608,
+  "publication": "Target sequence odd, DMB, body, DMB, even commit. Read sequence/body/sequence; accept equal even values. Target clears host_nonce only during initialization; host submits only after RUNNING. Thereafter host_nonce is host-owned and excluded from snapshot identity; echo_nonce is target-owned.",
+  "platform_initialized": false,
+  "hardware_executed": false
+}

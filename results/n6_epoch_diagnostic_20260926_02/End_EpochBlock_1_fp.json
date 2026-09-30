@@ -1,0 +1,7 @@
+{
+  "arithmetic_policy": "round-nearest-even; FZ/DN/AHP/FZ16 off",
+  "cpacr": 15728640,
+  "fpccr": 3221225476,
+  "fpdscr": 262144,
+  "fpscr": 2147745808
+}

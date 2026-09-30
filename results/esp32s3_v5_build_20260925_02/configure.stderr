@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/thc1006/esp/esp-idf/components/esp_rom/gen_gdbinit.py", line 72, in <module>
+    gdbinit_lines = generate_gdbinit_rom_add_symbols(target)
+  File "/home/thc1006/esp/esp-idf/components/esp_rom/gen_gdbinit.py", line 32, in generate_gdbinit_rom_add_symbols
+    raise EnvironmentError(
+        'ESP_ROM_ELF_DIR environment variable is not defined. Please try to run IDF "install" and "export" scripts.')
+OSError: ESP_ROM_ELF_DIR environment variable is not defined. Please try to run IDF "install" and "export" scripts.
+CMake Warning at /home/thc1006/esp/esp-idf/tools/cmake/gdbinit.cmake:52 (message):
+  Error while generating esp_rom gdbinit
+Call Stack (most recent call first):
+  /home/thc1006/esp/esp-idf/tools/cmake/project.cmake:356 (__generate_gdbinit)
+  /home/thc1006/esp/esp-idf/tools/cmake/project.cmake:941 (__project_info)
+  CMakeLists.txt:5 (project)
+
+

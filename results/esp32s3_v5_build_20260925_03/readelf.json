@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-readelf",
+    "-W",
+    "-a",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/spikeids_v5_qdq.elf"
+  ],
+  "returncode": 0,
+  "timeout": false
+}

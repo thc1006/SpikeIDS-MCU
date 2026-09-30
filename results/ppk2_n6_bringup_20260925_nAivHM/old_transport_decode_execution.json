@@ -1,0 +1,7 @@
+{
+  "chunk_id": "45181b",
+  "wall_time_seconds": 0.000006521,
+  "exit_code": 1,
+  "original_token_count": 76,
+  "output": "{\"report\": \"/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/old_transport_decode/analysis.json\", \"exit_code\": 1, \"analysis_completed\": false, \"analysis_checks_passed\": false, \"research_measurement_accepted\": false, \"error\": \"ValueError: Declared idle baseline overlaps GPIO HIGH\"}\n"
+}

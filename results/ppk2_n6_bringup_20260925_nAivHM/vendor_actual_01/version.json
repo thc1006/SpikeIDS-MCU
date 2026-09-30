@@ -1,0 +1,46 @@
+{
+  "actual_return_code": 0,
+  "argv": [
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai",
+    "--version"
+  ],
+  "cwd": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01",
+  "elapsed_seconds": 0.1139986040070653,
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PATH": "/usr/bin:/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/tmp",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/cache"
+  },
+  "exception": null,
+  "phase": "version",
+  "stderr": {
+    "ctime_ns": 1790292698313141995,
+    "device": 66306,
+    "inode": 31774964,
+    "links": 1,
+    "mode": 33152,
+    "mtime_ns": 1790292698313141995,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  "stdout": {
+    "ctime_ns": 1790292698379144385,
+    "device": 66306,
+    "inode": 31774963,
+    "links": 1,
+    "mode": 33152,
+    "mtime_ns": 1790292698379144385,
+    "sha256": "a1a0c7535af68a4a80ef6f9863af901ffb6a6f7024b46946014b692a02fab00b",
+    "size": 100
+  },
+  "timed_out": false
+}

@@ -1,0 +1,275 @@
+{
+  "automatic_retry": false,
+  "board": "esp32s3",
+  "environment": {
+    "IDF_COMPONENT_MANAGER": "0",
+    "IDF_PATH": "/home/thc1006/esp/esp-idf",
+    "IDF_PYTHON_ENV_PATH": "/home/thc1006/.espressif/python_env/idf5.4_py3.14_env",
+    "IDF_TOOLS_PATH": "/home/thc1006/.espressif",
+    "LANG": "C",
+    "LC_ALL": "C",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PATH": "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin:/home/thc1006/.espressif/python_env/idf5.4_py3.14_env/bin:/usr/bin:/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "0",
+    "PYTHONOPTIMIZE": "0",
+    "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_01/tmp",
+    "TZ": "UTC"
+  },
+  "hardware_accessed": false,
+  "input_pins": {
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc": {
+      "sha256": "004e294577ab054218508eaba90f92f9c2d504217ba6b78ecbd1d81f58f6ae73",
+      "st_ctime_ns": 1780811646628954866,
+      "st_dev": 66306,
+      "st_ino": 21898506,
+      "st_mode": 33261,
+      "st_mtime_ns": 1769415759000000000,
+      "st_nlink": 1,
+      "st_size": 422608
+    },
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-nm": {
+      "sha256": "004e294577ab054218508eaba90f92f9c2d504217ba6b78ecbd1d81f58f6ae73",
+      "st_ctime_ns": 1780811647001595320,
+      "st_dev": 66306,
+      "st_ino": 21898563,
+      "st_mode": 33261,
+      "st_mtime_ns": 1769415759000000000,
+      "st_nlink": 1,
+      "st_size": 422608
+    },
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-objcopy": {
+      "sha256": "004e294577ab054218508eaba90f92f9c2d504217ba6b78ecbd1d81f58f6ae73",
+      "st_ctime_ns": 1780811646653286938,
+      "st_dev": 66306,
+      "st_ino": 21898526,
+      "st_mode": 33261,
+      "st_mtime_ns": 1769415759000000000,
+      "st_nlink": 1,
+      "st_size": 422608
+    },
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-objdump": {
+      "sha256": "004e294577ab054218508eaba90f92f9c2d504217ba6b78ecbd1d81f58f6ae73",
+      "st_ctime_ns": 1780811646966681851,
+      "st_dev": 66306,
+      "st_ino": 21898547,
+      "st_mode": 33261,
+      "st_mtime_ns": 1769415759000000000,
+      "st_nlink": 1,
+      "st_size": 422608
+    },
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-readelf": {
+      "sha256": "004e294577ab054218508eaba90f92f9c2d504217ba6b78ecbd1d81f58f6ae73",
+      "st_ctime_ns": 1780811647001049789,
+      "st_dev": 66306,
+      "st_ino": 21898561,
+      "st_mode": 33261,
+      "st_mtime_ns": 1769415759000000000,
+      "st_nlink": 1,
+      "st_size": 422608
+    },
+    "/home/thc1006/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20260121/xtensa-esp-elf/bin/xtensa-esp32s3-elf-size": {
+      "sha256": "004e294577ab054218508eaba90f92f9c2d504217ba6b78ecbd1d81f58f6ae73",
+      "st_ctime_ns": 1780811647039825147,
+      "st_dev": 66306,
+      "st_ino": 21898601,
+      "st_mode": 33261,
+      "st_mtime_ns": 1769415759000000000,
+      "st_nlink": 1,
+      "st_size": 422608
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/RESULT.json": {
+      "sha256": "cb3536b760e40ad2fe6ce942e677ab2472837e2a73ffb86edd15700c3a171a93",
+      "st_ctime_ns": 1790306433697150412,
+      "st_dev": 66306,
+      "st_ino": 31903400,
+      "st_mode": 33152,
+      "st_mtime_ns": 1790306433697150412,
+      "st_nlink": 1,
+      "st_size": 10459
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/portable_qdq_native_20260925_01/model_sources/model.c": {
+      "sha256": "bba723cc7b031815c2aaf848f6893eb87dd91cb05f5580f93df611be489bb1e9",
+      "st_ctime_ns": 1790306433287649644,
+      "st_dev": 66306,
+      "st_ino": 31903387,
+      "st_mode": 33152,
+      "st_mtime_ns": 1790306433287649644,
+      "st_nlink": 1,
+      "st_size": 405997
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/TWO_BOARD_BUILD_PLAN.md": {
+      "sha256": "79c33be7bdf7ddcda924940f341824e2166482b7e2c2742cf1bf6bae2d8b5c79",
+      "st_ctime_ns": 1790307565904876803,
+      "st_dev": 66306,
+      "st_ino": 31903512,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307565904876803,
+      "st_nlink": 1,
+      "st_size": 5245
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/build_candidate.py": {
+      "sha256": "786df9ccd494acf1a0b8e21d6b7b6e4a353197ac243180f408dedb10351d3de3",
+      "st_ctime_ns": 1790307773470329155,
+      "st_dev": 66306,
+      "st_ino": 31903566,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307773470329155,
+      "st_nlink": 1,
+      "st_size": 14178
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/esp32s3_v5/CMakeLists.txt": {
+      "sha256": "f8b01b3a21443ee494ed02092c7a0eeab2614230493c274d3926b91b9e9431a1",
+      "st_ctime_ns": 1790307175081844835,
+      "st_dev": 66306,
+      "st_ino": 31903507,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307175081844835,
+      "st_nlink": 1,
+      "st_size": 183
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/esp32s3_v5/main/CMakeLists.txt": {
+      "sha256": "54a1a312fd7576b4ee888dd559803c35f6112abf3f14206bc1dcea8f075a0f9d",
+      "st_ctime_ns": 1790307175082844871,
+      "st_dev": 66306,
+      "st_ino": 31903509,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307175082844871,
+      "st_nlink": 1,
+      "st_size": 521
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/esp32s3_v5/main/app.c": {
+      "sha256": "ed3ecead69896978cc992fe01b9fd426b274975f825147a9beef9fc0e283b15a",
+      "st_ctime_ns": 1790307565904876803,
+      "st_dev": 66306,
+      "st_ino": 31903511,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307565904876803,
+      "st_nlink": 1,
+      "st_size": 2135
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/esp32s3_v5/sdkconfig.defaults": {
+      "sha256": "535a55566d70e50a5eef0a9d06cd9793ced47cf23cb98bda16f8e536b8e4b174",
+      "st_ctime_ns": 1790307175082844871,
+      "st_dev": 66306,
+      "st_ino": 31903510,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307175082844871,
+      "st_nlink": 1,
+      "st_size": 281
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/NATIVE_ACTUAL_01_EXECUTION.json": {
+      "sha256": "5222d43668261d9cbd2a2c29fa19d9cd86c300354a71a5020717dc882b732de2",
+      "st_ctime_ns": 1790306533332798597,
+      "st_dev": 66306,
+      "st_ino": 31903467,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790306533332798597,
+      "st_nlink": 1,
+      "st_size": 2266
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c": {
+      "sha256": "e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851",
+      "st_ctime_ns": 1790305607965556140,
+      "st_dev": 66306,
+      "st_ino": 31890577,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790305607965556140,
+      "st_nlink": 1,
+      "st_size": 5165
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.h": {
+      "sha256": "e8abd58b44e15806eff54df5245757c23aa491bd044f579dd59d0efc7c5be406",
+      "st_ctime_ns": 1790305607965556140,
+      "st_dev": 66306,
+      "st_ino": 31890576,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790305607965556140,
+      "st_nlink": 1,
+      "st_size": 1319
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/shared_v5/WIRE_ABI.json": {
+      "sha256": "517693dde5147ee6a1175e3df737b8685426afc8f85946574a92abc9e2a56cfd",
+      "st_ctime_ns": 1790307565904876803,
+      "st_dev": 66306,
+      "st_ino": 31903525,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307565904876803,
+      "st_nlink": 1,
+      "st_size": 1876
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/shared_v5/wire.c": {
+      "sha256": "fc811b0ba9ddc21414c75c2bbb2830e7efb6b02cd9e1e7ae2cc0994d98f9709f",
+      "st_ctime_ns": 1790307607166358246,
+      "st_dev": 66306,
+      "st_ino": 31903501,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307607166358246,
+      "st_nlink": 1,
+      "st_size": 2925
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/shared_v5/wire.h": {
+      "sha256": "80f5e444f599295672f8b869786eccdcd9250ab894c8c4d7cd92aa4812542010",
+      "st_ctime_ns": 1790307565903876767,
+      "st_dev": 66306,
+      "st_ino": 31903500,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790307565903876767,
+      "st_nlink": 1,
+      "st_size": 1143
+    },
+    "/home/thc1006/esp/esp-idf/components/esp_common/include/esp_idf_version.h": {
+      "sha256": "d202c275e326b6aefdb32faab4125773ececb6a2c3c8344368bf261256b1f2ce",
+      "st_ctime_ns": 1780811562435351479,
+      "st_dev": 66306,
+      "st_ino": 21770266,
+      "st_mode": 33204,
+      "st_mtime_ns": 1780811562435351479,
+      "st_nlink": 1,
+      "st_size": 1520
+    },
+    "/home/thc1006/esp/esp-idf/tools/cmake/project.cmake": {
+      "sha256": "9977ccb55aa85cb0b5b090d063638f8cb869ca396179b332618c281c0f3b8a2f",
+      "st_ctime_ns": 1780811562990080681,
+      "st_dev": 66306,
+      "st_ino": 21786738,
+      "st_mode": 33204,
+      "st_mtime_ns": 1780811562990080681,
+      "st_nlink": 1,
+      "st_size": 41985
+    },
+    "/usr/bin/cmake": {
+      "sha256": "6e1dccda39845415d68eabb934c598998949c99ec4668625d571aee1827b05c7",
+      "st_ctime_ns": 1779025366252786234,
+      "st_dev": 66306,
+      "st_ino": 29765884,
+      "st_mode": 33261,
+      "st_mtime_ns": 1773048301000000000,
+      "st_nlink": 1,
+      "st_size": 14253272
+    },
+    "/usr/bin/ninja": {
+      "sha256": "91e9548850cda2799facfdaa7abe33f9e978832f85e98212255708a7bbe437f2",
+      "st_ctime_ns": 1779632023429444772,
+      "st_dev": 66306,
+      "st_ino": 29766189,
+      "st_mode": 33261,
+      "st_mtime_ns": 1763657883000000000,
+      "st_nlink": 1,
+      "st_size": 350624
+    },
+    "/usr/bin/python3.14": {
+      "sha256": "52e0a13e60a981d8c4b6478be2ba5176f69da07948a056bf49cf6f077e30cb41",
+      "st_ctime_ns": 1789078902844111831,
+      "st_dev": 66306,
+      "st_ino": 29766603,
+      "st_mode": 33261,
+      "st_mtime_ns": 1787222518000000000,
+      "st_nlink": 1,
+      "st_size": 7477160
+    }
+  },
+  "kind": "offline_crossbuild_intent"
+}

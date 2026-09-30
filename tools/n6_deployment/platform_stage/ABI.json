@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "secure_sram_platform_stage_abi",
+  "magic": 1312183113,
+  "version": 1,
+  "endianness": "little",
+  "code_start": 873989120,
+  "code_end_exclusive": 874020864,
+  "mailbox_address": 874020864,
+  "struct_bytes": 4096,
+  "stack_start": 874024960,
+  "stack_top": 874033152,
+  "offsets": {
+    "magic": 0, "version": 4, "struct_bytes": 8, "state": 12,
+    "sequence": 16, "heartbeat": 20, "host_nonce": 24, "echo_nonce": 28,
+    "entry_vtor": 32, "entry_control": 36, "entry_primask": 40, "entry_msp": 44,
+    "cpuid": 48, "ccr": 52, "ipsr": 56, "control": 60,
+    "cfsr": 64, "hfsr": 68, "dfsr": 72, "afsr": 76, "mmfar": 80, "bfar": 84,
+    "fault_ipsr": 88, "fault_exc_return": 92, "fault_msp": 96, "fault_psp": 100,
+    "ready_for_payload": 104, "model_executed": 108, "energy_measured": 112,
+    "board_accepted": 116, "platform": 128
+  },
+  "platform_report_bytes": 2368,
+  "platform_report_header_words": [
+    "error", "step", "failed_address", "failed_mask", "expected", "observed",
+    "writes", "reads", "poll_reads", "hsi_divider", "nominal_hz", "observation_count",
+    "source_profile", "ready_for_payload", "reserved0", "reserved1"
+  ],
+  "observation_entry_words": ["address", "before", "after"],
+  "observation_capacity": 192,
+  "states": {"initializing": 1, "ready_for_payload": 2, "rejected": 3, "fault": 4},
+  "host_writable_field": "host_nonce",
+  "host_write_bytes": 4,
+  "initial_clear_includes_host_nonce": true,
+  "submit_nonce_only_after_even_ready_or_rejected_snapshot": true,
+  "liveness_publication": "fresh_nonce_only; READY sequence 2 stable until host challenge",
+  "heartbeat_meaning": "count of distinct nonce changes processed; not periodic time",
+  "native_barriers_required": true,
+  "secure_entry_is_external_precondition": true,
+  "automatically_runs_model": false,
+  "hardware_accepted": false,
+  "energy_accepted": false
+}

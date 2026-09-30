@@ -1,0 +1,19 @@
+main.o: \
+ /home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/main.c \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/cmsis-device-n6/Include/stm32n6xx.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/cmsis-device-n6/Include/stm32n657xx.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/core_cm55.h \
+ /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h \
+ /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/stdint-gcc.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/cmsis_version.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/cmsis_compiler.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/cmsis_gcc.h \
+ /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/arm_acle.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/m-profile/cmsis_gcc_m.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/m-profile/armv8m_mpu.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/m-profile/armv8m_pmu.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/CMSIS_6/CMSIS/Core/Include/m-profile/armv7m_cachel1.h \
+ /home/thc1006/dev/SpikeIDS-MCU/firmware/n6/third_party/cmsis-device-n6/Include/system_stm32n6xx.h \
+ /home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/mailbox.h \
+ /home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/platform_stage/platform_init.h \
+ /home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h

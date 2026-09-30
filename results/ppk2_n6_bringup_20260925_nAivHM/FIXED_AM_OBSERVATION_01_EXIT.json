@@ -1,0 +1,22 @@
+{
+  "kind": "root_observed_fixed_am_observation_external_exit",
+  "launch_chunk": "6c48b8",
+  "session_id": 12809,
+  "completion_chunk": "c59d4e",
+  "actual_return_code": 0,
+  "observed_utc": "2026-09-25T03:20:09.757704+00:00",
+  "output_directory": "fixed_am_observation_01",
+  "report_sha256": "d718b7dd1fe708c467ca9a670c22db00f1544dd9e5364a9fbf36176385fc959d",
+  "raw_sha256": "594b60173f76e7e08df1de75bebf7a701fbb409972bff83671375e0d632fd29e",
+  "collector_sha256": "7ed8fcd668f939665e638e55bb8c486ba727e90687ddf35e91a0b88acf030334",
+  "nominal_observation_seconds": 3,
+  "outer_timeout_seconds": 20,
+  "raw_bytes": 1200128,
+  "raw_frames": 300032,
+  "output_off_and_sampling_stop_host_writes_completed": true,
+  "electrical_off_readback_verified": false,
+  "hardware_debug_or_flash_accessed": false,
+  "model_executed": false,
+  "research_energy_accepted": false,
+  "automatic_retry": false
+}

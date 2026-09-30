@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "kind": "independent_observed_sram_adapter_offline_tests",
+  "actual_tool_chunk": "ce0dd8",
+  "actual_return_code": 0,
+  "passed": 25,
+  "failed": 0,
+  "scope_unit": "spikeids-n6-sram-independent-final03.scope",
+  "invocation_id": "3a2baa4b6c7d4acb8388fb4710b4a3da",
+  "memory_max_bytes": 4294967296,
+  "memory_swap_max_bytes": 0,
+  "source_bookend_post_chunk": "3c2396",
+  "source_bookends_equal": true,
+  "file_sha256": {
+    "build.py": "37194ebe0a164873310855e11ec911f8acab468e1728e1c382addf31808d2872",
+    "main.c": "7af7972cc89b2137a2a6d7cee80ccdd69209d77c33f4ce0225863869bee6bf94",
+    "startup.c": "cdfafb4fd5cf4d55123358fab1396d5bb9afa18a60ba5eb0a62f7bf1b3ce9160",
+    "syscalls.c": "e1ce7b80b8e3e64c9b0d888674e0c68e1a4cd6197450b0b1bc07eff78b934f6a",
+    "mailbox.h": "29f9f4fd7d96e3cd3ec14dec99d14dad7353f8cca8eef421bb9a7fd5ca434e78",
+    "linker.ld": "b2179f2bbd0cf749998b68185f8b8a6918dd06a57d9c447449a4f0c3fafacc38",
+    "README.md": "5ba7de11a59d081235fb17eadd058391cfe44b569de00e52d98ed4493b1d456a",
+    "ABI.json": "af5fc1970e128ac548a856838b53ba585f66dddcb67602d1b151f573efcfd8b1",
+    "test_firmware_sram_independent.py": "cee69b7f11903513d351911f8cc7df202dacd23dd5c887f287067c088a1ecad0",
+    "independent_final_03.xml": "cf79ccd29e94d565cbe485fb575da9c02aaf0645014e89f340a5e5db02c87eff",
+    "independent_01.xml": "dd18ef7375f2ef99daae0863ce73978b8d588f772f1865eb345442a9edcc7a82",
+    "independent_02.xml": "6bf8bde3e5f70f35583caa3abbea1dcb10229bc0b21d4bc705db77213f8f1d36"
+  },
+  "historical_failure_runs": [
+    {"actual_tool_chunk": "7eefab", "actual_return_code": 1, "passed": 22, "failed": 2},
+    {"actual_tool_chunk": "efe021", "actual_return_code": 1, "passed": 0, "failed": 1, "deselected": 24}
+  ],
+  "true_compiler_executed_by_reviewer": false,
+  "hardware_executed": false,
+  "platform_initialized": false,
+  "numerical_equivalence_verified": false,
+  "cryptographic_or_human_attestation": false
+}

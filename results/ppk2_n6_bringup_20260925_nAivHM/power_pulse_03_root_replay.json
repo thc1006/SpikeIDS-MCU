@@ -1,0 +1,124 @@
+{
+  "raw_sha256": "2c3dc1250d15ed3fe40576f218dd6618838a06598a2c857fb42f1ed29e160e23",
+  "frames": 7680,
+  "range_counts": {
+    "0": 7596,
+    "1": 2,
+    "2": 4,
+    "3": 20,
+    "4": 58
+  },
+  "counter_gaps": [],
+  "adc_upper_saturation_count": 69,
+  "digital_counts": {
+    "255": 7680
+  },
+  "current_policies": {
+    "none": {
+      "max_uA": 834532.3667121959,
+      "max_index": 5067,
+      "max_range": 4,
+      "mean_all_uA": 1707.635674410011,
+      "samples_above_700mA": 3,
+      "samples_above_1A": 0
+    },
+    "nordic-4.4.1": {
+      "max_uA": 834532.3667121959,
+      "max_index": 5067,
+      "max_range": 4,
+      "mean_all_uA": 1604.9850702668066,
+      "samples_above_700mA": 3,
+      "samples_above_1A": 0
+    }
+  },
+  "range_runs": [
+    {
+      "start": 0,
+      "stop_exclusive": 5040,
+      "range": 0,
+      "count": 5040,
+      "mean_uA": -0.03351586734883619,
+      "min_uA": -1.3955207429267795,
+      "max_uA": 10.89041490401583
+    },
+    {
+      "start": 5040,
+      "stop_exclusive": 5042,
+      "range": 1,
+      "count": 2,
+      "mean_uA": 476.2782719782812,
+      "min_uA": 441.67116657335714,
+      "max_uA": 510.8853773832053
+    },
+    {
+      "start": 5042,
+      "stop_exclusive": 5044,
+      "range": 2,
+      "count": 2,
+      "mean_uA": 3889.7396051264077,
+      "min_uA": 3411.080563862268,
+      "max_uA": 4368.398646390548
+    },
+    {
+      "start": 5044,
+      "stop_exclusive": 5063,
+      "range": 3,
+      "count": 19,
+      "mean_uA": 21284.87064238426,
+      "min_uA": 15401.496308142216,
+      "max_uA": 33217.64721623576
+    },
+    {
+      "start": 5063,
+      "stop_exclusive": 5121,
+      "range": 4,
+      "count": 58,
+      "mean_uA": 217935.17923753647,
+      "min_uA": 46825.66939756468,
+      "max_uA": 834532.3667121959
+    },
+    {
+      "start": 5121,
+      "stop_exclusive": 5122,
+      "range": 3,
+      "count": 1,
+      "mean_uA": 4905.1211003029675,
+      "min_uA": 4905.1211003029675,
+      "max_uA": 4905.1211003029675
+    },
+    {
+      "start": 5122,
+      "stop_exclusive": 5124,
+      "range": 2,
+      "count": 2,
+      "mean_uA": 641.6051930391636,
+      "min_uA": 549.5053140195778,
+      "max_uA": 733.7050720587494
+    },
+    {
+      "start": 5124,
+      "stop_exclusive": 7680,
+      "range": 0,
+      "count": 2556,
+      "mean_uA": 21.610952354191614,
+      "min_uA": -1.3955207429267795,
+      "max_uA": 720.5515006517209
+    }
+  ],
+  "last_ten_unfiltered_uA": [
+    -1.3074505939118226,
+    -1.131310249343543,
+    -1.2634155135870484,
+    -1.1753453413029085,
+    -1.2634155135870484,
+    -1.3955207429267795,
+    -1.131310249343543,
+    -1.3074505939118226,
+    -1.131310249343543,
+    -1.219380429384077
+  ],
+  "nominal_sample_period_s": 1e-05,
+  "physical_time_alignment_verified": false,
+  "voltage_measured": false,
+  "research_accepted": false
+}

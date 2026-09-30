@@ -1,0 +1,67 @@
+{
+  "memory": {
+    "cacheinfo": [],
+    "mem_file_prefix": "atonbuf",
+    "mempools": [
+      {
+        "fformat": "FORMAT_RAW",
+        "fname": "SRAM_WEIGHTS",
+        "mode": "USEMODE_ABSOLUTE",
+        "name": "weights_sram",
+        "offset": {
+          "magnitude": "BYTES",
+          "value": "0x34200000"
+        },
+        "prop": {
+          "byteWidth": 8,
+          "cacheable": "CACHEABLE_OFF",
+          "constants_preferred": "true",
+          "freqRatio": 1.25,
+          "latency": "LOW",
+          "read_power": 18.531,
+          "rights": "ACC_READ",
+          "throughput": "HIGH",
+          "write_power": 16.201
+        },
+        "size": {
+          "magnitude": "KBYTES",
+          "value": "256"
+        }
+      },
+      {
+        "fformat": "FORMAT_RAW",
+        "fname": "SRAM_ACTIVATIONS",
+        "mode": "USEMODE_ABSOLUTE",
+        "name": "activations_sram",
+        "offset": {
+          "magnitude": "BYTES",
+          "value": "0x34240000"
+        },
+        "prop": {
+          "byteWidth": 8,
+          "cacheable": "CACHEABLE_OFF",
+          "constants_preferred": "false",
+          "freqRatio": 1.25,
+          "latency": "LOW",
+          "read_power": 18.531,
+          "rights": "ACC_WRITE",
+          "throughput": "HIGH",
+          "write_power": 16.201
+        },
+        "size": {
+          "magnitude": "KBYTES",
+          "value": "16"
+        }
+      }
+    ]
+  },
+  "params": {
+    "param": [
+      {
+        "magnitude": "KBYTES",
+        "paramname": "max_onchip_sram_size",
+        "value": "1024"
+      }
+    ]
+  }
+}

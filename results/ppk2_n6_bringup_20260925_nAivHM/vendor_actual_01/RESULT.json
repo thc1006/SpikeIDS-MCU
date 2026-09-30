@@ -1,0 +1,1322 @@
+{
+  "artifacts_before_result": {
+    "directories": [
+      "analyze",
+      "analyze_workspace",
+      "analyze_workspace/neural_art__nsl_qcfs_seed0",
+      "cache",
+      "generate",
+      "generate_workspace",
+      "generate_workspace/neural_art__nsl_qcfs_seed0",
+      "tmp"
+    ],
+    "files": {
+      "INTENT.json": {
+        "ctime_ns": 1790292698268546335,
+        "device": 66306,
+        "inode": 31774961,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698268546335,
+        "sha256": "553c4b5ad0d015c3cb8aa99193b3a507983fdbf99d3e7b911ecd205e72105e38",
+        "size": 9216
+      },
+      "analyze.json": {
+        "ctime_ns": 1790292716172182989,
+        "device": 66306,
+        "inode": 31775001,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292716172182989,
+        "sha256": "8c72b3171f59fd3c12fd2ff4dd975241c8ac817e918abedf9b62ff0c62ad3554",
+        "size": 2247
+      },
+      "analyze.stderr": {
+        "ctime_ns": 1790292698500148766,
+        "device": 66306,
+        "inode": 31774967,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698500148766,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze.stdout": {
+        "ctime_ns": 1790292715743773092,
+        "device": 66306,
+        "inode": 31774966,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292715743773092,
+        "sha256": "084a644528a8181d9e6de1f35dc051b29ccc037a63eb9eb81ba803134537772d",
+        "size": 24485
+      },
+      "analyze/model_qdq_int8_OE_3_3_1.onnx": {
+        "ctime_ns": 1790292706722230927,
+        "device": 66306,
+        "inode": 31774968,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706722230927,
+        "sha256": "7ae5c0f4ea8988957907704ccab6d67a2ddfe4356d81bafb185ea9175ce97aef",
+        "size": 447529
+      },
+      "analyze/model_qdq_int8_OE_3_3_1_Q.json": {
+        "ctime_ns": 1790292706727639827,
+        "device": 66306,
+        "inode": 31774969,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706727639827,
+        "sha256": "904b2e8aa6a67335499ff3782e25733136ad3f1c292c8148eb53378a8e78ef5a",
+        "size": 128027
+      },
+      "analyze/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292706801432348,
+        "device": 66306,
+        "inode": 31774993,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706801432348,
+        "sha256": "0c1ed7b3f61696da2badaaf55b17e89c13b77273b4d3f249fad8092b39f5caef",
+        "size": 221149
+      },
+      "analyze/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292706835064734,
+        "device": 66306,
+        "inode": 31774999,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706835064734,
+        "sha256": "62f590b4513afc29c7b4ec3e020c1c4549311a78cf950130370970a3834df908",
+        "size": 1804
+      },
+      "analyze/nsl_qcfs_seed0_analyze_report.txt": {
+        "ctime_ns": 1790292706883452294,
+        "device": 66306,
+        "inode": 31775000,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706883452294,
+        "sha256": "4a81c28bf515998261c882969127b19bb2a2b496b4aad271cae09bd35448530b",
+        "size": 26951
+      },
+      "analyze/nsl_qcfs_seed0_atonbuf.xSPI2.raw": {
+        "ctime_ns": 1790292706801796067,
+        "device": 66306,
+        "inode": 31774994,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706801796067,
+        "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+        "size": 145457
+      },
+      "analyze/nsl_qcfs_seed0_c_info.json": {
+        "ctime_ns": 1790292706878452114,
+        "device": 66306,
+        "inode": 31774995,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706878452114,
+        "sha256": "6d29ccccfe429fef02cec35e2fe76ed73ba9533e857bbcdb222f36bd2582c302",
+        "size": 273277
+      },
+      "analyze/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292706802072718,
+        "device": 66306,
+        "inode": 31774997,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706802072718,
+        "sha256": "3fe981ecfe1bff3ed5f316cf55021bd6bfa62bc43f7fd97ace7c417dc9363c5d",
+        "size": 44836
+      },
+      "analyze/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292706801978211,
+        "device": 66306,
+        "inode": 31774996,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706801978211,
+        "sha256": "b26a68f0de308bae21b8620f568d3f86fcfe5525af4556351fd1160eef829eab",
+        "size": 72128
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXIFLEXMEM.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774989,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM1.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774988,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM2.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774987,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM3.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774985,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM4.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774984,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM5.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774983,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM6.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774986,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.xSPI1.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774982,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonbuf.xSPI2.raw": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774981,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+        "size": 145457
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/atonn_options.ini": {
+        "ctime_ns": 1790292706746447334,
+        "device": 66306,
+        "inode": 31774971,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706746447334,
+        "sha256": "3deeb9da1e87adfbb69ab48618ac0b5dadc933f98f7db751afb9c663ab9c6597",
+        "size": 1223
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/c_info.json": {
+        "ctime_ns": 1790292706797449181,
+        "device": 66306,
+        "inode": 31774992,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706797449181,
+        "sha256": "75a5c357722507ad2ec9496719f119ff7b9d1feb5d5b6176c3ea2bad36a8e7ef",
+        "size": 218811
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292706793449036,
+        "device": 66306,
+        "inode": 31774980,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706793449036,
+        "sha256": "0c1ed7b3f61696da2badaaf55b17e89c13b77273b4d3f249fad8092b39f5caef",
+        "size": 221149
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292706833450484,
+        "device": 66306,
+        "inode": 31774998,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706833450484,
+        "sha256": "62f590b4513afc29c7b4ec3e020c1c4549311a78cf950130370970a3834df908",
+        "size": 1804
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292706794449072,
+        "device": 66306,
+        "inode": 31774991,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706794449072,
+        "sha256": "3fe981ecfe1bff3ed5f316cf55021bd6bfa62bc43f7fd97ace7c417dc9363c5d",
+        "size": 44836
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292706794449072,
+        "device": 66306,
+        "inode": 31774990,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706794449072,
+        "sha256": "b26a68f0de308bae21b8620f568d3f86fcfe5525af4556351fd1160eef829eab",
+        "size": 72128
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/stm32n6.mpool": {
+        "ctime_ns": 1790292706750447479,
+        "device": 66306,
+        "inode": 31774972,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706750447479,
+        "sha256": "7f5f434b1b83065c18842e78d98b44b5cf89b9f79d928ac70926717944ae7176",
+        "size": 6866
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp.dot": {
+        "ctime_ns": 1790292706790448927,
+        "device": 66306,
+        "inode": 31774979,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706790448927,
+        "sha256": "af748bc20ff10a9b3a30f12a6ba9305ed2331c23f61512faa5469ea69066cf2c",
+        "size": 87155
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp_c.dot": {
+        "ctime_ns": 1790292706780448565,
+        "device": 66306,
+        "inode": 31774974,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706780448565,
+        "sha256": "e66bb126a928ba7d8f9238fd5696366d9bf1f9edad9aba318781fbe80d3cca14",
+        "size": 36325
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp_lo.dot": {
+        "ctime_ns": 1790292706782448638,
+        "device": 66306,
+        "inode": 31774975,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706782448638,
+        "sha256": "94ebaccf03f6d9bef952afa4bfa5a4887379b339ff8bac591e5629e8bae0a94a",
+        "size": 50018
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp_lv.dot": {
+        "ctime_ns": 1790292706785448746,
+        "device": 66306,
+        "inode": 31774977,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706785448746,
+        "sha256": "c9fd9845d4332a5314f6b1aafe16ce433f6b0bf3511df423bdcb25e8fab756fd",
+        "size": 82174
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp_o.dot": {
+        "ctime_ns": 1790292706779448529,
+        "device": 66306,
+        "inode": 31774973,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706779448529,
+        "sha256": "90dd7ba0bc82a67a5da079966b507dab322d790e7f7801b7531190d1ed7d945d",
+        "size": 41768
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp_po.dot": {
+        "ctime_ns": 1790292706788448855,
+        "device": 66306,
+        "inode": 31774978,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706788448855,
+        "sha256": "82be1e29e02c41f9d9cf4a40f3a32e69f984e91060aadae90aaa907c973b80ab",
+        "size": 87043
+      },
+      "analyze_workspace/neural_art__nsl_qcfs_seed0/tmp_s.dot": {
+        "ctime_ns": 1790292706784448710,
+        "device": 66306,
+        "inode": 31774976,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292706784448710,
+        "sha256": "d11c4af2c3aad0076c6a527eb508fbf62f6849bed852017ae824ba806303c207",
+        "size": 76923
+      },
+      "generate.json": {
+        "ctime_ns": 1790292732219262020,
+        "device": 66306,
+        "inode": 31775038,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292732219262020,
+        "sha256": "2d1d3eda333fd2c497125e3f4cd0c4a4bbfb565bd7a931f46a8fd1511c6a6a79",
+        "size": 2267
+      },
+      "generate.stderr": {
+        "ctime_ns": 1790292716250791449,
+        "device": 66306,
+        "inode": 31775003,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292716250791449,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate.stdout": {
+        "ctime_ns": 1790292731800354443,
+        "device": 66306,
+        "inode": 31775002,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292731800354443,
+        "sha256": "8fb550f92f227a61202580dfe7fbe2b06a71e1b0ddedc822fd0efde23bfcbf1f",
+        "size": 27053
+      },
+      "generate/LICENSE.txt": {
+        "ctime_ns": 1790292722898796880,
+        "device": 66306,
+        "inode": 31775036,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722898796880,
+        "sha256": "9942019b4bb0d3eaceceb7110148015bc5ea051259d57b48b2c71f9f8e06182b",
+        "size": 10648
+      },
+      "generate/model_qdq_int8_OE_3_3_1.onnx": {
+        "ctime_ns": 1790292722751585368,
+        "device": 66306,
+        "inode": 31775004,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722751585368,
+        "sha256": "7ae5c0f4ea8988957907704ccab6d67a2ddfe4356d81bafb185ea9175ce97aef",
+        "size": 447529
+      },
+      "generate/model_qdq_int8_OE_3_3_1_Q.json": {
+        "ctime_ns": 1790292722755951295,
+        "device": 66306,
+        "inode": 31775005,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722755951295,
+        "sha256": "16bda481a33bec4cc8523a0792d0a66d82b6868949b9360f9c7b51908ed08c69",
+        "size": 128039
+      },
+      "generate/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292722829564443,
+        "device": 66306,
+        "inode": 31775029,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722829564443,
+        "sha256": "c4dd9a92116a041cdd50f6c9a4579f071933fc8c42b5816eb3162b4b66efc72f",
+        "size": 221152
+      },
+      "generate/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292722863186317,
+        "device": 66306,
+        "inode": 31775035,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722863186317,
+        "sha256": "9000a2af627e78fe4711b4d438050c125fc34e5c476fb556e63d7926e05a9508",
+        "size": 1804
+      },
+      "generate/nsl_qcfs_seed0_atonbuf.xSPI2.raw": {
+        "ctime_ns": 1790292722829912501,
+        "device": 66306,
+        "inode": 31775030,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722829912501,
+        "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+        "size": 145457
+      },
+      "generate/nsl_qcfs_seed0_c_info.json": {
+        "ctime_ns": 1790292722911032592,
+        "device": 66306,
+        "inode": 31775031,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722911032592,
+        "sha256": "55ecfcad62f6b896afda317c48749699f21dc3378392079037365b2a1341f1a8",
+        "size": 273293
+      },
+      "generate/nsl_qcfs_seed0_generate_report.txt": {
+        "ctime_ns": 1790292722917032809,
+        "device": 66306,
+        "inode": 31775037,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722917032809,
+        "sha256": "14132d4ff8ae56fe2f4825ea3e8df9f3ea25f4cf8f887b1f0cbf4855904cc64e",
+        "size": 26967
+      },
+      "generate/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292722830184910,
+        "device": 66306,
+        "inode": 31775033,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722830184910,
+        "sha256": "29051185d691463c0743dbbb2ef41630bf8144ad08a0f4edb4be8e752185f0e6",
+        "size": 44836
+      },
+      "generate/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292722830092277,
+        "device": 66306,
+        "inode": 31775032,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722830092277,
+        "sha256": "b26a68f0de308bae21b8620f568d3f86fcfe5525af4556351fd1160eef829eab",
+        "size": 72128
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXIFLEXMEM.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775025,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM1.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775024,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM2.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775023,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM3.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775021,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM4.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775020,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM5.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775019,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.AXISRAM6.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775022,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.xSPI1.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775018,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonbuf.xSPI2.raw": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775017,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+        "size": 145457
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/atonn_options.ini": {
+        "ctime_ns": 1790292722774027631,
+        "device": 66306,
+        "inode": 31775007,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722774027631,
+        "sha256": "c0bb9c183435df8b5c059f9063ae908fe05d10d4ae82f1ee456539d36f9aaaed",
+        "size": 1227
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/c_info.json": {
+        "ctime_ns": 1790292722826029514,
+        "device": 66306,
+        "inode": 31775028,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722826029514,
+        "sha256": "4f292ba7a63278a2535620e016596834e3ad37065f4da40e70c0c7916e2ebe79",
+        "size": 218827
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292722822029369,
+        "device": 66306,
+        "inode": 31775016,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722822029369,
+        "sha256": "c4dd9a92116a041cdd50f6c9a4579f071933fc8c42b5816eb3162b4b66efc72f",
+        "size": 221152
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292722862030818,
+        "device": 66306,
+        "inode": 31775034,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722862030818,
+        "sha256": "9000a2af627e78fe4711b4d438050c125fc34e5c476fb556e63d7926e05a9508",
+        "size": 1804
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/stai_nsl_qcfs_seed0.c": {
+        "ctime_ns": 1790292722823029406,
+        "device": 66306,
+        "inode": 31775027,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722823029406,
+        "sha256": "29051185d691463c0743dbbb2ef41630bf8144ad08a0f4edb4be8e752185f0e6",
+        "size": 44836
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/stai_nsl_qcfs_seed0.h": {
+        "ctime_ns": 1790292722823029406,
+        "device": 66306,
+        "inode": 31775026,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722823029406,
+        "sha256": "b26a68f0de308bae21b8620f568d3f86fcfe5525af4556351fd1160eef829eab",
+        "size": 72128
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/stm32n6.mpool": {
+        "ctime_ns": 1790292722778027776,
+        "device": 66306,
+        "inode": 31775008,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722778027776,
+        "sha256": "7f5f434b1b83065c18842e78d98b44b5cf89b9f79d928ac70926717944ae7176",
+        "size": 6866
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp.dot": {
+        "ctime_ns": 1790292722819029261,
+        "device": 66306,
+        "inode": 31775015,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722819029261,
+        "sha256": "af748bc20ff10a9b3a30f12a6ba9305ed2331c23f61512faa5469ea69066cf2c",
+        "size": 87155
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_c.dot": {
+        "ctime_ns": 1790292722809028899,
+        "device": 66306,
+        "inode": 31775010,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722809028899,
+        "sha256": "e66bb126a928ba7d8f9238fd5696366d9bf1f9edad9aba318781fbe80d3cca14",
+        "size": 36325
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_lo.dot": {
+        "ctime_ns": 1790292722811028971,
+        "device": 66306,
+        "inode": 31775011,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722811028971,
+        "sha256": "94ebaccf03f6d9bef952afa4bfa5a4887379b339ff8bac591e5629e8bae0a94a",
+        "size": 50018
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_lv.dot": {
+        "ctime_ns": 1790292722814029080,
+        "device": 66306,
+        "inode": 31775013,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722814029080,
+        "sha256": "c9fd9845d4332a5314f6b1aafe16ce433f6b0bf3511df423bdcb25e8fab756fd",
+        "size": 82174
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_o.dot": {
+        "ctime_ns": 1790292722808028862,
+        "device": 66306,
+        "inode": 31775009,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722808028862,
+        "sha256": "90dd7ba0bc82a67a5da079966b507dab322d790e7f7801b7531190d1ed7d945d",
+        "size": 41768
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_po.dot": {
+        "ctime_ns": 1790292722817029188,
+        "device": 66306,
+        "inode": 31775014,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722817029188,
+        "sha256": "82be1e29e02c41f9d9cf4a40f3a32e69f984e91060aadae90aaa907c973b80ab",
+        "size": 87043
+      },
+      "generate_workspace/neural_art__nsl_qcfs_seed0/tmp_s.dot": {
+        "ctime_ns": 1790292722813029043,
+        "device": 66306,
+        "inode": 31775012,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292722813029043,
+        "sha256": "d11c4af2c3aad0076c6a527eb508fbf62f6849bed852017ae824ba806303c207",
+        "size": 76923
+      },
+      "model_qdq_int8.onnx": {
+        "ctime_ns": 1790292698270039386,
+        "device": 66306,
+        "inode": 31774962,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698270039386,
+        "sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+        "size": 134626
+      },
+      "version.json": {
+        "ctime_ns": 1790292698432605613,
+        "device": 66306,
+        "inode": 31774965,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698432605613,
+        "sha256": "69b2b1044eb8c338d85dd9d28fab086526f92c6772e223ab27f308b4b15f526a",
+        "size": 1422
+      },
+      "version.stderr": {
+        "ctime_ns": 1790292698313141995,
+        "device": 66306,
+        "inode": 31774964,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698313141995,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "version.stdout": {
+        "ctime_ns": 1790292698379144385,
+        "device": 66306,
+        "inode": 31774963,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698379144385,
+        "sha256": "a1a0c7535af68a4a80ef6f9863af901ffb6a6f7024b46946014b692a02fab00b",
+        "size": 100
+      }
+    }
+  },
+  "binary_weight_files": [
+    "nsl_qcfs_seed0_atonbuf.xSPI2.raw"
+  ],
+  "board_validated": false,
+  "calls": [
+    {
+      "actual_return_code": 0,
+      "argv": [
+        "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai",
+        "--version"
+      ],
+      "cwd": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01",
+      "elapsed_seconds": 0.1139986040070653,
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/tmp",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/cache"
+      },
+      "exception": null,
+      "phase": "version",
+      "stderr": {
+        "ctime_ns": 1790292698313141995,
+        "device": 66306,
+        "inode": 31774964,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698313141995,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "ctime_ns": 1790292698379144385,
+        "device": 66306,
+        "inode": 31774963,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698379144385,
+        "sha256": "a1a0c7535af68a4a80ef6f9863af901ffb6a6f7024b46946014b692a02fab00b",
+        "size": 100
+      },
+      "timed_out": false
+    },
+    {
+      "actual_return_code": 0,
+      "argv": [
+        "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai",
+        "analyze",
+        "--model",
+        "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/model_qdq_int8.onnx",
+        "--type",
+        "onnx",
+        "--target",
+        "stm32n6",
+        "--name",
+        "nsl_qcfs_seed0",
+        "--st-neural-art",
+        "default@/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json",
+        "--c-api",
+        "st-ai",
+        "--input-data-type",
+        "float32",
+        "--output-data-type",
+        "float32",
+        "--compression",
+        "lossless",
+        "--optimization",
+        "balanced",
+        "--workspace",
+        "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze_workspace",
+        "--output",
+        "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze",
+        "--verbosity",
+        "2"
+      ],
+      "cwd": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01",
+      "elapsed_seconds": 17.666801694082096,
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/tmp",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/cache"
+      },
+      "exception": null,
+      "phase": "analyze",
+      "stderr": {
+        "ctime_ns": 1790292698500148766,
+        "device": 66306,
+        "inode": 31774967,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292698500148766,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "ctime_ns": 1790292715743773092,
+        "device": 66306,
+        "inode": 31774966,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292715743773092,
+        "sha256": "084a644528a8181d9e6de1f35dc051b29ccc037a63eb9eb81ba803134537772d",
+        "size": 24485
+      },
+      "timed_out": false
+    },
+    {
+      "actual_return_code": 0,
+      "argv": [
+        "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai",
+        "generate",
+        "--model",
+        "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/model_qdq_int8.onnx",
+        "--type",
+        "onnx",
+        "--target",
+        "stm32n6",
+        "--name",
+        "nsl_qcfs_seed0",
+        "--st-neural-art",
+        "default@/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json",
+        "--c-api",
+        "st-ai",
+        "--input-data-type",
+        "float32",
+        "--output-data-type",
+        "float32",
+        "--compression",
+        "lossless",
+        "--optimization",
+        "balanced",
+        "--workspace",
+        "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate_workspace",
+        "--output",
+        "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/generate",
+        "--verbosity",
+        "2",
+        "--binary"
+      ],
+      "cwd": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01",
+      "elapsed_seconds": 15.961988970986567,
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/tmp",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/cache"
+      },
+      "exception": null,
+      "phase": "generate",
+      "stderr": {
+        "ctime_ns": 1790292716250791449,
+        "device": 66306,
+        "inode": 31775003,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292716250791449,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "ctime_ns": 1790292731800354443,
+        "device": 66306,
+        "inode": 31775002,
+        "links": 1,
+        "mode": 33152,
+        "mtime_ns": 1790292731800354443,
+        "sha256": "8fb550f92f227a61202580dfe7fbe2b06a71e1b0ddedc822fd0efde23bfcbf1f",
+        "size": 27053
+      },
+      "timed_out": false
+    }
+  ],
+  "content_sha256": "f40e5ff80a29b7935d1c31ccdac22c4e13e15dafd6f940333576812cd1082f05",
+  "deployment_accepted": false,
+  "energy_measured": false,
+  "full_toolchain_closure": false,
+  "held_inputs_source_tools": {
+    "/home/thc1006/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12": {
+      "ctime_ns": 1778776841406246960,
+      "device": 66306,
+      "inode": 17965494,
+      "links": 1,
+      "mode": 33277,
+      "mtime_ns": 1778776841405441607,
+      "sha256": "202c17d1671602a4ef1d43e9b2fdbef0769443f37bf5e51f6b603e0b2c27d9d8",
+      "size": 30846632
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/model_qdq_int8_OE_3_3_1.onnx": {
+      "ctime_ns": 1790292706722230927,
+      "device": 66306,
+      "inode": 31774968,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706722230927,
+      "sha256": "7ae5c0f4ea8988957907704ccab6d67a2ddfe4356d81bafb185ea9175ce97aef",
+      "size": 447529
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/model_qdq_int8_OE_3_3_1_Q.json": {
+      "ctime_ns": 1790292706727639827,
+      "device": 66306,
+      "inode": 31774969,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706727639827,
+      "sha256": "904b2e8aa6a67335499ff3782e25733136ad3f1c292c8148eb53378a8e78ef5a",
+      "size": 128027
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/nsl_qcfs_seed0.c": {
+      "ctime_ns": 1790292706801432348,
+      "device": 66306,
+      "inode": 31774993,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706801432348,
+      "sha256": "0c1ed7b3f61696da2badaaf55b17e89c13b77273b4d3f249fad8092b39f5caef",
+      "size": 221149
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/nsl_qcfs_seed0.h": {
+      "ctime_ns": 1790292706835064734,
+      "device": 66306,
+      "inode": 31774999,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706835064734,
+      "sha256": "62f590b4513afc29c7b4ec3e020c1c4549311a78cf950130370970a3834df908",
+      "size": 1804
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/nsl_qcfs_seed0_analyze_report.txt": {
+      "ctime_ns": 1790292706883452294,
+      "device": 66306,
+      "inode": 31775000,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706883452294,
+      "sha256": "4a81c28bf515998261c882969127b19bb2a2b496b4aad271cae09bd35448530b",
+      "size": 26951
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/nsl_qcfs_seed0_atonbuf.xSPI2.raw": {
+      "ctime_ns": 1790292706801796067,
+      "device": 66306,
+      "inode": 31774994,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706801796067,
+      "sha256": "cb5b641344e146a9a1b3d439953c9c3b078c706f5fa55eee40b5339ed2cb65ec",
+      "size": 145457
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/nsl_qcfs_seed0_c_info.json": {
+      "ctime_ns": 1790292706878452114,
+      "device": 66306,
+      "inode": 31774995,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706878452114,
+      "sha256": "6d29ccccfe429fef02cec35e2fe76ed73ba9533e857bbcdb222f36bd2582c302",
+      "size": 273277
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/stai_nsl_qcfs_seed0.c": {
+      "ctime_ns": 1790292706802072718,
+      "device": 66306,
+      "inode": 31774997,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706802072718,
+      "sha256": "3fe981ecfe1bff3ed5f316cf55021bd6bfa62bc43f7fd97ace7c417dc9363c5d",
+      "size": 44836
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/vendor_actual_01/analyze/stai_nsl_qcfs_seed0.h": {
+      "ctime_ns": 1790292706801978211,
+      "device": 66306,
+      "inode": 31774996,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790292706801978211,
+      "sha256": "b26a68f0de308bae21b8620f568d3f86fcfe5525af4556351fd1160eef829eab",
+      "size": 72128
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/calibration_rows.json": {
+      "ctime_ns": 1790019100779673432,
+      "device": 66306,
+      "inode": 26525479,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100779426853,
+      "sha256": "af48ddf5d8d218b4975385b7819ef8e30d1db495650488062a22cd0860f74cbe",
+      "size": 11253
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_policy.json": {
+      "ctime_ns": 1790019100454796273,
+      "device": 66306,
+      "inode": 26525474,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100454796273,
+      "sha256": "2ca6fda8b6bbca50784a48318544f55634b48e6dddd8af04d0d8dc5109639d0f",
+      "size": 1631
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/export_report.json": {
+      "ctime_ns": 1790019102017717723,
+      "device": 66306,
+      "inode": 26525482,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019102017509272,
+      "sha256": "46a0f963aa7401320a017a2506cfca0f704b81d50270f4dda76d4fca34e4e881",
+      "size": 2714
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_fp32.onnx": {
+      "ctime_ns": 1790019100642153937,
+      "device": 66306,
+      "inode": 26525476,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790019100642153937,
+      "sha256": "3b14adf8179a5df0fd4215a7b6000e7edf22c8a0d462a11e10c21731b3d12038",
+      "size": 445835
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": {
+      "ctime_ns": 1790019100743760532,
+      "device": 66306,
+      "inode": 26525477,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790019100743760532,
+      "sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+      "size": 134626
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/preprocessing.json": {
+      "ctime_ns": 1790019100780739781,
+      "device": 66306,
+      "inode": 26525481,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100780739781,
+      "sha256": "c296ddcd0cc89eac605a3277f9077a9f3b76d34a737496328a915763e3f02aec",
+      "size": 7211
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": {
+      "ctime_ns": 1790019100777673361,
+      "device": 66306,
+      "inode": 26525478,
+      "links": 1,
+      "mode": 33152,
+      "mtime_ns": 1790019100777321483,
+      "sha256": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+      "size": 218138
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/prepare_vendor.py": {
+      "ctime_ns": 1790292532613142613,
+      "device": 66306,
+      "inode": 31773176,
+      "links": 1,
+      "mode": 33204,
+      "mtime_ns": 1790292532613142613,
+      "sha256": "cd1bb490fa913d0ffde3c5c59ff8108134537228ded9ec130e5ac17939f7a94f",
+      "size": 19322
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/cortex-m55.cdesc": {
+      "ctime_ns": 1789752913627613413,
+      "device": 66306,
+      "inode": 23365131,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859242000000000,
+      "sha256": "98faf4e88d63cfbfd8cae704e78cf6adffffad751bb378d23fcc8df988675d03",
+      "size": 84
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/configs/stm32n6.mdesc": {
+      "ctime_ns": 1789752913627613413,
+      "device": 66306,
+      "inode": 23365135,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859244000000000,
+      "sha256": "f29a0cf46aeb7c5eae90568b43f0f6f694b0a5ec97bba4223f5acc46005a1aac",
+      "size": 5912
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/atonn": {
+      "ctime_ns": 1789752913694484949,
+      "device": 66306,
+      "inode": 23365137,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859240000000000,
+      "sha256": "fb9c35c207dda7fecd9933fdabdde5c92b91e0c3c45ad1a60dbb9275f29b2a19",
+      "size": 19688672
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/ecasm": {
+      "ctime_ns": 1789752913703485270,
+      "device": 66306,
+      "inode": 23365221,
+      "links": 1,
+      "mode": 33272,
+      "mtime_ns": 1764859240000000000,
+      "sha256": "e8bc1781131a405772ebf46c38046953b00cec164d32edc1e57e33a779070e26",
+      "size": 2817584
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/python": {
+      "ctime_ns": 1789752914093499180,
+      "device": 66306,
+      "inode": 23366312,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1716772904000000000,
+      "sha256": "a52afb14c4356d39135cc0fbe78e35c8245003b4dc5b5a47c2b85dd7906df529",
+      "size": 25824
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914090499073,
+      "device": 66306,
+      "inode": 23366304,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "9721892ba0b43f51adcec41c26e834e4e2b858e34cec7752d6f89cada97f41a4",
+      "size": 322888
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_args.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914092499144,
+      "device": 66306,
+      "inode": 23366308,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "5b03227fdc323180f196daacc805f04bd3217e9bc229fdb13f9309b7769cd1b9",
+      "size": 685800
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_defaults.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914093499180,
+      "device": 66306,
+      "inode": 23366311,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "5a5a782df2fbdb484f580f1c4d0484d662916bedc9536e460e035040aee3bd99",
+      "size": 101952
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_utility.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914088499001,
+      "device": 66306,
+      "inode": 23366299,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "bb42d35e00d2e1bfad96745709fd059fdf0e7ad1527c09c746a5ed24c465814b",
+      "size": 295984
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_cli_version.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914088499001,
+      "device": 66306,
+      "inode": 23366301,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "8796895e58ef543d9821929f87395a143906529ccfd410a0e74d25ed3c98debd",
+      "size": 163336
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/scripts/st_ai_cli/st_ai_config.cpython-39-x86_64-linux-gnu.so": {
+      "ctime_ns": 1789752914089499037,
+      "device": 66306,
+      "inode": 23366303,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845100000000000,
+      "sha256": "67f137fd8a999c8fdc15edd508e1df99030e72be06cb7b3f5b7628ec2c97064f",
+      "size": 374240
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/stedgeai": {
+      "ctime_ns": 1789752914087498966,
+      "device": 66306,
+      "inode": 23366297,
+      "links": 1,
+      "mode": 33261,
+      "mtime_ns": 1764845174000000000,
+      "sha256": "0aa7d9222af9620fce802037f09432f0320b77e90d3415f1d2c1d366b7872714",
+      "size": 21024
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/neural_art.json": {
+      "ctime_ns": 1789752913504901823,
+      "device": 66306,
+      "inode": 23363174,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764852684000000000,
+      "sha256": "5a416483007fc8ae1896d1a14a8eb2bc488ae9e8ec4077e418d4b76512b86e55",
+      "size": 1238
+    },
+    "/home/thc1006/opt/stedgeai/3.0/Utilities/linux/targets/stm32/resources/NPU/STM32N6xx/stm32n6.mpool": {
+      "ctime_ns": 1789752913504901823,
+      "device": 66306,
+      "inode": 23363178,
+      "links": 1,
+      "mode": 33188,
+      "mtime_ns": 1764852684000000000,
+      "sha256": "85cbb7205023b482f1ae640fd0c02d6ccf9574ca4bf05abbe6640bf6a69acb49",
+      "size": 3965
+    }
+  },
+  "kind": "n6_offline_vendor_preparation",
+  "limits": [
+    "No model inference, validation command, board, serial, flash or power measurement requested.",
+    "Selected tool binaries/front-end/profile/config files are pinned; transitive libraries are not fully captured.",
+    "Finite filesystem bookends, not an atomic snapshot, OS sandbox, or independent compiler correctness proof.",
+    "Default vendor memory profile is diagnostic, not an approved firmware/linker/flash layout.",
+    "Preserves all 17 historical export negatives; no threshold/checkpoint/quantization changes."
+  ],
+  "mapping": {
+    "interpretation": "vendor report observation only; not kernel, parity or board proof",
+    "reported_epochs": {
+      "hardware": 8,
+      "hybrid": 1,
+      "software": 31,
+      "total": 40
+    }
+  },
+  "model_sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+  "npu_placement_verified": false,
+  "offline_compilation_completed": true,
+  "publication_accepted": false,
+  "schema": 1,
+  "version": "ST Edge AI Core v3.0.0-20426 123672867"
+}

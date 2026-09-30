@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "endianness": "little",
+  "crc": {"kind": "CRC-32/IEEE", "reflected_polynomial": "0xedb88320", "initial_xor": "0xffffffff", "final_xor": "0xffffffff"},
+  "request": {"length": 232, "magic": "0x51523556", "version": 1, "fields": {"magic": 0, "version": 4, "sequence": 8, "ordinal": 12, "row_id_u64": 16, "input_count_41": 24, "payload_bytes_164": 28, "graph_sha256_raw32": 32, "input_fp32_words_41": 64, "crc": 228}},
+  "response": {"length": 88, "magic": "0x53523556", "version": 1, "fields": {"magic": 0, "version": 4, "sequence": 8, "ordinal": 12, "row_id_u64": 16, "status": 24, "output_count_5_or_0": 28, "graph_sha256_raw32": 32, "output_fp32_words_5": 64, "crc": 84}},
+  "hello_query": {"length": 12, "magic": "0x51483556", "version": 1, "fields": {"magic": 0, "version": 4, "crc": 8}, "nonce": null, "consumes_sequence": false},
+  "hello": {"length": 160, "magic": "0x49483556", "version": 1, "fields": {"magic": 0, "version": 4, "board_id": 8, "backend_id_1": 12, "fp_pass_bit0": 16, "input_count_41": 20, "output_count_5": 24, "graph_sha256_ascii64": 28, "vectors_sha256_ascii64": 92, "crc": 156}},
+  "board_ids": {"1": "FPB-RA4E1", "2": "ESP32-S3 exact module pending physical identification"},
+  "backend": "CPU portable FP32 QDQ; compact INT8 constant storage; not NPU",
+  "model_sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+  "vectors_sha256": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+  "sequence": {"first": 1, "last": 1024, "ordinal": "sequence - 1", "valid_framed_requests_consumed_on_arithmetic_error": true, "automatic_retry": false},
+  "ra_mailbox": {"address": "0x2001f000", "length": 512, "request": 32, "response": 264, "hello": 352, "request_commit": 16, "response_commit": 20, "completion": "stable terminal state plus matching response_commit and response sequence/CRC"}
+}

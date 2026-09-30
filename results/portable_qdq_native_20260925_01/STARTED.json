@@ -1,0 +1,113 @@
+{
+  "allclose_argument_order": [
+    "reference",
+    "actual"
+  ],
+  "automatic_retry": false,
+  "flags": [
+    "-std=c11",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-fexcess-precision=standard"
+  ],
+  "hardware_accessed": false,
+  "kind": "portable_qdq_native_probe_intent",
+  "numpy_version": "2.4.2",
+  "original_pins": {
+    "/home/thc1006/dev/SpikeIDS-MCU/.venv/lib/python3.13/site-packages/numpy/__init__.py": {
+      "sha256": "2e8da3e4385e79c4885b3f7324a8b957e6f01732b239e99e266a12c62a008b8d",
+      "st_ctime_ns": 1789741906737740341,
+      "st_dev": 66306,
+      "st_ino": 18104699,
+      "st_mode": 33204,
+      "st_mtime_ns": 1789741906247347364,
+      "st_nlink": 2,
+      "st_size": 25946
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/model_qdq_int8.onnx": {
+      "sha256": "22dc7979340c34af613840a8cef70bc07f469ae2143925660cf3312f36475e2d",
+      "st_ctime_ns": 1790019100743760532,
+      "st_dev": 66306,
+      "st_ino": 26525477,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790019100743760532,
+      "st_nlink": 1,
+      "st_size": 134626
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/results/v5_exports_20260922_r6_1_remaining19/nslkdd/qcfs/qdq/validation_vectors.npz": {
+      "sha256": "cb5b3415cdbfb8a27db471f972f73910f7a5503687d79446458b8a48c4ae1edb",
+      "st_ctime_ns": 1790019100777673361,
+      "st_dev": 66306,
+      "st_ino": 26525478,
+      "st_mode": 33152,
+      "st_mtime_ns": 1790019100777321483,
+      "st_nlink": 1,
+      "st_size": 218138
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/generate.py": {
+      "sha256": "df7792e04ab5763971b0b3a0045df94e901ce78131eec24d422805c7e59cacdd",
+      "st_ctime_ns": 1790305965016383085,
+      "st_dev": 66306,
+      "st_ino": 31890578,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790305965016383085,
+      "st_nlink": 1,
+      "st_size": 13748
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/native_main.c": {
+      "sha256": "e06cf0d6e33298ba75f5cdc91f6ad58f8843464c4e446a2082450b0ce88ede50",
+      "st_ctime_ns": 1790305965017383121,
+      "st_dev": 66306,
+      "st_ino": 31890588,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790305965017383121,
+      "st_nlink": 1,
+      "st_size": 1875
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.c": {
+      "sha256": "e389a691656fd8dfbb75771c205e51ab16f491adfad65213b6e0ec951e0e4851",
+      "st_ctime_ns": 1790305607965556140,
+      "st_dev": 66306,
+      "st_ino": 31890577,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790305607965556140,
+      "st_nlink": 1,
+      "st_size": 5165
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/portable_qdq.h": {
+      "sha256": "e8abd58b44e15806eff54df5245757c23aa491bd044f579dd59d0efc7c5be406",
+      "st_ctime_ns": 1790305607965556140,
+      "st_dev": 66306,
+      "st_ino": 31890576,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790305607965556140,
+      "st_nlink": 1,
+      "st_size": 1319
+    },
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/board_deployment/portable_qdq/run_native.py": {
+      "sha256": "b2057e38b99608ae9cabe9c57de4c11dd6c7d74abafd8a71971d6dde12ba5fba",
+      "st_ctime_ns": 1790306333074604767,
+      "st_dev": 66306,
+      "st_ino": 31890591,
+      "st_mode": 33204,
+      "st_mtime_ns": 1790306333074604767,
+      "st_nlink": 1,
+      "st_size": 9615
+    },
+    "/usr/bin/x86_64-linux-gnu-gcc-15": {
+      "sha256": "b5f1b773a7c733738352000c92a077dc5852a1a2fc6d836b1e411be1e9ec5f88",
+      "st_ctime_ns": 1778769431866236766,
+      "st_dev": 66306,
+      "st_ino": 29755600,
+      "st_mode": 33261,
+      "st_mtime_ns": 1774174097000000000,
+      "st_nlink": 1,
+      "st_size": 1305304
+    }
+  },
+  "rows": 1024
+}

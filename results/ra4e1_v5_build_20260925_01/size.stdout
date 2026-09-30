@@ -1,0 +1,17 @@
+/home/thc1006/dev/SpikeIDS-MCU/results/ra4e1_v5_build_20260925_01/firmware.elf  :
+section                  size        addr
+__flash_vectors$$          84           0
+__ram_noinit$$           8220   536870912
+__ram_zero$$              120   536879132
+__flash_readonly$$     123020          84
+.init                       4      123104
+.fini                       4      123108
+__flash_init_array$$        4      123112
+__flash_fini_array$$        4      123116
+.v5_mailbox               512   536997888
+.ARM.attributes            54           0
+.comment                   68           0
+.debug_frame              144           0
+Total                  132238
+
+

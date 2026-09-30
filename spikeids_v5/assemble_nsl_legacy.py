@@ -12,7 +12,9 @@ def assemble(run_dir):
     a,b=results[("nslkdd","relu")],results[("nslkdd","qcfs")];same_pairing(a,b)
     obj={"schema":SCHEMA,"dataset":"nslkdd","seeds":plan["seeds"],"n_train":a["counts"]["fit"],
          "n_validation":a["counts"]["validation"],"n_test":a["counts"]["test"],
-         "n_official_train":a["n_official_train"],"class_names":a["class_names"],
+         "official_train_raw_rows":a["official_train_raw_rows"],
+         "n_train_validation_patterns":a["n_train_validation_patterns"],
+         "class_names":a["class_names"],
          "epochs":a["protocol"]["epochs"],"batch_size":a["protocol"]["batch_size"],
          "data_fingerprint":a["data_fingerprint"],"pairing_contract":a["pairing_contract"],
          "source_plan_sha256":plan["content_sha256"],"source_results":{"relu":a["scientific_digest"],"qcfs":b["scientific_digest"]},

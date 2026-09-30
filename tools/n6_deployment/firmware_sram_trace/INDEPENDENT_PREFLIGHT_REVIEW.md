@@ -1,0 +1,13 @@
+# Independent bounded preflight
+
+No known blocking bug in the reviewed offline-build scope. Actual test tool `00815b` exited **0**: 34 tests and 23 subtests passed (13 independent, 21 author), under the requested 4 GiB/no-swap scope. Twenty source/test/frozen-file hashes matched before `3a5208` and after `abcdd1`. Exact hashes, command, XML and observed exit are in [INDEPENDENT_PREFLIGHT_EXECUTION.json](INDEPENDENT_PREFLIGHT_EXECUTION.json).
+
+Full source review covered main, mailbox/ABI, linker, startup/syscalls, build and README, plus the frozen trace helper and the narrow builder delta. Initialization precedes callback binding; begin precedes synchronous run; finish receives the actual return before any returned-run error park. The original polling/software-fallback build contract and failed-generation history remain intact.
+
+Twelve independent host-C executions compiled the unchanged main/mailbox with explicit CMSIS/MMIO/STAI/helper substitutes. They cover success; initialization, binding, begin, run, get-error and finish failures; incomplete/latched-error trace; nonfinite fifth output; and changed/nonfinite last input. Returned-run failures preserve all five raw output words and actual status codes without publishing a successful response sequence. Success observes ready trace/output fields at the DMB before the final response commit. This tests C wiring, not real ARM ordering or runtime callbacks.
+
+Five checked load segments keep the 6,556-byte trace `[0x340f8200,0x340f9b9c)` disjoint from stack, mailbox, platform-stage region, full 256 KiB weights reservation and 16 KiB activation reservation. Startup/syscalls remain byte-identical to frozen S6; the existing C fault handler is best-effort, not stack-fault-proof. No initializer or platform acknowledgement is invented.
+
+The host must recognize the new magic/tag, observe matching DONE or matching-run ERROR, halt and retain mailbox plus the complete log **before** another request. There is no target retention ACK; the next begin clears the old log. Early failures may have no matching trace, and a hung run need not reach finish/output-copy. These are explicit integration limits, not blockers to the parent's single authorized offline build.
+
+The expected 162 callbacks are 160 epoch events plus DeInit/Init. Eight pure-HW, one hybrid and 31 pure-SW descriptor classes are mixed-runtime evidence; hybrid Cast is not a ninth proven hardware epoch. DWT windows include instrumentation/software/polling work and are not performance, energy or independent hardware proof. No ARM build, target access, inference, or hardware acceptance was performed by this reviewer. This is an AI-authored local review, not human/OS attestation.

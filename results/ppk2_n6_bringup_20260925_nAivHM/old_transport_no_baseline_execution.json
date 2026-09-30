@@ -1,0 +1,7 @@
+{
+  "chunk_id": "10c96c",
+  "wall_time_seconds": 0.160360971,
+  "exit_code": 2,
+  "original_token_count": 65,
+  "output": "{\"report\": \"/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/old_transport_no_baseline/analysis.json\", \"exit_code\": 2, \"analysis_completed\": true, \"analysis_checks_passed\": false, \"research_measurement_accepted\": false, \"error\": null}\n"
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.037" timestamp="2026-09-25T10:44:47.675590+08:00" hostname="thc1006"><testcase classname="tools.n6_deployment.firmware_sram.test_firmware_sram_independent" name="test_original_candidate_source_pin_not_replaced_by_fresh_capture" time="0.004"><failure message="AssertionError: Changed original generated input was fresh-adopted and used to start compiler&#10;assert not [True]">entry = (PosixPath('/tmp/pytest-of-thc1006/pytest-340/test_original_candidate_source0/adapter'), {'HERE': PosixPath('/tmp/pyte..._candidate_source0/tc'), 'TP': PosixPath('/tmp/pytest-of-thc1006/pytest-340/test_original_candidate_source0/tp'), ...})
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x78576338050&gt;
+
+    def test_original_candidate_source_pin_not_replaced_by_fresh_capture(entry, monkeypatch):
+        work, paths = entry
+        generated = paths["GEN"] / "nsl_qcfs_seed0.c"
+        original = b.pin(generated)
+        def held_candidate():
+            generated.write_bytes(b"changed after original candidate commitment\n")
+            return {str(generated): original}
+        monkeypatch.setattr(b, "candidate_pins", held_candidate)
+        called = []
+        class Child:
+            pid=123456789
+            returncode=23
+            def __init__(self, *args, **kwargs): called.append(True)
+            def wait(self, timeout): return 23
+            def poll(self): return 23
+        monkeypatch.setattr(b.subprocess, "Popen", Child)
+        with pytest.raises(RuntimeError): b.run(work/"build")
+&gt;       assert not called, "Changed original generated input was fresh-adopted and used to start compiler"
+E       AssertionError: Changed original generated input was fresh-adopted and used to start compiler
+E       assert not [True]
+
+tools/n6_deployment/firmware_sram/test_firmware_sram_independent.py:226: AssertionError</failure></testcase></testsuite></testsuites>

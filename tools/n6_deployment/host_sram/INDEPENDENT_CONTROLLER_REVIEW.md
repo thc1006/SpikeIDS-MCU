@@ -1,0 +1,11 @@
+# Finite controller integration review
+
+Independent synthetic run: session `71479`, launch `37957f`, completion `36e5a3`, actual exit **0**, **5 PASS** in 1.03 s. Scope `spikeids-n6-controller-independent-01.scope`, invocation `53c55202f6ac4268803c88f12fe01ce8`, 4 GiB / swap 0. Source/test bookends unchanged (`088f9a`, exit 0).
+
+Reviewed `orchestrate.py` SHA `2d2328bc8d46c762910d628a8d1c65d0c7b8e296c332ec4eccc6b07f538e1f93` and backend SHA `ccea760c695766a23c9b9d8180f7d53b4ab33d0de266ba6817613b02fe004a5d`. Stage startup/challenge precedes model loading; WAIT_PLATFORM is observed before halted FP-mode and direct MMIO checks, then ACK write/readback and ordered inference. Post-validation FP/MMIO checks and final halt must finish before successful return. The explicit backend resume method checks halted state. No fallback reset, auto-ACK, inference retry, tolerance change or power operation is added.
+
+The tests exercise the real controller, loader, stage/mailbox protocols and validation with the author's shared **opaque fake Core** (not an independent target simulator), plus independent mutations/assertions. Positive checks cover 1,024 distinct row IDs, every 41-word input and all five output words. Negative controls cover failed ACK readback before any inference, last-row fifth-logit failure with all 1,024 records and failed PARITY retained, post-validation FP failure despite passing parity, and final-halt failure preventing successful return. They do not call CLI main, real bundle loading, pyOCD attach, target code or a compiler.
+
+No concrete blocker found in this bounded source/synthetic scope. This is not electrical qualification, real stage/NPU execution, independent timing/energy evidence, a completed board validation, or an atomic/future-state guarantee. A cleanup halt does not establish independent bus-master quiescence. Root still owns fixed stage ELF binding, outer deadline/power prerequisites and any hardware authorization.
+
+`test_orchestrate_independent.py` SHA `5646b13eec9f7f74b7b01b963a850cc63f0802286f47a2085ee25b1d6a683244`; reused author fixture SHA `0fbe315757cb0be95048951f6d968a0ac9bdeacd26d57d217788f47d2ecaa076`; `controller_independent_01.xml` SHA `f42561a23c16d39465dd7c088b1cdb073a023d7a100623a40c5fdf0d1ec6873c`. Earlier independent host and platform notes remain unchanged.

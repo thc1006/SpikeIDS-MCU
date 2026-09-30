@@ -1,0 +1,5894 @@
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/bootloader_support/libbootloader_support.a:
+
+bootloader_common.c.obj:
+         U GPIO
+         U __lshrdi3
+         U bootloader_flash_erase_range
+         U bootloader_mmap
+         U bootloader_munmap
+         U bootloader_sha256_flash_contents
+         U esp_image_get_metadata
+         U esp_log_early_timestamp
+         U esp_partition_table_verify
+         U esp_rom_delay_us
+         U esp_rom_gpio_pad_pullup_only
+         U esp_rom_gpio_pad_select_gpio
+         U memcmp
+         U memcpy
+         U memset
+         U rtc_vddsdio_get_config
+         U rtc_vddsdio_set_config
+         U strcspn
+         U strlen
+         U strncpy
+         U strstr
+
+bootloader_common_loader.c.obj:
+         U efuse_hal_blk_version
+         U efuse_hal_chip_revision
+         U efuse_hal_get_disable_blk_version_major
+         U efuse_hal_get_disable_wafer_version_major
+         U esp_rom_crc32_le
+
+bootloader_clock_init.c.obj:
+         U esp_rom_get_reset_reason
+         U esp_rom_output_tx_wait_idle
+         U rtc_clk_apb_freq_get
+         U rtc_clk_fast_src_get
+         U rtc_clk_init
+         U rtc_clk_slow_src_get
+
+bootloader_mem.c.obj:
+         U esp_cpu_configure_region_protection
+
+bootloader_random.c.obj:
+         U __assert_func
+
+bootloader_efuse.c.obj:
+         U EFUSE
+
+flash_encrypt.c.obj:
+         U ESP_EFUSE_DIS_DIRECT_BOOT
+         U ESP_EFUSE_DIS_DOWNLOAD_DCACHE
+         U ESP_EFUSE_DIS_DOWNLOAD_ICACHE
+         U ESP_EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT
+         U ESP_EFUSE_DIS_PAD_JTAG
+         U ESP_EFUSE_DIS_USB_JTAG
+         U ESP_EFUSE_SOFT_DIS_JTAG
+         U ESP_EFUSE_SPI_BOOT_CRYPT_CNT
+         U ESP_EFUSE_WR_DIS_DIS_ICACHE
+         U ESP_EFUSE_WR_DIS_SPI_BOOT_CRYPT_CNT
+         U abort
+         U efuse_hal_flash_encryption_enabled
+         U esp_efuse_batch_write_begin
+         U esp_efuse_batch_write_commit
+         U esp_efuse_enable_rom_secure_download_mode
+         U esp_efuse_find_purpose
+         U esp_efuse_get_key_dis_read
+         U esp_efuse_get_key_dis_write
+         U esp_efuse_get_keypurpose_dis_write
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_blob
+         U esp_efuse_read_field_cnt
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_cnt
+
+secure_boot.c.obj:
+
+bootloader_random_esp32s3.c.obj:
+         U esp_rom_regi2c_write_mask
+
+bootloader_flash.c.obj:
+         U EFUSE
+         U SPIMEM0
+         U SPIMEM1
+         U __assert_func
+         U __bswapsi2
+         U cache_hal_disable
+         U cache_hal_enable
+         U esp_rom_delay_us
+         U esp_rom_spiflash_erase_block
+         U esp_rom_spiflash_erase_sector
+         U esp_rom_spiflash_read
+         U esp_rom_spiflash_wait_idle
+         U esp_rom_spiflash_write
+         U esp_rom_spiflash_write_encrypted
+         U memcpy
+         U mmu_hal_map_region
+         U mmu_hal_unmap_all
+         U rom_spiflash_legacy_data
+
+flash_qio_mode.c.obj:
+         U bootloader_execute_flash_command
+         U esp_rom_efuse_get_flash_gpio_info
+         U esp_rom_efuse_get_flash_wp_gpio
+         U esp_rom_spiflash_config_readmode
+         U esp_rom_spiflash_select_qio_pins
+         U esp_rom_spiflash_wait_idle
+         U rom_spiflash_legacy_data
+         U spi_flash_wrap_disable
+         U spi_flash_wrap_probe
+
+bootloader_flash_config_esp32s3.c.obj:
+         U bootloader_enable_wp
+         U bootloader_execute_flash_command
+         U bootloader_flash_get_spi_mode
+         U bootloader_flash_is_octal_mode_enabled
+         w bootloader_flash_unlock
+         U bootloader_image_hdr
+         U bootloader_read_flash_id
+         U cache_hal_disable
+         U cache_hal_enable
+         U esp_rom_efuse_get_flash_gpio_info
+         U esp_rom_efuse_get_flash_wp_gpio
+         U esp_rom_gpio_pad_set_drv
+         U esp_rom_spiflash_config_clk
+         U esp_rom_spiflash_config_param
+         U esp_rom_spiflash_wait_idle
+         U rom_spiflash_legacy_data
+
+bootloader_utility.c.obj:
+         U abort
+         U bootloader_ana_clock_glitch_reset_config
+         U bootloader_common_get_active_otadata
+         U bootloader_common_ota_select_crc
+         U bootloader_common_ota_select_invalid
+         U bootloader_console_deinit
+         U bootloader_flash_erase_sector
+         U bootloader_flash_write
+         U bootloader_load_image
+         U bootloader_mmap
+         U bootloader_mmap_get_free_pages
+         U bootloader_munmap
+         U bootloader_random_disable
+         U bootloader_sha256_data
+         U bootloader_sha256_finish
+         U bootloader_sha256_start
+         U bzero
+         U cache_hal_disable
+         U cache_hal_enable
+         U esp_flash_encryption_enabled
+         U esp_partition_table_verify
+         U esp_rom_delay_us
+         U esp_rom_software_reset_system
+         U memcpy
+         U memset
+         U mmu_hal_map_region
+         U mmu_hal_unmap_all
+
+flash_partitions.c.obj:
+         U esp_rom_md5_final
+         U esp_rom_md5_init
+         U esp_rom_md5_update
+         U memcmp
+         U rom_spiflash_legacy_data
+
+esp_image_format.c.obj:
+         U __assert_func
+         U _dram_end
+         U _dram_start
+         U _loader_text_end
+         U _loader_text_start
+         U bootloader_common_check_chip_validity
+         U bootloader_common_check_efuse_blk_validity
+         U bootloader_debug_buffer
+         U bootloader_fill_random
+         U bootloader_flash_read
+         U bootloader_mmap
+         U bootloader_mmap_get_free_pages
+         U bootloader_munmap
+         U bootloader_sha256_data
+         U bootloader_sha256_finish
+         U bootloader_sha256_start
+         U bzero
+         U esp_rom_get_reset_reason
+         U memcmp
+         U memcpy
+         U memset
+
+bootloader_init.c.obj:
+         U RTCCNTL
+         U TIMERG0
+         U _bss_end
+         U _bss_start
+         U bootloader_common_check_chip_validity
+         U bootloader_flash_read
+         U bootloader_random_enable
+         U efuse_hal_blk_version
+         U efuse_hal_chip_revision
+         U memset
+         U rtc_clk_slow_freq_get_hz
+         U wdt_hal_config_stage
+         U wdt_hal_enable
+         U wdt_hal_init
+         U wdt_hal_set_flashboot_en
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+
+bootloader_clock_loader.c.obj:
+         U rtc_clk_apb_freq_get
+
+bootloader_console.c.obj:
+         U GPIO
+         U esp_rom_gpio_connect_in_signal
+         U esp_rom_install_channel_putc
+         U esp_rom_output_tx_wait_idle
+         U uart_periph_signal
+
+bootloader_console_loader.c.obj:
+
+bootloader_sha.c.obj:
+         U __assert_func
+         U bzero
+         U ets_sha_enable
+         U ets_sha_finish
+         U ets_sha_init
+         U ets_sha_update
+
+bootloader_soc.c.obj:
+
+bootloader_esp32s3.c.obj:
+         U RTCCNTL
+         U __assert_func
+         U _bss_end
+         U _bss_start
+         U _data_end
+         U _data_start
+         U bootloader_ana_clock_glitch_reset_config
+         U bootloader_ana_super_wdt_reset_config
+         U bootloader_check_bootloader_validity
+         U bootloader_clear_bss_section
+         U bootloader_clock_configure
+         U bootloader_config_wdt
+         U bootloader_console_init
+         U bootloader_enable_random
+         U bootloader_flash_update_id
+         U bootloader_flash_xmc_startup
+         U bootloader_init_mem
+         U bootloader_init_spi_flash
+         U bootloader_print_banner
+         U bootloader_read_bootloader_header
+         U cache_hal_init
+         U esp_rom_get_reset_reason
+         U mmu_hal_init
+
+bootloader_panic.c.obj:
+         U esp_rom_printf
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/efuse/libefuse.a:
+
+esp_efuse_table.c.obj:
+
+esp_efuse_fields.c.obj:
+         U ESP_EFUSE_DIS_DOWNLOAD_MODE
+         U ESP_EFUSE_ENABLE_SECURITY_DOWNLOAD
+         U ESP_EFUSE_PKG_VERSION
+         U ESP_EFUSE_UART_PRINT_CONTROL
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_blob
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_blob
+
+esp_efuse_rtc_calib.c.obj:
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN0
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN1
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN2
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN3
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN0
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN1
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN2
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN3
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN0
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN1
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN2
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN3
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN0
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN1
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN2
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN3
+         U ESP_EFUSE_BLK_VERSION_MAJOR
+         U ESP_EFUSE_TEMP_CALIB
+         U __assert_func
+         U _esp_error_check_failed
+         U esp_efuse_get_field_size
+         U esp_efuse_read_field_blob
+         U memcpy
+         U memset
+
+esp_efuse_utility.c.obj:
+         U efuse_hal_clear_program_registers
+         U efuse_hal_is_coding_error_in_block
+         U efuse_hal_program
+         U efuse_hal_read
+         U efuse_hal_rs_calculate
+         U efuse_hal_set_timing
+         U esp_efuse_get_coding_scheme
+         U esp_efuse_utility_is_correct_written_data
+         U esp_efuse_utility_read_reg
+         U esp_efuse_utility_reset
+         U memcpy
+
+esp_efuse_api.c.obj:
+         U ESP_EFUSE_WR_DIS_RD_DIS
+         U __assert_func
+         U esp_efuse_get_key_dis_read
+         U esp_efuse_get_key_dis_write
+         U esp_efuse_set_key_dis_read
+         U esp_efuse_utility_apply_new_coding_scheme
+         U esp_efuse_utility_burn_chip_opt
+         U esp_efuse_utility_burn_efuses
+         U esp_efuse_utility_check_errors
+         U esp_efuse_utility_count_once
+         U esp_efuse_utility_fill_buff
+         U esp_efuse_utility_get_number_of_items
+         U esp_efuse_utility_process
+         U esp_efuse_utility_reset
+         U esp_efuse_utility_write_blob
+         U esp_efuse_utility_write_cnt
+         U esp_efuse_utility_write_reg
+         U memset
+
+esp_efuse_fields.c.obj:
+         U ESP_EFUSE_SECURE_VERSION
+         U __ashldi3
+         U __popcountsi2
+         U esp_efuse_get_coding_scheme
+         U esp_efuse_get_field_size
+         U esp_efuse_read_field_blob
+         U esp_efuse_utility_reset
+         U esp_efuse_write_field_blob
+         U esp_rom_software_reset_system
+
+esp_efuse_utility.c.obj:
+         U __ashldi3
+         U __assert_func
+         U __lshrdi3
+         U __popcountsi2
+         U esp_efuse_get_field_size
+         U esp_efuse_utility_burn_chip
+         U esp_efuse_utility_clear_program_registers
+         U esp_rom_printf
+         U memcmp
+         U range_read_addr_blocks
+         U range_write_addr_blocks
+
+esp_efuse_api_key.c.obj:
+         U ESP_EFUSE_KEY0
+         U ESP_EFUSE_KEY1
+         U ESP_EFUSE_KEY2
+         U ESP_EFUSE_KEY3
+         U ESP_EFUSE_KEY4
+         U ESP_EFUSE_KEY5
+         U ESP_EFUSE_KEY_PURPOSE_0
+         U ESP_EFUSE_KEY_PURPOSE_1
+         U ESP_EFUSE_KEY_PURPOSE_2
+         U ESP_EFUSE_KEY_PURPOSE_3
+         U ESP_EFUSE_KEY_PURPOSE_4
+         U ESP_EFUSE_KEY_PURPOSE_5
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY0
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY1
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY2
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY3
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY4
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY5
+         U ESP_EFUSE_RD_DIS_BLOCK_SYS_DATA2
+         U ESP_EFUSE_SECURE_BOOT_KEY_REVOKE0
+         U ESP_EFUSE_SECURE_BOOT_KEY_REVOKE1
+         U ESP_EFUSE_SECURE_BOOT_KEY_REVOKE2
+         U ESP_EFUSE_WR_DIS_BLK1
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY0
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY1
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY2
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY3
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY4
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY5
+         U ESP_EFUSE_WR_DIS_BLOCK_SYS_DATA2
+         U ESP_EFUSE_WR_DIS_BLOCK_USR_DATA
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_0
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_1
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_2
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_3
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_4
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_5
+         U ESP_EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE0
+         U ESP_EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE1
+         U ESP_EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE2
+         U ESP_EFUSE_WR_DIS_SYS_DATA_PART1
+         U __assert_func
+         U esp_efuse_batch_write_begin
+         U esp_efuse_batch_write_cancel
+         U esp_efuse_batch_write_commit
+         U esp_efuse_get_field_size
+         U esp_efuse_read_block
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_blob
+         U esp_efuse_utility_get_read_register_address
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_blob
+         U esp_efuse_write_field_cnt
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/esp_bootloader_format/libesp_bootloader_format.a:
+
+esp_bootloader_desc.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/esp_common/libesp_common.a:
+
+esp_err_to_name.c.obj:
+         U snprintf
+         U strerror_r
+         U strlcpy
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/esp_hw_support/libesp_hw_support.a:
+
+cpu.c.obj:
+         U __assert_func
+
+esp_cpu_intr.c.obj:
+         U __assert_func
+
+esp_memory_utils.c.obj:
+
+cpu_region_protect.c.obj:
+         U memcpy
+         U mpu_hal_set_region_access
+
+rtc_clk.c.obj:
+         U SENS
+         U __assert_func
+         U abort
+         U esp_rom_delay_us
+         U esp_rom_regi2c_write
+         U esp_rom_regi2c_write_mask
+         U esp_rom_set_cpu_ticks_per_us
+         U g_dig_dbias_pvt_240m
+         U g_dig_dbias_pvt_non_240m
+         U g_rtc_dbias_pvt_240m
+         U g_rtc_dbias_pvt_non_240m
+
+rtc_clk_init.c.obj:
+         U __udivdi3
+         U abort
+         U esp_rom_output_tx_wait_idle
+         U rtc_clk_32k_enable
+         U rtc_clk_8m_divider_set
+         U rtc_clk_8m_enable
+         U rtc_clk_apb_freq_update
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_mhz_to_config
+         U rtc_clk_cpu_freq_set_config
+         U rtc_clk_divider_set
+         U rtc_clk_fast_src_set
+         U rtc_clk_slow_src_set
+         U rtc_clk_xtal_freq_update
+
+rtc_init.c.obj:
+         U EFUSE
+         U esp_rom_regi2c_read_mask
+         U esp_rom_regi2c_write_mask
+         U rtc_clk_cal
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_set_config
+         U rtc_clk_cpu_freq_set_xtal
+         U rtc_clk_slow_src_get
+         U rtc_sleep_pu
+         U rtc_time_get
+         U rtc_time_us_to_slowclk
+
+rtc_sleep.c.obj:
+         U __assert_func
+         U esp_rom_regi2c_write_mask
+         U rtc_time_us_to_slowclk
+
+rtc_time.c.obj:
+         U SYSTEM
+         U TIMERG0
+         U __assert_func
+         U __udivdi3
+         U __umoddi3
+         U esp_rom_delay_us
+         U rtc_clk_8m_enable
+         U rtc_clk_slow_src_get
+         U rtc_clk_xtal_freq_get
+
+chip_info.c.obj:
+         U efuse_hal_chip_revision
+         U memset
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/esp_rom/libesp_rom.a:
+
+esp_rom_sys.c.obj:
+         U esp_rom_output_putc
+         U ets_install_putc1
+         U ets_install_putc2
+         U ets_install_uart_printf
+         U g_uart_print
+         U g_usb_print
+
+esp_rom_print.c.obj:
+         U __udivdi3
+         U __umoddi3
+         U esp_rom_output_to_channels
+         U strlen
+
+esp_rom_crc.c.obj:
+
+esp_rom_uart.c.obj:
+         U GetUartDevice
+
+esp_rom_spiflash.c.obj:
+         U esp_rom_spi_set_address_bit_len
+         U esp_rom_spi_set_op_mode
+         U rom_spiflash_legacy_data
+
+esp_rom_efuse.c.obj:
+
+esp_rom_gpio.c.obj:
+
+esp_rom_longjmp.S.obj:
+
+esp_rom_systimer.c.obj:
+
+esp_rom_wdt.c.obj:
+
+esp_rom_cache_esp32s2_esp32s3.c.obj:
+         U Cache_Get_DCache_Line_Size
+         U Cache_Resume_DCache_Autoload
+         U Cache_Suspend_DCache_Autoload
+         U cache_writeback_items_freeze
+         U rom_Cache_Count_Flash_Pages
+         U rom_Cache_Freeze_DCache_Enable
+         U rom_Cache_Freeze_ICache_Enable
+         U rom_Cache_Suspend_DCache
+         U rom_Cache_Suspend_ICache
+         U rom_Cache_WriteBack_Addr
+
+esp_rom_cache_writeback_esp32s3.S.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/esp_system/libesp_system.a:
+
+esp_err.c.obj:
+         U abort
+         U esp_err_to_name
+         U esp_rom_printf
+         U spi_flash_cache_enabled
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/hal/libhal.a:
+
+hal_utils.c.obj:
+         U __udivdi3
+         U abort
+
+mpu_hal.c.obj:
+
+efuse_hal.c.obj:
+         U EFUSE
+         U efuse_hal_get_major_chip_version
+         U efuse_hal_get_minor_chip_version
+
+efuse_hal.c.obj:
+         U EFUSE
+         U abort
+         U ets_efuse_clear_program_registers
+         U ets_efuse_rs_calculate
+
+mmu_hal.c.obj:
+         U ROM_Boot_Cache_Init
+         U abort
+
+cache_hal.c.obj:
+         U Cache_Disable_DCache
+         U Cache_Disable_ICache
+         U Cache_Enable_DCache
+         U Cache_Enable_ICache
+         U Cache_Freeze_DCache_Disable
+         U Cache_Freeze_DCache_Enable
+         U Cache_Freeze_ICache_Disable
+         U Cache_Freeze_ICache_Enable
+         U Cache_Get_DCache_Line_Size
+         U Cache_Get_ICache_Line_Size
+         U Cache_Invalidate_Addr
+         U Cache_Resume_DCache
+         U Cache_Resume_ICache
+         U Cache_Suspend_DCache
+         U Cache_Suspend_ICache
+         U Cache_WriteBack_Addr
+         U abort
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/log/liblog.a:
+
+log_timestamp.c.obj:
+         U esp_rom_get_cpu_ticks_per_us
+
+log_timestamp_common.c.obj:
+         U esp_log_timestamp
+         U esp_log_util_cvt_dec
+
+log_lock.c.obj:
+         U __assert_func
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/main/libmain.a:
+
+bootloader_start.c.obj:
+         U _impure_data
+         w bootloader_after_init
+         w bootloader_before_init
+         U bootloader_init
+         U bootloader_reset
+         U bootloader_utility_get_selected_boot_partition
+         U bootloader_utility_load_boot_image
+         U bootloader_utility_load_partition_table
+         U esp_rom_get_reset_reason
+         U memset
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/micro-ecc/libmicro-ecc.a:
+
+uECC_verify_antifault.c.obj:
+         U memset
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/soc/libsoc.a:
+
+lldesc.c.obj:
+
+dport_access_common.c.obj:
+
+interrupts.c.obj:
+
+gpio_periph.c.obj:
+
+uart_periph.c.obj:
+
+adc_periph.c.obj:
+
+dedic_gpio_periph.c.obj:
+
+gdma_periph.c.obj:
+
+spi_periph.c.obj:
+         U GPSPI2
+         U GPSPI3
+
+ledc_periph.c.obj:
+
+pcnt_periph.c.obj:
+
+rmt_periph.c.obj:
+
+sdm_periph.c.obj:
+
+i2s_periph.c.obj:
+
+i2c_periph.c.obj:
+
+temperature_sensor_periph.c.obj:
+
+timer_periph.c.obj:
+
+lcd_periph.c.obj:
+
+mcpwm_periph.c.obj:
+
+mpi_periph.c.obj:
+
+sdmmc_periph.c.obj:
+
+touch_sensor_periph.c.obj:
+
+twai_periph.c.obj:
+
+wdt_periph.c.obj:
+
+usb_dwc_periph.c.obj:
+
+rtc_io_periph.c.obj:
+
+cam_periph.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/spi_flash/libspi_flash.a:
+
+spi_flash_wrap.c.obj:
+         U abort
+         U bootloader_flash_execute_command_common
+         U rom_spiflash_legacy_data
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/bootloader/esp-idf/xtensa/libxtensa.a:
+
+eri.c.obj:
+
+xt_trax.c.obj:
+         U eri_read
+         U eri_write
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/app_update/libapp_update.a:
+
+esp_ota_ops.c.obj:
+         U __assert_func
+         U abort
+         U bootloader_common_get_active_otadata
+         U bootloader_common_ota_select_crc
+         U bootloader_common_ota_select_invalid
+         U bootloader_common_ota_select_valid
+         U bootloader_common_select_otadata
+         U calloc
+         U esp_flash_default_chip
+         U esp_flash_encryption_enabled
+         U esp_image_verify
+         U esp_partition_erase_range
+         U esp_partition_find
+         U esp_partition_find_first
+         U esp_partition_get
+         U esp_partition_iterator_release
+         U esp_partition_mmap
+         U esp_partition_munmap
+         U esp_partition_next
+         U esp_partition_read
+         U esp_partition_verify
+         U esp_partition_write
+         U esp_restart
+         U free
+         U memcpy
+         U memset
+         U spi_flash_cache2phys
+
+esp_ota_app_desc.c.obj:
+         U esp_app_get_description
+         U esp_app_get_elf_sha256
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/bootloader_support/libbootloader_support.a:
+
+bootloader_common.c.obj:
+         U GPIO
+         U bootloader_flash_erase_range
+         U bootloader_mmap
+         U bootloader_munmap
+         U bootloader_sha256_flash_contents
+         U esp_image_get_metadata
+         U esp_log_early_timestamp
+         U esp_partition_table_verify
+         U esp_rom_delay_us
+         U esp_rom_gpio_pad_pullup_only
+         U esp_rom_gpio_pad_select_gpio
+         U memcmp
+         U memcpy
+         U rtc_vddsdio_get_config
+         U rtc_vddsdio_set_config
+         U strcspn
+         U strlen
+         U strncpy
+         U strstr
+
+bootloader_common_loader.c.obj:
+         U efuse_hal_blk_version
+         U efuse_hal_chip_revision
+         U efuse_hal_get_disable_blk_version_major
+         U efuse_hal_get_disable_wafer_version_major
+         U esp_rom_crc32_le
+
+bootloader_clock_init.c.obj:
+         U esp_rom_get_reset_reason
+         U esp_rom_output_tx_wait_idle
+         U rtc_clk_apb_freq_get
+         U rtc_clk_fast_src_get
+         U rtc_clk_init
+         U rtc_clk_slow_src_get
+
+bootloader_mem.c.obj:
+         U esp_cpu_configure_region_protection
+
+bootloader_random.c.obj:
+         U esp_fill_random
+
+bootloader_efuse.c.obj:
+         U EFUSE
+
+flash_encrypt.c.obj:
+         U ESP_EFUSE_DIS_DIRECT_BOOT
+         U ESP_EFUSE_DIS_DOWNLOAD_DCACHE
+         U ESP_EFUSE_DIS_DOWNLOAD_ICACHE
+         U ESP_EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT
+         U ESP_EFUSE_DIS_PAD_JTAG
+         U ESP_EFUSE_DIS_USB_JTAG
+         U ESP_EFUSE_SOFT_DIS_JTAG
+         U ESP_EFUSE_SPI_BOOT_CRYPT_CNT
+         U ESP_EFUSE_WR_DIS_DIS_ICACHE
+         U ESP_EFUSE_WR_DIS_SPI_BOOT_CRYPT_CNT
+         U abort
+         U efuse_hal_flash_encryption_enabled
+         U esp_efuse_batch_write_begin
+         U esp_efuse_batch_write_commit
+         U esp_efuse_enable_rom_secure_download_mode
+         U esp_efuse_find_purpose
+         U esp_efuse_get_key_dis_read
+         U esp_efuse_get_key_dis_write
+         U esp_efuse_get_keypurpose_dis_write
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_blob
+         U esp_efuse_read_field_cnt
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_cnt
+
+secure_boot.c.obj:
+         U EFUSE
+         U ESP_EFUSE_DIS_DIRECT_BOOT
+         U ESP_EFUSE_DIS_DOWNLOAD_MODE
+         U ESP_EFUSE_DIS_PAD_JTAG
+         U ESP_EFUSE_DIS_USB_JTAG
+         U ESP_EFUSE_ENABLE_SECURITY_DOWNLOAD
+         U ESP_EFUSE_SOFT_DIS_JTAG
+         U ESP_EFUSE_WR_DIS_RD_DIS
+         U esp_efuse_block_is_empty
+         U esp_efuse_find_purpose
+         U esp_efuse_get_digest_revoke
+         U esp_efuse_get_key_dis_read
+         U esp_efuse_get_key_dis_write
+         U esp_efuse_get_keypurpose_dis_write
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_cnt
+
+bootloader_random_esp32s3.c.obj:
+         U regi2c_ctrl_write_reg_mask
+
+bootloader_flash.c.obj:
+         U EFUSE
+         U SPIMEM0
+         U SPIMEM1
+         U __assert_func
+         U esp_flash_encryption_enabled
+         U esp_flash_erase_region
+         U esp_flash_read
+         U esp_flash_read_encrypted
+         U esp_flash_write
+         U esp_flash_write_encrypted
+         U esp_rom_delay_us
+         U esp_rom_spiflash_wait_idle
+         U memcpy
+         U rom_spiflash_legacy_data
+         U spi_flash_mmap
+         U spi_flash_mmap_get_free_pages
+         U spi_flash_munmap
+
+flash_qio_mode.c.obj:
+         U bootloader_execute_flash_command
+         U esp_rom_efuse_get_flash_gpio_info
+         U esp_rom_efuse_get_flash_wp_gpio
+         U esp_rom_spiflash_config_readmode
+         U esp_rom_spiflash_select_qio_pins
+         U esp_rom_spiflash_wait_idle
+         U rom_spiflash_legacy_data
+         U spi_flash_wrap_disable
+         U spi_flash_wrap_probe
+
+bootloader_flash_config_esp32s3.c.obj:
+         U bootloader_enable_wp
+         U bootloader_execute_flash_command
+         U bootloader_flash_get_spi_mode
+         U bootloader_flash_is_octal_mode_enabled
+         w bootloader_flash_unlock
+         U bootloader_image_hdr
+         U bootloader_read_flash_id
+         U cache_hal_disable
+         U cache_hal_enable
+         U esp_rom_efuse_get_flash_gpio_info
+         U esp_rom_efuse_get_flash_wp_gpio
+         U esp_rom_gpio_pad_set_drv
+         U esp_rom_spiflash_config_clk
+         U esp_rom_spiflash_config_param
+         U esp_rom_spiflash_wait_idle
+         U rom_spiflash_legacy_data
+
+bootloader_utility.c.obj:
+         U abort
+         U bootloader_common_get_active_otadata
+         U bootloader_common_ota_select_crc
+         U bootloader_common_ota_select_invalid
+         U bootloader_mmap
+         U bootloader_mmap_get_free_pages
+         U bootloader_munmap
+         U bootloader_sha256_data
+         U bootloader_sha256_finish
+         U bootloader_sha256_start
+         U bzero
+         U esp_partition_table_verify
+         U memcpy
+
+flash_partitions.c.obj:
+         U esp_rom_md5_final
+         U esp_rom_md5_init
+         U esp_rom_md5_update
+         U memcmp
+         U rom_spiflash_legacy_data
+
+esp_image_format.c.obj:
+         U bootloader_common_check_chip_validity
+         U bootloader_common_check_efuse_blk_validity
+         U bootloader_debug_buffer
+         U bootloader_flash_read
+         U bootloader_mmap
+         U bootloader_mmap_get_free_pages
+         U bootloader_munmap
+         U bootloader_sha256_data
+         U bootloader_sha256_finish
+         U bootloader_sha256_start
+         U bzero
+         U memcmp
+
+bootloader_sha.c.obj:
+         U __assert_func
+         U free
+         U malloc
+         U mbedtls_sha256_finish
+         U mbedtls_sha256_free
+         U mbedtls_sha256_init
+         U mbedtls_sha256_starts
+         U mbedtls_sha256_update
+
+secure_boot_secure_features.c.obj:
+         U ESP_EFUSE_DIS_DIRECT_BOOT
+         U ESP_EFUSE_DIS_PAD_JTAG
+         U ESP_EFUSE_DIS_USB_JTAG
+         U ESP_EFUSE_SECURE_BOOT_EN
+         U ESP_EFUSE_SOFT_DIS_JTAG
+         U ESP_EFUSE_WR_DIS_RD_DIS
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_cnt
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/cxx/libcxx.a:
+
+cxx_exception_stubs.cpp.obj:
+         U abort
+
+cxx_guards.cpp.obj:
+         U __assert_func
+         U abort
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xQueueCreateCountingSemaphore
+         U xQueueCreateMutex
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+         U xTaskGetSchedulerState
+
+cxx_init.cpp.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/efuse/libefuse.a:
+
+esp_efuse_table.c.obj:
+
+esp_efuse_fields.c.obj:
+         U ESP_EFUSE_DIS_DOWNLOAD_MODE
+         U ESP_EFUSE_ENABLE_SECURITY_DOWNLOAD
+         U ESP_EFUSE_PKG_VERSION
+         U ESP_EFUSE_UART_PRINT_CONTROL
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_blob
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_blob
+
+esp_efuse_rtc_calib.c.obj:
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN0
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN1
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN2
+         U ESP_EFUSE_ADC1_CAL_VOL_ATTEN3
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN0
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN1
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN2
+         U ESP_EFUSE_ADC1_INIT_CODE_ATTEN3
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN0
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN1
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN2
+         U ESP_EFUSE_ADC2_CAL_VOL_ATTEN3
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN0
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN1
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN2
+         U ESP_EFUSE_ADC2_INIT_CODE_ATTEN3
+         U ESP_EFUSE_BLK_VERSION_MAJOR
+         U ESP_EFUSE_TEMP_CALIB
+         U __assert_func
+         U _esp_error_check_failed
+         U esp_efuse_get_field_size
+         U esp_efuse_read_field_blob
+         U memcpy
+
+esp_efuse_utility.c.obj:
+         U efuse_hal_clear_program_registers
+         U efuse_hal_is_coding_error_in_block
+         U efuse_hal_program
+         U efuse_hal_read
+         U efuse_hal_rs_calculate
+         U efuse_hal_set_timing
+         U esp_efuse_get_coding_scheme
+         U esp_efuse_utility_is_correct_written_data
+         U esp_efuse_utility_read_reg
+         U esp_efuse_utility_reset
+         U memcpy
+
+esp_efuse_api.c.obj:
+         U ESP_EFUSE_WR_DIS_RD_DIS
+         U __assert_func
+         U _lock_acquire_recursive
+         U _lock_release_recursive
+         U esp_efuse_get_key_dis_read
+         U esp_efuse_get_key_dis_write
+         U esp_efuse_set_key_dis_read
+         U esp_efuse_utility_apply_new_coding_scheme
+         U esp_efuse_utility_burn_chip_opt
+         U esp_efuse_utility_burn_efuses
+         U esp_efuse_utility_check_errors
+         U esp_efuse_utility_count_once
+         U esp_efuse_utility_fill_buff
+         U esp_efuse_utility_get_number_of_items
+         U esp_efuse_utility_process
+         U esp_efuse_utility_reset
+         U esp_efuse_utility_write_blob
+         U esp_efuse_utility_write_cnt
+         U esp_efuse_utility_write_reg
+         U memset
+         U vTaskDelay
+
+esp_efuse_fields.c.obj:
+         U ESP_EFUSE_SECURE_VERSION
+         U __popcountsi2
+         U esp_efuse_get_coding_scheme
+         U esp_efuse_get_field_size
+         U esp_efuse_read_field_blob
+         U esp_efuse_utility_reset
+         U esp_efuse_write_field_blob
+         U esp_rom_software_reset_system
+
+esp_efuse_utility.c.obj:
+         U __assert_func
+         U __popcountsi2
+         U esp_efuse_get_field_size
+         U esp_efuse_utility_burn_chip
+         U esp_efuse_utility_clear_program_registers
+         U esp_rom_printf
+         U memcmp
+         U range_read_addr_blocks
+         U range_write_addr_blocks
+
+esp_efuse_api_key.c.obj:
+         U ESP_EFUSE_KEY0
+         U ESP_EFUSE_KEY1
+         U ESP_EFUSE_KEY2
+         U ESP_EFUSE_KEY3
+         U ESP_EFUSE_KEY4
+         U ESP_EFUSE_KEY5
+         U ESP_EFUSE_KEY_PURPOSE_0
+         U ESP_EFUSE_KEY_PURPOSE_1
+         U ESP_EFUSE_KEY_PURPOSE_2
+         U ESP_EFUSE_KEY_PURPOSE_3
+         U ESP_EFUSE_KEY_PURPOSE_4
+         U ESP_EFUSE_KEY_PURPOSE_5
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY0
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY1
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY2
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY3
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY4
+         U ESP_EFUSE_RD_DIS_BLOCK_KEY5
+         U ESP_EFUSE_RD_DIS_BLOCK_SYS_DATA2
+         U ESP_EFUSE_SECURE_BOOT_KEY_REVOKE0
+         U ESP_EFUSE_SECURE_BOOT_KEY_REVOKE1
+         U ESP_EFUSE_SECURE_BOOT_KEY_REVOKE2
+         U ESP_EFUSE_WR_DIS_BLK1
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY0
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY1
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY2
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY3
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY4
+         U ESP_EFUSE_WR_DIS_BLOCK_KEY5
+         U ESP_EFUSE_WR_DIS_BLOCK_SYS_DATA2
+         U ESP_EFUSE_WR_DIS_BLOCK_USR_DATA
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_0
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_1
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_2
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_3
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_4
+         U ESP_EFUSE_WR_DIS_KEY_PURPOSE_5
+         U ESP_EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE0
+         U ESP_EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE1
+         U ESP_EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE2
+         U ESP_EFUSE_WR_DIS_SYS_DATA_PART1
+         U __assert_func
+         U esp_efuse_batch_write_begin
+         U esp_efuse_batch_write_cancel
+         U esp_efuse_batch_write_commit
+         U esp_efuse_get_field_size
+         U esp_efuse_read_block
+         U esp_efuse_read_field_bit
+         U esp_efuse_read_field_blob
+         U esp_efuse_utility_get_read_register_address
+         U esp_efuse_write_field_bit
+         U esp_efuse_write_field_blob
+         U esp_efuse_write_field_cnt
+
+esp_efuse_startup.c.obj:
+         U esp_efuse_check_errors
+         U esp_restart
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_app_format/libesp_app_format.a:
+
+esp_app_desc.c.obj:
+         U memcpy
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a:
+
+esp_bootloader_desc.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_common/libesp_common.a:
+
+esp_err_to_name.c.obj:
+         U snprintf
+         U strerror_r
+         U strlcpy
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a:
+
+gpio.c.obj:
+         U GPIO
+         U GPIO_HOLD_MASK
+         U GPIO_PIN_MUX_REG
+         U __assert_func
+         U esp_gpio_is_reserved
+         U esp_gpio_revoke
+         U esp_intr_alloc
+         U esp_intr_free
+         U esp_intr_get_cpu
+         U esp_ipc_call_blocking
+         U fprintf
+         U fputc
+         U free
+         U fwrite
+         U gpio_hal_intr_disable
+         U gpio_hal_intr_enable_on_core
+         U heap_caps_calloc
+         U io_mux_enable_lp_io_clock
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U rtc_gpio_deinit
+         U rtc_gpio_force_hold_dis_all
+         U rtc_gpio_force_hold_en_all
+         U rtc_gpio_hold_dis
+         U rtc_gpio_hold_en
+         U rtc_gpio_is_valid_gpio
+         U rtc_gpio_wakeup_disable
+         U rtc_gpio_wakeup_enable
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+gpio_glitch_filter_ops.c.obj:
+
+rtc_io.c.obj:
+         U RTCIO
+         U USB_SERIAL_JTAG
+         U io_mux_enable_lp_io_clock
+         U io_mux_force_disable_lp_io_clock
+         U rtc_io_desc
+         U rtc_io_num_map
+         U rtc_spinlock
+         U rtcio_hal_iomux_input
+         U rtcio_hal_iomux_output
+         U rtcio_hal_isolate
+         U rtcio_hal_set_direction
+         U rtcio_hal_set_direction_in_sleep
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+dedic_gpio.c.obj:
+         U SYSTEM
+         U _lock_acquire
+         U _lock_release
+         U dedic_gpio_periph_signals
+         U esp_rom_gpio_connect_in_signal
+         U esp_rom_gpio_connect_out_signal
+         U free
+         U gpio_func_sel
+         U gpio_input_enable
+         U gpio_output_disable
+         U heap_caps_calloc
+         U memcpy
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+gpio_pin_glitch_filter.c.obj:
+         U esp_pm_lock_acquire
+         U esp_pm_lock_delete
+         U esp_pm_lock_release
+         U free
+         U heap_caps_calloc
+         U io_mux_set_clock_source
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a:
+
+usb_serial_jtag.c.obj:
+         U RTCCNTL
+         U SYSTEM
+         U USB_SERIAL_JTAG
+         U _frxt_setup_switch
+         U esp_intr_alloc
+         U esp_intr_free
+         U heap_caps_calloc
+         U heap_caps_free
+         U memcpy
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U vQueueDelete
+         U vRingbufferDelete
+         U vRingbufferGetInfo
+         U vRingbufferReturnItem
+         U vRingbufferReturnItemFromISR
+         U vTaskSetTimeOutState
+         U xQueueCreateMutex
+         U xQueueGenericCreate
+         U xQueueGenericSend
+         U xQueueGiveFromISR
+         U xQueueSemaphoreTake
+         U xRingbufferCreate
+         U xRingbufferGetCurFreeSize
+         U xRingbufferReceiveUpTo
+         U xRingbufferReceiveUpToFromISR
+         U xRingbufferSend
+         U xRingbufferSendFromISR
+         U xTaskCheckForTimeOut
+
+usb_serial_jtag_connection_monitor.c.obj:
+         U USB_SERIAL_JTAG
+         U esp_register_freertos_tick_hook
+         U rtc_clk_bbpll_add_consumer
+         U rtc_clk_bbpll_remove_consumer
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_hw_support/libesp_hw_support.a:
+
+cpu.c.obj:
+         U __assert_func
+
+esp_cpu_intr.c.obj:
+         U __assert_func
+
+esp_memory_utils.c.obj:
+
+cpu_region_protect.c.obj:
+         U memcpy
+         U mpu_hal_set_region_access
+
+esp_clk.c.obj:
+         U esp_rom_get_cpu_ticks_per_us
+         U memset
+         U rtc_clk_xtal_freq_get
+         U rtc_time_get
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+clk_ctrl_os.c.obj:
+         U __assert_func
+         U esp_clk_tree_rc_fast_get_freq_hz
+         U rtc_dig_clk8m_disable
+         U rtc_dig_clk8m_enable
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+hw_random.c.obj:
+         U __assert_func
+         U esp_clk_apb_freq
+         U esp_clk_cpu_freq
+         U memcpy
+
+intr_alloc.c.obj:
+         U __assert_func
+         U __getreent
+         U abort
+         U esp_cpu_intr_get_desc
+         U esp_ipc_call_blocking
+         U esp_isr_names
+         U esp_rom_route_intr_matrix
+         U fprintf
+         U fputc
+         U free
+         U fwrite
+         U heap_caps_malloc
+         U memset
+         U rtc_isr_noniram_disable
+         U rtc_isr_noniram_enable
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+         U xTaskGetCoreID
+         U xt_int_has_handler
+         U xt_ints_off
+         U xt_ints_on
+         U xt_set_interrupt_handler
+         U xthal_set_intclear
+
+mac_addr.c.obj:
+         U ESP_EFUSE_MAC
+         U ESP_EFUSE_USER_DATA_MAC_CUSTOM
+         U __assert_func
+         U esp_efuse_get_field_size
+         U esp_efuse_read_field_blob
+         U memcmp
+         U memcpy
+
+periph_ctrl.c.obj:
+         U __assert_func
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+revision.c.obj:
+
+rtc_module.c.obj:
+         U RTCCNTL
+         U esp_intr_alloc
+         U esp_intr_get_cpu
+         U free
+         U heap_caps_malloc
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+sleep_modem.c.obj:
+
+sleep_modes.c.obj:
+         U RTCCNTL
+         U SENS
+         U USB_SERIAL_JTAG
+         U __assert_func
+         U __udivdi3
+         U _rtc_force_fast_end
+         U _rtc_text_start
+         U abort
+         U cpu_domain_pd_allowed
+         U esp_clk_cpu_freq
+         U esp_clk_private_lock
+         U esp_clk_private_unlock
+         U esp_clk_slowclk_cal_set
+         U esp_clk_tree_lp_slow_get_freq_hz
+         U esp_clk_utils_mspi_speed_mode_sync_after_cpu_freq_switching
+         U esp_clk_utils_mspi_speed_mode_sync_before_cpu_freq_switching
+         U esp_ipc_isr_release_other_cpu
+         U esp_ipc_isr_stall_other_cpu
+         U esp_ipc_isr_stall_pause
+         U esp_ipc_isr_stall_resume
+         U esp_ptr_executable
+         U esp_rom_delay_us
+         U esp_rom_get_reset_reason
+         U esp_rom_output_tx_wait_idle
+         U esp_rom_set_rtc_wake_addr
+         U esp_set_time_from_rtc
+         U esp_sleep_execute_event_callbacks
+         U esp_sleep_isolate_digital_gpio
+         U esp_sync_timekeeping_timers
+         U esp_timer_get_time
+         U esp_timer_private_lock
+         U esp_timer_private_set
+         U esp_timer_private_unlock
+         U fprintf
+         U periph_inform_out_light_sleep_overhead
+         U regi2c_analog_cali_reg_read
+         U regi2c_analog_cali_reg_write
+         U rtc_clk_cal
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_set_config
+         U rtc_clk_cpu_freq_set_xtal_for_sleep
+         U rtc_clk_slow_freq_get_hz
+         U rtc_clk_xtal_freq_get
+         U rtc_gpio_is_valid_gpio
+         U rtc_io_desc
+         U rtc_io_num_map
+         U rtc_io_number_get
+         U rtc_sleep_get_default_config
+         U rtc_sleep_init
+         U rtc_sleep_low_init
+         U rtc_sleep_start
+         U rtc_time_get
+         U rtc_time_slowclk_to_us
+         U rtc_time_us_to_slowclk
+         U rtc_vddsdio_get_config
+         U rtc_vddsdio_set_config
+         U sar_periph_ctrl_power_disable
+         U sar_periph_ctrl_power_enable
+         U sleep_console_usj_pad_backup_and_disable
+         U sleep_console_usj_pad_restore
+         U sleep_disable_cpu_retention
+         U sleep_enable_cpu_retention
+         U sleep_modem_reject_triggers
+         U spi_flash_disable_cache
+         U spi_flash_restore_cache
+         U touch_hal_sleep_channel_get_work_time
+         U vPortExitCritical
+         U wdt_hal_config_stage
+         U wdt_hal_disable
+         U wdt_hal_enable
+         U wdt_hal_init
+         U wdt_hal_is_enabled
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+sleep_console.c.obj:
+         U SYSTEM
+         U USB_SERIAL_JTAG
+
+sleep_usb.c.obj:
+
+sleep_gpio.c.obj:
+         U GPIO
+         U __assert_func
+         U bootloader_flash_is_octal_mode_enabled
+         U esp_mspi_get_io
+         U gpio_sleep_sel_dis
+         U gpio_sleep_sel_en
+         U gpio_sleep_set_direction
+         U gpio_sleep_set_pull_mode
+         U rtc_io_desc
+         U rtc_io_num_map
+
+sleep_event.c.obj:
+
+sleep_mspi.c.obj:
+
+regi2c_ctrl.c.obj:
+         U esp_rom_regi2c_read
+         U esp_rom_regi2c_read_mask
+         U esp_rom_regi2c_write
+         U esp_rom_regi2c_write_mask
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+esp_gpio_reserve.c.obj:
+         U __atomic_fetch_and_8
+         U __atomic_fetch_or_8
+         U __atomic_load_8
+
+sar_periph_ctrl_common.c.obj:
+         U SENS
+         U __fixdfsi
+         U __floatsidf
+         U __muldf3
+         U __subdf3
+         U abort
+         U adc_apb_periph_claim
+         U adc_apb_periph_free
+         U esp_rom_delay_us
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U regi2c_ctrl_write_reg_mask
+         U regi2c_saradc_disable
+         U regi2c_saradc_enable
+         U rtc_spinlock
+         U temperature_sensor_attributes
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+io_mux.c.obj:
+         U SENS
+         U __assert_func
+         U rtc_spinlock
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+esp_clk_tree.c.obj:
+         U clk_hal_apb_get_freq_hz
+         U clk_hal_cpu_get_freq_hz
+         U clk_hal_xtal_get_freq_mhz
+         U esp_clk_tree_lp_fast_get_freq_hz
+         U esp_clk_tree_lp_slow_get_freq_hz
+         U esp_clk_tree_rc_fast_d256_get_freq_hz
+         U esp_clk_tree_rc_fast_get_freq_hz
+         U esp_clk_tree_xtal32k_get_freq_hz
+
+esp_clk_tree_common.c.obj:
+         U clk_hal_lp_slow_get_freq_hz
+         U clk_hal_xtal_get_freq_mhz
+         U esp_clk_slowclk_cal_set
+         U rtc_clk_cal
+         U rtc_clk_freq_cal
+
+esp_dma_utils.c.obj:
+         U __assert_func
+         U cache_hal_get_cache_line_size
+         U esp_cache_get_alignment
+         U esp_cache_msync
+         U esp_ptr_external_ram
+         U free
+         U heap_caps_aligned_alloc
+         U heap_caps_calloc
+         U memcpy
+         U memset
+
+gdma_link.c.obj:
+         U cache_hal_get_cache_line_size
+         U efuse_hal_flash_encryption_enabled
+         U esp_cache_msync
+         U free
+         U heap_caps_aligned_calloc
+         U heap_caps_calloc
+
+spi_share_hw_ctrl.c.obj:
+         U SYSTEM
+         U __assert_func
+         U periph_rcc_enter
+         U periph_rcc_exit
+
+spi_bus_lock.c.obj:
+         U __assert_func
+         U free
+         U heap_caps_calloc
+         U vPortExitCritical
+         U vSemaphoreDeleteWithCaps
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+         U xQueueGenericSend
+         U xQueueGiveFromISR
+         U xQueueSemaphoreTake
+         U xSemaphoreCreateGenericWithCaps
+
+clk_utils.c.obj:
+         U mspi_timing_change_speed_mode_cache_safe
+
+adc_share_hw_ctrl.c.obj:
+         U SENS
+         U SYSTEM
+         U _lock_acquire
+         U _lock_release
+         U _lock_try_acquire
+         U abort
+         U adc_hal_self_calibration
+         U adc_hal_set_calibration_param
+         U esp_efuse_rtc_calib_get_init_code
+         U esp_efuse_rtc_calib_get_ver
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U rtc_spinlock
+         U sar_periph_ctrl_adc_oneshot_power_acquire
+         U sar_periph_ctrl_adc_oneshot_power_release
+         U sar_periph_ctrl_adc_reset
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+gdma.c.obj:
+         U SYSTEM
+         U __assert_func
+         U _frxt_setup_switch
+         U esp_intr_alloc_intrstatus
+         U esp_intr_enable
+         U esp_intr_free
+         U free
+         U gdma_ahb_hal_init
+         U gdma_hal_append
+         U gdma_hal_clear_intr
+         U gdma_hal_connect_peri
+         U gdma_hal_deinit
+         U gdma_hal_disconnect_peri
+         U gdma_hal_enable_burst
+         U gdma_hal_enable_intr
+         U gdma_hal_get_eof_desc_addr
+         U gdma_hal_get_intr_status_reg
+         U gdma_hal_read_intr_status
+         U gdma_hal_reset
+         U gdma_hal_set_burst_size
+         U gdma_hal_set_priority
+         U gdma_hal_set_strategy
+         U gdma_hal_start_with_desc
+         U gdma_hal_stop
+         U gdma_periph_signals
+         U heap_caps_calloc
+         U memcpy
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+gdma_legacy.c.obj:
+         U cache_hal_get_cache_line_size
+         U gdma_hal_enable_burst
+         U gdma_hal_set_burst_size
+
+esp_async_memcpy.c.obj:
+
+async_memcpy_gdma.c.obj:
+         U cache_hal_get_cache_line_size
+         U esp_cache_msync
+         U esp_dma_calculate_node_count
+         U esp_dma_merge_aligned_rx_buffers
+         U esp_dma_split_rx_buffer_to_cache_aligned
+         U esp_ptr_external_ram
+         U free
+         U gdma_apply_strategy
+         U gdma_config_transfer
+         U gdma_connect
+         U gdma_del_channel
+         U gdma_del_link_list
+         U gdma_disconnect
+         U gdma_get_alignment_constraints
+         U gdma_get_free_m2m_trig_id_mask
+         U gdma_link_get_head_addr
+         U gdma_link_mount_buffers
+         U gdma_new_ahb_channel
+         U gdma_new_link_list
+         U gdma_register_rx_event_callbacks
+         U gdma_start
+         U heap_caps_calloc
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+systimer.c.obj:
+
+mspi_timing_tuning.c.obj:
+         U abort
+         U esp_cache_freeze_ext_mem_cache
+         U esp_cache_unfreeze_ext_mem_cache
+         U memcpy
+         U mspi_timing_config_set_flash_clock
+         U mspi_timing_config_set_psram_clock
+
+mspi_timing_by_mspi_delay.c.obj:
+
+sleep_wake_stub.c.obj:
+         U UART0
+         U UART1
+         U UART2
+         U __udivdi3
+         U esp_set_deep_sleep_wake_stub
+         U esp_set_deep_sleep_wake_stub_default_entry
+
+esp_clock_output.c.obj:
+         U GPIO_PIN_MUX_REG
+         U clk_hal_clock_output_setup
+         U clk_hal_clock_output_teardown
+         U esp_rom_gpio_connect_out_signal
+         U free
+         U gpio_set_direction
+         U malloc
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+rtc_clk.c.obj:
+         U SENS
+         U __assert_func
+         U abort
+         U esp_rom_delay_us
+         U esp_rom_set_cpu_ticks_per_us
+         U esp_sleep_sub_mode_config
+         U esp_sleep_sub_mode_dump_config
+         U esp_sleep_sub_mode_force_disable
+         U g_dig_dbias_pvt_240m
+         U g_dig_dbias_pvt_non_240m
+         U g_rtc_dbias_pvt_240m
+         U g_rtc_dbias_pvt_non_240m
+         U regi2c_ctrl_write_reg
+         U regi2c_ctrl_write_reg_mask
+
+rtc_clk_init.c.obj:
+         U __udivdi3
+         U abort
+         U esp_rom_output_tx_wait_idle
+         U rtc_clk_32k_enable
+         U rtc_clk_8m_divider_set
+         U rtc_clk_8m_enable
+         U rtc_clk_apb_freq_update
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_mhz_to_config
+         U rtc_clk_cpu_freq_set_config
+         U rtc_clk_divider_set
+         U rtc_clk_fast_src_set
+         U rtc_clk_slow_src_set
+         U rtc_clk_xtal_freq_update
+
+rtc_init.c.obj:
+         U EFUSE
+         U mspi_timing_change_speed_mode_cache_safe
+         U regi2c_ctrl_read_reg_mask
+         U regi2c_ctrl_write_reg_mask
+         U rtc_clk_cal
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_set_config
+         U rtc_clk_cpu_freq_set_xtal
+         U rtc_clk_slow_src_get
+         U rtc_sleep_pu
+         U rtc_time_get
+         U rtc_time_us_to_slowclk
+         U sar_periph_ctrl_init
+
+rtc_sleep.c.obj:
+         U __assert_func
+         U regi2c_ctrl_write_reg_mask
+         U rtc_time_us_to_slowclk
+
+rtc_time.c.obj:
+         U SYSTEM
+         U TIMERG0
+         U __assert_func
+         U __udivdi3
+         U __umoddi3
+         U esp_rom_delay_us
+         U periph_rcc_acquire_enter
+         U periph_rcc_acquire_exit
+         U rtc_clk_8m_enable
+         U rtc_clk_slow_src_get
+         U rtc_clk_xtal_freq_get
+
+chip_info.c.obj:
+         U efuse_hal_chip_revision
+         U memset
+
+sar_periph_ctrl.c.obj:
+         U SENS
+         U SYSTEM
+         U abort
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U regi2c_saradc_disable
+         U regi2c_saradc_enable
+         U rtc_spinlock
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+mspi_timing_config.c.obj:
+         U __assert_func
+
+esp_memprot.c.obj:
+         U _iram_text_end
+         U _iram_text_start
+         U _rtc_text_end
+         U abort
+         U calloc
+         U esp_err_to_name
+         U esp_intr_disable_source
+         U esp_intr_enable_source
+         U esp_mprot_ll_err_to_esp_err
+         U esp_mprot_ll_world_to_hl_world
+         U esp_rom_printf
+         U esp_rom_route_intr_matrix
+         U esp_rom_software_reset_system
+         U memcpy
+         U sprintf
+         U strlen
+
+esp_memprot_conv.c.obj:
+
+sleep_cpu.c.obj:
+         U Cache_Get_Mode
+         U _etext
+         U _rodata_reserved_end
+         U _rodata_start
+         U _stext
+         U heap_caps_aligned_calloc
+         U heap_caps_free
+         U rtc_cntl_hal_disable_cpu_retention
+         U rtc_cntl_hal_disable_tagmem_retention
+         U rtc_cntl_hal_dma_link_init
+         U rtc_cntl_hal_enable_cpu_retention
+         U rtc_cntl_hal_enable_tagmem_retention
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_mm/libesp_mm.a:
+
+esp_mmu_map.c.obj:
+         U __assert_func
+         U _instruction_reserved_end
+         U _instruction_reserved_start
+         U _lock_acquire
+         U _lock_release
+         U _rodata_reserved_end
+         U _rodata_reserved_start
+         U cache_hal_invalidate_addr
+         U esp_cache_freeze_caches_disable_interrupts
+         U esp_cache_sync_ops_enter_critical_section
+         U esp_cache_sync_ops_exit_critical_section
+         U esp_cache_unfreeze_caches_enable_interrupts
+         U fprintf
+         U fputc
+         U fputs
+         U free
+         U fwrite
+         U g_mmu_mem_regions
+         U heap_caps_calloc
+         U memcpy
+         U memset
+         U mmu_hal_check_valid_ext_vaddr_region
+         U mmu_hal_map_region
+         U mmu_hal_paddr_to_vaddr
+         U mmu_hal_unmap_region
+         U mmu_hal_vaddr_to_paddr
+         U snprintf
+
+ext_mem_layout.c.obj:
+
+esp_cache_msync.c.obj:
+         U __assert_func
+         U cache_hal_get_cache_line_size
+         U cache_hal_invalidate_addr
+         U cache_hal_vaddr_to_cache_level_id
+         U cache_hal_writeback_addr
+         U heap_caps_aligned_alloc
+         U memset
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+esp_cache_utils.c.obj:
+         U __assert_func
+         U cache_hal_freeze
+         U cache_hal_resume
+         U cache_hal_suspend
+         U cache_hal_unfreeze
+         U esp_intr_noniram_disable
+         U esp_intr_noniram_enable
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+heap_align_hw.c.obj:
+         U efuse_hal_flash_encryption_enabled
+         U esp_cache_get_alignment
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_partition/libesp_partition.a:
+
+partition.c.obj:
+         U __assert_func
+         U _lock_acquire
+         U _lock_release
+         U calloc
+         U esp_flash_default_chip
+         U esp_flash_encryption_enabled
+         U esp_partition_erase_range
+         U esp_partition_mmap
+         U esp_partition_munmap
+         U esp_partition_write
+         U esp_rom_md5_final
+         U esp_rom_md5_init
+         U esp_rom_md5_update
+         U free
+         U malloc
+         U memcmp
+         U memcpy
+         U spi_flash_mmap
+         U spi_flash_mmap_get_free_pages
+         U spi_flash_munmap
+         U strcmp
+         U strlcpy
+         U strncpy
+
+partition_target.c.obj:
+         U __assert_func
+         U bootloader_common_get_sha256_of_partition
+         U esp_flash_default_chip
+         U esp_flash_erase_region
+         U esp_flash_read
+         U esp_flash_write
+         U esp_flash_write_encrypted
+         U esp_ota_get_running_partition
+         U esp_partition_find
+         U esp_partition_get
+         U esp_partition_next
+         U memcmp
+         U memcpy
+         U spi_flash_mmap
+         U spi_flash_munmap
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_pm/libesp_pm.a:
+
+pm_locks.c.obj:
+
+pm_trace.c.obj:
+         U esp_sleep_pd_config
+         U gpio_set_direction
+
+pm_impl.c.obj:
+         U __assert_func
+         U _esp_error_check_failed
+         U _xtos_set_intlevel
+         U abort
+         U esp_clk_utils_mspi_speed_mode_sync_after_cpu_freq_switching
+         U esp_clk_utils_mspi_speed_mode_sync_before_cpu_freq_switching
+         U esp_cpu_wait_for_intr
+         U esp_pm_lock_acquire
+         U esp_pm_lock_create
+         U esp_pm_lock_release
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_mhz_to_config
+         U rtc_clk_cpu_freq_set_config_fast
+         U s_time_update_lock
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_ringbuf/libesp_ringbuf.a:
+
+ringbuf.c.obj:
+         U __assert_func
+         U calloc
+         U esp_crosscore_int_send_yield
+         U free
+         U heap_caps_free
+         U heap_caps_malloc
+         U malloc
+         U memcpy
+         U printf
+         U puts
+         U vListInitialise
+         U vPortExitCritical
+         U vTaskInternalSetTimeOutState
+         U vTaskPlaceOnEventList
+         U xPortEnterCriticalTimeout
+         U xQueueGenericSend
+         U xQueueGenericSendFromISR
+         U xTaskCheckForTimeOut
+         U xTaskRemoveFromEventList
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_rom/libesp_rom.a:
+
+esp_rom_sys.c.obj:
+         U esp_rom_output_putc
+         U ets_install_putc1
+         U ets_install_putc2
+         U ets_install_uart_printf
+         U g_uart_print
+         U g_usb_print
+
+esp_rom_print.c.obj:
+         U esp_rom_output_to_channels
+         U strlen
+
+esp_rom_crc.c.obj:
+
+esp_rom_uart.c.obj:
+         U GetUartDevice
+
+esp_rom_spiflash.c.obj:
+         U esp_rom_spi_set_address_bit_len
+         U esp_rom_spi_set_op_mode
+         U rom_spiflash_legacy_data
+
+esp_rom_efuse.c.obj:
+
+esp_rom_gpio.c.obj:
+
+esp_rom_longjmp.S.obj:
+
+esp_rom_systimer.c.obj:
+
+esp_rom_wdt.c.obj:
+
+esp_rom_cache_esp32s2_esp32s3.c.obj:
+         U Cache_Get_DCache_Line_Size
+         U Cache_Resume_DCache_Autoload
+         U Cache_Suspend_DCache_Autoload
+         U cache_writeback_items_freeze
+         U rom_Cache_Count_Flash_Pages
+         U rom_Cache_Freeze_DCache_Enable
+         U rom_Cache_Freeze_ICache_Enable
+         U rom_Cache_Suspend_DCache
+         U rom_Cache_Suspend_ICache
+         U rom_Cache_WriteBack_Addr
+
+esp_rom_cache_writeback_esp32s3.S.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_security/libesp_security.a:
+
+init.c.obj:
+
+esp_hmac.c.obj:
+         U ESP_EFUSE_DIS_PAD_JTAG
+         U SYSTEM
+         U bzero
+         U esp_crypto_hmac_lock_acquire
+         U esp_crypto_hmac_lock_release
+         U esp_efuse_read_field_bit
+         U ets_jtag_enable_temporarily
+         U hmac_hal_configure
+         U hmac_hal_next_block_normal
+         U hmac_hal_next_block_padding
+         U hmac_hal_read_result_256
+         U hmac_hal_start
+         U hmac_hal_write_block_512
+         U hmac_hal_write_one_block_512
+         U memcpy
+         U periph_rcc_enter
+         U periph_rcc_exit
+
+esp_ds.c.obj:
+         U SYSTEM
+         U ds_hal_busy
+         U ds_hal_configure_iv
+         U ds_hal_finish
+         U ds_hal_read_result
+         U ds_hal_start
+         U ds_hal_start_sign
+         U ds_hal_write_message
+         U ds_hal_write_private_key_params
+         U esp_crypto_ds_lock_acquire
+         U esp_crypto_ds_lock_release
+         U esp_crypto_sha_aes_lock_acquire
+         U esp_crypto_sha_aes_lock_release
+         U esp_timer_get_time
+         U ets_ds_encrypt_params
+         U free
+         U hmac_hal_clean
+         U hmac_hal_configure
+         U hmac_hal_start
+         U malloc
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U vTaskDelay
+
+esp_crypto_lock.c.obj:
+         U _lock_acquire
+         U _lock_release
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_system/libesp_system.a:
+
+esp_err.c.obj:
+         U abort
+         U esp_err_to_name
+         U esp_rom_printf
+         U spi_flash_cache_enabled
+
+crosscore_int.c.obj:
+         U __assert_func
+         U _esp_error_check_failed
+         U _frxt_setup_switch
+         U esp_backtrace_print
+         U esp_intr_alloc
+         U task_wdt_timeout_abort
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+esp_ipc.c.obj:
+         U __assert_func
+         U abort
+         U esp_cpu_compare_and_set
+         U esp_ipc_isr_init
+         U ulTaskGenericNotifyTake
+         U uxTaskPriorityGet
+         U vTaskGenericNotifyGiveFromISR
+         U vTaskPrioritySet
+         U xPortInIsrContext
+         U xQueueCreateMutexStatic
+         U xQueueGenericCreateStatic
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+         U xTaskCreatePinnedToCore
+         U xTaskGenericNotify
+         U xTaskGetCurrentTaskHandle
+         U xTaskGetSchedulerState
+
+esp_system_console.c.obj:
+         U esp_rom_output_tx_one_char
+
+freertos_hooks.c.obj:
+         U esp_cpu_wait_for_intr
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+int_wdt.c.obj:
+         U SYSTEM
+         U TIMERG1
+         U esp_intr_disable_source
+         U esp_intr_enable_source
+         U esp_register_freertos_tick_hook_for_cpu
+         U esp_rom_route_intr_matrix
+         U periph_rcc_acquire_enter
+         U periph_rcc_acquire_exit
+         U wdt_hal_config_stage
+         U wdt_hal_enable
+         U wdt_hal_feed
+         U wdt_hal_init
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+
+panic.c.obj:
+         U RTCCNTL
+         U TIMERG0
+         U TIMERG1
+         U esp_cpu_set_breakpoint
+         U esp_system_reset_modules_on_exit
+         U panic_restart
+         U rtc_clk_slow_freq_get_hz
+         U strlen
+         U wdt_hal_config_stage
+         U wdt_hal_disable
+         U wdt_hal_enable
+         U wdt_hal_feed
+         U wdt_hal_init
+         U wdt_hal_is_enabled
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+
+esp_system.c.obj:
+         U esp_restart_noos
+         U vTaskSuspendAll
+
+startup.c.obj:
+         U __init_array_end
+         U __init_array_start
+         U _esp_system_init_fn_array_end
+         U _esp_system_init_fn_array_start
+         U abort
+         U esp_rom_delay_us
+         U esp_startup_start_app
+         U startup_resume_other_cores
+
+startup_funcs.c.obj:
+         U RTCCNTL
+         U __assert_func
+         U esp_apb_backup_dma_lock_init
+         U esp_brownout_init
+         U esp_clk_cpu_freq
+         U esp_flash_app_init
+         U esp_flash_init_default_chip
+         U esp_newlib_time_init
+         U spi_flash_needs_reset_check
+         U wdt_hal_disable
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+
+system_time.c.obj:
+         U esp_rtc_get_time_us
+         U g_startup_time
+         U rtc_clk_slow_freq_get_hz
+
+stack_check.c.obj:
+
+ubsan.c.obj:
+         U esp_system_abort
+         U strlcat
+
+xt_wdt.c.obj:
+         U esp_rom_delay_us
+         U rtc_clk_cal
+         U rtc_clk_freq_cal
+         U rtc_isr_register
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xt_wdt_hal_enable
+         U xt_wdt_hal_enable_backup_clk
+         U xt_wdt_hal_init
+
+task_wdt.c.obj:
+         U __assert_func
+         U _esp_error_check_failed
+         U calloc
+         U esp_backtrace_print
+         U esp_crosscore_int_send_print_backtrace
+         U esp_crosscore_int_send_twdt_abort
+         U esp_deregister_freertos_idle_hook_for_cpu
+         U esp_register_freertos_idle_hook_for_cpu
+         U esp_reset_reason_set_hint
+         U esp_task_wdt_impl_timeout_triggered
+         U esp_task_wdt_impl_timer_allocate
+         U esp_task_wdt_impl_timer_feed
+         U esp_task_wdt_impl_timer_free
+         U esp_task_wdt_impl_timer_reconfigure
+         U esp_task_wdt_impl_timer_restart
+         U esp_task_wdt_impl_timer_stop
+         w esp_task_wdt_isr_user_handler
+         U free
+         U g_panic_abort
+         U pcTaskGetName
+         U vPortExitCritical
+         U vTaskGetSnapshot
+         U xPortEnterCriticalTimeout
+         U xTaskGetCoreID
+         U xTaskGetCurrentTaskHandle
+         U xTaskGetIdleTaskHandleForCore
+         U xt_unhandled_exception
+
+task_wdt_impl_timergroup.c.obj:
+         U SYSTEM
+         U TIMERG0
+         U _esp_error_check_failed
+         U esp_intr_alloc
+         U esp_intr_disable
+         U esp_intr_free
+         U periph_rcc_acquire_enter
+         U periph_rcc_acquire_exit
+         U periph_rcc_release_enter
+         U periph_rcc_release_exit
+         U wdt_hal_config_stage
+         U wdt_hal_deinit
+         U wdt_hal_disable
+         U wdt_hal_enable
+         U wdt_hal_feed
+         U wdt_hal_handle_intr
+         U wdt_hal_init
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+
+cpu_start.c.obj:
+         U Cache_Resume_DCache
+         U Cache_Set_IDROM_MMU_Info
+         U Cache_Set_IDROM_MMU_Size
+         U Cache_Suspend_DCache
+         U _bss_end
+         U _bss_start
+         U _instruction_reserved_end
+         U _instruction_reserved_start
+         U _rodata_reserved_end
+         U _rodata_reserved_start
+         U _rtc_bss_end
+         U _rtc_bss_start
+         U _vector_table
+         U abort
+         U bootloader_flash_update_id
+         U bootloader_init_mem
+         U cache_hal_disable
+         U cache_hal_enable
+         U cache_hal_init
+         U esp_cache_err_int_init
+         U esp_chip_info
+         U esp_clk_init
+         U esp_cpu_unstall
+         U esp_deep_sleep_wakeup_io_reset
+         U esp_mmu_map_init
+         U esp_mprot_is_conf_locked_any
+         U esp_mprot_set_prot
+         U esp_mspi_pin_init
+         U esp_mspi_pin_reserve
+         U esp_perip_clk_init
+         U esp_restart_noos
+         U esp_rom_delay_us
+         U esp_rom_get_reset_reason
+         U esp_rom_install_channel_putc
+         U esp_rom_route_intr_matrix
+         U esp_rtc_get_time_us
+         U esp_rtc_init
+         U ets_set_appcpu_boot_addr
+         U g_startup_fn
+         U g_startup_time
+         U memcpy
+         U memset
+         U mspi_timing_flash_tuning
+         U rom_config_data_cache_mode
+         U rom_config_instruction_cache_mode
+         U spi_flash_init_chip_state
+
+panic_handler.c.obj:
+         U _invalid_pc_placeholder
+         U esp_cache_err_get_cpuid
+         U esp_cpu_stall
+         U esp_ipc_isr_stall_abort
+         U esp_panic_handler
+         U esp_panic_handler_disable_timg_wdts
+         U esp_panic_handler_enable_rtc_wdt
+         U esp_panic_handler_increment_entry_count
+         U esp_ptr_executable
+         U esp_restart_noos
+         U esp_rom_delay_us
+         U g_panic_abort
+         U panic_arch_fill_info
+         U panic_get_address
+         U panic_get_cause
+         U panic_print_backtrace
+         U panic_print_registers
+         U panic_print_str
+         U panic_set_address
+         U panic_soc_check_pseudo_cause
+         U panic_soc_fill_info
+         U spi_flash_cache_enabled
+         U spi_flash_enable_cache
+
+esp_system_chip.c.obj:
+         U heap_caps_get_free_size
+         U heap_caps_get_minimum_free_size
+         U panic_abort
+
+image_process.c.obj:
+         U __assert_func
+         U bzero
+         U cache_hal_invalidate_addr
+         U cache_hal_resume
+         U cache_hal_suspend
+         U mmu_hal_map_region
+
+brownout.c.obj:
+         U RTCCNTL
+         U bootloader_flash_reset_chip
+         U brownout_hal_config
+         U esp_cpu_stall
+         U esp_reset_reason_set_hint
+         U esp_rom_output_tx_wait_idle
+         U esp_rom_software_reset_system
+         U rtc_isr_deregister
+         U rtc_isr_register
+         U spi_flash_brownout_need_reset
+
+esp_ipc_isr.c.obj:
+         U __assert_func
+         U _xtos_set_intlevel
+         U esp_ipc_isr_port_init
+         U esp_ipc_isr_port_int_trigger
+         U esp_ipc_isr_waiting_for_finish_cmd
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+esp_ipc_isr_port.c.obj:
+         U esp_intr_disable_source
+         U esp_intr_enable_source
+         U esp_rom_route_intr_matrix
+
+esp_ipc_isr_handler.S.obj:
+         U esp_ipc_func
+         U esp_ipc_func_arg
+         U esp_ipc_isr_end_fl
+         U esp_ipc_isr_start_fl
+
+esp_ipc_isr_routines.S.obj:
+
+panic_arch.c.obj:
+         U esp_backtrace_print_from_frame
+         U esp_cache_err_get_cpuid
+         U memcpy
+         U panic_print_dec
+         U panic_print_hex
+         U panic_print_str
+         U xPortInterruptedFromISRContext
+
+panic_handler_asm.S.obj:
+         U _xt_context_save
+         U panicHandler
+
+expression_with_stack.c.obj:
+         U __assert_func
+         U esp_shared_stack_invoke_function
+         U memset
+         U setjmp
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+         U xTaskGetCurrentTaskHandle
+
+expression_with_stack_asm.S.obj:
+         U longjmp
+         U xtensa_shared_stack
+         U xtensa_shared_stack_callback
+         U xtensa_shared_stack_env
+         U xtensa_shared_stack_function_done
+
+debug_helpers.c.obj:
+         U calloc
+         U esp_backtrace_get_start
+         U esp_ipc_call
+         U esp_ptr_executable
+         U esp_rom_printf
+         U free
+         U memcpy
+         U panic_print_hex
+         U panic_print_str
+         U pcTaskGetName
+         U uxTaskGetNumberOfTasks
+         U uxTaskGetSnapshotAll
+         U vTaskSuspendAll
+         U xTaskGetCurrentTaskHandle
+         U xTaskResumeAll
+
+debug_helpers_asm.S.obj:
+         U xthal_window_spill
+
+debug_stubs.c.obj:
+         U eri_write
+
+trax.c.obj:
+
+highint_hdl.S.obj:
+         U _xt_context_restore
+         U _xt_context_save
+         U esp_ipc_isr_handler
+         U int_wdt_cpu1_ticked
+         U panicHandler
+
+clk.c.obj:
+         U RTCCNTL
+         U __assert_func
+         U __udivdi3
+         U esp_clk_slowclk_cal_set
+         U esp_rom_get_reset_reason
+         U periph_module_enable
+         U rtc_clk_32k_disable_external
+         U rtc_clk_32k_enable
+         U rtc_clk_8m_enable
+         U rtc_clk_8md256_enabled
+         U rtc_clk_cal
+         U rtc_clk_cpu_freq_get_config
+         U rtc_clk_cpu_freq_mhz_to_config
+         U rtc_clk_cpu_freq_set_config
+         U rtc_clk_cpu_freq_set_xtal
+         U rtc_clk_fast_src_set
+         U rtc_clk_slow_freq_get_hz
+         U rtc_clk_slow_src_get
+         U rtc_clk_slow_src_set
+         U rtc_clk_xtal_freq_get
+         U rtc_init
+         U wdt_hal_config_stage
+         U wdt_hal_feed
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+
+reset_reason.c.obj:
+         U __assert_func
+         U esp_rom_get_reset_reason
+
+system_internal.c.obj:
+         U Cache_Disable_DCache
+         U Cache_Disable_ICache
+         U TIMERG0
+         U TIMERG1
+         U esp_cpu_stall
+         U esp_cpu_unstall
+         U esp_rom_output_tx_wait_idle
+         U esp_rom_software_reset_cpu
+         U rtc_clk_cpu_set_to_default_config
+         U rtc_clk_slow_freq_get_hz
+         U wdt_hal_config_stage
+         U wdt_hal_disable
+         U wdt_hal_init
+         U wdt_hal_set_flashboot_en
+         U wdt_hal_write_protect_disable
+         U wdt_hal_write_protect_enable
+         U xt_ints_off
+
+cache_err_int.c.obj:
+         U esp_intr_disable_source
+         U esp_intr_enable_source
+         U esp_rom_route_intr_matrix
+
+apb_backup_dma.c.obj:
+         U ets_apb_backup_init_lock_func
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/esp_timer/libesp_timer.a:
+
+esp_timer.c.obj:
+         U __udivdi3
+         U _frxt_setup_switch
+         U calloc
+         U esp_timer_get_time
+         U esp_timer_impl_deinit
+         U esp_timer_impl_get_min_period_us
+         U esp_timer_impl_get_time
+         U esp_timer_impl_init
+         U esp_timer_impl_set_alarm_id
+         U fprintf
+         U fputs
+         U free
+         U fwrite
+         U heap_caps_calloc
+         U snprintf
+         U ulTaskGenericNotifyTake
+         U vPortExitCritical
+         U vTaskDelete
+         U vTaskGenericNotifyGiveFromISR
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+         U xTaskCreatePinnedToCore
+
+esp_timer_init.c.obj:
+         U esp_timer_impl_early_init
+         U esp_timer_impl_init_system_time
+
+ets_timer_legacy.c.obj:
+         U __assert_func
+         U _esp_error_check_failed
+         U esp_timer_create
+         U esp_timer_delete
+         U esp_timer_start_once
+         U esp_timer_start_periodic
+         U esp_timer_stop
+         U memset
+
+system_time.c.obj:
+         U esp_register_shutdown_handler
+         U esp_rtc_get_time_us
+         U esp_sync_timekeeping_timers
+         U esp_timer_get_time
+         U esp_timer_impl_get_time
+         U g_startup_time
+
+esp_timer_impl_common.c.obj:
+         U esp_timer_impl_set_alarm_id
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+esp_timer_impl_systimer.c.obj:
+         U SYSTEM
+         U __assert_func
+         U esp_intr_alloc
+         U esp_intr_disable
+         U esp_intr_enable
+         U esp_intr_free
+         U periph_rcc_acquire_enter
+         U periph_rcc_acquire_exit
+         U s_time_update_lock
+         U systimer_hal_connect_alarm_counter
+         U systimer_hal_counter_can_stall_by_cpu
+         U systimer_hal_counter_value_advance
+         U systimer_hal_enable_alarm_int
+         U systimer_hal_enable_counter
+         U systimer_hal_get_alarm_value
+         U systimer_hal_get_counter_value
+         U systimer_hal_init
+         U systimer_hal_select_alarm_mode
+         U systimer_hal_set_alarm_target
+         U systimer_hal_set_tick_rate_ops
+         U systimer_ticks_to_us
+         U systimer_us_to_ticks
+         U timestamp_id
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/freertos/libfreertos.a:
+
+heap_idf.c.obj:
+         U esp_ptr_byte_accessible
+         U heap_caps_free
+         U heap_caps_get_free_size
+         U heap_caps_get_minimum_free_size
+         U heap_caps_malloc
+
+app_startup.c.obj:
+         U __assert_func
+         U _esp_error_check_failed
+         U abort
+         U app_main
+         U esp_crosscore_int_init
+         U esp_deregister_freertos_idle_hook_for_cpu
+         U esp_int_wdt_cpu_init
+         U esp_int_wdt_init
+         U esp_register_freertos_idle_hook_for_cpu
+         U esp_task_wdt_init
+         U heap_caps_enable_nonos_stack_heaps
+         w port_start_app_hook
+         U port_xSchedulerRunning
+         U vTaskDelete
+         U vTaskStartScheduler
+         U xPortStartScheduler
+         U xTaskCreatePinnedToCore
+
+port_common.c.obj:
+         U __assert_func
+         U pvPortMalloc
+
+port_systick.c.obj:
+         U SYSTEM
+         U __udivdi3
+         U _esp_error_check_failed
+         U _frxt_setup_switch
+         U esp_intr_alloc
+         U esp_vApplicationTickHook
+         U periph_rcc_acquire_enter
+         U periph_rcc_acquire_exit
+         U systimer_hal_connect_alarm_counter
+         U systimer_hal_counter_can_stall_by_cpu
+         U systimer_hal_counter_value_advance
+         U systimer_hal_enable_alarm_int
+         U systimer_hal_enable_counter
+         U systimer_hal_get_counter_value
+         U systimer_hal_init
+         U systimer_hal_select_alarm_mode
+         U systimer_hal_set_alarm_period
+         U systimer_hal_set_tick_rate_ops
+         U systimer_ticks_to_us
+         U systimer_us_to_ticks
+         U xTaskIncrementTick
+         U xTaskIncrementTickOtherCores
+
+list.c.obj:
+
+queue.c.obj:
+         U __assert_func
+         U esp_crosscore_int_send_yield
+         U memcpy
+         U pvPortMalloc
+         U pvTaskIncrementMutexHeldCount
+         U vListInitialise
+         U vPortExitCritical
+         U vPortFree
+         U vTaskInternalSetTimeOutState
+         U vTaskPlaceOnEventList
+         U vTaskPlaceOnEventListRestricted
+         U vTaskPriorityDisinheritAfterTimeout
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+         U xTaskCheckForTimeOut
+         U xTaskGetCurrentTaskHandle
+         U xTaskGetSchedulerState
+         U xTaskPriorityDisinherit
+         U xTaskPriorityInherit
+         U xTaskRemoveFromEventList
+
+tasks.c.obj:
+         U __assert_func
+         U _impure_data
+         U _reclaim_reent
+         U _xtos_set_intlevel
+         U esp_crosscore_int_send_yield
+         U esp_reent_init
+         U esp_vApplicationIdleHook
+         U memset
+         U pvPortMalloc
+         U pxPortInitialiseStack
+         U strlen
+         U uxListRemove
+         U vApplicationGetIdleTaskMemory
+         U vApplicationStackOverflowHook
+         U vListInitialise
+         U vListInitialiseItem
+         U vListInsert
+         U vListInsertEnd
+         U vPortEndScheduler
+         U vPortExitCritical
+         U vPortFree
+         U vPortTCBPreDeleteHook
+         U vPortYieldOtherCore
+         U xPortCheckValidListMem
+         U xPortCheckValidTCBMem
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+         U xPortStartScheduler
+         U xPortcheckValidStackMem
+
+timers.c.obj:
+         U __assert_func
+         U esp_crosscore_int_send_yield
+         U pvPortMalloc
+         U uxListRemove
+         U vApplicationGetTimerTaskMemory
+         U vListInitialise
+         U vListInitialiseItem
+         U vListInsert
+         U vPortExitCritical
+         U vPortFree
+         U vQueueWaitForMessageRestricted
+         U xPortEnterCriticalTimeout
+         U xQueueGenericCreateStatic
+         U xQueueGenericSend
+         U xQueueGenericSendFromISR
+         U xQueueReceive
+         U xTaskCreateStaticPinnedToCore
+         U xTaskGetSchedulerState
+         U xTaskGetTickCount
+
+event_groups.c.obj:
+         U __assert_func
+         U esp_crosscore_int_send_yield
+         U prvReleaseKernelLock
+         U prvTakeKernelLock
+         U pvPortMalloc
+         U uxTaskResetEventItemValue
+         U vListInitialise
+         U vPortExitCritical
+         U vPortFree
+         U vTaskPlaceOnUnorderedEventList
+         U vTaskRemoveFromUnorderedEventList
+         U xPortEnterCriticalTimeout
+         U xTaskGetSchedulerState
+
+stream_buffer.c.obj:
+         U __assert_func
+         U _xtos_set_intlevel
+         U memcpy
+         U memset
+         U pvPortMalloc
+         U vPortExitCritical
+         U vPortFree
+         U vTaskSetTimeOutState
+         U xPortEnterCriticalTimeout
+         U xTaskCheckForTimeOut
+         U xTaskGenericNotify
+         U xTaskGenericNotifyFromISR
+         U xTaskGenericNotifyStateClear
+         U xTaskGenericNotifyWait
+         U xTaskGetCurrentTaskHandle
+
+port.c.obj:
+         U __assert_func
+         U _flash_rodata_align
+         U _flash_rodata_start
+         U _frxt_dispatch
+         U _thread_local_end
+         U _thread_local_start
+         U _xt_coproc_init
+         U _xt_coproc_release
+         U _xt_user_exit
+         U _xtos_set_intlevel
+         U abort
+         U esp_cpu_compare_and_set
+         U esp_cpu_set_watchpoint
+         U esp_crosscore_int_send_yield
+         U esp_ptr_executable
+         U esp_rom_printf
+         U esp_system_abort
+         U memcpy
+         U memset
+         U strcat
+         U vPortSetupTimer
+         U xthal_window_spill
+
+portasm.S.obj:
+         U _xt_context_restore
+         U _xt_context_save
+         U _xt_coproc_savecs
+         U offset_cpsa
+         U offset_pxEndOfStack
+         U offset_xCoreID
+         U port_IntStack
+         U port_interruptNesting
+         U port_switch_flag
+         U port_xSchedulerRunning
+         U pxCurrentTCBs
+         U vTaskSwitchContext
+         U xthal_window_spill_nw
+
+xtensa_init.c.obj:
+
+xtensa_overlay_os_hook.c.obj:
+         U xQueueCreateMutex
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+
+freertos_compatibility.c.obj:
+         U ulTaskGenericNotifyTake
+         U xQueuePeek
+         U xQueueReceive
+         U xQueueSemaphoreTake
+         U xTaskDelayUntil
+         U xTaskGenericNotifyWait
+
+idf_additions_event_groups.c.obj:
+         U __assert_func
+         U heap_caps_free
+         U heap_caps_malloc
+         U vEventGroupDelete
+         U xEventGroupCreateStatic
+         U xEventGroupGetStaticBuffer
+
+idf_additions.c.obj:
+         U __assert_func
+         U abort
+         U heap_caps_free
+         U heap_caps_malloc
+         U pvPortMalloc
+         U uxTaskPriorityGet
+         U vPortAssertIfInISR
+         U vPortFree
+         U vPortYield
+         U vQueueDelete
+         U vStreamBufferDelete
+         U vTaskDelete
+         U vTaskSuspend
+         U xQueueCreateCountingSemaphoreStatic
+         U xQueueCreateMutexStatic
+         U xQueueGenericCreateStatic
+         U xQueueGenericGetStaticBuffers
+         U xStreamBufferGenericCreateStatic
+         U xStreamBufferGetStaticBuffers
+         U xTaskCreatePinnedToCore
+         U xTaskCreateStaticPinnedToCore
+         U xTaskGetCurrentTaskHandle
+         U xTaskGetCurrentTaskHandleForCore
+         U xTaskGetStaticBuffers
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/hal/libhal.a:
+
+hal_utils.c.obj:
+         U __assert_func
+         U __udivdi3
+
+mpu_hal.c.obj:
+
+efuse_hal.c.obj:
+         U EFUSE
+         U efuse_hal_get_major_chip_version
+         U efuse_hal_get_minor_chip_version
+
+efuse_hal.c.obj:
+         U EFUSE
+         U __assert_func
+         U ets_efuse_clear_program_registers
+         U ets_efuse_rs_calculate
+
+mmu_hal.c.obj:
+         U ROM_Boot_Cache_Init
+         U __assert_func
+
+cache_hal.c.obj:
+         U Cache_Disable_DCache
+         U Cache_Disable_ICache
+         U Cache_Enable_DCache
+         U Cache_Enable_ICache
+         U Cache_Freeze_DCache_Disable
+         U Cache_Freeze_DCache_Enable
+         U Cache_Freeze_ICache_Disable
+         U Cache_Freeze_ICache_Enable
+         U Cache_Get_DCache_Line_Size
+         U Cache_Get_ICache_Line_Size
+         U Cache_Invalidate_Addr
+         U Cache_Resume_DCache
+         U Cache_Resume_ICache
+         U Cache_Suspend_DCache
+         U Cache_Suspend_ICache
+         U Cache_WriteBack_Addr
+         U __assert_func
+
+color_hal.c.obj:
+         U __assert_func
+
+spi_flash_hal.c.obj:
+         U GPSPI2
+         U GPSPI3
+         U SPIMEM1
+         U abort
+         U div
+
+spi_flash_hal_iram.c.obj:
+         U SPIMEM0
+         U SPIMEM1
+         U abort
+         U memcpy
+
+spi_flash_encrypt_hal_iram.c.obj:
+         U __assert_func
+         U memcpy
+
+clk_tree_hal.c.obj:
+         U __assert_func
+
+systimer_hal.c.obj:
+         U SYSTIMER
+         U __assert_func
+
+uart_hal.c.obj:
+
+uart_hal_iram.c.obj:
+
+gpio_hal.c.obj:
+         U GPIO
+         U GPIO_PIN_MUX_REG
+
+rtc_io_hal.c.obj:
+         U RTCIO
+         U rtc_io_desc
+
+timer_hal.c.obj:
+         U TIMERG0
+         U TIMERG1
+
+ledc_hal.c.obj:
+         U LEDC
+         U abort
+
+ledc_hal_iram.c.obj:
+         U __assert_func
+
+i2c_hal.c.obj:
+         U I2C0
+         U I2C1
+         U __assert_func
+
+i2c_hal_iram.c.obj:
+
+rmt_hal.c.obj:
+         U RMT
+
+pcnt_hal.c.obj:
+         U PCNT
+
+mcpwm_hal.c.obj:
+         U MCPWM0
+         U MCPWM1
+
+uhci_hal.c.obj:
+         U UHCI0
+
+twai_hal.c.obj:
+         U TWAI
+
+twai_hal_iram.c.obj:
+
+gdma_hal_top.c.obj:
+
+gdma_hal_ahb_v1.c.obj:
+         U GDMA
+         U __assert_func
+
+i2s_hal.c.obj:
+         U I2S0
+         U I2S1
+         U __assert_func
+         U hal_utils_calc_clk_div_frac_accurate
+
+sdm_hal.c.obj:
+         U SDM
+
+sdmmc_hal.c.obj:
+         U SDMMC
+
+adc_hal_common.c.obj:
+         U APB_SARADC
+         U SENS
+         U abort
+         U regi2c_ctrl_write_reg_mask
+
+adc_oneshot_hal.c.obj:
+         U SENS
+         U __assert_func
+         U adc_hal_arbiter_config
+         U adc_hal_set_controller
+         U esp_rom_delay_us
+
+adc_hal.c.obj:
+         U APB_SARADC
+         U SENS
+         U __assert_func
+         U abort
+         U regi2c_ctrl_write_reg_mask
+
+lcd_hal.c.obj:
+         U LCD_CAM
+         U __assert_func
+         U hal_utils_calc_clk_div_frac_fast
+
+mpi_hal.c.obj:
+         U MPI_BLOCK_BASES
+         U MPI_OPERATIONS_REG
+         U esp_dport_access_read_buffer
+         U memset
+
+sha_hal.c.obj:
+         U abort
+         U esp_dport_access_read_buffer
+
+aes_hal.c.obj:
+         U memcpy
+
+brownout_hal.c.obj:
+         U RTCCNTL
+         U regi2c_ctrl_write_reg_mask
+
+spi_hal.c.obj:
+         U GPSPI2
+         U GPSPI3
+         U memcpy
+         U memset
+
+spi_hal_iram.c.obj:
+         U GPSPI2
+         U GPSPI3
+         U __assert_func
+         U memcpy
+
+spi_slave_hal.c.obj:
+         U GPSPI2
+         U GPSPI3
+
+spi_slave_hal_iram.c.obj:
+         U memcpy
+
+spi_slave_hd_hal.c.obj:
+         U GPSPI2
+         U GPSPI3
+         U __assert_func
+         U memcpy
+
+spi_flash_hal_gpspi.c.obj:
+         U abort
+         U memcpy
+
+hmac_hal.c.obj:
+
+ds_hal.c.obj:
+         U memcpy
+
+cam_hal.c.obj:
+         U LCD_CAM
+         U __assert_func
+         U abort
+         U memset
+
+usb_serial_jtag_hal.c.obj:
+         U RTCCNTL
+         U USB_SERIAL_JTAG
+
+usb_dwc_hal.c.obj:
+         U USB_DWC
+         U __assert_func
+         U abort
+         U memset
+
+usb_wrap_hal.c.obj:
+         U RTCCNTL
+         U SYSTEM
+         U USB_WRAP
+
+touch_sensor_hal.c.obj:
+         U RTCCNTL
+         U SENS
+
+touch_sensor_hal.c.obj:
+         U RTCCNTL
+         U RTCIO
+         U SENS
+
+xt_wdt_hal.c.obj:
+         U RTCCNTL
+         U __assert_func
+         U memset
+
+rtc_cntl_hal.c.obj:
+         U Cache_Invalidate_DCache_All
+         U Cache_Invalidate_ICache_All
+         U Cache_WriteBack_All
+         U __assert_func
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/heap/libheap.a:
+
+heap_caps_base.c.obj:
+         U __assert_func
+         U esp_heap_adjust_alignment_to_hw
+         U memcpy
+         U memset
+         U multi_heap_aligned_alloc_offs
+         U multi_heap_free
+         U multi_heap_get_allocated_size
+         U multi_heap_malloc
+         U multi_heap_realloc
+         U registered_heaps
+
+heap_caps.c.obj:
+         U __assert_func
+         U heap_caps_aligned_alloc_base
+         U heap_caps_calloc_base
+         U heap_caps_free
+         U heap_caps_malloc_base
+         U heap_caps_realloc_base
+         U memset
+         U multi_heap_check
+         U multi_heap_dump
+         U multi_heap_free_size
+         U multi_heap_get_allocated_size
+         U multi_heap_get_info
+         U multi_heap_minimum_free_size
+         U multi_heap_reset_minimum_free_bytes
+         U multi_heap_restore_minimum_free_bytes
+         U multi_heap_walk
+         U printf
+         U puts
+         U registered_heaps
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+heap_caps_init.c.obj:
+         U __assert_func
+         U free
+         U heap_caps_malloc
+         U heap_caps_match
+         U memcpy
+         U memset
+         U multi_heap_malloc
+         U multi_heap_register
+         U multi_heap_set_lock
+         U soc_get_available_memory_region_max_count
+         U soc_get_available_memory_regions
+         U soc_memory_region_count
+         U soc_memory_regions
+         U soc_memory_types
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+multi_heap.c.obj:
+         U __assert_func
+         U abort
+         U esp_rom_printf
+         U memset
+         U tlsf_alloc_overhead
+         U tlsf_block_size
+         U tlsf_check
+         U tlsf_check_pool
+         U tlsf_create_with_pool
+         U tlsf_fit_size
+         U tlsf_free
+         U tlsf_get_pool
+         U tlsf_malloc
+         U tlsf_memalign_offs
+         U tlsf_realloc
+         U tlsf_size
+         U tlsf_walk_pool
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+tlsf.c.obj:
+         U __assert_func
+         w block_absorb_post_hook
+         U memcpy
+         U printf
+         w tlsf_check_hook
+
+memory_layout_utils.c.obj:
+         U __assert_func
+         U abort
+         U ets_rom_layout_p
+         U memcpy
+         U qsort
+         U soc_memory_region_count
+         U soc_memory_regions
+         U soc_reserved_memory_region_end
+         U soc_reserved_memory_region_start
+
+memory_layout.c.obj:
+         U _data_start
+         U _heap_start
+         U _iram_end
+         U _iram_start
+         U _rtc_force_fast_end
+         U _rtc_reserved_end
+         U _rtc_reserved_start
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/log/liblog.a:
+
+log_timestamp.c.obj:
+         U esp_rom_get_cpu_ticks_per_us
+         U xPortInIsrContext
+         U xTaskGetSchedulerState
+         U xTaskGetTickCount
+         U xTaskGetTickCountFromISR
+
+log_timestamp_common.c.obj:
+         U _lock_acquire
+         U _lock_release
+         U esp_log_early_timestamp
+         U esp_log_timestamp
+         U esp_log_util_cvt_dec
+         U gettimeofday
+         U localtime_r
+         U memmove
+         U snprintf
+         U xTaskGetSchedulerState
+
+log_lock.c.obj:
+         U xQueueCreateMutex
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+         U xTaskGetSchedulerState
+
+log_write.c.obj:
+         U esp_log_impl_lock
+         U esp_log_impl_unlock
+         U esp_log_level_get_timeout
+         U vprintf
+
+log_buffers.c.obj:
+         U esp_log_timestamp
+         U esp_log_util_cvt_hex
+         U esp_log_write
+         U esp_ptr_byte_accessible
+         U memcpy
+
+util.c.obj:
+         U __udivdi3
+         U __umoddi3
+         U memset
+
+log_level.c.obj:
+
+tag_log_level.c.obj:
+         U esp_log_cache_add
+         U esp_log_cache_clean
+         U esp_log_cache_get_level
+         U esp_log_cache_set_level
+         U esp_log_default_level
+         U esp_log_impl_lock
+         U esp_log_impl_lock_timeout
+         U esp_log_impl_unlock
+         U esp_log_linked_list_clean
+         U esp_log_linked_list_get_level
+         U esp_log_linked_list_set_level
+         U esp_log_set_default_level
+
+log_linked_list.c.obj:
+         U free
+         U malloc
+         U memcpy
+         U strcmp
+         U strlen
+
+log_binary_heap.c.obj:
+         U __assert_func
+         U strcmp
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/main/libmain.a:
+
+app.c.obj:
+         U usb_serial_jtag_driver_install
+         U usb_serial_jtag_read_bytes
+         U usb_serial_jtag_write_bytes
+         U v5_hello
+         U v5_hello_query
+         U v5_process
+         U v5_put32
+         U vTaskDelay
+         U vTaskDelete
+         U xTaskCreatePinnedToCore
+
+wire.c.obj:
+         U memcmp
+         U memcpy
+         U memset
+         U pq_environment
+         U pq_infer
+         U spikeids_qdq_model
+         U spikeids_qdq_sha256
+
+portable_qdq.c.obj:
+         U __divsf3
+         U fegetround
+         U floorf
+         U memcpy
+
+model.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/mbedtls/libmbedtls.a:
+
+esp_crt_bundle.c.obj:
+         U _binary_x509_crt_bundle_end
+         U _binary_x509_crt_bundle_start
+         U mbedtls_md
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_pk_can_do
+         U mbedtls_pk_free
+         U mbedtls_pk_init
+         U mbedtls_pk_parse_public_key
+         U mbedtls_pk_verify_ext
+         U mbedtls_ssl_conf_ca_chain
+         U mbedtls_ssl_conf_verify
+         U memcmp
+
+x509_crt_bundle.S.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/mbedtls/mbedtls/3rdparty/everest/libeverest.a:
+
+everest.c.obj:
+
+x25519.c.obj:
+
+Hacl_Curve25519_joined.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/libp256m.a:
+
+p256-m_driver_entrypoints.c.obj:
+
+p256-m.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a:
+
+aes.c.obj:
+         U esp_aes_crypt_cbc
+         U esp_aes_crypt_cfb128
+         U esp_aes_crypt_ctr
+         U esp_aes_crypt_ecb
+         U esp_aes_crypt_ofb
+         U esp_aes_crypt_xts
+         U esp_aes_free
+         U esp_aes_init
+         U esp_aes_setkey
+         U esp_aes_xts_free
+         U esp_aes_xts_init
+         U esp_aes_xts_setkey_dec
+         U esp_aes_xts_setkey_enc
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+aesni.c.obj:
+
+aesce.c.obj:
+
+aria.c.obj:
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+asn1parse.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_mpi_read_binary
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memset
+
+asn1write.c.obj:
+         U mbedtls_asn1_find_named_data
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_mpi_size
+         U mbedtls_mpi_write_binary
+         U memcpy
+
+base64.c.obj:
+         U memcmp
+         U printf
+         U puts
+
+bignum.c.obj:
+         U __udivdi3
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_mpi_core_add
+         U mbedtls_mpi_core_bitlen
+         U mbedtls_mpi_core_check_zero_ct
+         U mbedtls_mpi_core_cond_assign
+         U mbedtls_mpi_core_cond_swap
+         U mbedtls_mpi_core_fill_random
+         U mbedtls_mpi_core_gcd_modinv_odd
+         U mbedtls_mpi_core_lt_ct
+         U mbedtls_mpi_core_random
+         U mbedtls_mpi_core_read_be
+         U mbedtls_mpi_core_read_le
+         U mbedtls_mpi_core_shift_l
+         U mbedtls_mpi_core_shift_r
+         U mbedtls_mpi_core_sub
+         U mbedtls_mpi_core_sub_int
+         U mbedtls_mpi_core_write_be
+         U mbedtls_mpi_core_write_le
+         U mbedtls_mpi_exp_mod
+         U mbedtls_mpi_mul_int
+         U mbedtls_mpi_mul_mpi
+         U mbedtls_platform_zeroize
+         U mbedtls_zeroize_and_free
+         U memcpy
+         U memmove
+         U memset
+         U printf
+         U putchar
+         U puts
+         U strlen
+
+bignum_core.c.obj:
+         U mbedtls_ct_memcpy_if
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_mod_mpi
+         U mbedtls_mpi_shift_l
+         U mbedtls_mpi_shrink
+         U memcpy
+         U memset
+
+bignum_mod.c.obj:
+
+bignum_mod_raw.c.obj:
+
+block_cipher.c.obj:
+
+camellia.c.obj:
+
+ccm.c.obj:
+         U mbedtls_cipher_free
+         U mbedtls_cipher_info_from_values
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_cipher_update
+         U mbedtls_ct_memcmp
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+chacha20.c.obj:
+
+chachapoly.c.obj:
+
+cipher.c.obj:
+         U esp_aes_gcm_auth_decrypt
+         U esp_aes_gcm_crypt_and_tag
+         U esp_aes_gcm_finish
+         U esp_aes_gcm_starts
+         U esp_aes_gcm_update
+         U esp_aes_gcm_update_ad
+         U mbedtls_ccm_auth_decrypt
+         U mbedtls_ccm_encrypt_and_tag
+         U mbedtls_ccm_set_lengths
+         U mbedtls_ccm_starts
+         U mbedtls_ccm_update
+         U mbedtls_cipher_base_lookup_table
+         U mbedtls_cipher_definitions
+         U mbedtls_cipher_supported
+         U mbedtls_ct_memcmp
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+         U strcmp
+
+cipher_wrap.c.obj:
+         U esp_aes_crypt_cbc
+         U esp_aes_crypt_cfb128
+         U esp_aes_crypt_ctr
+         U esp_aes_crypt_ecb
+         U esp_aes_crypt_ofb
+         U esp_aes_crypt_xts
+         U esp_aes_free
+         U esp_aes_gcm_free
+         U esp_aes_gcm_init
+         U esp_aes_gcm_setkey
+         U esp_aes_init
+         U esp_aes_setkey
+         U esp_aes_xts_free
+         U esp_aes_xts_init
+         U esp_aes_xts_setkey_dec
+         U esp_aes_xts_setkey_enc
+         U mbedtls_aria_crypt_cbc
+         U mbedtls_aria_crypt_cfb128
+         U mbedtls_aria_crypt_ctr
+         U mbedtls_aria_crypt_ecb
+         U mbedtls_aria_free
+         U mbedtls_aria_init
+         U mbedtls_aria_setkey_dec
+         U mbedtls_aria_setkey_enc
+         U mbedtls_calloc
+         U mbedtls_ccm_free
+         U mbedtls_ccm_init
+         U mbedtls_ccm_setkey
+         U mbedtls_free
+
+constant_time.c.obj:
+
+cmac.c.obj:
+
+ctr_drbg.c.obj:
+         U esp_aes_crypt_ecb
+         U esp_aes_free
+         U esp_aes_init
+         U esp_aes_setkey
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+des.c.obj:
+
+dhm.c.obj:
+
+ecdh.c.obj:
+         U mbedtls_ecp_copy
+         U mbedtls_ecp_gen_privkey
+         U mbedtls_ecp_get_type
+         U mbedtls_ecp_group_free
+         U mbedtls_ecp_group_init
+         U mbedtls_ecp_group_load
+         U mbedtls_ecp_is_zero
+         U mbedtls_ecp_mul_restartable
+         U mbedtls_ecp_point_free
+         U mbedtls_ecp_point_init
+         U mbedtls_ecp_tls_read_group_id
+         U mbedtls_ecp_tls_read_point
+         U mbedtls_ecp_tls_write_group
+         U mbedtls_ecp_tls_write_point
+         U mbedtls_mpi_copy
+         U mbedtls_mpi_free
+         U mbedtls_mpi_init
+         U mbedtls_mpi_size
+         U mbedtls_mpi_write_binary
+         U mbedtls_mpi_write_binary_le
+         U memset
+
+ecdsa.c.obj:
+         U mbedtls_asn1_get_mpi
+         U mbedtls_asn1_get_tag
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_mpi
+         U mbedtls_asn1_write_tag
+         U mbedtls_ecp_copy
+         U mbedtls_ecp_gen_keypair
+         U mbedtls_ecp_gen_privkey
+         U mbedtls_ecp_group_copy
+         U mbedtls_ecp_group_load
+         U mbedtls_ecp_is_zero
+         U mbedtls_ecp_keypair_free
+         U mbedtls_ecp_keypair_init
+         U mbedtls_ecp_mul_restartable
+         U mbedtls_ecp_muladd_restartable
+         U mbedtls_ecp_point_free
+         U mbedtls_ecp_point_init
+         U mbedtls_hmac_drbg_free
+         U mbedtls_hmac_drbg_init
+         U mbedtls_hmac_drbg_random
+         U mbedtls_hmac_drbg_seed_buf
+         U mbedtls_md_info_from_type
+         U mbedtls_mpi_add_mpi
+         U mbedtls_mpi_cmp_int
+         U mbedtls_mpi_cmp_mpi
+         U mbedtls_mpi_copy
+         U mbedtls_mpi_free
+         U mbedtls_mpi_gcd_modinv_odd
+         U mbedtls_mpi_init
+         U mbedtls_mpi_mod_mpi
+         U mbedtls_mpi_mul_mpi
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_shift_r
+         U mbedtls_mpi_sub_mpi
+         U mbedtls_mpi_write_binary
+         U memcpy
+         U memset
+
+ecjpake.c.obj:
+
+ecp.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ecp_group_load
+         U mbedtls_free
+         U mbedtls_mpi_add_int
+         U mbedtls_mpi_add_mpi
+         U mbedtls_mpi_bitlen
+         U mbedtls_mpi_cmp_int
+         U mbedtls_mpi_cmp_mpi
+         U mbedtls_mpi_copy
+         U mbedtls_mpi_exp_mod
+         U mbedtls_mpi_fill_random
+         U mbedtls_mpi_free
+         U mbedtls_mpi_gcd_modinv_odd
+         U mbedtls_mpi_get_bit
+         U mbedtls_mpi_init
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_mod_mpi
+         U mbedtls_mpi_mul_int
+         U mbedtls_mpi_mul_mpi
+         U mbedtls_mpi_random
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_read_binary_le
+         U mbedtls_mpi_read_string
+         U mbedtls_mpi_safe_cond_assign
+         U mbedtls_mpi_safe_cond_swap
+         U mbedtls_mpi_set_bit
+         U mbedtls_mpi_shift_l
+         U mbedtls_mpi_shift_r
+         U mbedtls_mpi_shrink
+         U mbedtls_mpi_size
+         U mbedtls_mpi_sub_abs
+         U mbedtls_mpi_sub_int
+         U mbedtls_mpi_sub_mpi
+         U mbedtls_mpi_write_binary
+         U mbedtls_mpi_write_binary_le
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+         U strcmp
+
+ecp_curves.c.obj:
+         U mbedtls_ecp_group_free
+         U mbedtls_ecp_group_init
+         U mbedtls_mpi_add_abs
+         U mbedtls_mpi_bitlen
+         U mbedtls_mpi_core_mla
+         U mbedtls_mpi_free
+         U mbedtls_mpi_grow
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_mul_mpi
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_set_bit
+         U mbedtls_mpi_shift_l
+         U mbedtls_mpi_shift_r
+         U mbedtls_mpi_sub_int
+         U memcpy
+         U memset
+
+ecp_curves_new.c.obj:
+
+entropy.c.obj:
+         U mbedtls_hardware_poll
+         U mbedtls_md
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+entropy_poll.c.obj:
+
+error.c.obj:
+         U memset
+         U snprintf
+         U strlen
+
+gcm.c.obj:
+         U mbedtls_cipher_free
+         U mbedtls_cipher_info_from_values
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_cipher_update
+         U mbedtls_ct_memcmp
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+hkdf.c.obj:
+
+hmac_drbg.c.obj:
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_hmac_finish
+         U mbedtls_md_hmac_reset
+         U mbedtls_md_hmac_starts
+         U mbedtls_md_hmac_update
+         U mbedtls_md_info_from_type
+         U mbedtls_md_setup
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+lmots.c.obj:
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U psa_generic_status_to_mbedtls
+         U psa_hash_abort
+         U psa_hash_finish
+         U psa_hash_setup
+         U psa_hash_update
+         U psa_status_to_mbedtls
+         U psa_to_lms_errors
+
+lms.c.obj:
+         U mbedtls_lmots_calculate_public_key_candidate
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U psa_generic_status_to_mbedtls
+         U psa_hash_abort
+         U psa_hash_finish
+         U psa_hash_setup
+         U psa_hash_update
+         U psa_status_to_mbedtls
+         U psa_to_lms_errors
+
+md.c.obj:
+         U esp_md5_clone
+         U esp_md5_finish
+         U esp_md5_free
+         U esp_md5_init
+         U esp_md5_starts
+         U esp_md5_update
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_md5
+         U mbedtls_platform_zeroize
+         U mbedtls_sha1
+         U mbedtls_sha1_clone
+         U mbedtls_sha1_finish
+         U mbedtls_sha1_free
+         U mbedtls_sha1_init
+         U mbedtls_sha1_starts
+         U mbedtls_sha1_update
+         U mbedtls_sha256
+         U mbedtls_sha256_clone
+         U mbedtls_sha256_finish
+         U mbedtls_sha256_free
+         U mbedtls_sha256_init
+         U mbedtls_sha256_starts
+         U mbedtls_sha256_update
+         U mbedtls_sha512
+         U mbedtls_sha512_clone
+         U mbedtls_sha512_finish
+         U mbedtls_sha512_free
+         U mbedtls_sha512_init
+         U mbedtls_sha512_starts
+         U mbedtls_sha512_update
+         U mbedtls_zeroize_and_free
+         U memset
+         U psa_generic_status_to_mbedtls
+         U psa_status_to_mbedtls
+         U psa_to_md_errors
+         U strcmp
+
+md5.c.obj:
+         U esp_md5_finish
+         U esp_md5_free
+         U esp_md5_init
+         U esp_md5_starts
+         U esp_md5_update
+         U printf
+         U putchar
+         U puts
+
+memory_buffer_alloc.c.obj:
+
+nist_kw.c.obj:
+
+oid.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U memcmp
+         U memcpy
+         U snprintf
+
+padlock.c.obj:
+
+pem.c.obj:
+         U esp_aes_crypt_cbc
+         U esp_aes_free
+         U esp_aes_init
+         U esp_aes_setkey
+         U mbedtls_base64_decode
+         U mbedtls_base64_encode
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_platform_zeroize
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+         U strlen
+         U strstr
+
+pk.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ecc_group_from_psa
+         U mbedtls_ecc_group_to_psa
+         U mbedtls_ecdsa_info
+         U mbedtls_eckey_info
+         U mbedtls_eckeydh_info
+         U mbedtls_ecp_write_key_ext
+         U mbedtls_ecp_write_public_key
+         U mbedtls_free
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_pk_ecc_set_group
+         U mbedtls_pk_ecc_set_key
+         U mbedtls_pk_ecc_set_pubkey
+         U mbedtls_pk_ecc_set_pubkey_from_prv
+         U mbedtls_platform_zeroize
+         U mbedtls_psa_get_random
+         U mbedtls_rsa_alt_info
+         U mbedtls_rsa_check_privkey
+         U mbedtls_rsa_get_md_alg
+         U mbedtls_rsa_get_padding_mode
+         U mbedtls_rsa_info
+         U mbedtls_rsa_parse_key
+         U mbedtls_rsa_parse_pubkey
+         U mbedtls_rsa_rsassa_pss_sign_no_mode_check
+         U mbedtls_rsa_rsassa_pss_verify_ext
+         U mbedtls_rsa_set_padding
+         U mbedtls_rsa_write_key
+         U mbedtls_rsa_write_pubkey
+         U mbedtls_zeroize_and_free
+         U psa_export_key
+         U psa_export_public_key
+         U psa_get_key_attributes
+         U psa_import_key
+         U psa_pk_status_to_mbedtls
+         U psa_reset_key_attributes
+
+pk_ecc.c.obj:
+         U mbedtls_ecp_check_pubkey
+         U mbedtls_ecp_group_load
+         U mbedtls_ecp_mul
+         U mbedtls_ecp_point_read_binary
+         U mbedtls_ecp_read_key
+         U mbedtls_pk_get_type
+
+pk_wrap.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ecdsa_read_signature
+         U mbedtls_ecdsa_write_signature
+         U mbedtls_ecp_check_pub_priv
+         U mbedtls_ecp_keypair_free
+         U mbedtls_ecp_keypair_init
+         U mbedtls_free
+         U mbedtls_rsa_check_pub_priv
+         U mbedtls_rsa_free
+         U mbedtls_rsa_get_bitlen
+         U mbedtls_rsa_get_len
+         U mbedtls_rsa_init
+         U mbedtls_rsa_pkcs1_decrypt
+         U mbedtls_rsa_pkcs1_encrypt
+         U mbedtls_rsa_pkcs1_sign
+         U mbedtls_rsa_pkcs1_verify
+         U mbedtls_zeroize_and_free
+         U memset
+
+pkcs12.c.obj:
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_tag
+         U mbedtls_cipher_crypt
+         U mbedtls_cipher_free
+         U mbedtls_cipher_info_from_type
+         U mbedtls_cipher_init
+         U mbedtls_cipher_set_padding_mode
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_md
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+
+pkcs5.c.obj:
+         U mbedtls_asn1_get_alg
+         U mbedtls_asn1_get_alg_null
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_tag
+         U mbedtls_cipher_crypt
+         U mbedtls_cipher_free
+         U mbedtls_cipher_info_from_type
+         U mbedtls_cipher_init
+         U mbedtls_cipher_set_padding_mode
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_hmac_finish
+         U mbedtls_md_hmac_reset
+         U mbedtls_md_hmac_starts
+         U mbedtls_md_hmac_update
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_oid_get_cipher_alg
+         U mbedtls_oid_get_md_hmac
+         U mbedtls_platform_zeroize
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+
+pkparse.c.obj:
+         U mbedtls_asn1_get_alg
+         U mbedtls_asn1_get_bitstring_null
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_mpi
+         U mbedtls_asn1_get_tag
+         U mbedtls_calloc
+         U mbedtls_ecp_group_free
+         U mbedtls_ecp_group_init
+         U mbedtls_ecp_group_load
+         U mbedtls_ecp_grp_id_list
+         U mbedtls_ecp_point_free
+         U mbedtls_ecp_point_read_binary
+         U mbedtls_mpi_bitlen
+         U mbedtls_mpi_cmp_mpi
+         U mbedtls_mpi_free
+         U mbedtls_mpi_get_bit
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_size
+         U mbedtls_oid_get_ec_grp
+         U mbedtls_oid_get_ec_grp_algid
+         U mbedtls_oid_get_pk_alg
+         U mbedtls_oid_get_pkcs12_pbe_alg
+         U mbedtls_pem_free
+         U mbedtls_pem_init
+         U mbedtls_pem_read_buffer
+         U mbedtls_pk_ecc_set_group
+         U mbedtls_pk_ecc_set_key
+         U mbedtls_pk_ecc_set_pubkey
+         U mbedtls_pk_ecc_set_pubkey_from_prv
+         U mbedtls_pk_free
+         U mbedtls_pk_get_type
+         U mbedtls_pk_info_from_type
+         U mbedtls_pk_init
+         U mbedtls_pk_setup
+         U mbedtls_pkcs12_pbe_ext
+         U mbedtls_pkcs5_pbes2_ext
+         U mbedtls_rsa_parse_key
+         U mbedtls_rsa_parse_pubkey
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+
+pkwrite.c.obj:
+         U mbedtls_asn1_write_algorithm_identifier_ext
+         U mbedtls_asn1_write_int
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_octet_string
+         U mbedtls_asn1_write_oid
+         U mbedtls_asn1_write_tag
+         U mbedtls_calloc
+         U mbedtls_ecp_point_write_binary
+         U mbedtls_ecp_write_key_ext
+         U mbedtls_free
+         U mbedtls_oid_get_oid_by_ec_grp
+         U mbedtls_oid_get_oid_by_ec_grp_algid
+         U mbedtls_oid_get_oid_by_pk_alg
+         U mbedtls_pem_write_buffer
+         U mbedtls_pk_get_type
+         U mbedtls_platform_zeroize
+         U mbedtls_rsa_write_key
+         U mbedtls_rsa_write_pubkey
+         U mbedtls_zeroize_and_free
+         U memcpy
+
+platform.c.obj:
+         U esp_mbedtls_mem_calloc
+         U esp_mbedtls_mem_free
+
+platform_util.c.obj:
+         U mbedtls_free
+         U memset
+
+poly1305.c.obj:
+
+psa_crypto.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ct_memcmp
+         U mbedtls_ctr_drbg_reseed
+         U mbedtls_ctr_drbg_set_prediction_resistance
+         U mbedtls_ecc_group_from_psa
+         U mbedtls_ecp_group_init
+         U mbedtls_ecp_group_load
+         U mbedtls_mpi_add_int
+         U mbedtls_mpi_free
+         U mbedtls_mpi_init
+         U mbedtls_mpi_lt_mpi_ct
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_sub_int
+         U mbedtls_mpi_write_binary
+         U mbedtls_platform_zeroize
+         U mbedtls_psa_aead_abort
+         U mbedtls_psa_aead_decrypt
+         U mbedtls_psa_aead_decrypt_setup
+         U mbedtls_psa_aead_encrypt
+         U mbedtls_psa_aead_encrypt_setup
+         U mbedtls_psa_aead_finish
+         U mbedtls_psa_aead_set_lengths
+         U mbedtls_psa_aead_set_nonce
+         U mbedtls_psa_aead_update
+         U mbedtls_psa_aead_update_ad
+         U mbedtls_psa_asymmetric_decrypt
+         U mbedtls_psa_asymmetric_encrypt
+         U mbedtls_psa_cipher_abort
+         U mbedtls_psa_cipher_decrypt
+         U mbedtls_psa_cipher_decrypt_setup
+         U mbedtls_psa_cipher_encrypt
+         U mbedtls_psa_cipher_encrypt_setup
+         U mbedtls_psa_cipher_finish
+         U mbedtls_psa_cipher_set_iv
+         U mbedtls_psa_cipher_update
+         U mbedtls_psa_ecdsa_sign_hash
+         U mbedtls_psa_ecdsa_verify_hash
+         U mbedtls_psa_ecp_export_public_key
+         U mbedtls_psa_ecp_generate_key
+         U mbedtls_psa_ecp_import_key
+         U mbedtls_psa_hash_abort
+         U mbedtls_psa_hash_clone
+         U mbedtls_psa_hash_compute
+         U mbedtls_psa_hash_finish
+         U mbedtls_psa_hash_setup
+         U mbedtls_psa_hash_update
+         U mbedtls_psa_key_agreement_ecdh
+         U mbedtls_psa_mac_abort
+         U mbedtls_psa_mac_compute
+         U mbedtls_psa_mac_sign_finish
+         U mbedtls_psa_mac_sign_setup
+         U mbedtls_psa_mac_update
+         U mbedtls_psa_mac_verify_finish
+         U mbedtls_psa_mac_verify_setup
+         U mbedtls_psa_rsa_export_public_key
+         U mbedtls_psa_rsa_generate_key
+         U mbedtls_psa_rsa_import_key
+         U mbedtls_psa_rsa_sign_hash
+         U mbedtls_psa_rsa_verify_hash
+         U mbedtls_zeroize_and_free
+         U memcpy
+         U memset
+         U psa_driver_wrapper_export_public_key
+         U psa_driver_wrapper_get_key_buffer_size
+         U psa_free_key_slot
+         U psa_get_and_lock_key_slot
+         U psa_initialize_key_slots
+         U psa_is_valid_key_id
+         U psa_random_internal_free
+         U psa_random_internal_generate
+         U psa_random_internal_init
+         U psa_random_internal_seed
+         U psa_reserve_free_key_slot
+         U psa_reset_key_attributes
+         U psa_unregister_read
+         U psa_unregister_read_under_mutex
+         U psa_validate_key_location
+         U psa_validate_key_persistence
+         U psa_wipe_all_key_slots
+
+psa_crypto_aead.c.obj:
+         U esp_aes_gcm_auth_decrypt
+         U esp_aes_gcm_crypt_and_tag
+         U esp_aes_gcm_finish
+         U esp_aes_gcm_free
+         U esp_aes_gcm_init
+         U esp_aes_gcm_setkey
+         U esp_aes_gcm_starts
+         U esp_aes_gcm_update
+         U esp_aes_gcm_update_ad
+         U mbedtls_ccm_auth_decrypt
+         U mbedtls_ccm_encrypt_and_tag
+         U mbedtls_ccm_finish
+         U mbedtls_ccm_free
+         U mbedtls_ccm_init
+         U mbedtls_ccm_set_lengths
+         U mbedtls_ccm_setkey
+         U mbedtls_ccm_starts
+         U mbedtls_ccm_update
+         U mbedtls_ccm_update_ad
+         U mbedtls_cipher_values_from_psa
+         U mbedtls_to_psa_error
+
+psa_crypto_cipher.c.obj:
+         U mbedtls_cipher_finish_padded
+         U mbedtls_cipher_free
+         U mbedtls_cipher_info_from_values
+         U mbedtls_cipher_init
+         U mbedtls_cipher_set_iv
+         U mbedtls_cipher_set_padding_mode
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_cipher_update
+         U mbedtls_platform_zeroize
+         U mbedtls_to_psa_error
+         U memcpy
+
+psa_crypto_client.c.obj:
+         U memset
+
+psa_crypto_driver_wrappers_no_static.c.obj:
+         U psa_export_public_key_internal
+
+psa_crypto_ecp.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ecc_group_from_psa
+         U mbedtls_ecc_group_to_psa
+         U mbedtls_ecdh_calc_secret
+         U mbedtls_ecdh_free
+         U mbedtls_ecdh_get_params
+         U mbedtls_ecdh_init
+         U mbedtls_ecdsa_sign
+         U mbedtls_ecdsa_sign_det_ext
+         U mbedtls_ecdsa_verify
+         U mbedtls_ecp_check_pubkey
+         U mbedtls_ecp_gen_privkey
+         U mbedtls_ecp_group_load
+         U mbedtls_ecp_is_zero
+         U mbedtls_ecp_keypair_free
+         U mbedtls_ecp_keypair_init
+         U mbedtls_ecp_mul
+         U mbedtls_ecp_point_read_binary
+         U mbedtls_ecp_point_write_binary
+         U mbedtls_ecp_read_key
+         U mbedtls_ecp_write_key_ext
+         U mbedtls_free
+         U mbedtls_mpi_free
+         U mbedtls_mpi_init
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_write_binary
+         U mbedtls_platform_zeroize
+         U mbedtls_psa_get_random
+         U mbedtls_to_psa_error
+         U memset
+
+psa_crypto_ffdh.c.obj:
+
+psa_crypto_hash.c.obj:
+         U esp_md5_clone
+         U esp_md5_finish
+         U esp_md5_free
+         U esp_md5_init
+         U esp_md5_starts
+         U esp_md5_update
+         U mbedtls_sha1_clone
+         U mbedtls_sha1_finish
+         U mbedtls_sha1_free
+         U mbedtls_sha1_init
+         U mbedtls_sha1_starts
+         U mbedtls_sha1_update
+         U mbedtls_sha256_clone
+         U mbedtls_sha256_finish
+         U mbedtls_sha256_free
+         U mbedtls_sha256_init
+         U mbedtls_sha256_starts
+         U mbedtls_sha256_update
+         U mbedtls_sha512_clone
+         U mbedtls_sha512_finish
+         U mbedtls_sha512_free
+         U mbedtls_sha512_init
+         U mbedtls_sha512_starts
+         U mbedtls_sha512_update
+         U mbedtls_to_psa_error
+         U memset
+
+psa_crypto_mac.c.obj:
+         U mbedtls_ct_memcmp
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+         U psa_hash_abort
+         U psa_hash_compute
+         U psa_hash_finish
+         U psa_hash_setup
+         U psa_hash_update
+
+psa_crypto_pake.c.obj:
+
+psa_crypto_rsa.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_mpi_bitlen
+         U mbedtls_mpi_free
+         U mbedtls_mpi_init
+         U mbedtls_psa_get_random
+         U mbedtls_rsa_export
+         U mbedtls_rsa_free
+         U mbedtls_rsa_gen_key
+         U mbedtls_rsa_get_len
+         U mbedtls_rsa_init
+         U mbedtls_rsa_parse_key
+         U mbedtls_rsa_parse_pubkey
+         U mbedtls_rsa_pkcs1_decrypt
+         U mbedtls_rsa_pkcs1_encrypt
+         U mbedtls_rsa_pkcs1_sign
+         U mbedtls_rsa_pkcs1_verify
+         U mbedtls_rsa_rsaes_oaep_decrypt
+         U mbedtls_rsa_rsaes_oaep_encrypt
+         U mbedtls_rsa_rsassa_pss_sign
+         U mbedtls_rsa_rsassa_pss_verify_ext
+         U mbedtls_rsa_set_padding
+         U mbedtls_rsa_write_key
+         U mbedtls_rsa_write_pubkey
+         U mbedtls_to_psa_error
+         U memcpy
+         U memmove
+         U memset
+
+psa_crypto_random.c.obj:
+         U mbedtls_ctr_drbg_free
+         U mbedtls_ctr_drbg_init
+         U mbedtls_ctr_drbg_random
+         U mbedtls_ctr_drbg_seed
+         U mbedtls_entropy_free
+         U mbedtls_entropy_func
+         U mbedtls_entropy_init
+         U mbedtls_to_psa_error
+
+psa_crypto_se.c.obj:
+
+psa_crypto_slot_management.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U memset
+         U psa_wipe_key_slot
+
+psa_crypto_storage.c.obj:
+
+psa_its_file.c.obj:
+
+psa_util.c.obj:
+         U mbedtls_asn1_get_tag
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_tag
+         U memcpy
+         U memmove
+         U memset
+         U psa_generate_random
+
+ripemd160.c.obj:
+
+rsa.c.obj:
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_mpi
+         U mbedtls_asn1_get_tag
+         U mbedtls_asn1_write_int
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_mpi
+         U mbedtls_asn1_write_tag
+         U mbedtls_calloc
+         U mbedtls_ct_memcmp
+         U mbedtls_ct_memmove_left
+         U mbedtls_ct_zeroize_if
+         U mbedtls_free
+         U mbedtls_md
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_mpi_add_mpi
+         U mbedtls_mpi_bitlen
+         U mbedtls_mpi_cmp_int
+         U mbedtls_mpi_cmp_mpi
+         U mbedtls_mpi_copy
+         U mbedtls_mpi_core_get_mont_r2_unsafe
+         U mbedtls_mpi_core_montmul
+         U mbedtls_mpi_core_montmul_init
+         U mbedtls_mpi_core_to_mont_rep
+         U mbedtls_mpi_exp_mod
+         U mbedtls_mpi_exp_mod_unsafe
+         U mbedtls_mpi_fill_random
+         U mbedtls_mpi_free
+         U mbedtls_mpi_gcd_modinv_odd
+         U mbedtls_mpi_gen_prime
+         U mbedtls_mpi_get_bit
+         U mbedtls_mpi_grow
+         U mbedtls_mpi_init
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_mod_mpi
+         U mbedtls_mpi_mul_mpi
+         U mbedtls_mpi_random
+         U mbedtls_mpi_read_binary
+         U mbedtls_mpi_read_string
+         U mbedtls_mpi_size
+         U mbedtls_mpi_sub_int
+         U mbedtls_mpi_sub_mpi
+         U mbedtls_mpi_swap
+         U mbedtls_mpi_write_binary
+         U mbedtls_oid_get_oid_by_md
+         U mbedtls_platform_zeroize
+         U mbedtls_rsa_deduce_crt
+         U mbedtls_rsa_deduce_primes
+         U mbedtls_rsa_deduce_private_exponent
+         U mbedtls_rsa_validate_crt
+         U mbedtls_rsa_validate_params
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+         U printf
+         U putchar
+         U puts
+         U rand
+
+rsa_alt_helpers.c.obj:
+         U mbedtls_mpi_add_int
+         U mbedtls_mpi_cmp_int
+         U mbedtls_mpi_cmp_mpi
+         U mbedtls_mpi_div_mpi
+         U mbedtls_mpi_exp_mod
+         U mbedtls_mpi_free
+         U mbedtls_mpi_gcd
+         U mbedtls_mpi_gcd_modinv_odd
+         U mbedtls_mpi_get_bit
+         U mbedtls_mpi_init
+         U mbedtls_mpi_inv_mod_even_in_range
+         U mbedtls_mpi_inv_mod_odd
+         U mbedtls_mpi_is_prime_ext
+         U mbedtls_mpi_lsb
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_mod_mpi
+         U mbedtls_mpi_mul_mpi
+         U mbedtls_mpi_shift_r
+         U mbedtls_mpi_sub_int
+         U mbedtls_mpi_sub_mpi
+         U memcpy
+
+sha1.c.obj:
+         U mbedtls_sha1_finish
+         U mbedtls_sha1_free
+         U mbedtls_sha1_init
+         U mbedtls_sha1_starts
+         U mbedtls_sha1_update
+         U memcmp
+         U memset
+         U printf
+         U putchar
+         U puts
+
+sha256.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_sha256_finish
+         U mbedtls_sha256_free
+         U mbedtls_sha256_init
+         U mbedtls_sha256_starts
+         U mbedtls_sha256_update
+         U memcmp
+         U memset
+         U printf
+         U putchar
+         U puts
+
+sha512.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_sha512_finish
+         U mbedtls_sha512_free
+         U mbedtls_sha512_init
+         U mbedtls_sha512_starts
+         U mbedtls_sha512_update
+         U memcmp
+         U memset
+         U printf
+         U putchar
+         U puts
+
+sha3.c.obj:
+
+threading.c.obj:
+
+timing.c.obj:
+
+version.c.obj:
+         U memcpy
+
+version_features.c.obj:
+         U strcmp
+         U strncmp
+
+esp_sha_gdma_impl.c.obj:
+         U esp_crypto_shared_gdma_start_axi_ahb
+
+esp_aes_gdma_impl.c.obj:
+         U esp_crypto_shared_gdma_start_axi_ahb
+
+esp_aes_dma_core.c.obj:
+         U __assert_func
+         U _frxt_setup_switch
+         U abort
+         U aes_hal_transform_dma_finish
+         U aes_hal_transform_dma_start
+         U aes_hal_wait_done
+         U esp_aes_dma_done
+         U esp_aes_dma_start
+         U esp_intr_alloc
+         U free
+         U heap_caps_aligned_alloc
+         U heap_caps_aligned_calloc
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+         U xQueueGenericCreateStatic
+         U xQueueGiveFromISR
+         U xQueueSemaphoreTake
+
+esp_crypto_shared_gdma.c.obj:
+         U GDMA
+         U esp_crypto_sha_aes_lock_acquire
+         U esp_crypto_sha_aes_lock_release
+         U gdma_config_transfer
+         U gdma_connect
+         U gdma_del_channel
+         U gdma_disconnect
+         U gdma_get_group_channel_id
+         U gdma_new_ahb_channel
+         U gdma_start
+         U vTaskDelay
+
+esp_hardware.c.obj:
+         U esp_fill_random
+
+esp_mem.c.obj:
+         U heap_caps_calloc
+         U heap_caps_free
+
+esp_timing.c.obj:
+         U gettimeofday
+
+esp_aes_xts.c.obj:
+         U esp_aes_crypt_ecb
+         U esp_aes_free
+         U esp_aes_init
+         U esp_aes_setkey
+         U memcpy
+
+esp_aes_common.c.obj:
+         U bzero
+         U esp_aes_intr_alloc
+         U memcpy
+
+esp_aes.c.obj:
+         U SYSTEM
+         U aes_hal_mode_init
+         U aes_hal_read_iv
+         U aes_hal_set_iv
+         U aes_hal_setkey
+         U esp_aes_process_dma
+         U esp_crypto_sha_aes_lock_acquire
+         U esp_crypto_sha_aes_lock_release
+         U memcpy
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U valid_key_length
+
+esp_sha.c.obj:
+         U __assert_func
+         U abort
+         U mbedtls_sha1_finish
+         U mbedtls_sha1_free
+         U mbedtls_sha1_init
+         U mbedtls_sha1_starts
+         U mbedtls_sha1_update
+         U mbedtls_sha256_finish
+         U mbedtls_sha256_free
+         U mbedtls_sha256_init
+         U mbedtls_sha256_starts
+         U mbedtls_sha256_update
+         U mbedtls_sha512_finish
+         U mbedtls_sha512_free
+         U mbedtls_sha512_init
+         U mbedtls_sha512_starts
+         U mbedtls_sha512_update
+         U sha_hal_sha512_init_hash
+
+sha.c.obj:
+         U SYSTEM
+         U __assert_func
+         U esp_crypto_sha_aes_lock_acquire
+         U esp_crypto_sha_aes_lock_release
+         U esp_sha_dma_start
+         U free
+         U heap_caps_malloc
+         U memcpy
+         U memset
+         U periph_rcc_enter
+         U periph_rcc_exit
+         U sha_hal_hash_block
+         U sha_hal_hash_dma
+         U sha_hal_read_digest
+         U sha_hal_wait_idle
+         U sha_hal_write_digest
+
+esp_rsa_sign_alt.c.obj:
+         U esp_ds_finish_sign
+         U esp_ds_get_data_ctx
+         U esp_ds_get_hmac_key_id
+         U esp_ds_start_sign
+         U heap_caps_free
+         U heap_caps_malloc_prefer
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_oid_get_oid_by_md
+         U mbedtls_platform_zeroize
+         U memcpy
+         U memset
+
+esp_rsa_dec_alt.c.obj:
+         U calloc
+         U esp_ds_finish_sign
+         U esp_ds_get_data_ctx
+         U esp_ds_get_hmac_key_id
+         U esp_ds_get_keylen
+         U esp_ds_mgf_mask
+         U esp_ds_release_ds_lock
+         U esp_ds_start_sign
+         U free
+         U mbedtls_md
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U memcpy
+
+esp_ds_common.c.obj:
+         U esp_ptr_byte_accessible
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_platform_zeroize
+         U memset
+         U xQueueCreateMutex
+         U xQueueGenericSend
+         U xQueueGetMutexHolder
+         U xQueueSemaphoreTake
+         U xTaskGetCurrentTaskHandle
+
+esp_bignum.c.obj:
+         U __assert_func
+         U __umoddi3
+         U _frxt_setup_switch
+         U abort
+         U esp_intr_alloc
+         U esp_mpi_disable_hardware_hw_op
+         U esp_mpi_enable_hardware_hw_op
+         U esp_mpi_exp_mpi_mod_hw_op
+         U esp_mpi_mul_mpi_hw_op
+         U esp_mpi_mul_mpi_mod_hw_op
+         U esp_mpi_mult_mpi_failover_mod_mult_hw_op
+         U mbedtls_mpi_add_mpi
+         U mbedtls_mpi_bitlen
+         U mbedtls_mpi_cmp_int
+         U mbedtls_mpi_copy
+         U mbedtls_mpi_free
+         U mbedtls_mpi_grow
+         U mbedtls_mpi_init
+         U mbedtls_mpi_lset
+         U mbedtls_mpi_mod_mpi
+         U mbedtls_mpi_set_bit
+         U mbedtls_mpi_shift_l
+         U mpi_hal_calc_hardware_words
+         U mpi_hal_clear_interrupt
+         U mpi_hal_interrupt_enable
+         U mpi_hal_read_result_hw_op
+         U xQueueGenericCreateStatic
+         U xQueueGiveFromISR
+         U xQueueSemaphoreTake
+
+bignum_alt.c.obj:
+         U SYSTEM
+         U esp_crypto_mpi_lock_acquire
+         U esp_crypto_mpi_lock_release
+         U mbedtls_mpi_bitlen
+         U mpi_hal_calc_hardware_words
+         U mpi_hal_clear_interrupt
+         U mpi_hal_disable_hardware_hw_op
+         U mpi_hal_enable_constant_time
+         U mpi_hal_enable_hardware_hw_op
+         U mpi_hal_enable_search
+         U mpi_hal_interrupt_enable
+         U mpi_hal_set_mode
+         U mpi_hal_set_search_position
+         U mpi_hal_start_op
+         U mpi_hal_write_at_offset
+         U mpi_hal_write_m_prime
+         U mpi_hal_write_rinv
+         U mpi_hal_write_to_mem_block
+         U periph_rcc_enter
+         U periph_rcc_exit
+
+esp_sha1.c.obj:
+         U esp_sha_acquire_hardware
+         U esp_sha_dma
+         U esp_sha_read_digest_state
+         U esp_sha_release_hardware
+         U esp_sha_write_digest_state
+         U memcpy
+         U memset
+
+esp_sha256.c.obj:
+         U esp_sha_acquire_hardware
+         U esp_sha_dma
+         U esp_sha_read_digest_state
+         U esp_sha_release_hardware
+         U esp_sha_write_digest_state
+         U memcpy
+         U memset
+
+esp_sha512.c.obj:
+         U esp_sha_512_t_init_hash
+         U esp_sha_acquire_hardware
+         U esp_sha_dma
+         U esp_sha_read_digest_state
+         U esp_sha_release_hardware
+         U esp_sha_write_digest_state
+         U memcpy
+         U memset
+
+esp_aes_gcm.c.obj:
+         U bzero
+         U esp_aes_crypt_ctr
+         U esp_aes_crypt_ecb
+         U esp_aes_intr_alloc
+         U free
+         U malloc
+         U mbedtls_gcm_auth_decrypt_soft
+         U mbedtls_gcm_crypt_and_tag_soft
+         U mbedtls_gcm_finish_soft
+         U mbedtls_gcm_free_soft
+         U mbedtls_gcm_init_soft
+         U mbedtls_gcm_setkey_soft
+         U mbedtls_gcm_starts_soft
+         U mbedtls_gcm_update_ad_soft
+         U mbedtls_gcm_update_soft
+         U memcpy
+         U memset
+
+esp_md.c.obj:
+         U esp_rom_md5_final
+         U esp_rom_md5_init
+         U esp_rom_md5_update
+         U mbedtls_platform_zeroize
+         U memcpy
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/mbedtls/mbedtls/library/libmbedtls.a:
+
+debug.c.obj:
+
+mps_reader.c.obj:
+
+mps_trace.c.obj:
+
+ssl_cache.c.obj:
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_platform_zeroize
+         U mbedtls_ssl_session_load
+         U mbedtls_ssl_session_save
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+         U time
+
+ssl_ciphersuites.c.obj:
+         U mbedtls_cipher_info_from_type
+         U strcmp
+
+ssl_client.c.obj:
+         U mbedtls_ssl_add_hs_hdr_to_checksum
+         U mbedtls_ssl_ciphersuite_from_id
+         U mbedtls_ssl_ciphersuite_uses_ec
+         U mbedtls_ssl_finish_handshake_msg
+         U mbedtls_ssl_get_ecp_group_id_from_tls_id
+         U mbedtls_ssl_get_hostname_pointer
+         U mbedtls_ssl_start_handshake_msg
+         U mbedtls_ssl_tls12_write_client_hello_exts
+         U mbedtls_ssl_validate_ciphersuite
+         U mbedtls_ssl_write_sig_alg_ext
+         U mbedtls_ssl_write_version
+         U memcpy
+         U strlen
+         U time
+
+ssl_cookie.c.obj:
+         U mbedtls_ct_memcmp
+         U mbedtls_md_free
+         U mbedtls_md_hmac_finish
+         U mbedtls_md_hmac_reset
+         U mbedtls_md_hmac_starts
+         U mbedtls_md_hmac_update
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_platform_zeroize
+         U memcpy
+         U time
+
+ssl_debug_helpers_generated.c.obj:
+
+ssl_msg.c.obj:
+         U mbedtls_cipher_auth_decrypt_ext
+         U mbedtls_cipher_auth_encrypt_ext
+         U mbedtls_cipher_crypt
+         U mbedtls_cipher_free
+         U mbedtls_ct_memcmp
+         U mbedtls_ct_memcpy_if
+         U mbedtls_ct_memcpy_offset
+         U mbedtls_md_clone
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_get_type
+         U mbedtls_md_hmac_finish
+         U mbedtls_md_hmac_reset
+         U mbedtls_md_hmac_update
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_platform_zeroize
+         U mbedtls_ssl_get_max_out_record_payload
+         U mbedtls_ssl_get_mode_from_transform
+         U mbedtls_ssl_handshake
+         U mbedtls_ssl_renegotiate
+         U mbedtls_ssl_start_renegotiation
+         U memcmp
+         U memcpy
+         U memmove
+         U memset
+
+ssl_ticket.c.obj:
+         U mbedtls_cipher_auth_decrypt_ext
+         U mbedtls_cipher_auth_encrypt_ext
+         U mbedtls_cipher_free
+         U mbedtls_cipher_info_from_type
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_ms_time
+         U mbedtls_platform_zeroize
+         U mbedtls_ssl_session_load
+         U mbedtls_ssl_session_save
+         U memcpy
+         U memset
+         U time
+
+ssl_tls.c.obj:
+         U mbedtls_calloc
+         U mbedtls_cipher_info_from_type
+         U mbedtls_cipher_init
+         U mbedtls_cipher_set_padding_mode
+         U mbedtls_cipher_setkey
+         U mbedtls_cipher_setup
+         U mbedtls_ct_memcmp
+         U mbedtls_ecdh_free
+         U mbedtls_ecdh_init
+         U mbedtls_free
+         U mbedtls_md_clone
+         U mbedtls_md_finish
+         U mbedtls_md_free
+         U mbedtls_md_get_size
+         U mbedtls_md_hmac_finish
+         U mbedtls_md_hmac_reset
+         U mbedtls_md_hmac_starts
+         U mbedtls_md_hmac_update
+         U mbedtls_md_info_from_ctx
+         U mbedtls_md_info_from_type
+         U mbedtls_md_init
+         U mbedtls_md_setup
+         U mbedtls_md_starts
+         U mbedtls_md_update
+         U mbedtls_pk_can_do
+         U mbedtls_pk_get_type
+         U mbedtls_platform_zeroize
+         U mbedtls_ssl_ciphersuite_from_id
+         U mbedtls_ssl_flush_output
+         U mbedtls_ssl_get_ciphersuite_name
+         U mbedtls_ssl_handle_pending_alert
+         U mbedtls_ssl_handshake_client_step
+         U mbedtls_ssl_handshake_server_step
+         U mbedtls_ssl_list_ciphersuites
+         U mbedtls_ssl_pend_fatal_alert
+         U mbedtls_ssl_read_record
+         U mbedtls_ssl_reset_in_pointers
+         U mbedtls_ssl_reset_out_pointers
+         U mbedtls_ssl_send_alert_message
+         U mbedtls_ssl_set_timer
+         U mbedtls_ssl_transform_free
+         U mbedtls_ssl_update_out_pointers
+         U mbedtls_ssl_write_client_hello
+         U mbedtls_ssl_write_handshake_msg_ext
+         U mbedtls_x509_crt_check_extended_key_usage
+         U mbedtls_x509_crt_check_key_usage
+         U mbedtls_x509_crt_free
+         U mbedtls_x509_crt_init
+         U mbedtls_x509_crt_parse_der
+         U mbedtls_x509_crt_profile_default
+         U mbedtls_x509_crt_profile_suiteb
+         U mbedtls_x509_crt_verify_restartable
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+         U strlen
+
+ssl_tls12_client.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ct_memcmp
+         U mbedtls_ecdh_calc_secret
+         U mbedtls_ecdh_get_params
+         U mbedtls_ecdh_make_public
+         U mbedtls_ecdh_read_params
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_pk_can_do
+         U mbedtls_pk_encrypt
+         U mbedtls_pk_get_type
+         U mbedtls_pk_sign_restartable
+         U mbedtls_pk_verify_ext
+         U mbedtls_pk_verify_restartable
+         U mbedtls_ssl_check_curve
+         U mbedtls_ssl_ciphersuite_from_id
+         U mbedtls_ssl_derive_keys
+         U mbedtls_ssl_get_key_exchange_md_tls1_2
+         U mbedtls_ssl_get_tls_id_from_ecp_group_id
+         U mbedtls_ssl_handshake_wrapup
+         U mbedtls_ssl_md_alg_from_hash
+         U mbedtls_ssl_optimize_checksum
+         U mbedtls_ssl_parse_certificate
+         U mbedtls_ssl_parse_change_cipher_spec
+         U mbedtls_ssl_parse_finished
+         U mbedtls_ssl_pend_fatal_alert
+         U mbedtls_ssl_pk_alg_from_sig
+         U mbedtls_ssl_read_record
+         U mbedtls_ssl_read_version
+         U mbedtls_ssl_send_alert_message
+         U mbedtls_ssl_sig_from_pk
+         U mbedtls_ssl_validate_ciphersuite
+         U mbedtls_ssl_write_certificate
+         U mbedtls_ssl_write_change_cipher_spec
+         U mbedtls_ssl_write_client_hello
+         U mbedtls_ssl_write_finished
+         U mbedtls_ssl_write_handshake_msg_ext
+         U mbedtls_ssl_write_version
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U strlen
+         U time
+
+ssl_tls12_server.c.obj:
+         U mbedtls_calloc
+         U mbedtls_ct_memcmp
+         U mbedtls_ct_memcpy_if
+         U mbedtls_ecdh_calc_secret
+         U mbedtls_ecdh_get_params
+         U mbedtls_ecdh_make_params
+         U mbedtls_ecdh_read_public
+         U mbedtls_ecdh_setup
+         U mbedtls_ms_time
+         U mbedtls_pk_can_do
+         U mbedtls_pk_decrypt
+         U mbedtls_pk_get_bitlen
+         U mbedtls_pk_get_type
+         U mbedtls_pk_sign
+         U mbedtls_pk_verify
+         U mbedtls_platform_zeroize
+         U mbedtls_ssl_check_cert_usage
+         U mbedtls_ssl_ciphersuite_from_id
+         U mbedtls_ssl_ciphersuite_uses_ec
+         U mbedtls_ssl_derive_keys
+         U mbedtls_ssl_get_ciphersuite_sig_alg
+         U mbedtls_ssl_get_ciphersuite_sig_pk_alg
+         U mbedtls_ssl_get_ecp_group_id_from_tls_id
+         U mbedtls_ssl_get_key_exchange_md_tls1_2
+         U mbedtls_ssl_get_mode_from_ciphersuite
+         U mbedtls_ssl_handshake_wrapup
+         U mbedtls_ssl_hash_from_md_alg
+         U mbedtls_ssl_md_alg_from_hash
+         U mbedtls_ssl_parse_alpn_ext
+         U mbedtls_ssl_parse_certificate
+         U mbedtls_ssl_parse_change_cipher_spec
+         U mbedtls_ssl_parse_finished
+         U mbedtls_ssl_parse_server_name_ext
+         U mbedtls_ssl_parse_sig_alg_ext
+         U mbedtls_ssl_pk_alg_from_sig
+         U mbedtls_ssl_read_record
+         U mbedtls_ssl_read_version
+         U mbedtls_ssl_send_alert_message
+         U mbedtls_ssl_session_free
+         U mbedtls_ssl_session_init
+         U mbedtls_ssl_set_calc_verify_md
+         U mbedtls_ssl_sig_from_pk_alg
+         U mbedtls_ssl_tls12_get_preferred_hash_for_sig_alg
+         U mbedtls_ssl_update_handshake_status
+         U mbedtls_ssl_write_alpn_ext
+         U mbedtls_ssl_write_certificate
+         U mbedtls_ssl_write_change_cipher_spec
+         U mbedtls_ssl_write_finished
+         U mbedtls_ssl_write_handshake_msg_ext
+         U mbedtls_ssl_write_version
+         U memcpy
+         U memset
+         U time
+
+ssl_tls13_keys.c.obj:
+
+ssl_tls13_server.c.obj:
+
+ssl_tls13_client.c.obj:
+
+ssl_tls13_generic.c.obj:
+
+mbedtls_debug.c.obj:
+
+esp_platform_time.c.obj:
+         U clock_gettime
+         U time
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/mbedtls/mbedtls/library/libmbedx509.a:
+
+pkcs7.c.obj:
+         U mbedtls_asn1_get_alg_null
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_tag
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_md
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_oid_get_md_alg
+         U mbedtls_pk_verify
+         U mbedtls_x509_crl_free
+         U mbedtls_x509_crt_free
+         U mbedtls_x509_crt_init
+         U mbedtls_x509_crt_parse_der
+         U mbedtls_x509_get_name
+         U mbedtls_x509_get_serial
+         U mbedtls_x509_time_is_future
+         U mbedtls_x509_time_is_past
+         U memcmp
+         U memcpy
+         U memset
+
+x509.c.obj:
+         U mbedtls_asn1_free_named_data_list_shallow
+         U mbedtls_asn1_get_alg
+         U mbedtls_asn1_get_alg_null
+         U mbedtls_asn1_get_bitstring
+         U mbedtls_asn1_get_bitstring_null
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_len
+         U mbedtls_asn1_get_tag
+         U mbedtls_asn1_sequence_free
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_tag
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_oid_get_attr_short_name
+         U mbedtls_oid_get_md_alg
+         U mbedtls_oid_get_numeric_string
+         U mbedtls_oid_get_sig_alg
+         U mbedtls_oid_get_sig_alg_desc
+         U memcmp
+         U memcpy
+         U memset
+         U snprintf
+         U strchr
+
+x509_create.c.obj:
+         U mbedtls_asn1_get_len
+         U mbedtls_asn1_store_named_data
+         U mbedtls_asn1_write_algorithm_identifier_ext
+         U mbedtls_asn1_write_bool
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_oid
+         U mbedtls_asn1_write_raw_buffer
+         U mbedtls_asn1_write_tag
+         U mbedtls_asn1_write_tagged_string
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_oid_from_numeric_string
+         U memcpy
+         U strchr
+         U strlen
+         U strncmp
+
+x509_crl.c.obj:
+         U mbedtls_asn1_free_named_data_list_shallow
+         U mbedtls_asn1_get_bool
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_tag
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_pem_free
+         U mbedtls_pem_init
+         U mbedtls_pem_read_buffer
+         U mbedtls_platform_zeroize
+         U mbedtls_x509_dn_gets
+         U mbedtls_x509_get_alg
+         U mbedtls_x509_get_ext
+         U mbedtls_x509_get_name
+         U mbedtls_x509_get_serial
+         U mbedtls_x509_get_sig
+         U mbedtls_x509_get_sig_alg
+         U mbedtls_x509_get_time
+         U mbedtls_x509_serial_gets
+         U mbedtls_x509_sig_alg_gets
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+         U snprintf
+
+x509_crt.c.obj:
+         U mbedtls_asn1_free_named_data_list_shallow
+         U mbedtls_asn1_get_bool
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_sequence_of
+         U mbedtls_asn1_get_tag
+         U mbedtls_asn1_sequence_free
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_md
+         U mbedtls_md_get_size
+         U mbedtls_md_info_from_type
+         U mbedtls_oid_get_certificate_policies
+         U mbedtls_oid_get_extended_key_usage
+         U mbedtls_oid_get_x509_ext_type
+         U mbedtls_pem_free
+         U mbedtls_pem_init
+         U mbedtls_pem_read_buffer
+         U mbedtls_pk_can_do
+         U mbedtls_pk_free
+         U mbedtls_pk_get_bitlen
+         U mbedtls_pk_get_name
+         U mbedtls_pk_get_type
+         U mbedtls_pk_parse_subpubkey
+         U mbedtls_pk_verify_ext
+         U mbedtls_platform_zeroize
+         U mbedtls_x509_dn_gets
+         U mbedtls_x509_get_alg
+         U mbedtls_x509_get_ext
+         U mbedtls_x509_get_key_usage
+         U mbedtls_x509_get_name
+         U mbedtls_x509_get_ns_cert_type
+         U mbedtls_x509_get_serial
+         U mbedtls_x509_get_sig
+         U mbedtls_x509_get_sig_alg
+         U mbedtls_x509_get_subject_alt_name
+         U mbedtls_x509_get_subject_alt_name_ext
+         U mbedtls_x509_get_time
+         U mbedtls_x509_info_cert_type
+         U mbedtls_x509_info_key_usage
+         U mbedtls_x509_info_subject_alt_name
+         U mbedtls_x509_key_size_helper
+         U mbedtls_x509_serial_gets
+         U mbedtls_x509_sig_alg_gets
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memmove
+         U memset
+         U snprintf
+         U strchr
+         U strlen
+         U strstr
+
+x509_csr.c.obj:
+         U mbedtls_asn1_free_named_data_list_shallow
+         U mbedtls_asn1_get_bool
+         U mbedtls_asn1_get_int
+         U mbedtls_asn1_get_tag
+         U mbedtls_asn1_sequence_free
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_oid_get_x509_ext_type
+         U mbedtls_pem_free
+         U mbedtls_pem_init
+         U mbedtls_pem_read_buffer
+         U mbedtls_pk_free
+         U mbedtls_pk_get_bitlen
+         U mbedtls_pk_get_name
+         U mbedtls_pk_parse_subpubkey
+         U mbedtls_platform_zeroize
+         U mbedtls_x509_dn_gets
+         U mbedtls_x509_get_alg
+         U mbedtls_x509_get_key_usage
+         U mbedtls_x509_get_name
+         U mbedtls_x509_get_ns_cert_type
+         U mbedtls_x509_get_sig
+         U mbedtls_x509_get_sig_alg
+         U mbedtls_x509_get_subject_alt_name
+         U mbedtls_x509_info_cert_type
+         U mbedtls_x509_info_key_usage
+         U mbedtls_x509_info_subject_alt_name
+         U mbedtls_x509_key_size_helper
+         U mbedtls_x509_sig_alg_gets
+         U mbedtls_zeroize_and_free
+         U memcmp
+         U memcpy
+         U memset
+         U snprintf
+
+x509write.c.obj:
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_raw_buffer
+         U mbedtls_asn1_write_tag
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_x509_set_extension
+         U mbedtls_x509_write_names
+
+x509write_crt.c.obj:
+         U mbedtls_asn1_free_named_data_list
+         U mbedtls_asn1_write_algorithm_identifier_ext
+         U mbedtls_asn1_write_bool
+         U mbedtls_asn1_write_int
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_named_bitstring
+         U mbedtls_asn1_write_raw_buffer
+         U mbedtls_asn1_write_tag
+         U mbedtls_md
+         U mbedtls_md_info_from_type
+         U mbedtls_oid_get_oid_by_sig_alg
+         U mbedtls_pem_write_buffer
+         U mbedtls_pk_can_do
+         U mbedtls_pk_sign
+         U mbedtls_pk_write_pubkey
+         U mbedtls_pk_write_pubkey_der
+         U mbedtls_platform_zeroize
+         U mbedtls_x509_set_extension
+         U mbedtls_x509_string_to_names
+         U mbedtls_x509_write_extensions
+         U mbedtls_x509_write_names
+         U mbedtls_x509_write_set_san_common
+         U mbedtls_x509_write_sig
+         U memcpy
+         U memmove
+         U memset
+         U strlen
+         U strncpy
+
+x509write_csr.c.obj:
+         U mbedtls_asn1_free_named_data_list
+         U mbedtls_asn1_write_int
+         U mbedtls_asn1_write_len
+         U mbedtls_asn1_write_named_bitstring
+         U mbedtls_asn1_write_oid
+         U mbedtls_asn1_write_tag
+         U mbedtls_calloc
+         U mbedtls_free
+         U mbedtls_md
+         U mbedtls_md_info_from_type
+         U mbedtls_oid_get_oid_by_sig_alg
+         U mbedtls_pem_write_buffer
+         U mbedtls_pk_can_do
+         U mbedtls_pk_sign
+         U mbedtls_pk_write_pubkey_der
+         U mbedtls_platform_zeroize
+         U mbedtls_x509_set_extension
+         U mbedtls_x509_string_to_names
+         U mbedtls_x509_write_extensions
+         U mbedtls_x509_write_names
+         U mbedtls_x509_write_set_san_common
+         U mbedtls_x509_write_sig
+         U memmove
+         U memset
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/newlib/libnewlib.a:
+
+abort.c.obj:
+         U esp_system_abort
+         U itoa
+         U memset
+         U strcat
+
+assert.c.obj:
+         U esp_system_abort
+         U itoa
+         U memcpy
+         U spi_flash_cache_enabled
+         U strlen
+
+heap.c.obj:
+         U __getreent
+         U bzero
+         U heap_caps_aligned_alloc_default
+         U heap_caps_free
+         U heap_caps_malloc_default
+         U heap_caps_realloc_default
+
+flockfile.c.obj:
+         U __retarget_lock_acquire_recursive
+         U __retarget_lock_release_recursive
+         U __retarget_lock_try_acquire_recursive
+
+locks.c.obj:
+         U __assert_func
+         U _frxt_setup_switch
+         U abort
+         U esp_rom_newlib_init_common_mutexes
+         U vPortExitCritical
+         U vQueueDelete
+         U xPortEnterCriticalTimeout
+         U xQueueCreateMutex
+         U xQueueCreateMutexStatic
+         U xQueueGenericSend
+         U xQueueGetMutexHolder
+         U xQueueGiveFromISR
+         U xQueueGiveMutexRecursive
+         U xQueueReceiveFromISR
+         U xQueueSemaphoreTake
+         U xQueueTakeMutexRecursive
+         U xTaskGetSchedulerState
+
+poll.c.obj:
+         U __getreent
+         U select
+
+pthread.c.obj:
+
+random.c.obj:
+         U __errno
+         U esp_fill_random
+
+getentropy.c.obj:
+         U __errno
+         U getrandom
+
+reent_init.c.obj:
+         U __getreent
+         U __sglue
+         U _impure_data
+         U _reclaim_reent
+         U free
+         U memset
+
+newlib_init.c.obj:
+         U __assert_func
+         U __getreent
+         U __retarget_lock_acquire
+         U __retarget_lock_acquire_recursive
+         U __retarget_lock_close
+         U __retarget_lock_close_recursive
+         U __retarget_lock_init
+         U __retarget_lock_init_recursive
+         U __retarget_lock_release
+         U __retarget_lock_release_recursive
+         U __retarget_lock_try_acquire
+         U __retarget_lock_try_acquire_recursive
+         U __sglue
+         U __sinit
+         U __swsetup_r
+         U _calloc_r
+         U _close_r
+         U _fclose_r
+         U _free_r
+         U _fstat_r
+         U _getpid_r
+         U _gettimeofday_r
+         U _global_impure_ptr
+         U _impure_data
+         U _kill_r
+         U _link_r
+         U _lseek_r
+         U _malloc_r
+         U _open_r
+         U _raise_r
+         U _read_r
+         U _realloc_r
+         U _rename_r
+         U _sbrk_r
+         U _stat_r
+         U _system_r
+         U _times_r
+         U _unlink_r
+         U _write_r
+         U abort
+         U environ
+         U esp_newlib_locks_init
+         U fopen
+         U malloc
+         U memset
+         U syscall_table_ptr
+
+syscalls.c.obj:
+         U __errno
+         U __getreent
+         U abort
+         U esp_rom_output_flush_tx
+         U memset
+
+termios.c.obj:
+
+stdatomic.c.obj:
+         U memcmp
+         U memcpy
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+         U xPortInIsrContext
+
+time.c.obj:
+         U __divdi3
+         U __errno
+         U __moddi3
+         U __udivdi3
+         U __umoddi3
+         U _lock_acquire
+         U _lock_release
+         U esp_rom_delay_us
+         U esp_system_get_time_resolution
+         U esp_time_impl_get_boot_time
+         U esp_time_impl_get_time
+         U esp_time_impl_get_time_since_boot
+         U esp_time_impl_init
+         U esp_time_impl_set_boot_time
+         U vTaskDelay
+         U xTaskGetTickCount
+
+sysconf.c.obj:
+         U __errno
+
+realpath.c.obj:
+         U __assert_func
+         U __errno
+         U free
+         U malloc
+         U memcpy
+         U strchrnul
+         U strdup
+         U strlcpy
+         U strrchr
+
+scandir.c.obj:
+         U closedir
+         U free
+         U malloc
+         U memcpy
+         U opendir
+         U qsort
+         U readdir
+         U realloc
+         U strcoll
+
+esp_time_impl.c.obj:
+         U _lock_acquire
+         U _lock_release
+         U esp_rtc_get_time_us
+         U esp_system_get_time
+         U gettimeofday
+         U settimeofday
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/pthread/libpthread.a:
+
+pthread.c.obj:
+         U __assert_func
+         U _lock_acquire
+         U _lock_release
+         U abort
+         U calloc
+         U clock_gettime
+         U esp_cpu_compare_and_set
+         U free
+         U malloc
+         U memcpy
+         U memset
+         U pcTaskGetName
+         U pthread_getspecific
+         U pthread_internal_local_storage_destructor_callback
+         U pthread_key_create
+         U pthread_setspecific
+         U vPortExitCritical
+         U vQueueDelete
+         U vTaskDelay
+         U vTaskDelete
+         U vTaskSuspend
+         U xPortEnterCriticalTimeout
+         U xQueueCreateMutex
+         U xQueueGenericSend
+         U xQueueGetMutexHolder
+         U xQueueGiveMutexRecursive
+         U xQueueSemaphoreTake
+         U xQueueTakeMutexRecursive
+         U xTaskCreatePinnedToCore
+         U xTaskGenericNotify
+         U xTaskGenericNotifyWait
+         U xTaskGetCurrentTaskHandle
+
+pthread_cond_var.c.obj:
+         U _lock_acquire_recursive
+         U _lock_close_recursive
+         U _lock_init_recursive
+         U _lock_release_recursive
+         U calloc
+         U free
+         U gettimeofday
+         U pthread_lazy_init_lock
+         U pthread_mutex_lock
+         U pthread_mutex_unlock
+         U vPortExitCritical
+         U vQueueDelete
+         U xPortEnterCriticalTimeout
+         U xQueueCreateCountingSemaphoreStatic
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+
+pthread_local_storage.c.obj:
+         U __assert_func
+         U calloc
+         U free
+         U malloc
+         U pvTaskGetThreadLocalStoragePointer
+         U vPortExitCritical
+         U vTaskSetThreadLocalStoragePointerAndDelCallback
+         U xPortEnterCriticalTimeout
+
+pthread_rwlock.c.obj:
+         U __assert_func
+         U calloc
+         U free
+         U pthread_cond_broadcast
+         U pthread_cond_destroy
+         U pthread_cond_init
+         U pthread_cond_wait
+         U pthread_lazy_init_lock
+         U pthread_mutex_destroy
+         U pthread_mutex_init
+         U pthread_mutex_lock
+         U pthread_mutex_trylock
+         U pthread_mutex_unlock
+         U vPortExitCritical
+         U xPortEnterCriticalTimeout
+
+pthread_semaphore.c.obj:
+         U __errno
+         U clock_gettime
+         U uxQueueMessagesWaiting
+         U vQueueDelete
+         U xQueueCreateCountingSemaphore
+         U xQueueGenericSend
+         U xQueueSemaphoreTake
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/soc/libsoc.a:
+
+lldesc.c.obj:
+
+dport_access_common.c.obj:
+
+interrupts.c.obj:
+
+gpio_periph.c.obj:
+
+uart_periph.c.obj:
+
+adc_periph.c.obj:
+
+dedic_gpio_periph.c.obj:
+
+gdma_periph.c.obj:
+
+spi_periph.c.obj:
+         U GPSPI2
+         U GPSPI3
+
+ledc_periph.c.obj:
+
+pcnt_periph.c.obj:
+
+rmt_periph.c.obj:
+
+sdm_periph.c.obj:
+
+i2s_periph.c.obj:
+
+i2c_periph.c.obj:
+
+temperature_sensor_periph.c.obj:
+
+timer_periph.c.obj:
+
+lcd_periph.c.obj:
+
+mcpwm_periph.c.obj:
+
+mpi_periph.c.obj:
+
+sdmmc_periph.c.obj:
+
+touch_sensor_periph.c.obj:
+
+twai_periph.c.obj:
+
+wdt_periph.c.obj:
+
+usb_dwc_periph.c.obj:
+
+rtc_io_periph.c.obj:
+
+cam_periph.c.obj:
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/spi_flash/libspi_flash.a:
+
+flash_brownout_hook.c.obj:
+         U rom_spiflash_legacy_data
+
+spi_flash_oct_flash_init.c.obj:
+         U abort
+         U esp_rom_opiflash_cache_mode_config
+         U esp_rom_opiflash_erase_area
+         U esp_rom_opiflash_erase_block_64k
+         U esp_rom_opiflash_erase_sector
+         U esp_rom_opiflash_exec_cmd
+         U esp_rom_opiflash_legacy_driver_init
+         U esp_rom_opiflash_read
+         U esp_rom_opiflash_wait_idle
+         U esp_rom_opiflash_wren
+         U esp_rom_opiflash_write
+         U esp_rom_spi_set_dtr_swap_mode
+         U esp_rom_spiflash_wait_idle
+         U esp_rom_spiflash_write_enable
+         U rom_opiflash_cmd_def
+         U rom_spiflash_legacy_data
+         U rom_spiflash_legacy_funcs
+
+spi_flash_hpm_enable.c.obj:
+
+spi_flash_chip_drivers.c.obj:
+         U esp_flash_chip_boya
+         U esp_flash_chip_gd
+         U esp_flash_chip_generic
+         U esp_flash_chip_issi
+         U esp_flash_chip_mxic
+         U esp_flash_chip_mxic_opi
+         U esp_flash_chip_th
+         U esp_flash_chip_winbond
+
+spi_flash_chip_generic.c.obj:
+         U __assert_func
+         U abort
+         U esp_flash_default_chip
+         U memcpy
+         U memset
+         U spi_flash_encryption_hal_check
+         U spi_flash_encryption_hal_destroy
+         U spi_flash_encryption_hal_disable
+         U spi_flash_encryption_hal_done
+         U spi_flash_encryption_hal_enable
+         U spi_flash_encryption_hal_prepare
+
+spi_flash_chip_issi.c.obj:
+         U spi_flash_chip_generic_config_host_io_mode
+         U spi_flash_chip_generic_detect_size
+         U spi_flash_chip_generic_erase_block
+         U spi_flash_chip_generic_erase_chip
+         U spi_flash_chip_generic_erase_sector
+         U spi_flash_chip_generic_get_write_protect
+         U spi_flash_chip_generic_page_program
+         U spi_flash_chip_generic_read
+         U spi_flash_chip_generic_read_reg
+         U spi_flash_chip_generic_read_unique_id
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_set_write_protect
+         U spi_flash_chip_generic_suspend_cmd_conf
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+         U spi_flash_common_read_status_8b_rdsr
+         U spi_flash_common_set_io_mode
+         U spi_flash_common_write_status_8b_wrsr
+
+spi_flash_chip_mxic.c.obj:
+         U spi_flash_chip_generic_config_host_io_mode
+         U spi_flash_chip_generic_erase_block
+         U spi_flash_chip_generic_erase_chip
+         U spi_flash_chip_generic_erase_sector
+         U spi_flash_chip_generic_get_write_protect
+         U spi_flash_chip_generic_page_program
+         U spi_flash_chip_generic_read
+         U spi_flash_chip_generic_read_reg
+         U spi_flash_chip_generic_read_unique_id_none
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_set_write_protect
+         U spi_flash_chip_generic_suspend_cmd_conf
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+         U spi_flash_chip_issi_get_io_mode
+         U spi_flash_chip_issi_set_io_mode
+
+spi_flash_chip_gd.c.obj:
+         U spi_flash_chip_generic_config_host_io_mode
+         U spi_flash_chip_generic_erase_chip
+         U spi_flash_chip_generic_get_write_protect
+         U spi_flash_chip_generic_read_reg
+         U spi_flash_chip_generic_read_unique_id
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_set_write_protect
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+         U spi_flash_chip_winbond_erase_block
+         U spi_flash_chip_winbond_erase_sector
+         U spi_flash_chip_winbond_page_program
+         U spi_flash_chip_winbond_read
+         U spi_flash_common_read_status_16b_rdsr_rdsr2
+         U spi_flash_common_read_status_8b_rdsr2
+         U spi_flash_common_set_io_mode
+         U spi_flash_common_write_status_16b_wrsr
+         U spi_flash_common_write_status_8b_wrsr2
+
+spi_flash_chip_winbond.c.obj:
+         U memcpy
+         U memset
+         U spi_flash_chip_generic_config_host_io_mode
+         U spi_flash_chip_generic_detect_size
+         U spi_flash_chip_generic_erase_chip
+         U spi_flash_chip_generic_get_io_mode
+         U spi_flash_chip_generic_get_write_protect
+         U spi_flash_chip_generic_read_reg
+         U spi_flash_chip_generic_read_unique_id
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_set_io_mode
+         U spi_flash_chip_generic_set_write_protect
+         U spi_flash_chip_generic_suspend_cmd_conf
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+
+spi_flash_chip_boya.c.obj:
+         U spi_flash_chip_generic_config_host_io_mode
+         U spi_flash_chip_generic_detect_size
+         U spi_flash_chip_generic_erase_block
+         U spi_flash_chip_generic_erase_chip
+         U spi_flash_chip_generic_erase_sector
+         U spi_flash_chip_generic_get_io_mode
+         U spi_flash_chip_generic_get_write_protect
+         U spi_flash_chip_generic_page_program
+         U spi_flash_chip_generic_read
+         U spi_flash_chip_generic_read_reg
+         U spi_flash_chip_generic_read_unique_id
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_set_io_mode
+         U spi_flash_chip_generic_set_write_protect
+         U spi_flash_chip_generic_suspend_cmd_conf
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+
+spi_flash_chip_mxic_opi.c.obj:
+         U __assert_func
+         U memcpy
+         U memset
+         U spi_flash_chip_generic_read
+         U spi_flash_chip_generic_read_unique_id_none
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_suspend_cmd_conf
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+
+spi_flash_chip_th.c.obj:
+         U spi_flash_chip_generic_config_host_io_mode
+         U spi_flash_chip_generic_detect_size
+         U spi_flash_chip_generic_erase_block
+         U spi_flash_chip_generic_erase_chip
+         U spi_flash_chip_generic_erase_sector
+         U spi_flash_chip_generic_get_io_mode
+         U spi_flash_chip_generic_get_write_protect
+         U spi_flash_chip_generic_page_program
+         U spi_flash_chip_generic_read
+         U spi_flash_chip_generic_read_reg
+         U spi_flash_chip_generic_read_unique_id
+         U spi_flash_chip_generic_reset
+         U spi_flash_chip_generic_set_io_mode
+         U spi_flash_chip_generic_set_write_protect
+         U spi_flash_chip_generic_suspend_cmd_conf
+         U spi_flash_chip_generic_timeout
+         U spi_flash_chip_generic_wait_idle
+         U spi_flash_chip_generic_write
+         U spi_flash_chip_generic_write_encrypted
+         U spi_flash_chip_generic_yield
+
+memspi_host_driver.c.obj:
+         U SPIMEM1
+         U __assert_func
+         U spi_flash_check_and_flush_cache
+         U spi_flash_hal_check_status
+         U spi_flash_hal_common_command
+         U spi_flash_hal_configure_host_io_mode
+         U spi_flash_hal_device_config
+         U spi_flash_hal_erase_block
+         U spi_flash_hal_erase_chip
+         U spi_flash_hal_erase_sector
+         U spi_flash_hal_gpspi_check_status
+         U spi_flash_hal_gpspi_common_command
+         U spi_flash_hal_gpspi_configure_host_io_mode
+         U spi_flash_hal_gpspi_device_config
+         U spi_flash_hal_gpspi_poll_cmd_done
+         U spi_flash_hal_gpspi_read
+         U spi_flash_hal_gpspi_supports_direct_read
+         U spi_flash_hal_gpspi_supports_direct_write
+         U spi_flash_hal_init
+         U spi_flash_hal_poll_cmd_done
+         U spi_flash_hal_program_page
+         U spi_flash_hal_read
+         U spi_flash_hal_resume
+         U spi_flash_hal_set_write_protect
+         U spi_flash_hal_setup_read_suspend
+         U spi_flash_hal_supports_direct_read
+         U spi_flash_hal_supports_direct_write
+         U spi_flash_hal_suspend
+
+cache_utils.c.obj:
+         U Cache_Enable_ICache
+         U Cache_Invalidate_DCache_All
+         U Cache_Invalidate_ICache_All
+         U Cache_Occupy_DCache_MEMORY
+         U Cache_Occupy_ICache_MEMORY
+         U Cache_Set_DCache_Mode
+         U Cache_Set_ICache_Mode
+         U __assert_func
+         U cache_hal_is_cache_enabled
+         U esp_cache_resume_ext_mem_cache
+         U esp_cache_suspend_ext_mem_cache
+         U esp_intr_noniram_disable
+         U esp_intr_noniram_enable
+         U esp_ipc_call_nonblocking
+         U vTaskSuspendAll
+         U xQueueCreateMutex
+         U xQueueGiveMutexRecursive
+         U xQueueTakeMutexRecursive
+         U xTaskGetSchedulerState
+         U xTaskResumeAll
+
+flash_mmap.c.obj:
+         U __assert_func
+         U __getreent
+         U cache_hal_invalidate_addr
+         U esp_cache_sync_ops_enter_critical_section
+         U esp_cache_sync_ops_exit_critical_section
+         U esp_mmu_map
+         U esp_mmu_map_dump_mapped_blocks
+         U esp_mmu_map_get_max_consecutive_free_block_size
+         U esp_mmu_paddr_find_caps
+         U esp_mmu_paddr_to_vaddr
+         U esp_mmu_unmap
+         U esp_mmu_vaddr_to_paddr
+         U free
+         U heap_caps_calloc
+         U mmu_hal_paddr_to_vaddr
+         U rom_spiflash_legacy_data
+
+flash_ops.c.obj:
+         U __assert_func
+         U bootloader_flash_is_octal_mode_enabled
+         U esp_gpio_reserve
+         U esp_opiflash_init
+         U esp_rom_efuse_get_flash_gpio_info
+         U esp_rom_efuse_get_flash_wp_gpio
+         U esp_rom_efuse_get_opiconfig
+         U esp_rom_opiflash_pin_config
+         U mspi_timing_set_pin_drive_strength
+         U rom_spiflash_legacy_data
+         U spi_flash_disable_interrupts_caches_and_other_cpu
+         U spi_flash_disable_interrupts_caches_and_other_cpu_no_os
+         U spi_flash_enable_high_performance_mode
+         U spi_flash_enable_interrupts_caches_and_other_cpu
+         U spi_flash_enable_interrupts_caches_no_os
+
+spi_flash_wrap.c.obj:
+         U abort
+         U bootloader_flash_execute_command_common
+         U rom_spiflash_legacy_data
+
+esp_flash_api.c.obj:
+         U __assert_func
+         U abort
+         U esp_flash_app_disable_os_functions
+         U esp_flash_app_enable_os_functions
+         U esp_flash_default_chip
+         U esp_flash_registered_chips
+         U memcmp
+         U memcpy
+         U rom_spiflash_legacy_data
+         U spi_flash_mmap
+         U spi_flash_munmap
+
+esp_flash_spi_init.c.obj:
+         U GPIO
+         U SPIMEM0
+         U __assert_func
+         U bootloader_flash_is_octal_mode_enabled
+         U esp_flash_app_enable_os_functions
+         U esp_flash_deinit_os_functions
+         U esp_flash_init_main
+         U esp_flash_init_os_functions
+         U esp_flash_noos_functions
+         U esp_mspi_32bit_address_flash_feature_check
+         U esp_rom_efuse_get_flash_gpio_info
+         U esp_rom_gpio_connect_in_signal
+         U esp_rom_gpio_connect_out_signal
+         U free
+         U g_flash_guard_default_ops
+         U heap_caps_malloc
+         U memspi_host_init_pointers
+         U rom_spiflash_legacy_data
+         U spi_bus_lock_get_by_id
+         U spi_bus_lock_get_dev_id
+         U spi_bus_lock_register_dev
+         U spi_bus_lock_unregister_dev
+         U spi_flash_guard_set
+         U spi_flash_init_lock
+         U spi_flash_timing_is_tuned
+         U spi_periph_signal
+         U spi_timing_get_flash_timing_param
+
+spi_flash_os_func_app.c.obj:
+         U __assert_func
+         U esp_partition_is_flash_region_writable
+         U esp_partition_main_flash_region_safe
+         U esp_rom_delay_us
+         U esp_system_get_time
+         U free
+         U g_spi_lock_main_flash_dev
+         U heap_caps_get_largest_free_block
+         U heap_caps_malloc
+         U spi_bus_lock_acquire_end
+         U spi_bus_lock_acquire_start
+         U spi_bus_lock_touch
+         U spi_flash_disable_interrupts_caches_and_other_cpu
+         U spi_flash_enable_interrupts_caches_and_other_cpu
+         U spi_flash_set_erasing_flag
+         U vTaskDelay
+         U xTaskGetSchedulerState
+
+spi_flash_os_func_noos.c.obj:
+         U cache_hal_resume
+         U cache_hal_suspend
+         U esp_rom_delay_us
+
+/home/thc1006/dev/SpikeIDS-MCU/results/esp32s3_v5_build_20260925_03/build/esp-idf/xtensa/libxtensa.a:
+
+eri.c.obj:
+
+xt_trax.c.obj:
+         U eri_read
+         U eri_write
+
+xtensa_context.S.obj:
+         U _frxt_task_coproc_state
+         U _xt_coproc_owner_sa
+         U _xt_coproc_owner_sa_lock
+         U _xt_coproc_sa_offset
+         U xthal_restore_extra_nw
+         U xthal_save_extra_nw
+
+xtensa_intr_asm.S.obj:
+         U xt_unhandled_exception
+         U xt_unhandled_interrupt
+
+xtensa_intr.c.obj:
+         U Xthal_intlevel
+         U _xt_exception_table
+         U _xt_interrupt_table
+         U esp_rom_printf
+         U xt_unhandled_exception
+
+xtensa_vectors.S.obj:
+         U _frxt_coproc_exc_hook
+         U _frxt_int_enter
+         U _frxt_int_exit
+         U _frxt_task_coproc_state
+         U _xt_context_restore
+         U _xt_context_save
+         U _xt_coproc_restorecs
+         U _xt_exception_table
+         U _xt_interrupt_table
+         U _xt_panic
+         U call_user_start

@@ -1,0 +1,10 @@
+{
+  "diagnostic_completed": true,
+  "latency_validated": false,
+  "original_row_id": 20,
+  "output_hex": "3fcf313f6f5b05c0637810c15fe9d7c0ef28b840",
+  "power_measured": false,
+  "reference_hex": "d3383041b748a8c0cf0e92c0cf0e92c057959bc0",
+  "research_measurement_accepted": false,
+  "sequence": 1025
+}

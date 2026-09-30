@@ -1,0 +1,14 @@
+{
+  "argmax_disagreements": [],
+  "atol": 1e-06,
+  "comparison": "numpy.isclose(reference_fp32, actual_fp32); actual is relative-tolerance anchor",
+  "energy_measured": false,
+  "failed_logit_values": [],
+  "full_logit_parity_passed": true,
+  "latency_validated": false,
+  "max_abs_error": 0.0,
+  "npu_execution_independently_verified": false,
+  "research_measurement_accepted": false,
+  "rows": 1024,
+  "rtol": 1e-05
+}

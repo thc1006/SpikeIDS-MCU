@@ -1,0 +1,16 @@
+{
+  "launch": {
+    "chunk_id": "ead5c7",
+    "wall_time_seconds": 1.000497093,
+    "session_id": 90435,
+    "original_token_count": 28,
+    "output": "Running as unit: spikeids-n6-v5-prep-20260925-naivhm.service; invocation ID: f11e42e216334053a9c6742c0b762713\n"
+  },
+  "completion": {
+    "chunk_id": "5fc850",
+    "wall_time_seconds": 0.000001405,
+    "exit_code": 0,
+    "original_token_count": 135,
+    "output": "{\"board_validated\": false, \"content_sha256\": \"f40e5ff80a29b7935d1c31ccdac22c4e13e15dafd6f940333576812cd1082f05\", \"deployment_accepted\": false, \"energy_measured\": false, \"full_toolchain_closure\": false, \"npu_placement_verified\": false, \"offline_compilation_completed\": true, \"publication_accepted\": false}\n          Finished with result: success\nMain processes terminated with: code=exited, status=0/SUCCESS\n               Service runtime: 34.242s\n             CPU time consumed: 17.734s\n                   Memory peak: 828.8M (swap: 0B)\n"
+  }
+}

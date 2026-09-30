@@ -1,0 +1,11 @@
+{
+  "actual_return_code": 0,
+  "argv": [
+    "/home/thc1006/opt/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-objcopy",
+    "-O",
+    "binary",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/stage.elf",
+    "/home/thc1006/dev/SpikeIDS-MCU/results/ppk2_n6_bringup_20260925_nAivHM/platform_stage_actual_03/stage.bin"
+  ],
+  "timed_out": false
+}

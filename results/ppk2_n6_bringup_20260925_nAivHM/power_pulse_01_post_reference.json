@@ -1,0 +1,7 @@
+{
+  "chunk_id": "dd7e53",
+  "wall_time_seconds": 0.115758835,
+  "exit_code": 0,
+  "original_token_count": 73,
+  "output": "{\n  \"utc\": \"2026-09-25T00:09:02.936904+00:00\",\n  \"serial\": \"004000183234510E37333934\",\n  \"post_pulse_reference\": {\n    \"at_monotonic\": 592690.152713592,\n    \"raw_hex\": \"e205000002000000\",\n    \"estimated_v\": 0.003187250996015936,\n    \"is_vin_measurement\": false\n  },\n  \"only_command\": \"f7\"\n}\n"
+}

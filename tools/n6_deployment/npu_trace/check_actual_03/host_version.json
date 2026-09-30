@@ -1,0 +1,8 @@
+{
+  "actual_return_code": 0,
+  "argv": [
+    "/usr/bin/x86_64-linux-gnu-gcc-15",
+    "--version"
+  ],
+  "timed_out": false
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "S6-original-QDQ-NPU-signed24-route-fix-SM06",
+  "mailbox_address": "0x340f8000",
+  "mailbox_bytes": 512,
+  "deployment_tag": "0x534d3036",
+  "remaining_offsets": "unchanged SM05",
+  "candidate_executable_epochs": {"hardware": 7, "software": 35, "hybrid": 0},
+  "energy_measured": false,
+  "board_validated": false
+}

@@ -29,6 +29,11 @@ def analyze(run_dir: Path, context=None):
     for key in tests: tests[key].update(adjusted[key])
     report={"schema":SCHEMA,"plan_sha256":plan["content_sha256"],"alpha":plan["alpha"],"comparisons":tests,
             "family":plan["difference_family"],"family_definition":"all seven model comparisons x two metrics (14 claims)",
+            "primary_test_estimand":"symmetric paired-difference location/pseudomedian",
+            "descriptive_effect":"arithmetic mean paired difference with a seed bootstrap interval",
+            "assumption":"independent paired seed differences symmetric about the tested location",
+            "zero_rule":"discard exact zeros after 12-decimal declared rounding",
+            "tie_rule":"average absolute ranks; exact conditional sign enumeration",
             "source_result_digests":{f"{d}_{a}":r["scientific_digest"] for (d,a),r in results.items()},
             "scope":"seed variability conditional on the fixed prepared datasets; not new independent datasets",
             "nonrejection_is_not_equivalence":True}

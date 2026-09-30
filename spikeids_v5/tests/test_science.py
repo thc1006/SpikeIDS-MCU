@@ -28,22 +28,31 @@ def test_four_dataset_preparation(prepared,dataset):
         assert np.isfinite(a[f'x_{split}']).all()
         assert a[f'x_{split}'].dtype==np.float32
         assert len(np.unique(a[f'y_{split}']))==len(dl.CLASSES[dataset])
-    assert np.abs(a['x_fit'].mean(0)).max()<1e-5
+    prep=c.load_json(prepared/dataset/'preprocessing.json')
+    assert prep['n_fit']==len(a['preprocessing_fit_ids'])
+    # Stable final-(X,label) dedup occurs after fit-only preprocessing, so the
+    # model-fit subset is not falsely required to retain exact zero mean.
+    removed_fit=a['final_dedup_ids'][a['final_dedup_origin_splits']==0]
+    assert np.array_equal(a['preprocessing_fit_ids'],
+                          np.sort(np.r_[a['ids_fit'],removed_fit]))
     assert meta['upstream_preprocessing_verified'] is False
-    assert meta['duplicate_or_group_leakage_excluded'] is False
+    assert meta['exact_model_input_group_leakage_excluded'] is True
+    assert meta['capture_device_time_group_generalization_established'] is False
 
 
 def test_test_only_features_never_change_fit(raw,tmp_path):
     m1,a1=dl.prepare('nslkdd',raw,tmp_path/'one',chunksize=17)
     fit=a1['x_fit'].copy();val=a1['x_validation'].copy()
-    path=raw/'KDDTest+.txt';df=pd.read_csv(path,header=None);df.iloc[:,0]=1e9;df.iloc[:,2]='unknown_only_test';df.to_csv(path,index=False,header=False)
+    fit_ids=a1['ids_fit'].copy();val_ids=a1['ids_validation'].copy()
+    path=raw/'KDDTest+.txt';df=pd.read_csv(path,header=None);df.iloc[:,0]=1e9;df.iloc[:,2]='0_test_only';df.to_csv(path,index=False,header=False)
     m2,a2=dl.prepare('nslkdd',raw,tmp_path/'two',chunksize=17)
     assert np.array_equal(fit,a2['x_fit']) and np.array_equal(val,a2['x_validation'])
+    assert np.array_equal(fit_ids,a2['ids_fit']) and np.array_equal(val_ids,a2['ids_validation'])
     assert m1['preprocessor_sha256']==m2['preprocessor_sha256']
     assert m1['data_fingerprint']!=m2['data_fingerprint']
     p=c.load_json(tmp_path/'two'/'preprocessing.json')
-    assert p['unknown_categories']['test']['service']==len(a2['y_test'])
-    assert all('unknown_only_test' not in s for s in p['categories']['service'])
+    assert p['unknown_categories_pre_final_raw_unique']['test']['service']==len(a2['y_test'])
+    assert all('0_test_only' not in s for s in p['categories']['service'])
 
 
 def test_raw_change_invalidates_cache(raw,tmp_path):
@@ -67,6 +76,43 @@ def test_no_silent_label_drop(raw,tmp_path):
 def test_missing_shard_fails(raw):
     (raw/'KDDTest+.txt').unlink()
     with pytest.raises(c.ContractError,match='missing'):dl.source_files('nslkdd',raw)
+
+
+def _nsl_source_spec(raw):
+    return {
+        'dataset':'nslkdd',
+        'provenance_note':'test fixture with pinned bytes and content digests',
+        'files':[
+            {'path':name,'role':role,'bytes':(raw/name).stat().st_size,'sha256':c.sha256(raw/name)}
+            for name,role in [('KDDTrain+.txt','train'),('KDDTest+.txt','test')]
+        ],
+    }
+
+
+def test_source_manifest_pins_bytes_and_sha256(raw,tmp_path):
+    spec=_nsl_source_spec(raw);path=tmp_path/'source.json';c.write_json(path,spec)
+    assert [role for _,role in dl.source_files('nslkdd',raw,path)]==['train','test']
+    spec['files'][0]['sha256']='0'*64;c.write_json(path,spec)
+    with pytest.raises(c.ContractError,match='SHA-256 mismatch'):
+        dl.source_files('nslkdd',raw,path)
+
+
+def test_source_manifest_cannot_escape_data_dir(raw,tmp_path):
+    spec=_nsl_source_spec(raw)
+    spec['files'][0].update(path='../outside.txt',bytes=0,sha256='0'*64)
+    path=tmp_path/'source.json';c.write_json(path,spec)
+    with pytest.raises(c.ContractError,match='escapes data-dir'):
+        dl.source_files('nslkdd',raw,path)
+
+
+def test_cic_official_replacement_character_is_narrowly_normalized(tmp_path):
+    path=tmp_path/'web.csv'
+    path.write_bytes('Feature, Label\n1,Web Attack \ufffd XSS\n'.encode('utf-8'))
+    frame,_=next(dl._batches([(path,'combined')],'cicids2017',17))
+    assert '\ufffd' in frame['Label'].iloc[0]
+    y,features=dl._labels_and_features(frame,'cicids2017')
+    assert features==['Feature']
+    assert y.tolist()==[dl.CLASSES['cicids2017'].index('Web Attack - XSS')]
 
 
 def test_iot_categorical_no_presplit_encoding(raw,tmp_path):

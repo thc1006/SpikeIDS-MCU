@@ -1,0 +1,46 @@
+{
+  "actual_return_code": 0,
+  "argv": [
+    "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_0/installed/fake_vendor",
+    "--version"
+  ],
+  "cwd": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_0/repo/results/fresh",
+  "elapsed_seconds": 0.01578528096433729,
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PATH": "/usr/bin:/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_0/repo/results/fresh/tmp",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "XDG_CACHE_HOME": "/home/thc1006/dev/SpikeIDS-MCU/tools/n6_deployment/.toy_01/test_real_subprocess_failures_0/repo/results/fresh/cache"
+  },
+  "exception": null,
+  "phase": "version",
+  "stderr": {
+    "ctime_ns": 1790292552927878135,
+    "device": 66306,
+    "inode": 31773259,
+    "links": 1,
+    "mode": 33152,
+    "mtime_ns": 1790292552927878135,
+    "sha256": "428c56109cc082b64b5a6df489e9690750dbf620539d2716f7ca26210c08c951",
+    "size": 17
+  },
+  "stdout": {
+    "ctime_ns": 1790292552927878135,
+    "device": 66306,
+    "inode": 31773258,
+    "links": 1,
+    "mode": 33152,
+    "mtime_ns": 1790292552927878135,
+    "sha256": "f65b6d70b2a1075d30a8aff44a26a2c054a4ef11127d6fbe04dc1f8af4cf10a3",
+    "size": 21
+  },
+  "timed_out": false
+}

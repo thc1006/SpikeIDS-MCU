@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "kind": "agent_observed_offline_serial_transport_tests",
+  "actual_tool_completion_chunk": "a53d48",
+  "actual_return_code": 0,
+  "passed": 23,
+  "scope_unit": "spikeids-portable-serial-tests-02.scope",
+  "invocation_id": "90f49f1bd01246eab5875a39c4ae7b5b",
+  "requested_memory_max_bytes": 4294967296,
+  "requested_memory_swap_max_bytes": 0,
+  "elapsed_pytest_seconds": 0.12,
+  "source_path": "tools/board_deployment/host_v5/serial_transport.py",
+  "source_sha256_as_reviewed": "5060e1922aeeac7de932da317318c3f170941b397483c7702f9b2f3748a4e146",
+  "test_sha256": "9b5fce1b2fd658f4681d766df3eb45d261edba146d18f01c78f3c634ae516480",
+  "xml_path": "tools/board_deployment/host_v5/serial_transport_02.xml",
+  "xml_sha256": "dc7c9fd0688a403a1d1731d0355df3a882931f144fb90911d85710f77dff99ae",
+  "prior_run": {
+    "actual_tool_completion_chunk": "2e1405",
+    "actual_return_code": 1,
+    "passed": 22,
+    "failed": 1,
+    "source_sha256": "c1fee0175789053e90b5518669e5ff12f0c4476e89b5fdd18cdcae3c6fb89533",
+    "xml_sha256": "fd2ee7222de0a34e0b8ca3e12ea1bd21ac1591d3201569651948897bc0744280",
+    "finding": "binary64 deadline subtraction produced remaining 10.000000000000002; fixed by min(configured_timeout, remaining)"
+  },
+  "hardware_accessed": false,
+  "real_usb_enumeration": false,
+  "real_serial_open": false,
+  "board_accepted": false,
+  "energy_measured": false,
+  "physical_sku_verified": false,
+  "scope": "synthetic byte callbacks, real codec and 1024 requests, fake serial factory/enumeration/exclusive claim; temporary by-id symlink only"
+}

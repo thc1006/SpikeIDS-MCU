@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.153" timestamp="2026-09-25T11:46:34.010945+08:00" hostname="thc1006"><testcase classname="tools.board_deployment.host_v5.test_peer_cli" name="test_final_publication_source_change_cannot_return_success" time="0.046"><failure message="Failed: DID NOT RAISE ValueError">evidence = {'repo': PosixPath('/tmp/pytest-of-thc1006/pytest-350/test_final_publication_source_0/repo'), 'source': PosixPath('/tm.....), 'output': PosixPath('/tmp/pytest-of-thc1006/pytest-350/test_final_publication_source_0/repo/results/actual'), ...}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x782ba5710f0&gt;
+
+    def test_final_publication_source_change_cannot_return_success(evidence,monkeypatch):
+        e=evidence;original=r.Store.json
+        def retain(store,name,value):
+            result=original(store,name,value)
+            if name=='RESULT.json':e['source'].write_bytes(e['source'].read_bytes()+b'\n# publication change\n')
+            return result
+        monkeypatch.setattr(r.Store,'json',retain)
+&gt;       with pytest.raises(ValueError,match='source changed'):invoke(e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tools/board_deployment/host_v5/test_peer_cli.py:105: Failed</failure></testcase><testcase classname="tools.board_deployment.host_v5.test_peer_cli" name="test_source_change_during_input_load_not_freshly_adopted" time="0.044"><failure message="Failed: DID NOT RAISE ValueError">evidence = {'repo': PosixPath('/tmp/pytest-of-thc1006/pytest-350/test_source_change_during_inpu0/repo'), 'source': PosixPath('/tm.....), 'output': PosixPath('/tmp/pytest-of-thc1006/pytest-350/test_source_change_during_inpu0/repo/results/actual'), ...}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x782bcf0b950&gt;
+
+    def test_source_change_during_input_load_not_freshly_adopted(evidence,monkeypatch):
+        e=evidence
+        def load():
+            e['source'].write_bytes(e['source'].read_bytes()+b'\n# source changed during load\n')
+            return e['rows']
+        monkeypatch.setattr(r,'load_rows',load)
+&gt;       with pytest.raises(ValueError,match='source changed'):invoke(e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tools/board_deployment/host_v5/test_peer_cli.py:115: Failed</failure></testcase></testsuite></testsuites>
